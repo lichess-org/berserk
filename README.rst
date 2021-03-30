@@ -3,7 +3,7 @@ berserk
 =======
 
 
-.. image:: https://img.shields.io/pypi/v/berserk.svg
+.. image:: https://img.shields.io/pypi/v/zack-berserk
         :target: https://pypi.python.org/pypi/zack-berserk
         :alt: Available on PyPI
 
