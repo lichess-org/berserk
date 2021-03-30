@@ -110,3 +110,4 @@ Scripts/activate
 *.bat
 *.ps1
 *.exe
+tests/test_clients.py

@@ -2,6 +2,9 @@
 berserk
 =======
 
+This is a downstream branch created to continually maintain berserk.
+Original repository: https://github.com/rhgrant10/berserk
+
 
 .. image:: https://img.shields.io/pypi/v/zack-berserk
         :target: https://pypi.python.org/pypi/zack-berserk
@@ -26,6 +29,13 @@ Python client for the `Lichess API`_.
 
 * Free software: GNU General Public License v3
 * Documentation: https://berserk.readthedocs.io.
+
+Install
+========
+
+Make sure berserk is uninstall before installing
+
+``pip install berserk-downstream``
 
 
 Features
