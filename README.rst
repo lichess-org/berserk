@@ -6,8 +6,8 @@ This is a downstream branch created to continually maintain berserk.
 Original repository: https://github.com/rhgrant10/berserk
 
 
-.. image:: https://img.shields.io/pypi/v/zack-berserk
-        :target: https://pypi.python.org/pypi/zack-berserk
+.. image:: https://img.shields.io/pypi/v/berserk-downstream
+        :target: https://pypi.python.org/pypi/berserk-downstream
         :alt: Available on PyPI
 
 .. image:: https://img.shields.io/travis/rhgrant10/berserk.svg
