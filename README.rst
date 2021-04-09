@@ -124,6 +124,7 @@ Most if not all of the API is available:
     client.bots.decline_challenge
 
     client.tournaments.get
+    client.tournaments.get_tournament
     client.tournaments.create_arena
     client.tournaments.create_swiss
     client.tournaments.export_arena_games
