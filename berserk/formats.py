@@ -73,7 +73,7 @@ class JsonHandler(FormatHandler):
         :return: response data
         :rtype: JSON
         """
-        return response.json()
+        return response.json(cls=self.decoder)
 
     def parse_stream(self, response):
         """Yield the parsed data from a stream response.
