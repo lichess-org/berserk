@@ -10,12 +10,13 @@ Original repository: https://github.com/rhgrant10/berserk
         :target: https://pypi.python.org/pypi/berserk-downstream
         :alt: Available on PyPI
 
-.. image:: https://img.shields.io/travis/rhgrant10/berserk.svg
-        :target: https://travis-ci.org/rhgrant10/berserk
+.. image:: https://img.shields.io/travis/com/ZackClements/berserk
+        :target: https://travis-ci.org/ZackClements/berserk
         :alt: Continuous Integration
 
-.. image:: https://codecov.io/gh/rhgrant10/berserk/branch/master/graph/badge.svg
-        :target: https://codecov.io/gh/rhgrant10/berserk
+
+.. image:: https://codecov.io/gh/ZackClements/berserk/branch/master/graph/badge.svg?token=H45ZUIZU69
+        :target: https://codecov.io/gh/ZackClements/berserk
         :alt: Code Coverage
 
 .. image:: https://readthedocs.org/projects/berserk/badge/?version=latest
@@ -131,6 +132,7 @@ Most if not all of the API is available:
     client.tournaments.export_swiss_games
     client.tournaments.arena_by_team
     client.tournaments.swiss_by_team
+    client.tournaments.tournaments_by_user
     client.tournaments.stream_results
     client.tournaments.stream_by_creator
 
