@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-__all__ = ['PerfType', 'Variant', 'Color', 'Room', 'Mode', 'Position']
+__all__ = ['PerfType', 'Variant', 'Color', 'Room', 'Mode', 'Position', 'Reason']
 
 
 class GameType:
@@ -40,6 +40,19 @@ class Room:
 class Mode:
     CASUAL = 'casual'
     RATED = 'rated'
+
+class Reason:
+    GENERIC = 'Generic'
+    LATER = "later"
+    TOOFAST = "tooFast"
+    TOOSLOW = "tooSlow"
+    TIMECONTROL = "timeControl"
+    RATED = "rated"
+    CASUAL = "casual"
+    STANDARD = "standard"
+    VARIANT = "variant"
+    NOBOT = "noBot"
+    ONLYBOT = "onlyBot"
 
 
 class Position:

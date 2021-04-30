@@ -5,7 +5,7 @@ from deprecated import deprecated
 
 from .session import Requestor
 from .formats import JSON, LIJSON, PGN, NDJSON, TEXT
-from . import models
+from . import models, enums
 
 __all__ = [
     'Client',
@@ -621,15 +621,19 @@ class Challenges(BaseClient):
         path = f'api/challenge/{challenge_id}/accept'
         return self._r.post(path)['ok']
 
-    def decline(self, challenge_id):
+    def decline(self, challenge_id, reason=Reason.GENERIC):
         """Decline an incoming challenge.
-
-        :param str challenge_id: id of the challenge to decline
+        :param str challenge_id: ID of a challenge
+        :param reason: reason for declining challenge
+        :type reason: :class:`~berserk.enums.Reason`
         :return: success indicator
         :rtype: bool
         """
         path = f'api/challenge/{challenge_id}/decline'
-        return self._r.post(path)['ok']
+        payload = {
+            'reason': reason
+        }
+        return self._r.post(path, json=payload)['ok']
 
 
 class Board(BaseClient):
@@ -861,15 +865,19 @@ class Bots(BaseClient):
         path = f'api/challenge/{challenge_id}/accept'
         return self._r.post(path)['ok']
 
-    def decline_challenge(self, challenge_id):
+    def decline_challenge(self, challenge_id, reason=Reason.GENERIC):
         """Decline an incoming challenge.
-
         :param str challenge_id: ID of a challenge
-        :return: success
+        :param reason: reason for declining challenge
+        :type reason: :class:`~berserk.enums.Reason`
+        :return: success indicator
         :rtype: bool
         """
         path = f'api/challenge/{challenge_id}/decline'
-        return self._r.post(path)['ok']
+        payload = {
+            'reason': reason
+        }
+        return self._r.post(path, json=payload)['ok']
 
 
 class Tournaments(FmtClient):
