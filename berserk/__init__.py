@@ -16,6 +16,7 @@ from .enums import Color  # noqa: F401
 from .enums import Room  # noqa: F401
 from .enums import Mode  # noqa: F401
 from .enums import Position  # noqa: F401
+from .enums import Reason  # noqa: F401
 from .formats import JSON  # noqa: F401
 from .formats import LIJSON  # noqa: F401
 from .formats import NDJSON  # noqa: F401

@@ -5,7 +5,8 @@ from deprecated import deprecated
 
 from .session import Requestor
 from .formats import JSON, LIJSON, PGN, NDJSON, TEXT
-from . import models, enums
+from .enums import Reason
+from . import models
 
 __all__ = [
     'Client',
