@@ -7,6 +7,7 @@ from .session import Requestor
 from .formats import JSON, LIJSON, PGN, NDJSON, TEXT
 from .enums import Reason
 from . import models
+from . import enums
 
 __all__ = [
     'Client',
@@ -296,6 +297,32 @@ class Users(BaseClient):
         """
         path = f'/api/user/{username}/rating-history'
         return self._r.get(path, converter=models.RatingHistory.convert)
+
+    def get_crosstable(self, user1, user2, matchup=None):
+        """Get total number of games, and current score, of any two users.
+
+        :param str user1: first user to compare
+        :param str user2: second user to compare
+        :param bool matchup: Whether to get the current match data, if any
+        :rtype: list
+        """
+        params = {
+            'matchup': matchup
+        }
+
+        path = f'/api/crosstable/{user1}/{user2}'
+        return self._r.get(path, params=params, converter=models.User.convert)
+
+    def get_user_performance(self, username, perf):
+        """Read performance statistics of a user, for a single performance.
+        Similar to the performance pages on the website
+
+        :param str username: username
+        :param str perf: ~berserk.enums.gametype
+        :rtype: list
+        """
+        path = f'/api/user/{username}/perf/{perf}'
+        return self._r.get(path, converter=models.User.convert)
 
 
 class Teams(BaseClient):
@@ -892,7 +919,7 @@ class Tournaments(FmtClient):
         """
         path = 'api/tournament'
         return self._r.get(path, converter=models.Tournaments.convert_values)
-    
+
     def get_tournament(self, tournament_id, page=1):
         """Get information about a tournament.
         :patam str tournament_id
