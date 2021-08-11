@@ -83,6 +83,8 @@ Most if not all of the API is available:
     client.users.get_users_followed
     client.users.get_users_following
     client.users.get_rating_history
+    client.users.get_crosstable
+    client.users.get_user_performance
 
     client.teams.get_members
     client.teams.join
