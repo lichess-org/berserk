@@ -404,7 +404,7 @@ class Games(FmtClient):
     def export_by_player(self, username, as_pgn=None, since=None, until=None,
                          max=None, vs=None, rated=None, perf_type=None,
                          color=None, analysed=None, moves=None, tags=None,
-                         evals=None, opening=None):
+                         clocks=None, evals=None, opening=None):
         """Get games by player.
 
         :param str username: which player's games to return
@@ -441,6 +441,7 @@ class Games(FmtClient):
             'analysed': analysed,
             'moves': moves,
             'tags': tags,
+            'clocks': clocks,
             'evals': evals,
             'opening': opening,
         }
