@@ -34,7 +34,7 @@ Python client for the `Lichess API`_.
 Install
 ========
 
-Make sure berserk is uninstall before installing
+Make sure berserk is uninstalled before installing
 
 ``pip install berserk-downstream``
 
