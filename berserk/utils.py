@@ -11,7 +11,7 @@ def to_millis(dt):
     :return: milliseconds since the epoch
     :rtype: int
     """
-    return dt.timestamp() * 1000
+    return int(dt.timestamp() * 1000)
 
 
 def datetime_from_seconds(ts):
