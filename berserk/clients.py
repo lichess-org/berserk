@@ -623,7 +623,7 @@ class Challenges(BaseClient):
                             converter=models.Tournament.convert)
 
     def create_open(self, clock_limit=None, clock_increment=None,
-                    variant=None, position=None):
+                    variant=None, position=None, rated=None, name=None):
         """Create a challenge that any two players can join.
 
         :param int clock_limit: clock initial time (in seconds)
@@ -633,6 +633,10 @@ class Challenges(BaseClient):
         :param position: custom intial position in FEN (variant must be
                          standard and the game cannot be rated)
         :type position: str
+        :param bool: rated: Game is rated and impacts players ratings
+        :param name: Optional name for the challenge, that players will see on
+                     the challenge page.
+        :type name: str
         :return: challenge data
         :rtype: dict
         """
@@ -642,6 +646,8 @@ class Challenges(BaseClient):
             'clock.increment': clock_increment,
             'variant': variant,
             'fen': position,
+            'rated': rated,
+            'name': name,
         }
         return self._r.post(path, json=payload,
                             converter=models.Tournament.convert)
