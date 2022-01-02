@@ -406,7 +406,6 @@ class Games(FmtClient):
                          color=None, analysed=None, moves=None,
                          pgn_in_json=None, tags=None, clocks=None, evals=None,
                          opening=None, ongoing=None, finished=None, players=None, sort=None):
-
         """Get games by player.
 
         :param str username: which player's games to return
@@ -1265,23 +1264,13 @@ class Tournaments(FmtClient):
 class Broadcasts(BaseClient):
     """Broadcast of one or more games."""
 
-    def create(self, name, description, sync_url=None, markdown=None,
-               credit=None, starts_at=None, official=None, throttle=None):
+    def create(self, name, description, markdown=None, official=None):
         """Create a new broadcast.
-
-        .. note::
-
-            ``sync_url`` must be publicly accessible. If not provided, you
-            must periodically push new PGN to update the broadcast manually.
 
         :param str name: name of the broadcast
         :param str description: short description
         :param str markdown: long description
-        :param str sync_url: URL by which Lichess can poll for updates
-        :param str credit: short text to give credit to the source provider
-        :param int starts_at: start time as millis
         :param bool official: DO NOT USE
-        :param int throttle: DO NOT USE
         :return: created tournament info
         :rtype: dict
         """
@@ -1289,12 +1278,8 @@ class Broadcasts(BaseClient):
         payload = {
             'name': name,
             'description': description,
-            'syncUrl': sync_url,
             'markdown': markdown,
-            'credit': credit,
-            'startsAt': starts_at,
             'official': official,
-            'throttle': throttle,
         }
         return self._r.post(path, json=payload,
                             converter=models.Broadcast.convert)
@@ -1310,9 +1295,8 @@ class Broadcasts(BaseClient):
         path = f'broadcast/{slug}/{broadcast_id}'
         return self._r.get(path, converter=models.Broadcast.convert)
 
-    def update(self, broadcast_id, name, description, sync_url, markdown=None,
-               credit=None, starts_at=None, official=None, throttle=None,
-               slug='-'):
+    def update(self, broadcast_id, name, description, markdown=None,
+               official=None, slug='-'):
         """Update an existing broadcast by ID.
 
         .. note::
@@ -1322,12 +1306,8 @@ class Broadcasts(BaseClient):
         :param str broadcast_id: ID of a broadcast
         :param str name: name of the broadcast
         :param str description: short description
-        :param str sync_url: URL by which Lichess can poll for updates
         :param str markdown: long description
-        :param str credit: short text to give credit to the source provider
-        :param int starts_at: start time as millis
         :param bool official: DO NOT USE
-        :param int throttle: DO NOT USE
         :param str slug: slug for SEO
         :return: updated broadcast information
         :rtype: dict
@@ -1336,17 +1316,13 @@ class Broadcasts(BaseClient):
         payload = {
             'name': name,
             'description': description,
-            'syncUrl': sync_url,
             'markdown': markdown,
-            'credit': credit,
-            'startsAt': starts_at,
             'official': official,
-
         }
         return self._r.post(path, json=payload,
                             converter=models.Broadcast.convert)
 
-    def push_pgn_update(self, broadcast_id, pgn_games, slug='-'):
+    def push_pgn_update(self, broadcast_id, pgn_games):
         """Manually update an existing broadcast by ID.
 
         :param str broadcast_id: ID of a broadcast
@@ -1354,9 +1330,58 @@ class Broadcasts(BaseClient):
         :return: success
         :rtype: bool
         """
-        path = f'broadcast/{slug}/{broadcast_id}/push'
+        path = f'broadcast/round/{broadcast_id}/push'
         games = '\n\n'.join(g.strip() for g in pgn_games)
         return self._r.post(path, data=games)['ok']
+
+    def create_round(self, broadcast_id, name, sync_url=None, starts_at=None):
+        """Create a new broadcast round to relay external games.
+
+        :param str broadcast_id: broadcast tournament ID
+        :param str name: Name of the broadcast round
+        :param str sync_url: URL that Lichess will poll to get updates about the games.
+        :param int starts_at: Timestamp in milliseconds of broadcast round start
+        :return: success
+        :rtype: dict
+        """
+        path = f'broadcast/{broadcast_id}/new'
+        payload = {
+            'name': name,
+            'syncUrl': sync_url,
+            'startsAt': starts_at
+        }
+        return self._r.post(path, json=payload, converter=models.Broadcast.convert)
+
+    def get_round(self, broadcast_id, broadcast_tournament_slug='-', broadcast_round_slug='-'):
+        """Get information about a broadcast round
+
+        :param broadcast_id: broadcast round id
+        :param str broadcast_tournament_slug: Only used for SEO, can be safely replaced by -
+        :param str broadcast_round_slug: Only used for SEO, can be safely replaced by -
+        :return: broadcast round info
+        :rtype: dict
+        """
+        path = f'broadcast/{broadcast_tournament_slug}/{broadcast_round_slug}/{broadcast_id}'
+        return self._r.get(path, converter=models.Broadcast.convert)
+
+    def update_round(self, broadcast_id, name, sync_url=None, starts_at=None):
+        """Update information about a broadcast round that you created
+
+        :param str broadcast_id: broadcast round id
+        :param str name: Name of the broadcast round
+        :param str sync_url: URL that Lichess will poll to get updates about the games
+        :param starts_at: Timestamp in milliseconds of broadcast start
+        :return: updated broadcast information
+        :rtype: dict
+        """
+        path = f'broadcast/round/{broadcast_id}/edit'
+        payload = {
+            'name': name,
+            'syncUrl': sync_url,
+            'startsAt': starts_at
+        }
+        return self._r.post(path, json=payload,
+                            converter=models.Broadcast.convert)
 
 
 class Simuls(BaseClient):
