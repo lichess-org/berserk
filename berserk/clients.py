@@ -405,7 +405,7 @@ class Games(FmtClient):
                          max=None, vs=None, rated=None, perf_type=None,
                          color=None, analysed=None, moves=None,
                          pgn_in_json=None, tags=None, clocks=None, evals=None,
-                         opening=None, ongoing=None, players=None, sort=None):
+                         opening=None, ongoing=None, finished=None, players=None, sort=None):
 
         """Get games by player.
 
@@ -423,11 +423,16 @@ class Games(FmtClient):
         :type color: :class:`~berserk.enums.Color`
         :param bool analysed: filter by analysis availability
         :param bool moves: whether to include the PGN moves
+        :param bool pgnInJson: Icnlude the full PGN within JSON response
         :param bool tags: whether to include the PGN tags
         :param bool clocks: whether to include clock comments in the PGN moves
         :param bool evals: whether to include analysis evaluation comments in
                            the PGN moves when available
         :param bool opening: whether to include the opening name
+        :param bool ongoing: Include ongoing games, last 3 moves omitted
+        :param bool finished: Include finished games
+        :param str players: URL of text file containing real names and ratings for PGN
+        :param str sort: Sort the order of games
         :param bool literate: whether to include literate the PGN
         :return: iterator over the exported games, as JSON or PGN
         """
@@ -448,6 +453,7 @@ class Games(FmtClient):
             'evals': evals,
             'opening': opening,
             'ongoing': ongoing,
+            'finished': finished,
             'players': players,
             'sort': sort,
         }
