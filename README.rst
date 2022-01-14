@@ -116,6 +116,10 @@ Most if not all of the API is available:
     client.board.offer_draw
     client.board.accept_draw
     client.board.decline_draw
+    client.board.handle_takeback_offer
+    client.board.offer_takeback
+    client.board.accept_takeback
+    client.board.decline_takeback
 
     client.bots.stream_incoming_events
     client.bots.stream_game_state
