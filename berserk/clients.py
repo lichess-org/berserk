@@ -410,7 +410,7 @@ class Games(FmtClient):
 
         :param str username: which player's games to return
         :param bool as_pgn: whether to return the game in PGN format
-        :param int since: lowerbound on the game timestamp
+        :param int since: lower bound on the game timestamp
         :param int until: upperbound on the game timestamp
         :param int max: limit the number of games returned
         :param str vs: filter by username of the opponent
@@ -422,7 +422,7 @@ class Games(FmtClient):
         :type color: :class:`~berserk.enums.Color`
         :param bool analysed: filter by analysis availability
         :param bool moves: whether to include the PGN moves
-        :param bool pgnInJson: Icnlude the full PGN within JSON response
+        :param bool pgnInJson: Include the full PGN within JSON response
         :param bool tags: whether to include the PGN tags
         :param bool clocks: whether to include clock comments in the PGN moves
         :param bool evals: whether to include analysis evaluation comments in
@@ -791,7 +791,7 @@ class Board(BaseClient):
 
         To offer a draw, pass ``accept=True`` and a game ID of an in-progress
         game. To response to a draw offer, pass either ``accept=True`` or
-        ``accept=False`` and the ID of a game in which you have recieved a
+        ``accept=False`` and the ID of a game in which you have received a
         draw offer.
 
         Often, it's easier to call :func:`offer_draw`, :func:`accept_draw`, or
@@ -832,6 +832,53 @@ class Board(BaseClient):
         :rtype: bool
         """
         return self.handle_draw_offer(game_id, False)
+
+    def handle_takeback_offer(self, game_id, accept):
+        """Create, accept, or decline a takeback offer.
+
+        To offer a takeback, pass ``accept=True`` and a game ID of an in-progress
+        game. To response to a takeback offer, pass either ``accept=True`` or
+        ``accept=False`` and the ID of a game in which you have received a
+        takeback offer.
+
+        Often, it's easier to call :func:`offer_takeback`, :func:`accept_takeback`, or
+        :func:`decline_takeback`.
+
+        :param str game_id: ID of an in-progress game
+        :param bool accept: whether to accept
+        :return: True if successful
+        :rtype: bool
+        """
+        accept = "yes" if accept else "no"
+        path = f'/api/board/game/{game_id}/takeback/{accept}'
+        return self._r.post(path)['ok']
+
+    def offer_takeback(self, game_id):
+        """Offer a takeback in the given game.
+
+        :param str game_id: ID of an in-progress game
+        :return: True if successful
+        :rtype: bool
+        """
+        return self.handle_takeback_offer(game_id, True)
+
+    def accept_takeback(self, game_id):
+        """Accept an already offered takeback in the given game.
+
+        :param str game_id: ID of an in-progress game
+        :return: True if successful
+        :rtype: bool
+        """
+        return self.handle_takeback_offer(game_id, True)
+
+    def decline_takeback(self, game_id):
+        """Decline an already offered takeback in the given game.
+
+        :param str game_id: ID of an in-progress game
+        :return: True if successful
+        :rtype: bool
+        """
+        return self.handle_takeback_offer(game_id, False)
 
 
 class Bots(BaseClient):
