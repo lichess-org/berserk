@@ -180,17 +180,21 @@ class Users(BaseClient):
         return self._r.get(path, params=params, fmt=NDJSON, stream=True,
                            converter=models.PuzzleActivity.convert)
 
-    def get_realtime_statuses(self, *user_ids):
+    def get_realtime_statuses(self, *user_ids, with_game_ids=False):
         """Get the online, playing, and streaming statuses of players.
 
         Only id and name fields are returned for offline users.
 
         :param user_ids: one or more user IDs (names)
+        :param bool with_game_ids: wether to return or not the ID of the game being played
         :return: statuses of given players
         :rtype: list
         """
         path = 'api/users/status'
-        params = {'ids': ','.join(user_ids)}
+        params = {
+            'ids': ','.join(user_ids),
+            'withGameIds': with_game_ids
+        }
         return self._r.get(path, params=params)
 
     def get_all_top_10(self):
