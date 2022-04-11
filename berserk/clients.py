@@ -1379,15 +1379,15 @@ class Broadcasts(BaseClient):
         return self._r.post(path, json=payload,
                             converter=models.Broadcast.convert)
 
-    def push_pgn_update(self, broadcast_id, pgn_games):
+    def push_pgn_update(self, broadcast_round_id, pgn_games):
         """Manually update an existing broadcast by ID.
 
-        :param str broadcast_id: ID of a broadcast
+        :param str broadcast_round_id: ID of a broadcast round
         :param list pgn_games: one or more games in PGN format
         :return: success
         :rtype: bool
         """
-        path = f'broadcast/round/{broadcast_id}/push'
+        path = f'broadcast/round/{broadcast_round_id}/push'
         games = '\n\n'.join(g.strip() for g in pgn_games)
         return self._r.post(path, data=games)['ok']
 
