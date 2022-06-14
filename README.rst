@@ -80,11 +80,13 @@ Most if not all of the API is available:
     client.users.get_by_id
     client.users.get_by_team
     client.users.get_live_streamers
-    client.users.get_users_followed
-    client.users.get_users_following
     client.users.get_rating_history
     client.users.get_crosstable
     client.users.get_user_performance
+
+    client.relations.get_users_followed
+    client.relations.follow
+    client.relations.unfollow
 
     client.teams.get_members
     client.teams.join
