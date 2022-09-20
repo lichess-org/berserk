@@ -411,7 +411,8 @@ class Games(FmtClient):
                          max=None, vs=None, rated=None, perf_type=None,
                          color=None, analysed=None, moves=None,
                          pgn_in_json=None, tags=None, clocks=None, evals=None,
-                         opening=None, ongoing=None, finished=None, players=None, sort=None):
+                         opening=None, ongoing=None, finished=None, players=None,
+                         sort=None, literate=None):
         """Get games by player.
 
         :param str username: which player's games to return
@@ -461,6 +462,7 @@ class Games(FmtClient):
             'finished': finished,
             'players': players,
             'sort': sort,
+            'literate': literate,
         }
         fmt = PGN if self._use_pgn(as_pgn) else NDJSON
         yield from self._r.get(path, params=params, fmt=fmt, stream=True,
