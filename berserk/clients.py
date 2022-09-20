@@ -22,6 +22,7 @@ __all__ = [
     'Teams',
     'Tournaments',
     'Users',
+    'Messaging'
 ]
 
 # Base URL for the API
@@ -100,6 +101,7 @@ class Client(BaseClient):
         self.broadcasts = Broadcasts(session, base_url)
         self.simuls = Simuls(session, base_url)
         self.studies = Studies(session, base_url)
+        self.messaging = Messaging(session, base_url)
 
 
 class Account(BaseClient):
@@ -1474,3 +1476,18 @@ class Studies(BaseClient):
         """
         path = f'/study/{study_id}.pgn'
         return self._r.get(path, fmt=PGN, stream=True)
+
+
+class Messaging(BaseClient):
+
+    def send(self, username, text):
+        """Send a private message to another player.
+
+        :param str username: the user to send the message to
+        :param str text: the text to send
+        """
+        path = f'/inbox/{username}'
+        payload = {
+            'text': text
+        }
+        self._r.post(path, data=payload)

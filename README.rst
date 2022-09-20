@@ -152,6 +152,8 @@ Most if not all of the API is available:
     client.studies.export_chapter
     client.studies.export
 
+    client.messaging.send
+
 
 Details for each function can be found in the `full documentation <https://berserk.readthedocs.io>`_.
 
