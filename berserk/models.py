@@ -27,6 +27,18 @@ class Model(metaclass=model):
             data[k] = cls.convert(data[k])
         return data
 
+    @classmethod
+    def convert_tournament_values(cls, data):
+        for k in data:
+            data[k] = cls.convert_tournament(data[k])
+        return data
+
+    @classmethod
+    def convert_tournament(cls, data):
+        if isinstance(data, (list, tuple)):
+            return [cls.convert_one(v) for v in data]
+        return data
+
 
 class Account(Model):
     createdAt = utils.datetime_from_millis

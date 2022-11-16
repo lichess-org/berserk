@@ -996,7 +996,7 @@ class Tournaments(FmtClient):
         :rtype: dict
         """
         path = f'api/tournament/{tournament_id}?page={page}'
-        return self._r.get(path, converter=models.Tournaments.convert_values)
+        return self._r.get(path, converter=models.Tournaments.convert_tournament_values)
 
     @deprecated(version='0.11.0', reason='use Tournaments.create_arena or Tournaments.create_swiss instead')
     def create(self, clock_time, clock_increment, minutes, name=None,
@@ -1474,3 +1474,21 @@ class Studies(BaseClient):
         """
         path = f'/study/{study_id}.pgn'
         return self._r.get(path, fmt=PGN, stream=True)
+
+class Analysis(BaseClient):
+    def get_cloud_eval(self, fen, multiPv=1, variant="standard"):
+        """Get the cached evaluation of a position, if available.
+
+        :param str fen: FEN of the position
+        :param int multiPv: number of variations
+        :param str variant: Game variant
+        :return: Cloud eval if available
+        :rtype: JSON
+        """
+        path = f'/api/cloud-eval'
+        payload = {
+            'fen': fen,
+            'multiPv': multiPv,
+            'variant': variant
+        }
+        return self._r.get(path, params=payload, fmt=berserk.formats.JSON)

@@ -41,6 +41,6 @@ setup(
     test_suite='tests',
     tests_require=test_requirements,
     url='https://github.com/ZackClements/berserk',
-    version='0.11.9',
+    version='0.11.10',
     zip_safe=True,
 )
