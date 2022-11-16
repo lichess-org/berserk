@@ -22,6 +22,7 @@ __all__ = [
     'Teams',
     'Tournaments',
     'Users',
+    'Messaging'
 ]
 
 # Base URL for the API
@@ -100,6 +101,7 @@ class Client(BaseClient):
         self.broadcasts = Broadcasts(session, base_url)
         self.simuls = Simuls(session, base_url)
         self.studies = Studies(session, base_url)
+        self.messaging = Messaging(session, base_url)
 
 
 class Account(BaseClient):
@@ -409,7 +411,8 @@ class Games(FmtClient):
                          max=None, vs=None, rated=None, perf_type=None,
                          color=None, analysed=None, moves=None,
                          pgn_in_json=None, tags=None, clocks=None, evals=None,
-                         opening=None, ongoing=None, finished=None, players=None, sort=None):
+                         opening=None, ongoing=None, finished=None, players=None,
+                         sort=None, literate=None):
         """Get games by player.
 
         :param str username: which player's games to return
@@ -459,6 +462,7 @@ class Games(FmtClient):
             'finished': finished,
             'players': players,
             'sort': sort,
+            'literate': literate,
         }
         fmt = PGN if self._use_pgn(as_pgn) else NDJSON
         yield from self._r.get(path, params=params, fmt=fmt, stream=True,
@@ -996,7 +1000,7 @@ class Tournaments(FmtClient):
         :rtype: dict
         """
         path = f'api/tournament/{tournament_id}?page={page}'
-        return self._r.get(path, converter=models.Tournaments.convert_tournament_values)
+        return self._r.get(path, converter=models.Tournaments.convert_values)
 
     @deprecated(version='0.11.0', reason='use Tournaments.create_arena or Tournaments.create_swiss instead')
     def create(self, clock_time, clock_increment, minutes, name=None,
@@ -1475,20 +1479,17 @@ class Studies(BaseClient):
         path = f'/study/{study_id}.pgn'
         return self._r.get(path, fmt=PGN, stream=True)
 
-class Analysis(BaseClient):
-    def get_cloud_eval(self, fen, multiPv=1, variant="standard"):
-        """Get the cached evaluation of a position, if available.
 
-        :param str fen: FEN of the position
-        :param int multiPv: number of variations
-        :param str variant: Game variant
-        :return: Cloud eval if available
-        :rtype: JSON
+class Messaging(BaseClient):
+
+    def send(self, username, text):
+        """Send a private message to another player.
+
+        :param str username: the user to send the message to
+        :param str text: the text to send
         """
-        path = f'/api/cloud-eval'
+        path = f'/inbox/{username}'
         payload = {
-            'fen': fen,
-            'multiPv': multiPv,
-            'variant': variant
+            'text': text
         }
-        return self._r.get(path, params=payload, fmt=berserk.formats.JSON)
+        self._r.post(path, data=payload)
