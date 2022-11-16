@@ -1000,7 +1000,7 @@ class Tournaments(FmtClient):
         :rtype: dict
         """
         path = f'api/tournament/{tournament_id}?page={page}'
-        return self._r.get(path, converter=models.Tournaments.convert_values)
+        return self._r.get(path, converter=models.Tournaments.convert_tournament_values)
 
     @deprecated(version='0.11.0', reason='use Tournaments.create_arena or Tournaments.create_swiss instead')
     def create(self, clock_time, clock_increment, minutes, name=None,
