@@ -154,6 +154,10 @@ Most if not all of the API is available:
 
     client.messaging.send
 
+    client.tv.get_current_games
+    client.tv.stream_current_game
+    client.tv.get_best_ongoing
+
 
 Details for each function can be found in the `full documentation <https://berserk.readthedocs.io>`_.
 
