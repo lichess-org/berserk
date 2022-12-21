@@ -92,10 +92,14 @@ Most if not all of the API is available:
     client.teams.kick_member
 
     client.games.export
+    client.games.export_ongoing_by_player
     client.games.export_by_player
     client.games.export_multi
     client.games.get_among_players
+    client.games.stream_games_by_ids
+    client.games.add_game_ids_to_stream
     client.games.get_ongoing
+    client.games.stream_game_moves
     client.games.get_tv_channels
 
     client.challenges.create
