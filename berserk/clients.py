@@ -344,15 +344,21 @@ class Teams(BaseClient):
         return self._r.get(path, fmt=NDJSON, stream=True,
                            converter=models.User.convert)
 
-    def join(self, team_id):
+    def join(self, team_id, message=None, password=None):
         """Join a team.
 
         :param str team_id: ID of a team
+        :param str message: Optional request message, if the team requires one
+        :param str password: Optional password, if the team requires one.
         :return: success
         :rtype: bool
         """
         path = f'/team/{team_id}/join'
-        return self._r.post(path)['ok']
+        payload = {
+            'message': message,
+            'password': password,
+        }
+        return self._r.post(path, json=payload)['ok']
 
     def leave(self, team_id):
         """Leave a team.
