@@ -22,7 +22,8 @@ __all__ = [
     'Teams',
     'Tournaments',
     'Users',
-    'Messaging'
+    'Messaging',
+    'OAuth'
 ]
 
 # Base URL for the API
@@ -102,6 +103,7 @@ class Client(BaseClient):
         self.simuls = Simuls(session, base_url)
         self.studies = Studies(session, base_url)
         self.messaging = Messaging(session, base_url)
+        self.oauth = OAuth(session, base_url)
 
 
 class Account(BaseClient):
@@ -1493,3 +1495,20 @@ class Messaging(BaseClient):
             'text': text
         }
         self._r.post(path, data=payload)
+
+
+class OAuth(BaseClient):
+
+    def test_tokens(self, *tokens):
+        """Test the validity of up to 1000 OAuth tokens
+
+        Valid OAuth tokens will be returned with their
+        associated user ID and scopes. Invalid tokens
+        will be returned as null.
+
+        :param tokens: one or more OAuth tokens
+        :return: list
+        """
+        path = 'api/token/test'
+        payload = ','.join(tokens)
+        return self._r.post(path, data=payload, converter=models.OAuth.convert)

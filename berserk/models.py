@@ -88,3 +88,7 @@ class RatingHistory(Model):
 
 class PuzzleActivity(Model):
     date = utils.datetime_from_millis
+
+
+class OAuth(Model):
+    expires = utils.datetime_from_millis

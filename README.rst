@@ -154,6 +154,7 @@ Most if not all of the API is available:
 
     client.messaging.send
 
+    client.oauth.test_tokens
 
 Details for each function can be found in the `full documentation <https://berserk.readthedocs.io>`_.
 
