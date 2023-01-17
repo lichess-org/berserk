@@ -91,6 +91,7 @@ class Client(BaseClient):
         super().__init__(session, base_url)
         self.account = Account(session, base_url)
         self.users = Users(session, base_url)
+        self.relations = Relations(session, base_url)
         self.teams = Teams(session, base_url)
         self.games = Games(session, base_url, pgn_as_default=pgn_as_default)
         self.challenges = Challenges(session, base_url)
@@ -272,28 +273,6 @@ class Users(BaseClient):
         path = 'streamer/live'
         return self._r.get(path)
 
-    def get_users_followed(self, username):
-        """Stream users followed by a user.
-
-        :param str username: a username
-        :return: iterator over the users the given user follows
-        :rtype: iter
-        """
-        path = f'/api/user/{username}/following'
-        return self._r.get(path, stream=True, fmt=NDJSON,
-                           converter=models.User.convert)
-
-    def get_users_following(self, username):
-        """Stream users who follow a user.
-
-        :param str username: a username
-        :return: iterator over the users that follow the given user
-        :rtype: iter
-        """
-        path = f'/api/user/{username}/followers'
-        return self._r.get(path, stream=True, fmt=NDJSON,
-                           converter=models.User.convert)
-
     def get_rating_history(self, username):
         """Get the rating history of a user.
 
@@ -329,6 +308,39 @@ class Users(BaseClient):
         """
         path = f'/api/user/{username}/perf/{perf}'
         return self._r.get(path, converter=models.User.convert)
+
+
+class Relations(BaseClient):
+    
+    def get_users_followed(self):
+        """Stream users you are following.
+
+        :return: iterator over the users the given user follows
+        :rtype: iter
+        """
+        path = '/api/rel/following'
+        return self._r.get(path, stream=True, fmt=NDJSON,
+                           converter=models.User.convert)
+
+    def follow(self, username):
+        """Follow a player.
+
+        :param str username: user to follow
+        :return: success
+        :rtype: bool
+        """
+        path = f'/api/rel/follow/{username}'
+        return self._r.post(path)['ok']
+
+    def unfollow(self, username):
+        """Unfollow a player.
+
+        :param str username: user to unfollow
+        :return: success
+        :rtype: bool
+        """
+        path = f'/api/rel/unfollow/{username}'
+        return self._r.post(path)['ok']
 
 
 class Teams(BaseClient):
