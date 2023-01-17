@@ -424,6 +424,37 @@ class Games(FmtClient):
         return self._r.get(path, params=params, fmt=fmt,
                            converter=models.Game.convert)
 
+    def export_ongoing_by_player(self, username, as_pgn=None, moves=None, pgn_in_json=None, tags=None,
+                                 clocks=None, evals=None, opening=None, literate=None, players=None):
+        """Export the ongoing game, or the last game played, of a user.
+
+        :param str username: the player's username
+        :param bool as_pgn: whether to return the game in PGN format
+        :param bool moves: whether to include the PGN moves
+        :param bool pgn_in_json: include the full PGN within JSON response
+        :param bool tags: whether to include the PGN tags
+        :param bool clocks: whether to include clock comments in the PGN moves
+        :param bool evals: whether to include analysis evaluation comments in
+                           the PGN moves when available
+        :param bool opening: whether to include the opening name
+        :param bool literate: whether to include literate the PGN
+        :param str players: URL of text file containing real names and ratings for PGN
+        :return: iterator over the exported games, as JSON or PGN
+        """
+        path = f'api/user/{username}/current-game'
+        params = {
+            'moves': moves,
+            'pgnInJson': pgn_in_json,
+            'tags': tags,
+            'clocks': clocks,
+            'evals': evals,
+            'opening': opening,
+            'literate': literate,
+            'players': players,
+        }
+        fmt = PGN if self._use_pgn(as_pgn) else JSON
+        return self._r.get(path, params=params, fmt=fmt, converter=models.Game.convert)
+
     def export_by_player(self, username, as_pgn=None, since=None, until=None,
                          max=None, vs=None, rated=None, perf_type=None,
                          color=None, analysed=None, moves=None,
@@ -446,7 +477,7 @@ class Games(FmtClient):
         :type color: :class:`~berserk.enums.Color`
         :param bool analysed: filter by analysis availability
         :param bool moves: whether to include the PGN moves
-        :param bool pgnInJson: Include the full PGN within JSON response
+        :param bool pgn_in_json: Include the full PGN within JSON response
         :param bool tags: whether to include the PGN tags
         :param bool clocks: whether to include clock comments in the PGN moves
         :param bool evals: whether to include analysis evaluation comments in
@@ -512,21 +543,51 @@ class Games(FmtClient):
         yield from self._r.post(path, params=params, data=payload, fmt=fmt,
                                 stream=True, converter=models.Game.convert)
 
-    def get_among_players(self, *usernames):
-        """Get the games currently being played among players.
+    def get_among_players(self, *usernames, with_current_games=None):
+        """Stream the games currently being played among players.
 
-        Note this will not includes games where only one player is in the given
-        list of usernames.
+        Note this will not include games where only one player is in the given
+        list of usernames. The stream will emit an event each time a game is
+        started or finished.
 
         :param usernames: two or more usernames
+        :param with_current_games: include all current ongoing games
+                                   at the beginning of the stream
         :return: iterator over all games played among the given players
         """
         path = 'api/stream/games-by-users'
+        params = {
+            'withCurrentGames': with_current_games,
+        }
         payload = ','.join(usernames)
+        yield from self._r.post(path, params=params, data=payload, fmt=NDJSON, stream=True,
+                                converter=models.Game.convert)
+
+    def stream_games_by_ids(self, *game_ids, stream_id):
+        """Stream multiple games by ID.
+
+        :param game_ids: one or more game IDs to stream
+        :param stream_id: arbitrary stream ID that can be used later
+                          to add game IDs to this stream
+        :return: iterator over the stream of results
+        """
+        path = f'api/stream/games/{stream_id}'
+        payload = ','.join(game_ids)
         yield from self._r.post(path, data=payload, fmt=NDJSON, stream=True,
                                 converter=models.Game.convert)
 
-    # move this to Account?
+    def add_game_ids_to_stream(self, *game_ids, stream_id):
+        """Add new game IDs to an existing stream.
+
+        :param stream_id: the stream ID you used to create the existing stream
+        :param game_ids: one or more game IDs to stream
+        :return: success
+        :rtype: bool
+        """
+        path = f'api/stream/games/{stream_id}/add'
+        payload = ','.join(game_ids)
+        return self._r.post(path, data=payload)['ok']
+
     def get_ongoing(self, count=10):
         """Get your currently ongoing games.
 
@@ -547,6 +608,28 @@ class Games(FmtClient):
         """
         path = 'tv/channels'
         return self._r.get(path)
+
+    def stream_game_moves(self, game_id):
+        """Stream positions and moves of any ongoing game.
+
+        :param str game_id: ID of a game
+        :return: iterator over game states
+        """
+        path = f'api/stream/game/{game_id}'
+        yield from self._r.get(path, stream=True)
+
+    def import_game(self, pgn):
+        """Import a single game from PGN.
+
+        :param str pgn: the PGN of the game
+        :return: the game ID and URL of the import
+        :rtype: dict
+        """
+        path = 'api/import'
+        payload = {
+            'pgn': pgn,
+        }
+        return self._r.post(path, data=payload)
 
 
 class Challenges(BaseClient):
