@@ -80,11 +80,13 @@ Most if not all of the API is available:
     client.users.get_by_id
     client.users.get_by_team
     client.users.get_live_streamers
-    client.users.get_users_followed
-    client.users.get_users_following
     client.users.get_rating_history
     client.users.get_crosstable
     client.users.get_user_performance
+
+    client.relations.get_users_followed
+    client.relations.follow
+    client.relations.unfollow
 
     client.teams.get_members
     client.teams.join
@@ -92,10 +94,14 @@ Most if not all of the API is available:
     client.teams.kick_member
 
     client.games.export
+    client.games.export_ongoing_by_player
     client.games.export_by_player
     client.games.export_multi
     client.games.get_among_players
+    client.games.stream_games_by_ids
+    client.games.add_game_ids_to_stream
     client.games.get_ongoing
+    client.games.stream_game_moves
     client.games.get_tv_channels
 
     client.challenges.create
@@ -155,6 +161,11 @@ Most if not all of the API is available:
     client.messaging.send
 
     client.oauth.test_tokens
+
+    client.tv.get_current_games
+    client.tv.stream_current_game
+    client.tv.get_best_ongoing
+
 
 Details for each function can be found in the `full documentation <https://berserk.readthedocs.io>`_.
 

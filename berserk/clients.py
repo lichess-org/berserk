@@ -23,7 +23,8 @@ __all__ = [
     'Tournaments',
     'Users',
     'Messaging',
-    'OAuth'
+    'OAuth',
+    'TV'
 ]
 
 # Base URL for the API
@@ -76,6 +77,9 @@ class Client(BaseClient):
     - :class:`tournaments <berserk.clients.Tournaments>` - getting and
       creating tournaments
     - :class:`users <berserk.clients.Users>` - getting information about users
+    - :class:`board <berserk.clients.Board>` - play games using a normal account
+    - :class:`messaging <berserk.clients.Messaging>` - private message other players
+    - :class:`tv <berserk.clients.TV>` - get information on tv channels and games
 
     :param session: request session, authenticated as needed
     :type session: :class:`requests.Session`
@@ -92,6 +96,7 @@ class Client(BaseClient):
         super().__init__(session, base_url)
         self.account = Account(session, base_url)
         self.users = Users(session, base_url)
+        self.relations = Relations(session, base_url)
         self.teams = Teams(session, base_url)
         self.games = Games(session, base_url, pgn_as_default=pgn_as_default)
         self.challenges = Challenges(session, base_url)
@@ -103,7 +108,10 @@ class Client(BaseClient):
         self.simuls = Simuls(session, base_url)
         self.studies = Studies(session, base_url)
         self.messaging = Messaging(session, base_url)
+
         self.oauth = OAuth(session, base_url)
+
+        self.tv = TV(session, base_url)
 
 
 class Account(BaseClient):
@@ -274,28 +282,6 @@ class Users(BaseClient):
         path = 'streamer/live'
         return self._r.get(path)
 
-    def get_users_followed(self, username):
-        """Stream users followed by a user.
-
-        :param str username: a username
-        :return: iterator over the users the given user follows
-        :rtype: iter
-        """
-        path = f'/api/user/{username}/following'
-        return self._r.get(path, stream=True, fmt=NDJSON,
-                           converter=models.User.convert)
-
-    def get_users_following(self, username):
-        """Stream users who follow a user.
-
-        :param str username: a username
-        :return: iterator over the users that follow the given user
-        :rtype: iter
-        """
-        path = f'/api/user/{username}/followers'
-        return self._r.get(path, stream=True, fmt=NDJSON,
-                           converter=models.User.convert)
-
     def get_rating_history(self, username):
         """Get the rating history of a user.
 
@@ -333,6 +319,39 @@ class Users(BaseClient):
         return self._r.get(path, converter=models.User.convert)
 
 
+class Relations(BaseClient):
+    
+    def get_users_followed(self):
+        """Stream users you are following.
+
+        :return: iterator over the users the given user follows
+        :rtype: iter
+        """
+        path = '/api/rel/following'
+        return self._r.get(path, stream=True, fmt=NDJSON,
+                           converter=models.User.convert)
+
+    def follow(self, username):
+        """Follow a player.
+
+        :param str username: user to follow
+        :return: success
+        :rtype: bool
+        """
+        path = f'/api/rel/follow/{username}'
+        return self._r.post(path)['ok']
+
+    def unfollow(self, username):
+        """Unfollow a player.
+
+        :param str username: user to unfollow
+        :return: success
+        :rtype: bool
+        """
+        path = f'/api/rel/unfollow/{username}'
+        return self._r.post(path)['ok']
+
+
 class Teams(BaseClient):
 
     def get_members(self, team_id):
@@ -346,15 +365,21 @@ class Teams(BaseClient):
         return self._r.get(path, fmt=NDJSON, stream=True,
                            converter=models.User.convert)
 
-    def join(self, team_id):
+    def join(self, team_id, message=None, password=None):
         """Join a team.
 
         :param str team_id: ID of a team
+        :param str message: Optional request message, if the team requires one
+        :param str password: Optional password, if the team requires one.
         :return: success
         :rtype: bool
         """
         path = f'/team/{team_id}/join'
-        return self._r.post(path)['ok']
+        payload = {
+            'message': message,
+            'password': password,
+        }
+        return self._r.post(path, json=payload)['ok']
 
     def leave(self, team_id):
         """Leave a team.
@@ -409,6 +434,37 @@ class Games(FmtClient):
         return self._r.get(path, params=params, fmt=fmt,
                            converter=models.Game.convert)
 
+    def export_ongoing_by_player(self, username, as_pgn=None, moves=None, pgn_in_json=None, tags=None,
+                                 clocks=None, evals=None, opening=None, literate=None, players=None):
+        """Export the ongoing game, or the last game played, of a user.
+
+        :param str username: the player's username
+        :param bool as_pgn: whether to return the game in PGN format
+        :param bool moves: whether to include the PGN moves
+        :param bool pgn_in_json: include the full PGN within JSON response
+        :param bool tags: whether to include the PGN tags
+        :param bool clocks: whether to include clock comments in the PGN moves
+        :param bool evals: whether to include analysis evaluation comments in
+                           the PGN moves when available
+        :param bool opening: whether to include the opening name
+        :param bool literate: whether to include literate the PGN
+        :param str players: URL of text file containing real names and ratings for PGN
+        :return: iterator over the exported games, as JSON or PGN
+        """
+        path = f'api/user/{username}/current-game'
+        params = {
+            'moves': moves,
+            'pgnInJson': pgn_in_json,
+            'tags': tags,
+            'clocks': clocks,
+            'evals': evals,
+            'opening': opening,
+            'literate': literate,
+            'players': players,
+        }
+        fmt = PGN if self._use_pgn(as_pgn) else JSON
+        return self._r.get(path, params=params, fmt=fmt, converter=models.Game.convert)
+
     def export_by_player(self, username, as_pgn=None, since=None, until=None,
                          max=None, vs=None, rated=None, perf_type=None,
                          color=None, analysed=None, moves=None,
@@ -431,7 +487,7 @@ class Games(FmtClient):
         :type color: :class:`~berserk.enums.Color`
         :param bool analysed: filter by analysis availability
         :param bool moves: whether to include the PGN moves
-        :param bool pgnInJson: Include the full PGN within JSON response
+        :param bool pgn_in_json: Include the full PGN within JSON response
         :param bool tags: whether to include the PGN tags
         :param bool clocks: whether to include clock comments in the PGN moves
         :param bool evals: whether to include analysis evaluation comments in
@@ -497,21 +553,51 @@ class Games(FmtClient):
         yield from self._r.post(path, params=params, data=payload, fmt=fmt,
                                 stream=True, converter=models.Game.convert)
 
-    def get_among_players(self, *usernames):
-        """Get the games currently being played among players.
+    def get_among_players(self, *usernames, with_current_games=None):
+        """Stream the games currently being played among players.
 
-        Note this will not includes games where only one player is in the given
-        list of usernames.
+        Note this will not include games where only one player is in the given
+        list of usernames. The stream will emit an event each time a game is
+        started or finished.
 
         :param usernames: two or more usernames
+        :param with_current_games: include all current ongoing games
+                                   at the beginning of the stream
         :return: iterator over all games played among the given players
         """
         path = 'api/stream/games-by-users'
+        params = {
+            'withCurrentGames': with_current_games,
+        }
         payload = ','.join(usernames)
+        yield from self._r.post(path, params=params, data=payload, fmt=NDJSON, stream=True,
+                                converter=models.Game.convert)
+
+    def stream_games_by_ids(self, *game_ids, stream_id):
+        """Stream multiple games by ID.
+
+        :param game_ids: one or more game IDs to stream
+        :param stream_id: arbitrary stream ID that can be used later
+                          to add game IDs to this stream
+        :return: iterator over the stream of results
+        """
+        path = f'api/stream/games/{stream_id}'
+        payload = ','.join(game_ids)
         yield from self._r.post(path, data=payload, fmt=NDJSON, stream=True,
                                 converter=models.Game.convert)
 
-    # move this to Account?
+    def add_game_ids_to_stream(self, *game_ids, stream_id):
+        """Add new game IDs to an existing stream.
+
+        :param stream_id: the stream ID you used to create the existing stream
+        :param game_ids: one or more game IDs to stream
+        :return: success
+        :rtype: bool
+        """
+        path = f'api/stream/games/{stream_id}/add'
+        payload = ','.join(game_ids)
+        return self._r.post(path, data=payload)['ok']
+
     def get_ongoing(self, count=10):
         """Get your currently ongoing games.
 
@@ -523,6 +609,7 @@ class Games(FmtClient):
         params = {'nb': count}
         return self._r.get(path, params=params)['nowPlaying']
 
+    @deprecated(version='0.12.0', reason='use TV.get_current_games')
     def get_tv_channels(self):
         """Get basic information about the best games being played.
 
@@ -531,6 +618,28 @@ class Games(FmtClient):
         """
         path = 'tv/channels'
         return self._r.get(path)
+
+    def stream_game_moves(self, game_id):
+        """Stream positions and moves of any ongoing game.
+
+        :param str game_id: ID of a game
+        :return: iterator over game states
+        """
+        path = f'api/stream/game/{game_id}'
+        yield from self._r.get(path, stream=True)
+
+    def import_game(self, pgn):
+        """Import a single game from PGN.
+
+        :param str pgn: the PGN of the game
+        :return: the game ID and URL of the import
+        :rtype: dict
+        """
+        path = 'api/import'
+        payload = {
+            'pgn': pgn,
+        }
+        return self._r.post(path, data=payload)
 
 
 class Challenges(BaseClient):
@@ -1512,3 +1621,51 @@ class OAuth(BaseClient):
         path = 'api/token/test'
         payload = ','.join(tokens)
         return self._r.post(path, data=payload, converter=models.OAuth.convert)
+
+
+class TV(FmtClient):
+    """Client for TV related endpoints."""
+
+    def get_current_games(self):
+        """Get basic information about the current TV games being played
+
+        :return: best ongoing games in each speed and variant
+        :rtype: dict
+        """
+        path = 'api/tv/channels'
+        return self._r.get(path)
+
+    def stream_current_game(self):
+        """Streams the current TV game
+
+        :return: positions and moves of the current TV game
+        :rtype: dict
+        """
+        path = 'api/tv/feed'
+        yield from self._r.get(path, stream=True)
+
+    def get_best_ongoing(self, channel, as_pgn=None, count=None, moves=None,
+                         pgn_in_json=None, tags=None, clocks=None, opening=None):
+        """Get a list of ongoing games for a given TV channel in PGN or NDJSON.
+
+        :param str channel: the name of the TV channel in camel case
+        :param bool as_pgn: whether to return the game in PGN format
+        :param int count: the number of games to fetch [1..30]
+        :param bool moves: whether to include the PGN moves
+        :param bool pgn_in_json: include the full PGN within JSON response
+        :param bool tags: whether to include the PGN tags
+        :param bool clocks: whether to include clock comments in the PGN moves
+        :param bool opening: whether to include the opening name
+        :return: the ongoing games of the given TV channel in PGN or NDJSON
+        """
+        path = f'api/tv/{channel}'
+        params = {
+            'nb': count,
+            'moves': moves,
+            'pgnInJson': pgn_in_json,
+            'tags': tags,
+            'clocks': clocks,
+            'opening': opening,
+        }
+        fmt = PGN if self._use_pgn(as_pgn) else NDJSON
+        return self._r.get(path, params=params, fmt=fmt, converter=models.TV.convert)
