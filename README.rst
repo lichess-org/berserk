@@ -160,6 +160,8 @@ Most if not all of the API is available:
 
     client.messaging.send
 
+    client.oauth.test_tokens
+
     client.tv.get_current_games
     client.tv.stream_current_game
     client.tv.get_best_ongoing

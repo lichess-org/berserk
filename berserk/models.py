@@ -90,6 +90,11 @@ class PuzzleActivity(Model):
     date = utils.datetime_from_millis
 
 
+
+class OAuth(Model):
+    expires = utils.datetime_from_millis
+
+
 class TV(Model):
     createdAt = utils.datetime_from_millis
     lastMoveAt = utils.datetime_from_millis
