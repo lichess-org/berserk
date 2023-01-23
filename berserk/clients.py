@@ -320,7 +320,7 @@ class Users(BaseClient):
 
 
 class Relations(BaseClient):
-    
+
     def get_users_followed(self):
         """Stream users you are following.
 
@@ -609,7 +609,7 @@ class Games(FmtClient):
         params = {'nb': count}
         return self._r.get(path, params=params)['nowPlaying']
 
-    @deprecated(version='0.12.0', reason='use TV.get_current_games')
+    @deprecated(version='0.11.12', reason='use TV.get_current_games')
     def get_tv_channels(self):
         """Get basic information about the best games being played.
 
