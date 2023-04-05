@@ -1,39 +1,46 @@
-# berserk
+berserk
+======
 
-Python client for the [Lichess API](https://lichess.org/api).
+Python client for the `Lichess API <https://lichess.org/api>`_.
 
-This repo builds on [the initial berserk repo maintained by rhgrant10](https://github.com/rhgrant10/berserk) and the [berserk-downstream fork maintained by ZackClements](https://github.com/ZackClements/berserk), thanks to them!
+This repo builds on `the initial berserk repo maintained by rhgrant10 <https://github.com/rhgrant10/berserk>`_ and the `berserk-downstream fork maintained by ZackClements <https://github.com/ZackClements/berserk>`_ , thanks to them!
 
-[Documentation (not fully up to date)](https://berserk.readthedocs.io).
+`Documentation (not fully up to date) <https://berserk.readthedocs.io>`_.
 
-## Installation
+Installation
+------------
 
-`pip install berserk`
+Requires Python 3.7+. Download and install the latest release:
+::
+
+    pip install berserk
 
 
-## Features
+Features
+--------
 
 * handles JSON and PGN formats at user's discretion
 * token auth session
 * easy integration with OAuth2
 * automatically converts time values to datetimes
 
-## Usage
+Usage
+-----
 
 You can use any ``requests.Session``-like object as a session, including those
 from ``requests_oauth``. A simple token session is included, as shown below:
 
-```python
+.. code:: python
 
     import berserk
 
     session = berserk.TokenSession(API_TOKEN)
     client = berserk.Client(session=session)
-```
+
 
 Most if not all of the API is available:
 
-```python
+.. code:: python
 
     client.account.get
     client.account.get_email
@@ -136,6 +143,5 @@ Most if not all of the API is available:
     client.tv.get_current_games
     client.tv.stream_current_game
     client.tv.get_best_ongoing
-```
 
 Details for each function can be found in the [documentation](https://berserk.readthedocs.io) (not fully up to date).
