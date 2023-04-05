@@ -1,0 +1,21 @@
+name: Format
+
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - ".github/workflows/format.yaml"
+      - "**.py"
+      - ".editorconfig"
+  pull_request:
+    paths:
+      - ".github/workflows/format.yaml"
+      - "**.py"
+      - ".editorconfig"
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: psf/black@stable
