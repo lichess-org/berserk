@@ -144,4 +144,4 @@ Most if not all of the API is available:
     client.tv.stream_current_game
     client.tv.get_best_ongoing
 
-Details for each function can be found in the [documentation](https://berserk.readthedocs.io) (not fully up to date).
+Details for each function can be found in the `(not fully up to date) documentation <https://berserk.readthedocs.io>`_.
