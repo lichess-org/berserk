@@ -1,11 +1,8 @@
 # berserk
 
-Python client for the `Lichess API`_.
+Python client for the [Lichess API](https://lichess.org/api).
 
-.. _Lichess API: https://lichess.org/api
-
-* Free software: GNU General Public License v3
-* Documentation (not fully up to date): https://berserk.readthedocs.io.
+[Documentation (not fully up to date)](https://berserk.readthedocs.io).
 
 ## Installation
 
