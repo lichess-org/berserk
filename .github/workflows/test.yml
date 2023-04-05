@@ -23,6 +23,6 @@ jobs:
     - name: Set up poetry
       uses: abatilo/actions-poetry@v2
     - name: Install dependencies
-      run: poetry install
+      run: poetry install --with dev
     - name: Test
       run: poetry run pytest
