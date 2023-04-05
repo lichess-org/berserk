@@ -1336,7 +1336,7 @@ class Tournaments(FmtClient):
 
     def create_swiss(
         self,
-        teamId_,
+        team_id,
         clock_limit,
         clock_increment,
         nbRounds,
@@ -1359,7 +1359,7 @@ class Tournaments(FmtClient):
             If ``startsAt`` is left blank then the
             tournament begins 10 minutes after creation
 
-            :param string teamId_: team Id, required for swiss tournaments
+            :param string team_id: team Id, required for swiss tournaments
             :param int clock_limit: initial clock time in seconds
             :param int clock_increment: clock increment in seconds
             :param int nbRounds: maximum number of rounds to play
@@ -1373,7 +1373,7 @@ class Tournaments(FmtClient):
             :return: created tournament info
             :rtype: dict
         """
-        path = f"api/swiss/new/{teamId_}"
+        path = f"api/swiss/new/{team_id}"
 
         payload = {
             "name": name,
