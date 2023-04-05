@@ -31,4 +31,4 @@ jobs:
       - name: Install dependencies
         run: poetry install --with dev
       - name: Build doc
-        run: poetry run sphinx-build -b html docs _build -W --keep-going
+        run: poetry run sphinx-build -b html docs _build -EW --keep-going
