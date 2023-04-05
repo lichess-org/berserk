@@ -1,9 +1,9 @@
 berserk
-======
+=======
 
 Python client for the `Lichess API <https://lichess.org/api>`_.
 
-This repo builds on `the initial berserk repo maintained by rhgrant10 <https://github.com/rhgrant10/berserk>`_ and the `berserk-downstream fork maintained by ZackClements <https://github.com/ZackClements/berserk>`_ , thanks to them!
+This is based on the `original berserk version created by rhgrant10 <https://github.com/rhgrant10/berserk>`_ and the `berserk-downstream fork created by ZackClements <https://github.com/ZackClements/berserk>`_. Big thanks to them and all other contributors!
 
 `Documentation (not fully up to date) <https://berserk.readthedocs.io>`_.
 
@@ -15,6 +15,7 @@ Requires Python 3.7+. Download and install the latest release:
 
     pip install berserk
 
+If you have `berserk-downstream` installed, make sure to uninstall it first!
 
 Features
 --------
@@ -38,7 +39,7 @@ from ``requests_oauth``. A simple token session is included, as shown below:
     client = berserk.Client(session=session)
 
 
-Most if not all of the API is available:
+Most of the API is available:
 
 .. code:: python
 
