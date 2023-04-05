@@ -114,7 +114,9 @@ class Client(BaseClient):
 
 class Account(BaseClient):
     """
+
     Client for account-related endpoints.
+
     """
 
     def get(self):
@@ -421,7 +423,7 @@ class Games(FmtClient):
         :param bool tags: whether to include the PGN tags
         :param bool clocks: whether to include clock comments in the PGN moves
         :param bool evals: whether to include analysis evaluation comments in
-                           the PGN moves when available
+                    the PGN moves when available
         :param bool opening: whether to include the opening name
         :param bool literate: whether to include literate the PGN
         :return: exported game, as JSON or PGN
@@ -1413,10 +1415,8 @@ class Tournaments(FmtClient):
         :param bool as_pgn: whether to return PGN instead of JSON
         :param bool moves: include moves
         :param bool tags: include tags
-        :param bool clocks: include clock comments in the PGN moves, when
-                            available
-        :param bool evals: include analysis evalulation comments in the PGN
-                           moves, when available
+        :param bool clocks: include clock comments in the PGN moves, when available
+        :param bool evals: include analysis evalulation comments in the PGN moves, when available
         :param bool opening: include the opening name
         :return: games
         :rtype: list
