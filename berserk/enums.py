@@ -1,48 +1,49 @@
 # -*- coding: utf-8 -*-
 
 
-__all__ = ['PerfType', 'Variant', 'Color', 'Room', 'Mode', 'Position', 'Reason']
+__all__ = ["PerfType", "Variant", "Color", "Room", "Mode", "Position", "Reason"]
 
 
 class GameType:
-    ANTICHESS = 'antichess'
-    ATOMIC = 'atomic'
-    CHESS960 = 'chess960'
-    CRAZYHOUSE = 'crazyhouse'
-    HORDE = 'horde'
-    KING_OF_THE_HILL = 'kingOfTheHill'
-    RACING_KINGS = 'racingKings'
-    THREE_CHECK = 'threeCheck'
+    ANTICHESS = "antichess"
+    ATOMIC = "atomic"
+    CHESS960 = "chess960"
+    CRAZYHOUSE = "crazyhouse"
+    HORDE = "horde"
+    KING_OF_THE_HILL = "kingOfTheHill"
+    RACING_KINGS = "racingKings"
+    THREE_CHECK = "threeCheck"
 
 
 class PerfType(GameType):
-    BULLET = 'bullet'
-    BLITZ = 'blitz'
-    RAPID = 'rapid'
-    CLASSICAL = 'classical'
-    ULTRA_BULLET = 'ultraBullet'
+    BULLET = "bullet"
+    BLITZ = "blitz"
+    RAPID = "rapid"
+    CLASSICAL = "classical"
+    ULTRA_BULLET = "ultraBullet"
 
 
 class Variant(GameType):
-    STANDARD = 'standard'
+    STANDARD = "standard"
 
 
 class Color:
-    WHITE = 'white'
-    BLACK = 'black'
+    WHITE = "white"
+    BLACK = "black"
 
 
 class Room:
-    PLAYER = 'player'
-    SPECTATOR = 'spectator'
+    PLAYER = "player"
+    SPECTATOR = "spectator"
 
 
 class Mode:
-    CASUAL = 'casual'
-    RATED = 'rated'
+    CASUAL = "casual"
+    RATED = "rated"
+
 
 class Reason:
-    GENERIC = 'Generic'
+    GENERIC = "Generic"
     LATER = "later"
     TOOFAST = "tooFast"
     TOOSLOW = "tooSlow"
@@ -55,6 +56,7 @@ class Reason:
     ONLYBOT = "onlyBot"
 
 
+# fmt: off
 class Position:
     ALEKHINES_DEFENCE = 'rnbqkb1r/pppppppp/5n2/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 2 2'  # noqa: E501
     ALEKHINES_DEFENCE__MODERN_VARIATION = 'rnbqkb1r/ppp1pppp/3p4/3nP3/3P4/5N2/PPP2PPP/RNBQKB1R b KQkq - 1 4'  # noqa: E501
@@ -188,3 +190,4 @@ class Position:
     TROMPOWSKY_ATTACK = 'rnbqkb1r/pppppppp/5n2/6B1/3P4/8/PPP1PPPP/RN1QKBNR b KQkq - 3 2'  # noqa: E501
     VIENNA_GAME = 'rnbqkbnr/pppp1ppp/8/4p3/4P3/2N5/PPPP1PPP/R1BQKBNR b KQkq - 2 2'  # noqa: E501
     ZUKERTORT_OPENING = 'rnbqkbnr/pppppppp/8/8/8/5N2/PPPPPPPP/RNBQKB1R b KQkq - 1 1'  # noqa: E501
+# fmt: on

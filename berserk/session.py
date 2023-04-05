@@ -26,8 +26,7 @@ class Requestor:
         self.base_url = base_url
         self.default_fmt = default_fmt
 
-    def request(self, method, path, *args, fmt=None, converter=utils.noop,
-                **kwargs):
+    def request(self, method, path, *args, fmt=None, converter=utils.noop, **kwargs):
         """Make a request for a resource in a paticular format.
 
         :param str method: HTTP verb
@@ -39,13 +38,19 @@ class Requestor:
         :raises berserk.exceptions.ResponseError: if the status is >=400
         """
         fmt = fmt or self.default_fmt
-        kwargs['headers'] = fmt.headers
+        kwargs["headers"] = fmt.headers
         url = urllib.parse.urljoin(self.base_url, path)
 
-        is_stream = kwargs.get('stream')
-        LOG.debug('%s %s %s params=%s data=%s json=%s',
-                  'stream' if is_stream else 'request', method, url,
-                  kwargs.get('params'), kwargs.get('data'), kwargs.get('json'))
+        is_stream = kwargs.get("stream")
+        LOG.debug(
+            "%s %s %s params=%s data=%s json=%s",
+            "stream" if is_stream else "request",
+            method,
+            url,
+            kwargs.get("params"),
+            kwargs.get("data"),
+            kwargs.get("json"),
+        )
         try:
             response = self.session.request(method, url, *args, **kwargs)
         except requests.RequestException as e:
@@ -57,11 +62,11 @@ class Requestor:
 
     def get(self, *args, **kwargs):
         """Convenience method to make a GET request."""
-        return self.request('GET', *args, **kwargs)
+        return self.request("GET", *args, **kwargs)
 
     def post(self, *args, **kwargs):
         """Convenience method to make a POST request."""
-        return self.request('POST', *args, **kwargs)
+        return self.request("POST", *args, **kwargs)
 
 
 class TokenSession(requests.Session):
@@ -73,4 +78,4 @@ class TokenSession(requests.Session):
     def __init__(self, token):
         super().__init__()
         self.token = token
-        self.headers = {'Authorization': f'Bearer {token}'}
+        self.headers = {"Authorization": f"Bearer {token}"}

@@ -18,7 +18,7 @@ class FormatHandler:
 
     def __init__(self, mime_type):
         self.mime_type = mime_type
-        self.headers = {'Accept': mime_type}
+        self.headers = {"Accept": mime_type}
 
     def handle(self, response, is_stream, converter=utils.noop):
         """Handle the response by returning the data.
@@ -84,7 +84,7 @@ class JsonHandler(FormatHandler):
         """
         for line in response.iter_lines():
             if line:
-                decoded_line = line.decode('utf-8')
+                decoded_line = line.decode("utf-8")
                 yield json.loads(decoded_line)
 
 
@@ -92,10 +92,10 @@ class PgnHandler(FormatHandler):
     """Handle PGN data."""
 
     def __init__(self):
-        super().__init__(mime_type='application/x-chess-pgn')
+        super().__init__(mime_type="application/x-chess-pgn")
 
     def handle(self, *args, **kwargs):
-        kwargs['converter'] = utils.noop  # disable conversions
+        kwargs["converter"] = utils.noop  # disable conversions
         return super().handle(*args, **kwargs)
 
     def parse(self, response):
@@ -118,22 +118,21 @@ class PgnHandler(FormatHandler):
         lines = []
         last_line = True
         for line in response.iter_lines():
-            decoded_line = line.decode('utf-8')
+            decoded_line = line.decode("utf-8")
             if last_line or decoded_line:
                 lines.append(decoded_line)
             else:
-                yield '\n'.join(lines).strip()
+                yield "\n".join(lines).strip()
                 lines = []
             last_line = decoded_line
 
         if lines:
-            yield '\n'.join(lines).strip()
+            yield "\n".join(lines).strip()
 
 
 class TextHandler(FormatHandler):
-
     def __init__(self):
-        super().__init__(mime_type='text/plain')
+        super().__init__(mime_type="text/plain")
 
     def parse(self, response):
         return response.text
@@ -146,13 +145,13 @@ class TextHandler(FormatHandler):
 TEXT = TextHandler()
 
 #: Handles vanilla JSON
-JSON = JsonHandler(mime_type='application/json')
+JSON = JsonHandler(mime_type="application/json")
 
 #: Handles oddball LiChess JSON (normal JSON, crazy MIME type)
-LIJSON = JsonHandler(mime_type='application/vnd.lichess.v3+json')
+LIJSON = JsonHandler(mime_type="application/vnd.lichess.v3+json")
 
 #: Handles newline-delimited JSON
-NDJSON = JsonHandler(mime_type='application/x-ndjson', decoder=ndjson.Decoder)
+NDJSON = JsonHandler(mime_type="application/x-ndjson", decoder=ndjson.Decoder)
 
 #: Handles PGN
 PGN = PgnHandler()

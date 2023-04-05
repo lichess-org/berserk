@@ -1,7 +1,5 @@
-
-
 def get_message(e):
-    return e.args[0] if e.args else ''
+    return e.args[0] if e.args else ""
 
 
 def set_message(e, value):
@@ -34,9 +32,9 @@ class ResponseError(ApiError):
         super().__init__(error)
         self._cause = ResponseError.__UNDEFINED
         self.response = response
-        base_message = f'HTTP {self.status_code}: {self.reason}'
+        base_message = f"HTTP {self.status_code}: {self.reason}"
         if self.cause:
-            self.message = f'{base_message}: {self.cause}'
+            self.message = f"{base_message}: {self.cause}"
 
     @property
     def status_code(self):

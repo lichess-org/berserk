@@ -45,11 +45,11 @@ def datetime_from_str(dt_str):
     :return: timezone aware datetime
     :rtype: :class:`datetime`
     """
-    dt = datetime.strptime(dt_str, '%Y-%m-%dT%H:%M:%S.%fZ')
+    dt = datetime.strptime(dt_str, "%Y-%m-%dT%H:%M:%S.%fZ")
     return dt.replace(tzinfo=timezone.utc)
 
 
-_RatingHistoryEntry = collections.namedtuple('Entry', 'year month day rating')
+_RatingHistoryEntry = collections.namedtuple("Entry", "year month day rating")
 
 
 def rating_history(data):
@@ -64,6 +64,7 @@ def inner(func, *keys):
             except KeyError:
                 pass  # normal for keys to not be present sometimes
         return data
+
     return convert
 
 
@@ -73,6 +74,7 @@ def listing(func):
         for item in items:
             result.append(func(item))
         return result
+
     return convert
 
 
@@ -80,7 +82,7 @@ def noop(arg):
     return arg
 
 
-def build_adapter(mapper, sep='.'):
+def build_adapter(mapper, sep="."):
     """Build a data adapter.
 
     Uses a map to pull values from an object and assign them to keys.
@@ -117,6 +119,7 @@ def build_adapter(mapper, sep='.'):
     :return: adapted data
     :rtype: dict
     """
+
     def get(data, location):
         for key in location.split(sep):
             data = data[key]
