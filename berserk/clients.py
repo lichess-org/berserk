@@ -1095,6 +1095,16 @@ class Board(BaseClient):
         path = f'/api/board/game/{game_id}/claim-victory/'
         return self._r.post(path)['ok']
 
+    def go_berserk(self, game_id):
+        """Go berserk on an arena tournament game.
+
+        :param str game_id: ID of an in-progress game
+        :return: True if successful
+        :rtype: bool
+        """
+        path = f'/api/board/game/{game_id}/berserk'
+        return self._r.post(path)['ok']
+
 
 class Bots(BaseClient):
     """Client for bot-related endpoints."""
