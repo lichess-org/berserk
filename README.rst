@@ -111,6 +111,7 @@ Most of the API is available:
     client.board.stream_game_state
     client.board.make_move
     client.board.post_message
+    client.board.get_game_chat
     client.board.abort_game
     client.board.resign_game
     client.board.handle_draw_offer
