@@ -1,10 +1,14 @@
 # -*- coding: utf-8 -*-
 """Top-level package for berserk."""
 
+from importlib import metadata
 
-__author__ = """Robert Grant"""
-__email__ = 'rhgrant10@gmail.com'
-__version__ = '0.10.0'
+berserk_metadata = metadata.metadata(__package__)
+
+
+__author__ = berserk_metadata["Author"]
+__email__ = berserk_metadata["Author-emai"]
+__version__ = berserk_metadata["Version"]
 
 
 from .clients import Client  # noqa: F401
