@@ -121,6 +121,7 @@ Most of the API is available:
     client.board.offer_takeback
     client.board.accept_takeback
     client.board.decline_takeback
+    client.board.claim_victory
 
     client.bots.stream_incoming_events
     client.bots.stream_game_state

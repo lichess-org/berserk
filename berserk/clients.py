@@ -1081,6 +1081,20 @@ class Board(BaseClient):
         """
         return self.handle_takeback_offer(game_id, False)
 
+    def claim_victory(self, game_id):
+        """Claim victory when the opponent has left the game for a while.
+
+        Generally, this should only be called once the `opponentGone` event
+        is received in the board game state stream and the `claimWinInSeconds`
+        time has elapsed.
+
+        :param str game_id: ID of an in-progress game
+        :return: True if successful
+        :rtype: bool
+        """
+        path = f'/api/board/game/{game_id}/claim-victory/'
+        return self._r.post(path)['ok']
+
 
 class Bots(BaseClient):
     """Client for bot-related endpoints."""
