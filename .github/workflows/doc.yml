@@ -1,0 +1,34 @@
+name: Doc
+
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - ".github/workflows/doc.yaml"
+      - "**.py"
+      - "poetry.lock"
+      - "pyproject.toml"
+  pull_request:
+    paths:
+      - ".github/workflows/doc.yaml"
+      - "**.py"
+      - "poetry.lock"
+      - "pyproject.toml"
+
+jobs:
+  doc:
+    strategy:
+      fail-fast: true
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up latest python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11' 
+      - name: Set up poetry
+        uses: abatilo/actions-poetry@v2
+      - name: Install dependencies
+        run: poetry install --with dev
+      - name: Build doc
+        run: poetry run sphinx-build -b html docs _build -W --keep-going
