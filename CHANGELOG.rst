@@ -1,8 +1,8 @@
 Changelog for berserk
-=======
+=====================
 
 What's new in 0.11.0 (2021-03-18)
--------------------
+---------------------------------
 
 * Add ``Tournaments.create_arena`` for creating arena tournaments
 * Add ``Tournaments.create_swiss`` for creating swiss tournaments
@@ -17,7 +17,7 @@ What's new in 0.11.0 (2021-03-18)
 * Minor updates to README, AUTHORS
 
 What's new in 0.10.0 (2020-04-26)
--------------------
+---------------------------------
 
 * Add ``Challenge.create_ai`` for creating an AI challenge
 * Add ``Challenge.create_open`` for creating an open challenge
@@ -26,19 +26,19 @@ What's new in 0.10.0 (2020-04-26)
 * Minor fixes for docstrings
 
 What's new in 0.9.0 (2020-04-14)
-------------------
+--------------------------------
 
 * Add remaining ``Board`` endpoints: seek, handle_draw_offer, offer_draw, accept_draw, and decline_draw
 * Multiple doc updates/fixes
 * Add codecov reporting
 
 What's new in 0.8.0 (2020-03-08)
-------------------
+--------------------------------
 
 * Add new ``Board`` client: stream_incoming_events, stream_game_state, make_move, post_message, abort_game, and resign_game
 
 What's new in 0.7.0 (2020-01-26)
-------------------
+--------------------------------
 
 * Add simuls
 * Add studies export and export chapter
@@ -51,7 +51,7 @@ What's new in 0.7.0 (2020-01-26)
 
 
 What's new in 0.6.1 (2020-01-20)
-------------------
+--------------------------------
 
 * Add py37 to the travis build
 * Update development status classifier to 4 - Beta
@@ -60,7 +60,7 @@ What's new in 0.6.1 (2020-01-20)
 
 
 What's new in 0.6.0 (2020-01-20)
-------------------
+--------------------------------
 
 * Add logging to the ``berserk.session`` module
 * Fix exception message when no cause
@@ -69,7 +69,7 @@ What's new in 0.6.0 (2020-01-20)
 
 
 What's new in 0.5.0 (2020-01-20)
-------------------
+--------------------------------
 
 * Add ``ResponseError`` for 4xx and 5xx responses with status code, reason, and cause
 * Add ``ApiError`` for all other request errors
@@ -78,7 +78,7 @@ What's new in 0.5.0 (2020-01-20)
 
 
 What's new in 0.4.0 (2020-01-19)
-------------------
+--------------------------------
 
 * Add support for the broadcast endpoints
 * Add a utility for easily converting API objects into update params
@@ -88,7 +88,7 @@ What's new in 0.4.0 (2020-01-19)
 
 
 What's new in 0.3.2 (2020-01-04)
-------------------
+--------------------------------
 
 * Fix bug where options not passed for challenge creation
 * Convert requirements from pinned to sematically compatible
@@ -98,39 +98,39 @@ What's new in 0.3.2 (2020-01-04)
 
 
 What's new in 0.3.1 (2018-12-23)
-------------------
+--------------------------------
 
 * Convert datetime string in tournament creation response into datetime object
 
 
 What's new in 0.3.0 (2018-12-23)
-------------------
+--------------------------------
 
 * Convert all timestamps to datetime in all responses
 * Provide support for challenging other players to a game
 
 
 What's new in 0.2.1 (2018-12-08)
-------------------
+--------------------------------
 
 * Bump requests dependency to >-2.20.0 (CVE-2018-18074)
 
 
 What's new in 0.2.0 (2018-12-08)
-------------------
+--------------------------------
 
 * Add `position` and `start_date` params to `Tournament.create`
 * Add `Position` enum
 
 
 What's new in 0.1.2 (2018-07-14)
-------------------
+--------------------------------
 
 * Fix an asine bug in the docs
 
 
 What's new in 0.1.1 (2018-07-14)
-------------------
+--------------------------------
 
 * Added tests for session and formats modules
 * Fixed mispelled PgnHandler class (!)
@@ -142,6 +142,6 @@ What's new in 0.1.1 (2018-07-14)
 
 
 What's new in 0.1.0 (2018-07-10)
-------------------
+--------------------------------
 
 * First release on PyPI.
