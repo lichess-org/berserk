@@ -32,7 +32,7 @@ Python client for the `Lichess API`_.
    usage
    api
    contributing
-   history
+   changelog
 
 
 Indices and tables
