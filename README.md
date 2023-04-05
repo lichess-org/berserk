@@ -1,68 +1,40 @@
-=======
-berserk
-=======
-
-This is a downstream branch created to continually maintain berserk.
-Original repository: https://github.com/rhgrant10/berserk
-
-
-.. image:: https://img.shields.io/pypi/v/berserk-downstream
-        :target: https://pypi.python.org/pypi/berserk-downstream
-        :alt: Available on PyPI
-
-.. image:: https://img.shields.io/travis/com/ZackClements/berserk
-        :target: https://travis-ci.org/ZackClements/berserk
-        :alt: Continuous Integration
-
-
-.. image:: https://codecov.io/gh/ZackClements/berserk/branch/master/graph/badge.svg?token=H45ZUIZU69
-        :target: https://codecov.io/gh/ZackClements/berserk
-        :alt: Code Coverage
-
-.. image:: https://readthedocs.org/projects/berserk/badge/?version=latest
-        :target: https://berserk.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
-
+# berserk
 
 Python client for the `Lichess API`_.
 
 .. _Lichess API: https://lichess.org/api
 
 * Free software: GNU General Public License v3
-* Documentation: https://berserk.readthedocs.io.
+* Documentation (not fully up to date): https://berserk.readthedocs.io.
 
-Install
-========
+## Installation
 
-Make sure berserk is uninstalled before installing
-
-``pip install berserk-downstream``
+`pip install berserk`
 
 
-Features
-========
+## Features
 
 * handles JSON and PGN formats at user's discretion
 * token auth session
 * easy integration with OAuth2
 * automatically converts time values to datetimes
 
-Usage
-=====
+## Usage
 
 You can use any ``requests.Session``-like object as a session, including those
 from ``requests_oauth``. A simple token session is included, as shown below:
 
-.. code-block:: python
+```python
 
     import berserk
 
     session = berserk.TokenSession(API_TOKEN)
     client = berserk.Client(session=session)
+```
 
 Most if not all of the API is available:
 
-.. code-block:: python
+```python
 
     client.account.get
     client.account.get_email
@@ -165,16 +137,6 @@ Most if not all of the API is available:
     client.tv.get_current_games
     client.tv.stream_current_game
     client.tv.get_best_ongoing
+```
 
-
-Details for each function can be found in the `full documentation <https://berserk.readthedocs.io>`_.
-
-
-Credits
-=======
-
-This package was created with Cookiecutter_ and the
-`audreyr/cookiecutter-pypackage`_ project template.
-
-.. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+Details for each function can be found in the [documentation](https://berserk.readthedocs.io) (not fully up to date).
