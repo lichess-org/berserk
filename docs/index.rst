@@ -32,7 +32,6 @@ Python client for the `Lichess API`_.
    usage
    api
    contributing
-   authors
    history
 
 
