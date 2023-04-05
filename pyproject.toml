@@ -27,6 +27,7 @@ optional = true
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7"
+black = "^23"
 
 
 [build-system]
