@@ -113,7 +113,9 @@ class Client(BaseClient):
 
 
 class Account(BaseClient):
-    """Client for account-related endpoints."""
+    """
+    Client for account-related endpoints.
+    """
 
     def get(self):
         """Get your public information.
@@ -1215,11 +1217,14 @@ class Tournaments(FmtClient):
         conditions=None,
     ):
         """Create a new tournament.
+
         .. note::
             ``wait_minutes`` is always relative to now and is overriden by
             ``start_time``.
+
         .. note::
             If ``name`` is left blank then one is automatically created.
+
         :param int clock_time: intial clock time in minutes
         :param int clock_increment: clock increment in seconds
         :param int minutes: length of the tournament in minutes
@@ -1404,7 +1409,7 @@ class Tournaments(FmtClient):
         opening=None,
     ):
         """Export games from a tournament.
-        :param str id_: tournament ID
+        :param str `id_`: tournament ID
         :param bool as_pgn: whether to return PGN instead of JSON
         :param bool moves: include moves
         :param bool tags: include tags
