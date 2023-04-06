@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from . import utils
 
 
@@ -9,33 +10,21 @@ class model(type):
 
 class Model(metaclass=model):
     @classmethod
-    def convert(cls, data):
+    def convert(cls, data: Any) -> Any:
         if isinstance(data, (list, tuple)):
-            return [cls.convert_one(v) for v in data]
+            return [cls.convert_one(v) for v in data]  # type: ignore
         return cls.convert_one(data)
 
     @classmethod
-    def convert_one(cls, data):
+    def convert_one(cls, data: Any) -> Any:
         for k in set(data) & set(cls.conversions):
             data[k] = cls.conversions[k](data[k])
         return data
 
     @classmethod
-    def convert_values(cls, data):
+    def convert_values(cls, data: Dict[str, Any]) -> Dict[str, Any]:
         for k in data:
             data[k] = cls.convert(data[k])
-        return data
-
-    @classmethod
-    def convert_tournament_values(cls, data):
-        for k in data:
-            data[k] = cls.convert_tournament(data[k])
-        return data
-
-    @classmethod
-    def convert_tournament(cls, data):
-        if isinstance(data, (list, tuple)):
-            return [cls.convert_one(v) for v in data]
         return data
 
 
@@ -50,7 +39,7 @@ class User(Model):
 
 
 class Activity(Model):
-    interval = utils.inner(utils.datetime_from_seconds, "start", "end")
+    interval = utils.inner(utils.datetime_from_millis, "start", "end")
 
 
 class Game(Model):
@@ -67,12 +56,7 @@ class GameState(Model):
 
 
 class Tournament(Model):
-    startsAt = utils.datetime_from_str
-
-
-class Tournaments(Model):
-    startsAt = utils.datetime_from_millis
-    finishesAt = utils.datetime_from_millis
+    startsAt = utils.datetime_from_str_or_millis
 
 
 class Broadcast(Model):

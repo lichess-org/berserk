@@ -1,14 +1,34 @@
 import logging
-import urllib
+from typing import (
+    Any,
+    Callable,
+    Dict,
+    Generic,
+    Iterator,
+    Literal,
+    Mapping,
+    TypeVar,
+    overload,
+)
+from urllib.parse import urljoin
 
 import requests
+
+from berserk.formats import FormatHandler
 
 from . import exceptions, utils
 
 LOG = logging.getLogger(__name__)
 
+T = TypeVar("T")
+U = TypeVar("U")
 
-class Requestor:
+Params = Mapping[str, int | bool | str | None]
+Data = str | Params
+Converter = Callable[[T], T]
+
+
+class Requestor(Generic[T]):
     """Encapsulates the logic for making a request.
 
     :param session: the authenticated session object
@@ -18,52 +38,220 @@ class Requestor:
     :type fmt: :class:`~berserk.formats.FormatHandler`
     """
 
-    def __init__(self, session, base_url, default_fmt):
+    def __init__(
+        self, session: requests.Session, base_url: str, default_fmt: FormatHandler[T]
+    ):
         self.session = session
         self.base_url = base_url
         self.default_fmt = default_fmt
 
-    def request(self, method, path, *args, fmt=None, converter=utils.noop, **kwargs):
+    def request(
+        self,
+        method: str,
+        path: str,
+        *,
+        stream: bool = False,
+        params: Params | None = None,
+        data: Data | None = None,
+        json: Dict[str, Any] | None = None,
+        fmt: FormatHandler[Any] | None = None,
+        converter: Converter[Any] = utils.noop,
+    ) -> Any | Iterator[Any]:
         """Make a request for a resource in a paticular format.
 
-        :param str method: HTTP verb
-        :param str path: the URL suffix
-        :param fmt: the format handler
-        :type fmt: :class:`~berserk.formats.FormatHandler`
-        :param func converter: function to handle field conversions
+        :param method: HTTP verb
+        :param path: the URL suffix
+        :param: the format handler
+        :param converter: function to handle field conversions
         :return: response
         :raises berserk.exceptions.ResponseError: if the status is >=400
         """
         fmt = fmt or self.default_fmt
-        kwargs["headers"] = fmt.headers
-        url = urllib.parse.urljoin(self.base_url, path)
+        url = urljoin(self.base_url, path)
 
-        is_stream = kwargs.get("stream")
         LOG.debug(
             "%s %s %s params=%s data=%s json=%s",
-            "stream" if is_stream else "request",
+            "stream" if stream else "request",
             method,
             url,
-            kwargs.get("params"),
-            kwargs.get("data"),
-            kwargs.get("json"),
+            params,
+            data,
+            json,
         )
         try:
-            response = self.session.request(method, url, *args, **kwargs)
+            response = self.session.request(
+                method,
+                url,
+                stream=stream,
+                params=params,
+                headers=fmt.headers,
+                data=data,
+                json=json,
+            )
         except requests.RequestException as e:
             raise exceptions.ApiError(e)
         if not response.ok:
             raise exceptions.ResponseError(response)
 
-        return fmt.handle(response, is_stream=is_stream, converter=converter)
+        return fmt.handle(response, is_stream=stream, converter=converter)
 
-    def get(self, *args, **kwargs):
+    @overload
+    def get(
+        self,
+        path: str,
+        *,
+        stream: Literal[False] = False,
+        params: Params | None = None,
+        data: Data | None = None,
+        json: Dict[str, Any] | None = None,
+        fmt: FormatHandler[U],
+        converter: Converter[U] = utils.noop,
+    ) -> U:
+        ...
+
+    @overload
+    def get(
+        self,
+        path: str,
+        *,
+        stream: Literal[True],
+        params: Params | None = None,
+        data: Data | None = None,
+        json: Dict[str, Any] | None = None,
+        fmt: FormatHandler[U],
+        converter: Converter[U] = utils.noop,
+    ) -> Iterator[U]:
+        ...
+
+    @overload
+    def get(
+        self,
+        path: str,
+        *,
+        stream: Literal[False] = False,
+        params: Params | None = None,
+        data: Data | None = None,
+        json: Dict[str, Any] | None = None,
+        fmt: None = None,
+        converter: Converter[T] = utils.noop,
+    ) -> T:
+        ...
+
+    @overload
+    def get(
+        self,
+        path: str,
+        *,
+        stream: Literal[True],
+        params: Params | None = None,
+        data: Data | None = None,
+        json: Dict[str, Any] | None = None,
+        fmt: None = None,
+        converter: Converter[T] = utils.noop,
+    ) -> Iterator[T]:
+        ...
+
+    def get(
+        self,
+        path: str,
+        *,
+        stream: Literal[True] | Literal[False] = False,
+        params: Params | None = None,
+        data: Data | None = None,
+        json: Dict[str, Any] | None = None,
+        fmt: FormatHandler[Any] | None = None,
+        converter: Any = utils.noop,
+    ) -> Any | Iterator[Any]:
         """Convenience method to make a GET request."""
-        return self.request("GET", *args, **kwargs)
+        return self.request(
+            "GET",
+            path,
+            params=params,
+            stream=stream,
+            fmt=fmt,
+            converter=converter,
+            data=data,
+            json=json,
+        )
 
-    def post(self, *args, **kwargs):
+    @overload
+    def post(
+        self,
+        path: str,
+        *,
+        stream: Literal[False] = False,
+        params: Params | None = None,
+        data: Data | None = None,
+        json: Dict[str, Any] | None = None,
+        fmt: FormatHandler[U],
+        converter: Converter[U] = utils.noop,
+    ) -> U:
+        ...
+
+    @overload
+    def post(
+        self,
+        path: str,
+        *,
+        stream: Literal[True],
+        params: Params | None = None,
+        data: Data | None = None,
+        json: Dict[str, Any] | None = None,
+        fmt: FormatHandler[U],
+        converter: Converter[U] = utils.noop,
+    ) -> Iterator[U]:
+        ...
+
+    @overload
+    def post(
+        self,
+        path: str,
+        *,
+        stream: Literal[False] = False,
+        params: Params | None = None,
+        data: Data | None = None,
+        json: Dict[str, Any] | None = None,
+        fmt: None = None,
+        converter: Converter[T] = utils.noop,
+    ) -> T:
+        ...
+
+    @overload
+    def post(
+        self,
+        path: str,
+        *,
+        stream: Literal[True],
+        params: Params | None = None,
+        data: Data | None = None,
+        json: Dict[str, Any] | None = None,
+        fmt: None = None,
+        converter: Converter[T] = utils.noop,
+    ) -> Iterator[T]:
+        ...
+
+    def post(
+        self,
+        path: str,
+        *,
+        stream: Literal[True] | Literal[False] = False,
+        params: Params | None = None,
+        data: Data | None = None,
+        json: Dict[str, Any] | None = None,
+        fmt: FormatHandler[Any] | None = None,
+        converter: Any = utils.noop,
+    ) -> Any | Iterator[Any]:
         """Convenience method to make a POST request."""
-        return self.request("POST", *args, **kwargs)
+        return self.request(
+            "POST",
+            path,
+            params=params,
+            stream=stream,
+            fmt=fmt,
+            converter=converter,
+            data=data,
+            json=json,
+        )
 
 
 class TokenSession(requests.Session):
@@ -72,7 +260,7 @@ class TokenSession(requests.Session):
     :param str token: personal API token
     """
 
-    def __init__(self, token):
+    def __init__(self, token: str):
         super().__init__()
         self.token = token
         self.headers = {"Authorization": f"Bearer {token}"}

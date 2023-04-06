@@ -1,14 +1,18 @@
-def get_message(e):
+from typing import cast
+from requests import Response
+
+
+def get_message(e: Exception) -> str:
     return e.args[0] if e.args else ""
 
 
-def set_message(e, value):
+def set_message(e: Exception, value: str) -> None:
     args = list(e.args)
     if args:
         args[0] = value
     else:
         args.append(value)
-    e.args = args
+    e.args = tuple(args)
 
 
 class BerserkError(Exception):
@@ -16,7 +20,7 @@ class BerserkError(Exception):
 
 
 class ApiError(BerserkError):
-    def __init__(self, error):
+    def __init__(self, error: Exception):
         super().__init__(get_message(error))
         self.__cause__ = self.error = error
 
@@ -27,9 +31,9 @@ class ResponseError(ApiError):
     # sentinal object for when None is a valid result
     __UNDEFINED = object()
 
-    def __init__(self, response):
+    def __init__(self, response: Response):
         error = ResponseError._catch_exception(response)
-        super().__init__(error)
+        super().__init__(cast(Exception, error))
         self._cause = ResponseError.__UNDEFINED
         self.response = response
         base_message = f"HTTP {self.status_code}: {self.reason}"
@@ -56,7 +60,7 @@ class ResponseError(ApiError):
         return self._cause
 
     @staticmethod
-    def _catch_exception(response):
+    def _catch_exception(response: Response):
         try:
             response.raise_for_status()
         except Exception as e:

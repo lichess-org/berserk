@@ -41,6 +41,7 @@ intersphinx_mapping = {
     "http://docs.python.org/3/": None,
     "https://requests.readthedocs.io/en/master/": None,
 }
+autodoc_typehints = "both"
 
 source_suffix = ".rst"
 

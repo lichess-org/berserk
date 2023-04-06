@@ -1,86 +1,90 @@
-import collections
 from datetime import datetime, timezone
+from typing import Any, Callable, Dict, List, NamedTuple, Tuple, TypeVar, cast
+
+T = TypeVar("T")
+U = TypeVar("U")
 
 
-def to_millis(dt):
-    """Return the milliseconds between the given datetime and the epoch.
-
-    :param datetime dt: a datetime
-    :return: milliseconds since the epoch
-    :rtype: int
-    """
+def to_millis(dt: datetime) -> int:
+    """Return the milliseconds between the given datetime and the epoch."""
     return int(dt.timestamp() * 1000)
 
 
-def datetime_from_seconds(ts):
+def datetime_from_seconds(ts: float) -> datetime:
     """Return the datetime for the given seconds since the epoch.
 
     UTC is assumed. The returned datetime is timezone aware.
-
-    :return: timezone aware datetime
-    :rtype: :class:`datetime`
     """
     return datetime.fromtimestamp(ts, timezone.utc)
 
 
-def datetime_from_millis(millis):
+def datetime_from_millis(millis: float) -> datetime:
     """Return the datetime for the given millis since the epoch.
 
     UTC is assumed. The returned datetime is timezone aware.
-
-    :return: timezone aware datetime
-    :rtype: :class:`datetime`
     """
     return datetime_from_seconds(millis / 1000)
 
 
-def datetime_from_str(dt_str):
+def datetime_from_str(dt_str: str) -> datetime:
     """Convert the time in a string to a datetime.
 
     UTC is assumed. The returned datetime is timezone aware. The format
     must match ``%Y-%m-%dT%H:%M:%S.%fZ``.
-
-    :return: timezone aware datetime
-    :rtype: :class:`datetime`
     """
     dt = datetime.strptime(dt_str, "%Y-%m-%dT%H:%M:%S.%fZ")
     return dt.replace(tzinfo=timezone.utc)
 
 
-_RatingHistoryEntry = collections.namedtuple("Entry", "year month day rating")
+def datetime_from_str_or_millis(millis_or_str: str | int) -> datetime:
+    """Convert a string or int to a datetime.
+
+    UTC is assumed. The returned datetime is timezone aware.
+    If the input is a string, the format must match ``%Y-%m-%dT%H:%M:%S.%fZ``.
+    """
+    if isinstance(millis_or_str, int):
+        return datetime_from_millis(millis_or_str)
+    return datetime_from_str(millis_or_str)
 
 
-def rating_history(data):
-    return _RatingHistoryEntry(*data)
+class RatingHistoryEntry(NamedTuple):
+    year: int
+    month: int
+    day: int
+    rating: int
 
 
-def inner(func, *keys):
-    def convert(data):
+def rating_history(data: Tuple[int, int, int, int]):
+    return RatingHistoryEntry(*data)
+
+
+def inner(
+    func: Callable[[T], U], *keys: str
+) -> Callable[[Dict[str, T]], Dict[str, T | U]]:
+    def convert(data: Dict[str, T]) -> Dict[str, T | U]:
+        result = cast(Dict[str, T | U], data)
         for k in keys:
             try:
-                data[k] = func(data[k])
+                result[k] = func(data[k])
             except KeyError:
                 pass  # normal for keys to not be present sometimes
-        return data
-
-    return convert
-
-
-def listing(func):
-    def convert(items):
-        result = []
-        for item in items:
-            result.append(func(item))
         return result
 
     return convert
 
 
-def noop(arg):
+def listing(func: Callable[[T], U]) -> Callable[[List[T]], List[U]]:
+    def convert(items: List[T]):
+        return [func(item) for item in items]
+
+    return convert
+
+
+def noop(arg: T) -> T:
     return arg
 
 
-def build_adapter(mapper, sep="."):
+def build_adapter(mapper: Dict[str, str], sep: str = "."):
     """Build a data adapter.
 
     Uses a map to pull values from an object and assign them to keys.
@@ -118,13 +122,15 @@ def build_adapter(mapper, sep="."):
     :rtype: dict
     """
 
-    def get(data, location):
+    def get(data: Dict[str, Any], location: str) -> Dict[str, Any]:
         for key in location.split(sep):
             data = data[key]
         return data
 
-    def adapter(data, default=None, fill=False):
-        result = {}
+    def adapter(
+        data: Dict[str, Any], default: Any = None, fill: bool = False
+    ) -> Dict[str, Any]:
+        result: Dict[str, Any] = {}
         for key, loc in mapper.items():
             try:
                 result[key] = get(data, loc)
