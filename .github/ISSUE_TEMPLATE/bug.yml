@@ -20,16 +20,16 @@ body:
       required: true
   - type: input
     attributes:
-      label: Berserk version (`python3 -c "import berserk; print(berserk.__version__)"`)
-      description: Specify the version of berserk you are using
+      label: Berserk version
+      description: Paste the result of `python3 -c "import berserk; print(berserk.__version__)"`
     validations:
       required: true
     validations:
       required: true
   - type: input
     attributes:
-      label: Python version (`python3 --version`)
-      description: Specify the version of python you are using
+      label: Python version
+      description: Paste the result of `python3 --version`
     validations:
       required: true
   - type: input
