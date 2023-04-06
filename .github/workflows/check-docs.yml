@@ -1,17 +1,9 @@
-name: Doc
+name: Docs
 
 on:
-  push:
-    branches: ["master"]
-    paths:
-      - ".github/workflows/doc.yaml"
-      - "**.py"
-      - "**.rst"
-      - "poetry.lock"
-      - "pyproject.toml"
   pull_request:
     paths:
-      - ".github/workflows/doc.yaml"
+      - ".github/workflows/check-docs.yaml"
       - "**.py"
       - "**.rst"
       - "poetry.lock"
@@ -27,7 +19,7 @@ jobs:
       - name: Set up latest python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11' 
+          python-version: "3.11"
       - name: Set up poetry
         uses: abatilo/actions-poetry@v2
       - name: Install dependencies
