@@ -1,11 +1,27 @@
 berserk
 =======
 
+.. image:: https://github.com/lichess-org/berserk/workflows/test/badge.svg
+    :target: https://github.com/lichess-org/berserk/actions
+    :alt: Test status
+
+.. image:: https://badge.fury.io/py/berserk.svg
+    :target: https://pypi.python.org/pypi/berserk
+    :alt: PyPI package
+
+.. image:: https://github.com/lichess-org/berserk/workflows/deploy-docs/badge.svg
+    :target: https://lichess-org.github.io/berserk/
+    :alt: Docs
+
+.. image:: https://img.shields.io/discord/280713822073913354.svg?label=discord&color=green&logo=discord
+    :target: https://discord.com/lichess
+    :alt: Discord
+
 Python client for the `Lichess API <https://lichess.org/api>`_.
 
 This is based on the `original berserk version created by rhgrant10 <https://github.com/rhgrant10/berserk>`_ and the `berserk-downstream fork created by ZackClements <https://github.com/ZackClements/berserk>`_. Big thanks to them and all other contributors!
 
-`Documentation (not fully up to date) <https://berserk.readthedocs.io>`_.
+`Documentation <https://lichess-org.github.io/berserk/>`_.
 
 Installation
 ------------
@@ -145,4 +161,4 @@ Most of the API is available:
     client.tv.stream_current_game
     client.tv.get_best_ongoing
 
-Details for each function can be found in the `(not fully up to date) documentation <https://berserk.readthedocs.io>`_.
+Details for each function can be found in the `documentation <https://lichess-org.github.io/berserk/>`_.
