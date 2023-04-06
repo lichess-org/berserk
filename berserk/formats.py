@@ -1,5 +1,5 @@
 import json
-from typing import Any, Callable, Generic, Iterator, List, Type, TypeVar
+from typing import Any, Callable, Dict, Generic, Iterator, List, Type, TypeVar, cast
 
 import ndjson  # type: ignore
 from requests import Response
@@ -61,7 +61,7 @@ class FormatHandler(Generic[T]):
         raise NotImplementedError
 
 
-class JsonHandler(FormatHandler[Any]):
+class JsonHandler(FormatHandler[Dict[str, Any]]):
     """Handle JSON data.
 
     :param str mime_type: the MIME type for the format
@@ -75,7 +75,7 @@ class JsonHandler(FormatHandler[Any]):
         super().__init__(mime_type=mime_type)
         self.decoder = decoder
 
-    def parse(self, response: Response) -> Any:
+    def parse(self, response: Response) -> Dict[str, Any]:
         """Parse all JSON data from a response.
 
         :param response: raw response
@@ -85,7 +85,7 @@ class JsonHandler(FormatHandler[Any]):
         """
         return response.json(cls=self.decoder)
 
-    def parse_stream(self, response: Response) -> Iterator[Any]:
+    def parse_stream(self, response: Response) -> Iterator[Dict[str, Any]]:
         """Yield the parsed data from a stream response.
 
         :param response: raw response
@@ -103,15 +103,6 @@ class PgnHandler(FormatHandler[str]):
 
     def __init__(self):
         super().__init__(mime_type="application/x-chess-pgn")
-
-    def handle(
-        self,
-        response: Response,
-        is_stream: bool,
-        converter: Any = None,
-    ) -> str | Iterator[str]:
-        # disable conversion on PGNs
-        return super().handle(response, is_stream, utils.noop)
 
     def parse(self, response: Response) -> str:
         """Parse all text data from a response.
@@ -161,6 +152,9 @@ TEXT = TextHandler()
 
 #: Handles vanilla JSON
 JSON = JsonHandler(mime_type="application/json")
+
+# Handle vanilla JSON where the response is a top-level list
+JSON_LIST = cast(FormatHandler[List[Dict[str, Any]]], JSON)
 
 #: Handles oddball LiChess JSON (normal JSON, crazy MIME type)
 LIJSON = JsonHandler(mime_type="application/vnd.lichess.v3+json")

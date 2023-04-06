@@ -6,7 +6,7 @@ from deprecated import deprecated
 
 from . import models
 from .enums import Reason
-from .formats import JSON, LIJSON, NDJSON, PGN, TEXT
+from .formats import JSON, JSON_LIST, LIJSON, NDJSON, PGN, TEXT
 from .session import Requestor
 
 __all__ = [
@@ -211,7 +211,7 @@ class Users(BaseClient):
         """
         path = "api/users/status"
         params = {"ids": ",".join(user_ids), "withGameIds": with_game_ids}
-        return self._r.get(path, params=params)
+        return self._r.get(path, fmt=JSON_LIST, params=params)
 
     def get_all_top_10(self) -> Dict[str, Any]:
         """Get the top 10 players for each speed and variant.
@@ -240,13 +240,13 @@ class Users(BaseClient):
         path = f"api/user/{username}"
         return self._r.get(path, converter=models.User.convert)
 
-    def get_activity_feed(self, username: str) -> List[Any]:
+    def get_activity_feed(self, username: str) -> List[Dict[str, Any]]:
         """Get the activity feed of a user.
 
         :return: activity feed of the given user
         """
         path = f"api/user/{username}/activity"
-        return self._r.get(path, converter=models.Activity.convert)
+        return self._r.get(path, fmt=JSON_LIST, converter=models.Activity.convert)
 
     def get_by_id(self, *usernames: str) -> List[Dict[str, Any]]:
         """Get multiple users by their IDs.
@@ -256,7 +256,7 @@ class Users(BaseClient):
         """
         path = "api/users"
         return self._r.post(
-            path, data=",".join(usernames), converter=models.User.convert
+            path, data=",".join(usernames), fmt=JSON_LIST, converter=models.User.convert
         )
 
     @deprecated(version="0.7.0", reason="use Teams.get_members(id) instead")
@@ -274,7 +274,7 @@ class Users(BaseClient):
         :return: users currently streaming a game
         """
         path = "streamer/live"
-        return self._r.get(path)
+        return self._r.get(path, fmt=JSON_LIST)
 
     def get_rating_history(self, username: str) -> List[Dict[str, Any]]:
         """Get the rating history of a user.
@@ -282,7 +282,7 @@ class Users(BaseClient):
         :return: rating history for all game types
         """
         path = f"/api/user/{username}/rating-history"
-        return self._r.get(path, converter=models.RatingHistory.convert)
+        return self._r.get(path, fmt=JSON_LIST, converter=models.RatingHistory.convert)
 
     def get_crosstable(
         self, user1: str, user2: str, matchup: bool = False
@@ -295,14 +295,16 @@ class Users(BaseClient):
         """
         params = {"matchup": matchup}
         path = f"/api/crosstable/{user1}/{user2}"
-        return self._r.get(path, params=params, converter=models.User.convert)
+        return self._r.get(
+            path, params=params, fmt=JSON_LIST, converter=models.User.convert
+        )
 
     def get_user_performance(self, username: str, perf: str) -> List[Dict[str, Any]]:
         """Read performance statistics of a user, for a single performance.
         Similar to the performance pages on the website
         """
         path = f"/api/user/{username}/perf/{perf}"
-        return self._r.get(path, converter=models.User.convert)
+        return self._r.get(path, fmt=JSON_LIST, converter=models.User.convert)
 
 
 class Relations(BaseClient):
@@ -415,8 +417,14 @@ class Games(FmtClient):
             "opening": opening,
             "literate": literate,
         }
-        fmt = PGN if self._use_pgn(as_pgn) else JSON
-        return self._r.get(path, params=params, fmt=fmt, converter=models.Game.convert)
+        if self._use_pgn(as_pgn):
+            return self._r.get(
+                path, params=params, fmt=PGN, converter=models.Game.convert
+            )
+        else:
+            return self._r.get(
+                path, params=params, fmt=JSON, converter=models.Game.convert
+            )
 
     def export_ongoing_by_player(
         self,
@@ -430,7 +438,7 @@ class Games(FmtClient):
         opening: bool | None = None,
         literate: bool | None = None,
         players: str | None = None,
-    ) -> Iterator[str | Dict[str, Any]]:
+    ) -> Iterator[str] | Iterator[Dict[str, Any]]:
         """Export the ongoing game, or the last game played, of a user.
 
         :param username: the player's username
@@ -457,8 +465,16 @@ class Games(FmtClient):
             "literate": literate,
             "players": players,
         }
-        fmt = PGN if self._use_pgn(as_pgn) else JSON
-        return self._r.get(path, params=params, fmt=fmt, converter=models.Game.convert)
+        if self._use_pgn(as_pgn):
+            return self._r.get(path, params=params, stream=True, fmt=PGN)
+        else:
+            return self._r.get(
+                path,
+                params=params,
+                stream=True,
+                fmt=JSON,
+                converter=models.Game.convert,
+            )
 
     def export_by_player(
         self,
@@ -483,7 +499,7 @@ class Games(FmtClient):
         players: str | None = None,
         sort: str | None = None,
         literate: bool | None = None,
-    ) -> Iterator[str | Dict[str, Any]]:
+    ) -> Iterator[str] | Iterator[Dict[str, Any]]:
         """Get games by player.
 
         :param username: which player's games to return
@@ -535,10 +551,18 @@ class Games(FmtClient):
             "sort": sort,
             "literate": literate,
         }
-        fmt = PGN if self._use_pgn(as_pgn) else NDJSON
-        yield from self._r.get(
-            path, params=params, fmt=fmt, stream=True, converter=models.Game.convert
-        )
+        if self._use_pgn(as_pgn):
+            yield from self._r.get(
+                path, params=params, fmt=PGN, stream=True, converter=models.Game.convert
+            )
+        else:
+            yield from self._r.get(
+                path,
+                params=params,
+                fmt=NDJSON,
+                stream=True,
+                converter=models.Game.convert,
+            )
 
     def export_multi(
         self,
@@ -549,7 +573,7 @@ class Games(FmtClient):
         clocks: bool | None = None,
         evals: bool | None = None,
         opening: bool | None = None,
-    ) -> Iterator[str | Dict[str, Any]]:
+    ) -> Iterator[str] | Iterator[Dict[str, Any]]:
         """Get multiple games by ID.
 
         :param game_ids: one or more game IDs to export
@@ -571,15 +595,24 @@ class Games(FmtClient):
             "opening": opening,
         }
         payload = ",".join(game_ids)
-        fmt = PGN if self._use_pgn(as_pgn) else NDJSON
-        yield from self._r.post(
-            path,
-            params=params,
-            data=payload,
-            fmt=fmt,
-            stream=True,
-            converter=models.Game.convert,
-        )
+        if self._use_pgn(as_pgn):
+            yield from self._r.post(
+                path,
+                params=params,
+                data=payload,
+                fmt=PGN,
+                stream=True,
+                converter=models.Game.convert,
+            )
+        else:
+            yield from self._r.post(
+                path,
+                params=params,
+                data=payload,
+                fmt=NDJSON,
+                stream=True,
+                converter=models.Game.convert,
+            )
 
     def get_among_players(
         self, *usernames: str, with_current_games: bool = False
@@ -770,7 +803,7 @@ class Challenges(BaseClient):
         color: str | None = None,
         variant: str | None = None,
         position: str | None = None,
-    ) -> bool:
+    ) -> Dict[str, Any]:
         """Challenge AI to a game.
 
         :param level: level of the AI (1 to 8)
@@ -783,7 +816,7 @@ class Challenges(BaseClient):
         :type variant: :class:`~berserk.enums.Variant`
         :param position: use one of the custom initial positions (variant must
                          be standard and cannot be rated)
-        :return: success indicator
+        :return: information about the created game
         """
         path = "api/challenge/ai"
         payload = {
