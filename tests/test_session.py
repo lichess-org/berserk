@@ -17,11 +17,18 @@ def test_request():
 
     args, kwargs = m_session.request.call_args
     assert ("bar", "http://foo.com/path") == args
-    assert {"headers": m_fmt.headers, "baz": "qux"} == kwargs
+    assert {
+        "headers": m_fmt.headers,
+        "baz": "qux",
+        "data": None,
+        "json": None,
+        "params": None,
+        "stream": False,
+    } == kwargs
 
     args, kwargs = m_fmt.handle.call_args
     assert (m_session.request.return_value,) == args
-    assert {"is_stream": None, "converter": utils.noop} == kwargs
+    assert {"is_stream": False, "converter": utils.noop} == kwargs
 
 
 def test_bad_request():
