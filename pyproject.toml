@@ -6,6 +6,7 @@ authors = ["Lichess <contact@lichess.org>"]
 license = "GPL-3.0-or-later"
 readme = "README.rst"
 repository = "https://github.com/lichess-org/berserk"
+documentation = "https://lichess-org.github.io/berserk/"
 keywords = ["lichess", "chess", "api", "client"]
 classifiers = [
         'Development Status :: 4 - Beta',
@@ -20,6 +21,10 @@ classifiers = [
     ]
 # by default files declared in .gitignore are excluded
 include = ["CHANGELOG.rst", "LICENSE", "docs"]
+
+[tool.poetry.urls]
+Changelog = "https://lichess-org.github.io/berserk/changelog.html"
+"Discord Server"    = "https://discord.gg/lichess"
 
 [tool.poetry.dependencies]
 python = "^3.8"
