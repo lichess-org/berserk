@@ -9,6 +9,7 @@ from typing import (
     Literal,
     Mapping,
     TypeVar,
+    Union,
     overload,
 )
 from urllib.parse import urljoin
@@ -24,8 +25,8 @@ LOG = logging.getLogger(__name__)
 T = TypeVar("T")
 U = TypeVar("U")
 
-Params = Mapping[str, int | bool | str | None]
-Data = str | Params
+Params = Mapping[str, Union[int, bool, str, None]]
+Data = Union[str, Params]
 Converter = Callable[[T], T]
 
 
