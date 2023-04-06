@@ -1,3 +1,4 @@
+from __future__ import annotations
 from time import time as now
 from typing import Any, Dict, Iterator, List, Tuple
 
