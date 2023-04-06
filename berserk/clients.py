@@ -1,6 +1,6 @@
 from __future__ import annotations
 from time import time as now
-from typing import Any, Dict, Iterator, List, Tuple
+from typing import Any, Dict, Iterator, List, Tuple, cast
 
 import requests
 from deprecated import deprecated
@@ -419,9 +419,7 @@ class Games(FmtClient):
             "literate": literate,
         }
         if self._use_pgn(as_pgn):
-            return self._r.get(
-                path, params=params, fmt=PGN, converter=models.Game.convert
-            )
+            return self._r.get(path, params=params, fmt=PGN)
         else:
             return self._r.get(
                 path, params=params, fmt=JSON, converter=models.Game.convert
@@ -553,9 +551,7 @@ class Games(FmtClient):
             "literate": literate,
         }
         if self._use_pgn(as_pgn):
-            yield from self._r.get(
-                path, params=params, fmt=PGN, stream=True, converter=models.Game.convert
-            )
+            yield from self._r.get(path, params=params, fmt=PGN, stream=True)
         else:
             yield from self._r.get(
                 path,
@@ -603,7 +599,6 @@ class Games(FmtClient):
                 data=payload,
                 fmt=PGN,
                 stream=True,
-                converter=models.Game.convert,
             )
         else:
             yield from self._r.post(
@@ -1179,14 +1174,17 @@ class Bots(BaseClient):
 class Tournaments(FmtClient):
     """Client for tournament-related endpoints."""
 
-    def get(self) -> List[Dict[str, Any]]:
+    def get(self) -> models.CurrentTournaments:
         """Get recently finished, ongoing, and upcoming tournaments.
 
         :return: current tournaments
         :rtype: list
         """
         path = "api/tournament"
-        return self._r.get(path, converter=models.Tournament.convert_values)
+        return cast(
+            models.CurrentTournaments,
+            self._r.get(path, converter=models.Tournament.convert_values),
+        )
 
     def get_tournament(self, tournament_id: str, page: int = 1):
         """Get information about a tournament.
@@ -1427,8 +1425,12 @@ class Tournaments(FmtClient):
             "evals": evals,
             "opening": opening,
         }
-        fmt = PGN if self._use_pgn(as_pgn) else NDJSON
-        return self._r.get(path, params=params, fmt=fmt, converter=models.Game.convert)
+        if self._use_pgn(as_pgn):
+            return self._r.get(path, params=params, fmt=PGN)
+        else:
+            return self._r.get(
+                path, params=params, fmt=NDJSON, converter=models.Game.convert
+            )
 
     def export_arena_games(
         self,
@@ -1462,8 +1464,12 @@ class Tournaments(FmtClient):
             "evals": evals,
             "opening": opening,
         }
-        fmt = PGN if self._use_pgn(as_pgn) else NDJSON
-        return self._r.get(path, params=params, fmt=fmt, converter=models.Game.convert)
+        if self._use_pgn(as_pgn):
+            return self._r.get(path, params=params, fmt=PGN)
+        else:
+            return self._r.get(
+                path, params=params, fmt=NDJSON, converter=models.Game.convert
+            )
 
     def export_swiss_games(
         self,
@@ -1500,8 +1506,12 @@ class Tournaments(FmtClient):
             "evals": evals,
             "opening": opening,
         }
-        fmt = PGN if self._use_pgn(as_pgn) else NDJSON
-        return self._r.get(path, params=params, fmt=fmt, converter=models.Game.convert)
+        if self._use_pgn(as_pgn):
+            return self._r.get(path, params=params, fmt=PGN)
+        else:
+            return self._r.get(
+                path, params=params, fmt=NDJSON, converter=models.Game.convert
+            )
 
     def tournaments_by_user(self, username, nb=None, as_pgn=False):
         """Get tournaments created by a user
@@ -1517,8 +1527,12 @@ class Tournaments(FmtClient):
         params = {
             "nb": nb,
         }
-        fmt = PGN if self._use_pgn(as_pgn) else NDJSON
-        return self._r.get(path, params=params, fmt=fmt, converter=models.Game.convert)
+        if self._use_pgn(as_pgn):
+            return self._r.get(path, params=params, fmt=PGN)
+        else:
+            return self._r.get(
+                path, params=params, fmt=NDJSON, converter=models.Game.convert
+            )
 
     def arenas_by_team(self, teamId, maxT=None, as_pgn=False):
         """Get arenas created for a team
@@ -1533,8 +1547,12 @@ class Tournaments(FmtClient):
         params = {
             "max": maxT,
         }
-        fmt = PGN if self._use_pgn(as_pgn) else NDJSON
-        return self._r.get(path, params=params, fmt=fmt, converter=models.Game.convert)
+        if self._use_pgn(as_pgn):
+            return self._r.get(path, params=params, fmt=PGN)
+        else:
+            return self._r.get(
+                path, params=params, fmt=NDJSON, converter=models.Game.convert
+            )
 
     def swiss_by_team(self, teamId, maxT=None, as_pgn=False):
         """Get swiss tournaments created for a team
@@ -1549,8 +1567,12 @@ class Tournaments(FmtClient):
         params = {
             "max": maxT,
         }
-        fmt = PGN if self._use_pgn(as_pgn) else NDJSON
-        return self._r.get(path, params=params, fmt=fmt, converter=models.Game.convert)
+        if self._use_pgn(as_pgn):
+            return self._r.get(path, params=params, fmt=PGN)
+        else:
+            return self._r.get(
+                path, params=params, fmt=NDJSON, converter=models.Game.convert
+            )
 
     def stream_results(self, id_, limit=None):
         """Stream the results of a tournament.
@@ -1810,5 +1832,9 @@ class TV(FmtClient):
             "clocks": clocks,
             "opening": opening,
         }
-        fmt = PGN if self._use_pgn(as_pgn) else NDJSON
-        return self._r.get(path, params=params, fmt=fmt, converter=models.TV.convert)
+        if self._use_pgn(as_pgn):
+            return self._r.get(path, params=params, fmt=PGN)
+        else:
+            return self._r.get(
+                path, params=params, fmt=NDJSON, converter=models.TV.convert
+            )

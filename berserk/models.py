@@ -1,5 +1,10 @@
-from typing import Any, Dict
+from __future__ import annotations
+
+from typing import Any, Dict, List, Tuple, TypeVar, TypedDict, overload
+
 from . import utils
+
+T = TypeVar("T")
 
 
 class model(type):
@@ -9,20 +14,34 @@ class model(type):
 
 
 class Model(metaclass=model):
+    @overload
     @classmethod
-    def convert(cls, data: Any) -> Any:
+    def convert(cls, data: Dict[str, T]) -> Dict[str, T]:
+        ...
+
+    @overload
+    @classmethod
+    def convert(
+        cls, data: List[Dict[str, T]] | Tuple[Dict[str, T], ...]
+    ) -> List[Dict[str, T]]:
+        ...
+
+    @classmethod
+    def convert(
+        cls, data: Dict[str, T] | List[Dict[str, T]] | Tuple[Dict[str, T], ...]
+    ) -> Dict[str, T] | List[Dict[str, T]]:
         if isinstance(data, (list, tuple)):
-            return [cls.convert_one(v) for v in data]  # type: ignore
+            return [cls.convert_one(v) for v in data]
         return cls.convert_one(data)
 
     @classmethod
-    def convert_one(cls, data: Any) -> Any:
+    def convert_one(cls, data: Dict[str, T]) -> Dict[str, T]:
         for k in set(data) & set(cls.conversions):
             data[k] = cls.conversions[k](data[k])
         return data
 
     @classmethod
-    def convert_values(cls, data: Dict[str, Any]) -> Dict[str, Any]:
+    def convert_values(cls, data: Dict[str, Dict[str, T]]) -> Dict[str, Dict[str, T]]:
         for k in data:
             data[k] = cls.convert(data[k])
         return data
@@ -78,3 +97,9 @@ class OAuth(Model):
 class TV(Model):
     createdAt = utils.datetime_from_millis
     lastMoveAt = utils.datetime_from_millis
+
+
+class CurrentTournaments(TypedDict):
+    created: List[Dict[str, Any]]
+    started: List[Dict[str, Any]]
+    finished: List[Dict[str, Any]]
