@@ -1,3 +1,0 @@
-requests~=2.20
-ndjson~=0.2
-deprecated~=1.2.7
