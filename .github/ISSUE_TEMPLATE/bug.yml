@@ -14,13 +14,13 @@ body:
       required: true
   - type: textarea
     attributes:
-      label: Steps to reproduce the bug
-      description: Provide precise step by step instructions on how to reproduce the bug
+      label: Code to reproduce the bug
+      description: Provide the code to reproduce the bug
     validations:
       required: true
   - type: input
     attributes:
-      label: Berserk version
+      label: Berserk version (`python3 -c "import berserk; print(berserk.__version__)"`)
       description: Specify the version of berserk you are using
     validations:
       required: true
@@ -28,7 +28,7 @@ body:
       required: true
   - type: input
     attributes:
-      label: Python version
+      label: Python version (`python3 --version`)
       description: Specify the version of python you are using
     validations:
       required: true
