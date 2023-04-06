@@ -57,6 +57,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: FormatHandler[Any] | None = None,
         converter: Converter[Any] = utils.noop,
+        **kwargs: Any,
     ) -> Any | Iterator[Any]:
         """Make a request for a resource in a paticular format.
 
@@ -88,6 +89,7 @@ class Requestor(Generic[T]):
                 headers=fmt.headers,
                 data=data,
                 json=json,
+                **kwargs,
             )
         except requests.RequestException as e:
             raise exceptions.ApiError(e)
@@ -107,6 +109,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: FormatHandler[U],
         converter: Converter[U] = utils.noop,
+        **kwargs: Any,
     ) -> U:
         ...
 
@@ -121,6 +124,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: FormatHandler[U],
         converter: Converter[U] = utils.noop,
+        **kwargs: Any,
     ) -> Iterator[U]:
         ...
 
@@ -135,6 +139,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: None = None,
         converter: Converter[T] = utils.noop,
+        **kwargs: Any,
     ) -> T:
         ...
 
@@ -149,6 +154,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: None = None,
         converter: Converter[T] = utils.noop,
+        **kwargs: Any,
     ) -> Iterator[T]:
         ...
 
@@ -162,6 +168,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: FormatHandler[Any] | None = None,
         converter: Any = utils.noop,
+        **kwargs: Any,
     ) -> Any | Iterator[Any]:
         """Convenience method to make a GET request."""
         return self.request(
@@ -173,6 +180,7 @@ class Requestor(Generic[T]):
             converter=converter,
             data=data,
             json=json,
+            **kwargs,
         )
 
     @overload
@@ -186,6 +194,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: FormatHandler[U],
         converter: Converter[U] = utils.noop,
+        **kwargs: Any,
     ) -> U:
         ...
 
@@ -200,6 +209,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: FormatHandler[U],
         converter: Converter[U] = utils.noop,
+        **kwargs: Any,
     ) -> Iterator[U]:
         ...
 
@@ -214,6 +224,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: None = None,
         converter: Converter[T] = utils.noop,
+        **kwargs: Any,
     ) -> T:
         ...
 
@@ -228,6 +239,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: None = None,
         converter: Converter[T] = utils.noop,
+        **kwargs: Any,
     ) -> Iterator[T]:
         ...
 
@@ -241,6 +253,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: FormatHandler[Any] | None = None,
         converter: Any = utils.noop,
+        **kwargs: Any,
     ) -> Any | Iterator[Any]:
         """Convenience method to make a POST request."""
         return self.request(
@@ -252,6 +265,7 @@ class Requestor(Generic[T]):
             converter=converter,
             data=data,
             json=json,
+            **kwargs,
         )
 
 
