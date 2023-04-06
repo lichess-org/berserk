@@ -3,7 +3,7 @@ name: Docs
 on:
   pull_request:
     paths:
-      - ".github/workflows/check-docs.yaml"
+      - ".github/workflows/check-docs.yml"
       - "**.py"
       - "**.rst"
       - "poetry.lock"
