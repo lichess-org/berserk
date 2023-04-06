@@ -1,7 +1,7 @@
 berserk
 =======
 
-.. image:: https://github.com/lichess-org/berserk/workflows/test/badge.svg
+.. image:: https://github.com/lichess-org/berserk/actions/workflows/test/badge.svg
     :target: https://github.com/lichess-org/berserk/actions
     :alt: Test status
 
@@ -9,7 +9,7 @@ berserk
     :target: https://pypi.python.org/pypi/berserk
     :alt: PyPI package
 
-.. image:: https://github.com/lichess-org/berserk/workflows/deploy-docs/badge.svg
+.. image:: https://github.com/lichess-org/berserk/actions/workflows/deploy-docs/badge.svg
     :target: https://lichess-org.github.io/berserk/
     :alt: Docs
 
