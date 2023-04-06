@@ -64,4 +64,4 @@ exclude_patterns = ["_build"]
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = "sphinx"
-html_theme = "default"
+html_theme = "sphinx_rtd_theme"
