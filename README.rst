@@ -14,7 +14,7 @@ berserk
     :alt: Docs
 
 .. image:: https://img.shields.io/discord/280713822073913354.svg?label=discord&color=green&logo=discord
-    :target: https://discord.com/lichess
+    :target: https://discord.gg/lichess
     :alt: Discord
 
 Python client for the `Lichess API <https://lichess.org/api>`_.
