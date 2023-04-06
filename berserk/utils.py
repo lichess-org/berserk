@@ -1,6 +1,6 @@
 from __future__ import annotations
 from datetime import datetime, timezone
-from typing import Any, Callable, Dict, List, NamedTuple, Tuple, TypeVar, cast
+from typing import Any, Callable, Dict, List, NamedTuple, Tuple, TypeVar, Union, cast
 
 T = TypeVar("T")
 U = TypeVar("U")
@@ -63,7 +63,7 @@ def inner(
     func: Callable[[T], U], *keys: str
 ) -> Callable[[Dict[str, T]], Dict[str, T | U]]:
     def convert(data: Dict[str, T]) -> Dict[str, T | U]:
-        result = cast(Dict[str, T | U], data)
+        result = cast(Dict[str, Union[T, U]], data)
         for k in keys:
             try:
                 result[k] = func(data[k])
