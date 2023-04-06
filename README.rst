@@ -10,17 +10,17 @@ This is based on the `original berserk version created by rhgrant10 <https://git
 Installation
 ------------
 
-Requires Python 3.7+. Download and install the latest release:
+Requires Python 3.8+. Download and install the latest release:
 ::
 
-    pip install berserk
+    pip3 install berserk
 
 If you have `berserk-downstream` installed, make sure to uninstall it first!
 
 Features
 --------
 
-* handles JSON and PGN formats at user's discretion
+* handles (ND)JSON and PGN formats at user's discretion
 * token auth session
 * easy integration with OAuth2
 * automatically converts time values to datetimes
