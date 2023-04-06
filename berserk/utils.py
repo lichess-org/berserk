@@ -1,6 +1,5 @@
-from datetime import datetime
-from datetime import timezone
 import collections
+from datetime import datetime, timezone
 
 
 def to_millis(dt):
