@@ -15,6 +15,8 @@ classifiers = [
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.8'
     ]
+# by default files declared in .gitignore are excluded
+include = ["CHANGELOG.rst", "LICENSE", "docs"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
