@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from unittest import mock
 
 from berserk import formats as fmts

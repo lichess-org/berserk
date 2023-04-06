@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-
-
 __all__ = ["PerfType", "Variant", "Color", "Room", "Mode", "Position", "Reason"]
 
 

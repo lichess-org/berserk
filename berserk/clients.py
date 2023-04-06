@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from time import time as now
 import requests
 from deprecated import deprecated
