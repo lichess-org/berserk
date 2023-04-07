@@ -967,6 +967,15 @@ class Board(BaseClient):
         payload = {"room": room, "text": text}
         return self._r.post(path, json=payload)["ok"]
 
+    def get_game_chat(self, game_id: str) -> List[Dict[str, str]]:
+        """Get the messages posted in the game chat.
+
+        :param str game_id: ID of a game
+        :return: list of game chat events
+        """
+        path = f"api/board/game/{game_id}/chat"
+        return self._r.get(path)
+
     def abort_game(self, game_id):
         """Abort a board game.
 
@@ -1080,6 +1089,28 @@ class Board(BaseClient):
         :rtype: bool
         """
         return self.handle_takeback_offer(game_id, False)
+
+    def claim_victory(self, game_id: str) -> bool:
+        """Claim victory when the opponent has left the game for a while.
+
+        Generally, this should only be called once the `opponentGone` event
+        is received in the board game state stream and the `claimWinInSeconds`
+        time has elapsed.
+
+        :param str game_id: ID of an in-progress game
+        :return: True if successful
+        """
+        path = f"/api/board/game/{game_id}/claim-victory/"
+        return self._r.post(path)["ok"]
+
+    def go_berserk(self, game_id: str) -> bool:
+        """Go berserk on an arena tournament game.
+
+        :param str game_id: ID of an in-progress game
+        :return: True if successful
+        """
+        path = f"/api/board/game/{game_id}/berserk"
+        return self._r.post(path)["ok"]
 
 
 class Bots(BaseClient):

@@ -111,6 +111,7 @@ Most of the API is available:
     client.board.stream_game_state
     client.board.make_move
     client.board.post_message
+    client.board.get_game_chat
     client.board.abort_game
     client.board.resign_game
     client.board.handle_draw_offer
@@ -121,6 +122,8 @@ Most of the API is available:
     client.board.offer_takeback
     client.board.accept_takeback
     client.board.decline_takeback
+    client.board.claim_victory
+    client.board.go_berserk
 
     client.bots.stream_incoming_events
     client.bots.stream_game_state
