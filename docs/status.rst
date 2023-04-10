@@ -20,8 +20,8 @@ Account
 .. note::
     Also in accounts: :py:meth:`berserk.clients.Account.upgrade_to_bot`.
 
-User
-----
+Users
+-----
 
 - Get real-time users status
 - Get all top 10
@@ -42,6 +42,24 @@ User
 .. note::
     Also in users: :py:meth:`berserk.clients.Users.get_puzzle_activity`
 
+Relations
+---------
+
+- Get users followed by the logged in user
+- Follow a player
+- Unfollow a player
+
+Teams
+-----
+
+- Get members of a team
+- Join a team
+- Leave a team
+- Kick a user from your team
+
+Games
+-----
+
 TO-DO
 =====
 
@@ -49,3 +67,17 @@ Users
 -----
 
 - Autocomplete usernames
+
+Teams
+-----
+
+- Get team swiss tournaments
+- Get a single team
+- Get popular teams
+- Teams of a player
+- Search teams
+- Get team Arena tournaments
+- Get join requests
+- Accept join request
+- Decline join request
+- Message all members
