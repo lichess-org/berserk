@@ -8,6 +8,7 @@
    usage
    api
    contributing
+   status
    changelog
 
 

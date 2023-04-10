@@ -307,6 +307,24 @@ class Users(BaseClient):
         path = f"/api/user/{username}/perf/{perf}"
         return self._r.get(path, fmt=JSON_LIST, converter=models.User.convert)
 
+    def autocomplete_usernames(
+        self,
+        term: str,
+        object_type: bool = False,
+        friend: bool | None = None,
+    ) -> Dict[str, List[Dict[str, Any]]] | List[str]:
+        """Provides autocompletion options for an incomplete username.
+
+        :param term: the beginning of a username
+        :param object_type: return an array (False, default) or objects
+        :param friend: returns followed players or others
+        """
+        params = {"term": term, "object": object_type}
+        if friend:
+            params["friend"] = friend
+        path = "/api/player/autocomplete"
+        return self._r.get(path, fmt=JSON, params=params)
+
 
 class Relations(BaseClient):
     def get_users_followed(self) -> Iterator[Dict[str, Any]]:
