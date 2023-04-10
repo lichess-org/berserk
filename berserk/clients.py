@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from time import time as now
 from typing import Any, Dict, Iterator, List, Tuple, cast
 
@@ -1747,7 +1748,9 @@ class Broadcasts(BaseClient):
         :return: broadcast round info
         :rtype: dict
         """
-        path = f"broadcast/{broadcast_tournament_slug}/{broadcast_round_slug}/{broadcast_id}"
+        path = (
+            f"broadcast/{broadcast_tournament_slug}/{broadcast_round_slug}/{broadcast_id}"
+        )
         return self._r.get(path, converter=models.Broadcast.convert)
 
     def update_round(self, broadcast_id, name, sync_url=None, starts_at=None):
