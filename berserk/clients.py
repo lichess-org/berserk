@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+"""Clients to access API."""
 from __future__ import annotations
 
 from time import time as now
@@ -34,6 +36,8 @@ API_URL = "https://lichess.org/"
 
 
 class BaseClient:
+    """Base client containing Requestor."""
+
     def __init__(self, session: requests.Session, base_url: str | None = None):
         self._r = Requestor(session, base_url or API_URL, default_fmt=JSON)
 
