@@ -7,6 +7,7 @@ import requests
 from ..formats import JSON
 from ..session import Requestor
 from .acount import Account
+from .relations import Relations
 from .users import Users
 
 __all__ = [
@@ -17,6 +18,7 @@ __all__ = [
     "Broadcasts",
     "Challenges",
     "Games",
+    "Relations",
     "Simuls",
     "Studies",
     "Teams",
