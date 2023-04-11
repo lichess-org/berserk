@@ -7,6 +7,7 @@ import requests
 from ..formats import JSON
 from ..session import Requestor
 from .acount import Account
+from .challenges import Challenges
 from .games import Games
 from .relations import Relations
 from .teams import Teams
