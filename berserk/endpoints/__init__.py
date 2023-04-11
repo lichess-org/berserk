@@ -7,10 +7,13 @@ import requests
 from ..formats import JSON
 from ..session import Requestor
 from .acount import Account
+from .board import Board
+from .bots import Bots
 from .challenges import Challenges
 from .games import Games
 from .relations import Relations
 from .teams import Teams
+from .tournaments import Tournaments
 from .users import Users
 
 __all__ = [
