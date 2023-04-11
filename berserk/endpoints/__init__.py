@@ -8,6 +8,7 @@ from ..formats import JSON
 from ..session import Requestor
 from .acount import Account
 from .relations import Relations
+from .teams import Teams
 from .users import Users
 
 __all__ = [

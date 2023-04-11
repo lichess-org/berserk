@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Relations-related endpoints."""
+"""Relation-related endpoints."""
 from typing import Any, Dict, Iterator
 
 from .. import models
@@ -8,7 +8,7 @@ from . import BaseClient
 
 
 class Relations(BaseClient):
-    """Client for relations-related endpoints."""
+    """Client for relation-related endpoints."""
 
     def get_users_followed(self) -> Iterator[Dict[str, Any]]:
         """Stream users you are following.
