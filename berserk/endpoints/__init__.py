@@ -9,6 +9,7 @@ from ..session import Requestor
 from .acount import Account
 from .board import Board
 from .bots import Bots
+from .broadcasts import Broadcasts
 from .challenges import Challenges
 from .games import Games
 from .relations import Relations
