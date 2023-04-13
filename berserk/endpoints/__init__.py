@@ -13,6 +13,8 @@ from .broadcasts import Broadcasts
 from .challenges import Challenges
 from .games import Games
 from .relations import Relations
+from .simuls import Simuls
+from .studies import Studies
 from .teams import Teams
 from .tournaments import Tournaments
 from .users import Users

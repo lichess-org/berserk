@@ -1,0 +1,29 @@
+# -*- coding: utf-8 -*-
+"""Studies-related endpoints."""
+from typing import Iterator
+
+from ..formats import PGN
+from . import BaseClient
+
+
+class Studies(BaseClient):
+    """Study chess the Lichess way."""
+
+    def export_chapter(self, study_id: str, chapter_id: str) -> str:
+        """Export one chapter of a study.
+
+        :param str study_id: The study ID (8 characters).
+        :param str chapter_id: The chapter ID (8 characters).
+        :return str: Chapter as PGN.
+        """
+        path = f"/study/{study_id}/{chapter_id}.pgn"
+        return self._r.get(path, fmt=PGN)
+
+    def export(self, study_id: str) -> Iterator[str]:
+        """Export all chapters of a study.
+
+        :param str study_id: The study ID (8 characters).
+        :return Iterator[str]: All chapters as PGN.
+        """
+        path = f"/study/{study_id}.pgn"
+        return self._r.get(path, fmt=PGN, stream=True)
