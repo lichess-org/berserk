@@ -437,5 +437,3 @@ class Tournaments(FmtClient):
         """
         path = f"api/user/{username}/tournament/created"
         return self._r.get(path, stream=True)
-        return self._r.get(path, stream=True)
-        return self._r.get(path, stream=True)
