@@ -12,8 +12,8 @@ class Studies(BaseClient):
     def export_chapter(self, study_id: str, chapter_id: str) -> str:
         """Export one chapter of a study.
 
-        :param str study_id: the study ID (8 characters)
-        :param str chapter_id: the chapter ID (8 characters)
+        :param str study_id: the study ID
+        :param str chapter_id: the chapter ID
         :return str: chapter as PGN
         """
         path = f"/study/{study_id}/{chapter_id}.pgn"
@@ -22,7 +22,7 @@ class Studies(BaseClient):
     def export(self, study_id: str) -> Iterator[str]:
         """Export all chapters of a study.
 
-        :param str study_id: the study ID (8 characters)
+        :param str study_id: the study ID
         :return Iterator[str]: all chapters as PGN
         """
         path = f"/study/{study_id}.pgn"
