@@ -13,6 +13,7 @@ from .broadcasts import Broadcasts
 from .challenges import Challenges
 from .games import Games
 from .messaging import Messaging
+from .oauth import OAuth
 from .relations import Relations
 from .simuls import Simuls
 from .studies import Studies
