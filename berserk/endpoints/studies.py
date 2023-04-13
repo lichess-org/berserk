@@ -3,7 +3,7 @@
 from typing import Iterator
 
 from ..formats import PGN
-from . import BaseClient
+from .base import BaseClient
 
 
 class Studies(BaseClient):

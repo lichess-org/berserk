@@ -2,7 +2,7 @@
 """TV-related endpoints."""
 from .. import models
 from ..formats import NDJSON, PGN
-from . import FmtClient
+from .base import FmtClient
 
 
 class TV(FmtClient):

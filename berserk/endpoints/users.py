@@ -4,7 +4,7 @@ from typing import Any, Dict, Iterator, List
 
 from .. import models
 from ..formats import JSON, JSON_LIST, LIJSON, NDJSON
-from . import BaseClient
+from .base import BaseClient
 
 
 class Users(BaseClient):

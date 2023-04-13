@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Broadcasts-related endpoints."""
 from .. import models
-from . import BaseClient
+from .base import BaseClient
 
 
 class Broadcasts(BaseClient):

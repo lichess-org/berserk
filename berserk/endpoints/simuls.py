@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """Simuls-related endpoints."""
-from . import BaseClient
+from .base import BaseClient
 
 
 class Simuls(BaseClient):

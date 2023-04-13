@@ -5,7 +5,7 @@ from typing import Any, Dict, Iterator, List, Tuple
 
 from .. import models
 from ..formats import TEXT
-from . import BaseClient
+from .base import BaseClient
 
 
 class Board(BaseClient):

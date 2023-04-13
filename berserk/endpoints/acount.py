@@ -3,7 +3,7 @@
 from typing import Any, Dict
 
 from .. import models
-from . import BaseClient
+from .base import BaseClient
 
 
 class Account(BaseClient):

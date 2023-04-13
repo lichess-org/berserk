@@ -4,7 +4,7 @@ from typing import Any, Dict, Iterator
 
 from .. import models
 from ..formats import NDJSON
-from . import BaseClient
+from .base import BaseClient
 
 
 class Relations(BaseClient):

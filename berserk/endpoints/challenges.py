@@ -4,7 +4,7 @@ from typing import Any, Dict
 
 from .. import models
 from ..enums import Reason
-from . import BaseClient
+from .base import BaseClient
 
 
 class Challenges(BaseClient):

@@ -6,7 +6,7 @@ from deprecated import deprecated
 
 from .. import models
 from ..formats import NDJSON, PGN
-from . import FmtClient
+from .base import FmtClient
 
 
 class Tournaments(FmtClient):

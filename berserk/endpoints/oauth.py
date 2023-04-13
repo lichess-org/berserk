@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """OAuth-related endpoints."""
 from .. import models
-from . import BaseClient
+from .base import BaseClient
 
 
 class OAuth(BaseClient):

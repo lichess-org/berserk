@@ -2,7 +2,7 @@
 """Bot-related endpoints."""
 from .. import models
 from ..enums import Reason
-from . import BaseClient
+from .base import BaseClient
 
 
 class Bots(BaseClient):
