@@ -2,6 +2,8 @@
 """User-related endpoints."""
 from typing import Any, Dict, Iterator, List
 
+from deprecated import deprecated
+
 from .. import models
 from ..formats import JSON, JSON_LIST, LIJSON, NDJSON
 from .base import BaseClient
