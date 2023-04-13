@@ -19,6 +19,7 @@ from .simuls import Simuls
 from .studies import Studies
 from .teams import Teams
 from .tournaments import Tournaments
+from .tv import TV
 from .users import Users
 
 __all__ = [
