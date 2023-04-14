@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Base clients."""
+from typing import Optional
+
 import requests
 
 from ..formats import JSON
@@ -11,7 +13,7 @@ API_URL = "https://lichess.org/"
 class BaseClient:
     """Base client containing Requestor."""
 
-    def __init__(self, session: requests.Session, base_url: str | None = None):
+    def __init__(self, session: requests.Session, base_url: Optional[str] = None):
         self._r = Requestor(session, base_url or API_URL, default_fmt=JSON)
 
 
@@ -30,7 +32,7 @@ class FmtClient(BaseClient):
     def __init__(
         self,
         session: requests.Session,
-        base_url: str | None = None,
+        base_url: Optional[str] = None,
         pgn_as_default: bool = False,
     ):
         super().__init__(session, base_url)
