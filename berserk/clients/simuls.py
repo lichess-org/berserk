@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Simuls-related endpoints."""
+from __future__ import annotations
+
 from .base import BaseClient
 
 

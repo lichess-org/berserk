@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """User-related endpoints."""
+from __future__ import annotations
+
 from typing import cast
 
 from deprecated import deprecated

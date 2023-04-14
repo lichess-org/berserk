@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Challenges-related endpoints."""
+from __future__ import annotations
+
 from typing import Any, Dict
 
 from .. import models

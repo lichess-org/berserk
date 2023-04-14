@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Studies-related endpoints."""
+from __future__ import annotations
+
 from typing import Iterator
 
 from ..formats import PGN

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Broadcasts-related endpoints."""
+from __future__ import annotations
+
 from .. import models
 from .base import BaseClient
 

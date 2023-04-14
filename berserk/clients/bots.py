@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Bot-related endpoints."""
+from __future__ import annotations
+
 from .. import models
 from ..enums import Reason
 from .base import BaseClient

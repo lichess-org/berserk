@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """TV-related endpoints."""
+from __future__ import annotations
+
 from .. import models
 from ..formats import NDJSON, PGN
 from .base import FmtClient
