@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 import logging
 from typing import (
     Any,
@@ -46,6 +47,37 @@ class Requestor(Generic[T]):
         self.session = session
         self.base_url = base_url
         self.default_fmt = default_fmt
+
+    @overload
+    def request(
+        self,
+        method: str,
+        path: str,
+        *,
+        stream: Literal[False] = False,
+        params: Params | None = None,
+        data: Data | None = None,
+        json: Dict[str, Any] | None = None,
+        fmt: FormatHandler[U],
+        converter: Converter[U] = utils.noop,
+    ) -> U:
+        ...
+
+    @overload
+    def request(
+        self,
+        method: str,
+        path: str,
+        *,
+        stream: bool = False,
+        params: Params | None = None,
+        data: Data | None = None,
+        json: Dict[str, Any] | None = None,
+        fmt: None = None,
+        converter: Converter[Any] = utils.noop,
+        **kwargs: Any,
+    ) -> Any | Iterator[Any]:
+        ...
 
     def request(
         self,

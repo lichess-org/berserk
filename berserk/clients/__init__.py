@@ -10,6 +10,7 @@ from .board import Board
 from .bots import Bots
 from .broadcasts import Broadcasts
 from .challenges import Challenges
+from .external_engine import ExternalEngine
 from .games import Games
 from .messaging import Messaging
 from .oauth import OAuth
@@ -28,6 +29,7 @@ __all__ = [
     "Bots",
     "Broadcasts",
     "Challenges",
+    "ExternalEngine",
     "Games",
     "Relations",
     "Simuls",
@@ -65,6 +67,7 @@ class Client(BaseClient):
     - :class:`board <berserk.clients.Board>` - play games using a normal account
     - :class:`messaging <berserk.clients.Messaging>` - private message other players
     - :class:`tv <berserk.clients.TV>` - get information on tv channels and games
+    - :class:`external_engine <berserk.clients.ExternalEngine>` - use external engines
 
     :param session: request session, authenticated as needed
     :param base_url: base API URL to use (if other than the default)
@@ -96,6 +99,7 @@ class Client(BaseClient):
         self.simuls = Simuls(session, base_url)
         self.studies = Studies(session, base_url)
         self.messaging = Messaging(session, base_url)
+        self.external_engine: ExternalEngine = ExternalEngine(session, base_url)
 
         self.oauth = OAuth(session, base_url)
 
