@@ -38,6 +38,6 @@ class FmtClient(BaseClient):
         super().__init__(session, base_url)
         self.pgn_as_default = pgn_as_default
 
-    def _use_pgn(self, as_pgn: bool | None = None):
+    def _use_pgn(self, as_pgn: Optional[bool] = None):
         # helper to merge default with provided arg
         return as_pgn if as_pgn is not None else self.pgn_as_default
