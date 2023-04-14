@@ -2,6 +2,7 @@
 """External engine-related endpoints."""
 from __future__ import annotations
 
+from json import JSONDecoder
 from typing import Any, Dict, Iterator, List, Optional, cast
 
 from ..enums import Variant
@@ -168,18 +169,26 @@ class ExternalEngine(BaseClient):
             Uses long polling.
             See `API documentation <https://lichess.org/api>`_.
 
+            This function will automatically wait for a job.
+
         :param str provider_secret: provider secret
         :return Dict[str, Any]: analysis
         """
         path: str = "https://engine.lichess.ovh/api/external-engine/work"
         json: Dict[str, Any] = {"providerSecret": provider_secret}
-        return self._r.post(path, json=json)
+        answer: str = self._r.post(path, json=json, fmt=TEXT)
+        while answer == "":
+            answer = self._r.post(path, json=json, fmt=TEXT)
+        decoder: JSONDecoder = JSONDecoder()
+        return cast(Dict[str, Any], decoder.decode(answer))
 
-    def answer_analysis_request(self, identifier: str) -> str:
+    def answer_analysis_request(self, identifier: str, results: str) -> str:
         """Answer an analysis request.
 
         :param str identifier: analysis id
+        :param str results: engine output
         :return str: thanks
         """
         path: str = f"https://engine.lichess.ovh/api/external-engine/work/{identifier}"
-        return self._r.post(path, fmt=TEXT)
+        payload: str = results
+        return self._r.post(path, data=payload, fmt=TEXT)
