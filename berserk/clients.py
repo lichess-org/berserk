@@ -729,7 +729,7 @@ class Challenges(BaseClient):
         :type color: :class:`~berserk.enums.Color`
         :param variant: game variant to use
         :type variant: :class:`~berserk.enums.Variant`
-        :param position: custom intial position in FEN (variant must be
+        :param position: custom initial position in FEN (variant must be
                          standard and the game cannot be rated)
         :return: challenge data
         """
@@ -773,7 +773,7 @@ class Challenges(BaseClient):
         :type color: :class:`~berserk.enums.Color`
         :param variant: game variant to use
         :type variant: :class:`~berserk.enums.Variant`
-        :param position: custom intial position in FEN (variant must be
+        :param position: custom initial position in FEN (variant must be
                          standard and the game cannot be rated)
         :return: game data
         """
@@ -841,7 +841,7 @@ class Challenges(BaseClient):
         :param clock_increment: clock increment (in seconds)
         :param variant: game variant to use
         :type variant: :class:`~berserk.enums.Variant`
-        :param position: custom intial position in FEN (variant must be
+        :param position: custom initial position in FEN (variant must be
                          standard and the game cannot be rated)
         :param rated: Game is rated and impacts players ratings
         :param name: Optional name for the challenge, that players will see on
@@ -902,7 +902,7 @@ class Board(BaseClient):
     ) -> float:
         """Create a public seek to start a game with a random opponent.
 
-        :param time: intial clock time in minutes
+        :param time: initial clock time in minutes
         :param increment: clock increment in minutes
         :param rated: whether the game is rated (impacts ratings)
         :param variant: game variant to use
@@ -1254,7 +1254,7 @@ class Tournaments(FmtClient):
         .. note::
             If ``name`` is left blank then one is automatically created.
 
-        :param int clock_time: intial clock time in minutes
+        :param int clock_time: initial clock time in minutes
         :param int clock_increment: clock increment in seconds
         :param int minutes: length of the tournament in minutes
         :param str name: tournament name
