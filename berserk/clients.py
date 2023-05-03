@@ -1472,7 +1472,7 @@ class Tournaments(FmtClient):
         clocks=None,
         evals=None,
         opening=None,
-    ):
+    ) -> Iterator[str] | Iterator[Dict[str, Any]]:
         """Export games from a arena tournament.
 
         :param str id_: tournament ID
@@ -1484,8 +1484,7 @@ class Tournaments(FmtClient):
         :param bool evals: include analysis evalulation comments in the PGN
                            moves, when available
         :param bool opening: include the opening name
-        :return: games
-        :rtype: list
+        :return: iterator over the exported games, as JSON or PGN
         """
         path = f"api/tournament/{id_}/games"
         params = {
@@ -1496,10 +1495,14 @@ class Tournaments(FmtClient):
             "opening": opening,
         }
         if self._use_pgn(as_pgn):
-            return self._r.get(path, params=params, fmt=PGN)
+            yield from self._r.get(path, params=params, fmt=PGN, stream=True)
         else:
-            return self._r.get(
-                path, params=params, fmt=NDJSON, converter=models.Game.convert
+            yield from self._r.get(
+                path,
+                params=params,
+                fmt=NDJSON,
+                stream=True,
+                converter=models.Game.convert,
             )
 
     def export_swiss_games(
@@ -1512,7 +1515,7 @@ class Tournaments(FmtClient):
         clocks=None,
         evals=None,
         opening=None,
-    ):
+    ) -> Iterator[str] | Iterator[Dict[str, Any]]:
         """Export games from a swiss tournament
 
         :param str id_: tournament id
@@ -1525,8 +1528,7 @@ class Tournaments(FmtClient):
         :param bool evals: include analysis evaluation
                           comments in the PGN, when available
         :param bool opening: include the opening name
-        :return: games
-        :rtype: list
+        :return: iterator over the exported games, as JSON or PGN
         """
         path = f"api/swiss/{id_}/games"
         params = {
@@ -1538,10 +1540,14 @@ class Tournaments(FmtClient):
             "opening": opening,
         }
         if self._use_pgn(as_pgn):
-            return self._r.get(path, params=params, fmt=PGN)
+            yield from self._r.get(path, params=params, fmt=PGN, stream=True)
         else:
-            return self._r.get(
-                path, params=params, fmt=NDJSON, converter=models.Game.convert
+            yield from self._r.get(
+                path,
+                params=params,
+                fmt=NDJSON,
+                stream=True,
+                converter=models.Game.convert,
             )
 
     def tournaments_by_user(self, username, nb=None, as_pgn=False):
