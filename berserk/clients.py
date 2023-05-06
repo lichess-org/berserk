@@ -7,7 +7,7 @@ from deprecated import deprecated
 
 from . import models
 from .enums import Reason
-from .formats import JSON, JSON_LIST, LIJSON, NDJSON, PGN, TEXT
+from .formats import JSON, JSON_LIST, LIJSON, NDJSON, NDJSON_LIST, PGN, TEXT
 from .session import Requestor
 
 __all__ = [
@@ -953,14 +953,13 @@ class Board(BaseClient):
         path = f"api/board/game/{game_id}/move/{move}"
         return self._r.post(path)["ok"]
 
-    def post_message(self, game_id, text, spectator=False):
+    def post_message(self, game_id: str, text: str, spectator: bool = False) -> bool:
         """Post a message in a board game.
 
-        :param str game_id: ID of a game
-        :param str text: text of the message
-        :param bool spectator: post to spectator room (else player room)
+        :param game_id: ID of a game
+        :param text: text of the message
+        :param spectator: post to spectator room (else player room)
         :return: success
-        :rtype: bool
         """
         path = f"api/board/game/{game_id}/chat"
         room = "spectator" if spectator else "player"
@@ -974,29 +973,27 @@ class Board(BaseClient):
         :return: list of game chat events
         """
         path = f"api/board/game/{game_id}/chat"
-        return self._r.get(path)
+        return self._r.get(path, fmt=JSON_LIST)
 
-    def abort_game(self, game_id):
+    def abort_game(self, game_id: str) -> bool:
         """Abort a board game.
 
-        :param str game_id: ID of a game
+        :param game_id: ID of a game
         :return: success
-        :rtype: bool
         """
         path = f"api/board/game/{game_id}/abort"
         return self._r.post(path)["ok"]
 
-    def resign_game(self, game_id):
+    def resign_game(self, game_id: str) -> bool:
         """Resign a board game.
 
-        :param str game_id: ID of a game
+        :param game_id: ID of a game
         :return: success
-        :rtype: bool
         """
         path = f"api/board/game/{game_id}/resign"
         return self._r.post(path)["ok"]
 
-    def handle_draw_offer(self, game_id, accept):
+    def handle_draw_offer(self, game_id: str, accept: bool) -> bool:
         """Create, accept, or decline a draw offer.
 
         To offer a draw, pass ``accept=True`` and a game ID of an in-progress
@@ -1007,43 +1004,39 @@ class Board(BaseClient):
         Often, it's easier to call :func:`offer_draw`, :func:`accept_draw`, or
         :func:`decline_draw`.
 
-        :param str game_id: ID of an in-progress game
-        :param bool accept: whether to accept
+        :param game_id: ID of an in-progress game
+        :param accept: whether to accept
         :return: True if successful
-        :rtype: bool
         """
-        accept = "yes" if accept else "no"
-        path = f"/api/board/game/{game_id}/draw/{accept}"
+        accept_str = "yes" if accept else "no"
+        path = f"/api/board/game/{game_id}/draw/{accept_str}"
         return self._r.post(path)["ok"]
 
-    def offer_draw(self, game_id):
+    def offer_draw(self, game_id: str) -> bool:
         """Offer a draw in the given game.
 
-        :param str game_id: ID of an in-progress game
+        :param game_id: ID of an in-progress game
         :return: True if successful
-        :rtype: bool
         """
         return self.handle_draw_offer(game_id, True)
 
-    def accept_draw(self, game_id):
+    def accept_draw(self, game_id: str) -> bool:
         """Accept an already offered draw in the given game.
 
-        :param str game_id: ID of an in-progress game
+        :param game_id: ID of an in-progress game
         :return: True if successful
-        :rtype: bool
         """
         return self.handle_draw_offer(game_id, True)
 
-    def decline_draw(self, game_id):
+    def decline_draw(self, game_id: str) -> bool:
         """Decline an already offered draw in the given game.
 
-        :param str game_id: ID of an in-progress game
+        :param game_id: ID of an in-progress game
         :return: True if successful
-        :rtype: bool
         """
         return self.handle_draw_offer(game_id, False)
 
-    def handle_takeback_offer(self, game_id, accept):
+    def handle_takeback_offer(self, game_id: str, accept: bool) -> bool:
         """Create, accept, or decline a takeback offer.
 
         To offer a takeback, pass ``accept=True`` and a game ID of an in-progress
@@ -1054,39 +1047,35 @@ class Board(BaseClient):
         Often, it's easier to call :func:`offer_takeback`, :func:`accept_takeback`, or
         :func:`decline_takeback`.
 
-        :param str game_id: ID of an in-progress game
-        :param bool accept: whether to accept
+        :param game_id: ID of an in-progress game
+        :param accept: whether to accept
         :return: True if successful
-        :rtype: bool
         """
-        accept = "yes" if accept else "no"
-        path = f"/api/board/game/{game_id}/takeback/{accept}"
+        accept_str = "yes" if accept else "no"
+        path = f"/api/board/game/{game_id}/takeback/{accept_str}"
         return self._r.post(path)["ok"]
 
-    def offer_takeback(self, game_id):
+    def offer_takeback(self, game_id: str) -> bool:
         """Offer a takeback in the given game.
 
-        :param str game_id: ID of an in-progress game
+        :param game_id: ID of an in-progress game
         :return: True if successful
-        :rtype: bool
         """
         return self.handle_takeback_offer(game_id, True)
 
-    def accept_takeback(self, game_id):
+    def accept_takeback(self, game_id: str) -> bool:
         """Accept an already offered takeback in the given game.
 
-        :param str game_id: ID of an in-progress game
+        :param game_id: ID of an in-progress game
         :return: True if successful
-        :rtype: bool
         """
         return self.handle_takeback_offer(game_id, True)
 
-    def decline_takeback(self, game_id):
+    def decline_takeback(self, game_id: str) -> bool:
         """Decline an already offered takeback in the given game.
 
-        :param str game_id: ID of an in-progress game
+        :param game_id: ID of an in-progress game
         :return: True if successful
-        :rtype: bool
         """
         return self.handle_takeback_offer(game_id, False)
 
@@ -1116,86 +1105,83 @@ class Board(BaseClient):
 class Bots(BaseClient):
     """Client for bot-related endpoints."""
 
-    def stream_incoming_events(self):
+    def stream_incoming_events(self) -> Iterator[Dict[str, Any]]:
         """Get your realtime stream of incoming events.
 
         :return: stream of incoming events
-        :rtype: iterator over the stream of events
         """
         path = "api/stream/event"
         yield from self._r.get(path, stream=True)
 
-    def stream_game_state(self, game_id):
+    def stream_game_state(self, game_id: str) -> Iterator[Dict[str, Any]]:
         """Get the stream of events for a bot game.
 
-        :param str game_id: ID of a game
+        :param game_id: ID of a game
         :return: iterator over game states
         """
         path = f"api/bot/game/stream/{game_id}"
         yield from self._r.get(path, stream=True, converter=models.GameState.convert)
 
-    def make_move(self, game_id, move):
+    # TODO wtf return type is wrong why no error ???
+    def make_move(self, game_id: str, move: str) -> Iterator[Dict[str, Any]]:
         """Make a move in a bot game.
 
-        :param str game_id: ID of a game
-        :param str move: move to make
+        :param game_id: ID of a game
+        :param move: move to make
         :return: success
-        :rtype: bool
         """
         path = f"api/bot/game/{game_id}/move/{move}"
         return self._r.post(path)["ok"]
 
-    def post_message(self, game_id, text, spectator=False):
+    def post_message(self, game_id: str, text: str, spectator: bool = False):
         """Post a message in a bot game.
 
-        :param str game_id: ID of a game
-        :param str text: text of the message
-        :param bool spectator: post to spectator room (else player room)
+        :param game_id: ID of a game
+        :param text: text of the message
+        :param spectator: post to spectator room (else player room)
         :return: success
-        :rtype: bool
         """
         path = f"api/bot/game/{game_id}/chat"
         room = "spectator" if spectator else "player"
         payload = {"room": room, "text": text}
         return self._r.post(path, json=payload)["ok"]
 
-    def abort_game(self, game_id):
+    def abort_game(self, game_id: str) -> bool:
         """Abort a bot game.
 
-        :param str game_id: ID of a game
+        :param game_id: ID of a game
         :return: success
-        :rtype: bool
         """
         path = f"api/bot/game/{game_id}/abort"
         return self._r.post(path)["ok"]
 
-    def resign_game(self, game_id):
+    def resign_game(self, game_id: str) -> bool:
         """Resign a bot game.
 
-        :param str game_id: ID of a game
+        :param game_id: ID of a game
         :return: success
-        :rtype: bool
         """
         path = f"api/bot/game/{game_id}/resign"
         return self._r.post(path)["ok"]
 
-    def accept_challenge(self, challenge_id):
+    def accept_challenge(self, challenge_id: str) -> bool:
         """Accept an incoming challenge.
 
-        :param str challenge_id: ID of a challenge
+        :param challenge_id: ID of a challenge
         :return: success
-        :rtype: bool
         """
         path = f"api/challenge/{challenge_id}/accept"
         return self._r.post(path)["ok"]
 
-    def decline_challenge(self, challenge_id, reason=Reason.GENERIC):
+    def decline_challenge(
+        self, challenge_id: str, reason: str = Reason.GENERIC
+    ) -> bool:
         """Decline an incoming challenge.
-        :param str challenge_id: ID of a challenge
+
+        :param challenge_id: ID of a challenge
         :param reason: reason for declining challenge
         :type reason: :class:`~berserk.enums.Reason`
         :return: success indicator
-        :rtype: bool
         """
         path = f"api/challenge/{challenge_id}/decline"
         payload = {"reason": reason}
@@ -1209,7 +1195,6 @@ class Tournaments(FmtClient):
         """Get recently finished, ongoing, and upcoming tournaments.
 
         :return: current tournaments
-        :rtype: list
         """
         path = "api/tournament"
         return cast(
@@ -1219,9 +1204,9 @@ class Tournaments(FmtClient):
 
     def get_tournament(self, tournament_id: str, page: int = 1):
         """Get information about a tournament.
-        :patam str tournament_id
+
+        :param tournament_id
         :return: tournament information
-        :rtype: dict
         """
         path = f"api/tournament/{tournament_id}?page={page}"
         return self._r.get(path, converter=models.Tournament.convert)
@@ -1232,42 +1217,41 @@ class Tournaments(FmtClient):
     )
     def create(
         self,
-        clock_time,
-        clock_increment,
-        minutes,
-        name=None,
-        wait_minutes=None,
-        variant=None,
-        berserkable=None,
-        rated=None,
-        start_date=None,
-        position=None,
-        password=None,
-        conditions=None,
-    ):
+        clock_time: int,
+        clock_increment: int,
+        minutes: int,
+        name: str | None = None,
+        wait_minutes: int | None = None,
+        variant: str | None = None,
+        berserkable: bool | None = None,
+        rated: bool | None = None,
+        startDate: int | None = None,
+        position: str | None = None,
+        password: str | None = None,
+        conditions: Dict[str, str | int] | None = None,
+    ) -> Dict[str, Any]:
         """Create a new tournament.
 
         .. note::
-            ``wait_minutes`` is always relative to now and is overriden by
+            ``wait_minutes`` is always relative to now and is overridden by
             ``start_time``.
 
         .. note::
             If ``name`` is left blank then one is automatically created.
 
-        :param int clock_time: initial clock time in minutes
-        :param int clock_increment: clock increment in seconds
-        :param int minutes: length of the tournament in minutes
-        :param str name: tournament name
-        :param int wait_minutes: future start time in minutes
-        :param str start_date: when to start the tournament
-        :param str variant: variant to use if other than standard
-        :param bool rated: whether the game affects player ratings
-        :param str berserkable: whether players can use berserk
-        :param str position: custom initial position in FEN
-        :param str password: password (makes the tournament private)
-        :param dict conditions: conditions for participation
+        :param clock_time: initial clock time in minutes
+        :param clock_increment: clock increment in seconds
+        :param minutes: length of the tournament in minutes
+        :param name: tournament name
+        :param wait_minutes: future start time in minutes
+        :param variant: variant to use if other than standard
+        :param berserkable: whether players can use berserk
+        :param rated: whether the game affects player ratings
+        :param startDate: when to start the tournament (timestamp in milliseconds)
+        :param position: custom initial position in FEN
+        :param password: password (makes the tournament private)
+        :param conditions: conditions for participation
         :return: created tournament info
-        :rtype: dict
         """
         path = "api/tournament"
         payload = {
@@ -1276,7 +1260,7 @@ class Tournaments(FmtClient):
             "clockIncrement": clock_increment,
             "minutes": minutes,
             "waitMinutes": wait_minutes,
-            "startDate": start_date,
+            "startDate": startDate,
             "variant": variant,
             "rated": rated,
             "position": position,
@@ -1288,70 +1272,68 @@ class Tournaments(FmtClient):
 
     def create_arena(
         self,
-        clock_time,
-        clock_increment,
-        minutes,
-        name=None,
-        wait_minutes=None,
-        start_date=None,
-        variant=None,
-        rated=None,
-        position=None,
-        berserkable=None,
-        streakable=None,
-        hasChat=None,
-        description=None,
-        password=None,
-        teambBattleByTeam=None,
-        teamId=None,
-        minRating=None,
-        maxRating=None,
-        nbRatedGame=None,
-    ):
+        clockTime: int,
+        clockIncrement: int,
+        minutes: int,
+        name: str | None = None,
+        wait_minutes: int | None = None,
+        startDate: int | None = None,
+        variant: str | None = None,
+        rated: bool | None = None,
+        position: str | None = None,
+        berserkable: bool | None = None,
+        streakable: bool | None = None,
+        hasChat: bool | None = None,
+        description: str | None = None,
+        password: str | None = None,
+        teamBattleByTeam: str | None = None,
+        teamId: str | None = None,
+        minRating: int | None = None,
+        maxRating: int | None = None,
+        nbRatedGame: int | None = None,
+    ) -> Dict[str, Any]:
         """Create a new arena tournament.
 
         .. note::
 
-            ``wait_minutes`` is always relative to now and is overriden by
+            ``wait_minutes`` is always relative to now and is overridden by
             ``start_time``.
 
         .. note::
 
             If ``name`` is left blank then one is automatically created.
 
-        :param int clock_time: initial clock time in minutes
-        :param int clock_increment: clock increment in seconds
-        :param int minutes: length of the tournament in minutes
-        :param str name: tournament name
-        :param int wait_minutes: future start time in minutes
-        :param str start_date: when to start the tournament
-        :param str variant: variant to use if other than standard
-        :param bool rated: whether the game affects player ratings
-        :param str position: custom initial position in FEN
-        :param str berserkable: whether players can use berserk
-        :param bool streakable: whether players get streaks
-        :param bool hasChat: whether players can
-                            discuss in a chat
-        :param string description: anything you want to
+        :param clockTime: initial clock time in minutes
+        :param clockIncrement: clock increment in seconds
+        :param minutes: length of the tournament in minutes
+        :param name: tournament name
+        :param wait_minutes: future start time in minutes
+        :param startDate: when to start the tournament (timestamp in milliseconds)
+        :param variant: variant to use if other than standard
+        :param rated: whether the game affects player ratings
+        :param position: custom initial position in FEN
+        :param berserkable: whether players can use berserk
+        :param streakable: whether players get streaks
+        :param hasChat: whether players can discuss in a chat
+        :param description: anything you want to
                                   tell players about the tournament
-        :param str password: password
-        :param str teambBattleByTeam: Id of a team you lead
+        :param password: password
+        :param teamBattleByTeam: Id of a team you lead
                                       to create a team battle
-        :param string teamId: Restrict entry to members of team
-        :param int minRating: Minimum rating to join
-        :param int maxRating: Maximum rating to join
-        :param int nbRatedGame: Min number of rated games required
+        :param teamId: Restrict entry to members of team
+        :param minRating: Minimum rating to join
+        :param maxRating: Maximum rating to join
+        :param nbRatedGame: Min number of rated games required
         :return: created tournament info
-        :rtype: dict
         """
         path = "api/tournament"
         payload = {
             "name": name,
-            "clockTime": clock_time,
-            "clockIncrement": clock_increment,
+            "clockTime": clockTime,
+            "clockIncrement": clockIncrement,
             "minutes": minutes,
             "waitMinutes": wait_minutes,
-            "startDate": start_date,
+            "startDate": startDate,
             "variant": variant,
             "rated": rated,
             "position": position,
@@ -1360,7 +1342,7 @@ class Tournaments(FmtClient):
             "hasChat": hasChat,
             "description": description,
             "password": password,
-            "teambBattleByTeam": teambBattleByTeam,
+            "teamBattleByTeam": teamBattleByTeam,
             "conditions.teamMember.teamId": teamId,
             "conditions.minRating.rating": minRating,
             "conditions.maxRating.rating": maxRating,
@@ -1370,18 +1352,18 @@ class Tournaments(FmtClient):
 
     def create_swiss(
         self,
-        team_id,
-        clock_limit,
-        clock_increment,
-        nbRounds,
-        name=None,
-        startsAt=None,
-        roundInterval=None,
-        variant=None,
-        description=None,
-        rated=None,
-        chatFor=None,
-    ):
+        teamId: str,
+        clockLimit: int,
+        clockIncrement: int,
+        nbRounds: int,
+        name: str | None = None,
+        startsAt: int | None = None,
+        roundInterval: int | None = None,
+        variant: str | None = None,
+        description: str | None = None,
+        rated: bool | None = None,
+        chatFor: int | None = None,
+    ) -> Dict[str, Any]:
         """Create a new swiss tournament
 
         .. note::
@@ -1393,26 +1375,25 @@ class Tournaments(FmtClient):
             If ``startsAt`` is left blank then the
             tournament begins 10 minutes after creation
 
-            :param string team_id: team Id, required for swiss tournaments
-            :param int clock_limit: initial clock time in seconds
-            :param int clock_increment: clock increment in seconds
-            :param int nbRounds: maximum number of rounds to play
-            :param string name: tournament name
-            :param int startsAt: when to start tournament, in ms timestamp
-            :param int roundInterval: interval between rounds in seconds
-            :param string variant: variant to use if other than standard
-            :param string description: tournament description
-            :param bool rated: whether the game affects player ratings
-            :param int chatFor: who can read and write in the chat
+            :param teamId: team Id, required for swiss tournaments
+            :param clockLimit: initial clock time in seconds
+            :param clockIncrement: clock increment in seconds
+            :param nbRounds: maximum number of rounds to play
+            :param name: tournament name
+            :param startsAt: when to start tournament (timestamp in milliseconds)
+            :param roundInterval: interval between rounds in seconds
+            :param variant: variant to use if other than standard
+            :param description: tournament description
+            :param rated: whether the game affects player ratings
+            :param chatFor: who can read and write in the chat
             :return: created tournament info
-            :rtype: dict
         """
-        path = f"api/swiss/new/{team_id}"
+        path = f"api/swiss/new/{teamId}"
 
         payload = {
             "name": name,
-            "clock.limit": clock_limit,
-            "clock.increment": clock_increment,
+            "clock.limit": clockLimit,
+            "clock.increment": clockIncrement,
             "nbRounds": nbRounds,
             "startsAt": startsAt,
             "roundInterval": roundInterval,
@@ -1429,26 +1410,25 @@ class Tournaments(FmtClient):
     )
     def export_games(
         self,
-        id_,
-        as_pgn=False,
-        moves=None,
-        tags=None,
-        clocks=None,
-        evals=None,
-        opening=None,
-    ):
+        id: str,
+        as_pgn: bool | None = None,
+        moves: bool = True,
+        tags: bool = True,
+        clocks: bool = False,
+        evals: bool = True,
+        opening: bool = False,
+    ) -> str | List[Dict[str, Any]]:
         """Export games from a tournament.
-        :param str `id_`: tournament ID
-        :param bool as_pgn: whether to return PGN instead of JSON
-        :param bool moves: include moves
-        :param bool tags: include tags
-        :param bool clocks: include clock comments in the PGN moves, when available
-        :param bool evals: include analysis evalulation comments in the PGN moves, when available
-        :param bool opening: include the opening name
+        :param id: tournament ID
+        :param as_pgn: whether to return PGN instead of JSON
+        :param moves: include moves
+        :param tags: include tags
+        :param clocks: include clock comments in the PGN moves, when available
+        :param evals: include analysis evalulation comments in the PGN moves, when available
+        :param opening: include the opening name
         :return: games
-        :rtype: list
         """
-        path = f"api/tournament/{id_}/games"
+        path = f"api/tournament/{id}/games"
         params = {
             "moves": moves,
             "tags": tags,
@@ -1460,33 +1440,33 @@ class Tournaments(FmtClient):
             return self._r.get(path, params=params, fmt=PGN)
         else:
             return self._r.get(
-                path, params=params, fmt=NDJSON, converter=models.Game.convert
+                path, params=params, fmt=NDJSON_LIST, converter=models.Game.convert
             )
 
     def export_arena_games(
         self,
-        id_,
-        as_pgn=False,
-        moves=None,
-        tags=None,
-        clocks=None,
-        evals=None,
-        opening=None,
+        id: str,
+        as_pgn: bool | None = None,
+        moves: bool = True,
+        tags: bool = True,
+        clocks: bool = False,
+        evals: bool = True,
+        opening: bool = False,
     ) -> Iterator[str] | Iterator[Dict[str, Any]]:
         """Export games from a arena tournament.
 
-        :param str id_: tournament ID
-        :param bool as_pgn: whether to return PGN instead of JSON
-        :param bool moves: include moves
-        :param bool tags: include tags
-        :param bool clocks: include clock comments in the PGN moves, when
+        :param id: tournament ID
+        :param as_pgn: whether to return PGN instead of JSON
+        :param moves: include moves
+        :param tags: include tags
+        :param clocks: include clock comments in the PGN moves, when
                             available
-        :param bool evals: include analysis evalulation comments in the PGN
+        :param evals: include analysis evalulation comments in the PGN
                            moves, when available
-        :param bool opening: include the opening name
+        :param opening: include the opening name
         :return: iterator over the exported games, as JSON or PGN
         """
-        path = f"api/tournament/{id_}/games"
+        path = f"api/tournament/{id}/games"
         params = {
             "moves": moves,
             "tags": tags,
@@ -1507,30 +1487,30 @@ class Tournaments(FmtClient):
 
     def export_swiss_games(
         self,
-        id_,
-        as_pgn=False,
-        moves=None,
-        pgnInJson=None,
-        tags=None,
-        clocks=None,
-        evals=None,
-        opening=None,
+        id: str,
+        as_pgn: bool | None = None,
+        moves: bool = True,
+        pgnInJson: bool = False,
+        tags: bool = True,
+        clocks: bool = False,
+        evals: bool = True,
+        opening: bool = False,
     ) -> Iterator[str] | Iterator[Dict[str, Any]]:
         """Export games from a swiss tournament
 
-        :param str id_: tournament id
-        :param bool as_pgn: whether to return pgn instead of JSON
-        :param bool moves: include moves
-        :param bool pgnInJson: include the full PGN within the
+        :param id: tournament id
+        :param as_pgn: whether to return pgn instead of JSON
+        :param moves: include moves
+        :param pgnInJson: include the full PGN within the
                               JSON response, in a pgn field
-        :param bool tags: include tags
-        :param bool clocks: include clock comments
-        :param bool evals: include analysis evaluation
+        :param tags: include tags
+        :param clocks: include clock comments
+        :param evals: include analysis evaluation
                           comments in the PGN, when available
-        :param bool opening: include the opening name
+        :param opening: include the opening name
         :return: iterator over the exported games, as JSON or PGN
         """
-        path = f"api/swiss/{id_}/games"
+        path = f"api/swiss/{id}/games"
         params = {
             "moves:": moves,
             "pgnInJson": pgnInJson,
@@ -1550,89 +1530,80 @@ class Tournaments(FmtClient):
                 converter=models.Game.convert,
             )
 
-    def tournaments_by_user(self, username, nb=None, as_pgn=False):
+    def tournaments_by_user(
+        self, username: str, nb: int | None = None
+    ) -> List[Dict[str, Any]]:
         """Get tournaments created by a user
 
-        :param string username: username
-        :param int nb: max number of tournaments to fetch
-        :param bool as_pgn: whether to return pgn instead of Json
+        :param username: username
+        :param nb: max number of tournaments to fetch
         :return: tournaments
-        :rtype: list
         """
 
         path = f"api/user/{username}/tournament/created"
         params = {
             "nb": nb,
         }
-        if self._use_pgn(as_pgn):
-            return self._r.get(path, params=params, fmt=PGN)
-        else:
-            return self._r.get(
-                path, params=params, fmt=NDJSON, converter=models.Game.convert
-            )
+        return self._r.get(
+            path, params=params, fmt=NDJSON_LIST, converter=models.Game.convert
+        )
 
-    def arenas_by_team(self, teamId, maxT=None, as_pgn=False):
+    def arenas_by_team(
+        self, teamId: str, maxT: int | None = None
+    ) -> List[Dict[str, Any]]:
         """Get arenas created for a team
 
-        :param string teamId: Id of the team
-        :param int maxT: how many tournaments to download
-        :param bool as_pgn: whether to return pgn instead of Json
+        :param teamId: Id of the team
+        :param maxT: how many tournaments to download
         :return: tournaments
-        :rtype: list
         """
         path = f"api/team/{teamId}/arena"
         params = {
             "max": maxT,
         }
-        if self._use_pgn(as_pgn):
-            return self._r.get(path, params=params, fmt=PGN)
-        else:
-            return self._r.get(
-                path, params=params, fmt=NDJSON, converter=models.Game.convert
-            )
+        return self._r.get(
+            path, params=params, fmt=NDJSON_LIST, converter=models.Game.convert
+        )
 
-    def swiss_by_team(self, teamId, maxT=None, as_pgn=False):
+    def swiss_by_team(
+        self, teamId: str, maxT: int | None = None
+    ) -> List[Dict[str, Any]]:
         """Get swiss tournaments created for a team
 
-        :param string teamId: Id of the team
-        :param int maxT: how many tournaments to download
-        :param bool as_pgn: whether to return pgn instead of Json
+        :param teamId: Id of the team
+        :param maxT: how many tournaments to download
         :return: tournaments
-        :rtype: list
         """
         path = f"api/team/{teamId}/swiss"
         params = {
             "max": maxT,
         }
-        if self._use_pgn(as_pgn):
-            return self._r.get(path, params=params, fmt=PGN)
-        else:
-            return self._r.get(
-                path, params=params, fmt=NDJSON, converter=models.Game.convert
-            )
+        return self._r.get(
+            path, params=params, fmt=NDJSON_LIST, converter=models.Game.convert
+        )
 
-    def stream_results(self, id_, limit=None):
+    def stream_results(
+        self, id: str, limit: int | None = None
+    ) -> Iterator[Dict[str, Any]]:
         """Stream the results of a tournament.
 
         Results are the players of a tournament with their scores and
         performance in rank order. Note that results for ongoing
         tournaments can be inconsistent due to ranking changes.
 
-        :param str id_: tournament ID
-        :param int limit: maximum number of results to stream
-        :return: iterator over the stream of results
-        :rtype: iter
+        :param id: tournament ID
+        :param limit: maximum number of results to stream
+        :return: iterator over the results
         """
-        path = f"api/tournament/{id_}/results"
+        path = f"api/tournament/{id}/results"
         params = {"nb": limit}
         return self._r.get(path, params=params, stream=True)
 
-    def stream_by_creator(self, username):
+    def stream_by_creator(self, username: str) -> Iterator[Dict[str, Any]]:
         """Stream the tournaments created by a player.
 
-        :param str username: username of the player
-        :return: tournaments
-        :rtype: iter
+        :param username: username of the player
+        :return: iterator over the tournaments
         """
         path = f"api/user/{username}/tournament/created"
         return self._r.get(path, stream=True)
@@ -1641,15 +1612,20 @@ class Tournaments(FmtClient):
 class Broadcasts(BaseClient):
     """Broadcast of one or more games."""
 
-    def create(self, name, description, markdown=None, official=None):
+    def create(
+        self,
+        name: str,
+        description: str,
+        markdown: str | None = None,
+        official: bool = False,
+    ) -> Dict[str, Any]:
         """Create a new broadcast.
 
-        :param str name: name of the broadcast
-        :param str description: short description
-        :param str markdown: long description
-        :param bool official: DO NOT USE
+        :param name: name of the broadcast
+        :param description: short description
+        :param markdown: long description
+        :param official: can only be used by Lichess staff accounts
         :return: created tournament info
-        :rtype: dict
         """
         path = "broadcast/new"
         payload = {
@@ -1660,34 +1636,38 @@ class Broadcasts(BaseClient):
         }
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
-    def get(self, broadcast_id, slug="-"):
+    def get(self, broadcast_id: str, slug: str = "-") -> Dict[str, Any]:
         """Get a broadcast by ID.
 
-        :param str broadcast_id: ID of a broadcast
-        :param str slug: slug for SEO
+        :param broadcast_id: ID of a broadcast
+        :param slug: slug for SEO
         :return: broadcast information
-        :rtype: dict
         """
         path = f"broadcast/{slug}/{broadcast_id}"
         return self._r.get(path, converter=models.Broadcast.convert)
 
     def update(
-        self, broadcast_id, name, description, markdown=None, official=None, slug="-"
-    ):
+        self,
+        broadcast_id: str,
+        name: str,
+        description: str,
+        markdown: str | None = None,
+        official: bool = False,
+        slug: str = "-",
+    ) -> Dict[str, Any]:
         """Update an existing broadcast by ID.
 
         .. note::
 
             Provide all fields. Values in missing fields will be erased.
 
-        :param str broadcast_id: ID of a broadcast
-        :param str name: name of the broadcast
-        :param str description: short description
-        :param str markdown: long description
-        :param bool official: DO NOT USE
-        :param str slug: slug for SEO
+        :param broadcast_id: ID of a broadcast
+        :param name: name of the broadcast
+        :param description: short description
+        :param markdown: long description
+        :param official: can only be used by Lichess staff accounts
+        :param slug: slug for SEO
         :return: updated broadcast information
-        :rtype: dict
         """
         path = f"broadcast/{slug}/{broadcast_id}"
         payload = {
@@ -1698,69 +1678,72 @@ class Broadcasts(BaseClient):
         }
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
-    def push_pgn_update(self, broadcast_round_id, pgn_games):
+    def push_pgn_update(self, broadcast_round_id: str, pgn_games: List[str]) -> bool:
         """Manually update an existing broadcast by ID.
 
-        :param str broadcast_round_id: ID of a broadcast round
-        :param list pgn_games: one or more games in PGN format
+        :param broadcast_round_id: ID of a broadcast round
+        :param pgn_games: one or more games in PGN format
         :return: success
-        :rtype: bool
         """
         path = f"broadcast/round/{broadcast_round_id}/push"
         games = "\n\n".join(g.strip() for g in pgn_games)
         return self._r.post(path, data=games)["ok"]
 
-    def create_round(self, broadcast_id, name, sync_url=None, starts_at=None):
+    def create_round(
+        self,
+        broadcast_id: str,
+        name: str,
+        syncUrl: str | None = None,
+        startsAt: int | None = None,
+    ) -> Dict[str, Any]:
         """Create a new broadcast round to relay external games.
 
-        :param str broadcast_id: broadcast tournament ID
-        :param str name: Name of the broadcast round
-        :param str sync_url: URL that Lichess will poll to get updates about the games.
-        :param int starts_at: Timestamp in milliseconds of broadcast round start
-        :return: success
-        :rtype: dict
+        :param broadcast_id: broadcast tournament ID
+        :param name: Name of the broadcast round
+        :param syncUrl: URL that Lichess will poll to get updates about the games.
+        :param startsAt: Timestamp in milliseconds of broadcast round start
+        :return: broadcast round info
         """
         path = f"broadcast/{broadcast_id}/new"
-        payload = {"name": name, "syncUrl": sync_url, "startsAt": starts_at}
+        payload = {"name": name, "syncUrl": syncUrl, "startsAt": startsAt}
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
-    def get_round(
-        self, broadcast_id, broadcast_tournament_slug="-", broadcast_round_slug="-"
-    ):
+    def get_round(self, broadcast_id: str) -> Dict[str, Any]:
         """Get information about a broadcast round
 
-        :param broadcast_id: broadcast round id
-        :param str broadcast_tournament_slug: Only used for SEO, can be safely replaced by -
-        :param str broadcast_round_slug: Only used for SEO, can be safely replaced by -
+        :param broadcast_id: broadcast round id (8 characters)
         :return: broadcast round info
-        :rtype: dict
         """
-        path = f"broadcast/{broadcast_tournament_slug}/{broadcast_round_slug}/{broadcast_id}"
+        path = f"broadcast/-/-/{broadcast_id}"
         return self._r.get(path, converter=models.Broadcast.convert)
 
-    def update_round(self, broadcast_id, name, sync_url=None, starts_at=None):
+    def update_round(
+        self,
+        broadcast_id: str,
+        name: str,
+        syncUrl: str | None = None,
+        startsAt: int | None = None,
+    ) -> Dict[str, Any]:
         """Update information about a broadcast round that you created
 
-        :param str broadcast_id: broadcast round id
-        :param str name: Name of the broadcast round
-        :param str sync_url: URL that Lichess will poll to get updates about the games
-        :param starts_at: Timestamp in milliseconds of broadcast start
+        :param broadcast_id: broadcast round id
+        :param name: Name of the broadcast round
+        :param syncUrl: URL that Lichess will poll to get updates about the games
+        :param startsAt: Timestamp in milliseconds of broadcast start
         :return: updated broadcast information
-        :rtype: dict
         """
         path = f"broadcast/round/{broadcast_id}/edit"
-        payload = {"name": name, "syncUrl": sync_url, "startsAt": starts_at}
+        payload = {"name": name, "syncUrl": syncUrl, "startsAt": startsAt}
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
 
 class Simuls(BaseClient):
     """Simultaneous exhibitions - one vs many."""
 
-    def get(self):
+    def get(self) -> Dict[str, Any]:
         """Get recently finished, ongoing, and upcoming simuls.
 
         :return: current simuls
-        :rtype: list
         """
         path = "api/simul"
         return self._r.get(path)
@@ -1769,31 +1752,29 @@ class Simuls(BaseClient):
 class Studies(BaseClient):
     """Study chess the Lichess way."""
 
-    def export_chapter(self, study_id, chapter_id):
+    def export_chapter(self, study_id: str, chapter_id: str) -> str:
         """Export one chapter of a study.
 
-        :return: chapter
-        :rtype: PGN
+        :return: chapter PGN
         """
         path = f"/study/{study_id}/{chapter_id}.pgn"
         return self._r.get(path, fmt=PGN)
 
-    def export(self, study_id):
+    def export(self, study_id: str) -> Iterator[str]:
         """Export all chapters of a study.
 
-        :return: all chapters as PGN
-        :rtype: list
+        :return: iterator over all chapters as PGN
         """
         path = f"/study/{study_id}.pgn"
         return self._r.get(path, fmt=PGN, stream=True)
 
 
 class Messaging(BaseClient):
-    def send(self, username, text):
+    def send(self, username: str, text: str) -> None:
         """Send a private message to another player.
 
-        :param str username: the user to send the message to
-        :param str text: the text to send
+        :param username: the user to send the message to
+        :param text: the text to send
         """
         path = f"/inbox/{username}"
         payload = {"text": text}
@@ -1801,7 +1782,7 @@ class Messaging(BaseClient):
 
 
 class OAuth(BaseClient):
-    def test_tokens(self, *tokens):
+    def test_tokens(self, *tokens: str) -> Dict[str, Any]:
         """Test the validity of up to 1000 OAuth tokens
 
         Valid OAuth tokens will be returned with their
@@ -1809,7 +1790,7 @@ class OAuth(BaseClient):
         will be returned as null.
 
         :param tokens: one or more OAuth tokens
-        :return: list
+        :return: info about the tokens
         """
         path = "api/token/test"
         payload = ",".join(tokens)
@@ -1819,52 +1800,50 @@ class OAuth(BaseClient):
 class TV(FmtClient):
     """Client for TV related endpoints."""
 
-    def get_current_games(self):
+    def get_current_games(self) -> Dict[str, Any]:
         """Get basic information about the current TV games being played
 
         :return: best ongoing games in each speed and variant
-        :rtype: dict
         """
         path = "api/tv/channels"
         return self._r.get(path)
 
-    def stream_current_game(self):
+    def stream_current_game(self) -> Iterator[Dict[str, Any]]:
         """Streams the current TV game
 
         :return: positions and moves of the current TV game
-        :rtype: dict
         """
         path = "api/tv/feed"
         yield from self._r.get(path, stream=True)
 
     def get_best_ongoing(
         self,
-        channel,
-        as_pgn=None,
-        count=None,
-        moves=None,
-        pgn_in_json=None,
-        tags=None,
-        clocks=None,
-        opening=None,
-    ):
+        channel: str,
+        as_pgn: bool | None = None,
+        count: int | None = None,
+        moves: bool = True,
+        pgnInJson: bool = False,
+        tags: bool = True,
+        clocks: bool = False,
+        opening: bool = False,
+    ) -> str | List[Dict[str, Any]]:
         """Get a list of ongoing games for a given TV channel in PGN or NDJSON.
 
-        :param str channel: the name of the TV channel in camel case
-        :param bool as_pgn: whether to return the game in PGN format
-        :param int count: the number of games to fetch [1..30]
-        :param bool moves: whether to include the PGN moves
-        :param bool pgn_in_json: include the full PGN within JSON response
-        :param bool tags: whether to include the PGN tags
-        :param bool clocks: whether to include clock comments in the PGN moves
-        :param bool opening: whether to include the opening name
+        :param channel: the name of the TV channel in camel case
+        :param as_pgn: whether to return the game in PGN format
+        :param count: the number of games to fetch [1..30]
+        :param moves: whether to include the PGN moves
+        :param pgnInJson: include the full PGN within JSON response
+        :param tags: whether to include the PGN tags
+        :param clocks: whether to include clock comments in the PGN moves
+        :param opening: whether to include the opening name
         :return: the ongoing games of the given TV channel in PGN or NDJSON
         """
         path = f"api/tv/{channel}"
         params = {
             "nb": count,
             "moves": moves,
-            "pgnInJson": pgn_in_json,
+            "pgnInJson": pgnInJson,
             "tags": tags,
             "clocks": clocks,
             "opening": opening,
@@ -1873,5 +1852,5 @@ class TV(FmtClient):
             return self._r.get(path, params=params, fmt=PGN)
         else:
             return self._r.get(
-                path, params=params, fmt=NDJSON, converter=models.TV.convert
+                path, params=params, fmt=NDJSON_LIST, converter=models.TV.convert
             )

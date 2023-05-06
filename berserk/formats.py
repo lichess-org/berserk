@@ -148,20 +148,23 @@ class TextHandler(FormatHandler[str]):
         yield from response.iter_lines()
 
 
-#: Basic text
+# Basic text
 TEXT = TextHandler()
 
-#: Handles vanilla JSON
+# Handles vanilla JSON
 JSON = JsonHandler(mime_type="application/json")
 
-# Handle vanilla JSON where the response is a top-level list
+# Handle vanilla JSON where the response is a top-level list (this is only needed bc of type checking)
 JSON_LIST = cast(FormatHandler[List[Dict[str, Any]]], JSON)
 
-#: Handles oddball LiChess JSON (normal JSON, crazy MIME type)
+# Handles oddball LiChess JSON (normal JSON, crazy MIME type)
 LIJSON = JsonHandler(mime_type="application/vnd.lichess.v3+json")
 
-#: Handles newline-delimited JSON
+# Handles newline-delimited JSON
 NDJSON = JsonHandler(mime_type="application/x-ndjson", decoder=ndjson.Decoder)
 
-#: Handles PGN
+# Handles newline-delimited JSON where the response is a top-level list (this is only needed bc of type checking, if not streaming NJDSON, the result is always a list)
+NDJSON_LIST = cast(FormatHandler[List[Dict[str, Any]]], NDJSON)
+
+# Handles PGN
 PGN = PgnHandler()
