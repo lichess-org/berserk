@@ -12,8 +12,6 @@ for line in sys.stdin:
 endef
 export PRINT_HELP_PYSCRIPT
 
-BROWSER := python3 -c "$$BROWSER_PYSCRIPT"
-
 help:
 	@python3 -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
@@ -37,5 +35,5 @@ format: ## format python files with black
 docs: ## generate Sphinx HTML documentation, including API docs
 	poetry run sphinx-build -b html docs _build -EW --keep-going
 
-servedocs: docs ## compile the docs and open them in a browser
+servedocs: docs ## compile the docs and serve them locally
 	python3 -m http.server --directory _build --bind 127.0.0.1
