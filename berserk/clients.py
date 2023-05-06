@@ -121,9 +121,7 @@ class Client(BaseClient):
 
 
 class Account(BaseClient):
-    """
-    Client for account-related endpoints.
-    """
+    """Client for account-related endpoints."""
 
     def get(self) -> Dict[str, Any]:
         """Get your public information.
@@ -169,9 +167,7 @@ class Account(BaseClient):
     def upgrade_to_bot(self):
         """Upgrade your account to a bot account.
 
-        Requires bot:play oauth scope. User cannot have any previously played
-        games.
-
+        Requires bot:play oauth scope. User cannot have any previously played games.
         """
         path = "api/bot/account/upgrade"
         self._r.post(path)
@@ -290,6 +286,7 @@ class Users(BaseClient):
 
     def get_user_performance(self, username: str, perf: str) -> List[Dict[str, Any]]:
         """Read performance statistics of a user, for a single performance.
+
         Similar to the performance pages on the website
         """
         path = f"/api/user/{username}/perf/{perf}"
@@ -842,6 +839,7 @@ class Challenges(BaseClient):
 
     def decline(self, challenge_id: str, reason: str = Reason.GENERIC) -> None:
         """Decline an incoming challenge.
+
         :param challenge_id: ID of a challenge
         :param reason: reason for declining challenge
         :type reason: :class:`~berserk.enums.Reason`
@@ -1255,7 +1253,7 @@ class Tournaments(FmtClient):
         rated: bool | None = None,
         chatFor: int | None = None,
     ) -> Dict[str, Any]:
-        """Create a new swiss tournament
+        """Create a new swiss tournament.
 
         .. note::
 
@@ -1348,7 +1346,7 @@ class Tournaments(FmtClient):
         evals: bool = True,
         opening: bool = False,
     ) -> Iterator[str] | Iterator[Dict[str, Any]]:
-        """Export games from a swiss tournament
+        """Export games from a swiss tournament.
 
         :param id: tournament id
         :param as_pgn: whether to return pgn instead of JSON
@@ -1385,7 +1383,7 @@ class Tournaments(FmtClient):
     def tournaments_by_user(
         self, username: str, nb: int | None = None
     ) -> List[Dict[str, Any]]:
-        """Get tournaments created by a user
+        """Get tournaments created by a user.
 
         :param username: username
         :param nb: max number of tournaments to fetch
@@ -1403,7 +1401,7 @@ class Tournaments(FmtClient):
     def arenas_by_team(
         self, teamId: str, maxT: int | None = None
     ) -> List[Dict[str, Any]]:
-        """Get arenas created for a team
+        """Get arenas created for a team.
 
         :param teamId: Id of the team
         :param maxT: how many tournaments to download
@@ -1420,7 +1418,7 @@ class Tournaments(FmtClient):
     def swiss_by_team(
         self, teamId: str, maxT: int | None = None
     ) -> List[Dict[str, Any]]:
-        """Get swiss tournaments created for a team
+        """Get swiss tournaments created for a team.
 
         :param teamId: Id of the team
         :param maxT: how many tournaments to download
@@ -1560,7 +1558,7 @@ class Broadcasts(BaseClient):
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
     def get_round(self, broadcast_id: str) -> Dict[str, Any]:
-        """Get information about a broadcast round
+        """Get information about a broadcast round.
 
         :param broadcast_id: broadcast round id (8 characters)
         :return: broadcast round info
@@ -1575,7 +1573,7 @@ class Broadcasts(BaseClient):
         syncUrl: str | None = None,
         startsAt: int | None = None,
     ) -> Dict[str, Any]:
-        """Update information about a broadcast round that you created
+        """Update information about a broadcast round that you created.
 
         :param broadcast_id: broadcast round id
         :param name: Name of the broadcast round
@@ -1634,7 +1632,7 @@ class Messaging(BaseClient):
 
 class OAuth(BaseClient):
     def test_tokens(self, *tokens: str) -> Dict[str, Any]:
-        """Test the validity of up to 1000 OAuth tokens
+        """Test the validity of up to 1000 OAuth tokens.
 
         Valid OAuth tokens will be returned with their
         associated user ID and scopes. Invalid tokens
@@ -1652,7 +1650,7 @@ class TV(FmtClient):
     """Client for TV related endpoints."""
 
     def get_current_games(self) -> Dict[str, Any]:
-        """Get basic information about the current TV games being played
+        """Get basic information about the current TV games being played.
 
         :return: best ongoing games in each speed and variant
         """
@@ -1660,7 +1658,7 @@ class TV(FmtClient):
         return self._r.get(path)
 
     def stream_current_game(self) -> Iterator[Dict[str, Any]]:
-        """Streams the current TV game
+        """Streams the current TV game.
 
         :return: positions and moves of the current TV game
         """

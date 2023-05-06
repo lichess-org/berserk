@@ -30,8 +30,8 @@ def datetime_from_millis(millis: float) -> datetime:
 def datetime_from_str(dt_str: str) -> datetime:
     """Convert the time in a string to a datetime.
 
-    UTC is assumed. The returned datetime is timezone aware. The format
-    must match ``%Y-%m-%dT%H:%M:%S.%fZ``.
+    UTC is assumed. The returned datetime is timezone aware. The format must match
+    ``%Y-%m-%dT%H:%M:%S.%fZ``.
     """
     dt = datetime.strptime(dt_str, "%Y-%m-%dT%H:%M:%S.%fZ")
     return dt.replace(tzinfo=timezone.utc)
@@ -40,8 +40,8 @@ def datetime_from_str(dt_str: str) -> datetime:
 def datetime_from_str_or_millis(millis_or_str: str | int) -> datetime:
     """Convert a string or int to a datetime.
 
-    UTC is assumed. The returned datetime is timezone aware.
-    If the input is a string, the format must match ``%Y-%m-%dT%H:%M:%S.%fZ``.
+    UTC is assumed. The returned datetime is timezone aware. If the input is a string,
+    the format must match ``%Y-%m-%dT%H:%M:%S.%fZ``.
     """
     if isinstance(millis_or_str, int):
         return datetime_from_millis(millis_or_str)
