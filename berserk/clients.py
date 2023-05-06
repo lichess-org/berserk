@@ -3,7 +3,6 @@ from time import time as now
 from typing import Any, Dict, Iterator, List, Tuple, cast
 
 import requests
-from deprecated import deprecated
 
 from . import models
 from .enums import Reason
@@ -259,15 +258,6 @@ class Users(BaseClient):
         return self._r.post(
             path, data=",".join(usernames), fmt=JSON_LIST, converter=models.User.convert
         )
-
-    @deprecated(version="0.7.0", reason="use Teams.get_members(id) instead")
-    def get_by_team(self, team_id: str) -> Iterator[Dict[str, Any]]:
-        """Get members of a team.
-
-        :return: users on the given team
-        """
-        path = f"api/team/{team_id}/users"
-        return self._r.get(path, fmt=NDJSON, stream=True, converter=models.User.convert)
 
     def get_live_streamers(self) -> List[Dict[str, Any]]:
         """Get basic information about currently streaming users.
@@ -674,15 +664,6 @@ class Games(FmtClient):
         path = "api/account/playing"
         params = {"nb": count}
         return self._r.get(path, params=params)["nowPlaying"]
-
-    @deprecated(version="0.11.12", reason="use TV.get_current_games")
-    def get_tv_channels(self) -> Dict[str, Any]:
-        """Get basic information about the best games being played.
-
-        :return: best ongoing games in each speed and variant
-        """
-        path = "tv/channels"
-        return self._r.get(path)
 
     def stream_game_moves(self, game_id: str) -> Iterator[Dict[str, Any]]:
         """Stream positions and moves of any ongoing game.
@@ -1211,65 +1192,6 @@ class Tournaments(FmtClient):
         path = f"api/tournament/{tournament_id}?page={page}"
         return self._r.get(path, converter=models.Tournament.convert)
 
-    @deprecated(
-        version="0.11.0",
-        reason="use Tournaments.create_arena or Tournaments.create_swiss instead",
-    )
-    def create(
-        self,
-        clock_time: int,
-        clock_increment: int,
-        minutes: int,
-        name: str | None = None,
-        wait_minutes: int | None = None,
-        variant: str | None = None,
-        berserkable: bool | None = None,
-        rated: bool | None = None,
-        startDate: int | None = None,
-        position: str | None = None,
-        password: str | None = None,
-        conditions: Dict[str, str | int] | None = None,
-    ) -> Dict[str, Any]:
-        """Create a new tournament.
-
-        .. note::
-            ``wait_minutes`` is always relative to now and is overridden by
-            ``start_time``.
-
-        .. note::
-            If ``name`` is left blank then one is automatically created.
-
-        :param clock_time: initial clock time in minutes
-        :param clock_increment: clock increment in seconds
-        :param minutes: length of the tournament in minutes
-        :param name: tournament name
-        :param wait_minutes: future start time in minutes
-        :param variant: variant to use if other than standard
-        :param berserkable: whether players can use berserk
-        :param rated: whether the game affects player ratings
-        :param startDate: when to start the tournament (timestamp in milliseconds)
-        :param position: custom initial position in FEN
-        :param password: password (makes the tournament private)
-        :param conditions: conditions for participation
-        :return: created tournament info
-        """
-        path = "api/tournament"
-        payload = {
-            "name": name,
-            "clockTime": clock_time,
-            "clockIncrement": clock_increment,
-            "minutes": minutes,
-            "waitMinutes": wait_minutes,
-            "startDate": startDate,
-            "variant": variant,
-            "rated": rated,
-            "position": position,
-            "berserkable": berserkable,
-            "password": password,
-            **{f"conditions.{c}": v for c, v in (conditions or {}).items()},
-        }
-        return self._r.post(path, json=payload, converter=models.Tournament.convert)
-
     def create_arena(
         self,
         clockTime: int,
@@ -1403,45 +1325,6 @@ class Tournaments(FmtClient):
             "chatFor": chatFor,
         }
         return self._r.post(path, json=payload, converter=models.Tournament.convert)
-
-    @deprecated(
-        version="0.11.0",
-        reason="use Tournaments.export_arena_games or Tournaments.export_swiss_games",
-    )
-    def export_games(
-        self,
-        id: str,
-        as_pgn: bool | None = None,
-        moves: bool = True,
-        tags: bool = True,
-        clocks: bool = False,
-        evals: bool = True,
-        opening: bool = False,
-    ) -> str | List[Dict[str, Any]]:
-        """Export games from a tournament.
-        :param id: tournament ID
-        :param as_pgn: whether to return PGN instead of JSON
-        :param moves: include moves
-        :param tags: include tags
-        :param clocks: include clock comments in the PGN moves, when available
-        :param evals: include analysis evalulation comments in the PGN moves, when available
-        :param opening: include the opening name
-        :return: games
-        """
-        path = f"api/tournament/{id}/games"
-        params = {
-            "moves": moves,
-            "tags": tags,
-            "clocks": clocks,
-            "evals": evals,
-            "opening": opening,
-        }
-        if self._use_pgn(as_pgn):
-            return self._r.get(path, params=params, fmt=PGN)
-        else:
-            return self._r.get(
-                path, params=params, fmt=NDJSON_LIST, converter=models.Game.convert
-            )
 
     def export_arena_games(
         self,

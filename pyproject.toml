@@ -31,7 +31,6 @@ Changelog = "https://lichess-org.github.io/berserk/changelog.html"
 python = "^3.8"
 requests = "^2.28.2"
 ndjson = "^0.3.1"
-Deprecated = "^1.2.13"
 
 [tool.poetry.group.dev]
 optional = true
