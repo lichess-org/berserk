@@ -148,7 +148,7 @@ Get realtime information about one or more players:
 .. code-block:: python
 
     >>> players = ['Sasageyo', 'Voinikonis_Nikita', 'Zugzwangerz', 'DOES-NOT-EXIST']
-    >>> client.users.get_realtime_statuses(players)
+    >>> client.users.get_realtime_statuses(*players)
     [{'id': 'sasageyo',
     'name': 'Sasageyo',
     'title': 'IM',
