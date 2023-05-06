@@ -53,8 +53,9 @@ Get Started!
 
 For a PR to be merged, it needs to pass the CI, you can reproduce most of them locally (commands assume being in the root directory of this repo):
 - To run tests use ``poetry run pytest`` or ``make test``
-- To check format use ``poetry run black .`` or ``make format```
+- To check format use ``poetry run black .`` or ``make format``
 - To check doc generation use ``poetry run sphinx-build -b html docs _build -EW`` or ``make docs``
+
   - You can then open ``_build/index.html`` in your browser or use ``python3 -m http.server --directory _build`` to serve it locally
   - Alternatively, run ``make servedocs`` to automatically build and serve them on http://localhost:8000
 
