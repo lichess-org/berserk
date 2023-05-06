@@ -157,26 +157,24 @@ class Account(BaseClient):
         path = "api/account/kid"
         return self._r.get(path)["kid"]
 
-    def set_kid_mode(self, value: bool) -> bool:
+    def set_kid_mode(self, value: bool):
         """Set your kid mode status.
 
         :param bool value: whether to enable or disable kid mode
-        :return: success
         """
         path = "api/account/kid"
         params = {"v": value}
-        return self._r.post(path, params=params)["ok"]
+        self._r.post(path, params=params)
 
-    def upgrade_to_bot(self) -> bool:
+    def upgrade_to_bot(self):
         """Upgrade your account to a bot account.
 
         Requires bot:play oauth scope. User cannot have any previously played
         games.
 
-        :return: success
         """
         path = "api/bot/account/upgrade"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
 
 class Users(BaseClient):
@@ -307,23 +305,21 @@ class Relations(BaseClient):
         path = "/api/rel/following"
         return self._r.get(path, stream=True, fmt=NDJSON, converter=models.User.convert)
 
-    def follow(self, username: str) -> bool:
+    def follow(self, username: str):
         """Follow a player.
 
         :param username: user to follow
-        :return: success
         """
         path = f"/api/rel/follow/{username}"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
-    def unfollow(self, username: str) -> bool:
+    def unfollow(self, username: str):
         """Unfollow a player.
 
         :param username: user to unfollow
-        :return: success
         """
         path = f"/api/rel/unfollow/{username}"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
 
 class Teams(BaseClient):
@@ -337,39 +333,36 @@ class Teams(BaseClient):
 
     def join(
         self, team_id: str, message: str | None = None, password: str | None = None
-    ) -> bool:
+    ) -> None:
         """Join a team.
 
         :param team_id: ID of a team
         :param message: Optional request message, if the team requires one
         :param password: Optional password, if the team requires one.
-        :return: success
         """
         path = f"/team/{team_id}/join"
         payload = {
             "message": message,
             "password": password,
         }
-        return self._r.post(path, json=payload)["ok"]
+        self._r.post(path, json=payload)
 
-    def leave(self, team_id: str) -> bool:
+    def leave(self, team_id: str) -> None:
         """Leave a team.
 
         :param team_id: ID of a team
-        :return: success
         """
         path = f"/team/{team_id}/quit"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
-    def kick_member(self, team_id: str, user_id: str) -> bool:
+    def kick_member(self, team_id: str, user_id: str) -> None:
         """Kick a member out of your team.
 
         :param team_id: ID of a team
         :param user_id: ID of a team member
-        :return: success
         """
         path = f"/team/{team_id}/kick/{user_id}"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
 
 class Games(FmtClient):
@@ -644,16 +637,15 @@ class Games(FmtClient):
             path, data=payload, fmt=NDJSON, stream=True, converter=models.Game.convert
         )
 
-    def add_game_ids_to_stream(self, *game_ids: str, stream_id: str) -> bool:
+    def add_game_ids_to_stream(self, *game_ids: str, stream_id: str) -> None:
         """Add new game IDs to an existing stream.
 
         :param stream_id: the stream ID you used to create the existing stream
         :param game_ids: one or more game IDs to stream
-        :return: success
         """
         path = f"api/stream/games/{stream_id}/add"
         payload = ",".join(game_ids)
-        return self._r.post(path, data=payload)["ok"]
+        self._r.post(path, data=payload)
 
     def get_ongoing(self, count: int = 10) -> List[Dict[str, Any]]:
         """Get your currently ongoing games.
@@ -840,25 +832,23 @@ class Challenges(BaseClient):
         }
         return self._r.post(path, json=payload, converter=models.Tournament.convert)
 
-    def accept(self, challenge_id: str) -> bool:
+    def accept(self, challenge_id: str) -> None:
         """Accept an incoming challenge.
 
         :param challenge_id: id of the challenge to accept
-        :return: success indicator
         """
         path = f"api/challenge/{challenge_id}/accept"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
-    def decline(self, challenge_id: str, reason: str = Reason.GENERIC) -> bool:
+    def decline(self, challenge_id: str, reason: str = Reason.GENERIC) -> None:
         """Decline an incoming challenge.
         :param challenge_id: ID of a challenge
         :param reason: reason for declining challenge
         :type reason: :class:`~berserk.enums.Reason`
-        :return: success indicator
         """
         path = f"api/challenge/{challenge_id}/decline"
         payload = {"reason": reason}
-        return self._r.post(path, json=payload)["ok"]
+        self._r.post(path, json=payload)
 
 
 class Board(BaseClient):
@@ -924,28 +914,26 @@ class Board(BaseClient):
         path = f"api/board/game/stream/{game_id}"
         yield from self._r.get(path, stream=True, converter=models.GameState.convert)
 
-    def make_move(self, game_id: str, move: str) -> bool:
+    def make_move(self, game_id: str, move: str) -> None:
         """Make a move in a board game.
 
         :param game_id: ID of a game
         :param move: move to make
-        :return: success
         """
         path = f"api/board/game/{game_id}/move/{move}"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
-    def post_message(self, game_id: str, text: str, spectator: bool = False) -> bool:
+    def post_message(self, game_id: str, text: str, spectator: bool = False) -> None:
         """Post a message in a board game.
 
         :param game_id: ID of a game
         :param text: text of the message
         :param spectator: post to spectator room (else player room)
-        :return: success
         """
         path = f"api/board/game/{game_id}/chat"
         room = "spectator" if spectator else "player"
         payload = {"room": room, "text": text}
-        return self._r.post(path, json=payload)["ok"]
+        self._r.post(path, json=payload)
 
     def get_game_chat(self, game_id: str) -> List[Dict[str, str]]:
         """Get the messages posted in the game chat.
@@ -956,25 +944,23 @@ class Board(BaseClient):
         path = f"api/board/game/{game_id}/chat"
         return self._r.get(path, fmt=JSON_LIST)
 
-    def abort_game(self, game_id: str) -> bool:
+    def abort_game(self, game_id: str) -> None:
         """Abort a board game.
 
         :param game_id: ID of a game
-        :return: success
         """
         path = f"api/board/game/{game_id}/abort"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
-    def resign_game(self, game_id: str) -> bool:
+    def resign_game(self, game_id: str) -> None:
         """Resign a board game.
 
         :param game_id: ID of a game
-        :return: success
         """
         path = f"api/board/game/{game_id}/resign"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
-    def handle_draw_offer(self, game_id: str, accept: bool) -> bool:
+    def handle_draw_offer(self, game_id: str, accept: bool) -> None:
         """Create, accept, or decline a draw offer.
 
         To offer a draw, pass ``accept=True`` and a game ID of an in-progress
@@ -987,37 +973,33 @@ class Board(BaseClient):
 
         :param game_id: ID of an in-progress game
         :param accept: whether to accept
-        :return: True if successful
         """
         accept_str = "yes" if accept else "no"
         path = f"/api/board/game/{game_id}/draw/{accept_str}"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
-    def offer_draw(self, game_id: str) -> bool:
+    def offer_draw(self, game_id: str) -> None:
         """Offer a draw in the given game.
 
         :param game_id: ID of an in-progress game
-        :return: True if successful
         """
-        return self.handle_draw_offer(game_id, True)
+        self.handle_draw_offer(game_id, True)
 
-    def accept_draw(self, game_id: str) -> bool:
+    def accept_draw(self, game_id: str) -> None:
         """Accept an already offered draw in the given game.
 
         :param game_id: ID of an in-progress game
-        :return: True if successful
         """
-        return self.handle_draw_offer(game_id, True)
+        self.handle_draw_offer(game_id, True)
 
-    def decline_draw(self, game_id: str) -> bool:
+    def decline_draw(self, game_id: str) -> None:
         """Decline an already offered draw in the given game.
 
         :param game_id: ID of an in-progress game
-        :return: True if successful
         """
-        return self.handle_draw_offer(game_id, False)
+        self.handle_draw_offer(game_id, False)
 
-    def handle_takeback_offer(self, game_id: str, accept: bool) -> bool:
+    def handle_takeback_offer(self, game_id: str, accept: bool) -> None:
         """Create, accept, or decline a takeback offer.
 
         To offer a takeback, pass ``accept=True`` and a game ID of an in-progress
@@ -1030,37 +1012,33 @@ class Board(BaseClient):
 
         :param game_id: ID of an in-progress game
         :param accept: whether to accept
-        :return: True if successful
         """
         accept_str = "yes" if accept else "no"
         path = f"/api/board/game/{game_id}/takeback/{accept_str}"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
-    def offer_takeback(self, game_id: str) -> bool:
+    def offer_takeback(self, game_id: str) -> None:
         """Offer a takeback in the given game.
 
         :param game_id: ID of an in-progress game
-        :return: True if successful
         """
-        return self.handle_takeback_offer(game_id, True)
+        self.handle_takeback_offer(game_id, True)
 
-    def accept_takeback(self, game_id: str) -> bool:
+    def accept_takeback(self, game_id: str) -> None:
         """Accept an already offered takeback in the given game.
 
         :param game_id: ID of an in-progress game
-        :return: True if successful
         """
-        return self.handle_takeback_offer(game_id, True)
+        self.handle_takeback_offer(game_id, True)
 
-    def decline_takeback(self, game_id: str) -> bool:
+    def decline_takeback(self, game_id: str) -> None:
         """Decline an already offered takeback in the given game.
 
         :param game_id: ID of an in-progress game
-        :return: True if successful
         """
-        return self.handle_takeback_offer(game_id, False)
+        self.handle_takeback_offer(game_id, False)
 
-    def claim_victory(self, game_id: str) -> bool:
+    def claim_victory(self, game_id: str) -> None:
         """Claim victory when the opponent has left the game for a while.
 
         Generally, this should only be called once the `opponentGone` event
@@ -1068,19 +1046,17 @@ class Board(BaseClient):
         time has elapsed.
 
         :param str game_id: ID of an in-progress game
-        :return: True if successful
         """
         path = f"/api/board/game/{game_id}/claim-victory/"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
-    def go_berserk(self, game_id: str) -> bool:
+    def go_berserk(self, game_id: str) -> None:
         """Go berserk on an arena tournament game.
 
         :param str game_id: ID of an in-progress game
-        :return: True if successful
         """
         path = f"/api/board/game/{game_id}/berserk"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
 
 class Bots(BaseClient):
@@ -1103,16 +1079,14 @@ class Bots(BaseClient):
         path = f"api/bot/game/stream/{game_id}"
         yield from self._r.get(path, stream=True, converter=models.GameState.convert)
 
-    # TODO wtf return type is wrong why no error ???
-    def make_move(self, game_id: str, move: str) -> Iterator[Dict[str, Any]]:
+    def make_move(self, game_id: str, move: str) -> None:
         """Make a move in a bot game.
 
         :param game_id: ID of a game
         :param move: move to make
-        :return: success
         """
         path = f"api/bot/game/{game_id}/move/{move}"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
     def post_message(self, game_id: str, text: str, spectator: bool = False):
         """Post a message in a bot game.
@@ -1120,53 +1094,48 @@ class Bots(BaseClient):
         :param game_id: ID of a game
         :param text: text of the message
         :param spectator: post to spectator room (else player room)
-        :return: success
         """
         path = f"api/bot/game/{game_id}/chat"
         room = "spectator" if spectator else "player"
         payload = {"room": room, "text": text}
-        return self._r.post(path, json=payload)["ok"]
+        self._r.post(path, json=payload)
 
-    def abort_game(self, game_id: str) -> bool:
+    def abort_game(self, game_id: str) -> None:
         """Abort a bot game.
 
         :param game_id: ID of a game
-        :return: success
         """
         path = f"api/bot/game/{game_id}/abort"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
-    def resign_game(self, game_id: str) -> bool:
+    def resign_game(self, game_id: str) -> None:
         """Resign a bot game.
 
         :param game_id: ID of a game
-        :return: success
         """
         path = f"api/bot/game/{game_id}/resign"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
-    def accept_challenge(self, challenge_id: str) -> bool:
+    def accept_challenge(self, challenge_id: str) -> None:
         """Accept an incoming challenge.
 
         :param challenge_id: ID of a challenge
-        :return: success
         """
         path = f"api/challenge/{challenge_id}/accept"
-        return self._r.post(path)["ok"]
+        self._r.post(path)
 
     def decline_challenge(
         self, challenge_id: str, reason: str = Reason.GENERIC
-    ) -> bool:
+    ) -> None:
         """Decline an incoming challenge.
 
         :param challenge_id: ID of a challenge
         :param reason: reason for declining challenge
         :type reason: :class:`~berserk.enums.Reason`
-        :return: success indicator
         """
         path = f"api/challenge/{challenge_id}/decline"
         payload = {"reason": reason}
-        return self._r.post(path, json=payload)["ok"]
+        self._r.post(path, json=payload)
 
 
 class Tournaments(FmtClient):
@@ -1561,16 +1530,15 @@ class Broadcasts(BaseClient):
         }
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
-    def push_pgn_update(self, broadcast_round_id: str, pgn_games: List[str]) -> bool:
+    def push_pgn_update(self, broadcast_round_id: str, pgn_games: List[str]) -> None:
         """Manually update an existing broadcast by ID.
 
         :param broadcast_round_id: ID of a broadcast round
         :param pgn_games: one or more games in PGN format
-        :return: success
         """
         path = f"broadcast/round/{broadcast_round_id}/push"
         games = "\n\n".join(g.strip() for g in pgn_games)
-        return self._r.post(path, data=games)["ok"]
+        self._r.post(path, data=games)
 
     def create_round(
         self,
