@@ -24,7 +24,7 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 
 setup: ## setup poetry env and install dependencies
-	poetry install --with devs
+	poetry install --with dev
 
 test: ## run tests
 	poetry run pytest
