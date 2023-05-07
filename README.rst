@@ -21,7 +21,7 @@ Python client for the `Lichess API <https://lichess.org/api>`_.
 
 This is based on the `original berserk version created by rhgrant10 <https://github.com/rhgrant10/berserk>`_ and the `berserk-downstream fork created by ZackClements <https://github.com/ZackClements/berserk>`_. Big thanks to them and all other contributors!
 
-`Documentation <https://lichess-org.github.io/berserk/>`_.
+`Documentation <https://lichess-org.github.io/berserk/>`_
 
 Installation
 ------------
