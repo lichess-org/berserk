@@ -9,7 +9,7 @@ v0.12.0 (2023-05-07)
 * Removed deprecated functions
 * Added ``client.board.get_game_chat`` to get the chat of a game
 * Added ``client.board.claim_victory`` to claim victory in a game (after the opponent left the game)
-* Added ``client.board.go_berserk``to go berserk in a tournament game
+* Added ``client.board.go_berserk`` to go berserk in a tournament game
 * ``export_arena_games`` and ``export_swiss_games`` now stream the result (i.e. return an iterator over the games)
 
 
