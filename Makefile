@@ -1,4 +1,4 @@
-.PHONY: help clean clean-docs clean-test setup test format docs servedocs
+.PHONY: help clean clean-docs clean-test setup test format docs servedocs publish
 .DEFAULT_GOAL := help
 
 define PRINT_HELP_PYSCRIPT
@@ -37,3 +37,8 @@ docs: ## generate Sphinx HTML documentation, including API docs
 
 servedocs: docs ## compile the docs and serve them locally
 	python3 -m http.server --directory _build --bind 127.0.0.1
+
+publish: ## publish to pypi
+	@read -p "Are you sure you want to create a release? [y/N] " ans && [ $${ans:-N} = y ]
+	sleep 5
+	poetry publish --build

@@ -64,7 +64,12 @@ Deploying
 ---------
 
 A reminder for the maintainers on how to deploy.
-Make sure all your changes are committed (including an entry in CHANGELOG.rst).
-Then run::
 
-$ TBD
+You need a PyPI account with access to the ``berserk`` package and have an API token with the corresponding access configured for poetry (see https://python-poetry.org/docs/repositories/#configuring-credentials):
+
+- Create a token: https://pypi.org/manage/account/token/ (you can see your existing tokens at https://pypi.org/manage/account/)
+- Configure poetry: ``poetry config pypi-token.pypi <your-token>``. Add a space before the command to avoid it being saved in your shell history.
+
+Make sure all your changes are committed (including an entry in CHANGELOG.rst) and you set the version in ``pyproject.toml`` correctly.
+
+Then run ``poetry publish --build`` or ``make publish`` and tag the release on git: ``git tag v1.2.3 && git push --tags``
