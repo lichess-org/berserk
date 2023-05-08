@@ -21,10 +21,10 @@ Fix Bugs
 
 Look through the GitHub issues for bugs.
 
-Implement Features
-~~~~~~~~~~~~~~~~~~
+Implement Missing Endpoints
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Look through the GitHub issues for features. Make sure the feature is uncontroversial or that a maintainer has validated it before starting working on it.
+You can run the ``check-endpoints.py`` script (requites yaml to be installed, ``pip3 install pyyaml``) in the root of the project to get a list of endpoints that are still missing.
 
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
