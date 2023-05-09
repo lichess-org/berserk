@@ -6,7 +6,7 @@ berserk
     :alt: Test status
 
 .. image:: https://badge.fury.io/py/berserk.svg
-    :target: https://pypi.python.org/pypi/berserk
+    :target: https://pypi.org/project/berserk/
     :alt: PyPI package
 
 .. image:: https://github.com/lichess-org/berserk/actions/workflows/docs.yml/badge.svg
