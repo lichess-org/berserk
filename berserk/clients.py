@@ -1606,7 +1606,7 @@ class Studies(BaseClient):
 
         :return: chapter PGN
         """
-        path = f"/study/{study_id}/{chapter_id}.pgn"
+        path = f"api/study/{study_id}/{chapter_id}.pgn"
         return self._r.get(path, fmt=PGN)
 
     def export(self, study_id: str) -> Iterator[str]:
@@ -1614,7 +1614,7 @@ class Studies(BaseClient):
 
         :return: iterator over all chapters as PGN
         """
-        path = f"/study/{study_id}.pgn"
+        path = f"api/study/{study_id}.pgn"
         return self._r.get(path, fmt=PGN, stream=True)
 
 
