@@ -563,7 +563,7 @@ class Games(FmtClient):
         :param opening: whether to include the opening name
         :return: iterator over the exported games, as JSON or PGN
         """
-        path = "games/export/_ids"
+        path = "api/games/export/_ids"
         params = {
             "moves": moves,
             "tags": tags,
