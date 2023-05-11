@@ -1077,8 +1077,7 @@ class Bots(BaseClient):
         path = f"api/bot/game/stream/{game_id}"
         yield from self._r.get(path, stream=True, converter=models.GameState.convert)
 
-    def get_online_bots(self, limit: int | None = None
-                        ) -> Iterator[Dict[str, Any]]:
+    def get_online_bots(self, limit: int | None = None) -> Iterator[Dict[str, Any]]:
         """
         Stream the online bot users.
 
@@ -1086,7 +1085,7 @@ class Bots(BaseClient):
         :return: Iterator over the results
         """
         path = f"api/bot/online"
-        params = {"nb" : limit}
+        params = {"nb": limit}
         return self._r.get(path, params=params, stream=True)
 
     def make_move(self, game_id: str, move: str) -> None:
