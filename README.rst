@@ -125,6 +125,7 @@ Most of the API is available:
     client.board.claim_victory
     client.board.go_berserk
 
+    client.bots.online
     client.bots.stream_incoming_events
     client.bots.stream_game_state
     client.bots.make_move
