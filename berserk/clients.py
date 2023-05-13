@@ -1082,7 +1082,6 @@ class Bots(BaseClient):
         Stream the online bot users.
 
         :param limit: Maximum number of bot users to fetch
-        :type limit: int, optional
         :return: iterator over online bots
         """
         path = "api/bot/online"
