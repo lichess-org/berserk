@@ -50,8 +50,15 @@ Get Started!
 
 - Install ``poetry`` (``pip3 install poetry``)
 - Setup dependencies by running ``poetry install --with dev`` or ``make setup``
+- Start editing the code
+- To test your changes, run ``poetry shell`` to activate the poetry environment, open a python interpreter (``python3``), and import the library to test your changes::
+
+    >>> import berserk
+    >>> client = berserk.Client()
+    >>> client.users.my_new_method()
 
 For a PR to be merged, it needs to pass the CI, you can reproduce most of them locally (commands assume being in the root directory of this repo):
+
 - To run tests use ``poetry run pytest`` or ``make test``
 - To check format use ``poetry run black .`` or ``make format``
 - To check doc generation use ``poetry run sphinx-build -b html docs _build -EW`` or ``make docs``
