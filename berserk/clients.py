@@ -1077,6 +1077,19 @@ class Bots(BaseClient):
         path = f"api/bot/game/stream/{game_id}"
         yield from self._r.get(path, stream=True, converter=models.GameState.convert)
 
+    def get_online_bots(self, limit: int | None = None) -> Iterator[Dict[str, Any]]:
+        """
+        Stream the online bot users.
+
+        :param limit: Maximum number of bot users to fetch
+        :return: iterator over online bots
+        """
+        path = "api/bot/online"
+        params = {"nb": limit}
+        yield from self._r.get(
+            path, params=params, stream=True, fmt=NDJSON, converter=models.User.convert
+        )
+
     def make_move(self, game_id: str, move: str) -> None:
         """Make a move in a bot game.
 
