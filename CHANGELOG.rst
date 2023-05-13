@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v0.12.1 (2023-05-13)
+--------------------
+
+* Added ``client.bots.get_online_bots`` to get the list of online bots
+* Adjusted study export endpoint URLs to use the ``/api`` prefix for consistency
+
+Thanks to @kalpgarg and @icp1994 for their contributions to this release!
+
 v0.12.0 (2023-05-07)
 --------------------
 
@@ -11,6 +19,8 @@ v0.12.0 (2023-05-07)
 * Added ``client.board.claim_victory`` to claim victory in a game (after the opponent left the game)
 * Added ``client.board.go_berserk`` to go berserk in a tournament game
 * ``export_arena_games`` and ``export_swiss_games`` now stream the result (i.e. return an iterator over the games)
+
+Thanks to @trevorbayless and @icp1994 for their contributions to this release!
 
 
 v0.11.0 (2021-03-18)
