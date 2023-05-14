@@ -1,6 +1,11 @@
 Changelog
 =========
 
+Unreleased
+----------
+
+* Fixed response handling of several endpoints related to datetime parsing
+
 v0.12.1 (2023-05-13)
 --------------------
 
