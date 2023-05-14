@@ -706,7 +706,7 @@ class Challenges(BaseClient):
             "variant": variant,
             "fen": position,
         }
-        return self._r.post(path, json=payload, converter=models.Tournament.convert)
+        return self._r.post(path, json=payload)
 
     def create_with_accept(
         self,
@@ -751,7 +751,7 @@ class Challenges(BaseClient):
             "variant": variant,
             "fen": position,
         }
-        return self._r.post(path, json=payload, converter=models.Tournament.convert)
+        return self._r.post(path, json=payload)
 
     def create_ai(
         self,
@@ -787,7 +787,7 @@ class Challenges(BaseClient):
             "variant": variant,
             "fen": position,
         }
-        return self._r.post(path, json=payload, converter=models.Tournament.convert)
+        return self._r.post(path, json=payload)
 
     def create_open(
         self,
@@ -820,7 +820,7 @@ class Challenges(BaseClient):
             "rated": rated,
             "name": name,
         }
-        return self._r.post(path, json=payload, converter=models.Tournament.convert)
+        return self._r.post(path, json=payload)
 
     def accept(self, challenge_id: str) -> None:
         """Accept an incoming challenge.
