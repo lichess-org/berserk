@@ -34,10 +34,8 @@ class Requestor(Generic[T]):
     """Encapsulates the logic for making a request.
 
     :param session: the authenticated session object
-    :type session: :class:`requests.Session`
     :param str base_url: the base URL for requests
-    :param fmt: default format handler to use
-    :type fmt: :class:`~berserk.formats.FormatHandler`
+    :param default_fmt: default format handler to use
     """
 
     def __init__(
@@ -64,7 +62,11 @@ class Requestor(Generic[T]):
 
         :param method: HTTP verb
         :param path: the URL suffix
-        :param: the format handler
+        :param stream: whether to stream the response
+        :param params: request query parametrs
+        :param data: request body data (url-encoded)
+        :param json: request body json
+        :param fmt: the format handler
         :param converter: function to handle field conversions
         :return: response
         :raises berserk.exceptions.ResponseError: if the status is >=400
@@ -273,7 +275,7 @@ class Requestor(Generic[T]):
 class TokenSession(requests.Session):
     """Session capable of personal API token authentication.
 
-    :param str token: personal API token
+    :param token: personal API token
     """
 
     def __init__(self, token: str):

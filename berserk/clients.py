@@ -41,11 +41,9 @@ class FmtClient(BaseClient):
 
     :param session: request session, authenticated as needed
     :param base_url: base URL for the API
-    :param pgn_as_default: ``True`` if PGN should be the default format
-                                for game exports when possible. This defaults
-                                to ``False`` and is used as a fallback when
-                                ``as_pgn`` is left as ``None`` for methods that
-                                support it.
+    :param pgn_as_default: ``True`` if PGN should be the default format for game exports
+        when possible. This defaults to ``False`` and is used as a fallback when
+        ``as_pgn`` is left as ``None`` for methods that support it.
     """
 
     def __init__(
@@ -69,16 +67,14 @@ class Client(BaseClient):
 
     - :class:`account <berserk.clients.Account>` - managing account information
     - :class:`bots <berserk.clients.Bots>` - performing bot operations
-    - :class:`broadcasts <berserk.clients.Broadcasts>` - getting and creating
-      broadcasts
+    - :class:`broadcasts <berserk.clients.Broadcasts>` - getting and creating broadcasts
     - :class:`challenges <berserk.clients.Challenges>` - using challenges
     - :class:`games <berserk.clients.Games>` - getting and exporting games
-    - :class:`simuls <berserk.clients.Simuls>` - getting simultaneous
-      exhibition games
+    - :class:`simuls <berserk.clients.Simuls>` - getting simultaneous exhibition games
     - :class:`studies <berserk.clients.Studies>` - exporting studies
     - :class:`teams <berserk.clients.Teams>` - getting information about teams
-    - :class:`tournaments <berserk.clients.Tournaments>` - getting and
-      creating tournaments
+    - :class:`tournaments <berserk.clients.Tournaments>` - getting and creating
+        tournaments
     - :class:`users <berserk.clients.Users>` - getting information about users
     - :class:`board <berserk.clients.Board>` - play games using a normal account
     - :class:`messaging <berserk.clients.Messaging>` - private message other players
@@ -86,11 +82,9 @@ class Client(BaseClient):
 
     :param session: request session, authenticated as needed
     :param base_url: base API URL to use (if other than the default)
-    :param pgn_as_default: ``True`` if PGN should be the default format
-                            for game exports when possible. This defaults
-                            to ``False`` and is used as a fallback when
-                            ``as_pgn`` is left as ``None`` for methods that
-                            support it.
+    :param pgn_as_default: ``True`` if PGN should be the default format for game exports
+        when possible. This defaults to ``False`` and is used as a fallback when
+        ``as_pgn`` is left as ``None`` for methods that support it.
     """
 
     def __init__(
@@ -383,8 +377,8 @@ class Games(FmtClient):
         :param moves: whether to include the PGN moves
         :param tags: whether to include the PGN tags
         :param clocks: whether to include clock comments in the PGN moves
-        :param evals: whether to include analysis evaluation comments in
-                    the PGN moves when available
+        :param evals: whether to include analysis evaluation comments in the PGN moves
+            when available
         :param opening: whether to include the opening name
         :param literate: whether to include literate the PGN
         :return: exported game, as JSON or PGN
@@ -426,8 +420,8 @@ class Games(FmtClient):
         :param pgn_in_json: include the full PGN within JSON response
         :param tags: whether to include the PGN tags
         :param clocks: whether to include clock comments in the PGN moves
-        :param evals: whether to include analysis evaluation comments in
-                           the PGN moves when available
+        :param evals: whether to include analysis evaluation comments in the PGN moves
+            when available
         :param opening: whether to include the opening name
         :param literate: whether to include literate the PGN
         :param players: URL of text file containing real names and ratings for PGN
@@ -487,8 +481,7 @@ class Games(FmtClient):
         :param until: upperbound on the game timestamp
         :param max: limit the number of games returned
         :param vs: filter by username of the opponent
-        :param rated: filter by game mode (``True`` for rated, ``False``
-                           for casual)
+        :param rated: filter by game mode (``True`` for rated, ``False`` for casual)
         :param perf_type: filter by speed or variant
         :type perf_type: :class:`~berserk.enums.PerfType`
         :param color: filter by the color of the player
@@ -498,8 +491,8 @@ class Games(FmtClient):
         :param pgn_in_json: Include the full PGN within JSON response
         :param tags: whether to include the PGN tags
         :param clocks: whether to include clock comments in the PGN moves
-        :param evals: whether to include analysis evaluation comments in
-                           the PGN moves when available
+        :param evals: whether to include analysis evaluation comments in the PGN moves
+            when available
         :param opening: whether to include the opening name
         :param ongoing: Include ongoing games, last 3 moves omitted
         :param finished: Include finished games
@@ -558,8 +551,8 @@ class Games(FmtClient):
         :param moves: whether to include the PGN moves
         :param tags: whether to include the PGN tags
         :param clocks: whether to include clock comments in the PGN moves
-        :param evals: whether to include analysis evaluation comments in
-                           the PGN moves when available
+        :param evals: whether to include analysis evaluation comments in the PGN moves
+            when available
         :param opening: whether to include the opening name
         :return: iterator over the exported games, as JSON or PGN
         """
@@ -600,8 +593,8 @@ class Games(FmtClient):
         started or finished.
 
         :param usernames: two or more usernames
-        :param with_current_games: include all current ongoing games
-                                   at the beginning of the stream
+        :param with_current_games: include all current ongoing games at the beginning of
+            the stream
         :return: iterator over all games played among the given players
         """
         path = "api/stream/games-by-users"
@@ -624,8 +617,8 @@ class Games(FmtClient):
         """Stream multiple games by ID.
 
         :param game_ids: one or more game IDs to stream
-        :param stream_id: arbitrary stream ID that can be used later
-                          to add game IDs to this stream
+        :param stream_id: arbitrary stream ID that can be used later to add game IDs to
+            this stream
         :return: iterator over the stream of results
         """
         path = f"api/stream/games/{stream_id}"
@@ -699,8 +692,8 @@ class Challenges(BaseClient):
         :type color: :class:`~berserk.enums.Color`
         :param variant: game variant to use
         :type variant: :class:`~berserk.enums.Variant`
-        :param position: custom initial position in FEN (variant must be
-                         standard and the game cannot be rated)
+        :param position: custom initial position in FEN (variant must be standard and
+            the game cannot be rated)
         :return: challenge data
         """
         path = f"api/challenge/{username}"
@@ -743,8 +736,8 @@ class Challenges(BaseClient):
         :type color: :class:`~berserk.enums.Color`
         :param variant: game variant to use
         :type variant: :class:`~berserk.enums.Variant`
-        :param position: custom initial position in FEN (variant must be
-                         standard and the game cannot be rated)
+        :param position: custom initial position in FEN (variant must be standard and
+            the game cannot be rated)
         :return: game data
         """
         path = f"api/challenge/{username}"
@@ -780,8 +773,8 @@ class Challenges(BaseClient):
         :type color: :class:`~berserk.enums.Color`
         :param variant: game variant to use
         :type variant: :class:`~berserk.enums.Variant`
-        :param position: use one of the custom initial positions (variant must
-                         be standard and cannot be rated)
+        :param position: use one of the custom initial positions (variant must be
+            standard and cannot be rated)
         :return: information about the created game
         """
         path = "api/challenge/ai"
@@ -811,8 +804,8 @@ class Challenges(BaseClient):
         :param clock_increment: clock increment (in seconds)
         :param variant: game variant to use
         :type variant: :class:`~berserk.enums.Variant`
-        :param position: custom initial position in FEN (variant must be
-                         standard and the game cannot be rated)
+        :param position: custom initial position in FEN (variant must be standard and
+            the game cannot be rated)
         :param rated: Game is rated and impacts players ratings
         :param name: Optional name for the challenge, that players will see on
                      the challenge page.
@@ -1078,8 +1071,7 @@ class Bots(BaseClient):
         yield from self._r.get(path, stream=True, converter=models.GameState.convert)
 
     def get_online_bots(self, limit: int | None = None) -> Iterator[Dict[str, Any]]:
-        """
-        Stream the online bot users.
+        """Stream the online bot users.
 
         :param limit: Maximum number of bot users to fetch
         :return: iterator over online bots
@@ -1217,11 +1209,9 @@ class Tournaments(FmtClient):
         :param berserkable: whether players can use berserk
         :param streakable: whether players get streaks
         :param hasChat: whether players can discuss in a chat
-        :param description: anything you want to
-                                  tell players about the tournament
+        :param description: anything you want to tell players about the tournament
         :param password: password
-        :param teamBattleByTeam: Id of a team you lead
-                                      to create a team battle
+        :param teamBattleByTeam: Id of a team you lead to create a team battle
         :param teamId: Restrict entry to members of team
         :param minRating: Minimum rating to join
         :param maxRating: Maximum rating to join
@@ -1274,21 +1264,21 @@ class Tournaments(FmtClient):
 
         .. note::
 
-            If ``startsAt`` is left blank then the
-            tournament begins 10 minutes after creation
+            If ``startsAt`` is left blank then the tournament begins 10 minutes after
+            creation
 
-            :param teamId: team Id, required for swiss tournaments
-            :param clockLimit: initial clock time in seconds
-            :param clockIncrement: clock increment in seconds
-            :param nbRounds: maximum number of rounds to play
-            :param name: tournament name
-            :param startsAt: when to start tournament (timestamp in milliseconds)
-            :param roundInterval: interval between rounds in seconds
-            :param variant: variant to use if other than standard
-            :param description: tournament description
-            :param rated: whether the game affects player ratings
-            :param chatFor: who can read and write in the chat
-            :return: created tournament info
+        :param teamId: team Id, required for swiss tournaments
+        :param clockLimit: initial clock time in seconds
+        :param clockIncrement: clock increment in seconds
+        :param nbRounds: maximum number of rounds to play
+        :param name: tournament name
+        :param startsAt: when to start tournament (timestamp in milliseconds)
+        :param roundInterval: interval between rounds in seconds
+        :param variant: variant to use if other than standard
+        :param description: tournament description
+        :param rated: whether the game affects player ratings
+        :param chatFor: who can read and write in the chat
+        :return: created tournament info
         """
         path = f"api/swiss/new/{teamId}"
 
@@ -1322,10 +1312,9 @@ class Tournaments(FmtClient):
         :param as_pgn: whether to return PGN instead of JSON
         :param moves: include moves
         :param tags: include tags
-        :param clocks: include clock comments in the PGN moves, when
-                            available
-        :param evals: include analysis evalulation comments in the PGN
-                           moves, when available
+        :param clocks: include clock comments in the PGN moves, when available
+        :param evals: include analysis evalulation comments in the PGN moves, when
+            available
         :param opening: include the opening name
         :return: iterator over the exported games, as JSON or PGN
         """
@@ -1364,12 +1353,10 @@ class Tournaments(FmtClient):
         :param id: tournament id
         :param as_pgn: whether to return pgn instead of JSON
         :param moves: include moves
-        :param pgnInJson: include the full PGN within the
-                              JSON response, in a pgn field
+        :param pgnInJson: include the full PGN within the JSON response, in a pgn field
         :param tags: include tags
         :param clocks: include clock comments
-        :param evals: include analysis evaluation
-                          comments in the PGN, when available
+        :param evals: include analysis evaluation comments in the PGN, when available
         :param opening: include the opening name
         :return: iterator over the exported games, as JSON or PGN
         """

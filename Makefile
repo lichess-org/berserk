@@ -29,8 +29,9 @@ setup: ## setup poetry env and install dependencies
 test: ## run tests
 	poetry run pytest
 
-format: ## format python files with black
-	poetry run black .
+format: ## format python files with black and docformatter
+	poetry run black berserk tests
+	poetry run docformatter --in-place --black berserk/*.py
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	poetry run sphinx-build -b html docs _build -EW --keep-going
