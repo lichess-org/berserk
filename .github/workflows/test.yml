@@ -35,3 +35,5 @@ jobs:
         run: poetry install --with dev
       - name: Test
         run: poetry run pytest
+      - name: Typecheck
+        run: poetry run pyright berserk

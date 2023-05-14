@@ -26,8 +26,11 @@ clean-test: ## remove test and coverage artifacts
 setup: ## setup poetry env and install dependencies
 	poetry install --with dev
 
-test: ## run tests
+test: ## run tests with pytest
 	poetry run pytest
+
+typecheck: ## run type checking with pyright
+	poetry run pyright berserk
 
 format: ## format python files with black and docformatter
 	poetry run black berserk tests
