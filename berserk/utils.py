@@ -1,4 +1,7 @@
 from __future__ import annotations
+
+import dateutil.parser
+
 from datetime import datetime, timezone
 from typing import Any, Callable, Dict, List, NamedTuple, Tuple, TypeVar, Union, cast
 
@@ -30,10 +33,10 @@ def datetime_from_millis(millis: float) -> datetime:
 def datetime_from_str(dt_str: str) -> datetime:
     """Convert the time in a string to a datetime.
 
-    UTC is assumed. The returned datetime is timezone aware.
-    The format must match ISO 8601.
+    UTC is assumed. The returned datetime is timezone aware. The format must match ISO
+    8601.
     """
-    dt = datetime.fromisoformat(dt_str)
+    dt = dateutil.parser.isoparse(dt_str)
     return dt.replace(tzinfo=timezone.utc)
 
 
