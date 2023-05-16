@@ -1,6 +1,5 @@
 import datetime
 import collections
-
 import pytest
 
 from berserk import utils
@@ -29,6 +28,12 @@ def test_datetime_from_millis(time_case):
 
 def test_datetime_from_str(time_case):
     assert utils.datetime_from_str(time_case.text) == time_case.dt
+
+
+def test_datetime_from_str2():
+    assert utils.datetime_from_str("2023-05-16T05:46:54.327313Z") == datetime.datetime(
+        2023, 5, 16, 5, 46, 54, 327313, tzinfo=datetime.timezone.utc
+    )
 
 
 def test_inner():
