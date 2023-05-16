@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v0.12.3 (2023-05-16)
+--------------------
+
+* Fixed response handling of several endpoints related to datetime parsing for python older than 3.11
+
+Thanks to @aro5000 for the report and @icp1994 for the troubleshooting.
+
 v0.12.2 (2023-05-14)
 --------------------
 
