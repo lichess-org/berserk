@@ -80,4 +80,4 @@ You need a PyPI account with access to the ``berserk`` package and have an API t
 
 Make sure all your changes are committed (including an entry in CHANGELOG.rst) and you set the version in ``pyproject.toml`` correctly.
 
-Then run ``poetry publish --build`` or ``make publish`` and tag the release on git: ``git tag v1.2.3 && git push --tags``
+Then run ``make publish`` and tag the release on git: ``git tag v1.2.3 && git push --tags``
