@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v0.12.4 (2023-05-21)
+--------------------
+
+* Fixed `client.users.get_puzzle_activity` returning 404 all the time.
+
+Thanks to @AnonJohn for the report.
+
 v0.12.3 (2023-05-16)
 --------------------
 
