@@ -176,7 +176,7 @@ class Users(BaseClient):
         :param int max: maximum number of entries to stream
         :return: puzzle activity history
         """
-        path = "api/user/puzzle-activity"
+        path = "api/puzzle/activity"
         params = {"max": max}
         return self._r.get(
             path,
