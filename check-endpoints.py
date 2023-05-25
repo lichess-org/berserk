@@ -33,7 +33,7 @@ for endpoint, data in spec["paths"].items():
     endpoint_without_slash = endpoint[1:]
 
     # Replace parameter placeholders with regular expression
-    endpoint_regex = re.sub(r"{[^/]+?}", r"[^/]+?", endpoint_without_slash) + '"'
+    endpoint_regex = '"/' + re.sub(r"{[^/]+?}", r"[^/]+?", endpoint_without_slash) + '"'
 
     # Check if endpoint or a variation of it is present in file
     if not re.search(endpoint_regex, clients_content):
