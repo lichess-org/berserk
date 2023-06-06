@@ -98,6 +98,7 @@ Most of the API is available:
     client.games.get_ongoing
     client.games.stream_game_moves
     client.games.get_tv_channels
+    client.games.import_game
 
     client.challenges.create
     client.challenges.create_ai
