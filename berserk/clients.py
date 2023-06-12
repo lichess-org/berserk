@@ -1496,6 +1496,26 @@ class Broadcasts(BaseClient):
         path = f"/broadcast/{slug}/{broadcast_id}"
         return self._r.get(path, converter=models.Broadcast.convert)
 
+    def get_multi(self, num_to_return: int | None = None) -> Iterator[Dict[str, Any]]:
+        """Get the list of incoming, ongoing, and finished official broadcasts.
+        Sorted by start date, most recent first.
+        
+        :param num_to_return: maximum number of braodasts to fetch, all by default
+        :return: data for up to num_to_return broadcasts
+        """
+        path = "/api/broadcast"
+        params = {"nb": num_to_return}
+        return self._r.get(path, params=params, stream=True)
+        
+    def get_tournament_pgn(self, broadcast_tournament_id: str) -> Iterator[Dict[str, Any]]:
+        """Get all games of all rounds of a broadcast in PGN format.
+        
+        :param broadcast_tournament_id: the broadcast tournament ID
+        :return: all games in the broadcast tournament in PGN format
+        """
+        path = f"/api/broadcast/{broadcast_tournament_id}.pgn"
+        return self._r.get(path, fmt=PGN, stream=True)
+
     def update(
         self,
         broadcast_id: str,
@@ -1565,6 +1585,15 @@ class Broadcasts(BaseClient):
         """
         path = f"/broadcast/-/-/{broadcast_id}"
         return self._r.get(path, converter=models.Broadcast.convert)
+        
+    def get_round_pgn(self, broadcast_round_id: str) -> Iterator[Dict[str, Any]]:
+        """Get all games of a single round of a broadcast in pgn format
+        
+        :param broadcast_round_id: broadcast round ID
+        :return: all games of the broadcast round in pgn format
+        """
+        path = f"/api/broadcast/round/{broadcast_round_id}.pgn"
+        return self._r.get(path, fmt=PGN, stream=True)
 
     def update_round(
         self,
@@ -1584,7 +1613,7 @@ class Broadcasts(BaseClient):
         path = f"/broadcast/round/{broadcast_id}/edit"
         payload = {"name": name, "syncUrl": syncUrl, "startsAt": startsAt}
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
-
+    
 
 class Simuls(BaseClient):
     """Simultaneous exhibitions - one vs many."""
