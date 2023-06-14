@@ -22,6 +22,7 @@ __all__ = [
     "Teams",
     "Tournaments",
     "Users",
+    "Puzzles",
     "Messaging",
     "OAuth",
     "TV",
@@ -108,7 +109,7 @@ class Client(BaseClient):
         self.simuls = Simuls(session, base_url)
         self.studies = Studies(session, base_url)
         self.messaging = Messaging(session, base_url)
-
+        self.puzzles = Puzzles(session, base_url)
         self.oauth = OAuth(session, base_url)
 
         self.tv = TV(session, base_url)
