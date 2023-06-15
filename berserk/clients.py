@@ -81,12 +81,14 @@ class Client(BaseClient):
     - :class:`board <berserk.clients.Board>` - play games using a normal account
     - :class:`messaging <berserk.clients.Messaging>` - private message other players
     - :class:`tv <berserk.clients.TV>` - get information on tv channels and games
+    - :class:`tablebase <berserk.clients.Tablebase>` - lookup endgame tablebase
 
     :param session: request session, authenticated as needed
     :param base_url: base API URL to use (if other than the default)
     :param pgn_as_default: ``True`` if PGN should be the default format for game exports
         when possible. This defaults to ``False`` and is used as a fallback when
         ``as_pgn`` is left as ``None`` for methods that support it.
+    :param str tablebase_url: URL for tablebase lookups
     """
 
     def __init__(
