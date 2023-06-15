@@ -1679,14 +1679,13 @@ class OAuth(BaseClient):
 class Puzzles(BaseClient):
     """Client for puzzle-related endpoints."""
 
-    def get_puzzle(self, puzzle_id: str):
+    def get(self, id: str) -> Dict[str, Any]:
         """Get a puzzle by its id.
 
-        :param puzzle_id : the id of the puzzle to retrieve
+        :param id: the id of the puzzle to retrieve
         :return: the puzzle
-        :rtype: dict
         """
-        path = f"api/puzzle/{puzzle_id}"
+        path = f"api/puzzle/{id}"
         return self._r.get(path, fmt=JSON)
 
 
