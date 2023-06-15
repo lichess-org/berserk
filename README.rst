@@ -66,47 +66,6 @@ Most of the API is available:
     client.account.set_kid_mode
     client.account.upgrade_to_bot
 
-    client.users.get_puzzle_activity
-    client.users.get_realtime_statuses
-    client.users.get_all_top_10
-    client.users.get_leaderboard
-    client.users.get_public_data
-    client.users.get_activity_feed
-    client.users.get_by_id
-    client.users.get_by_team
-    client.users.get_live_streamers
-    client.users.get_rating_history
-    client.users.get_crosstable
-    client.users.get_user_performance
-
-    client.relations.get_users_followed
-    client.relations.follow
-    client.relations.unfollow
-
-    client.teams.get_members
-    client.teams.join
-    client.teams.leave
-    client.teams.kick_member
-
-    client.games.export
-    client.games.export_ongoing_by_player
-    client.games.export_by_player
-    client.games.export_multi
-    client.games.get_among_players
-    client.games.stream_games_by_ids
-    client.games.add_game_ids_to_stream
-    client.games.get_ongoing
-    client.games.stream_game_moves
-    client.games.get_tv_channels
-    client.games.import_game
-
-    client.challenges.create
-    client.challenges.create_ai
-    client.challenges.create_open
-    client.challenges.create_with_accept
-    client.challenges.accept
-    client.challenges.decline
-
     client.board.stream_incoming_events
     client.board.seek
     client.board.stream_game_state
@@ -136,6 +95,54 @@ Most of the API is available:
     client.bots.accept_challenge
     client.bots.decline_challenge
 
+    client.broadcasts.get_official
+    client.broadcasts.create
+    client.broadcasts.get
+    client.broadcasts.update
+    client.broadcasts.push_pgn_update
+    client.broadcasts.create_round
+    client.broadcasts.get_round
+    client.broadcasts.update_round
+    client.broadcasts.get_round_pgns
+    client.broadcasts.get_pgns
+
+    client.challenges.create
+    client.challenges.create_ai
+    client.challenges.create_open
+    client.challenges.create_with_accept
+    client.challenges.accept
+    client.challenges.decline
+
+    client.games.export
+    client.games.export_ongoing_by_player
+    client.games.export_by_player
+    client.games.export_multi
+    client.games.get_among_players
+    client.games.stream_games_by_ids
+    client.games.add_game_ids_to_stream
+    client.games.get_ongoing
+    client.games.stream_game_moves
+    client.games.get_tv_channels
+    client.games.import_game
+
+    client.messaging.send
+
+    client.oauth.test_tokens
+
+    client.relations.get_users_followed
+    client.relations.follow
+    client.relations.unfollow
+
+    client.simuls.get
+
+    client.studies.export_chapter
+    client.studies.export
+
+    client.teams.get_members
+    client.teams.join
+    client.teams.leave
+    client.teams.kick_member
+
     client.tournaments.get
     client.tournaments.get_tournament
     client.tournaments.create_arena
@@ -148,28 +155,21 @@ Most of the API is available:
     client.tournaments.stream_results
     client.tournaments.stream_by_creator
 
-    client.broadcasts.get_official
-    client.broadcasts.create
-    client.broadcasts.get
-    client.broadcasts.update
-    client.broadcasts.push_pgn_update
-    client.broadcasts.create_round
-    client.broadcasts.get_round
-    client.broadcasts.update_round
-    client.broadcasts.get_round_pgns
-    client.broadcasts.get_pgns
-
-    client.simuls.get
-
-    client.studies.export_chapter
-    client.studies.export
-
-    client.messaging.send
-
-    client.oauth.test_tokens
-
     client.tv.get_current_games
     client.tv.stream_current_game
     client.tv.get_best_ongoing
+
+    client.users.get_puzzle_activity
+    client.users.get_realtime_statuses
+    client.users.get_all_top_10
+    client.users.get_leaderboard
+    client.users.get_public_data
+    client.users.get_activity_feed
+    client.users.get_by_id
+    client.users.get_by_team
+    client.users.get_live_streamers
+    client.users.get_rating_history
+    client.users.get_crosstable
+    client.users.get_user_performance
 
 Details for each function can be found in the `documentation <https://lichess-org.github.io/berserk/>`_.
