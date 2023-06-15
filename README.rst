@@ -148,6 +148,7 @@ Most of the API is available:
     client.tournaments.stream_results
     client.tournaments.stream_by_creator
 
+    client.broadcasts.get_official
     client.broadcasts.create
     client.broadcasts.get
     client.broadcasts.update
@@ -155,6 +156,8 @@ Most of the API is available:
     client.broadcasts.create_round
     client.broadcasts.get_round
     client.broadcasts.update_round
+    client.broadcasts.get_round_pgns
+    client.broadcasts.get_pgns
 
     client.simuls.get
 
