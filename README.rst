@@ -152,6 +152,9 @@ Most of the API is available:
     client.broadcasts.get
     client.broadcasts.update
     client.broadcasts.push_pgn_update
+    client.broadcasts.create_round
+    client.broadcasts.get_round
+    client.broadcasts.update_round
 
     client.simuls.get
 
