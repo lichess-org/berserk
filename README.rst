@@ -129,6 +129,8 @@ Most of the API is available:
 
     client.oauth.test_tokens
 
+    client.puzzles.get
+
     client.relations.get_users_followed
     client.relations.follow
     client.relations.unfollow
