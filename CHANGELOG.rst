@@ -1,6 +1,16 @@
 Changelog
 =========
 
+v0.12.5 (2023-06-15)
+--------------------
+
+* Added `client.broadcast.get_official` to get official Broadcasts
+* Added `client.broadcast.get_round_pgns` to get the PGN of all games of a broadcast round
+* Added `client.broadcast.get_pgns` to get the PGN of all games of a broadcast
+* Added `client.puzzles.get` to get a puzzle by its id
+
+Thanks to @obazin and @thegrapesoda for their contributions to this release.
+
 v0.12.4 (2023-05-21)
 --------------------
 
