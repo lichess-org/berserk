@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from time import time as now
 from typing import Any, Dict, Iterator, List, Tuple, cast
 
@@ -93,6 +94,8 @@ class Client(BaseClient):
         session: requests.Session | None = None,
         base_url: str | None = None,
         pgn_as_default: bool = False,
+        *,
+        tablebase_url: str | None = None,
     ):
         session = session or requests.Session()
         super().__init__(session, base_url)
@@ -113,6 +116,10 @@ class Client(BaseClient):
         self.oauth = OAuth(session, base_url)
 
         self.tv = TV(session, base_url)
+
+        self.tablebase: Tablebase = Tablebase(
+            session, tablebase_url or "https://tablebase.lichess.ovh"
+        )
 
 
 class Account(BaseClient):
@@ -1746,3 +1753,48 @@ class TV(FmtClient):
             return self._r.get(
                 path, params=params, fmt=NDJSON_LIST, converter=models.TV.convert
             )
+
+
+class Tablebase(BaseClient):
+    """Client for tablebase related endpoints."""
+
+    def lookup(self, position: str, variant: str) -> Dict[str, Any]:
+        """Lookup the tablebase for a position.
+
+        :param str position: FEN of the position to lookup
+        :param str variant: variant
+        :return Dict[str, Any]: tablebase information about this position
+        """
+        path: str = f"/{variant}"
+        params: dict[str, str] = {"fen": position}
+        return self._r.get(path, params=params)
+
+    def standard(self, position: str) -> Dict[str, Any]:
+        """Lookup the tablebase for a position.
+
+        Standard variant.
+
+        :param str position: FEN of the position to lookup
+        :return Dict[str, Any]: tablebase information about this position
+        """
+        return self.lookup(position, "standard")
+
+    def atomic(self, position: str) -> Dict[str, Any]:
+        """Lookup the tablebase for a position.
+
+        Atomic variant.
+
+        :param str position: FEN of the position to lookup
+        :return Dict[str, Any]: tablebase information about this position
+        """
+        return self.lookup(position, "atomic")
+
+    def antichess(self, position: str) -> Dict[str, Any]:
+        """Lookup the tablebase for a position.
+
+        Antichess variant.
+
+        :param str position: FEN of the position to lookup
+        :return Dict[str, Any]: tablebase information about this position
+        """
+        return self.lookup(position, "antichess")
