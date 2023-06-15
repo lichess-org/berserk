@@ -22,6 +22,7 @@ __all__ = [
     "Teams",
     "Tournaments",
     "Users",
+    "Puzzles",
     "Messaging",
     "OAuth",
     "TV",
@@ -108,7 +109,7 @@ class Client(BaseClient):
         self.simuls = Simuls(session, base_url)
         self.studies = Studies(session, base_url)
         self.messaging = Messaging(session, base_url)
-
+        self.puzzles = Puzzles(session, base_url)
         self.oauth = OAuth(session, base_url)
 
         self.tv = TV(session, base_url)
@@ -1673,6 +1674,19 @@ class OAuth(BaseClient):
         path = "/api/token/test"
         payload = ",".join(tokens)
         return self._r.post(path, data=payload, converter=models.OAuth.convert)
+
+
+class Puzzles(BaseClient):
+    """Client for puzzle-related endpoints."""
+
+    def get(self, id: str) -> Dict[str, Any]:
+        """Get a puzzle by its id.
+
+        :param id: the id of the puzzle to retrieve
+        :return: the puzzle
+        """
+        path = f"api/puzzle/{id}"
+        return self._r.get(path, fmt=JSON)
 
 
 class TV(FmtClient):
