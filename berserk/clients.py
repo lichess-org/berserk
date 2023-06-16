@@ -400,9 +400,7 @@ class Games(FmtClient):
         if self._use_pgn(as_pgn):
             return self._r.get(path, params=params, fmt=PGN)
         else:
-            return self._r.get(
-                path, params=params, fmt=JSON, converter=models.Game.convert
-            )
+            return self._r.get(path, params=params, converter=models.Game.convert)
 
     def export_ongoing_by_player(
         self,
@@ -450,7 +448,6 @@ class Games(FmtClient):
                 path,
                 params=params,
                 stream=True,
-                fmt=JSON,
                 converter=models.Game.convert,
             )
 
@@ -1689,8 +1686,8 @@ class Puzzles(BaseClient):
         :param id: the id of the puzzle to retrieve
         :return: the puzzle
         """
-        path = f"api/puzzle/{id}"
-        return self._r.get(path, fmt=JSON)
+        path = f"/api/puzzle/{id}"
+        return self._r.get(path)
 
 
 class TV(FmtClient):
