@@ -187,6 +187,16 @@ class Users(BaseClient):
             converter=models.PuzzleActivity.convert,
         )
 
+    def get_puzzle_dashboard(self, days: int = 30) -> Dict[str, Any]:
+        """Get your puzzle dashboard.
+
+        :param int days: how many days to look back when aggregating puzzle
+            results
+        :return: your puzzle dashboard
+        """
+        path = f"api/puzzle/dashboard/{days}"
+        return self._r.get(path, fmt=JSON)
+
     def get_realtime_statuses(
         self, *user_ids: str, with_game_ids: bool = False
     ) -> List[Dict[str, Any]]:
@@ -1464,8 +1474,8 @@ class Broadcasts(BaseClient):
     """Broadcast of one or more games."""
 
     def get_official(self, nb: int | None = None) -> Iterator[Dict[str, Any]]:
-        """Get the list of incoming, ongoing, and finished official broadcasts.
-        Sorted by start date, most recent first.
+        """Get the list of incoming, ongoing, and finished official broadcasts. Sorted
+        by start date, most recent first.
 
         :param nb: maximum number of broadcasts to fetch, default is 20
         :return: iterator over broadcast objects
@@ -1598,7 +1608,7 @@ class Broadcasts(BaseClient):
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
     def get_round_pgns(self, broadcast_round_id: str) -> Iterator[str]:
-        """Get all games of a single round of a broadcast in pgn format
+        """Get all games of a single round of a broadcast in pgn format.
 
         :param broadcast_round_id: broadcast round ID
         :return: iterator over all games of the broadcast round in PGN format
@@ -1687,6 +1697,25 @@ class Puzzles(BaseClient):
         """
         path = f"api/puzzle/{id}"
         return self._r.get(path, fmt=JSON)
+
+    def get_daily(self) -> Dict[str, Any]:
+        """Get the daily Lichess puzzle.
+
+        :return: daily puzzle
+        """
+        path = "api/puzzle/daily"
+        return self._r.get(path, fmt=JSON)
+
+    def get_storm_dashboard(self, username: str, days: int = 30) -> Dict[str, Any]:
+        """Get storm dashboard of player.
+
+        :param str username: a username
+        :param int days: how many days of history to return
+        :return: a player storm dashboard
+        """
+        path = f"api/storm/dashboard/{username}"
+        params = {"days": days}
+        return self._r.get(path, params=params, fmt=JSON)
 
 
 class TV(FmtClient):
