@@ -179,7 +179,7 @@ class Users(BaseClient):
         """
         path = "/api/puzzle/activity"
         params = {"max": max}
-        return self._r.get(
+        yield from self._r.get(
             path,
             params=params,
             fmt=NDJSON,
@@ -295,7 +295,9 @@ class Relations(BaseClient):
         :return: iterator over the users the given user follows
         """
         path = "/api/rel/following"
-        return self._r.get(path, stream=True, fmt=NDJSON, converter=models.User.convert)
+        yield from self._r.get(
+            path, stream=True, fmt=NDJSON, converter=models.User.convert
+        )
 
     def follow(self, username: str):
         """Follow a player.
@@ -321,7 +323,9 @@ class Teams(BaseClient):
         :return: users on the given team
         """
         path = f"/api/team/{team_id}/users"
-        return self._r.get(path, fmt=NDJSON, stream=True, converter=models.User.convert)
+        yield from self._r.get(
+            path, fmt=NDJSON, stream=True, converter=models.User.convert
+        )
 
     def join(
         self, team_id: str, message: str | None = None, password: str | None = None
@@ -440,9 +444,9 @@ class Games(FmtClient):
             "players": players,
         }
         if self._use_pgn(as_pgn):
-            return self._r.get(path, params=params, stream=True, fmt=PGN)
+            yield from self._r.get(path, params=params, stream=True, fmt=PGN)
         else:
-            return self._r.get(
+            yield from self._r.get(
                 path,
                 params=params,
                 stream=True,
@@ -1448,7 +1452,7 @@ class Tournaments(FmtClient):
         """
         path = f"/api/tournament/{id}/results"
         params = {"nb": limit}
-        return self._r.get(path, params=params, stream=True)
+        yield from self._r.get(path, params=params, stream=True)
 
     def stream_by_creator(self, username: str) -> Iterator[Dict[str, Any]]:
         """Stream the tournaments created by a player.
@@ -1457,7 +1461,7 @@ class Tournaments(FmtClient):
         :return: iterator over the tournaments
         """
         path = f"/api/user/{username}/tournament/created"
-        return self._r.get(path, stream=True)
+        yield from self._r.get(path, stream=True)
 
 
 class Broadcasts(BaseClient):
@@ -1472,7 +1476,7 @@ class Broadcasts(BaseClient):
         """
         path = "/api/broadcast"
         params = {"nb": nb}
-        return self._r.get(path, params=params, stream=True)
+        yield from self._r.get(path, params=params, stream=True)
 
     def create(
         self,
@@ -1604,7 +1608,7 @@ class Broadcasts(BaseClient):
         :return: iterator over all games of the broadcast round in PGN format
         """
         path = f"/api/broadcast/round/{broadcast_round_id}.pgn"
-        return self._r.get(path, fmt=PGN, stream=True)
+        yield from self._r.get(path, fmt=PGN, stream=True)
 
     def get_pgns(self, broadcast_id: str) -> Iterator[str]:
         """Get all games of all rounds of a broadcast in PGN format.
@@ -1613,7 +1617,7 @@ class Broadcasts(BaseClient):
         :return: iterator over all games of the broadcast in PGN format
         """
         path = f"/api/broadcast/{broadcast_id}.pgn"
-        return self._r.get(path, fmt=PGN, stream=True)
+        yield from self._r.get(path, fmt=PGN, stream=True)
 
 
 class Simuls(BaseClient):
@@ -1645,7 +1649,7 @@ class Studies(BaseClient):
         :return: iterator over all chapters as PGN
         """
         path = f"/api/study/{study_id}.pgn"
-        return self._r.get(path, fmt=PGN, stream=True)
+        yield from self._r.get(path, fmt=PGN, stream=True)
 
 
 class Messaging(BaseClient):
