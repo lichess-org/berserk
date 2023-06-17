@@ -129,7 +129,11 @@ Most of the API is available:
 
     client.oauth.test_tokens
 
+    client.puzzles.get_daily
     client.puzzles.get
+    client.puzzles.get_puzzle_activity
+    client.puzzles.get_puzzle_dashboard
+    client.puzzles.get_storm_dashboard
 
     client.relations.get_users_followed
     client.relations.follow
@@ -161,7 +165,6 @@ Most of the API is available:
     client.tv.stream_current_game
     client.tv.get_best_ongoing
 
-    client.users.get_puzzle_activity
     client.users.get_realtime_statuses
     client.users.get_all_top_10
     client.users.get_leaderboard
