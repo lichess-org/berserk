@@ -1693,7 +1693,7 @@ class Puzzles(BaseClient):
 
         :return: current daily puzzle
         """
-        path = "api/puzzle/daily"
+        path = "/api/puzzle/daily"
         return self._r.get(path)
 
     def get(self, id: str) -> Dict[str, Any]:
@@ -1730,7 +1730,7 @@ class Puzzles(BaseClient):
         :param days: how many days to look back when aggregating puzzle results
         :return: the puzzle dashboard
         """
-        path = f"api/puzzle/dashboard/{days}"
+        path = f"/api/puzzle/dashboard/{days}"
         return self._r.get(path)
 
     def get_storm_dashboard(self, username: str, days: int = 30) -> Dict[str, Any]:
@@ -1740,7 +1740,7 @@ class Puzzles(BaseClient):
         :param days: how many days of history to return
         :return: the storm dashboard
         """
-        path = f"api/storm/dashboard/{username}"
+        path = f"/api/storm/dashboard/{username}"
         params = {"days": days}
         return self._r.get(path, params=params)
 
