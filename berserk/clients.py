@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from time import time as now
 from typing import Any, Dict, Iterator, List, Tuple, cast
+from deprecated import deprecated
 
 import requests
 
@@ -180,15 +181,16 @@ class Account(BaseClient):
 class Users(BaseClient):
     """Client for user-related endpoints."""
 
+    @deprecated(reason="Use Puzzles.get_puzzle_activity instead", version="0.12.6")
     def get_puzzle_activity(self, max: int | None = None) -> Iterator[Dict[str, Any]]:
-        """Stream puzzle activity history starting with the most recent.
+        """Stream puzzle activity history of the authenticated user, starting with the most recent activity.
 
-        :param int max: maximum number of entries to stream
-        :return: puzzle activity history
+        :param max: maximum number of entries to stream. defaults to all activity
+        :return: stream of puzzle activity history
         """
         path = "/api/puzzle/activity"
         params = {"max": max}
-        return self._r.get(
+        yield from self._r.get(
             path,
             params=params,
             fmt=NDJSON,
@@ -304,7 +306,9 @@ class Relations(BaseClient):
         :return: iterator over the users the given user follows
         """
         path = "/api/rel/following"
-        return self._r.get(path, stream=True, fmt=NDJSON, converter=models.User.convert)
+        yield from self._r.get(
+            path, stream=True, fmt=NDJSON, converter=models.User.convert
+        )
 
     def follow(self, username: str):
         """Follow a player.
@@ -330,7 +334,9 @@ class Teams(BaseClient):
         :return: users on the given team
         """
         path = f"/api/team/{team_id}/users"
-        return self._r.get(path, fmt=NDJSON, stream=True, converter=models.User.convert)
+        yield from self._r.get(
+            path, fmt=NDJSON, stream=True, converter=models.User.convert
+        )
 
     def join(
         self, team_id: str, message: str | None = None, password: str | None = None
@@ -405,9 +411,7 @@ class Games(FmtClient):
         if self._use_pgn(as_pgn):
             return self._r.get(path, params=params, fmt=PGN)
         else:
-            return self._r.get(
-                path, params=params, fmt=JSON, converter=models.Game.convert
-            )
+            return self._r.get(path, params=params, converter=models.Game.convert)
 
     def export_ongoing_by_player(
         self,
@@ -449,13 +453,12 @@ class Games(FmtClient):
             "players": players,
         }
         if self._use_pgn(as_pgn):
-            return self._r.get(path, params=params, stream=True, fmt=PGN)
+            yield from self._r.get(path, params=params, stream=True, fmt=PGN)
         else:
-            return self._r.get(
+            yield from self._r.get(
                 path,
                 params=params,
                 stream=True,
-                fmt=JSON,
                 converter=models.Game.convert,
             )
 
@@ -1457,7 +1460,7 @@ class Tournaments(FmtClient):
         """
         path = f"/api/tournament/{id}/results"
         params = {"nb": limit}
-        return self._r.get(path, params=params, stream=True)
+        yield from self._r.get(path, params=params, stream=True)
 
     def stream_by_creator(self, username: str) -> Iterator[Dict[str, Any]]:
         """Stream the tournaments created by a player.
@@ -1466,22 +1469,22 @@ class Tournaments(FmtClient):
         :return: iterator over the tournaments
         """
         path = f"/api/user/{username}/tournament/created"
-        return self._r.get(path, stream=True)
+        yield from self._r.get(path, stream=True)
 
 
 class Broadcasts(BaseClient):
     """Broadcast of one or more games."""
 
     def get_official(self, nb: int | None = None) -> Iterator[Dict[str, Any]]:
-        """Get the list of incoming, ongoing, and finished official broadcasts.
-        Sorted by start date, most recent first.
+        """Get the list of incoming, ongoing, and finished official broadcasts. Sorted
+        by start date, most recent first.
 
         :param nb: maximum number of broadcasts to fetch, default is 20
         :return: iterator over broadcast objects
         """
         path = "/api/broadcast"
         params = {"nb": nb}
-        return self._r.get(path, params=params, stream=True)
+        yield from self._r.get(path, params=params, stream=True)
 
     def create(
         self,
@@ -1607,13 +1610,13 @@ class Broadcasts(BaseClient):
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
     def get_round_pgns(self, broadcast_round_id: str) -> Iterator[str]:
-        """Get all games of a single round of a broadcast in pgn format
+        """Get all games of a single round of a broadcast in pgn format.
 
         :param broadcast_round_id: broadcast round ID
         :return: iterator over all games of the broadcast round in PGN format
         """
         path = f"/api/broadcast/round/{broadcast_round_id}.pgn"
-        return self._r.get(path, fmt=PGN, stream=True)
+        yield from self._r.get(path, fmt=PGN, stream=True)
 
     def get_pgns(self, broadcast_id: str) -> Iterator[str]:
         """Get all games of all rounds of a broadcast in PGN format.
@@ -1622,7 +1625,7 @@ class Broadcasts(BaseClient):
         :return: iterator over all games of the broadcast in PGN format
         """
         path = f"/api/broadcast/{broadcast_id}.pgn"
-        return self._r.get(path, fmt=PGN, stream=True)
+        yield from self._r.get(path, fmt=PGN, stream=True)
 
 
 class Simuls(BaseClient):
@@ -1654,7 +1657,7 @@ class Studies(BaseClient):
         :return: iterator over all chapters as PGN
         """
         path = f"/api/study/{study_id}.pgn"
-        return self._r.get(path, fmt=PGN, stream=True)
+        yield from self._r.get(path, fmt=PGN, stream=True)
 
 
 class Messaging(BaseClient):
@@ -1688,14 +1691,61 @@ class OAuth(BaseClient):
 class Puzzles(BaseClient):
     """Client for puzzle-related endpoints."""
 
+    def get_daily(self) -> Dict[str, Any]:
+        """Get the current daily Lichess puzzle.
+
+        :return: current daily puzzle
+        """
+        path = "api/puzzle/daily"
+        return self._r.get(path)
+
     def get(self, id: str) -> Dict[str, Any]:
         """Get a puzzle by its id.
 
         :param id: the id of the puzzle to retrieve
         :return: the puzzle
         """
-        path = f"api/puzzle/{id}"
-        return self._r.get(path, fmt=JSON)
+        path = f"/api/puzzle/{id}"
+        return self._r.get(path)
+
+    def get_puzzle_activity(
+        self, max: int | None = None, before: int | None = None
+    ) -> Iterator[Dict[str, Any]]:
+        """Stream puzzle activity history of the authenticated user, starting with the most recent activity.
+
+        :param max: maximum number of entries to stream. defaults to all activity
+        :param before: timestamp in milliseconds. only stream activity before this time. defaults to now. use together with max for pagination
+        :return: iterator over puzzle activity history
+        """
+        path = "/api/puzzle/activity"
+        params = {"max": max, "before": before}
+        return self._r.get(
+            path,
+            params=params,
+            fmt=NDJSON,
+            stream=True,
+            converter=models.PuzzleActivity.convert,
+        )
+
+    def get_puzzle_dashboard(self, days: int = 30) -> Dict[str, Any]:
+        """Get the puzzle dashboard of the authenticated user.
+
+        :param days: how many days to look back when aggregating puzzle results
+        :return: the puzzle dashboard
+        """
+        path = f"api/puzzle/dashboard/{days}"
+        return self._r.get(path)
+
+    def get_storm_dashboard(self, username: str, days: int = 30) -> Dict[str, Any]:
+        """Get storm dashboard of a player. Set days to 0 if you're only interested in the highscore.
+
+        :param username: the username of the player to download the dashboard for
+        :param days: how many days of history to return
+        :return: the storm dashboard
+        """
+        path = f"api/storm/dashboard/{username}"
+        params = {"days": days}
+        return self._r.get(path, params=params)
 
 
 class TV(FmtClient):
