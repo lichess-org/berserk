@@ -144,6 +144,11 @@ Most of the API is available:
     client.studies.export_chapter
     client.studies.export
 
+    client.tablebase.look_up
+    client.tablebase.standard
+    client.tablebase.atomic
+    client.tablebase.antichess
+
     client.teams.get_members
     client.teams.join
     client.teams.leave
