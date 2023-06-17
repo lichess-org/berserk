@@ -1,6 +1,7 @@
 from __future__ import annotations
 from time import time as now
 from typing import Any, Dict, Iterator, List, Tuple, cast
+from deprecated import deprecated
 
 import requests
 
@@ -171,11 +172,12 @@ class Account(BaseClient):
 class Users(BaseClient):
     """Client for user-related endpoints."""
 
+    @deprecated(reason="Use Puzzles.get_puzzle_activity instead", version="0.12.6")
     def get_puzzle_activity(self, max: int | None = None) -> Iterator[Dict[str, Any]]:
-        """Stream puzzle activity history starting with the most recent.
+        """Stream puzzle activity history of the authenticated user, starting with the most recent activity.
 
-        :param int max: maximum number of entries to stream
-        :return: puzzle activity history
+        :param max: maximum number of entries to stream. defaults to all activity
+        :return: stream of puzzle activity history
         """
         path = "/api/puzzle/activity"
         params = {"max": max}
@@ -186,16 +188,6 @@ class Users(BaseClient):
             stream=True,
             converter=models.PuzzleActivity.convert,
         )
-
-    def get_puzzle_dashboard(self, days: int = 30) -> Dict[str, Any]:
-        """Get your puzzle dashboard.
-
-        :param int days: how many days to look back when aggregating puzzle
-            results
-        :return: your puzzle dashboard
-        """
-        path = f"api/puzzle/dashboard/{days}"
-        return self._r.get(path, fmt=JSON)
 
     def get_realtime_statuses(
         self, *user_ids: str, with_game_ids: bool = False
@@ -1689,6 +1681,14 @@ class OAuth(BaseClient):
 class Puzzles(BaseClient):
     """Client for puzzle-related endpoints."""
 
+    def get_daily(self) -> Dict[str, Any]:
+        """Get the current daily Lichess puzzle.
+
+        :return: current daily puzzle
+        """
+        path = "api/puzzle/daily"
+        return self._r.get(path)
+
     def get(self, id: str) -> Dict[str, Any]:
         """Get a puzzle by its id.
 
@@ -1698,24 +1698,44 @@ class Puzzles(BaseClient):
         path = f"api/puzzle/{id}"
         return self._r.get(path, fmt=JSON)
 
-    def get_daily(self) -> Dict[str, Any]:
-        """Get the daily Lichess puzzle.
+    def get_puzzle_activity(
+        self, max: int | None = None, before: int | None = None
+    ) -> Iterator[Dict[str, Any]]:
+        """Stream puzzle activity history of the authenticated user, starting with the most recent activity.
 
-        :return: daily puzzle
+        :param max: maximum number of entries to stream. defaults to all activity
+        :param before: timestamp in milliseconds. only stream activity before this time. defaults to now. use together with max for pagination
+        :return: iterator over puzzle activity history
         """
-        path = "api/puzzle/daily"
-        return self._r.get(path, fmt=JSON)
+        path = "/api/puzzle/activity"
+        params = {"max": max, "before": before}
+        return self._r.get(
+            path,
+            params=params,
+            fmt=NDJSON,
+            stream=True,
+            converter=models.PuzzleActivity.convert,
+        )
+
+    def get_puzzle_dashboard(self, days: int = 30) -> Dict[str, Any]:
+        """Get the puzzle dashboard of the authenticated user.
+
+        :param days: how many days to look back when aggregating puzzle results
+        :return: the puzzle dashboard
+        """
+        path = f"api/puzzle/dashboard/{days}"
+        return self._r.get(path)
 
     def get_storm_dashboard(self, username: str, days: int = 30) -> Dict[str, Any]:
-        """Get storm dashboard of player.
+        """Get storm dashboard of a player. Set days to 0 if you're only interested in the highscore.
 
-        :param str username: a username
-        :param int days: how many days of history to return
-        :return: a player storm dashboard
+        :param username: the username of the player to download the dashboard for
+        :param days: how many days of history to return
+        :return: the storm dashboard
         """
         path = f"api/storm/dashboard/{username}"
         params = {"days": days}
-        return self._r.get(path, params=params, fmt=JSON)
+        return self._r.get(path, params=params)
 
 
 class TV(FmtClient):
