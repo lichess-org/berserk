@@ -1,9 +1,10 @@
 from __future__ import annotations
+
 from time import time as now
-from typing import Any, Dict, Iterator, List, Tuple, cast
-from deprecated import deprecated
+from typing import Any, Dict, Iterator, List, Literal, Tuple, cast
 
 import requests
+from deprecated import deprecated
 
 from . import models
 from .enums import Reason
@@ -31,6 +32,7 @@ __all__ = [
 
 # Base URL for the API
 API_URL = "https://lichess.org"
+TABLEBASE_URL = "https://tablebase.lichess.ovh"
 
 
 class BaseClient:
@@ -81,12 +83,14 @@ class Client(BaseClient):
     - :class:`board <berserk.clients.Board>` - play games using a normal account
     - :class:`messaging <berserk.clients.Messaging>` - private message other players
     - :class:`tv <berserk.clients.TV>` - get information on tv channels and games
+    - :class:`tablebase <berserk.clients.Tablebase>` - lookup endgame tablebase
 
     :param session: request session, authenticated as needed
     :param base_url: base API URL to use (if other than the default)
     :param pgn_as_default: ``True`` if PGN should be the default format for game exports
         when possible. This defaults to ``False`` and is used as a fallback when
         ``as_pgn`` is left as ``None`` for methods that support it.
+    :param tablebase_url: URL for tablebase lookups
     """
 
     def __init__(
@@ -94,6 +98,8 @@ class Client(BaseClient):
         session: requests.Session | None = None,
         base_url: str | None = None,
         pgn_as_default: bool = False,
+        *,
+        tablebase_url: str | None = None,
     ):
         session = session or requests.Session()
         super().__init__(session, base_url)
@@ -112,8 +118,8 @@ class Client(BaseClient):
         self.messaging = Messaging(session, base_url)
         self.puzzles = Puzzles(session, base_url)
         self.oauth = OAuth(session, base_url)
-
         self.tv = TV(session, base_url)
+        self.tablebase = Tablebase(session, tablebase_url or TABLEBASE_URL)
 
 
 class Account(BaseClient):
@@ -1796,3 +1802,48 @@ class TV(FmtClient):
             return self._r.get(
                 path, params=params, fmt=NDJSON_LIST, converter=models.TV.convert
             )
+
+
+class Tablebase(BaseClient):
+    """Client for tablebase related endpoints."""
+
+    def look_up(
+        self,
+        position: str,
+        variant: Literal["standard"]
+        | Literal["atomic"]
+        | Literal["antichess"] = "standard",
+    ) -> Dict[str, Any]:
+        """Look up the tablebase result for a position.
+
+        :param position: FEN of the position to look up
+        :param variant: the variant of the position to look up (supported are standard, atomic, and antichess)
+        :return: tablebase information about this position
+        """
+        path = f"/{variant}"
+        params = {"fen": position}
+        return self._r.get(path, params=params)
+
+    def standard(self, position: str) -> Dict[str, Any]:
+        """Look up the tablebase result for a standard chess position.
+
+        :param position: FEN of the position to lookup
+        :return: tablebase information about this position
+        """
+        return self.look_up(position, "standard")
+
+    def atomic(self, position: str) -> Dict[str, Any]:
+        """Look up the tablebase result for an atomic chess position.
+
+        :param position: FEN of the position to lookup
+        :return: tablebase information about this position
+        """
+        return self.look_up(position, "atomic")
+
+    def antichess(self, position: str) -> Dict[str, Any]:
+        """Look up the tablebase result for an antichess position.
+
+        :param position: FEN of the position to lookup
+        :return: tablebase information about this position
+        """
+        return self.look_up(position, "antichess")
