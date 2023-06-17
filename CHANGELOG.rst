@@ -1,20 +1,39 @@
 Changelog
 =========
 
+v0.12.6 (2023-06-18)
+--------------------
+
+* Added ``client.puzzles.get_daily`` to get the current daily puzzle
+* Added ``client.puzzles.get_puzzle_activity`` to get the authenticated user's puzzle activity/history
+
+  * This was already accessibly as ``client.users.get_puzzle_activity`` and remains there for backwards compatibility but this usage is deprecated and will be removed in the next breaking version.
+
+* Added ``client.puzzles.get_puzzle_dashboard`` to get the authenticated user's puzzle dashboard
+* Added ``client.puzzles.get_storm_dashboard`` to get the storm dashboard of a user
+* Added ``client.tablebase.look_up`` to look up tablebase results
+* Added ``client.tablebase.standard`` to look up tablebase results
+* Added ``client.tablebase.atomic`` to look up atomic chess tablebase results
+* Added ``client.tablebase.antichess`` to look up antichess tablebase results
+
+* All streaming methods are now generators which means they only start the request once the iteration starts. For most usages, this doesn't make any difference.
+
+Thanks to @icp, @obazin, and @Virinas-code for their contributions to this release.
+
 v0.12.5 (2023-06-15)
 --------------------
 
-* Added `client.broadcast.get_official` to get official Broadcasts
-* Added `client.broadcast.get_round_pgns` to get the PGN of all games of a broadcast round
-* Added `client.broadcast.get_pgns` to get the PGN of all games of a broadcast
-* Added `client.puzzles.get` to get a puzzle by its id
+* Added ``client.broadcast.get_official`` to get official Broadcasts
+* Added ``client.broadcast.get_round_pgns`` to get the PGN of all games of a broadcast round
+* Added ``client.broadcast.get_pgns`` to get the PGN of all games of a broadcast
+* Added ``client.puzzles.get`` to get a puzzle by its id
 
 Thanks to @obazin and @thegrapesoda for their contributions to this release.
 
 v0.12.4 (2023-05-21)
 --------------------
 
-* Fixed `client.users.get_puzzle_activity` returning 404 all the time.
+* Fixed ``client.users.get_puzzle_activity`` returning 404 all the time.
 
 Thanks to @AnonJohn for the report.
 
