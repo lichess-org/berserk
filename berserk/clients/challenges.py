@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import Any, Dict
+from deprecated import deprecated
 
 from ..enums import Reason
 from .base import BaseClient
@@ -45,6 +46,7 @@ class Challenges(BaseClient):
         }
         return self._r.post(path, json=payload)
 
+    @deprecated(version="0.12.7")
     def create_with_accept(
         self,
         username: str,
