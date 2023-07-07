@@ -5,14 +5,15 @@ from __future__ import annotations
 import yaml
 import re
 import sys
-import os
+import pathlib
 
 
-if len(sys.argv) != 2 or not os.path.isfile(sys.argv[1]):
+if len(sys.argv) != 2 or not pathlib.Path(sys.argv[1]).is_file():
     path = "../api/doc/specs/lichess-api.yaml"
-    if not os.path.isfile(path):
+    if not pathlib.Path(path).is_file():
         print(
-            "Usage: check-endpoints.py <path to lichess-api.yaml from lichess-org/api repo>"
+            "Usage: check-endpoints.py",
+            "<path to lichess-api.yaml from lichess-org/api repo>",
         )
         exit(1)
 else:
@@ -22,9 +23,9 @@ else:
 with open(path) as f:
     spec = yaml.load(f, Loader=yaml.SafeLoader)
 
-with open("berserk/clients.py", "r") as f:
-    clients_content = f.read()
-
+clients_content = "\n".join(
+    p.read_text() for p in pathlib.Path("berserk/clients/").glob("*.py")
+)
 
 missing_endpoints: list[str] = []
 
