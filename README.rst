@@ -153,6 +153,8 @@ Most of the API is available:
     client.teams.join
     client.teams.leave
     client.teams.kick_member
+    client.teams.get_join_requests
+    client.teams.accept_join_request
 
     client.tournaments.get
     client.tournaments.get_tournament
