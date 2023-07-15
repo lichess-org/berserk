@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v0.12.7 (2023-07-15)
+--------------------
+
+* Added ``client.teams.get_join_requests`` to get the join requests of one of your teams
+* Added ``client.teams.accept_join_request`` to accept a join request of one of your teams
+
+Thanks to @zen1405 for their contributions to this release.
+
 v0.12.6 (2023-06-18)
 --------------------
 
