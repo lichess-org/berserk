@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import requests
 
-from .base import TABLEBASE_URL, BaseClient
+from .base import BaseClient
 from .account import Account
 from .users import Users
 from .relations import Relations
@@ -98,4 +98,4 @@ class Client(BaseClient):
         self.puzzles = Puzzles(session, base_url)
         self.oauth = OAuth(session, base_url)
         self.tv = TV(session, base_url)
-        self.tablebase = Tablebase(session, tablebase_url or TABLEBASE_URL)
+        self.tablebase = Tablebase(session, tablebase_url)

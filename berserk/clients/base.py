@@ -7,7 +7,6 @@ from ..session import Requestor
 
 # Base URL for the API
 API_URL = "https://lichess.org"
-TABLEBASE_URL = "https://tablebase.lichess.ovh"
 
 
 class BaseClient:
