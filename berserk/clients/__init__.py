@@ -20,6 +20,7 @@ from .puzzles import Puzzles
 from .oauth import OAuth
 from .tv import TV
 from .tablebase import Tablebase
+from .opening_explorer import OpeningExplorer
 
 __all__ = [
     "Client",
@@ -79,6 +80,7 @@ class Client(BaseClient):
         pgn_as_default: bool = False,
         *,
         tablebase_url: str | None = None,
+        explorer_url: str | None = None,
     ):
         session = session or requests.Session()
         super().__init__(session, base_url)
@@ -99,3 +101,4 @@ class Client(BaseClient):
         self.oauth = OAuth(session, base_url)
         self.tv = TV(session, base_url)
         self.tablebase = Tablebase(session, tablebase_url)
+        self.opening_explorer = OpeningExplorer(session, explorer_url)

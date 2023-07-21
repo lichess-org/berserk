@@ -1,0 +1,62 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://explorer.lichess.ovh/lichess?variant=standard&fen=rnbqkbnr%2Fppp2ppp%2F8%2F3pp3%2F4P3%2F2NP4%2FPPP2PPP%2FR1BQKBNR+b+KQkq+-+0+1&speeds=blitz%2Crapid%2Cclassical&ratings=2200%2C2500
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAEA61Wa0/bMBT9L/5cpMR5lm90bMBGK8GQJm2aKjdxm4BjZ3kUGOp/340JttMYGIhv
+        N8nV8TnnPpwHdJvlDUWHLnbxBKUVua3hIXQmaMVIcgOx74QTVIgthQ+/HlCb5OgQpUHqowmqCe8e
+        upBsaUU29JI0Od+gQ4yngNGDhzhQ2CGg9dCh503QhhRwPG8Z202e0DfxOlToCxnvw3uehsc+YPbU
+        fYDs4T0fFNng04Aa5O/kwwjfcRV97Gj6nq/wcRDb8ZMo0fRlOEJ3AbE3J5gq8pHCjp6BXscrTX0m
+        4xG2AxTH2Nr26BlbNjGNtOsyHmF7wOupY8Dp3nTtuQvH2CxPYqotmcl4hN01YI+toY1GtCOvo3Wg
+        WMtwBOyBrz0wwPWcNTAcZqO8jlODsoz3kbGv7bAhP2M0UNbI1u7GEcA9+awoQ0f2rQ1fbZRXsdF4
+        C2vn+b7uDhtlOOMR+QHlKcy29+P7dFYGLlh8m3NOK3j3SAKmv6S0y1mxvPkLCYVIYZRRRRp4rbg+
+        IC5HHOU1I8WSsozdks09JEDi464AUjulV+V/7jPd7nCVi6MAcu8pASbYwaChELzJ4Nzu6cDx0c5Y
+        JNFGN4cMRyWMbU7Du32nez9YGdXl3aIbFOXHY6He7MdRKjjJl19bTgcCY8diRkMS0gyM8J3ONGUE
+        FM4wwj0A13a732AcTShvTqAE5v7uN6ws8dmPVZFtL+8+QFIhMlIUJCWMET7tNpWuW4wtssqW0YI2
+        R9/wdJgcmtpgQg1t3oETIl3j/iqSUi5Oz88XZ/NBdd7ZrceE55QVCRNt18xah2PVQW4qsoXb0Mz0
+        vDeIkLeQFEHDk5Sz+w1gqRZ7p4gkE4lYJlle1kvHGbQPdm1tdinavw25HsgI3TfIkP8CUkY5W8zz
+        i59/TBnvnJTZ0XElCsKbPBkz69ekWht1J5fUGRmkTl8V8XuCGlG+NCjzeX2eOevjD1B0CnLuhRD8
+        ymQZBtaatDXsyeUnkTF5capWDPH/T4k58O4qm8fX2aWho/v/evMCu8ro8gY2eNjdZopV4HWs9quS
+        tqth8QJ3sL5eHHGTvFhk5U8vmBnk33shrSvKalINGiX0ukbZZ/+5KGklqlnLYbWJwd0V+oP7aKQj
+        MFZV/2Mox+N7cNG43vbLB+igvMoJ564zKIM/tQiZk22+PGLlcDqCV6YDNMB0iJJyeV/Ln/V/71ya
+        SToMAAA=
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,If-Modified-Since,Cache-Control,X-Requested-With
+      Access-Control-Allow-Methods:
+      - GET,OPTIONS
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - max-age=10800
+      - public
+      Connection:
+      - keep-alive
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 23 Jul 2023 13:12:02 GMT
+      Expires:
+      - Sun, 23 Jul 2023 16:12:02 GMT
+      Server:
+      - nginx
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+version: 1
