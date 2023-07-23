@@ -45,6 +45,7 @@ sphinx-rtd-theme = "^1.2.0"
 docformatter = "^1"
 pyright = "^1"
 requests-mock = "^1.11.0"
+vcrpy = "^5.0.0"
 
 
 [tool.pyright]
