@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "berserk"
-version = "0.12.7"
+version = "0.12.8"
 description = "Python client for the lichess API"
 authors = ["Lichess <contact@lichess.org>"]
 license = "GPL-3.0-or-later"

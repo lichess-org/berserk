@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v0.12.8 (2023-07-25)
+--------------------
+
+* Added ``client.opening_explorer.get_lichess_games`` to request opening explorer data for a given position based on Lichess games
+
+Thanks to @rpesche for their contributions to this release.
+
 v0.12.7 (2023-07-15)
 --------------------
 
