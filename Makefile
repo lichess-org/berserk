@@ -29,6 +29,9 @@ setup: ## setup poetry env and install dependencies
 test: ## run tests with pytest
 	poetry run pytest
 
+test_record: ## run tests with pytest and record http requests
+	poetry run pytest --record-mode=once
+
 typecheck: ## run type checking with pyright
 	poetry run pyright berserk
 

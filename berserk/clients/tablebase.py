@@ -1,12 +1,18 @@
 from __future__ import annotations
 
 from typing import Any, Dict, Literal
+import requests
 
 from .base import BaseClient
+
+TABLEBASE_URL = "https://tablebase.lichess.ovh"
 
 
 class Tablebase(BaseClient):
     """Client for tablebase related endpoints."""
+
+    def __init__(self, session: requests.Session, tablebase_url: str | None = None):
+        super().__init__(session, tablebase_url or TABLEBASE_URL)
 
     def look_up(
         self,
