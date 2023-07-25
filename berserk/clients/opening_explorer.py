@@ -23,7 +23,6 @@ OpeningExplorerVariant = Literal[
     "fromPosition",
 ]
 
-
 Speed = Literal[
     "ultraBullet", "bullet", "blitz", "rapid", "classical", "correspondence"
 ]
@@ -52,7 +51,7 @@ class Game(TypedDict):
     uci: str
     # The id of the game
     id: str
-    # The winer of the game. Draw if None
+    # The winner of the game. Draw if None
     winner: Literal["white"] | Literal["black"] | None
     # The speed of the game
     speed: Speed
@@ -114,7 +113,7 @@ class OpeningExplorer(BaseClient):
         position: str | None = None,
         play: str | None = None,
         speeds: List[Speed] | None = None,
-        ratings: List[OpeningExplorerRating] = [],
+        ratings: List[OpeningExplorerRating] | None = None,
         since: str | None = None,
         until: str | None = None,
         moves: int | None = None,
@@ -122,18 +121,20 @@ class OpeningExplorer(BaseClient):
         recent_games: int | None = None,
         history: bool | None = None,
     ) -> OpeningStatistic:
-        """Get most played move from a position based on lichess games"""
+        """Get most played move from a position based on lichess games."""
 
         path = "/lichess"
 
         if top_games and top_games >= 4:
-            logger.debug(
-                "The top games parameter {top_games} is higher than 4. The api doesn't allow it and results can differs"
+            logger.warn(
+                "The Lichess API caps the top games parameter to 4 (you requested %d)",
+                top_games,
             )
 
         if recent_games and recent_games >= 4:
-            logger.debug(
-                "The recent games parameter {recent_games} is higher than 4. The api doesn't allow it and results can differs"
+            logger.warn(
+                "The Lichess API caps the recent games parameter to 4 (you requested %d)",
+                recent_games,
             )
 
         params = {

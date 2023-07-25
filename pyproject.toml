@@ -9,23 +9,23 @@ repository = "https://github.com/lichess-org/berserk"
 documentation = "https://lichess-org.github.io/berserk/"
 keywords = ["lichess", "chess", "api", "client"]
 classifiers = [
-        'Development Status :: 4 - Beta',
-        'Intended Audience :: Developers',
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
-        'Natural Language :: English',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
-        'Programming Language :: Python :: 3.10',
-        'Programming Language :: Python :: 3.11',
-    ]
+    'Development Status :: 4 - Beta',
+    'Intended Audience :: Developers',
+    'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
+    'Natural Language :: English',
+    'Programming Language :: Python :: 3',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+]
 # by default files declared in .gitignore are excluded
 include = ["CHANGELOG.rst", "LICENSE", "docs"]
 
 [tool.poetry.urls]
 Changelog = "https://lichess-org.github.io/berserk/changelog.html"
 "Issue Tracker" = "https://github.com/lichess-org/berserk/issues"
-"Discord Server"    = "https://discord.gg/lichess"
+"Discord Server" = "https://discord.gg/lichess"
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -45,7 +45,8 @@ sphinx-rtd-theme = "^1.2.0"
 docformatter = "^1"
 pyright = "^1"
 requests-mock = "^1.11.0"
-vcrpy = "^5.0.0"
+pytest-recording = "^0.12.2"
+vcrpy = "^4.4.0"
 
 
 [tool.pyright]

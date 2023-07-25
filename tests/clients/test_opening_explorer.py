@@ -1,19 +1,19 @@
+import pytest
 import requests_mock
 
 from berserk.clients import Client
 
 
 class TestLichessGames:
-    def test_result(self, stored_requests):
+    @pytest.mark.vcr
+    def test_result(self):
         client = Client()
-
-        with stored_requests.use_cassette("opening_explorer_lichess_result.yaml"):
-            res = client.opening_explorer.get_lichess_games(
-                variant="standard",
-                speeds=["blitz", "rapid", "classical"],
-                ratings=["2200", "2500"],
-                position="rnbqkbnr/ppp2ppp/8/3pp3/4P3/2NP4/PPP2PPP/R1BQKBNR b KQkq - 0 1",
-            )
+        res = client.opening_explorer.get_lichess_games(
+            variant="standard",
+            speeds=["blitz", "rapid", "classical"],
+            ratings=["2200", "2500"],
+            position="rnbqkbnr/ppp2ppp/8/3pp3/4P3/2NP4/PPP2PPP/R1BQKBNR b KQkq - 0 1",
+        )
         assert res["white"] == 1212
         assert res["black"] == 1406
         assert res["draws"] == 160
