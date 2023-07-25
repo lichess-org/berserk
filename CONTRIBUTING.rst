@@ -67,6 +67,52 @@ For a PR to be merged, it needs to pass the CI, you can reproduce most of them l
   - You can then open ``_build/index.html`` in your browser or use ``python3 -m http.server --directory _build`` to serve it locally
   - Alternatively, run ``make servedocs`` to automatically build and serve them on http://localhost:8000
 
+Writing Tests
+-------------
+
+We use ``requests-mock`` and ``pytest-recording`` / ``vcrpy`` to test http requests.
+
+Using ``requests-mock``
+~~~~~~~~~~~~~~~~~~~~~~~
+
+``requests-mock`` can be used to manually mock and test simple http requests:
+
+.. code-block:: python
+
+    import requests_mock
+    from berserk import Client
+
+    def test_correct_speed_params(self):
+        """The test verify that speeds parameter are passed correctly in query params"""
+        with requests_mock.Mocker() as m:
+            m.get(
+                "https://explorer.lichess.ovh/lichess?variant=standard&speeds=rapid%2Cclassical",
+                json={"white":1212,"draws":160,"black":1406},
+            )
+            res = Client().opening_explorer.get_lichess_games(speeds=["rapid", "classical"])
+            assert res["white"] == 1212
+
+Using ``pytest-recording`` / ``vcrpy``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``pytest-recording`` (which internally uses ``vcrpy``) can be used to record and replay real http requests:
+
+.. code-block:: python
+
+    import pytest
+    from berserk import Client
+
+    @pytest.mark.vcr  # <---- this tells pytest-recording to record/mock requests made in this test
+    def test_result(self):
+        res = Client().opening_explorer.get_lichess_games(position="rnbqkbnr/ppp2ppp/8/3pp3/4P3/2NP4/PPP2PPP/R1BQKBNR b KQkq - 0 1")
+        assert res["white"] == 1212
+        assert res["black"] == 1406
+        assert res["draws"] == 160
+
+To record new requests, run ``make test_record``. This will run all tests and record new requests made in annotated methods in a ``cassettes`` directory next to the test.
+Note that this will not overwrite existing captures, so you need to delete them manually if you want to re-record them.
+
+When running tests regularly (e.g. with ``make test``), the recorded requests will be replayed instead of making real http requests.
 
 Deploying
 ---------
