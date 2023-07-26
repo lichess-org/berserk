@@ -73,3 +73,19 @@ class Teams(BaseClient):
         """
         path = f"/api/team/{team_id}/request/{user_id}/accept"
         self._r.post(path)
+
+    def get_team(self, team_id: str) -> Dict[str, Any]:
+        """Get the information about the team
+
+        :return: the information about the team
+        """
+        path = f"/api/team/{team_id}"
+        return self._r.get(path)
+
+    def teams_of_player(self, username: str) -> List[Dict[str, Any]]:
+        """Get all the teams a player is a member of
+
+        :return: list of teams the user is a member of
+        """
+        path = f"/api/team/of/{username}"
+        return self._r.get(path, fmt=JSON_LIST)
