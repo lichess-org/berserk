@@ -49,7 +49,7 @@ class Users(BaseClient):
 
         :return: top 10 players in each speed and variant
         """
-        path = "/player"
+        path = "/api/player"
         return self._r.get(path, fmt=LIJSON)
 
     def get_leaderboard(self, perf_type: str, count: int = 10):
@@ -60,7 +60,7 @@ class Users(BaseClient):
         :param count: number of players to get
         :return: top players for one speed or variant
         """
-        path = f"/player/top/{count}/{perf_type}"
+        path = f"/api/player/top/{count}/{perf_type}"
         return self._r.get(path, fmt=LIJSON)["users"]
 
     def get_public_data(self, username: str) -> Dict[str, Any]:
@@ -95,7 +95,7 @@ class Users(BaseClient):
 
         :return: users currently streaming a game
         """
-        path = "/streamer/live"
+        path = "/api/streamer/live"
         return self._r.get(path, fmt=JSON_LIST)
 
     def get_rating_history(self, username: str) -> List[Dict[str, Any]]:
