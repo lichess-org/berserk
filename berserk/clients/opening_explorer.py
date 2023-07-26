@@ -111,7 +111,7 @@ class OpeningExplorer(BaseClient):
         self,
         variant: OpeningExplorerVariant = "standard",
         position: str | None = None,
-        play: str | None = None,
+        play: List[str] | None = None,
         speeds: List[Speed] | None = None,
         ratings: List[OpeningExplorerRating] | None = None,
         since: str | None = None,
@@ -140,7 +140,7 @@ class OpeningExplorer(BaseClient):
         params = {
             "variant": variant,
             "fen": position,
-            "play": play,
+            "play": ",".join(play) if play else None,
             "speeds": ",".join(speeds) if speeds else None,
             "ratings": ",".join(ratings) if ratings else None,
             "since": since,
