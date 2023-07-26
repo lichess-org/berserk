@@ -151,3 +151,26 @@ class OpeningExplorer(BaseClient):
             "history": history,
         }
         return cast(OpeningStatistic, self._r.get(path, params=params))
+
+    def get_masters_games(
+        self,
+        position: str | None = None,
+        play: List[str] | None = None,
+        since: int | None = None,
+        until: int | None = None,
+        moves: int | None = None,
+        top_games: int | None = None,
+    ) -> OpeningStatistic:
+        """Get most played move from a position based on masters games."""
+
+        path = "/masters"
+
+        params = {
+            "fen": position,
+            "play": ",".join(play) if play else None,
+            "since": since,
+            "until": until,
+            "moves": moves,
+            "topGames": top_games,
+        }
+        return cast(OpeningStatistic, self._r.get(path, params=params))

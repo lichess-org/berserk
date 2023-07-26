@@ -114,6 +114,7 @@ Most of the API is available:
     client.challenges.decline
 
     client.explorer.get_lichess_games
+    client.explorer.get_masters_games
 
     client.games.export
     client.games.export_ongoing_by_player

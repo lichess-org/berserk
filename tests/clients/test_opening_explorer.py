@@ -34,3 +34,14 @@ class TestLichessGames:
                 json={},
             )
             Client().opening_explorer.get_lichess_games(ratings=["1200", "1400"])
+
+
+class TestMasterGames:
+    @pytest.mark.vcr
+    def test_result(self):
+        res = Client().opening_explorer.get_masters_games(
+            play=["d2d4", "d7d5", "c2c4", "c7c6", "c4d5"]
+        )
+        assert res["white"] == 1667
+        assert res["black"] == 1300
+        assert res["draws"] == 4428
