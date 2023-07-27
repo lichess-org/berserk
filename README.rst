@@ -115,6 +115,7 @@ Most of the API is available:
 
     client.explorer.get_lichess_games
     client.explorer.get_masters_games
+    client.explorer.get_player_games
 
     client.games.export
     client.games.export_ongoing_by_player

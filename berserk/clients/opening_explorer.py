@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import cast, List, Literal, TypedDict
 import requests
+import time
 import logging
 
 from .base import BaseClient
@@ -174,3 +175,77 @@ class OpeningExplorer(BaseClient):
             "topGames": top_games,
         }
         return cast(OpeningStatistic, self._r.get(path, params=params))
+
+    def get_player_games(
+        self,
+        player: str,
+        color: Literal["white"] | Literal["black"],
+        wait: bool | int = True,
+        variant: OpeningExplorerVariant | None = None,
+        position: str | None = None,
+        play: List[str] | None = None,
+        speeds: List[Speed] | None = None,
+        ratings: List[OpeningExplorerRating] | None = None,
+        since: int | None = None,
+        until: int | None = None,
+        moves: int | None = None,
+        top_games: int | None = None,
+        recent_games: int | None = None,
+        history: bool | None = None,
+    ):
+        """Get most played move from a position based on player games.
+
+        The curated games may not be available at the time of the request.
+        If they are already available the api will return it.
+        If not it will stream partial result as they are computed.
+
+        The ``wait`` parameter can be used to define how get data:
+            * If ``False`` it will return the first result available
+            * If ``True`` it will wait for the end of computation and return the curated result
+            * If it is an int, it will wait this amount and time (in seconds) and return the result at this time
+        """
+
+        path = "/player"
+
+        if top_games and top_games >= 4:
+            logger.warn(
+                "The Lichess API caps the top games parameter to 4 (you requested %d)",
+                top_games,
+            )
+
+        if recent_games and recent_games >= 4:
+            logger.warn(
+                "The Lichess API caps the recent games parameter to 4 (you requested %d)",
+                recent_games,
+            )
+
+        params = {
+            "player": player,
+            "color": color,
+            "variant": variant,
+            "fen": position,
+            "play": ",".join(play) if play else None,
+            "speeds": ",".join(speeds) if speeds else None,
+            "ratings": ",".join(ratings) if ratings else None,
+            "since": since,
+            "until": until,
+            "moves": moves,
+            "topGames": top_games,
+            "recentGames": recent_games,
+            "history": history,
+        }
+
+        start = time.time()
+        response = {}
+        for response in self._r.get(path, params=params, stream=True):
+            step = time.time() - start
+
+            # We don't wan't to wait, and return the first result
+            if wait is False:
+                break
+
+            # The expected time is over, we return the current result
+            if not isinstance(wait, bool) and step > wait:
+                break
+
+        return cast(OpeningStatistic, response)

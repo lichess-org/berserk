@@ -45,3 +45,33 @@ class TestMasterGames:
         assert res["white"] == 1667
         assert res["black"] == 1300
         assert res["draws"] == 4428
+
+
+class TestPlayerGames:
+    @pytest.mark.vcr
+    @pytest.mark.default_cassette("TestPlayerGames.results.yaml")
+    def test_wait_for_last_results(self):
+        result = Client().opening_explorer.get_player_games(
+            player="evachesss", color="white", wait=True
+        )
+        assert result["white"] == 125
+        assert result["draws"] == 18
+        assert result["black"] == 133
+
+    @pytest.mark.vcr
+    @pytest.mark.default_cassette("TestPlayerGames.results.yaml")
+    def test_get_first_result_available(self):
+        result = Client().opening_explorer.get_player_games(
+            player="evachesss",
+            color="white",
+            wait=False,
+        )
+        assert result == {
+            "white": 0,
+            "draws": 0,
+            "black": 0,
+            "moves": [],
+            "recentGames": [],
+            "opening": None,
+            "queuePosition": 0,
+        }
