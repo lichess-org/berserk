@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from typing import Iterator, Any, Dict, List, Literal, TypedDict, cast, NotRequired
+from typing import Iterator, Any, Dict, List, Literal, cast
+from typing_extensions import TypedDict, NotRequired
 
 from .. import models
 from ..formats import NDJSON, JSON_LIST
