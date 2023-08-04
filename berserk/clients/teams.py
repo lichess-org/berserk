@@ -1,10 +1,15 @@
 from __future__ import annotations
 
-from typing import Iterator, Any, Dict, List, TypedDict
+from typing import Iterator, Any, Dict, List, Literal, TypedDict, cast
 
 from .. import models
 from ..formats import NDJSON, JSON_LIST
 from .base import BaseClient
+
+Title = Literal[
+    "GM", "WGM", "IM", "WIM", "FM", "WFM", "NM", "CM", "WCM", "WNM", "LM", "BOT"
+]
+
 
 class Team(TypedDict):
     # The id of the team
@@ -24,17 +29,18 @@ class Team(TypedDict):
     # The location of the team
     location: str | None
 
+
 class LightUser(TypedDict):
     # The id of the user
     id: str
     # The name of the user
     name: str
     # The title of the user
-    title: str
+    title: Title
     # The patron of the user
     patron: bool
 
-    
+
 class Teams(BaseClient):
     def get_members(self, team_id: str) -> Iterator[Dict[str, Any]]:
         """Get members of a team.
@@ -108,7 +114,7 @@ class Teams(BaseClient):
         :return: the information about the team
         """
         path = f"/api/team/{team_id}"
-        return self._r.get(path)
+        return cast(Team, self._r.get(path))
 
     def teams_of_player(self, username: str) -> List[Team]:
         """Get all the teams a player is a member of
@@ -116,4 +122,4 @@ class Teams(BaseClient):
         :return: list of teams the user is a member of
         """
         path = f"/api/team/of/{username}"
-        return self._r.get(path)
+        return cast(List[Team], self._r.get(path))
