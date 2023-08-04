@@ -1,12 +1,40 @@
 from __future__ import annotations
 
-from typing import Iterator, Any, Dict, List
+from typing import Iterator, Any, Dict, List, TypedDict
 
 from .. import models
 from ..formats import NDJSON, JSON_LIST
 from .base import BaseClient
 
+class Team(TypedDict):
+    # The id of the team
+    id: str
+    # The name of the team
+    name: str
+    # The description of the team
+    description: str
+    # Whether the team is open
+    open: bool
+    # The leader of the team
+    leader: LightUser
+    # The leaders of the team
+    leaders: List[LightUser]
+    # The number of members of the team
+    nbMembers: int
+    # The location of the team
+    location: str | None
 
+class LightUser(TypedDict):
+    # The id of the user
+    id: str
+    # The name of the user
+    name: str
+    # The title of the user
+    title: str
+    # The patron of the user
+    patron: bool
+
+    
 class Teams(BaseClient):
     def get_members(self, team_id: str) -> Iterator[Dict[str, Any]]:
         """Get members of a team.
@@ -74,7 +102,7 @@ class Teams(BaseClient):
         path = f"/api/team/{team_id}/request/{user_id}/accept"
         self._r.post(path)
 
-    def get_team(self, team_id: str) -> Dict[str, Any]:
+    def get_team(self, team_id: str) -> Team:
         """Get the information about the team
 
         :return: the information about the team
@@ -82,10 +110,10 @@ class Teams(BaseClient):
         path = f"/api/team/{team_id}"
         return self._r.get(path)
 
-    def teams_of_player(self, username: str) -> List[Dict[str, Any]]:
+    def teams_of_player(self, username: str) -> List[Team]:
         """Get all the teams a player is a member of
 
         :return: list of teams the user is a member of
         """
         path = f"/api/team/of/{username}"
-        return self._r.get(path, fmt=JSON_LIST)
+        return self._r.get(path)
