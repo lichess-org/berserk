@@ -6,7 +6,7 @@ from .base import BaseClient
 from .account import Account
 from .users import Users
 from .relations import Relations
-from .teams import Teams
+from .teams import Teams, TeamType
 from .games import Games
 from .challenges import Challenges
 from .board import Board
