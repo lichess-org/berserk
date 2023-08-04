@@ -29,6 +29,7 @@ __all__ = [
     "Relations",
     "Teams",
     "Games",
+    "TeamType",
     "Challenges",
     "Board",
     "Bots",

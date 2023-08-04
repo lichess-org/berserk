@@ -1,5 +1,4 @@
 import pytest
-import json
 
 from berserk import Client, TeamType
 from pydantic import TypeAdapter

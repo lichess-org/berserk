@@ -30,6 +30,7 @@ from .formats import PGN
 __all__ = [
     "Client",
     "TokenSession",
+    "TeamType",
     "Requestor",
     "PerfType",
     "Variant",
