@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Iterator, Any, Dict, List, Literal, TypedDict, cast
+from typing import Iterator, Any, Dict, List, Literal, TypedDict, cast, NotRequired
 
 from .. import models
 from ..formats import NDJSON, JSON_LIST
@@ -38,7 +38,7 @@ class LightUser(TypedDict):
     # The name of the user
     name: str
     # The title of the user
-    title: Title
+    title: NotRequired[Title]
     # The patron of the user
     patron: bool
 
