@@ -26,8 +26,6 @@ class Team(TypedDict):
     leaders: List[LightUser]
     # The number of members of the team
     nbMembers: int
-    # The location of the team
-    location: str | None
     # Has the user asssociated with the token (if any) joined the team
     joined: bool
     # Has the user asssociated with the token (if any) requested to join the team
