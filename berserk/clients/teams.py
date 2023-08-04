@@ -28,6 +28,10 @@ class Team(TypedDict):
     nbMembers: int
     # The location of the team
     location: str | None
+    # Has the user asssociated with the token (if any) joined the team
+    joined: bool
+    # Has the user asssociated with the token (if any) requested to join the team
+    requested: bool
 
 
 class LightUser(TypedDict):
