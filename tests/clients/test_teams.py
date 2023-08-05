@@ -1,6 +1,6 @@
 import pytest
 
-from berserk import Client, TeamType
+from berserk import Client, Team
 from pydantic import TypeAdapter
 
 
@@ -10,12 +10,12 @@ class TestLichessGames:
         res = Client().teams.get_team("lichess-swiss")
         # print(json.dumps(res))
         # res2 = json.loads(json.dumps(res))
-        validate(TeamType, res)
+        validate(Team, res)
 
     @pytest.mark.vcr
     def teams_of_player(self):
         res = Client().teams.teams_of_player("Lichess")
-        validate(list[TeamType], res)
+        validate(list[Team], res)
 
 
 # Should be in a util file once used by more tests

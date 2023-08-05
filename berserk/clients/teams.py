@@ -12,7 +12,7 @@ Title = Literal[
 ]
 
 
-class TeamType(TypedDict):
+class Team(TypedDict):
     # The id of the team
     id: str
     # The name of the team
@@ -111,18 +111,18 @@ class Teams(BaseClient):
         path = f"/api/team/{team_id}/request/{user_id}/accept"
         self._r.post(path)
 
-    def get_team(self, team_id: str) -> TeamType:
+    def get_team(self, team_id: str) -> Team:
         """Get the information about the team
 
         :return: the information about the team
         """
         path = f"/api/team/{team_id}"
-        return cast(TeamType, self._r.get(path))
+        return cast(Team, self._r.get(path))
 
-    def teams_of_player(self, username: str) -> List[TeamType]:
+    def teams_of_player(self, username: str) -> List[Team]:
         """Get all the teams a player is a member of
 
         :return: list of teams the user is a member of
         """
         path = f"/api/team/of/{username}"
-        return cast(List[TeamType], self._r.get(path))
+        return cast(List[Team], self._r.get(path))

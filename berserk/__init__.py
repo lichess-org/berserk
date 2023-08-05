@@ -10,7 +10,7 @@ __email__ = berserk_metadata["Author-email"]
 __version__ = berserk_metadata["Version"]
 
 
-from .clients import Client, TeamType
+from .clients import Client, Team
 from .session import TokenSession
 from .session import Requestor
 from .enums import PerfType
@@ -30,7 +30,7 @@ from .formats import PGN
 __all__ = [
     "Client",
     "TokenSession",
-    "TeamType",
+    "Team",
     "Requestor",
     "PerfType",
     "Variant",
