@@ -92,6 +92,8 @@ Using ``requests-mock``
             res = Client().opening_explorer.get_lichess_games(speeds=["rapid", "classical"])
             assert res["white"] == 1212
 
+Mocking should only be used to test **client-side** logic. 
+
 Using ``pytest-recording`` / ``vcrpy``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -113,6 +115,10 @@ To record new requests, run ``make test_record``. This will run all tests and re
 Note that this will not overwrite existing captures, so you need to delete them manually if you want to re-record them.
 
 When running tests regularly (e.g. with ``make test``), the recorded requests will be replayed instead of making real http requests.
+
+⚠️ Do not record sensitive information (tokens). See the `Filtering information documentation <https://vcrpy.readthedocs.io/en/latest/advanced.html#filter-sensitive-data-from-the-request). And manually check the commited data before pushing it to remote! For more control, [see custom filtering](https://vcrpy.readthedocs.io/en/latest/advanced.html#custom-response-filtering>`_.
+
+.. code-block:: python
 
 Deploying
 ---------
