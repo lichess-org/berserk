@@ -8,6 +8,23 @@ from ..formats import NDJSON, JSON_LIST
 from .base import BaseClient
 
 
+class PaginatedTeams(TypedDict):
+    # The current page
+    currentPage: int
+    # The maximum number of teams per page
+    maxPerPage: int
+    # The teams on the current page
+    currentPageResults: List[Team]
+    # The total number of teams
+    nbResults: int
+    # The previous page
+    previousPage: int | None
+    # The next page
+    nextPage: int | None
+    # The total number of pages
+    nbPages: int
+
+
 class Teams(BaseClient):
     def get_members(self, team_id: str) -> Iterator[Dict[str, Any]]:
         """Get members of a team.
@@ -90,3 +107,12 @@ class Teams(BaseClient):
         """
         path = f"/api/team/of/{username}"
         return cast(List[Team], self._r.get(path))
+
+    def get_popular_teams(self, page: int = 1) -> PaginatedTeams:
+        """Get the most popular teams
+
+        :return: A paginated list of the most popular teams.
+        """
+        path = "/api/team/all"
+        params = {"page": page}
+        return cast(PaginatedTeams, self._r.get(path, params=params))
