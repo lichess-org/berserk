@@ -111,8 +111,20 @@ class Teams(BaseClient):
     def get_popular_teams(self, page: int = 1) -> PaginatedTeams:
         """Get the most popular teams
 
+        :param page: the page number that needs to be returned (Optional)
         :return: A paginated list of the most popular teams.
         """
         path = "/api/team/all"
         params = {"page": page}
+        return cast(PaginatedTeams, self._r.get(path, params=params))
+
+    def search_teams(self, text: str, page: int = 1) -> PaginatedTeams:
+        """Search for teams
+
+        :param text: the query text to search for
+        :param page: the page number that needs to be returned (Optional)
+        :return: The paginated list of teams.
+        """
+        path = "/api/team/search"
+        params = {"text": text, "page": page}
         return cast(PaginatedTeams, self._r.get(path, params=params))
