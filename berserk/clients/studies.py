@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import Iterator
 
-from ..formats import PGN
+from ..formats import PGN , JSON
 from .base import BaseClient
 
 
@@ -24,3 +24,8 @@ class Studies(BaseClient):
         """
         path = f"/api/study/{study_id}.pgn"
         yield from self._r.get(path, fmt=PGN, stream=True)
+
+    def get_study_by_username(self, username: str)-> Iterator[str]:
+        # end point for api/study/by/{username}
+        path = f"/api/study/by/{username}"
+        yield from self._r.get(path,fmt=JSON,stream=True)
