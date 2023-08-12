@@ -1,7 +1,9 @@
 import pytest
 import requests_mock
 
-from berserk import Client
+from berserk import Client, OpeningStatistic
+
+from utils import validate
 
 
 class TestLichessGames:
@@ -13,9 +15,7 @@ class TestLichessGames:
             ratings=["2200", "2500"],
             position="rnbqkbnr/ppp2ppp/8/3pp3/4P3/2NP4/PPP2PPP/R1BQKBNR b KQkq - 0 1",
         )
-        assert res["white"] == 1212
-        assert res["black"] == 1406
-        assert res["draws"] == 160
+        validate(OpeningStatistic, res)
 
     def test_correct_speed_params(self):
         """The test verify that speeds parameter are passed correctly in query params"""

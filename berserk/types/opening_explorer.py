@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from typing import cast, Literal
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
 OpeningExplorerVariant = Literal[
     "standard",
@@ -40,8 +40,8 @@ class Player(TypedDict):
 
 
 class Game(TypedDict):
-    # The move in Universal Chess Interface notation
-    uci: str
+    # The move in Universal Chess Interface notation, only set for `recentGames`, and `topGames`
+    uci: NotRequired[str]
     # The id of the game
     id: str
     # The winner of the game. Draw if None
@@ -66,7 +66,7 @@ class Move(TypedDict):
     # The move in algebraic notation
     san: str
     # The average rating of games in the position after this move
-    averageRating: str # TODO: check why it's `str`, probably wrong
+    averageRating: int
     # The number of white winners after this move
     white: int
     # The number of black winners after this move
