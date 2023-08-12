@@ -9,6 +9,7 @@ from utils import validate
 class TestLichessGames:
     @pytest.mark.vcr
     def test_result(self):
+        """Verify that the response matches the typed-dict"""
         res = Client().opening_explorer.get_lichess_games(
             variant="standard",
             speeds=["blitz", "rapid", "classical"],
