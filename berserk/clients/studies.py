@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from typing import Any, Dict, Generator, Iterator
+from typing import Iterator
 
-from ..formats import PGN, JSON
+from ..formats import PGN
 from .base import BaseClient
 
 
@@ -25,9 +25,9 @@ class Studies(BaseClient):
         path = f"/api/study/{study_id}.pgn"
         yield from self._r.get(path, fmt=PGN, stream=True)
 
-    def get_study_by_username(
-        self, username: str
-    ) -> Generator[Dict[str, Any], None, None]:
-        # end point for api/study/by/{username}
-        path = f"/api/study/by/{username}"
-        yield from self._r.get(path, fmt=JSON, stream=True)
+    def by_username(self, username: str) -> Iterator[str]:
+        """Export all chapters of a study.
+
+        return:iterator over all chapters as PGN"""
+        path = f"/study/by/{username}/export.pgn"
+        yield from self._r.get(path, fmt=PGN, stream=True)
