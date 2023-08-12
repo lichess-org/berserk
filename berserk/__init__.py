@@ -11,7 +11,7 @@ __version__ = berserk_metadata["Version"]
 
 
 from .clients import Client
-from .types import Team
+from .types import Team, OpeningStatistic
 from .session import TokenSession
 from .session import Requestor
 from .enums import PerfType
@@ -32,6 +32,7 @@ __all__ = [
     "Client",
     "TokenSession",
     "Team",
+    "OpeningStatistic"
     "Requestor",
     "PerfType",
     "Variant",
