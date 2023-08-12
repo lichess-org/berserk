@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-import requests
-
 from .team import Team
-from .opening_explorer import OpeningStatistic
+from .opening_explorer import OpeningStatistic, OpeningExplorerVariant, Speed, OpeningExplorerRating
 
-__all__ = ["Team", "OpeningStatistic"]
+__all__ = ["Team", "OpeningStatistic", "OpeningExplorerVariant", "Speed", "OpeningExplorerRating"]

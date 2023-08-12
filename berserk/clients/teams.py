@@ -1,7 +1,6 @@
 from __future__ import annotations
 
-from typing import Iterator, Any, Dict, List, Literal, cast
-from typing_extensions import TypedDict, NotRequired
+from typing import Iterator, Any, cast
 
 from .. import models
 from ..types import Team
@@ -10,7 +9,7 @@ from .base import BaseClient
 
 
 class Teams(BaseClient):
-    def get_members(self, team_id: str) -> Iterator[Dict[str, Any]]:
+    def get_members(self, team_id: str) -> Iterator[dict[str, Any]]:
         """Get members of a team.
 
         :param team_id: ID of the team to get members from
@@ -56,7 +55,7 @@ class Teams(BaseClient):
 
     def get_join_requests(
         self, team_id: str, declined: bool = False
-    ) -> List[Dict[str, Any]]:
+    ) -> list[dict[str, Any]]:
         """Get pending join requests of your team
 
         :param team_id: ID of the team to request the join requests from
@@ -84,10 +83,10 @@ class Teams(BaseClient):
         path = f"/api/team/{team_id}"
         return cast(Team, self._r.get(path))
 
-    def teams_of_player(self, username: str) -> List[Team]:
+    def teams_of_player(self, username: str) -> list[Team]:
         """Get all the teams a player is a member of
 
         :return: list of teams the user is a member of
         """
         path = f"/api/team/of/{username}"
-        return cast(List[Team], self._r.get(path))
+        return cast(list[Team], self._r.get(path))

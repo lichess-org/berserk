@@ -1,11 +1,11 @@
 from __future__ import annotations
 
-from typing import cast, List, Literal, TypedDict
+from typing import cast
 import requests
 import logging
 
 from .base import BaseClient
-from ..types import OpeningStatistic
+from ..types import OpeningStatistic, OpeningExplorerVariant, Speed, OpeningExplorerRating
 
 logger = logging.getLogger("berserk.client.opening_explorer")
 
@@ -23,8 +23,8 @@ class OpeningExplorer(BaseClient):
         variant: OpeningExplorerVariant = "standard",
         position: str | None = None,
         play: str | None = None,
-        speeds: List[Speed] | None = None,
-        ratings: List[OpeningExplorerRating] | None = None,
+        speeds: list[Speed] | None = None,
+        ratings: list[OpeningExplorerRating] | None = None,
         since: str | None = None,
         until: str | None = None,
         moves: int | None = None,

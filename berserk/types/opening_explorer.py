@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import cast, Literal
+from typing import Literal
 from typing_extensions import TypedDict, NotRequired
 
 OpeningExplorerVariant = Literal[
