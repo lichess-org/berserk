@@ -8,8 +8,6 @@ class TestLichessGames:
     @pytest.mark.vcr
     def test_get_team(self):
         res = Client().teams.get_team("lichess-swiss")
-        # print(json.dumps(res))
-        # res2 = json.loads(json.dumps(res))
         validate(Team, res)
 
     @pytest.mark.vcr
