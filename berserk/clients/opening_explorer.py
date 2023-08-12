@@ -5,7 +5,12 @@ import requests
 import logging
 
 from .base import BaseClient
-from ..types import OpeningStatistic, OpeningExplorerVariant, Speed, OpeningExplorerRating
+from ..types import (
+    OpeningStatistic,
+    OpeningExplorerVariant,
+    Speed,
+    OpeningExplorerRating,
+)
 
 logger = logging.getLogger("berserk.client.opening_explorer")
 

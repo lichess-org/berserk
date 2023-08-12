@@ -7,6 +7,10 @@ from utils import validate
 
 
 class TestLichessGames:
+    @pytest.mark.skipif(
+        sys.version_info < (3, 10),
+        reason="pydantic panics otherwise, could be a bug from the lib",
+    )
     @pytest.mark.vcr
     def test_result(self):
         """Verify that the response matches the typed-dict"""
