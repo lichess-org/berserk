@@ -32,7 +32,7 @@ __all__ = [
     "Client",
     "TokenSession",
     "Team",
-    "OpeningStatistic"
+    "OpeningStatistic",
     "Requestor",
     "PerfType",
     "Variant",
