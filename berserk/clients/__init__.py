@@ -6,7 +6,7 @@ from .base import BaseClient
 from .account import Account
 from .users import Users
 from .relations import Relations
-from .teams import Teams, Team
+from .teams import Teams
 from .games import Games
 from .challenges import Challenges
 from .board import Board
@@ -29,7 +29,6 @@ __all__ = [
     "Relations",
     "Teams",
     "Games",
-    "Team",
     "Challenges",
     "Board",
     "Bots",

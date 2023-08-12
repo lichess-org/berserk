@@ -18,4 +18,5 @@ class TestLichessGames:
 
 # Should be in a util file once used by more tests
 def validate(t, value):
-    return TypeAdapter(t).validate_python(value)
+    # TODO: check exactly what `strict=True` enforce
+    return TypeAdapter(t).validate_python(value,strict=True)
