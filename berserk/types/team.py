@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, List
 from typing_extensions import TypedDict, NotRequired
 
 Title = Literal[
@@ -20,7 +20,7 @@ class Team(TypedDict):
     # The leader of the team
     leader: LightUser
     # The leaders of the team
-    leaders: list[LightUser]
+    leaders: List[LightUser]
     # The number of members of the team
     nbMembers: int
     # Has the user asssociated with the token (if any) joined the team

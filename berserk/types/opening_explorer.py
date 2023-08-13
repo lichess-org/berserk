@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Literal
+from typing import Literal, List
 from typing_extensions import TypedDict, NotRequired
 
 OpeningExplorerVariant = Literal[
@@ -87,8 +87,8 @@ class OpeningStatistic(TypedDict):
     # Opening info of this position
     opening: Opening | None
     # The list of moves played by players from this position
-    moves: list[Move]
+    moves: List[Move]
     # recent games with this opening
-    recentGames: list[Game]
+    recentGames: List[Game]
     # top rating games with this opening
-    topGames: list[Game]
+    topGames: List[Game]
