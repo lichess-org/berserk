@@ -25,7 +25,7 @@ class Studies(BaseClient):
         path = f"/api/study/{study_id}.pgn"
         yield from self._r.get(path, fmt=PGN, stream=True)
 
-    def by_username(self, username: str) -> Iterator[str]:
+    def export_by_username(self, username: str) -> Iterator[str]:
         """Export all chapters of a study.
 
         return:iterator over all chapters as PGN"""
