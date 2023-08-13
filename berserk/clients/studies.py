@@ -26,7 +26,11 @@ class Studies(BaseClient):
         yield from self._r.get(path, fmt=PGN, stream=True)
 
     def export_by_username(self, username: str) -> Iterator[str]:
-        """Export all chapters of a study.
+        """Export all chapters of all studies of a user in PGN format.
+
+        If authenticated, then all public, unlisted, and private studies are included.
+
+        If not, only public (non-unlisted) studies are included.
 
         return:iterator over all chapters as PGN"""
         path = f"/study/by/{username}/export.pgn"
