@@ -1,5 +1,6 @@
 import pytest
 import requests_mock
+import sys
 
 from berserk import Client, OpeningStatistic
 
