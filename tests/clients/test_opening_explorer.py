@@ -1,21 +1,27 @@
 import pytest
 import requests_mock
+import sys
 
-from berserk import Client
+from berserk import Client, OpeningStatistic
+
+from utils import validate
 
 
 class TestLichessGames:
+    @pytest.mark.skipif(
+        sys.version_info < (3, 10),
+        reason="use of new union syntax",
+    )
     @pytest.mark.vcr
     def test_result(self):
+        """Verify that the response matches the typed-dict"""
         res = Client().opening_explorer.get_lichess_games(
             variant="standard",
             speeds=["blitz", "rapid", "classical"],
             ratings=["2200", "2500"],
             position="rnbqkbnr/ppp2ppp/8/3pp3/4P3/2NP4/PPP2PPP/R1BQKBNR b KQkq - 0 1",
         )
-        assert res["white"] == 1212
-        assert res["black"] == 1406
-        assert res["draws"] == 160
+        validate(OpeningStatistic, res)
 
     def test_correct_speed_params(self):
         """The test verify that speeds parameter are passed correctly in query params"""
