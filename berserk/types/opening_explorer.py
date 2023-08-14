@@ -57,9 +57,11 @@ class GameWithoutUci(TypedDict):
     # The month and year of the game. For example "2023-06"
     month: str
 
+
 class Game(GameWithoutUci):
     # The move in Universal Chess Interface notation
     uci: str
+
 
 class Move(TypedDict):
     # The move in Universal Chess Interface notation
