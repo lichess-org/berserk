@@ -101,11 +101,16 @@ Using ``pytest-recording`` / ``vcrpy``
 .. code-block:: python
 
     import pytest
+    import sys
 
     from berserk import Client, OpeningStatistic
 
     from utils import validate
 
+        @pytest.mark.skipif(
+        sys.version_info < (3, 10),
+        reason="type hint broken otherwise by new union syntax",
+        )
         @pytest.mark.vcr # <---- this tells pytest-recording to record/mock requests made in this test
         def test_result(self):
             """Verify that the response matches the typed-dict"""
