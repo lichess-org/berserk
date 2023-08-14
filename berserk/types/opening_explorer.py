@@ -39,9 +39,7 @@ class Player(TypedDict):
     rating: int
 
 
-class Game(TypedDict):
-    # The move in Universal Chess Interface notation, only set for `recentGames`, and `topGames`
-    uci: NotRequired[str]
+class GameWithoutUci(TypedDict):
     # The id of the game
     id: str
     # The winner of the game. Draw if None
@@ -59,6 +57,9 @@ class Game(TypedDict):
     # The month and year of the game. For example "2023-06"
     month: str
 
+class Game(GameWithoutUci):
+    # The move in Universal Chess Interface notation
+    uci: str
 
 class Move(TypedDict):
     # The move in Universal Chess Interface notation
@@ -74,7 +75,7 @@ class Move(TypedDict):
     # The number of draws after this move
     draws: int
     # The game where the move was played
-    game: Game | None
+    game: GameWithoutUci | None
 
 
 class OpeningStatistic(TypedDict):
