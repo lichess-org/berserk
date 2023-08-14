@@ -3,26 +3,9 @@ from __future__ import annotations
 from typing import Iterator, Any, cast, List, Dict
 
 from .. import models
-from ..types import Team
+from ..types import Team, PaginatedTeams
 from ..formats import NDJSON, JSON_LIST
 from .base import BaseClient
-
-
-class PaginatedTeams(TypedDict):
-    # The current page
-    currentPage: int
-    # The maximum number of teams per page
-    maxPerPage: int
-    # The teams on the current page
-    currentPageResults: List[Team]
-    # The total number of teams
-    nbResults: int
-    # The previous page
-    previousPage: int | None
-    # The next page
-    nextPage: int | None
-    # The total number of pages
-    nbPages: int
 
 
 class Teams(BaseClient):

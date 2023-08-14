@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from .team import Team
+from .team import Team, PaginatedTeams
 from .opening_explorer import (
     OpeningStatistic,
     OpeningExplorerVariant,
@@ -10,6 +10,7 @@ from .opening_explorer import (
 
 __all__ = [
     "Team",
+    "PaginatedTeams",
     "OpeningStatistic",
     "OpeningExplorerVariant",
     "Speed",
