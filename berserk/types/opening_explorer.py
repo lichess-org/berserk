@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from typing import Literal, List
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypedDict
 
 OpeningExplorerVariant = Literal[
     "standard",
