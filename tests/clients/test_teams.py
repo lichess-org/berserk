@@ -1,25 +1,19 @@
 import pytest
-import sys
 
 from berserk import Client, Team
-from utils import validate
+from typing import List
+from utils import validate, skip_if_older_3_dot_10
 
 
 class TestLichessGames:
-    @pytest.mark.skipif(
-        sys.version_info < (3, 10),
-        reason="pydantic breaking for unknown reason otherwise",
-    )
+    @skip_if_older_3_dot_10
     @pytest.mark.vcr
     def test_get_team(self):
         res = Client().teams.get_team("lichess-swiss")
         validate(Team, res)
 
-    @pytest.mark.skipif(
-        sys.version_info < (3, 10),
-        reason="pydantic breaking for unknown reason otherwise",
-    )
+    @skip_if_older_3_dot_10
     @pytest.mark.vcr
-    def teams_of_player(self):
+    def test_teams_of_player(self):
         res = Client().teams.teams_of_player("Lichess")
-        validate(list[Team], res)
+        validate(List[Team], res)

@@ -24,9 +24,9 @@ class Team(TypedDict):
     # The number of members of the team
     nbMembers: int
     # Has the user asssociated with the token (if any) joined the team
-    joined: bool
+    joined: NotRequired[bool]
     # Has the user asssociated with the token (if any) requested to join the team
-    requested: bool
+    requested: NotRequired[bool]
 
 
 class LightUser(TypedDict):
@@ -37,4 +37,4 @@ class LightUser(TypedDict):
     # The title of the user
     title: NotRequired[Title]
     # The patron of the user
-    patron: bool
+    patron: NotRequired[bool]

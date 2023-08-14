@@ -1,17 +1,13 @@
 import pytest
 import requests_mock
-import sys
 
 from berserk import Client, OpeningStatistic
 
-from utils import validate
+from utils import validate, skip_if_older_3_dot_10
 
 
 class TestLichessGames:
-    @pytest.mark.skipif(
-        sys.version_info < (3, 10),
-        reason="use of new union syntax",
-    )
+    @skip_if_older_3_dot_10
     @pytest.mark.vcr
     def test_result(self):
         """Verify that the response matches the typed-dict"""

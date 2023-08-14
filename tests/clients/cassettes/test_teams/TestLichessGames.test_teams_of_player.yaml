@@ -1,0 +1,404 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://lichess.org/api/team/of/Lichess
+  response:
+    body:
+      string: "[{\"id\":\"charlotte-chess-center\",\"name\":\"Charlotte Chess Center\",\"description\":\"**Empowering
+        through Chess**\\r\\n\\r\\nThe CCC, founded in 2014, serves to provide chess
+        players of all ages and skill levels the best resources to learn and play.\\r\\n\\r\\n\\r\\nLearn
+        more about our classes, camps, tournaments, and so much more at https://www.charlottechesscenter.org/\\r\\n\\r\\n\\r\\nJoin
+        our Corporate League at https://nacorporatechess.com\\r\\n\\r\\n\\r\\nFollow
+        us on social media!\\r\\n\\r\\n[Charlotte Chess Center on Youtube](https://www.youtube.com/charlottechesscenter)\\r\\n[Charlotte
+        Chess Center on Facebook](https://www.facebook.com/charlottechesscenter)\\r\\n[Charlotte
+        Chess Center on Instagram](https://www.instagram.com/charlottechesscenter/)\\r\\n[Charlotte
+        Chess Center on Twitter](https://twitter.com/CLTchesscenter)\",\"open\":true,\"leader\":{\"name\":\"Giannatos\",\"title\":\"FM\",\"patron\":true,\"id\":\"giannatos\"},\"leaders\":[{\"name\":\"Giannatos\",\"title\":\"FM\",\"patron\":true,\"id\":\"giannatos\"},{\"name\":\"go2006\",\"patron\":true,\"id\":\"go2006\"},{\"name\":\"Northridgehawk\",\"title\":\"NM\",\"patron\":true,\"id\":\"northridgehawk\"}],\"nbMembers\":1150},{\"id\":\"fide\",\"name\":\"FIDE\",\"description\":\"Founded
+        in Paris, France in 1924, FIDE (F\xE9d\xE9ration Internationale des \xC9checs)
+        also known as the International Chess Federation or World Chess Federation,
+        is an international sports organisation based in Switzerland that connects
+        the national chess federations and is the governing body of international
+        chess competition.\\r\\n\\r\\nTake part in a World Championship qualifier
+        held on Lichess for free, and take your shot at eternal glory \u2013 and part
+        of a [$400,000 prize fund]( https://lichess.org/blog/Yv0HzRAAACAAFTlq/play-in-a-chess-world-championship)\\r\\n\\r\\n[**List
+        of Players Through to Next Stage**](https://lichess.org/@/FIDE/blog/fide-world-fischer-random-championship-lichess-qualifiers/hFQkfMnX)\\r\\n\\r\\n[FIDE
+        Offerspill World Fischer Random Championship Qualifier - Invitational Arena](https://lichess.org/tournament/C960Q122)\\r\\n[FIDE
+        CCC & NACCL World Fischer Random Championship Qualifier - Invitational Arena](https://lichess.org/tournament/C960Q222)\",\"open\":true,\"leader\":{\"name\":\"FIDE\",\"id\":\"fide\"},\"leaders\":[{\"name\":\"FIDE\",\"id\":\"fide\"}],\"nbMembers\":8457},{\"id\":\"lichess-antichess\",\"name\":\"Lichess
+        Antichess\",\"description\":\"Join the team for regular tournaments and other
+        community-driven events. Everyone is welcome to join!\\r\\n## Upcoming events\\r\\nDay|Date|Time,
+        [UTC](https://savvytime.com/converter/utc)|Event\\r\\n---|---|---|---\\r\\nSaturday|Aug
+        19|16:00|[Team Battle](https://lichess.org/tournament/yhGHW4uF)\\r\\nThursday|Aug
+        24|16:00|[Shield Arena](https://lichess.org/tournament/979Yem4v)\\r\\nFriday|Sep
+        1|19:00|[Monthly Arena](https://lichess.org/tournament/JenmHVrL)\\r\\n\\r\\nReigning
+        champs: @ChangeOpening (ACWC), @Somebody_4AM (Shield), [Anti-chess India](https://lichess.org/team/anti-chess-india)
+        (Team Battle)\\r\\n\\r\\nThe registrations for the Antichess World Cup 2023
+        open soon! Join [this team](https://lichess.org/team/antichess-wc) if you'd
+        like to participate and be notified when it starts.\\r\\n\\r\\n## Learning
+        Material\\r\\n**Studies**: [Basics](https://lichess.org/study/4XBZbCFY) \u2022
+        [Tactics](https://lichess.org/study/WLrT4U2E) \u2022 [Endgames](https://lichess.org/study/VFsD8X5H)
+        \u2022 [Openings](https://lichess.org/study/vXxLrBTY)\\r\\n**Intro videos**:
+        [How to play antichess: Part 1](https://youtu.be/5KLVSxAfQ9M), [Part 2](https://youtu.be/n2Mw6E8WabQ)
+        \u2022 [Rules & brief history](https://youtu.be/fm7FLblKFv0)\\r\\n**Book**:
+        [The Ultimate Guide to Antichess](http://perpetualcheck.com/antichess)\\r\\n**Puzzles**:
+        [Various](https://lichess.org/study/5GrkXfA0) \u2022 [Themed](https://lichess.org/study/lJfYzKtd)
+        \u2022 [Endgame](https://lichess.org/study/YuktqKg2) \u2022 [Midgame](https://lichess.org/study/jKyrZTxS)\\r\\n**Ranked
+        puzzles**: [P1](https://lichess.org/study/yqP1uKPO) \u2022 [P2](https://lichess.org/study/ZJJrwtTo)
+        \u2022 [P3](https://lichess.org/study/yTnMHbGY) \u2022 [P4](https://lichess.org/study/7LbMHGFk)
+        \u2022 [P5](https://lichess.org/study/BV5fZcXK) \u2022 [P6](https://lichess.org/study/gdiGuDJs)\\r\\n\\r\\n---\\r\\n**Papers**
+        (PDF): [1.e3 wins for White](http://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/LCsolved.pdf)
+        \u2022 [3-man pawnless endings](http://www.jsbeasley.co.uk/vchess/losing3man.pdf)
+        \u2022 [Survey: Endgames ](http://www.jsbeasley.co.uk/vchess/losingendlit.pdf)\\r\\n**Interactive
+        puzzles**: [Chess Variants Training](https://chessvariants.training/Puzzle/Antichess)\\r\\n**Openings
+        theory**: [Solution/Proof](https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS)
+        \u2022 [Nilatac's opening book](https://catalin.francu.com/nilatac/book.php)
+        \u2022 [Solutions for some openings](https://antichess.herokuapp.com)\\r\\n**Video
+        content**: [Firebatprime](https://www.youtube.com/channel/UCVWt6kOPS_HvKkADhYs8L_g)
+        \u2022 [YourselfAntichess](https://www.youtube.com/channel/UCIfjM1orOwnkrQoYt1NVSCQ)
+        \u2022 [Antichess Lore](https://www.youtube.com/channel/UCwO6d9Rtzt3LweUVhGJHAuw)
+        \u2022 [TUGR](https://www.youtube.com/channel/UCdkPoOjHeiHyzX-KXhlZfUA)\\r\\n**Streamers**:
+        [TheUnknownGuyReborn](https://www.twitch.tv/theunknownguyreborn) \u2022 [Yourself101010](https://www.twitch.tv/yourself101010)
+        \u2022 [PoloAntichess](https://www.twitch.tv/poloantichess) \u2022 [cFlour](https://www.twitch.tv/cFlour)
+        \u2022 [IAF](https://www.twitch.tv/iafantichess)\\r\\n**Bots**: @anti-bot
+        \u2022 @CatNail \u2022 @NilatacBot \u2022 @VariantsBot \u2022 @anti-anti\\r\\n**Other**:
+        [Academy](https://lichess.org/team/antichess-academy) \u2022 [ACWC results](http://perpetualcheck.com/antichess/lichess.php)
+        \u2022 [ACWC team](https://lichess.org/team/antichess-wc) \u2022 [Openings:
+        status](http://perpetualcheck.com/antichess/openings.php) \u2022 [Chess variants](http://www.jsbeasley.co.uk/cvariants.htm)\\r\\n##
+        Other Lichess Variant Teams\\r\\n[Chess960](https://lichess.org/team/lichess-chess960)
+        \u2022 [King of the Hill](https://lichess.org/team/lichess-king-of-the-hill)
+        \u2022 [Three-check](https://lichess.org/team/lichess-three-check) \u2022
+        [Atomic](https://lichess.org/team/lichess-atomic) \u2022 [Horde](https://lichess.org/team/lichess-horde)
+        \u2022 [Racing Kings](https://lichess.org/team/lichess-racing-kings) \u2022
+        [Crazyhouse](https://lichess.org/team/lichess-crazyhouse)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},{\"name\":\"TheUnknownGuyReborn\",\"patron\":true,\"id\":\"theunknownguyreborn\"},{\"name\":\"tolius\",\"patron\":true,\"id\":\"tolius\"}],\"nbMembers\":7907},{\"id\":\"lichess-atomic\",\"name\":\"Lichess
+        Atomic\",\"description\":\"**Welcome to the official Atomic Team**\\r\\n\\r\\nWe
+        are the home of [Atomic](https://lichess.org/variant/atomic) fans across Lichess.
+        Join the team for tournaments and other community-driven Atomic events. Everyone
+        is welcome to join!\\r\\n\\r\\n-> [Join the Atomic WC team as well](https://lichess.org/team/atomic-wc)\\r\\n\\r\\n---\\r\\n**Learning
+        Materials**\\r\\n\\r\\n**Rules**\\r\\n[Atomic Rules](https://lichess.org/study/uf9GpQyI)\\r\\n\\r\\n**Basic
+        Openings \u2013 these studies are aimed at beginners with no prior atomic
+        chess knowledge**\\r\\n[Opening Queen Tactics](https://lichess.org/study/sRM1FScZ)
+        \u2022 [Opening Knight Tactics](https://lichess.org/study/12TFMoys) \u2022
+        [Intro to 1.Nh3](https://lichess.org/study/Toy8tRrm) \u2022 [Intro to 1.Nf3
+        f6 2.Nd4](https://lichess.org/study/aavMpBJ1) \u2022 [Intro to 1.Nf3 f6 2.Nc3](https://lichess.org/study/HVXNmBDj)
+        \u2022 [Refuting 1.e4 e5??](https://lichess.org/study/utcWL9Tn)\\r\\n\\r\\n**Advanced
+        Openings \u2013 these studies require prior atomic chess knowledge**\\r\\n[1.Nh3
+        f6?](https://lichess.org/study/04cOAVpZ) \u2022 [Modern 1.Nh3 Theory](https://lichess.org/study/eURFVEDj)
+        \u2022 [1.Nf3 f6 2.e3 Megastudy](https://lichess.org/study/EIRATbRx) \u2022
+        [Detailed Analysis of 1.Nf3](https://lichess.org/study/nP8wnNGJ) \u2022 [1.Nf3
+        f6 2.Nd4 Nh6](https://lichess.org/study/0OLP5BTi) \u2022 [1.Nf3 f6 2.Nd4 Nh6
+        3.h3](https://lichess.org/study/XOXRURYz) \u2022 [Theory of 1.e3](https://lichess.org/study/BGpbEEGT)
+        \u2022 [1.e3 e6 2.Nf3](https://lichess.org/study/KIUjrYpv) \u2022 [1.Nc3](https://lichess.org/study/f36B2cAF)\\r\\n\\r\\n**Tactics**\\r\\n[Basic
+        Tactics Study](https://lichess.org/study/mxYOPgI3) \u2022 [Atomic Chess Puzzles](https://chessvariants.training/Puzzle/Atomic)
+        \u2022 [Atomic Chess Endgame Practice](https://lichess.org/study/wRLQk6Wq)\\r\\n\\r\\n**Endgames**\\r\\n[Basic
+        Endgames](https://lichess.org/study/JYSYPQrN) \u2022 [Atomic Endgames I](https://lichess.org/study/ikJM4K3L)
+        \u2022 [Atomic Endgames II](https://lichess.org/study/tCqrXrbG) \u2022 [Atomic
+        Endgames III](https://lichess.org/study/WOWizkm4) \u2022 [Pawnitisation](https://lichess.org/study/iS3Dp19A)
+        \u2022 [KR vs KP](https://lichess.org/study/MYV7n3Nf) \u2022 [KQP vs KP](https://lichess.org/study/2DRvcpIZ)
+        \u2022 [K + 2 Pieces vs KP](https://lichess.org/study/qpSW4QBS) \u2022 [KPP
+        vs KP](https://lichess.org/study/Iv9L9LTR) \u2022 [KRP vs KP](https://lichess.org/study/xvHuOCBq)
+        \u2022 [Rule of the Rectangle](https://lichess.org/study/7SpmVBSz)\\r\\n\\r\\n**Videos
+        on Atomic Chess**\\r\\n[Tipau\u2019s 1.Nh3 Series](https://www.youtube.com/watch?v=dllxuJNvMgA&list=PL5BF9A485527AFD1B)
+        \u2022 [Tipau\u2019s 1.Nf3 Series](https://www.youtube.com/watch?v=ThY9JYoWIx4&list=PLwqbStrXWJVDQ_6mrDP5W3updISPcsi36)
+        \u2022 [Tipau\u2019s Basic Atomic Endgames](https://www.youtube.com/watch?v=eM-jOHUXRqI&list=PLwqbStrXWJVCKUKTq2Vj3kF7yvOqYBQZU)
+        \u2022 [Tipau\u2019s Intermediate Atomic Endgames](https://www.youtube.com/watch?v=CLb9Z4aXE34&list=PLwqbStrXWJVCcdGIqgoConz5591ib-Gc1)
+        \u2022 [Tipau\u2019s Advanced Atomic Endgames](https://www.youtube.com/watch?v=fadbxCiqcbU&list=PLwqbStrXWJVAs1GMuv5t47wmOWbtLQeWf)\\r\\n\\r\\n**Atomic
+        Puzzles**\\r\\n[Chessvariants.training](https://chessvariants.training/Puzzle/Atomic)\\r\\n\\r\\n**Websites
+        on Atomic Chess \u2013  here you may find lore and additional materials**\\r\\n[Chronatog\u2019s
+        Chess Site](https://chronatog.com) \u2022 [Illion\u2019s Atomic](https://illion-atomic.netlify.com/)\\r\\n\\r\\n---\\r\\n\\r\\n**Other
+        Lichess Variant teams**\\r\\n\\r\\n[Chess960](https://lichess.org/team/lichess-chess960)
+        \u2022 [King of the Hill](https://lichess.org/team/lichess-king-of-the-hill)
+        \u2022 [Three-check](https://lichess.org/team/lichess-three-check) \u2022
+        [Antichess](https://lichess.org/team/lichess-antichess) \u2022 [Horde](https://lichess.org/team/lichess-horde)
+        \u2022 [Racing Kings](https://lichess.org/team/lichess-racing-kings) \u2022
+        [Crazyhouse](https://lichess.org/team/lichess-crazyhouse)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"ijh\",\"id\":\"ijh\"},{\"name\":\"Iubar\",\"patron\":true,\"id\":\"iubar\"},{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},{\"name\":\"Natso\",\"patron\":true,\"id\":\"natso\"}],\"nbMembers\":7507},{\"id\":\"lichess-beta-testers\",\"name\":\"Lichess
+        Beta Testers\",\"description\":\"A team for testing new things on Lichess.
+        Want to see the new stuff before everybody else and help test it? This is
+        the place!\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},{\"name\":\"NoJoke\",\"patron\":true,\"id\":\"nojoke\"}],\"nbMembers\":2434},{\"id\":\"lichess-broadcasts\",\"name\":\"Lichess
+        Broadcasts\",\"description\":\"Join this team to stay informed on Lichess
+        broadcasts. We will be sending out weekly PMs about upcoming events.\\r\\n\\r\\n\\r\\nThe
+        broadcasts schedule appear here: lichess.org/broadcast. Additional events
+        may be added during the week, and you can always stay updated here\\r\\n\\r\\nIf
+        you want to ask a specific event to be broadcasted or you have created  a
+        broadcast (more info: lichess.org/page/broadcasts ) and you want to request
+        to be featured, please send an email to broadcast@lichess.org - requests will
+        be handled on a case-by-case basis.\",\"open\":true,\"leader\":{\"name\":\"Broadcaster2\",\"title\":\"LM\",\"id\":\"broadcaster2\"},\"leaders\":[{\"name\":\"broadcaster\",\"title\":\"LM\",\"patron\":true,\"id\":\"broadcaster\"},{\"name\":\"NoJoke\",\"patron\":true,\"id\":\"nojoke\"}],\"nbMembers\":1232},{\"id\":\"lichess-chess960\",\"name\":\"Lichess
+        Chess960\",\"description\":\"![](https://i.imgur.com/BH4KzL2.gif)\\r\\n\\r\\n**Welcome
+        to the official Lichess Chess960 Team!**\\r\\n\\r\\nWe are the home of [Chess960](https://lichess.org/variant/chess960)
+        fans across Lichess. Join the team for tournaments and other community-driven
+        Chess960 events. Everyone is welcome to join!\\r\\n\\r\\n[VOTE here](https://forms.gle/iwdeyZwLTzkVar64A)
+        for the time control you would like to see more for Chess960 Tournaments\\r\\n\\r\\n***\\r\\n\\r\\n**Resources:**\\r\\n\\r\\n\u2022
+        [Detailed Guide to Chess960](https://lichess.org/@/visualdennis/blog/my-ultimate-guide-to-chess960/de25UOqM)
+        with history, strategy and opening tips as well as further resources. \\r\\n\\r\\n\u2022
+        [Table of all 960 starting positions](https://chess960.net/wp-content/uploads/2018/02/chess960-starting-positions.pdf)
+        (PDF)\\r\\n\\r\\n\u2022 [Castling Rules](https://lichess.org/study/7LaW0hAX)\\r\\n\\r\\n***\\r\\n\\r\\n**Tournaments
+        Schedule:**\\r\\n\\r\\n|**Time**|**Day**|**Event**|**Time Control**|\\r\\n|---|---|---|---|\\r\\n|Every
+        hour*|Every day|Hourly Chess960|Various|\\r\\n|19:00 UTC|Wednesdays| Weekly
+        Chess960 Blitz Arena|3+0|\\r\\n|11:00 UTC|Saturdays| Weekly Chess960 Team
+        Battle|3+0|\\r\\n\\r\\n*Every hour, when there is no hourly created by Lichess
+        itself, there will be tournament created by this official team\\r\\n\\r\\n![](https://i.imgur.com/CdEAcRJ.jpg)\\r\\n\\r\\nLinks
+        to these regular tournaments can be found [below](https://lichess.org/team/lichess-chess960/tournaments)
+        , if you scroll down a bit or [here](https://lichess.org/tournament).\\r\\n\\r\\nAdditionally,
+        if you are fan of team battles, you can find [Daily Chess960 Team Battles](https://lichess.org/team/fischer-random-chess-center/tournaments)
+        hosted by [Fischer Random Chess Center](https://lichess.org/team/fischer-random-chess-center)\\r\\n\\r\\n***\\r\\n\\r\\n**Community:**\\r\\n\\r\\n\u2022
+        [Share and discuss your games here](https://lichess.org/forum/team-lichess-chess960/share-your-cool-chess960-games-here-for-discussion-or-analysis)\\r\\n\\r\\n\u2022
+        [Feel free to create a topic in the forum](https://lichess.org/forum/team-lichess-chess960)
+        if you have questions, want to give feedback, or make suggestion for tournament
+        ideas, events, format or any kind of thing. \\r\\n\\r\\n\u2022 [Lichess Arena
+        Ranking](https://lichess.thijs.com/rankings/chess960/monthly/list_players_trophies.html)\\r\\n\\r\\n\u2022
+        Chess960 versions for other variants, such as Crazyhouse960 and Atomic960
+        can be played on [Pychess](https://www.pychess.org/tournament/J0JLXYFy). Every
+        2nd Monday of the month, Crazyhouse960 Shield takes place [here](https://www.pychess.org/tournament/J0JLXYFy)
+        \\r\\n\\r\\n***\\r\\n\\r\\n**Lichess official variant teams**\\r\\n\\r\\n[Lichess
+        Chess960](https://lichess.org/team/lichess-chess960) \u2022 [Lichess King
+        of the Hill](https://lichess.org/team/lichess-king-of-the-hill) \u2022 [Lichess
+        Three-check](https://lichess.org/team/lichess-three-check) \u2022 [Lichess
+        Antichess](https://lichess.org/team/lichess-antichess) \u2022 [Lichess Atomic](https://lichess.org/team/lichess-atomic)
+        \u2022 [Lichess Horde](https://lichess.org/team/lichess-horde) \u2022 [Lichess
+        Racing Kings](https://lichess.org/team/lichess-racing-kings) \u2022 [Lichess
+        Crazyhouse](https://lichess.org/team/lichess-crazyhouse)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},{\"name\":\"TeamChess960\",\"id\":\"teamchess960\"},{\"name\":\"visualdennis\",\"title\":\"NM\",\"id\":\"visualdennis\"}],\"nbMembers\":11171},{\"id\":\"lichess-crazyhouse\",\"name\":\"Lichess
+        Crazyhouse\",\"description\":\"## **Welcome to the official Crazyhouse team!**\\r\\n\\r\\nWe
+        are the home of [Crazyhouse](/variant/crazyhouse) fans across Lichess. We're
+        excited to welcome you to the greatest chess variant supported on this site!\\r\\n\\r\\n---\\r\\n\\r\\n##
+        **Crazyhouse Arenas**\\r\\nThe famous **[Elite Crazyhouse Arenas](/forum/team-lichess-crazyhouse/elite-crazyhouse-arenas?page=2)**
+        created by @TheFinnisher (>= 1900 rating): \\r\\n\u2022 [Next Edition](/tournament/zqf2OfvB)\\r\\n\\r\\nThe
+        new **[Rising Stars Crazyhouse Arenas](/forum/team-lichess-crazyhouse/rising-stars-crazyhouse-arenas)**
+        (<= 2100 rating):\\r\\n\u2022 [Next Edition](/tournament/y5AHf8Es)\\r\\n\\r\\nThe
+        beloved **[ZH Nations League](/team/zh-nations-league)** (Team Battle):\\r\\n\u2022
+        [Next Edition](/tournament/2a32gm5f)\\r\\n\\r\\n---\\r\\n\\r\\n## **Learning
+        Materials**\\r\\n\\r\\n**Beginner:** [Rules](/variant/crazyhouse) \u2022 [okei's
+        Guide](https://zhchess.blogspot.com/p/you-know-rules-of-crazyhouse-but-how-to.html)
+        \u2022 [Zaraza's Guide](/@/Zaraza/blog/how-to-improve-your-crazyhouse-game/D72gdEij)
+        \u2022 JannLee videos, e.g. [Instructive zh](https://www.youtube.com/watch?v=OdHnA1QieU4)\\r\\n\\r\\n**Intermediate:**
+        [Basic Openings](/study/AvOt6iP2) \u2022 [Instructive zh positions](/study/OHSQPWgG)
+        \u2022 [CWC Puzzles](/study/KRSHKkvT) \u2022 [Checkmate Puzzles](/study/GM0MUtLc)
+        \u2022 [Puzzle Site](https://chessvariants.training/Puzzle/Crazyhouse)\\r\\n\\r\\n\\r\\n**Advanced:**
+        [1.d4 intro guide](/study/EC2PkriX) \u2022 [Complex Puzzles](/study/1IIwvM8v)\\r\\n\\r\\n---\\r\\n\\r\\n##
+        **Other Ressources**\\r\\n\\r\\n**Live power ranking**: 1. @catask 2. The
+        rest\\r\\n\\r\\n**Youtube**: [JannLee](https://www.youtube.com/c/JannLeeCrazyhouseChannel)
+        \u2022 [okei](https://www.youtube.com/c/okeizh) \u2022 [Kleerkast](https://www.youtube.com/channel/UCIQLIbwJBeFQjSTZmRODmqg)
+        \u2022 [Mugwort](https://www.youtube.com/channel/UCNMhNQybeLGJHWJv5qT1liQ)
+        \u2022 [OldHas-Been](https://www.youtube.com/channel/UCX-63mLpseSISHqrDW74a_g)
+        \u2022 [Maple-Kev](https://www.youtube.com/channel/UC1zP-qlhgB3fbZiNBBHsGjQ)
+        \u2022 [crosky](https://www.youtube.com/channel/UCvowgcm56sLguWxYp8oqI1w/videos)
+        \u2022 [Zaraza](https://www.youtube.com/channel/UC9MQj5cmA8Pr05KitkSvJZw)
+        \u2022 [adet2510](https://www.youtube.com/channel/UCAOS4TZeqhnG7DEQ5mUt59g)\\r\\n\\r\\n**Twitch**:
+        [JannLee](https://www.twitch.tv/jannleecrazyhouse) \u2022 [okei](https://www.twitch.tv/okeizh)
+        \u2022 [Kleerkast](https://www.twitch.tv/kleerkast_chess) \u2022 [Mugwort](https://www.twitch.tv/mugwortcrazyhouse)
+        \u2022 [OldHas-Been](https://www.twitch.tv/therealgnejs) \u2022 [calcu_later](https://www.twitch.tv/1800__strength)
+        \u2022 [Zaraza](https://www.twitch.tv/zarazaofthebrain) \u2022 [JoannaTries](https://www.twitch.tv/joannatries)
+        \u2022 [pepellou](https://www.twitch.tv/pepellou) \u2022 [googa](https://www.twitch.tv/owstenatorr)
+        \u2022 [talldove](https://www.twitch.tv/talldove) \u2022 [tjarkvos](https://www.twitch.tv/itsmetjark)
+        \u2022 [GRXBullet](https://www.twitch.tv/chewythechewer/)\\r\\n\\r\\n**Blogs**:
+        [okei's blogspot](http://zhchess.blogspot.com) \u2022 [CrazyMaharajah's Dreamwidth](https://crazymaharajah.dreamwidth.org/)\\r\\n\\r\\n**More
+        links**: [ZH960](https://www.pychess.org/) \u2022 [The House Discord](https://discord.gg/RhWgzcC)\\r\\n\\r\\n---\\r\\n![image](https://i.imgur.com/MMLsDgU.png)\\r\\n\\r\\n**Crazyhouse
+        World Championship**: [Lichess Team](/team/crazyhouse-world-championship)
+        \u2022 [Official Bracket](https://challonge.com/CWC2022) \u2022 [Comprehensive
+        Bracket](https://bit.ly/CrazyhouseWC2022) \u2022 [Calendar](https://teamup.com/ks3ozaeaopfk1v98bf)
+        \\r\\n\\r\\n**CWC Champions**: \\r\\n\u2022 @catask (2021) \\r\\n\u2022 @Jasugi99
+        (2020) \\r\\n\u2022 @opperwezen (2019 1+0 CWC) \\r\\n\u2022 @opperwezen (2018)
+        \\r\\n\u2022 @JannLee (2017) \\r\\n\u2022 @chickencrossroad & @JannLee (2016)\\r\\n\\r\\n\\r\\n---\\r\\n\\r\\n##
+        **Game of the Year**\\r\\n\\r\\n![image](https://lichess1.org/game/export/gif/black/xYAlqSav.gif)\\r\\n\\r\\n---\\r\\n\\r\\n**Other
+        Lichess official variant teams**\\r\\n\\r\\n[Chess960](/team/lichess-chess960)
+        \u2022 [King of the Hill](/team/lichess-king-of-the-hill) \u2022 [Three-Check](/team/lichess-three-check)
+        \u2022 [Antichess](/team/lichess-antichess) \u2022 [Atomic](/team/lichess-atomic)
+        \u2022 [Horde](/team/lichess-horde) \u2022 [Racing Kings](/team/lichess-racing-kings)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"LegionDestroyer\",\"id\":\"legiondestroyer\"},{\"name\":\"FischyVishy\",\"patron\":true,\"id\":\"fischyvishy\"},{\"name\":\"Lihouse\",\"id\":\"lihouse\"},{\"name\":\"Zaraza\",\"id\":\"zaraza\"},{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},{\"name\":\"Crazy_Eight\",\"title\":\"FM\",\"id\":\"crazy_eight\"}],\"nbMembers\":6622},{\"id\":\"lichess-curator\",\"name\":\"Lichess
+        Curator\",\"description\":\"Join the team to stay informed on Lichess events.
+        We'll send out a weekly personal message about upcoming events.\\r\\n\\r\\nOrganizers
+        / Streamers - please send a Lichess message to [curator](https://lichess.org/@/curator)
+        to tell us about your event!\",\"open\":true,\"leader\":{\"name\":\"curator\",\"patron\":true,\"id\":\"curator\"},\"leaders\":[{\"name\":\"curator\",\"patron\":true,\"id\":\"curator\"},{\"name\":\"loepare\",\"patron\":true,\"id\":\"loepare\"},{\"name\":\"NoJoke\",\"patron\":true,\"id\":\"nojoke\"}],\"nbMembers\":4315},{\"id\":\"lichess-elite-database\",\"name\":\"Lichess
+        Elite Database\",\"description\":\"Hi all, I created the Lichess Elite Database
+        which is a collection of lichess games, published each month - get it on https://database.nikonoel.fr
+        \\r\\n\\r\\nI filtered all (standard) games from lichess to only keep games
+        by players rated 2400+ against players rated 2200+, excluding bullet games.\\r\\n\\r\\nI
+        believe that the database might be useful for players who want to be up to
+        date on the latest theoretical novelties as strong players test their discoveries
+        online. Another potential use for this database is to see how strong opponents
+        would face your openings in practice.\\r\\n\\r\\nThis team is primarily to
+        let you know whenever I publish the latest update: I will message you once
+        a month to let you know about it.\",\"open\":true,\"leader\":{\"name\":\"nikonoel\",\"patron\":true,\"id\":\"nikonoel\"},\"leaders\":[{\"name\":\"nikonoel\",\"patron\":true,\"id\":\"nikonoel\"}],\"nbMembers\":1234},{\"id\":\"lichess-horde\",\"name\":\"Lichess
+        Horde\",\"description\":\"**Welcome to the official Horde team!**\\r\\n\\r\\nThis
+        is the home of [Horde](https://lichess.org/variant/horde) fans across lichess
+        and the #1 place to play in regular horde arenas, marathons, and team battles
+        of all time controls.\\r\\n\\r\\nFor the World Championship and other bracket
+        tournaments join the [Horde WC Team](https://lichess.org/team/horde-world-championship).\\r\\n\\r\\nMessage
+        @ichinschlecht to **sponsor** the team.\\r\\n\\r\\n---\\r\\n**Tournaments
+        Schedule:**\\r\\n\\r\\n|**Time [(UTC)](https://time.is/UTC)**|**Day**|**Event**|**Time
+        Control**|\\r\\n|---|---|---|---|\\r\\n|16:30|Wednesday|Weekly Hyper Arena|0.5+0|\\r\\n|17:00|Wednesday|Weekly
+        Blitz Arena|3+2|\\r\\n|18:00|Wednesday|Weekly Bullet Arena|1+0|\\r\\n|14:00|Every
+        Day|Daily Hyper Arena|0.5+0|\\r\\n|14:30|Every Day|Daily Blitz Arena|3+2|\\r\\n|17:00|Every
+        Day|Daily Bullet Arena|1+0|\\r\\n\\r\\n---\\r\\n**Resources:**\\r\\n\\r\\nA
+        [guide](https://docs.google.com/document/d/1eJmegmmnCyBZ49Y7bZLmFKyhdF2T64WwogpTzaQVcis/edit?usp=sharing)
+        to Horde by [The House Discord](https://discord.gg/RhWgzcC).\\r\\nAnother
+        [guide](https://docs.google.com/document/d/136BCRPzm1QH_OBK3qjKwlmK3MIji7ZmLZPMYgDpmOCU/edit?usp=sharing)
+        by [PhilippeSaner](https://lichess.org/@/PhilippeSaner).\\r\\n\\r\\n[Introduction
+        to Horde Opening Theory](https://lichess.org/study/UUk0IJZg) - a study on
+        basic opening theory by [Sinamon73](https://lichess.org/@/Sinamon73).\\r\\n[Horde
+        Opening Stuff](https://lichess.org/study/i4n5teAx) - a study on 1. d5 and
+        1. e5 by [Stubenfisch](https://lichess.org/@/Stubenfisch).\\r\\n[The Laws
+        of Horde Chess](https://lichess.org/study/9ZkZKKun) - a compilation of instructive
+        games by [mindhunter0101](https://lichess.org/@/mindhunter0101).\\r\\n[Basic
+        Horde Shuffle ideas](https://lichess.org/study/TpbsuyQi) - a study on the
+        rook shuffle by [WhiteDancingRockstar](https://lichess.org/@/Whitedancingrockstar).\\r\\n[My
+        Horde repertoire](https://lichess.org/study/yXTpOSfM)  - a study by [svenos](https://lichess.org/@/svenos)
+        on his opening repertoire.\\r\\n[The Lore of the Horde Lord](https://lichess.org/study/Z64am8tJ)
+        - a study by [maretate](https://lichess.org/@/maretate) which goes deeper
+        into horde chess.\\r\\n\\r\\n---\\r\\n**Other Lichess variant teams**\\r\\n\\r\\n[Chess960](https://lichess.org/team/lichess-chess960)
+        \u2022 [King of the Hill](https://lichess.org/team/lichess-king-of-the-hill)
+        \u2022 [Three-check](https://lichess.org/team/lichess-three-check) \u2022
+        [Antichess](https://lichess.org/team/lichess-antichess) \u2022 [Atomic](https://lichess.org/team/lichess-atomic)
+        \u2022 [Racing Kings](https://lichess.org/team/lichess-racing-kings) \u2022
+        [Crazyhouse](https://lichess.org/team/lichess-crazyhouse)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"ichinschlecht\",\"id\":\"ichinschlecht\"},{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},{\"name\":\"Sinamon73\",\"patron\":true,\"id\":\"sinamon73\"}],\"nbMembers\":8614},{\"id\":\"lichess-king-of-the-hill\",\"name\":\"Lichess
+        King of the Hill\",\"description\":\"**Welcome to the official King of the
+        Hill Team!**\\r\\n\\r\\nWe are the home of [King of the Hill](https://lichess.org/variant/kingOfTheHill)
+        fans across Lichess. Join the team for tournaments and other community-driven
+        King of the Hill events. Everyone is welcome to join!\\r\\n***\\r\\n\\r\\n**Schedule**\\r\\n\\r\\n|
+        Day | Time([UTC](https://time.is/UTC)) | Tournament | Time control |\\r\\n|
+        -------------| ----------- |---------- |---------- |\\r\\n| Monday | 17:00
+        | Weekly Increment arena | 3+2 |\\r\\n| Friday | 17:00 | Weekly Elite (1700+)
+        Arena | 1+0 |\\r\\n| 1st Sunday of month | 17:00 |Monthly Rapid Arena | 15+0
+        |\\r\\n***\\r\\n\\r\\n**KOTH WC !!!**\\r\\n- [King of the Hill World Championship](https://lichess.org/team/kUszbgwZ)\\r\\n\\r\\n**Learning
+        material**\\r\\n\\r\\n- [Rules](https://lichess.org/variant/kingOfTheHill)\\r\\n-
+        [KOTH study by CM Dumbeldore](https://lichess.org/study/KGTRumiD)\\r\\n- [Basics](https://lichess.org/forum/team-king-of-the-hill-analysis/koth-basics)\\r\\n-
+        [Interactive puzzles on chessvariants.training](https://chessvariants.training/Puzzle/KingOfTheHill)\\r\\n-
+        [Interactive puzzles on pychess.org](https://www.pychess.org/puzzle/kingofthehill)\\r\\n***\\r\\n\\r\\n**Top
+        King of the Hill players**\\r\\n\\r\\n- [Live rankings](https://lichess.org/player/top/200/kingOfTheHill)\\r\\n-
+        [Most tournament trophies](https://lichess.thijs.com/rankings/koth/all/list_players_trophies.html)\\r\\n-
+        [The oldest rating record of the lichess](https://lichess.org/@/may_rus/blog/the-oldest-rating-record-of-the-lichess/PtiJ6x4f)\\r\\n***\\r\\n\\r\\n960
+        versions of King of the Hill can be played on [Pychess](https://www.pychess.org).
+        Every 1st Monday of the month, King of the Hill 960 Shield takes place [here](https://www.pychess.org/tournament/MzPdtwtw)\\r\\n***\\r\\n\\r\\n**Other
+        Lichess official variant teams**\\r\\n\\r\\n[Chess960](https://lichess.org/team/lichess-chess960)
+        \u2022 [Three-check](https://lichess.org/team/lichess-three-check) \u2022
+        [Antichess](https://lichess.org/team/lichess-antichess) \u2022 [Atomic](https://lichess.org/team/lichess-atomic)
+        \u2022 [Horde](https://lichess.org/team/lichess-horde) \u2022 [Racing Kings](https://lichess.org/team/lichess-racing-kings)
+        \u2022 [Crazyhouse](https://lichess.org/team/lichess-crazyhouse)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"gbtami\",\"id\":\"gbtami\"},{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},{\"name\":\"oruro\",\"patron\":true,\"id\":\"oruro\"}],\"nbMembers\":7032},{\"id\":\"lichess-mega\",\"name\":\"Lichess
+        Mega\",\"description\":\"\uFE0F [\uFE0F LICHESS MEGA LINKS TOURNAMENTS ](https://www.peonelectrico.com/torneos)\\r\\n\uFE0F
+        [\uFE0F +TOURNAMENTS ](https://www.peonelectrico.com/torneos)\",\"open\":true,\"leader\":{\"name\":\"endicraft\",\"id\":\"endicraft\"},\"leaders\":[{\"name\":\"ajedrezconzeta\",\"patron\":true,\"id\":\"ajedrezconzeta\"},{\"name\":\"endicraft\",\"id\":\"endicraft\"},{\"name\":\"LuisAlce\",\"patron\":true,\"id\":\"luisalce\"}],\"nbMembers\":2956},{\"id\":\"lichess-productions\",\"name\":\"Lichess
+        Productions\",\"description\":\"A team for promoting Lichess video content,
+        specifically the \\\"Lichess Plays\\\" series where strong players take challenges
+        from Lichess users.\\r\\n\\r\\nPMs will be sent out for streams.\\r\\n\\r\\n[The
+        Lichess Youtube Channel](https://www.youtube.com/channel/UCr6RfQga70yMM9-nuzAYTsA)\\r\\n[The
+        Lichess Twitch Channel](https://twitch.tv/lichessdotorg)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"curator\",\"patron\":true,\"id\":\"curator\"},{\"name\":\"loepare\",\"patron\":true,\"id\":\"loepare\"},{\"name\":\"NoJoke\",\"patron\":true,\"id\":\"nojoke\"}],\"nbMembers\":2397},{\"id\":\"lichess-racing-kings\",\"name\":\"Lichess
+        Racing Kings\",\"description\":\"**Welcome to the official Racing Kings team!**\\r\\n\\r\\nWe
+        are the home of [Racing Kings](https://lichess.org/variant/racingKings) fans
+        across Lichess. Regular tournaments, community features, new RK content and
+        more coming soon. Everyone is welcome to join!\\r\\n\\r\\n* [Create a topic
+        in our team forum if you have any questions!](https://lichess.org/forum/team-lichess-racing-kings)\\r\\n*
+        [Learn more about Racing Kings with some of these resources](https://sites.google.com/view/racingkingswc/resources)\\r\\n*
+        [Join the official Racing Kings WC team](https://lichess.org/team/racing-kings-wc)
+        \\r\\n\\r\\n---\\r\\n\\r\\n**Recent events:**\\r\\n\\r\\n* Racing Kings WC
+        has started!\\r\\n\\r\\n**Schedule**\\r\\n\\r\\n| Day                | Time
+        [(UTC)](https://time.is/UTC) | Tournament                      | Time control
+        \                                   |\\r\\n|--------------------|------------|---------------------------------|--------------------------------------------------|\\r\\n|
+        Tue.           | 16:00      | Weekly Racing Kings Team Battle | 3+0 |\\r\\n|
+        Wed.          | 12:00      | Weekly Hyperbullet Arnea        | 1\u20442+0
+        \                                             |\\r\\n| Every 3rd Sat. | 18:00
+        \     | Elite Racing Kings Arena        | 2+0                                              |\\r\\n|
+        Every 3rd Sat. | 18:00      | U1800 Arena                     | 2+0                                              |\\r\\n\\r\\n---\\r\\n\\r\\n**Other
+        Lichess Variant teams:**\\r\\n\\r\\n[Chess960](https://lichess.org/team/lichess-chess960)
+        \u2022 [King of the Hill](https://lichess.org/team/lichess-king-of-the-hill)
+        \u2022 [Three-check](https://lichess.org/team/lichess-three-check) \u2022
+        [Antichess](https://lichess.org/team/lichess-antichess) \u2022 [Atomic](https://lichess.org/team/lichess-atomic)
+        \u2022 [Horde](https://lichess.org/team/lichess-horde) \u2022 [Crazyhouse](https://lichess.org/team/lichess-crazyhouse)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"FS-Schach\",\"id\":\"fs-schach\"},{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},{\"name\":\"Natso\",\"patron\":true,\"id\":\"natso\"},{\"name\":\"RoyalManiac\",\"patron\":true,\"id\":\"royalmaniac\"}],\"nbMembers\":4868},{\"id\":\"lichess-swiss\",\"name\":\"Lichess
+        Swiss\",\"description\":\"The official Lichess Swiss team. We organize regular
+        swiss tournaments for all to join.\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"NoJoke\",\"patron\":true,\"id\":\"nojoke\"},{\"name\":\"thibault\",\"patron\":true,\"id\":\"thibault\"}],\"nbMembers\":379942},{\"id\":\"lichess-three-check\",\"name\":\"Lichess
+        Three-check\",\"description\":\"## **Welcome to the Official Three-check Team!**\\r\\n\\r\\nWe
+        are the home of [Three-check](https://lichess.org/variant/threeCheck) fans
+        across Lichess! Join us and become a part of the best variant team! All team
+        members can play in community three-check tournaments/events, collaborate
+        on studies, solve puzzles, and more!\\r\\n\\r\\n# **Upcoming events** \\r\\n\\r\\n\\r\\n#
+        **Helpful Resources!**\\r\\n- [Puzzles by pellepou](https://lichess.org/study/luFEMTIO)
+        can be found on [chessvariants](https://chessvariants.training/Puzzle)\\r\\n-
+        [Opening Theory by Chess_Poems](https://lichess.org/study/qqGptMt8)\\r\\n-
+        [Interactive Lesson by WallaceTwo](https://lichess.org/study/j1rszQuk) on
+        three-check principles \\r\\n- [Three-check Openings](https://lichess.org/study/3Qavzk3v/MXeuQ1Ql)
+        and [Three-check Endings](https://lichess.org/study/sAv6r1Hv/v5qNJtWJ) studies
+        by [TheKingClash](https://lichess.org/@/TheKingClash)\\r\\n\\r\\n# **Check
+        out the [Three-check World Championship Team](https://lichess.org/team/3-world-championship)**:\\r\\n-
+        Insightful studies on the [2021](https://lichess.org/study/FZd2odOK/3KAFpjAI)
+        and [2022](https://lichess.org/study/jZhh2rVR/ZunpoAV4) grand finals by [TCF_Namelecc](https://lichess.org/@/TCF_Namelecc)\\r\\n-
+        Great [broadcast coverage](https://www.youtube.com/watch?v=4QsM32iwIkk&ab_channel=TheChess_PoemsChessChannel)
+        by [Chess_Poems](https://lichess.org/@/Chess_Poems)\\r\\nCurrent World Champion:
+        [VariantsOnly](https://lichess.org/@/VariantsOnly) (2021\u2013present)\\r\\n\\r\\n#
+        **Top Three-check Players**\\r\\n- [Live rankings](https://lichess.org/player/top/200/threeCheck)\\r\\n-
+        [Most tournament points](https://lichess.thijs.com/rankings/3check/all/list_players_points.html)\\r\\n\\r\\n**Share
+        your work [here](https://lichess.org/forum/team-lichess-three-check/share-your-ideas)
+        to be featured on this page!**\\r\\n\\r\\n---\\r\\n\\r\\n# **Game of the Week
+        (04/25\u201305/01): Determined David**\\r\\n[ArianRahimpour (2248) vs. Radio-Scacchi
+        (1972) - (1-0)](https://lichess.org/zr2xPeOb)\\r\\n\\r\\n![Game of the Week](https://i.imgur.com/J5LNn7z.gif)\\r\\n\\r\\n\\r\\n-
+        See past Games of the Week [here](https://lichess.org/study/yCC6S8A6/SgaZuYdE)\\r\\n-
+        **Private message [FlamoToolz](https://lichess.org/@/FlamoToolz) so your game
+        can be featured here!**\\r\\n\\r\\n---\\r\\n\\r\\n**Other Lichess official
+        variant teams**\\r\\n[Chess960](https://lichess.org/team/lichess-chess960)
+        \u2022 [King of the Hill](https://lichess.org/team/lichess-king-of-the-hill)
+        \u2022 [Antichess](https://lichess.org/team/lichess-antichess) \u2022 [Atomic](https://lichess.org/team/lichess-atomic)
+        \u2022 [Horde](https://lichess.org/team/lichess-horde) \u2022 [Racing Kings](https://lichess.org/team/lichess-racing-kings)
+        \u2022 [Crazyhouse](https://lichess.org/team/lichess-crazyhouse)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"FischyVishy\",\"patron\":true,\"id\":\"fischyvishy\"},{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"}],\"nbMembers\":5720},{\"id\":\"protoss\",\"name\":\"Protoss\",\"description\":\"STARCRAFT
+        PROTOSS\\r\\n\\r\\n\\\"We are the protoss. Children of ancient gods. We are
+        the Firstborn. And we shall be the last left standing.\\\" -- Hierarch Artanis\\r\\n\\r\\nThe
+        protoss Firstborn are a sapient humanoid species native to Aiur. Their advanced
+        technology complements and enhances their psionic mastery.\\r\\nThe main protoss
+        cultural groups are the Khalai, who adhere to the communal Khala, and the
+        Nerazim, who reject the Khala. Two smaller cultural branches of the protoss,
+        the Tal'darim and the Purifier, separated from the Khalai over respective
+        ideological differences.\\r\\nProtoss civilization was reunified when the
+        Khalai and Nerazim, sundered since the Discord, were reunited after the devastation
+        of Aiur by the zerg during the Great War.\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"}],\"nbMembers\":371},{\"id\":\"sris-cafe\",\"name\":\"Sri's
+        Cafe\",\"description\":\"Official Club of GM Srinath Narayanan.\",\"open\":true,\"leader\":{\"name\":\"Bulletfailure\",\"id\":\"bulletfailure\"},\"leaders\":[{\"name\":\"srinathbaggins\",\"title\":\"GM\",\"patron\":true,\"id\":\"srinathbaggins\"},{\"name\":\"VanshPandya\",\"id\":\"vanshpandya\"}],\"nbMembers\":803},{\"id\":\"team-chessable\",\"name\":\"Team
+        Chessable\",\"description\":\"The official team for Chessable fans!\",\"open\":true,\"leader\":{\"name\":\"TeamChessable\",\"id\":\"teamchessable\"},\"leaders\":[{\"name\":\"gdandedafa\",\"id\":\"gdandedafa\"},{\"name\":\"TeamChessable\",\"id\":\"teamchessable\"}],\"nbMembers\":20567},{\"id\":\"terran\",\"name\":\"Terran\",\"description\":\"STARCRAFT
+        TERRAN\\r\\n\\r\\n\\\"The universe never gave us a chance, but we're still
+        alive and kicking. We got tossed to the far end of the galaxy, dropped smack
+        dab between two ugly alien armies, and we're not all dead yet? Tell me that
+        don't say something about us. We're too dumb to die. A smart species would've
+        given up ages ago.\\\" -- Redell Quinton\\r\\n\\r\\nThe terrans (or humans)
+        are a young species with psionic potential. The terrans of the Koprulu sector
+        descend from the survivors of a disastrous 23rd century colonization mission
+        from Earth. Compared to the protoss and zerg, the terrans are highly factionalized
+        and endure frequent wars amongst themselves in addition to the more recent
+        conflicts with their alien neighbors. Nevertheless, terrans stand as one of
+        the three dominant species of the galaxy.\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"}],\"nbMembers\":421},{\"id\":\"zerg\",\"name\":\"Zerg\",\"description\":\"STARCARFT
+        ZERG\\r\\n\\r\\n\\\"We are the Swarm. Numberless...merciless.\\\" -- A Zerg
+        queen\\r\\n\\r\\nThe Zerg Swarm is a terrifying and ruthless amalgamation
+        of biologically advanced, arthropodal aliens. Dedicated to the pursuit of
+        genetic perfection, the zerg relentlessly hunt down and assimilate advanced
+        species across the galaxy, incorporating useful genetic code into their own.
+        They are named \\\"the Swarm\\\" per their ability to rapidly create strains,
+        and the relentless assaults they employ to overwhelm their foes.\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"}],\"nbMembers\":473}]"
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 14 Aug 2023 16:04:37 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      X-Frame-Options:
+      - DENY
+      content-length:
+      - '36782'
+    status:
+      code: 200
+      message: OK
+version: 1
