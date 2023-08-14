@@ -38,3 +38,20 @@ class LightUser(TypedDict):
     title: NotRequired[Title]
     # The patron of the user
     patron: NotRequired[bool]
+
+
+class PaginatedTeams(TypedDict):
+    # The current page
+    currentPage: int
+    # The maximum number of teams per page
+    maxPerPage: int
+    # The teams on the current page
+    currentPageResults: List[Team]
+    # The total number of teams
+    nbResults: int
+    # The previous page
+    previousPage: int | None
+    # The next page
+    nextPage: int | None
+    # The total number of pages
+    nbPages: int
