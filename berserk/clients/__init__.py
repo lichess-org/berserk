@@ -21,6 +21,7 @@ from .oauth import OAuth
 from .tv import TV
 from .tablebase import Tablebase
 from .opening_explorer import OpeningExplorer
+from .bulk_pairings import BulkPairings
 
 __all__ = [
     "Client",
@@ -41,6 +42,7 @@ __all__ = [
     "OAuth",
     "TV",
     "Tablebase",
+    "BulkPairings",
 ]
 
 
@@ -64,6 +66,7 @@ class Client(BaseClient):
     - :class:`messaging <berserk.clients.Messaging>` - private message other players
     - :class:`tv <berserk.clients.TV>` - get information on tv channels and games
     - :class:`tablebase <berserk.clients.Tablebase>` - lookup endgame tablebase
+    - :class:`bulk_pairings <berserk.clients.BulkPairing>` - manage bulk pairings
 
     :param session: request session, authenticated as needed
     :param base_url: base API URL to use (if other than the default)
@@ -102,3 +105,4 @@ class Client(BaseClient):
         self.tv = TV(session, base_url)
         self.tablebase = Tablebase(session, tablebase_url)
         self.opening_explorer = OpeningExplorer(session, explorer_url)
+        self.bulk_pairings: BulkPairings = BulkPairings(session, base_url)
