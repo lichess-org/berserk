@@ -7,7 +7,7 @@ from .base import BaseClient
 from ..enums import Variant
 from ..formats import JSON_LIST, JSON
 from ..types.bulk_pairings import BulkPairingGame
-from ..types.core.aliases import LichessID
+from ..types.core.aliases import ID
 from ..types.core.common import Result
 
 
@@ -75,7 +75,7 @@ class BulkPairings(BaseClient):
             ),
         )
 
-    def start_clocks(self, pairing_id: LichessID) -> Result:
+    def start_clocks(self, pairing_id: ID) -> Result:
         """Manually start clocks.
 
         :param LichessID pairing_id: pairing to start clocks of
@@ -84,7 +84,7 @@ class BulkPairings(BaseClient):
         path: str = f"https://lichess.org/api/bulk-pairing/{pairing_id}/start-clocks"
         return cast(Result, self._r.post(path, fmt=JSON))
 
-    def cancel(self, pairing_id: LichessID) -> Result:
+    def cancel(self, pairing_id: ID) -> Result:
         """Cancel a bulk pairing.
 
         :param LichessID pairing_id: pairing to cancel

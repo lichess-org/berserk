@@ -3,5 +3,5 @@ from __future__ import annotations
 
 from typing_extensions import TypeAlias
 
-LichessID: TypeAlias = str
+ID: TypeAlias = str
 Username: TypeAlias = str

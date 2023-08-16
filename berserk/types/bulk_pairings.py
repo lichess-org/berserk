@@ -4,13 +4,13 @@ from __future__ import annotations
 from typing import List
 from typing_extensions import TypedDict
 
-from .core.aliases import LichessID, Username
+from .core.aliases import ID, Username
 
 
 class BulkPairingGame(TypedDict):
     """A bulk pairing game"""
 
-    id: LichessID
+    id: ID
     black: Username
     white: Username
 
@@ -25,7 +25,7 @@ class BulkPairingClock(TypedDict):
 class BulkPairing(TypedDict):
     """Represents a bulk pairing."""
 
-    id: LichessID
+    id: ID
     games: List[BulkPairingGame]
     clock: BulkPairingClock
     pairAt: int
