@@ -8,7 +8,6 @@ from ..enums import Variant
 from ..formats import JSON_LIST, JSON
 from ..types.bulk_pairings import BulkPairingGame
 from ..types.core.aliases import ID
-from ..types.core.common import Result
 
 
 class BulkPairings(BaseClient):
@@ -75,20 +74,18 @@ class BulkPairings(BaseClient):
             ),
         )
 
-    def start_clocks(self, pairing_id: ID) -> Result:
+    def start_clocks(self, pairing_id: ID) -> None:
         """Manually start clocks.
 
         :param LichessID pairing_id: pairing to start clocks of
-        :return Result: operation result
         """
         path: str = f"https://lichess.org/api/bulk-pairing/{pairing_id}/start-clocks"
-        return cast(Result, self._r.post(path, fmt=JSON))
+        self._r.post(path)
 
-    def cancel(self, pairing_id: ID) -> Result:
+    def cancel(self, pairing_id: ID) -> None:
         """Cancel a bulk pairing.
 
         :param LichessID pairing_id: pairing to cancel
-        :return Result: operation result
         """
         path: str = f"https://lichess.org/api/bulk-pairing/{pairing_id}"
-        return cast(Result, self._r.request("DELETE", path, fmt=JSON))
+        self._r.request("DELETE", path)
