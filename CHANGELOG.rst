@@ -5,8 +5,10 @@ v0.12.8 (2023-07-25)
 --------------------
 
 * Added ``client.opening_explorer.get_lichess_games`` to request opening explorer data for a given position based on Lichess games
+* Added ``client.bulk_pairings`` to create and manage bulk pairings
+* Reworked ``client.account`` with better typing
 
-Thanks to @rpesche for their contributions to this release.
+Thanks to @rpesche and @Virinas-code for their contributions to this release.
 
 v0.12.7 (2023-07-15)
 --------------------
