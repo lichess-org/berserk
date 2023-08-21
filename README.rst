@@ -106,6 +106,11 @@ Most of the API is available:
     client.broadcasts.get_round_pgns
     client.broadcasts.get_pgns
 
+    client.bulk_pairings.view_upcoming
+    client.bulk_pairings.create
+    client.bulk_pairings.start_clocks
+    client.bulk_pairings.cancel
+
     client.challenges.create
     client.challenges.create_ai
     client.challenges.create_open
