@@ -106,17 +106,17 @@ Using ``pytest-recording`` / ``vcrpy``
 
     from utils import validate, skip_if_older_3_dot_10
 
-        @skip_if_older_3_dot_10
-        @pytest.mark.vcr # <---- this tells pytest-recording to record/mock requests made in this test
-        def test_result(self):
-            """Verify that the response matches the typed-dict"""
-            res = Client().opening_explorer.get_lichess_games(
-                variant="standard",
-                speeds=["blitz", "rapid", "classical"],
-                ratings=["2200", "2500"],
-                position="rnbqkbnr/ppp2ppp/8/3pp3/4P3/2NP4/PPP2PPP/R1BQKBNR b KQkq - 0 1",
-            )
-            validate(OpeningStatistic, res)
+    @skip_if_older_3_dot_10
+    @pytest.mark.vcr # <---- this tells pytest-recording to record/mock requests made in this test
+    def test_result(self):
+        """Verify that the response matches the typed-dict"""
+        res = Client().opening_explorer.get_lichess_games(
+            variant="standard",
+            speeds=["blitz", "rapid", "classical"],
+            ratings=["2200", "2500"],
+            position="rnbqkbnr/ppp2ppp/8/3pp3/4P3/2NP4/PPP2PPP/R1BQKBNR b KQkq - 0 1",
+        )
+        validate(OpeningStatistic, res)
 
 This should be used to test **server-side** behavior. 
 
