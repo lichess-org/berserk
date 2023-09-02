@@ -21,7 +21,7 @@ class BulkPairings(BaseClient):
         :return: list of your upcoming bulk pairings.
         """
         path = "/api/bulk-pairing"
-        return cast(list[BulkPairing], self._r.get(path, fmt=JSON_LIST))
+        return cast("list[BulkPairing]", self._r.get(path, fmt=JSON_LIST))
 
     def create(
         self,
