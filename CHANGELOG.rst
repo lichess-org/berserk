@@ -2,7 +2,7 @@ Changelog
 =========
 
 v0.12.10 (2023-09-2)
--------------------
+--------------------
 
 * Added ``client.opening_explorer.get_masters_games`` to request opening explorer data for a given position based on master games
 * Added ``client.opening_explorer.get_player_games`` to request opening explorer data for a given position based on Lichess games of a specific player
