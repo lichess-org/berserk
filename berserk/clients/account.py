@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing_extensions import cast
+from typing import cast
 
 from .. import models
 from ..types.account import AccountInformation, Preferences
