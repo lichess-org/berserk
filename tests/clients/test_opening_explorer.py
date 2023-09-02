@@ -36,3 +36,66 @@ class TestLichessGames:
                 json={},
             )
             Client().opening_explorer.get_lichess_games(ratings=["1200", "1400"])
+
+
+class TestMasterGames:
+    @pytest.mark.vcr
+    def test_result(self):
+        res = Client().opening_explorer.get_masters_games(
+            play=["d2d4", "d7d5", "c2c4", "c7c6", "c4d5"]
+        )
+        assert res["white"] == 1667
+        assert res["black"] == 1300
+        assert res["draws"] == 4428
+
+
+class TestPlayerGames:
+    @pytest.mark.vcr
+    @pytest.mark.default_cassette("TestPlayerGames.results.yaml")
+    def test_wait_for_last_results(self):
+        result = Client().opening_explorer.get_player_games(
+            player="evachesss", color="white", wait_for_indexing=True
+        )
+        assert result["white"] == 125
+        assert result["draws"] == 18
+        assert result["black"] == 133
+
+    @pytest.mark.vcr
+    @pytest.mark.default_cassette("TestPlayerGames.results.yaml")
+    def test_get_first_result_available(self):
+        result = Client().opening_explorer.get_player_games(
+            player="evachesss",
+            color="white",
+            wait_for_indexing=False,
+        )
+        assert result == {
+            "white": 0,
+            "draws": 0,
+            "black": 0,
+            "moves": [],
+            "recentGames": [],
+            "opening": None,
+            "queuePosition": 0,
+        }
+
+    @pytest.mark.vcr
+    @pytest.mark.default_cassette("TestPlayerGames.results.yaml")
+    def test_stream(self):
+        result = list(
+            Client().opening_explorer.stream_player_games(
+                player="evachesss",
+                color="white",
+            )
+        )
+        assert result[0] == {
+            "white": 0,
+            "draws": 0,
+            "black": 0,
+            "moves": [],
+            "recentGames": [],
+            "opening": None,
+            "queuePosition": 0,
+        }
+        assert result[-1]["white"] == 125
+        assert result[-1]["draws"] == 18
+        assert result[-1]["black"] == 133
