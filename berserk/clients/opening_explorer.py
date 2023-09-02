@@ -1,8 +1,7 @@
 from __future__ import annotations
 
-from typing import cast, List, Literal, TypedDict
+from typing import Iterator, cast, List, Literal, TypedDict
 import requests
-import time
 import logging
 
 from .base import BaseClient
@@ -53,11 +52,11 @@ class Game(TypedDict):
     # The id of the game
     id: str
     # The winner of the game. Draw if None
-    winner: Literal["white"] | Literal["black"] | None
+    winner: Literal["white", "black"] | None
     # The speed of the game
     speed: Speed
     # The type of game
-    mode: Literal["rated"] | Literal["casual"]
+    mode: Literal["rated", "casual"]
     # The black player
     black: Player
     # The white player
@@ -179,8 +178,7 @@ class OpeningExplorer(BaseClient):
     def get_player_games(
         self,
         player: str,
-        color: Literal["white"] | Literal["black"],
-        wait: bool | int = True,
+        color: Literal["white", "black"],
         variant: OpeningExplorerVariant | None = None,
         position: str | None = None,
         play: List[str] | None = None,
@@ -192,17 +190,61 @@ class OpeningExplorer(BaseClient):
         top_games: int | None = None,
         recent_games: int | None = None,
         history: bool | None = None,
-    ):
+        wait_for_indexing: bool = True,
+    ) -> OpeningStatistic:
         """Get most played move from a position based on player games.
 
-        The curated games may not be available at the time of the request.
-        If they are already available the api will return it.
-        If not it will stream partial result as they are computed.
+        The complete statistics for a player may not immediately be available at the
+        time of the request. If ``wait_for_indexing`` is true, berserk will wait for
+        Lichess to complete indexing the games of the player and return the final
+        result. Otherwise, it will return the first result available, which may be empty,
+        outdated, or incomplete.
 
-        The ``wait`` parameter can be used to define how get data:
-            * If ``False`` it will return the first result available
-            * If ``True`` it will wait for the end of computation and return the curated result
-            * If it is an int, it will wait this amount and time (in seconds) and return the result at this time
+        If you want to get intermediate results during indexing, use ``stream_player_games``.
+        """
+        iterator = self.stream_player_games(
+            player,
+            color,
+            variant,
+            position,
+            play,
+            speeds,
+            ratings,
+            since,
+            until,
+            moves,
+            top_games,
+            recent_games,
+            history,
+        )
+        result = next(iterator)
+        if wait_for_indexing:
+            for result in iterator:
+                continue
+        return result
+
+    def stream_player_games(
+        self,
+        player: str,
+        color: Literal["white", "black"],
+        variant: OpeningExplorerVariant | None = None,
+        position: str | None = None,
+        play: List[str] | None = None,
+        speeds: List[Speed] | None = None,
+        ratings: List[OpeningExplorerRating] | None = None,
+        since: int | None = None,
+        until: int | None = None,
+        moves: int | None = None,
+        top_games: int | None = None,
+        recent_games: int | None = None,
+        history: bool | None = None,
+    ) -> Iterator[OpeningStatistic]:
+        """Get most played move from a position based on player games.
+
+        The complete statistics for a player may not immediately be available at the
+        time of the request. If it is already available, the returned iterator will
+        only have one element with the result, otherwise it will return the last known
+        state first and provide updated statistics as games of the player are indexed.
         """
 
         path = "/player"
@@ -235,17 +277,5 @@ class OpeningExplorer(BaseClient):
             "history": history,
         }
 
-        start = time.time()
-        response = {}
         for response in self._r.get(path, params=params, stream=True):
-            step = time.time() - start
-
-            # We don't wan't to wait, and return the first result
-            if wait is False:
-                break
-
-            # The expected time is over, we return the current result
-            if not isinstance(wait, bool) and step > wait:
-                break
-
-        return cast(OpeningStatistic, response)
+            yield cast(OpeningStatistic, response)

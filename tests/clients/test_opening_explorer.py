@@ -52,7 +52,7 @@ class TestPlayerGames:
     @pytest.mark.default_cassette("TestPlayerGames.results.yaml")
     def test_wait_for_last_results(self):
         result = Client().opening_explorer.get_player_games(
-            player="evachesss", color="white", wait=True
+            player="evachesss", color="white", wait_for_indexing=True
         )
         assert result["white"] == 125
         assert result["draws"] == 18
@@ -64,7 +64,7 @@ class TestPlayerGames:
         result = Client().opening_explorer.get_player_games(
             player="evachesss",
             color="white",
-            wait=False,
+            wait_for_indexing=False,
         )
         assert result == {
             "white": 0,
@@ -75,3 +75,25 @@ class TestPlayerGames:
             "opening": None,
             "queuePosition": 0,
         }
+
+    @pytest.mark.vcr
+    @pytest.mark.default_cassette("TestPlayerGames.results.yaml")
+    def test_stream(self):
+        result = list(
+            Client().opening_explorer.stream_player_games(
+                player="evachesss",
+                color="white",
+            )
+        )
+        assert result[0] == {
+            "white": 0,
+            "draws": 0,
+            "black": 0,
+            "moves": [],
+            "recentGames": [],
+            "opening": None,
+            "queuePosition": 0,
+        }
+        assert result[-1]["white"] == 125
+        assert result[-1]["draws"] == 18
+        assert result[-1]["black"] == 133
