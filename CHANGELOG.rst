@@ -1,8 +1,8 @@
 Changelog
 =========
 
-Next release
-------------
+v0.12.9 (2023-09-2)
+-------------------
 
 * Added ``client.bulk_pairings`` to create and manage bulk pairings
   * ``client.bulk_pairings.get_upcoming`` to get upcoming bulk pairings you created
