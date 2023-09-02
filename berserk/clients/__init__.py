@@ -105,4 +105,4 @@ class Client(BaseClient):
         self.tv = TV(session, base_url)
         self.tablebase = Tablebase(session, tablebase_url)
         self.opening_explorer = OpeningExplorer(session, explorer_url)
-        self.bulk_pairings: BulkPairings = BulkPairings(session, base_url)
+        self.bulk_pairings = BulkPairings(session, base_url)

@@ -1,35 +1,23 @@
-"""Aliases for bulk pairings endpoints"""
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
 
-from .core.aliases import ID, Username
+from .common import ClockConfig, Variant
 
 
 class BulkPairingGame(TypedDict):
-    """A bulk pairing game"""
-
-    id: ID
-    black: Username
-    white: Username
-
-
-class BulkPairingClock(TypedDict):
-    """A bulk pairing clock"""
-
-    increment: int
-    limit: int
+    id: str
+    black: str
+    white: str
 
 
 class BulkPairing(TypedDict):
-    """Represents a bulk pairing."""
-
-    id: ID
-    games: List[BulkPairingGame]
-    clock: BulkPairingClock
+    id: str
+    games: list[BulkPairingGame]
+    variant: Variant
+    clock: ClockConfig
     pairAt: int
-    pairedAt: None
+    pairedAt: int | None
     rated: bool
     startClocksAt: int
     scheduledAt: int

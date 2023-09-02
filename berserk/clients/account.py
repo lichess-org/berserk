@@ -1,7 +1,5 @@
-"""Account client."""
 from __future__ import annotations
 
-from deprecated.sphinx import deprecated, versionchanged
 from typing_extensions import cast
 
 from .. import models
@@ -30,11 +28,6 @@ class Account(BaseClient):
         path = "/api/account/email"
         return self._r.get(path)["email"]
 
-    @versionchanged(
-        ":py:meth:`berserk.clients.Account.get_preferences` now returns "
-        "all the preferences including language",
-        version="0.12.8",
-    )
     def get_preferences(self) -> Preferences:
         """Get your account preferences.
 
@@ -60,7 +53,6 @@ class Account(BaseClient):
         params = {"v": value}
         self._r.post(path, params=params)
 
-    @deprecated("Use endpoint from the Bot client instead", version="0.12.8")
     def upgrade_to_bot(self):
         """Upgrade your account to a bot account.
 

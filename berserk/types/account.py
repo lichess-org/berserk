@@ -1,28 +1,16 @@
-"""Aliases for account endpoints."""
 from __future__ import annotations
 
 from datetime import datetime
 
 from typing_extensions import TypedDict
 
-from ..enums import AllPerfType, CountTypes, StreamingService
-
 
 class Perf(TypedDict):
-    """A perf."""
-
     games: int
     rating: int
     rd: int
     prog: int
     prov: bool
-
-
-class PlayTime(TypedDict):
-    """Account play time."""
-
-    total: int
-    tv: int
 
 
 class Profile(TypedDict):
@@ -40,17 +28,17 @@ class Profile(TypedDict):
 
 
 class StreamerInfo(TypedDict):
-    """Information about the streamer on a given platform."""
+    """Information about the streamer on a specific platform."""
 
     channel: str
 
 
 class AccountInformation(TypedDict):
-    """Informations about an account."""
+    """Information about an account."""
 
     id: str
     username: str
-    perfs: dict[AllPerfType, Perf]
+    perfs: dict[str, Perf]
     createdAt: datetime
     disabled: bool
     tosViolation: bool
@@ -61,18 +49,16 @@ class AccountInformation(TypedDict):
     title: str
     url: str
     playing: str
-    count: dict[CountTypes, int]
+    count: dict[str, int]
     streaming: bool
-    streamer: dict[StreamingService, StreamingService]
+    streamer: dict[str, StreamerInfo]
     followable: bool
     following: bool
     blocking: bool
     followsYou: bool
 
 
-class Prefs(TypedDict):
-    """User settings."""
-
+class Preferences(TypedDict, total=False):
     dark: bool
     transp: bool
     bgImg: str
@@ -108,10 +94,3 @@ class Prefs(TypedDict):
     zen: int
     moveEvent: int
     rookCastle: int
-
-
-class Preferences(TypedDict):
-    """Preferences of an account."""
-
-    prefs: Prefs
-    language: str

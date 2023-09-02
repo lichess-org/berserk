@@ -1,6 +1,3 @@
-"""Common enumerations"""
-from typing_extensions import Final
-
 __all__ = ["PerfType", "Variant", "Color", "Room", "Mode", "Position", "Reason"]
 
 
@@ -21,15 +18,6 @@ class PerfType(GameType):
     RAPID = "rapid"
     CLASSICAL = "classical"
     ULTRA_BULLET = "ultraBullet"
-
-
-class AllPerfType(PerfType):
-    """Perfs including puzzles, etc"""
-
-    STORM: str = "storm"
-    RACER: str = "racer"
-    STREAK: str = "streak"
-    PUZZLE: str = "puzzle"
 
 
 class Variant(GameType):
@@ -63,31 +51,6 @@ class Reason:
     VARIANT = "variant"
     NOBOT = "noBot"
     ONLYBOT = "onlyBot"
-
-
-class CountTypes:
-    """Types of games."""
-
-    ALL: Final[str] = "all"
-    RATED: Final[str] = "rated"
-    AI: Final[str] = "ai"
-    DRAW: Final[str] = "draw"
-    DRAW_H: Final[str] = "drawH"
-    LOSS: Final[str] = "loss"
-    LOSS_H: Final[str] = "lossH"
-    WIN: Final[str] = "win"
-    WIN_H: Final[str] = "winH"
-    BOOKMARK: Final[str] = "bookmark"
-    PLAYING: Final[str] = "playing"
-    IMPORT: Final[str] = "import"
-    ME: Final[str] = "me"
-
-
-class StreamingService:
-    """Streaming services."""
-
-    YOUTUBE: Final[str] = "youTube"
-    TWITCH: Final[str] = "twitch"
 
 
 # fmt: off
