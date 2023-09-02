@@ -106,6 +106,11 @@ Most of the API is available:
     client.broadcasts.get_round_pgns
     client.broadcasts.get_pgns
 
+    client.bulk_pairings.get_upcoming
+    client.bulk_pairings.create
+    client.bulk_pairings.start_clocks
+    client.bulk_pairings.cancel
+
     client.challenges.create
     client.challenges.create_ai
     client.challenges.create_open
@@ -148,6 +153,7 @@ Most of the API is available:
 
     client.studies.export_chapter
     client.studies.export
+    client.studies.export_by_username
 
     client.tablebase.look_up
     client.tablebase.standard
@@ -160,6 +166,10 @@ Most of the API is available:
     client.teams.kick_member
     client.teams.get_join_requests
     client.teams.accept_join_request
+    client.teams.get_team
+    client.teams.teams_of_player
+    client.teams.get_popular
+    client.teams.search
 
     client.tournaments.get
     client.tournaments.get_tournament

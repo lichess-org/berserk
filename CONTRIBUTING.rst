@@ -90,7 +90,8 @@ Using ``requests-mock``
                 json={"white":1212,"draws":160,"black":1406},
             )
             res = Client().opening_explorer.get_lichess_games(speeds=["rapid", "classical"])
-            assert res["white"] == 1212
+
+Mocking should only be used to test **client-side** logic. 
 
 Using ``pytest-recording`` / ``vcrpy``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -100,19 +101,33 @@ Using ``pytest-recording`` / ``vcrpy``
 .. code-block:: python
 
     import pytest
-    from berserk import Client
 
-    @pytest.mark.vcr  # <---- this tells pytest-recording to record/mock requests made in this test
+    from berserk import Client, OpeningStatistic
+
+    from utils import validate, skip_if_older_3_dot_10
+
+    @skip_if_older_3_dot_10
+    @pytest.mark.vcr # <---- this tells pytest-recording to record/mock requests made in this test
     def test_result(self):
-        res = Client().opening_explorer.get_lichess_games(position="rnbqkbnr/ppp2ppp/8/3pp3/4P3/2NP4/PPP2PPP/R1BQKBNR b KQkq - 0 1")
-        assert res["white"] == 1212
-        assert res["black"] == 1406
-        assert res["draws"] == 160
+        """Verify that the response matches the typed-dict"""
+        res = Client().opening_explorer.get_lichess_games(
+            variant="standard",
+            speeds=["blitz", "rapid", "classical"],
+            ratings=["2200", "2500"],
+            position="rnbqkbnr/ppp2ppp/8/3pp3/4P3/2NP4/PPP2PPP/R1BQKBNR b KQkq - 0 1",
+        )
+        validate(OpeningStatistic, res)
+
+This should be used to test **server-side** behavior. 
 
 To record new requests, run ``make test_record``. This will run all tests and record new requests made in annotated methods in a ``cassettes`` directory next to the test.
 Note that this will not overwrite existing captures, so you need to delete them manually if you want to re-record them.
 
 When running tests regularly (e.g. with ``make test``), the recorded requests will be replayed instead of making real http requests.
+
+⚠️ Do not record sensitive information (tokens). See the `Filtering information documentation <https://vcrpy.readthedocs.io/en/latest/advanced.html#filter-sensitive-data-from-the-request). And manually check the commited data before pushing it to remote! For more control, [see custom filtering](https://vcrpy.readthedocs.io/en/latest/advanced.html#custom-response-filtering>`_.
+
+.. code-block:: python
 
 Deploying
 ---------

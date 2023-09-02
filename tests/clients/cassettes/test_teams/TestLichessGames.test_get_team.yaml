@@ -1,0 +1,49 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://lichess.org/api/team/lichess-swiss
+  response:
+    body:
+      string: '{"id":"lichess-swiss","name":"Lichess Swiss","description":"The official
+        Lichess Swiss team. We organize regular swiss tournaments for all to join.","open":true,"leader":{"name":"Lichess","patron":true,"id":"lichess"},"leaders":[{"name":"NoJoke","patron":true,"id":"nojoke"},{"name":"thibault","patron":true,"id":"thibault"}],"nbMembers":376628,"joined":false,"requested":false}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 04 Aug 2023 18:31:57 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      X-Frame-Options:
+      - DENY
+      content-length:
+      - '378'
+    status:
+      code: 200
+      message: OK
+version: 1

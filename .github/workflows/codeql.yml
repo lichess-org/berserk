@@ -1,6 +1,19 @@
 name: CodeQL
 
-on: [push, pull_request]
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - ".github/workflows/codeql.yml"
+      - "**.py"
+      - "poetry.lock"
+      - "pyproject.toml"
+  pull_request:
+    paths:
+      - ".github/workflows/codeql.yml"
+      - "**.py"
+      - "poetry.lock"
+      - "pyproject.toml"
 
 jobs:
   analyze:

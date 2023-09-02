@@ -1,6 +1,18 @@
 Changelog
 =========
 
+v0.12.9 (2023-09-2)
+-------------------
+
+* Added ``client.bulk_pairings`` to create and manage bulk pairings
+  * ``client.bulk_pairings.get_upcoming`` to get upcoming bulk pairings you created
+  * ``client.bulk_pairings.create`` to create a bulk pairing
+  * ``client.bulk_pairings.start_clocks`` to start the clocks of a bulk pairing
+  * ``client.bulk_pairings.cancel`` to cancel a bulk pairing
+* Added better return types for ``client.account.get`` and ``client.account.get_preferences``
+
+Thanks to @Virinas-code for their contributions to this release.
+
 v0.12.8 (2023-07-25)
 --------------------
 

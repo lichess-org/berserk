@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-from typing import Iterator, Any, Dict, List
+from typing import Iterator, Any, cast, List, Dict
 
 from .. import models
+from ..types import Team, PaginatedTeams
 from ..formats import NDJSON, JSON_LIST
 from .base import BaseClient
 
@@ -73,3 +74,40 @@ class Teams(BaseClient):
         """
         path = f"/api/team/{team_id}/request/{user_id}/accept"
         self._r.post(path)
+
+    def get_team(self, team_id: str) -> Team:
+        """Get the information about the team
+
+        :return: the information about the team
+        """
+        path = f"/api/team/{team_id}"
+        return cast(Team, self._r.get(path))
+
+    def teams_of_player(self, username: str) -> List[Team]:
+        """Get all the teams a player is a member of
+
+        :return: list of teams the user is a member of
+        """
+        path = f"/api/team/of/{username}"
+        return cast(List[Team], self._r.get(path))
+
+    def get_popular(self, page: int = 1) -> PaginatedTeams:
+        """Get the most popular teams
+
+        :param page: the page number that needs to be returned (Optional)
+        :return: A paginated list of the most popular teams.
+        """
+        path = "/api/team/all"
+        params = {"page": page}
+        return cast(PaginatedTeams, self._r.get(path, params=params))
+
+    def search(self, text: str, page: int = 1) -> PaginatedTeams:
+        """Search for teams
+
+        :param text: the query text to search for
+        :param page: the page number that needs to be returned (Optional)
+        :return: The paginated list of teams.
+        """
+        path = "/api/team/search"
+        params = {"text": text, "page": page}
+        return cast(PaginatedTeams, self._r.get(path, params=params))
