@@ -14,8 +14,6 @@ from .clients import Client
 from .types import Team, OpeningStatistic, PaginatedTeams
 from .session import TokenSession
 from .session import Requestor
-from .enums import Room
-from .enums import Mode
 from .formats import JSON
 from .formats import JSON_LIST
 from .formats import LIJSON
@@ -30,8 +28,6 @@ __all__ = [
     "PaginatedTeams",
     "OpeningStatistic",
     "Requestor",
-    "Room",
-    "Mode",
     "JSON",
     "JSON_LIST",
     "LIJSON",
