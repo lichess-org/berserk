@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any, Dict
 from deprecated import deprecated
 
-from ..enums import Reason
+from ..types.common import ChallengeDeclineReason
 from .base import BaseClient
 
 
@@ -169,12 +169,13 @@ class Challenges(BaseClient):
         path = f"/api/challenge/{challenge_id}/accept"
         self._r.post(path)
 
-    def decline(self, challenge_id: str, reason: str = Reason.GENERIC) -> None:
+    def decline(
+        self, challenge_id: str, reason: ChallengeDeclineReason = "generic"
+    ) -> None:
         """Decline an incoming challenge.
 
         :param challenge_id: ID of a challenge
         :param reason: reason for declining challenge
-        :type reason: :class:`~berserk.enums.Reason`
         """
         path = f"/api/challenge/{challenge_id}/decline"
         payload = {"reason": reason}

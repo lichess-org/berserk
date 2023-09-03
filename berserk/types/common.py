@@ -1,8 +1,6 @@
 from __future__ import annotations
 
-from typing import Literal
-
-from typing_extensions import TypedDict, TypeAlias
+from typing_extensions import Literal, TypedDict, TypeAlias
 
 
 class ClockConfig(TypedDict):
@@ -27,4 +25,18 @@ Variant: TypeAlias = Literal[
 
 GameRule: TypeAlias = Literal[
     "noAbort", "noRematch", "noGiveTime", "noClaimWin", "noEarlyDraw"
+]
+
+ChallengeDeclineReason: TypeAlias = Literal[
+    "generic",
+    "later",
+    "tooFast",
+    "tooSlow",
+    "timeControl",
+    "rated",
+    "casual",
+    "standard",
+    "variant",
+    "noBot",
+    "onlyBot",
 ]
