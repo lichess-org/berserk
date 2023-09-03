@@ -2,9 +2,9 @@ from __future__ import annotations
 
 from typing import cast
 
-from ..enums import Variant
 from ..formats import JSON, JSON_LIST
 from ..types.bulk_pairings import BulkPairing
+from ..types.common import Variant
 from .base import BaseClient
 
 
