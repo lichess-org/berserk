@@ -1,6 +1,8 @@
 from __future__ import annotations
 
-from typing_extensions import Literal, TypedDict, TypeAlias, Union
+from typing import Union
+
+from typing_extensions import Literal, TypedDict, TypeAlias
 
 
 class ClockConfig(TypedDict):
