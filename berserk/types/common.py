@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing_extensions import Literal, TypedDict, TypeAlias
+from typing_extensions import Literal, TypedDict, TypeAlias, Union
 
 
 class ClockConfig(TypedDict):
@@ -12,8 +12,7 @@ class ClockConfig(TypedDict):
 
 Color: TypeAlias = Literal["white", "black"]
 
-Variant: TypeAlias = Literal[
-    "standard",
+GameType: TypeAlias = Literal[
     "chess960",
     "kingOfTheHill",
     "threeCheck",
@@ -23,6 +22,12 @@ Variant: TypeAlias = Literal[
     "racingKings",
     "crazyhouse",
     "fromPosition",
+]
+
+Variant: TypeAlias = Union[GameType, Literal["standard"]]
+
+PerfType: TypeAlias = Union[
+    GameType, Literal["bullet", "blitz", "rapid", "classical", "ultraBullet"]
 ]
 
 GameRule: TypeAlias = Literal[

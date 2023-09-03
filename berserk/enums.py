@@ -12,14 +12,6 @@ class GameType:
     THREE_CHECK = "threeCheck"
 
 
-class PerfType(GameType):
-    BULLET = "bullet"
-    BLITZ = "blitz"
-    RAPID = "rapid"
-    CLASSICAL = "classical"
-    ULTRA_BULLET = "ultraBullet"
-
-
 class Room:
     PLAYER = "player"
     SPECTATOR = "spectator"

@@ -14,7 +14,6 @@ from .clients import Client
 from .types import Team, OpeningStatistic, PaginatedTeams
 from .session import TokenSession
 from .session import Requestor
-from .enums import PerfType
 from .enums import Room
 from .enums import Mode
 from .enums import Position
