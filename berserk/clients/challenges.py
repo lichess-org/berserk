@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any, Dict
 from deprecated import deprecated
 
-from ..types.common import ChallengeDeclineReason
+from ..types.common import ChallengeDeclineReason, Color
 from .base import BaseClient
 
 
@@ -15,7 +15,7 @@ class Challenges(BaseClient):
         clock_limit: int | None = None,
         clock_increment: int | None = None,
         days: int | None = None,
-        color: str | None = None,
+        color: Color | None = None,
         variant: str | None = None,
         position: str | None = None,
     ) -> Dict[str, Any]:
@@ -27,7 +27,6 @@ class Challenges(BaseClient):
         :param clock_increment: clock increment (in seconds)
         :param days: days per move (for correspondence games; omit clock)
         :param color: color of the accepting player
-        :type color: :class:`~berserk.enums.Color`
         :param variant: game variant to use
         :type variant: :class:`~berserk.enums.Variant`
         :param position: custom initial position in FEN (variant must be standard and
@@ -55,7 +54,7 @@ class Challenges(BaseClient):
         clock_limit: int | None = None,
         clock_increment: int | None = None,
         days: int | None = None,
-        color: str | None = None,
+        color: Color | None = None,
         variant: str | None = None,
         position: str | None = None,
     ) -> Dict[str, Any]:
@@ -72,7 +71,6 @@ class Challenges(BaseClient):
         :param clock_increment: clock increment (in seconds)
         :param days: days per move (for correspondence games; omit clock)
         :param color: color of the accepting player
-        :type color: :class:`~berserk.enums.Color`
         :param variant: game variant to use
         :type variant: :class:`~berserk.enums.Variant`
         :param position: custom initial position in FEN (variant must be standard and
@@ -98,7 +96,7 @@ class Challenges(BaseClient):
         clock_limit: int | None = None,
         clock_increment: int | None = None,
         days: int | None = None,
-        color: str | None = None,
+        color: Color | None = None,
         variant: str | None = None,
         position: str | None = None,
     ) -> Dict[str, Any]:
@@ -109,7 +107,6 @@ class Challenges(BaseClient):
         :param clock_increment: clock increment (in seconds)
         :param days: days per move (for correspondence games; omit clock)
         :param color: color of the accepting player
-        :type color: :class:`~berserk.enums.Color`
         :param variant: game variant to use
         :type variant: :class:`~berserk.enums.Variant`
         :param position: use one of the custom initial positions (variant must be

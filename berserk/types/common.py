@@ -10,6 +10,8 @@ class ClockConfig(TypedDict):
     increment: int
 
 
+Color: TypeAlias = Literal["white", "black"]
+
 Variant: TypeAlias = Literal[
     "standard",
     "chess960",

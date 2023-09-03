@@ -24,11 +24,6 @@ class Variant(GameType):
     STANDARD = "standard"
 
 
-class Color:
-    WHITE = "white"
-    BLACK = "black"
-
-
 class Room:
     PLAYER = "player"
     SPECTATOR = "spectator"
