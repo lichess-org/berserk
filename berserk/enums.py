@@ -34,20 +34,6 @@ class Mode:
     RATED = "rated"
 
 
-class Reason:
-    GENERIC = "Generic"
-    LATER = "later"
-    TOOFAST = "tooFast"
-    TOOSLOW = "tooSlow"
-    TIMECONTROL = "timeControl"
-    RATED = "rated"
-    CASUAL = "casual"
-    STANDARD = "standard"
-    VARIANT = "variant"
-    NOBOT = "noBot"
-    ONLYBOT = "onlyBot"
-
-
 # fmt: off
 class Position:
     ALEKHINES_DEFENCE = 'rnbqkb1r/pppppppp/5n2/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 2 2'
