@@ -420,14 +420,6 @@ tournament is easy:
      'variant': 'standard',
      'verdicts': {'accepted': True, 'list': []}}
 
-You can specify the starting position for new tournaments using one of the
-provided enum value in ``berserk.enums.Position``:
-
-.. code-block:: python
-
-    >>> client.tournaments.create(clock_time=10, clock_increment=3, minutes=180,
-                                  position=berserk.enums.Position.KINGS_PAWN)
-
 You can also create Swiss tournaments easily, specifying the team id, clock time,
 clock increment, and number of rounds.
 

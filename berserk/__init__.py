@@ -16,7 +16,6 @@ from .session import TokenSession
 from .session import Requestor
 from .enums import Room
 from .enums import Mode
-from .enums import Position
 from .formats import JSON
 from .formats import JSON_LIST
 from .formats import LIJSON
@@ -33,7 +32,6 @@ __all__ = [
     "Requestor",
     "Room",
     "Mode",
-    "Position",
     "JSON",
     "JSON_LIST",
     "LIJSON",
