@@ -20,10 +20,6 @@ class PerfType(GameType):
     ULTRA_BULLET = "ultraBullet"
 
 
-class Variant(GameType):
-    STANDARD = "standard"
-
-
 class Room:
     PLAYER = "player"
     SPECTATOR = "spectator"
