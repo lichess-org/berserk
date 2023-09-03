@@ -1,4 +1,4 @@
-__all__ = ["PerfType", "Variant", "Color", "Room", "Mode", "Position", "Reason"]
+__all__ = ["Room", "Mode", "Position"]
 
 
 class GameType:
