@@ -107,7 +107,6 @@ Most of the API is available:
     client.broadcasts.get_pgns
     client.broadcasts.stream_broadcast_round_pgn
 
-
     client.bulk_pairings.get_upcoming
     client.bulk_pairings.create
     client.bulk_pairings.start_clocks
