@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Iterator, cast, Literal
+from typing import Iterator, cast
 import requests
 import logging
 
@@ -11,6 +11,7 @@ from ..types import (
     Speed,
     OpeningExplorerRating,
 )
+from ..types.common import Color
 
 logger = logging.getLogger("berserk.client.opening_explorer")
 
@@ -94,7 +95,7 @@ class OpeningExplorer(BaseClient):
     def get_player_games(
         self,
         player: str,
-        color: Literal["white", "black"],
+        color: Color,
         variant: OpeningExplorerVariant | None = None,
         position: str | None = None,
         play: list[str] | None = None,
@@ -142,7 +143,7 @@ class OpeningExplorer(BaseClient):
     def stream_player_games(
         self,
         player: str,
-        color: Literal["white", "black"],
+        color: Color,
         variant: OpeningExplorerVariant | None = None,
         position: str | None = None,
         play: list[str] | None = None,

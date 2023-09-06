@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Any, Dict
 from deprecated import deprecated
 
-from ..enums import Reason
+from ..types.common import ChallengeDeclineReason, Color, Variant
 from .base import BaseClient
 
 
@@ -15,8 +15,8 @@ class Challenges(BaseClient):
         clock_limit: int | None = None,
         clock_increment: int | None = None,
         days: int | None = None,
-        color: str | None = None,
-        variant: str | None = None,
+        color: Color | None = None,
+        variant: Variant | None = None,
         position: str | None = None,
     ) -> Dict[str, Any]:
         """Challenge another player to a game.
@@ -27,9 +27,7 @@ class Challenges(BaseClient):
         :param clock_increment: clock increment (in seconds)
         :param days: days per move (for correspondence games; omit clock)
         :param color: color of the accepting player
-        :type color: :class:`~berserk.enums.Color`
         :param variant: game variant to use
-        :type variant: :class:`~berserk.enums.Variant`
         :param position: custom initial position in FEN (variant must be standard and
             the game cannot be rated)
         :return: challenge data
@@ -55,8 +53,8 @@ class Challenges(BaseClient):
         clock_limit: int | None = None,
         clock_increment: int | None = None,
         days: int | None = None,
-        color: str | None = None,
-        variant: str | None = None,
+        color: Color | None = None,
+        variant: Variant | None = None,
         position: str | None = None,
     ) -> Dict[str, Any]:
         """Start a game with another player.
@@ -72,9 +70,7 @@ class Challenges(BaseClient):
         :param clock_increment: clock increment (in seconds)
         :param days: days per move (for correspondence games; omit clock)
         :param color: color of the accepting player
-        :type color: :class:`~berserk.enums.Color`
         :param variant: game variant to use
-        :type variant: :class:`~berserk.enums.Variant`
         :param position: custom initial position in FEN (variant must be standard and
             the game cannot be rated)
         :return: game data
@@ -98,8 +94,8 @@ class Challenges(BaseClient):
         clock_limit: int | None = None,
         clock_increment: int | None = None,
         days: int | None = None,
-        color: str | None = None,
-        variant: str | None = None,
+        color: Color | None = None,
+        variant: Variant | None = None,
         position: str | None = None,
     ) -> Dict[str, Any]:
         """Challenge AI to a game.
@@ -109,9 +105,7 @@ class Challenges(BaseClient):
         :param clock_increment: clock increment (in seconds)
         :param days: days per move (for correspondence games; omit clock)
         :param color: color of the accepting player
-        :type color: :class:`~berserk.enums.Color`
         :param variant: game variant to use
-        :type variant: :class:`~berserk.enums.Variant`
         :param position: use one of the custom initial positions (variant must be
             standard and cannot be rated)
         :return: information about the created game
@@ -132,7 +126,7 @@ class Challenges(BaseClient):
         self,
         clock_limit: int | None = None,
         clock_increment: int | None = None,
-        variant: str | None = None,
+        variant: Variant | None = None,
         position: str | None = None,
         rated: bool | None = None,
         name: str | None = None,
@@ -142,7 +136,6 @@ class Challenges(BaseClient):
         :param clock_limit: clock initial time (in seconds)
         :param clock_increment: clock increment (in seconds)
         :param variant: game variant to use
-        :type variant: :class:`~berserk.enums.Variant`
         :param position: custom initial position in FEN (variant must be standard and
             the game cannot be rated)
         :param rated: Game is rated and impacts players ratings
@@ -169,12 +162,13 @@ class Challenges(BaseClient):
         path = f"/api/challenge/{challenge_id}/accept"
         self._r.post(path)
 
-    def decline(self, challenge_id: str, reason: str = Reason.GENERIC) -> None:
+    def decline(
+        self, challenge_id: str, reason: ChallengeDeclineReason = "generic"
+    ) -> None:
         """Decline an incoming challenge.
 
         :param challenge_id: ID of a challenge
         :param reason: reason for declining challenge
-        :type reason: :class:`~berserk.enums.Reason`
         """
         path = f"/api/challenge/{challenge_id}/decline"
         payload = {"reason": reason}

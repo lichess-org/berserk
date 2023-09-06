@@ -6,6 +6,7 @@ from deprecated import deprecated
 from .. import models
 from .base import BaseClient
 from ..formats import JSON_LIST, LIJSON, NDJSON
+from ..types.common import PerfType
 
 
 class Users(BaseClient):
@@ -52,11 +53,10 @@ class Users(BaseClient):
         path = "/api/player"
         return self._r.get(path, fmt=LIJSON)
 
-    def get_leaderboard(self, perf_type: str, count: int = 10):
+    def get_leaderboard(self, perf_type: PerfType, count: int = 10):
         """Get the leaderboard for one speed or variant.
 
         :param perf_type: speed or variant
-        :type perf_type: :class:`~berserk.enums.PerfType`
         :param count: number of players to get
         :return: top players for one speed or variant
         """

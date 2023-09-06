@@ -4,6 +4,7 @@ from typing import Iterator, Any, Dict, List
 
 from .. import models
 from ..formats import PGN, NDJSON
+from ..types.common import Color, PerfType
 from .base import FmtClient
 
 
@@ -106,8 +107,8 @@ class Games(FmtClient):
         max: int | None = None,
         vs: str | None = None,
         rated: bool | None = None,
-        perf_type: str | None = None,
-        color: str | None = None,
+        perf_type: PerfType | None = None,
+        color: Color | None = None,
         analysed: bool | None = None,
         moves: bool | None = None,
         pgn_in_json: bool | None = None,
@@ -131,9 +132,7 @@ class Games(FmtClient):
         :param vs: filter by username of the opponent
         :param rated: filter by game mode (``True`` for rated, ``False`` for casual)
         :param perf_type: filter by speed or variant
-        :type perf_type: :class:`~berserk.enums.PerfType`
         :param color: filter by the color of the player
-        :type color: :class:`~berserk.enums.Color`
         :param analysed: filter by analysis availability
         :param moves: whether to include the PGN moves
         :param pgn_in_json: Include the full PGN within JSON response

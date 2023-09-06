@@ -4,7 +4,7 @@ from typing import Iterator, Any, Dict
 
 from .. import models
 from ..formats import NDJSON
-from ..enums import Reason
+from ..types.common import ChallengeDeclineReason
 from .base import BaseClient
 
 
@@ -86,13 +86,12 @@ class Bots(BaseClient):
         self._r.post(path)
 
     def decline_challenge(
-        self, challenge_id: str, reason: str = Reason.GENERIC
+        self, challenge_id: str, reason: ChallengeDeclineReason = "generic"
     ) -> None:
         """Decline an incoming challenge.
 
         :param challenge_id: ID of a challenge
         :param reason: reason for declining challenge
-        :type reason: :class:`~berserk.enums.Reason`
         """
         path = f"/api/challenge/{challenge_id}/decline"
         payload = {"reason": reason}
