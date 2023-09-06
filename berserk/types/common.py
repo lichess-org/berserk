@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from typing import Union
-
 from typing_extensions import Literal, TypedDict, TypeAlias
 
 
@@ -26,11 +24,11 @@ GameType: TypeAlias = Literal[
     "fromPosition",
 ]
 
-Variant: TypeAlias = Union[GameType, Literal["standard"]]
+Variant: TypeAlias = GameType | Literal["standard"]
 
-PerfType: TypeAlias = Union[
-    GameType, Literal["bullet", "blitz", "rapid", "classical", "ultraBullet"]
-]
+PerfType: TypeAlias = (
+    GameType | Literal["bullet", "blitz", "rapid", "classical", "ultraBullet"]
+)
 
 GameRule: TypeAlias = Literal[
     "noAbort", "noRematch", "noGiveTime", "noClaimWin", "noEarlyDraw"
