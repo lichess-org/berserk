@@ -1,9 +1,10 @@
 from __future__ import annotations
 
 from time import time as now
-from typing import Iterator, Any, Dict, Tuple, List
+from typing import Iterator, Any, Dict, Tuple, List, Literal
 
 from .. import models
+from ..types.common import Color, Variant
 from ..formats import TEXT, JSON_LIST
 from .base import BaseClient
 
@@ -24,8 +25,8 @@ class Board(BaseClient):
         time: int,
         increment: int,
         rated: bool = False,
-        variant: str = "standard",
-        color: str = "random",
+        variant: Variant = "standard",
+        color: Color | Literal["random"] = "random",
         rating_range: str | Tuple[int, int] | List[int] | None = None,
     ) -> float:
         """Create a public seek to start a game with a random opponent.
