@@ -161,3 +161,18 @@ class Broadcasts(BaseClient):
         """
         path = f"/api/broadcast/{broadcast_id}.pgn"
         yield from self._r.get(path, fmt=PGN, stream=True)
+
+    def stream_round(self, broadcast_round_id: str) -> Iterator[str]:
+        """Stream an ongoing broadcast tournament in PGN format.
+
+        This streaming endpoint first sends all games of a broadcast tournament in PGN format.
+
+        Then, it waits for new moves to be played. As soon as it happens, the entire PGN of the game is sent to the stream.
+
+        The stream will also send PGNs when games are added to the tournament.
+
+        :param broadcast_round_id: broadcast round ID
+        :return: stream of games of the broadcast round in PGN format
+        """
+        path = f"/api/stream/broadcast/round/{broadcast_round_id}.pgn"
+        yield from self._r.get(path, fmt=PGN, stream=True)
