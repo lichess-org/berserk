@@ -105,7 +105,7 @@ Most of the API is available:
     client.broadcasts.update_round
     client.broadcasts.get_round_pgns
     client.broadcasts.get_pgns
-    client.broadcasts.stream_broadcast_round_pgn
+    client.broadcasts.stream_round
 
     client.bulk_pairings.get_upcoming
     client.bulk_pairings.create
