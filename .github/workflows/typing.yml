@@ -1,0 +1,35 @@
+
+name: Typing
+
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - ".github/workflows/typing.yml"
+      - "**.py"
+      - "poetry.lock"
+      - "pyproject.toml"
+  pull_request:
+    paths:
+      - ".github/workflows/typing.yml"
+      - "**.py"
+      - "poetry.lock"
+      - "pyproject.toml"
+
+jobs:
+  typing:
+    strategy:
+      fail-fast: false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - name: Set up poetry
+        uses: abatilo/actions-poetry@v2
+      - name: Install dependencies
+        run: poetry install --with dev,typing
+      - name: Typing
+        run: poetry run mypy .
