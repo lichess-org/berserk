@@ -7,6 +7,7 @@ from .. import models
 from .base import BaseClient
 from ..formats import JSON_LIST, LIJSON, NDJSON
 from ..types.common import PerfType
+from ..session import Params
 
 
 class Users(BaseClient):
@@ -42,7 +43,8 @@ class Users(BaseClient):
         :return: statuses of given players
         """
         path = "/api/users/status"
-        params = {"ids": ",".join(user_ids), "withGameIds": with_game_ids}
+        params: Params = {"ids": ",".join(user_ids), "withGameIds": with_game_ids}
+
         return self._r.get(path, fmt=JSON_LIST, params=params)
 
     def get_all_top_10(self) -> Dict[str, Any]:
