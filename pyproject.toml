@@ -20,7 +20,7 @@ classifiers = [
     'Programming Language :: Python :: 3.11',
 ]
 # by default files declared in .gitignore are excluded
-include = ["CHANGELOG.rst", "LICENSE", "docs"]
+include = ["CHANGELOG.rst", "LICENSE", "docs", "berserk/py.typed"]
 
 [tool.poetry.urls]
 Changelog = "https://lichess-org.github.io/berserk/changelog.html"
