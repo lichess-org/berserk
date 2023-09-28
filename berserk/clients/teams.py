@@ -6,6 +6,7 @@ from .. import models
 from ..types import Team, PaginatedTeams
 from ..formats import NDJSON, JSON_LIST
 from .base import BaseClient
+from ..session import Params
 
 
 class Teams(BaseClient):
@@ -109,5 +110,5 @@ class Teams(BaseClient):
         :return: The paginated list of teams.
         """
         path = "/api/team/search"
-        params = {"text": text, "page": page}
+        params: Params = {"text": text, "page": page}
         return cast(PaginatedTeams, self._r.get(path, params=params))

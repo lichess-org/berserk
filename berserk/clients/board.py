@@ -7,6 +7,7 @@ from .. import models
 from ..types.common import Color, Variant
 from ..formats import TEXT, JSON_LIST
 from .base import BaseClient
+from ..session import Data
 
 
 class Board(BaseClient):
@@ -44,7 +45,7 @@ class Board(BaseClient):
             rating_range = f"{low}-{high}"
 
         path = "/api/board/seek"
-        payload = {
+        payload: Data = {
             "rated": str(bool(rated)).lower(),
             "time": time,
             "increment": increment,
