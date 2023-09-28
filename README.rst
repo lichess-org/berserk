@@ -5,6 +5,10 @@ berserk
     :target: https://github.com/lichess-org/berserk/actions
     :alt: Test status
 
+.. image:: https://github.com/lichess-org/berserk/actions/workflows/typing.yml/badge.svg
+   :target: http://mypy-lang.org/
+   :alt: Typing status
+
 .. image:: https://badge.fury.io/py/berserk.svg
     :target: https://pypi.org/project/berserk/
     :alt: PyPI package
