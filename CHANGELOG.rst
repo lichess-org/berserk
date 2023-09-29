@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v0.13 (2023-09-29)
+--------------------
+
+* Corretly forward that the library is typed (now following PEP-0561)
+* Added `broadcast.stream_round` endpoint
+* Improve type safety, remove `enum.py` and use typed dicts instead, this is a breaking change if you relied on these enums
+
+Thanks to @devjiwonchoi, @Virinas-code, @icp1994 and @rpesche for their contributions to this release.
+
 v0.12.10 (2023-09-2)
 --------------------
 
