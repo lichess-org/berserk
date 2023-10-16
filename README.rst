@@ -199,5 +199,6 @@ Most of the API is available:
     client.users.get_rating_history
     client.users.get_crosstable
     client.users.get_user_performance
+    client.users.get_player_by_autocomplete
 
 Details for each function can be found in the `documentation <https://lichess-org.github.io/berserk/>`_.

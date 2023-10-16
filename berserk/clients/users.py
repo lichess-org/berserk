@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Iterator, Dict, List, Any, Union
+from typing import Iterator, Dict, List, Any
 from deprecated import deprecated
 
 from .. import models
@@ -56,26 +56,16 @@ class Users(BaseClient):
         return self._r.get(path, fmt=LIJSON)
 
     def get_player_by_autocomplete(
-        self, term: str, object: bool = False
-    ) -> Union[List[str], Dict[str, Any]]:
+        self, partial_username: str, object: bool = False
+    ) -> List[str] | Dict[str, Any]:
         """Provides autocompletion options for an incomplete username.
 
-        :param term: the beginning of a username, must provide >= 3 characters
+        :param partial_username: the beginning of a username, must provide >= 3 characters
         :param object: if false, returns an array of usernames else if true, returns an object with matching users
-        :param friend: empty
         :return: followed players matching term if any, else returns other players. Requires OAuth.
         """
         path = "/api/player/autocomplete"
-        params: Params = {}
-
-        if not term or len(term) < 3:
-            raise ValueError(
-                "Term must be provided and should have at least 3 characters"
-            )
-
-        params["term"] = term
-        if object:
-            params["object"] = "True"
+        params: Params = {"partial_username": partial_username, "object": object}
 
         return self._r.get(path, fmt=LIJSON, params=params)
 
