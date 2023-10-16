@@ -54,27 +54,30 @@ class Users(BaseClient):
         """
         path = "/api/player"
         return self._r.get(path, fmt=LIJSON)
-    
-    def get_player_by_autocomplete(self, term: str, object: bool = False) -> Union[List[str], Dict[str, Any]]:
-         """Provides autocompletion options for an incomplete username.
+
+    def get_player_by_autocomplete(
+        self, term: str, object: bool = False
+    ) -> Union[List[str], Dict[str, Any]]:
+        """Provides autocompletion options for an incomplete username.
 
         :param term: the beginning of a username, must provide >= 3 characters
         :param object: if false, returns an array of usernames else if true, returns an object with matching users
         :param friend: empty
         :return: followed players matching term if any, else returns other players. Requires OAuth.
         """
-         path = "/api/player/autocomplete"
-         params: Params = {}
-        
-         if not term or len(term) < 3:
-              raise ValueError("Term must be provided and should have at least 3 characters")
-              
-         params["term"] = term
-         if object:
+        path = "/api/player/autocomplete"
+        params: Params = {}
+
+        if not term or len(term) < 3:
+            raise ValueError(
+                "Term must be provided and should have at least 3 characters"
+            )
+
+        params["term"] = term
+        if object:
             params["object"] = "True"
-            
-         return self._r.get(path, fmt=LIJSON, params=params)
-    
+
+        return self._r.get(path, fmt=LIJSON, params=params)
 
     def get_leaderboard(self, perf_type: PerfType, count: int = 10):
         """Get the leaderboard for one speed or variant.
