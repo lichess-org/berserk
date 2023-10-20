@@ -25,11 +25,62 @@ class Tournaments(FmtClient):
     def get_tournament(self, tournament_id: str, page: int = 1) -> Dict[str, Any]:
         """Get information about an arena.
 
-        :param tournament_id
+        :param tournament_id: tournament ID
+        :param page: the page number of the player standings to view
         :return: tournament information
         """
         path = f"/api/tournament/{tournament_id}?page={page}"
         return self._r.get(path, converter=models.Tournament.convert)
+
+    def join_tournament(self, tournament_id: str, password: str | None = None, team: str | None = None, pair_me_asap=False):
+        """Join a tournament.
+
+        :param tournament_id: tournament ID
+        :param password: tournament password or user-specific entry code generated and shared by the organizer
+        :param team: team to join the team battle tournament with
+        :param pair_me_asap: whether to pair the user after tournament has started
+        :return: tournament information
+        """
+        path = f"/api/tournament/{tournament_id}/join"
+        params = {"password": password, "team": team, "pairMeAsap": pair_me_asap}
+        return self._r.post(path=path, params=params, converter=models.Tournament.convert)
+
+    def get_tournament_team_standings(self, tournament_id: str):
+        """Get team standing of a team battle tournament, with their respective top players.
+
+        :param tournament_id: tournament ID
+        :return: information about teams in the team battle tournament
+        """
+        path = f"/api/tournament/{tournament_id}/teams"
+        return self._r.get(path)
+
+    def update_team_battle(self, tournament_id: str, teams: str | None = None, nb_leaders: int | None = None):
+        """Set the teams and number of leaders of a team battle tournament.
+
+        :param tournament_id: tournament ID
+        :param teams: all team IDs of the team battle, separated by commas
+        :param nb_leaders: number of team leaders per team
+        :return: updated team battle information
+        """
+        path = f"/api/tournament/team-battle/{tournament_id}"
+        params = {"teams": teams, "nbLeaders": nb_leaders}
+        return self._r.post(path=path, params=params)
+
+    def terminate_tournament(self, tournament_id: str):
+        """Terminate a tournament.
+
+        :param tournament_id: tournament ID
+        """
+        path = f"/api/tournament/{tournament_id}/terminate"
+        return self._r.post(path)
+
+    def withdraw_tournament(self, tournament_id: str):
+        """Leave a future tournament, or take a break on an ongoing tournament.
+
+        :param tournament_id: tournament ID
+        """
+        path = f"/api/tournament/{tournament_id}/withdraw"
+        return self._r.post(path)
 
     def create_arena(
         self,
@@ -78,7 +129,7 @@ class Tournaments(FmtClient):
         :param hasChat: whether players can discuss in a chat
         :param description: anything you want to tell players about the tournament
         :param password: password
-        :param teamBattleByTeam: Id of a team you lead to create a team battle
+        :param teamBattleByTeam: ID of a team you lead to create a team battle
         :param teamId: Restrict entry to members of team
         :param minRating: Minimum rating to join
         :param maxRating: Maximum rating to join
@@ -134,7 +185,7 @@ class Tournaments(FmtClient):
             If ``startsAt`` is left blank then the tournament begins 10 minutes after
             creation
 
-        :param teamId: team Id, required for swiss tournaments
+        :param teamId: team ID, required for swiss tournaments
         :param clockLimit: initial clock time in seconds
         :param clockIncrement: clock increment in seconds
         :param nbRounds: maximum number of rounds to play
@@ -173,14 +224,14 @@ class Tournaments(FmtClient):
         evals: bool = True,
         opening: bool = False,
     ) -> Iterator[str] | Iterator[Dict[str, Any]]:
-        """Export games from a arena tournament.
+        """Export games from an arena tournament.
 
         :param id: tournament ID
         :param as_pgn: whether to return PGN instead of JSON
         :param moves: include moves
         :param tags: include tags
         :param clocks: include clock comments in the PGN moves, when available
-        :param evals: include analysis evalulation comments in the PGN moves, when
+        :param evals: include analysis evaluation comments in the PGN moves, when
             available
         :param opening: include the opening name
         :return: iterator over the exported games, as JSON or PGN
@@ -270,7 +321,7 @@ class Tournaments(FmtClient):
     ) -> List[Dict[str, Any]]:
         """Get arenas created for a team.
 
-        :param teamId: Id of the team
+        :param teamId: ID of the team
         :param maxT: how many tournaments to download
         :return: arena tournaments
         """
@@ -287,7 +338,7 @@ class Tournaments(FmtClient):
     ) -> List[Dict[str, Any]]:
         """Get swiss tournaments created for a team.
 
-        :param teamId: Id of the team
+        :param teamId: team ID
         :param maxT: how many tournaments to download
         :return: swiss tournaments
         """
