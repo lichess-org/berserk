@@ -32,7 +32,13 @@ class Tournaments(FmtClient):
         path = f"/api/tournament/{tournament_id}?page={page}"
         return self._r.get(path, converter=models.Tournament.convert)
 
-    def join_tournament(self, tournament_id: str, password: str | None = None, team: str | None = None, pair_me_asap=False):
+    def join_tournament(
+        self,
+        tournament_id: str,
+        password: str | None = None,
+        team: str | None = None,
+        pair_me_asap: bool = False
+    ):
         """Join a tournament.
 
         :param tournament_id: tournament ID
