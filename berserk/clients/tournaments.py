@@ -37,7 +37,7 @@ class Tournaments(FmtClient):
         tournament_id: str,
         password: str | None = None,
         team: str | None = None,
-        should_pair_immediately: bool = False
+        should_pair_immediately: bool = False,
     ):
         """Join a tournament.
 
@@ -48,8 +48,14 @@ class Tournaments(FmtClient):
         :return: tournament information
         """
         path = f"/api/tournament/{tournament_id}/join"
-        params = {"password": password, "team": team, "pairMeAsap": should_pair_immediately}
-        return self._r.post(path=path, params=params, converter=models.Tournament.convert)
+        params = {
+            "password": password,
+            "team": team,
+            "pairMeAsap": should_pair_immediately,
+        }
+        return self._r.post(
+            path=path, params=params, converter=models.Tournament.convert
+        )
 
     def get_tournament_team_standings(self, tournament_id: str):
         """Get team standing of a team battle tournament, with their respective top players.
@@ -64,7 +70,7 @@ class Tournaments(FmtClient):
         self,
         tournament_id: str,
         team_ids: str | None = None,
-        team_leader_count_per_team: int | None = None
+        team_leader_count_per_team: int | None = None,
     ):
         """Set the teams and number of leaders of a team battle tournament.
 
