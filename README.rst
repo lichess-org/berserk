@@ -205,7 +205,12 @@ Details for each function can be found in the `documentation <https://lichess-or
 
 Development
 -----------
-Run ``poetry install`` to install all dependencies.
+1. Install all dependencies:
+::
+    poetry install
 
-Then, run ``poetry run pre-commit install`` to install the pre-commit hook to catch ``black`` formatting changes locally
-in ``.git/hooks/pre-commit``.
+2. Install the pre-commit hook in ``.git/hooks/pre-commit`` to catch `black <https://github.com/psf/black>`_ formatting
+changes locally:
+::
+    poetry run pre-commit install
+
