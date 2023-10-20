@@ -167,6 +167,7 @@ Most of the API is available:
     client.teams.kick_member
     client.teams.get_join_requests
     client.teams.accept_join_request
+    client.teams.decline_join_request
     client.teams.get_team
     client.teams.teams_of_player
     client.teams.get_popular
