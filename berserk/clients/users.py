@@ -8,6 +8,7 @@ from .base import BaseClient
 from ..formats import JSON_LIST, LIJSON, NDJSON
 from ..types.common import PerfType
 from ..session import Params
+from ..types.team import LightUser
 
 
 class Users(BaseClient):
@@ -57,7 +58,7 @@ class Users(BaseClient):
 
     def get_player_by_autocomplete(
         self, partial_username: str, object: bool = False
-    ) -> List[str] | Dict[str, Any]:
+    ) -> List[str] | Dict[str,LightUser]:
         """Provides autocompletion options for an incomplete username.
 
         :param partial_username: the beginning of a username, must provide >= 3 characters
@@ -65,8 +66,7 @@ class Users(BaseClient):
         :return: followed players matching term if any, else returns other players. Requires OAuth.
         """
         path = "/api/player/autocomplete"
-        params: Params = {"partial_username": partial_username, "object": object}
-
+        params: Params = {"term": partial_username, "object": object}
         return self._r.get(path, fmt=LIJSON, params=params)
 
     def get_leaderboard(self, perf_type: PerfType, count: int = 10):
