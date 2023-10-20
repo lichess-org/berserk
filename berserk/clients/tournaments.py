@@ -37,18 +37,18 @@ class Tournaments(FmtClient):
         tournament_id: str,
         password: str | None = None,
         team: str | None = None,
-        pair_me_asap: bool = False
+        should_pair_immediately: bool = False
     ):
         """Join a tournament.
 
         :param tournament_id: tournament ID
         :param password: tournament password or user-specific entry code generated and shared by the organizer
-        :param team: team to join the team battle tournament with
-        :param pair_me_asap: whether to pair the user after tournament has started
+        :param team: team with which to join the team battle tournament
+        :param should_pair_immediately: whether to attempt to pair the user if tournament has started
         :return: tournament information
         """
         path = f"/api/tournament/{tournament_id}/join"
-        params = {"password": password, "team": team, "pairMeAsap": pair_me_asap}
+        params = {"password": password, "team": team, "pairMeAsap": should_pair_immediately}
         return self._r.post(path=path, params=params, converter=models.Tournament.convert)
 
     def get_tournament_team_standings(self, tournament_id: str):
@@ -60,16 +60,21 @@ class Tournaments(FmtClient):
         path = f"/api/tournament/{tournament_id}/teams"
         return self._r.get(path)
 
-    def update_team_battle(self, tournament_id: str, teams: str | None = None, nb_leaders: int | None = None):
+    def update_team_battle(
+        self,
+        tournament_id: str,
+        team_ids: str | None = None,
+        team_leader_count_per_team: int | None = None
+    ):
         """Set the teams and number of leaders of a team battle tournament.
 
         :param tournament_id: tournament ID
-        :param teams: all team IDs of the team battle, separated by commas
-        :param nb_leaders: number of team leaders per team
+        :param team_ids: all team IDs of the team battle, separated by commas
+        :param team_leader_count_per_team: number of team leaders per team
         :return: updated team battle information
         """
         path = f"/api/tournament/team-battle/{tournament_id}"
-        params = {"teams": teams, "nbLeaders": nb_leaders}
+        params = {"teams": team_ids, "nbLeaders": team_leader_count_per_team}
         return self._r.post(path=path, params=params)
 
     def terminate_tournament(self, tournament_id: str):
