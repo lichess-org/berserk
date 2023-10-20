@@ -76,6 +76,15 @@ class Teams(BaseClient):
         path = f"/api/team/{team_id}/request/{user_id}/accept"
         self._r.post(path)
 
+    def decline_join_request(self, team_id: str, user_id: str) -> None:
+        """Decline someone's request to join one of your teams
+
+        :param team_id: ID of the team to decline the request for
+        :param user_id: ID of the user requesting to join
+        """
+        path = f"/api/team/{team_id}/request/{user_id}/decline"
+        self._r.post(path)
+
     def get_team(self, team_id: str) -> Team:
         """Get the information about the team
 
