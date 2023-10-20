@@ -207,10 +207,12 @@ Development
 -----------
 1. Install all dependencies:
 ::
+
     poetry install
 
 2. Install the pre-commit hook in ``.git/hooks/pre-commit`` to catch `black <https://github.com/psf/black>`_ formatting
 changes locally:
 ::
+
     poetry run pre-commit install
 
