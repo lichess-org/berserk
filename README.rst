@@ -202,3 +202,10 @@ Most of the API is available:
     client.users.get_user_performance
 
 Details for each function can be found in the `documentation <https://lichess-org.github.io/berserk/>`_.
+
+Development
+-----------
+Run ``poetry install`` to install all dependencies.
+
+Then, run ``poetry run pre-commit install`` to install the pre-commit hook to catch ``black`` formatting changes locally
+in ``.git/hooks/pre-commit``.
