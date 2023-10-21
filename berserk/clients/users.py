@@ -58,7 +58,7 @@ class Users(BaseClient):
 
     def get_player_by_autocomplete(
         self, partial_username: str, object: bool = False
-    ) -> List[str] | Dict[str,LightUser]:
+    ) -> List[str] | Dict[str, LightUser]:
         """Provides autocompletion options for an incomplete username.
 
         :param partial_username: the beginning of a username, must provide >= 3 characters
