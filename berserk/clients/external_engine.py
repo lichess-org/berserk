@@ -66,7 +66,7 @@ class ExternalEngine(BaseClient):
         provider_secret: str,
         variants: List[str] | None = None,
         provider_data: str | None = None,
-    ) -> Dict[str, Any]:
+    ) -> Any:
         """Updates the properties of an external engine.
 
         :param engine_id: engine ID
@@ -89,7 +89,7 @@ class ExternalEngine(BaseClient):
             "providerSecret": provider_secret,
             "providerData": provider_data,
         }
-        return self._r.put(path=path, payload=payload)
+        return self._r.request(method="PUT", path=path, payload=payload)
 
     def delete(self, engine_id: str) -> None:
         """Unregisters an external engine.
