@@ -182,9 +182,7 @@ class Challenges(BaseClient):
         payload = {"reason": reason}
         self._r.post(path, json=payload)
 
-    def cancel(
-        self, challenge_id: str, opponent_token: str | None = None
-    ) -> None:
+    def cancel(self, challenge_id: str, opponent_token: str | None = None) -> None:
         """Cancel an outgoing challenge, or abort the game if challenge was accepted but the game was not yet played.
 
         :param challenge_id: ID of a challenge
@@ -195,7 +193,9 @@ class Challenges(BaseClient):
         params = {"opponentToken": opponent_token}
         self._r.post(path=path, params=params)
 
-    def start_clocks(self, game_id: str, token_player_1: str, token_player_2: str) -> None:
+    def start_clocks(
+        self, game_id: str, token_player_1: str, token_player_2: str
+    ) -> None:
         """Starts the clocks of a game immediately, even if a player has not yet made a move.
 
         Requires the OAuth tokens of both players with challenge:write scope.
