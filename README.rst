@@ -138,6 +138,9 @@ Most of the API is available:
 
     client.messaging.send
 
+    client.oauth.get_code
+    client.oauth.get_token
+    client.oauth.revoke_token
     client.oauth.test_tokens
 
     client.puzzles.get_daily
