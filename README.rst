@@ -112,12 +112,15 @@ Most of the API is available:
     client.bulk_pairings.start_clocks
     client.bulk_pairings.cancel
 
+    client.challenges.get_mine
     client.challenges.create
     client.challenges.create_ai
     client.challenges.create_open
     client.challenges.create_with_accept
     client.challenges.accept
     client.challenges.decline
+    client.challenges.cancel
+    client.challenges.start_clocks
 
     client.explorer.get_lichess_games
     client.explorer.get_masters_games
