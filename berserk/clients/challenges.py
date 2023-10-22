@@ -9,9 +9,9 @@ from .base import BaseClient
 
 class Challenges(BaseClient):
     def get_mine(self) -> Dict[str, List[Any]]:
-        """Get a list of outgoing challenges (created by me) and incoming challenges (targeted at me).
+        """Get all outgoing challenges (created by me) and incoming challenges (targeted at me).
 
-        :return: array of incoming challenges keyed by "in" and array of outgoing challenges keyed by "out"
+        :return: all my outgoing and incoming challenges
         """
         path = "/api/challenge"
         return self._r.get(path)
@@ -209,3 +209,28 @@ class Challenges(BaseClient):
         path = f"/api/challenge/{game_id}/start-clocks"
         params = {"token1": token_player_1, "token2": token_player_2}
         self._r.post(path=path, params=params)
+
+    def add_time_to_opponent_clock(self, game_id: str, seconds: int) -> None:
+        """Add seconds to the opponent's clock. Can be used to create games with time odds.
+
+        :param game_id: game ID
+        :param seconds: number of seconds to add to opponent's clock
+        """
+        path = f"/api/round/{game_id}/add-time/{seconds}"
+        self._r.post(path)
+
+    def create_tokens_for_multiple_users(
+        self, usernames: str, description: str
+    ) -> Dict[str, str]:
+        """This endpoint can only be used by Lichess admins.
+
+        Create and obtain challenge:write tokens for multiple users.
+
+        If a similar token already exists for a user, it is reused. This endpoint is idempotent.
+
+        :param usernames: usernames separated with commas
+        :param description: user-visible token description
+        :return: challenge:write tokens of each user
+        """
+        path = "/api/token/admin-challenge"
+        return self._r.post(path)

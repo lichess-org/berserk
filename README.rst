@@ -121,6 +121,8 @@ Most of the API is available:
     client.challenges.decline
     client.challenges.cancel
     client.challenges.start_clocks
+    client.challenges.add_time_to_opponent_clock
+    client.challenges.create_tokens_for_multiple_users
 
     client.explorer.get_lichess_games
     client.explorer.get_masters_games
