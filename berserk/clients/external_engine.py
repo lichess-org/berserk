@@ -6,6 +6,8 @@ from .base import BaseClient
 
 
 class ExternalEngine(BaseClient):
+    """Client for external engine related endpoints."""
+
     def get(self) -> Dict[str, Any]:
         """Lists all external engines that have been registered for the user, and the credentials required to use them.
 
