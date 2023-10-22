@@ -193,9 +193,9 @@ Most of the API is available:
     client.tournaments.get_swiss
     client.tournaments.get_tournament_team_standings
     client.tournaments.update_team_battle
-    client.tournaments.join_tournament
-    client.tournaments.terminate_tournament
-    client.tournaments.withdraw_tournament
+    client.tournaments.join
+    client.tournaments.terminate
+    client.tournaments.withdraw
     client.tournaments.create_arena
     client.tournaments.create_swiss
     client.tournaments.export_arena_games
