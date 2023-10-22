@@ -8,7 +8,7 @@ from .base import BaseClient
 
 
 class Challenges(BaseClient):
-    def get_mine(self) -> Dict[str, List]:
+    def get_mine(self) -> Dict[str, List[Any]]:
         """Get a list of outgoing challenges (created by me) and incoming challenges (targeted at me).
 
         :return: array of incoming challenges keyed by "in" and array of outgoing challenges keyed by "out"
