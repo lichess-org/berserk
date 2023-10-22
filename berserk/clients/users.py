@@ -123,6 +123,26 @@ class Users(BaseClient):
             path, params=params, fmt=JSON_LIST, converter=models.User.convert
         )
 
+    def get_autocomplete(
+        self,
+        incomplete_username: str,
+        only_followed_players: bool,
+        should_return_object: bool = False,
+    ) -> Dict[str, Any]:
+        """Provides autocomplete options for an incomplete username.
+
+        :param incomplete_username: beginning of a username, must be >=3 characters
+        :param only_followed_players: whether to return matching followed players only, if any exist
+        :param should_return_object: whether to return an object with matching users
+        """
+        path = "/api/player/auto-complete"
+        params = {
+            "term": incomplete_username,
+            "object": should_return_object,
+            "friend": only_followed_players,
+        }
+        return self._r.get(path=path, params=params)
+
     def get_user_performance(self, username: str, perf: str) -> List[Dict[str, Any]]:
         """Read performance statistics of a user, for a single performance.
 
