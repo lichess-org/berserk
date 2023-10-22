@@ -338,7 +338,7 @@ class Tournaments(FmtClient):
     ) -> List[Dict[str, Any]]:
         """Get arenas created for a team.
 
-        :param teamId: ID of the team
+        :param teamId: team ID
         :param maxT: how many tournaments to download
         :return: arena tournaments
         """
