@@ -29,7 +29,7 @@ class Challenges(BaseClient):
         color: Color | None = None,
         variant: Variant | None = None,
         position: str | None = None,
-    ) -> Challenge:
+    ) -> Dict[str, Any]:
         """Challenge another player to a game.
 
         :param username: username of the player to challenge
@@ -173,9 +173,7 @@ class Challenges(BaseClient):
         path = f"/api/challenge/{challenge_id}/accept"
         self._r.post(path)
 
-    def decline(
-        self, challenge_id: str, reason: DeclineReason = "generic"
-    ) -> None:
+    def decline(self, challenge_id: str, reason: DeclineReason = "generic") -> None:
         """Decline an incoming challenge.
 
         :param challenge_id: ID of a challenge

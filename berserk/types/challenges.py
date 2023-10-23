@@ -30,6 +30,7 @@ Title: TypeAlias = Literal[
 
 class User(TypedDict):
     """Challenge User"""
+
     rating: NotRequired[float]
     provisional: NotRequired[bool]
     online: NotRequired[bool]
@@ -55,6 +56,7 @@ VariantKey: TypeAlias = Literal[
 
 class Variant(TypedDict):
     """Information about a challenge variant."""
+
     key: NotRequired[VariantKey]
     name: NotRequired[str]
     short: NotRequired[str]
@@ -115,4 +117,3 @@ class Challenge(TypedDict):
     initialFen: NotRequired[str]
     declineReason: str
     declineReasonKey: str
-
