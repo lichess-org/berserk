@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-from typing import Iterator, Any, Dict
+from typing import Iterator, Any, Dict, cast
 
 from .. import models
 from ..formats import NDJSON
 from .base import BaseClient
+from ..types import PuzzleRace
 
 
 class Puzzles(BaseClient):
@@ -18,28 +19,28 @@ class Puzzles(BaseClient):
         path = "/api/puzzle/daily"
         return self._r.get(path)
 
-    def get(self, puzzle_id: str) -> Dict[str, Any]:
+    def get(self, id: str) -> Dict[str, Any]:
         """Get a puzzle by its id.
 
-        :param puzzle_id: the id of the puzzle to retrieve
+        :param id: the id of the puzzle to retrieve
         :return: the puzzle
         """
-        path = f"/api/puzzle/{puzzle_id}"
+        path = f"/api/puzzle/{id}"
         return self._r.get(path)
 
     def get_puzzle_activity(
-        self, max_entries: int | None = None, before: int | None = None
+        self, max: int | None = None, before: int | None = None
     ) -> Iterator[Dict[str, Any]]:
         """Stream puzzle activity history of the authenticated user, starting with the
         most recent activity.
 
-        :param max_entries: maximum number of entries to stream. defaults to all activity
+        :param max: maximum number of entries to stream. defaults to all activity
         :param before: timestamp in milliseconds. only stream activity before this time.
             defaults to now. use together with max for pagination
         :return: iterator over puzzle activity history
         """
         path = "/api/puzzle/activity"
-        params = {"max": max_entries, "before": before}
+        params = {"max": max, "before": before}
         yield from self._r.get(
             path,
             params=params,
@@ -69,11 +70,11 @@ class Puzzles(BaseClient):
         params = {"days": days}
         return self._r.get(path, params=params)
 
-    def create_race(self) -> Dict[str, str]:
+    def create_race(self) -> PuzzleRace:
         """Create a new private puzzle race. The Lichess user who creates the race must join the race page,
         and manually start the race when enough players have joined.
 
         :return: puzzle race ID and URL
         """
         path = "/api/racer"
-        return self._r.post(path)
+        return cast(PuzzleRace, self._r.post(path))
