@@ -5,6 +5,7 @@ from typing import Iterator, Any, Dict, List, cast
 from .. import models
 from ..formats import NDJSON, NDJSON_LIST, PGN
 from .base import FmtClient
+from ..types.tournament import TournamentInfo
 
 
 class Tournaments(FmtClient):
@@ -323,3 +324,78 @@ class Tournaments(FmtClient):
         """
         path = f"/api/user/{username}/tournament/created"
         yield from self._r.get(path, stream=True)
+
+    def get_swiss_info_by_id(self, swiss_id: str) -> TournamentInfo:
+        """Get detailed info about a Swiss tournament.
+
+        :param swiss_id: the Swiss tournament ID.
+        :return: detailed info about a Swiss tournament
+        """
+        path = f"/api/swiss/{swiss_id}"
+        return cast(TournamentInfo, self._r.get(path))
+
+    def update_swiss(
+        self,
+        tournamentId: str,
+        clockLimit: int,
+        clockIncrement: int,
+        nbRounds: int,
+        startsAt: int | None = None,
+        roundInterval: int | None = None,
+        variant: str | None = None,
+        description: str | None = None,
+        name: str | None = None,
+        rated: bool | None = True,
+        password: str | None = None,
+        forbiddenPairings: str | None = None,
+        manualPairings: str | None = None,
+        chatFor: int | None = 20,
+        minRating: int | None = None,
+        maxRating: int | None = None,
+        nbRatedGame: int | None = None,
+        allowList: str | None = None,
+    ) -> Dict[str, TournamentInfo]:
+        """Updata a swiss tournament.
+
+        :param tournamentId : The unique identifier of the tournament to be updated.
+        :param clockLimit : The time limit for each player's clock.
+        :param clockIncrement : The time increment added to a player's clock after each move.
+        :param nbRounds : The number of rounds in the tournament.
+        :param startsAt : The start time of the tournament in Unix timestamp format.
+        :param roundInterval :The time interval between rounds in minutes.
+        :param variant :The chess variant of the tournament.
+        :param description : A description of the tournament.
+        :param name : The name of the tournament.
+        :param rated : Whether the tournament is rated.
+        :param password : A password to access the tournament.
+        :param forbiddenPairings : Specify forbidden pairings in the tournament.
+        :param manualPairings : Specify manual pairings for the tournament.
+        :param chatFor :The duration for which the chat is available in minutes.
+        :param minRating : The minimum rating required to participate in the tournament.
+        :param maxRating : The maximum rating allowed to participate in the tournament.
+        :param nbRatedGame : The number of rated games required for participation.
+        :param allowList : Specify an allow list for the tournament.
+        :return A dictionary containing information about the updated Swiss tournament.
+        """
+        path = f"/api/swiss/{tournamentId}/edit/"
+
+        payload = {
+            "name": name,
+            "clock.limit": clockLimit,
+            "clock.increment": clockIncrement,
+            "nbRounds": nbRounds,
+            "startsAt": startsAt,
+            "roundInterval": roundInterval,
+            "variant": variant,
+            "description": description,
+            "rated": rated,
+            "password": password,
+            "forbiddenPairings": forbiddenPairings,
+            "manualPairings": manualPairings,
+            "conditions.minRating.rating": minRating,
+            "conditions.maxRating.rating": maxRating,
+            "conditions.nbRatedGame.nb": nbRatedGame,
+            "conditions.allowList": allowList,
+            "chatFor": chatFor,
+        }
+        return self._r.post(path, json=payload)
