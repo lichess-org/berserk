@@ -1,4 +1,4 @@
-from typing import TypedDict
+from typing import TypedDict, Union
 
 
 class Clock(TypedDict):
@@ -29,4 +29,4 @@ class TournamentInfo(TypedDict):
     nbOngoing: int
     status: str
     rated: bool
-    stats: Stats | None
+    stats: Union[Stats, None]
