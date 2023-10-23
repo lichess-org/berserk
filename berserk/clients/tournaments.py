@@ -38,14 +38,17 @@ class Tournaments(FmtClient):
         password: str | None = None,
         team: str | None = None,
         should_pair_immediately: bool = False,
-    ):
-        """Join a tournament.
+    ) -> None:
+        """Join an Arena tournament. Also, unpauses if you had previously paused the tournament.
+
+        Requires OAuth2 authorization with tournament:write scope.
 
         :param tournament_id: tournament ID
         :param password: tournament password or user-specific entry code generated and shared by the organizer
-        :param team: team with which to join the team battle tournament
-        :param should_pair_immediately: whether to attempt to pair the user if tournament has started
-        :return: tournament information
+        :param team: team with which to join the team battle Arena tournament
+        :param should_pair_immediately: if the tournament is started, attempt to pair the user, even if they are not
+            connected to the tournament page. This expires after one minute, to avoid pairing a user who is long gone.
+            You may call "join" again to extend the waiting.
         """
         path = f"/api/tournament/{tournament_id}/join"
         params = {
@@ -53,11 +56,9 @@ class Tournaments(FmtClient):
             "team": team,
             "pairMeAsap": should_pair_immediately,
         }
-        return self._r.post(
-            path=path, params=params, converter=models.Tournament.convert
-        )
+        self._r.post(path=path, params=params, converter=models.Tournament.convert)
 
-    def get_team_standings(self, tournament_id: str):
+    def get_team_standings(self, tournament_id: str) -> Dict[str, Any]:
         """Get team standing of a team battle tournament, with their respective top players.
 
         :param tournament_id: tournament ID
@@ -71,7 +72,7 @@ class Tournaments(FmtClient):
         tournament_id: str,
         team_ids: str | None = None,
         team_leader_count_per_team: int | None = None,
-    ):
+    ) -> Dict[str, Any]:
         """Set the teams and number of leaders of a team battle tournament.
 
         :param tournament_id: tournament ID
@@ -503,18 +504,18 @@ class Tournaments(FmtClient):
         payload = {"date": schedule_time}
         self._r.post(path, json=payload)
 
-    def terminate_arena(self, tournament_id: str):
+    def terminate_arena(self, tournament_id: str) -> None:
         """Terminate a tournament.
 
         :param tournament_id: tournament ID
         """
         path = f"/api/tournament/{tournament_id}/terminate"
-        return self._r.post(path)
+        self._r.post(path)
 
-    def withdraw_arena(self, tournament_id: str):
-        """Leave a future tournament, or take a break on an ongoing tournament.
+    def withdraw_arena(self, tournament_id: str) -> None:
+        """Leave an upcoming tournament, or take a break on an ongoing tournament.
 
         :param tournament_id: tournament ID
         """
         path = f"/api/tournament/{tournament_id}/withdraw"
-        return self._r.post(path)
+        self._r.post(path)
