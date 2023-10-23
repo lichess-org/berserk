@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import List, cast
 
 from .base import BaseClient
 
@@ -16,7 +16,7 @@ class ExternalEngine(BaseClient):
         :return: info about the external engines
         """
         path = "/api/external-engine"
-        return self._r.get(path)
+        return cast(List[ExternalEngine], self._r.get(path))
 
     def get_by_id(self, engine_id: str) -> ExternalEngine:
         """Get properties and credentials of an external engine.
@@ -27,7 +27,7 @@ class ExternalEngine(BaseClient):
         :return: info about the external engine
         """
         path = f"/api/external-engine/{engine_id}"
-        return self._r.get(path)
+        return cast(ExternalEngine, self._r.get(path))
 
     def create(
         self,
@@ -62,7 +62,7 @@ class ExternalEngine(BaseClient):
             "providerSecret": provider_secret,
             "providerData": provider_data,
         }
-        return self._r.post(path=path, payload=payload)
+        return cast(ExternalEngine, self._r.post(path=path, payload=payload))
 
     def update(
         self,
@@ -99,7 +99,7 @@ class ExternalEngine(BaseClient):
             "providerSecret": provider_secret,
             "providerData": provider_data,
         }
-        return self._r.request(method="PUT", path=path, payload=payload)
+        return cast(ExternalEngine, self._r.request(method="PUT", path=path, payload=payload))
 
     def delete(self, engine_id: str) -> None:
         """Unregisters an external engine.
