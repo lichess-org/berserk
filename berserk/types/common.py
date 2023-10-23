@@ -77,17 +77,3 @@ PerfType: TypeAlias = Union[
 GameRule: TypeAlias = Literal[
     "noAbort", "noRematch", "noGiveTime", "noClaimWin", "noEarlyDraw"
 ]
-
-ChallengeDeclineReason: TypeAlias = Literal[
-    "generic",
-    "later",
-    "tooFast",
-    "tooSlow",
-    "timeControl",
-    "rated",
-    "casual",
-    "standard",
-    "variant",
-    "noBot",
-    "onlyBot",
-]

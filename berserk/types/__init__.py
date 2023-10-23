@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from .account import AccountInformation, Perf, Preferences, Profile, StreamerInfo
 from .bulk_pairings import BulkPairing, BulkPairingGame
+from .challenges import Challenge
 from .common import ClockConfig, ExternalEngine, LightUser, OnlineLightUser
 from .puzzles import PuzzleRace
 from .opening_explorer import (
@@ -18,6 +19,7 @@ __all__ = [
     "ArenaResult",
     "BulkPairing",
     "BulkPairingGame",
+    "Challenge",
     "ClockConfig",
     "ExternalEngine",
     "LightUser",

@@ -3,13 +3,16 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from deprecated import deprecated
 
-from ..types.common import ChallengeDeclineReason, Color, Variant
+from ..types.challenges import Challenge, DeclineReason
+from ..types.common import Color, Variant
 from .base import BaseClient
 
 
 class Challenges(BaseClient):
-    def get_mine(self) -> Dict[str, List[Any]]:
+    def get_mine(self) -> Dict[str, List[Challenge]]:
         """Get all outgoing challenges (created by me) and incoming challenges (targeted at me).
+
+        Requires OAuth2 authorization with challenge:read scope.
 
         :return: all my outgoing and incoming challenges
         """
@@ -26,7 +29,7 @@ class Challenges(BaseClient):
         color: Color | None = None,
         variant: Variant | None = None,
         position: str | None = None,
-    ) -> Dict[str, Any]:
+    ) -> Challenge:
         """Challenge another player to a game.
 
         :param username: username of the player to challenge
@@ -171,7 +174,7 @@ class Challenges(BaseClient):
         self._r.post(path)
 
     def decline(
-        self, challenge_id: str, reason: ChallengeDeclineReason = "generic"
+        self, challenge_id: str, reason: DeclineReason = "generic"
     ) -> None:
         """Decline an incoming challenge.
 
@@ -184,6 +187,8 @@ class Challenges(BaseClient):
 
     def cancel(self, challenge_id: str, opponent_token: str | None = None) -> None:
         """Cancel an outgoing challenge, or abort the game if challenge was accepted but the game was not yet played.
+
+        Requires OAuth2 authorization with challenge:write, bot:play and board:play scopes.
 
         :param challenge_id: ID of a challenge
         :param opponent_token: if set to the challenge:write token of the opponent, allows game to be cancelled
@@ -198,7 +203,7 @@ class Challenges(BaseClient):
     ) -> None:
         """Starts the clocks of a game immediately, even if a player has not yet made a move.
 
-        Requires the OAuth tokens of both players with challenge:write scope.
+        Requires the OAuth tokens of both players with challenge:write scope. The tokens can be in any order.
 
         If the clocks have already started, the call will have no effect.
 
@@ -212,6 +217,8 @@ class Challenges(BaseClient):
 
     def add_time_to_opponent_clock(self, game_id: str, seconds: int) -> None:
         """Add seconds to the opponent's clock. Can be used to create games with time odds.
+
+        Requires OAuth2 authorization with challenge:write scope.
 
         :param game_id: game ID
         :param seconds: number of seconds to add to opponent's clock
@@ -233,4 +240,5 @@ class Challenges(BaseClient):
         :return: challenge:write tokens of each user
         """
         path = "/api/token/admin-challenge"
-        return self._r.post(path)
+        payload = {"users": usernames, "description": description}
+        return self._r.post(path=path, payload=payload)
