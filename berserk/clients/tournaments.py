@@ -505,7 +505,7 @@ class Tournaments(FmtClient):
         self._r.post(path, json=payload)
 
     def terminate_arena(self, tournament_id: str) -> None:
-        """Terminate a tournament.
+        """Terminate an Arena tournament.
 
         :param tournament_id: tournament ID
         """
@@ -513,7 +513,7 @@ class Tournaments(FmtClient):
         self._r.post(path)
 
     def withdraw_arena(self, tournament_id: str) -> None:
-        """Leave an upcoming tournament, or take a break on an ongoing tournament.
+        """Leave an upcoming Arena tournament, or take a break on an ongoing Arena tournament.
 
         :param tournament_id: tournament ID
         """
