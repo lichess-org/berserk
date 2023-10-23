@@ -5,7 +5,7 @@ from typing import Iterator, Any, Dict, List, cast
 from .. import models
 from ..formats import NDJSON, NDJSON_LIST, PGN
 from .base import FmtClient
-from ..types.tournament import TournamentInfo
+from ..types.tournament import TournamentInfo, TournamentResult
 
 
 class Tournaments(FmtClient):
@@ -301,7 +301,7 @@ class Tournaments(FmtClient):
 
     def stream_results(
         self, id: str, limit: int | None = None
-    ) -> Iterator[Dict[str, Any]]:
+    ) -> Iterator[Dict[str, TournamentResult]]:
         """Stream the results of a tournament.
 
         Results are the players of a tournament with their scores and performance in
@@ -325,14 +325,30 @@ class Tournaments(FmtClient):
         path = f"/api/user/{username}/tournament/created"
         yield from self._r.get(path, stream=True)
 
-    def get_swiss_info_by_id(self, swiss_id: str) -> TournamentInfo:
+    def get_swiss_info_by_id(self, tournament_id: str) -> TournamentInfo:
         """Get detailed info about a Swiss tournament.
 
-        :param swiss_id: the Swiss tournament ID.
+        :param tournament_id: the Swiss tournament ID.
         :return: detailed info about a Swiss tournament
         """
-        path = f"/api/swiss/{swiss_id}"
+        path = f"/api/swiss/{tournament_id}"
         return cast(TournamentInfo, self._r.get(path))
+
+    def get_swiss_result_by_id(
+        self, tournament_id: str, limit: int | None = None
+    ) -> Iterator[Dict[str, TournamentResult]]:
+        """Results are the players of a swiss tournament with their scores and performance in
+        rank order. Note that results for ongoing tournaments can be inconsistent due to
+        ranking changes.
+
+        :param tournament_id: the Swiss tournament ID.
+        :param limit: Max number of players to fetch
+
+        :return: iterator of the TournamentResult
+        """
+        path = f"/api/swiss/{tournament_id}/result"
+        params = {"nb": limit}
+        yield from self._r.get(path, params=params, stream=True)
 
     def update_swiss(
         self,
@@ -401,13 +417,26 @@ class Tournaments(FmtClient):
         return self._r.post(path, json=payload)
 
     def join_swiss_by_id(
-        self, swiss_id: str, password: str | None = None
+        self, tournament_id: str, password: str | None = None
     ) -> Dict[str, bool]:
         """Join a Swiss tournament, possibly with a password.
 
-        :param swiss_id: the Swiss tournament ID.
+        :param tournament_id: the Swiss tournament ID.
         :return: detailed info about a Swiss tournament
         """
-        path = f"/api/swiss/{swiss_id}/join"
+        path = f"/api/swiss/{tournament_id}/join"
         payload = {"password": password}
+        return self._r.post(path, json=payload)
+
+    def schedule_next_round(
+        self, tournament_id: str, schedule_time: int
+    ) -> None | Dict[str, str]:
+        """Manually schedule the next round date and time of a Swiss tournament.
+
+        :param tournament_id: the Swiss tournament ID.
+        :schedule_time: Timestamp in milliseconds to start the next round at a given date and time.
+        :return: if schedule successfully, nothing would be returned. Otherwise, return the error messages
+        """
+        path = f"/api/swiss/{tournament_id}/schedule-next-round"
+        payload = {"date": schedule_time}
         return self._r.post(path, json=payload)

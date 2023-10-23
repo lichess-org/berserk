@@ -30,3 +30,12 @@ class TournamentInfo(TypedDict):
     status: str
     rated: bool
     stats: Union[Stats, None]
+
+
+class TournamentResult(TypedDict):
+    rank: int
+    points: int
+    tieBreak: float
+    rating: int
+    userName: str
+    performance: int
