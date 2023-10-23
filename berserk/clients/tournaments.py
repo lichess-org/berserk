@@ -399,3 +399,15 @@ class Tournaments(FmtClient):
             "chatFor": chatFor,
         }
         return self._r.post(path, json=payload)
+
+    def join_swiss_by_id(
+        self, swiss_id: str, password: str | None = None
+    ) -> Dict[str, bool]:
+        """Join a Swiss tournament, possibly with a password.
+
+        :param swiss_id: the Swiss tournament ID.
+        :return: detailed info about a Swiss tournament
+        """
+        path = f"/api/swiss/{swiss_id}/join"
+        payload = {"password": password}
+        return self._r.post(path, json=payload)
