@@ -99,7 +99,9 @@ class ExternalEngine(BaseClient):
             "providerSecret": provider_secret,
             "providerData": provider_data,
         }
-        return cast(ExternalEngine, self._r.request(method="PUT", path=path, payload=payload))
+        return cast(
+            ExternalEngine, self._r.request(method="PUT", path=path, payload=payload)
+        )
 
     def delete(self, engine_id: str) -> None:
         """Unregisters an external engine.
