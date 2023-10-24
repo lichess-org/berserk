@@ -416,17 +416,26 @@ class Tournaments(FmtClient):
         }
         return self._r.post(path, json=payload)
 
-    def join_swiss_by_id(
+    def join_swiss_tournament(
         self, tournament_id: str, password: str | None = None
     ) -> Dict[str, bool]:
         """Join a Swiss tournament, possibly with a password.
 
         :param tournament_id: the Swiss tournament ID.
-        :return: detailed info about a Swiss tournament
+        :return: {"ok": true} with 200 status code if join successfully else {"error": <error message>} with 400 status code
         """
         path = f"/api/swiss/{tournament_id}/join"
         payload = {"password": password}
         return self._r.post(path, json=payload)
+
+    def terminate_swiss_tournament(self, tournament_id: str) -> Dict[str, bool]:
+        """Terminate a Swiss tournament.
+
+        :param tournament_id: the Swiss tournament ID.
+        :return: {"ok": true} with 200 status code if join successfully else {"error": <error message>} with 400 status code
+        """
+        path = f"/api/swiss/{tournament_id}/terminate"
+        return self._r.post(path)
 
     def schedule_next_round(
         self, tournament_id: str, schedule_time: int
