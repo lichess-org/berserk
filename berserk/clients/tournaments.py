@@ -344,11 +344,16 @@ class Tournaments(FmtClient):
         :param tournament_id: the Swiss tournament ID.
         :param limit: Max number of players to fetch
 
-        :return: iterator of the TournamentResult
+        :return: iterator of the TournamentResult or an empty iterator if no result
         """
-        path = f"/api/swiss/{tournament_id}/result"
+        path = f"/api/swiss/{tournament_id}/results"
         params = {"nb": limit}
-        yield from self._r.get(path, params=params, stream=True)
+        try:
+            yield from self._r.get(path, params=params, stream=True)
+        except Exception as e:
+            # Currently, it will return an empty iterator, but it is better to show some error messages
+            # The issue also orrurs in all remaining function without error handling
+            return e
 
     def update_swiss(
         self,
