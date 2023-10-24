@@ -325,7 +325,7 @@ class Tournaments(FmtClient):
         path = f"/api/user/{username}/tournament/created"
         yield from self._r.get(path, stream=True)
 
-    def get_swiss_info_by_id(self, tournament_id: str) -> TournamentInfo:
+    def get_swiss_tournament_info(self, tournament_id: str) -> TournamentInfo:
         """Get detailed info about a Swiss tournament.
 
         :param tournament_id: the Swiss tournament ID.
@@ -334,7 +334,7 @@ class Tournaments(FmtClient):
         path = f"/api/swiss/{tournament_id}"
         return cast(TournamentInfo, self._r.get(path))
 
-    def get_swiss_result_by_id(
+    def get_swiss_tournament_result(
         self, tournament_id: str, limit: int | None = None
     ) -> Iterator[Dict[str, TournamentResult]]:
         """Results are the players of a swiss tournament with their scores and performance in
@@ -435,6 +435,15 @@ class Tournaments(FmtClient):
         :return: {"ok": true} with 200 status code if join successfully else {"error": <error message>} with 400 status code
         """
         path = f"/api/swiss/{tournament_id}/terminate"
+        return self._r.post(path)
+
+    def withdraw_swiss_tournament(self, tournament_id: str) -> Dict[str, bool]:
+        """Withdraw a Swiss tournament.
+
+        :param tournament_id: the Swiss tournament ID.
+        :return: {"ok": true} with 200 status code if join successfully else {"error": <error message>} with 400 status code
+        """
+        path = f"/api/swiss/{tournament_id}/withdraw"
         return self._r.post(path)
 
     def schedule_next_round(
