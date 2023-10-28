@@ -57,16 +57,24 @@ class Users(BaseClient):
         return self._r.get(path, fmt=LIJSON)
 
     def get_player_by_autocomplete(
-        self, partial_username: str, object: bool = False
+        self,
+        partial_username: str,
+        only_followed_players: bool = False,
+        as_object: bool = False,
     ) -> List[str] | Dict[str, LightUser]:
         """Provides autocompletion options for an incomplete username.
 
         :param partial_username: the beginning of a username, must provide >= 3 characters
-        :param object: if false, returns an array of usernames else if true, returns an object with matching users
+        :param only_followed_players: whether to return matching followed players only, if any exist
+        :param as_object: if false, returns an array of usernames else, returns an object with matching users
         :return: followed players matching term if any, else returns other players. Requires OAuth.
         """
         path = "/api/player/autocomplete"
-        params: Params = {"term": partial_username, "object": object}
+        params: Params = {
+            "term": partial_username,
+            "object": as_object,
+            "friend": only_followed_players,
+        }
         return self._r.get(path, fmt=LIJSON, params=params)
 
     def get_leaderboard(self, perf_type: PerfType, count: int = 10):
