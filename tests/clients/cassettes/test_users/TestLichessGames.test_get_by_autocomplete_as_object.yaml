@@ -1,0 +1,48 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/vnd.lichess.v3+json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://lichess.org/api/player/autocomplete?term=thisisatest&object=True&friend=False
+  response:
+    body:
+      string: '{"result":[{"name":"Thisisatest","id":"thisisatest"},{"name":"thisisatesty","id":"thisisatesty"},{"name":"thisisatest24","id":"thisisatest24"},{"name":"Thisisatesttt","id":"thisisatesttt"},{"name":"thisisatest333","id":"thisisatest333"},{"name":"thisisatest666","id":"thisisatest666"},{"name":"Thisisatest1234","id":"thisisatest1234"},{"name":"thisisatest8083","id":"thisisatest8083"},{"name":"ThisIsATest12345","id":"thisisatest12345"},{"name":"thisisatestlololol","id":"thisisatestlololol"},{"name":"thisisatestaccount13","id":"thisisatestaccount13"}]}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 28 Oct 2023 17:17:23 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      X-Frame-Options:
+      - DENY
+      content-length:
+      - '554'
+    status:
+      code: 200
+      message: OK
+version: 1

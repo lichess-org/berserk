@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-from typing import Iterator, Dict, List, Any
+from typing import Iterator, Dict, List, Any, cast
 from deprecated import deprecated
 
 from .. import models
 from .base import BaseClient
 from ..formats import JSON_LIST, LIJSON, NDJSON
-from ..types.common import PerfType
+from ..types.common import OnlineLightUser, PerfType
 from ..session import Params
 
 
@@ -54,6 +54,30 @@ class Users(BaseClient):
         """
         path = "/api/player"
         return self._r.get(path, fmt=LIJSON)
+
+    def get_by_autocomplete(
+        self,
+        partial_username: str,
+        only_followed_players: bool = False,
+        as_object: bool = False,
+    ) -> List[str] | List[OnlineLightUser]:
+        """Provides autocompletion options for an incomplete username.
+
+        :param partial_username: the beginning of a username, must provide >= 3 characters
+        :param only_followed_players: whether to return matching followed players only, if any exist
+        :param as_object: if false, returns an array of usernames else, returns an object with matching users
+        :return: followed players matching term if any, else returns other players. Requires OAuth.
+        """
+        path = "/api/player/autocomplete"
+        params: Params = {
+            "term": partial_username,
+            "object": as_object,
+            "friend": only_followed_players,
+        }
+        response = self._r.get(path, fmt=LIJSON, params=params)
+        if as_object:
+            return cast(List[OnlineLightUser], response.get("result", []))
+        return cast(List[str], response)
 
     def get_leaderboard(self, perf_type: PerfType, count: int = 10):
         """Get the leaderboard for one speed or variant.

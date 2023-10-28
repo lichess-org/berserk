@@ -1,6 +1,13 @@
 Changelog
 =========
 
+To be released
+--------------
+
+* Add `client.users.get_by_autocomplete`
+
+Thanks to @handsamtw and @Anupya for their contributions to this release.
+
 v0.13 (2023-09-29)
 --------------------
 

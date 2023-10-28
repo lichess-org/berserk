@@ -1,11 +1,9 @@
 from __future__ import annotations
 
-from typing import Literal, List
+from typing import List
 from typing_extensions import TypedDict, NotRequired
 
-Title = Literal[
-    "GM", "WGM", "IM", "WIM", "FM", "WFM", "NM", "CM", "WCM", "WNM", "LM", "BOT"
-]
+from .common import LightUser
 
 
 class Team(TypedDict):
@@ -27,17 +25,6 @@ class Team(TypedDict):
     joined: NotRequired[bool]
     # Has the user asssociated with the token (if any) requested to join the team
     requested: NotRequired[bool]
-
-
-class LightUser(TypedDict):
-    # The id of the user
-    id: str
-    # The name of the user
-    name: str
-    # The title of the user
-    title: NotRequired[Title]
-    # The patron of the user
-    patron: NotRequired[bool]
 
 
 class PaginatedTeams(TypedDict):

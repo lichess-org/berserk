@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Literal
 
-from typing_extensions import Literal, TypedDict, TypeAlias
+from typing_extensions import Literal, TypedDict, TypeAlias, NotRequired
 
 
 class ClockConfig(TypedDict):
@@ -25,6 +25,27 @@ GameType: TypeAlias = Literal[
     "crazyhouse",
     "fromPosition",
 ]
+
+Title = Literal[
+    "GM", "WGM", "IM", "WIM", "FM", "WFM", "NM", "CM", "WCM", "WNM", "LM", "BOT"
+]
+
+
+class LightUser(TypedDict):
+    # The id of the user
+    id: str
+    # The name of the user
+    name: str
+    # The title of the user
+    title: NotRequired[Title]
+    # The patron of the user
+    patron: NotRequired[bool]
+
+
+class OnlineLightUser(LightUser):
+    # Whether the user is online
+    online: NotRequired[bool]
+
 
 Variant: TypeAlias = Union[GameType, Literal["standard"]]
 
