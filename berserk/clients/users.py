@@ -56,7 +56,7 @@ class Users(BaseClient):
         path = "/api/player"
         return self._r.get(path, fmt=LIJSON)
 
-    def get_player_by_autocomplete(
+    def get_by_autocomplete(
         self,
         partial_username: str,
         only_followed_players: bool = False,
