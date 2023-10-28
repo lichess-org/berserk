@@ -1,14 +1,13 @@
 from __future__ import annotations
 
-from typing import Iterator, Dict, List, Any
+from typing import Iterator, Dict, List, Any, cast
 from deprecated import deprecated
 
 from .. import models
 from .base import BaseClient
 from ..formats import JSON_LIST, LIJSON, NDJSON
-from ..types.common import PerfType
+from ..types.common import OnlineLightUser, PerfType
 from ..session import Params
-from ..types.team import LightUser
 
 
 class Users(BaseClient):
@@ -61,7 +60,7 @@ class Users(BaseClient):
         partial_username: str,
         only_followed_players: bool = False,
         as_object: bool = False,
-    ) -> List[str] | Dict[str, LightUser]:
+    ) -> List[str] | List[OnlineLightUser]:
         """Provides autocompletion options for an incomplete username.
 
         :param partial_username: the beginning of a username, must provide >= 3 characters
@@ -75,7 +74,10 @@ class Users(BaseClient):
             "object": as_object,
             "friend": only_followed_players,
         }
-        return self._r.get(path, fmt=LIJSON, params=params)
+        response = self._r.get(path, fmt=LIJSON, params=params)
+        if as_object:
+            return cast(List[OnlineLightUser], response.get("result", []))
+        return cast(List[str], response)
 
     def get_leaderboard(self, perf_type: PerfType, count: int = 10):
         """Get the leaderboard for one speed or variant.
