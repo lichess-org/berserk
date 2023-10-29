@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Format everything but only re-add files that were previously on stage.
+make format && (git diff --name-only --cached | xargs git add -f)
