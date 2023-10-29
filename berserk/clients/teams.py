@@ -121,3 +121,13 @@ class Teams(BaseClient):
         path = "/api/team/search"
         params: Params = {"text": text, "page": page}
         return cast(PaginatedTeams, self._r.get(path, params=params))
+
+    def message_all_members(self, team_id: str, message: str) -> None:
+        """Send a private message to all members of a team. You must be the team leader with the "Messages" permission.
+
+        :param team_id: team ID
+        :param message: message to send all team members
+        """
+        path = f"/team/{team_id}/pm-all"
+        payload = {"message": message}
+        self._r.post(path=path, payload=payload)
