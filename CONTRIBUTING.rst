@@ -50,6 +50,7 @@ Get Started!
 
 - Install ``poetry`` (``pip3 install poetry``)
 - Setup dependencies by running ``poetry install --with dev`` or ``make setup``
+- Optional: Add pre-commit hook to test and format your change before commiting: ``cp hooks/pre-commit .git/hooks/pre-commit``
 - Start editing the code
 - To test your changes, run ``poetry shell`` to activate the poetry environment, open a python interpreter (``python3``), and import the library to test your changes::
 
