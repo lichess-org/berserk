@@ -11,12 +11,13 @@ def skip_if_older_3_dot_10(fn):
     )(fn)
 
 
-def validate(t, value):
+def validate(t: type, value: any):
     config = ConfigDict(strict=True, extra="forbid")
 
     class TWithConfig(t):
         __pydantic_config__ = config
 
+    print(value)
     try:
         # In case `t` is a `TypedDict`
         return TypeAdapter(TWithConfig).validate_python(value)

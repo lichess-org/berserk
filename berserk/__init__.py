@@ -11,7 +11,7 @@ __version__ = berserk_metadata["Version"]
 
 
 from .clients import Client
-from .types import Team, OpeningStatistic, PaginatedTeams
+from .types import Team, OpeningStatistic, PaginatedTeams, LightUser, OnlineLightUser
 from .session import TokenSession
 from .session import Requestor
 from .formats import JSON
@@ -23,6 +23,8 @@ from .formats import PGN
 
 __all__ = [
     "Client",
+    "LightUser",
+    "OnlineLightUser",
     "TokenSession",
     "Team",
     "PaginatedTeams",
