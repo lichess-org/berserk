@@ -16,7 +16,7 @@ class Stats(TypedDict):
     whiteWins: int
 
 
-class TournamentInfo(TypedDict):
+class SwissInfo(TypedDict):
     id: str
     createdBy: str
     startsAt: str
@@ -32,7 +32,7 @@ class TournamentInfo(TypedDict):
     stats: Union[Stats, None]
 
 
-class TournamentResult(TypedDict):
+class SwissResult(TypedDict):
     rank: int
     points: int
     tieBreak: float

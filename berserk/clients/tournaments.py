@@ -5,7 +5,7 @@ from typing import Iterator, Any, Dict, List, cast
 from .. import models
 from ..formats import NDJSON, NDJSON_LIST, PGN
 from .base import FmtClient
-from ..types.tournament import TournamentInfo, TournamentResult
+from ..types.tournament import SwissInfo, SwissResult
 
 
 class Tournaments(FmtClient):
@@ -301,7 +301,7 @@ class Tournaments(FmtClient):
 
     def stream_results(
         self, id: str, limit: int | None = None
-    ) -> Iterator[Dict[str, TournamentResult]]:
+    ) -> Iterator[Dict[str, SwissResult]]:
         """Stream the results of a tournament.
 
         Results are the players of a tournament with their scores and performance in
@@ -325,18 +325,18 @@ class Tournaments(FmtClient):
         path = f"/api/user/{username}/tournament/created"
         yield from self._r.get(path, stream=True)
 
-    def get_swiss_tournament_info(self, tournament_id: str) -> TournamentInfo:
+    def get_swiss_tournament_info(self, tournament_id: str) -> SwissInfo:
         """Get detailed info about a Swiss tournament.
 
         :param tournament_id: the Swiss tournament ID.
         :return: detailed info about a Swiss tournament
         """
         path = f"/api/swiss/{tournament_id}"
-        return cast(TournamentInfo, self._r.get(path))
+        return cast(SwissInfo, self._r.get(path))
 
     def get_swiss_tournament_result(
         self, tournament_id: str, limit: int | None = None
-    ) -> Iterator[Dict[str, TournamentResult]]:
+    ) -> Iterator[Dict[str, SwissResult]]:
         """Results are the players of a swiss tournament with their scores and performance in
         rank order. Note that results for ongoing tournaments can be inconsistent due to
         ranking changes.
@@ -344,7 +344,7 @@ class Tournaments(FmtClient):
         :param tournament_id: the Swiss tournament ID.
         :param limit: Max number of players to fetch
 
-        :return: iterator of the TournamentResult or an empty iterator if no result
+        :return: iterator of the SwissResult or an empty iterator if no result
         """
         path = f"/api/swiss/{tournament_id}/results"
         params = {"nb": limit}
@@ -375,7 +375,7 @@ class Tournaments(FmtClient):
         maxRating: int | None = None,
         nbRatedGame: int | None = None,
         allowList: str | None = None,
-    ) -> Dict[str, TournamentInfo]:
+    ) -> Dict[str, SwissInfo]:
         """Updata a swiss tournament.
 
         :param tournamentId : The unique identifier of the tournament to be updated.
