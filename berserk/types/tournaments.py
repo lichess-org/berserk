@@ -1,6 +1,7 @@
 from typing import Any, List, Dict
 
-from typing_extensions import TypedDict
+from .common import Title
+from typing_extensions import TypedDict, NotRequired
 
 
 class CurrentTournaments(TypedDict):
@@ -40,10 +41,19 @@ class SwissInfo(TypedDict):
     stats: Stats | None
 
 
-class SwissResult(TypedDict):
+# private, abstract class
+class TournamentResult(TypedDict):
     rank: int
+    rating: int
+    username: str
+    title: NotRequired[Title]
+    performance: int
+
+
+class ArenaResult(TournamentResult):
+    score: int
+
+
+class SwissResult(TournamentResult):
     points: int
     tieBreak: float
-    rating: int
-    userName: str
-    performance: int

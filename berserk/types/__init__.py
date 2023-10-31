@@ -11,10 +11,11 @@ from .opening_explorer import (
     Speed,
 )
 from .team import PaginatedTeams, Team
-from .tournaments import CurrentTournaments, SwissResult, SwissInfo
+from .tournaments import ArenaResult, CurrentTournaments, SwissResult, SwissInfo
 
 __all__ = [
     "AccountInformation",
+    "ArenaResult",
     "BulkPairing",
     "BulkPairingGame",
     "ClockConfig",

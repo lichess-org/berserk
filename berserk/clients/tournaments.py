@@ -5,16 +5,16 @@ from typing import Iterator, Any, Dict, List, cast
 from .. import models
 from ..formats import NDJSON, NDJSON_LIST, PGN
 from .base import FmtClient
-from ..types import CurrentTournaments, SwissInfo, SwissResult
+from ..types import ArenaResult, CurrentTournaments, SwissInfo, SwissResult
 
 
 class Tournaments(FmtClient):
     """Client for tournament-related endpoints."""
 
     def get(self) -> CurrentTournaments:
-        """Get recently finished, ongoing, and upcoming tournaments.
+        """Get recently finished, ongoing, and upcoming arenas.
 
-        :return: current tournaments
+        :return: current arenas
         """
         path = "/api/tournament"
         return cast(
@@ -23,7 +23,7 @@ class Tournaments(FmtClient):
         )
 
     def get_tournament(self, tournament_id: str, page: int = 1):
-        """Get information about a tournament.
+        """Get information about an arena.
 
         :param tournament_id
         :return: tournament information
@@ -83,7 +83,7 @@ class Tournaments(FmtClient):
         :param minRating: Minimum rating to join
         :param maxRating: Maximum rating to join
         :param nbRatedGame: Min number of rated games required
-        :return: created tournament info
+        :return: created arena info
         """
         path = "/api/tournament"
         payload = {
@@ -122,7 +122,7 @@ class Tournaments(FmtClient):
         description: str | None = None,
         rated: bool | None = None,
         chatFor: int | None = None,
-    ) -> Dict[str, Any]:
+    ) -> Dict[str, Any]:  # Probably SwissInfo
         """Create a new swiss tournament.
 
         .. note::
@@ -145,7 +145,7 @@ class Tournaments(FmtClient):
         :param description: tournament description
         :param rated: whether the game affects player ratings
         :param chatFor: who can read and write in the chat
-        :return: created tournament info
+        :return: created swiss info
         """
         path = f"/api/swiss/new/{teamId}"
 
@@ -250,11 +250,11 @@ class Tournaments(FmtClient):
     def tournaments_by_user(
         self, username: str, nb: int | None = None
     ) -> List[Dict[str, Any]]:
-        """Get tournaments created by a user.
+        """Get arena tournaments created by a user.
 
         :param username: username
         :param nb: max number of tournaments to fetch
-        :return: tournaments
+        :return: arena tournaments info
         """
 
         path = f"/api/user/{username}/tournament/created"
@@ -272,7 +272,7 @@ class Tournaments(FmtClient):
 
         :param teamId: Id of the team
         :param maxT: how many tournaments to download
-        :return: tournaments
+        :return: arena tournaments
         """
         path = f"/api/team/{teamId}/arena"
         params = {
@@ -289,7 +289,7 @@ class Tournaments(FmtClient):
 
         :param teamId: Id of the team
         :param maxT: how many tournaments to download
-        :return: tournaments
+        :return: swiss tournaments
         """
         path = f"/api/team/{teamId}/swiss"
         params = {
@@ -301,7 +301,7 @@ class Tournaments(FmtClient):
 
     def stream_results(
         self, id: str, limit: int | None = None
-    ) -> Iterator[Dict[str, SwissResult]]:
+    ) -> Iterator[Dict[str, ArenaResult]]:
         """Stream the results of a tournament.
 
         Results are the players of a tournament with their scores and performance in
@@ -334,7 +334,7 @@ class Tournaments(FmtClient):
         path = f"/api/swiss/{tournament_id}"
         return cast(SwissInfo, self._r.get(path))
 
-    def get_swiss_tournament_result(
+    def stream_swiss_results(
         self, tournament_id: str, limit: int | None = None
     ) -> Iterator[Dict[str, SwissResult]]:
         """Results are the players of a swiss tournament with their scores and performance in
