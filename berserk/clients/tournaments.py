@@ -416,45 +416,37 @@ class Tournaments(FmtClient):
         }
         return self._r.post(path, json=payload)
 
-    def join_swiss(
-        self, tournament_id: str, password: str | None = None
-    ) -> Dict[str, bool]:
+    def join_swiss(self, tournament_id: str, password: str | None = None) -> None:
         """Join a Swiss tournament, possibly with a password.
 
         :param tournament_id: the Swiss tournament ID.
-        :return: {"ok": true} with 200 status code if join successfully else {"error": <error message>} with 400 status code
         """
         path = f"/api/swiss/{tournament_id}/join"
         payload = {"password": password}
-        return self._r.post(path, json=payload)
+        self._r.post(path, json=payload)
 
-    def terminate_swiss(self, tournament_id: str) -> Dict[str, bool]:
+    def terminate_swiss(self, tournament_id: str) -> None:
         """Terminate a Swiss tournament.
 
         :param tournament_id: the Swiss tournament ID.
-        :return: {"ok": true} with 200 status code if join successfully else {"error": <error message>} with 400 status code
         """
         path = f"/api/swiss/{tournament_id}/terminate"
-        return self._r.post(path)
+        self._r.post(path)
 
-    def withdraw_swiss(self, tournament_id: str) -> Dict[str, bool]:
+    def withdraw_swiss(self, tournament_id: str) -> Nones:
         """Withdraw a Swiss tournament.
 
         :param tournament_id: the Swiss tournament ID.
-        :return: {"ok": true} with 200 status code if join successfully else {"error": <error message>} with 400 status code
         """
         path = f"/api/swiss/{tournament_id}/withdraw"
-        return self._r.post(path)
+        self._r.post(path)
 
-    def schedule_swiss_next_round(
-        self, tournament_id: str, schedule_time: int
-    ) -> None | Dict[str, str]:
+    def schedule_swiss_next_round(self, tournament_id: str, schedule_time: int) -> None:
         """Manually schedule the next round date and time of a Swiss tournament.
 
         :param tournament_id: the Swiss tournament ID.
         :schedule_time: Timestamp in milliseconds to start the next round at a given date and time.
-        :return: if schedule successfully, nothing would be returned. Otherwise, return the error messages
         """
         path = f"/api/swiss/{tournament_id}/schedule-next-round"
         payload = {"date": schedule_time}
-        return self._r.post(path, json=payload)
+        self._r.post(path, json=payload)
