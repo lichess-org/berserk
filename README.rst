@@ -124,6 +124,12 @@ Most of the API is available:
     client.explorer.get_player_games
     client.explorer.stream_player_games
 
+    client.external_engine.get
+    client.external_engine.get_by_id
+    client.external_engine.create
+    client.external_engine.update
+    client.external_engine.delete
+
     client.games.export
     client.games.export_ongoing_by_player
     client.games.export_by_player

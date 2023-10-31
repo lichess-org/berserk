@@ -22,6 +22,7 @@ from .tv import TV
 from .tablebase import Tablebase
 from .opening_explorer import OpeningExplorer
 from .bulk_pairings import BulkPairings
+from .external_engine import ExternalEngine
 
 __all__ = [
     "Client",
@@ -43,6 +44,7 @@ __all__ = [
     "TV",
     "Tablebase",
     "BulkPairings",
+    "ExternalEngine",
 ]
 
 
@@ -67,6 +69,7 @@ class Client(BaseClient):
     - :class:`tv <berserk.clients.TV>` - get information on tv channels and games
     - :class:`tablebase <berserk.clients.Tablebase>` - lookup endgame tablebase
     - :class:`bulk_pairings <berserk.clients.BulkPairing>` - manage bulk pairings
+    - :class: `external_engine <berserk.clients.ExternalEngine>` - manage external engines
 
     :param session: request session, authenticated as needed
     :param base_url: base API URL to use (if other than the default)
@@ -106,3 +109,4 @@ class Client(BaseClient):
         self.tablebase = Tablebase(session, tablebase_url)
         self.opening_explorer = OpeningExplorer(session, explorer_url)
         self.bulk_pairings = BulkPairings(session, base_url)
+        self.external_engine = ExternalEngine(session, base_url)

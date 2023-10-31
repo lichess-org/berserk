@@ -4,14 +4,20 @@ Changelog
 To be released
 --------------
 
-* Add ``
+* Add::
+    client.external_engine.get
+    client.external_engine.get_by_id
+    client.external_engine.create
+    client.external_engine.update
+    client.external_engine.delete
+* Add::
     client.tournaments.edit_swiss
     client.tournaments.get_swiss
     client.tournaments.join_swiss
     client.tournaments.stream_swiss_results
     client.tournaments.schedule_swiss_next_round
     client.tournaments.terminate_swiss
-    client.tournaments.withdraw_swiss``
+    client.tournaments.withdraw_swiss
 * Add ``client.puzzles.create_race``
 * Add ``client.users.get_by_autocomplete``
 
