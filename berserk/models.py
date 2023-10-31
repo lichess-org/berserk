@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Dict, List, Tuple, TypeVar, TypedDict, overload
+from typing import Dict, List, Tuple, TypeVar, overload
 
 from . import utils
 
@@ -97,9 +97,3 @@ class OAuth(Model):
 class TV(Model):
     createdAt = utils.datetime_from_millis
     lastMoveAt = utils.datetime_from_millis
-
-
-class CurrentTournaments(TypedDict):
-    created: List[Dict[str, Any]]
-    started: List[Dict[str, Any]]
-    finished: List[Dict[str, Any]]
