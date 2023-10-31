@@ -19,6 +19,7 @@ __all__ = [
     "BulkPairing",
     "BulkPairingGame",
     "ClockConfig",
+    "ExternalEngine",
     "LightUser",
     "OnlineLightUser",
     "CurrentTournaments",

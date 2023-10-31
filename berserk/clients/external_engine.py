@@ -8,16 +8,20 @@ from .base import BaseClient
 class ExternalEngine(BaseClient):
     """Client for external engine related endpoints."""
 
-    def get(self) -> Dict[str, Any]:
+    def get(self) -> List[ExternalEngine]:
         """Lists all external engines that have been registered for the user, and the credentials required to use them.
+
+        Requires OAuth2 authorization.
 
         :return: info about the external engines
         """
         path = "/api/external-engine"
         return self._r.get(path)
 
-    def get_by_id(self, engine_id: str) -> Dict[str, Any]:
+    def get_by_id(self, engine_id: str) -> ExternalEngine:
         """Get properties and credentials of an external engine.
+
+        Requires OAuth2 authorization.
 
         :param engine_id: external engine ID
         :return: info about the external engine
@@ -34,8 +38,10 @@ class ExternalEngine(BaseClient):
         provider_secret: str,
         variants: List[str] | None = None,
         provider_data: str | None = None,
-    ) -> Dict[str, Any]:
+    ) -> ExternalEngine:
         """Registers a new external engine for the user.
+
+        Requires OAuth2 authorization.
 
         :param name: engine display name
         :param max_threads: maximum number of available threads
@@ -68,8 +74,10 @@ class ExternalEngine(BaseClient):
         provider_secret: str,
         variants: List[str] | None = None,
         provider_data: str | None = None,
-    ) -> Any:
+    ) -> ExternalEngine:
         """Updates the properties of an external engine.
+
+        Requires OAuth2 authorization.
 
         :param engine_id: engine ID
         :param name: engine display name
@@ -95,6 +103,8 @@ class ExternalEngine(BaseClient):
 
     def delete(self, engine_id: str) -> None:
         """Unregisters an external engine.
+
+        Requires OAuth2 authorization.
 
         :param engine_id: engine ID
         """
