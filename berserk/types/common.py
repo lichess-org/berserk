@@ -12,13 +12,6 @@ class ClockConfig(TypedDict):
     increment: int
 
 
-class PuzzleRace(TypedDict):
-    # Puzzle race ID
-    id: str
-    # Puzzle race URL
-    url: str
-
-
 Color: TypeAlias = Literal["white", "black"]
 
 GameType: TypeAlias = Literal[
