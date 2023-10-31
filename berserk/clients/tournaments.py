@@ -433,7 +433,7 @@ class Tournaments(FmtClient):
         path = f"/api/swiss/{tournament_id}/terminate"
         self._r.post(path)
 
-    def withdraw_swiss(self, tournament_id: str) -> Nones:
+    def withdraw_swiss(self, tournament_id: str) -> None:
         """Withdraw a Swiss tournament.
 
         :param tournament_id: the Swiss tournament ID.
