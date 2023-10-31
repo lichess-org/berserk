@@ -446,7 +446,7 @@ class Tournaments(FmtClient):
         path = f"/api/swiss/{tournament_id}/withdraw"
         return self._r.post(path)
 
-    def schedule_next_round(
+    def schedule_swiss_next_round(
         self, tournament_id: str, schedule_time: int
     ) -> None | Dict[str, str]:
         """Manually schedule the next round date and time of a Swiss tournament.
