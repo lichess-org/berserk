@@ -416,7 +416,7 @@ class Tournaments(FmtClient):
         }
         return self._r.post(path, json=payload)
 
-    def join_swiss_tournament(
+    def join_swiss(
         self, tournament_id: str, password: str | None = None
     ) -> Dict[str, bool]:
         """Join a Swiss tournament, possibly with a password.
@@ -428,7 +428,7 @@ class Tournaments(FmtClient):
         payload = {"password": password}
         return self._r.post(path, json=payload)
 
-    def terminate_swiss_tournament(self, tournament_id: str) -> Dict[str, bool]:
+    def terminate_swiss(self, tournament_id: str) -> Dict[str, bool]:
         """Terminate a Swiss tournament.
 
         :param tournament_id: the Swiss tournament ID.
@@ -437,7 +437,7 @@ class Tournaments(FmtClient):
         path = f"/api/swiss/{tournament_id}/terminate"
         return self._r.post(path)
 
-    def withdraw_swiss_tournament(self, tournament_id: str) -> Dict[str, bool]:
+    def withdraw_swiss(self, tournament_id: str) -> Dict[str, bool]:
         """Withdraw a Swiss tournament.
 
         :param tournament_id: the Swiss tournament ID.
