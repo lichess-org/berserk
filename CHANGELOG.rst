@@ -4,7 +4,8 @@ Changelog
 To be released
 --------------
 
-* Add `client.users.get_by_autocomplete`
+* Add ``client.puzzles.create_race``
+* Add ``client.users.get_by_autocomplete``
 
 Thanks to @handsamtw and @Anupya for their contributions to this release.
 
