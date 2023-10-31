@@ -1,4 +1,4 @@
-from typing import Any, List, Dict
+from typing import Any, List, Dict, Optional
 
 from .common import Title
 from typing_extensions import TypedDict, NotRequired
@@ -38,7 +38,7 @@ class SwissInfo(TypedDict):
     nbOngoing: int
     status: str
     rated: bool
-    stats: Stats | None
+    stats: Optional[Stats]
 
 
 # private, abstract class
