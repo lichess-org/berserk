@@ -22,7 +22,7 @@ class Tournaments(FmtClient):
             self._r.get(path, converter=models.Tournament.convert_values),
         )
 
-    def get_tournament(self, tournament_id: str, page: int = 1):
+    def get_tournament(self, tournament_id: str, page: int = 1) -> Dict[str, Any]:
         """Get information about an arena.
 
         :param tournament_id
@@ -325,7 +325,7 @@ class Tournaments(FmtClient):
         path = f"/api/user/{username}/tournament/created"
         yield from self._r.get(path, stream=True)
 
-    def get_swiss_tournament_info(self, tournament_id: str) -> SwissInfo:
+    def get_swiss(self, tournament_id: str) -> SwissInfo:
         """Get detailed info about a Swiss tournament.
 
         :param tournament_id: the Swiss tournament ID.
