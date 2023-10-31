@@ -5,13 +5,13 @@ To be released
 --------------
 
 * Add ``
+    client.tournaments.edit_swiss
     client.tournaments.get_swiss
-    client.tournaments.update_swiss
     client.tournaments.join_swiss
-    client.tournaments.terminate_swiss
     client.tournaments.stream_swiss_results
-    client.tournaments.withdraw_swiss
-    client.tournaments.schedule_swiss_next_round``
+    client.tournaments.schedule_swiss_next_round
+    client.tournaments.terminate_swiss
+    client.tournaments.withdraw_swiss``
 * Add ``client.puzzles.create_race``
 * Add ``client.users.get_by_autocomplete``
 

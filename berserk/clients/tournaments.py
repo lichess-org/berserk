@@ -350,7 +350,7 @@ class Tournaments(FmtClient):
         params = {"nb": limit}
         yield from self._r.get(path, params=params, stream=True)
 
-    def update_swiss(
+    def edit_swiss(
         self,
         tournamentId: str,
         clockLimit: int,
