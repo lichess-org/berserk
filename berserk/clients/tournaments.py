@@ -5,20 +5,20 @@ from typing import Iterator, Any, Dict, List, cast
 from .. import models
 from ..formats import NDJSON, NDJSON_LIST, PGN
 from .base import FmtClient
-from ..types.tournament import SwissInfo, SwissResult
+from ..types import CurrentTournaments, SwissInfo, SwissResult
 
 
 class Tournaments(FmtClient):
     """Client for tournament-related endpoints."""
 
-    def get(self) -> models.CurrentTournaments:
+    def get(self) -> CurrentTournaments:
         """Get recently finished, ongoing, and upcoming tournaments.
 
         :return: current tournaments
         """
         path = "/api/tournament"
         return cast(
-            models.CurrentTournaments,
+            CurrentTournaments,
             self._r.get(path, converter=models.Tournament.convert_values),
         )
 

@@ -1,4 +1,12 @@
-from typing import TypedDict, Union
+from typing import Any, List, Dict
+
+from typing_extensions import TypedDict
+
+
+class CurrentTournaments(TypedDict):
+    created: List[Dict[str, Any]]
+    started: List[Dict[str, Any]]
+    finished: List[Dict[str, Any]]
 
 
 class Clock(TypedDict):
@@ -29,7 +37,7 @@ class SwissInfo(TypedDict):
     nbOngoing: int
     status: str
     rated: bool
-    stats: Union[Stats, None]
+    stats: Stats | None
 
 
 class SwissResult(TypedDict):

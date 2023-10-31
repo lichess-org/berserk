@@ -11,6 +11,7 @@ from .opening_explorer import (
     Speed,
 )
 from .team import PaginatedTeams, Team
+from .tournaments import CurrentTournaments, SwissResult, SwissInfo
 
 __all__ = [
     "AccountInformation",
@@ -19,6 +20,7 @@ __all__ = [
     "ClockConfig",
     "LightUser",
     "OnlineLightUser",
+    "CurrentTournaments",
     "OpeningExplorerRating",
     "OpeningExplorerVariant",
     "OpeningStatistic",
@@ -29,5 +31,7 @@ __all__ = [
     "PuzzleRace",
     "Speed",
     "StreamerInfo",
+    "SwissInfo",
+    "SwissResult",
     "Team",
 ]
