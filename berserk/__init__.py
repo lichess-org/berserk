@@ -11,7 +11,14 @@ __version__ = berserk_metadata["Version"]
 
 
 from .clients import Client
-from .types import Team, OpeningStatistic, PaginatedTeams, LightUser, OnlineLightUser
+from .types import (
+    Team,
+    OpeningStatistic,
+    PaginatedTeams,
+    LightUser,
+    OnlineLightUser,
+    PuzzleRace,
+)
 from .session import TokenSession
 from .session import Requestor
 from .formats import JSON
@@ -36,4 +43,5 @@ __all__ = [
     "NDJSON",
     "NDJSON_LIST",
     "PGN",
+    "PuzzleRace",
 ]
