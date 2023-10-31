@@ -1,0 +1,54 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://lichess.org/api/tournament/hallow23/results?nb=3
+  response:
+    body:
+      string: '{"rank":1,"score":149,"rating":2394,"username":"GGbers","performance":2449}
+
+        {"rank":2,"score":124,"rating":2346,"username":"Kondor75","title":"IM","performance":2447}
+
+        {"rank":3,"score":123,"rating":2241,"username":"sadisticTushi","performance":2314}
+
+        '
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Disposition:
+      - attachment; filename=lichess_tournament_2023.10.31_hallow23_halloween-arena-2023.ndjson
+      Content-Type:
+      - application/x-ndjson
+      Date:
+      - Tue, 31 Oct 2023 21:10:24 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      X-Frame-Options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+version: 1

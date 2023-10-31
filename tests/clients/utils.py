@@ -17,7 +17,7 @@ def validate(t: type, value: any):
     class TWithConfig(t):
         __pydantic_config__ = config
 
-    print(value)
+    print("value", value)
     try:
         # In case `t` is a `TypedDict`
         return TypeAdapter(TWithConfig).validate_python(value)

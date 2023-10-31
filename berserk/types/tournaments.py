@@ -55,5 +55,5 @@ class ArenaResult(TournamentResult):
 
 
 class SwissResult(TournamentResult):
-    points: int
+    points: float  # can be .5 in case of draw
     tieBreak: float

@@ -348,12 +348,7 @@ class Tournaments(FmtClient):
         """
         path = f"/api/swiss/{tournament_id}/results"
         params = {"nb": limit}
-        try:
-            yield from self._r.get(path, params=params, stream=True)
-        except Exception as e:
-            # Currently, it will return an empty iterator, but it is better to show some error messages
-            # The issue also orrurs in all remaining function without error handling
-            return e
+        yield from self._r.get(path, params=params, stream=True)
 
     def update_swiss(
         self,
