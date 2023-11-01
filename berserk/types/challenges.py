@@ -1,27 +1,40 @@
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired
+from typing_extensions import TypeAlias, TypedDict, NotRequired, Literal
 
-from berserk.types.common import (
-    Title,
-    ChallengeStatus,
-    Variant,
-    Color,
-    ChallengeDirection,
-)
-from berserk.types.opening_explorer import Speed
+from .common import Variant, Color, OnlineLightUser
+from .opening_explorer import Speed
+
+ChallengeStatus: TypeAlias = Literal[
+    "created",
+    "offline",
+    "canceled",
+    "declined",
+    "accepted",
+]
+
+ChallengeDeclineReason: TypeAlias = Literal[
+    "generic",
+    "later",
+    "tooFast",
+    "tooSlow",
+    "timeControl",
+    "rated",
+    "casual",
+    "standard",
+    "variant",
+    "noBot",
+    "onlyBot",
+]
+
+ChallengeDirection: TypeAlias = Literal["in", "out"]
 
 
-class User(TypedDict):
+class User(OnlineLightUser):
     """Challenge User"""
 
     rating: NotRequired[float]
     provisional: NotRequired[bool]
-    online: NotRequired[bool]
-    id: str
-    name: str
-    title: NotRequired[Title]
-    patron: NotRequired[bool]
 
 
 class Challenge(TypedDict):

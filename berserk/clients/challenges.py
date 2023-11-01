@@ -3,8 +3,8 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from deprecated import deprecated
 
-from ..types.challenges import Challenge
-from ..types.common import Color, Variant, ChallengeDeclineReason
+from ..types.challenges import Challenge, ChallengeDeclineReason
+from ..types.common import Color, Variant
 from .base import BaseClient
 
 
