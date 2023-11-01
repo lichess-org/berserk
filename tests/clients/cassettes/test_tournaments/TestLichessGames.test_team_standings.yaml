@@ -11,7 +11,7 @@ interactions:
       User-Agent:
       - python-requests/2.31.0
     method: GET
-    uri: https://lichess.org/api/tournament/teams/id=fake
+    uri: https://lichess.org/api/tournament/fake/teams
   response:
     body:
       string: '{"id": "CdPg1ey4","teams": [{ "rank":1, "id":"cat-lovers", "score":842, "players":[
