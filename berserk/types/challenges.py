@@ -1,7 +1,8 @@
 from __future__ import annotations
 
 from typing_extensions import TypedDict, NotRequired, TypeAlias, Literal
-
+from common import Color, Title, Variant
+from opening_explorer import Speed
 
 Status: TypeAlias = Literal[
     "created",
@@ -9,73 +10,6 @@ Status: TypeAlias = Literal[
     "canceled",
     "declined",
     "accepted",
-]
-
-
-Title: TypeAlias = Literal[
-    "GM",
-    "WGM",
-    "IM",
-    "WIM",
-    "FM",
-    "WFM",
-    "NM",
-    "CM",
-    "WCM",
-    "WNM",
-    "LM",
-    "BOT",
-]
-
-
-class User(TypedDict):
-    """Challenge User"""
-
-    rating: NotRequired[float]
-    provisional: NotRequired[bool]
-    online: NotRequired[bool]
-    id: str
-    name: str
-    title: NotRequired[Title]
-    patron: NotRequired[bool]
-
-
-VariantKey: TypeAlias = Literal[
-    "standard",
-    "chess960",
-    "crazyhouse",
-    "antichess",
-    "atomic",
-    "horde",
-    "kingOfTheHill",
-    "racingKings",
-    "threeCheck",
-    "fromPosition",
-]
-
-
-class Variant(TypedDict):
-    """Information about a challenge variant."""
-
-    key: NotRequired[VariantKey]
-    name: NotRequired[str]
-    short: NotRequired[str]
-
-
-Speed: TypeAlias = Literal[
-    "ultraBullet",
-    "bullet",
-    "blitz",
-    "rapid",
-    "classical",
-    "correspondence",
-]
-
-
-Color: TypeAlias = Literal[
-    "white",
-    "black",
-    "random",
 ]
 
 Direction: TypeAlias = Literal[
@@ -97,6 +31,18 @@ DeclineReason: TypeAlias = Literal[
     "noBot",
     "onlyBot",
 ]
+
+
+class User(TypedDict):
+    """Challenge User"""
+
+    rating: NotRequired[float]
+    provisional: NotRequired[bool]
+    online: NotRequired[bool]
+    id: str
+    name: str
+    title: NotRequired[Title]
+    patron: NotRequired[bool]
 
 
 class Challenge(TypedDict):
