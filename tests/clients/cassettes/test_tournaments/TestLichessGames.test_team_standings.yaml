@@ -14,7 +14,7 @@ interactions:
     uri: https://lichess.org/api/tournament/fake/teams
   response:
     body:
-      json: {
+      string: {
         "id": "CdPg1ey4",
         "teams": [
           {
