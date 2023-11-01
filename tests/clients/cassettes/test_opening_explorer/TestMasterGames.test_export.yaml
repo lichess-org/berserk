@@ -1,0 +1,71 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://explorer.lichess.ovh/master/pgn/LSVO85Cp
+  response:
+    body:
+      string: '[Event "3rd Norway Chess 2015"]
+
+        [Site "Stavanger NOR"]
+
+        [Date "2015.06.17"]
+
+        [Round "2.4"]
+
+        [White "Caruana, F."]
+
+        [Black "Carlsen, M."]
+
+        [Result "1-0"]
+
+        [WhiteElo "2805"]
+
+        [BlackElo "2876"]
+
+
+        1. e4 e5 2. Nf3 Nc6 3. Bb5 Nf6 4. O-O Nxe4 5. d4 Nd6 6. Bxc6 dxc6 7. dxe5
+        Nf5 8. Qxd8+ Kxd8 9. h3 h6 10. Rd1+ Ke8 11. Nc3 Ne7 12. b3 Bf5 13. Nd4 Bh7
+        14. Bb2 Rd8 15. Nce2 Nd5 16. c4 Nb4 17. Nf4 Rg8 18. g4 Na6 19. Nf5 Nc5 20.
+        Rxd8+ Kxd8 21. Rd1+ Kc8 22. Ba3 Ne6 23. Nxe6 Bxa3 24. Nexg7 Bf8 25. e6 Bxf5
+        26. Nxf5 fxe6 27. Ng3 Be7 28. Kg2 Rf8 29. Rd3 Rf7 30. Nh5 Bd6 31. Rf3 Rh7
+        32. Re3 Re7 33. f4 Ba3 34. Kf3 Bb2 35. Re2 Bc3 36. g5 Kd7 37. Kg4 Re8 38.
+        Ng3 Rh8 39. h4 b6 40. h5 c5 41. g6 Re8 42. f5 exf5+ 43. Kf4 Rh8 44. Nxf5 Bf6
+        45. Rg2 1-0
+
+        '
+    headers:
+      Access-Control-Allow-Headers:
+      - Accept,If-Modified-Since,Cache-Control,X-Requested-With
+      Access-Control-Allow-Methods:
+      - GET,OPTIONS
+      Access-Control-Allow-Origin:
+      - '*'
+      Cache-Control:
+      - max-age=10800
+      - public
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '722'
+      Content-Type:
+      - application/x-chess-pgn
+      Date:
+      - Wed, 01 Nov 2023 07:49:11 GMT
+      Expires:
+      - Wed, 01 Nov 2023 10:49:11 GMT
+      Server:
+      - nginx
+    status:
+      code: 200
+      message: OK
+version: 1

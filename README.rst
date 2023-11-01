@@ -123,6 +123,7 @@ Most of the API is available:
     client.explorer.get_masters_games
     client.explorer.get_player_games
     client.explorer.stream_player_games
+    client.explorer.get_otb_master_game
 
     client.external_engine.get
     client.external_engine.get_by_id

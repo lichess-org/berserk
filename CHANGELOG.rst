@@ -4,6 +4,7 @@ Changelog
 To be released
 --------------
 
+* Add ``client.explorer.get_otb_master_game``
 * Add::
 
     client.external_engine.get
