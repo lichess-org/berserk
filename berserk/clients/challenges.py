@@ -227,7 +227,7 @@ class Challenges(BaseClient):
         self._r.post(path)
 
     def create_tokens_for_multiple_users(
-        self, usernames: str, description: str
+        self, usernames: List[str], description: str
     ) -> Dict[str, str]:
         """This endpoint can only be used by Lichess admins.
 
@@ -235,10 +235,10 @@ class Challenges(BaseClient):
 
         If a similar token already exists for a user, it is reused. This endpoint is idempotent.
 
-        :param usernames: usernames separated with commas
+        :param usernames: List of usernames
         :param description: user-visible token description
         :return: challenge:write tokens of each user
         """
         path = "/api/token/admin-challenge"
-        payload = {"users": usernames, "description": description}
+        payload = {"users": ",".join(usernames), "description": description}
         return self._r.post(path=path, payload=payload)
