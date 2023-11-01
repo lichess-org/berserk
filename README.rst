@@ -123,6 +123,13 @@ Most of the API is available:
     client.explorer.get_masters_games
     client.explorer.get_player_games
     client.explorer.stream_player_games
+    client.explorer.get_otb_master_game
+
+    client.external_engine.get
+    client.external_engine.get_by_id
+    client.external_engine.create
+    client.external_engine.update
+    client.external_engine.delete
 
     client.games.export
     client.games.export_ongoing_by_player
@@ -145,6 +152,7 @@ Most of the API is available:
     client.puzzles.get_puzzle_activity
     client.puzzles.get_puzzle_dashboard
     client.puzzles.get_storm_dashboard
+    client.puzzles.create_race
 
     client.relations.get_users_followed
     client.relations.follow
@@ -174,17 +182,24 @@ Most of the API is available:
     client.teams.search
     client.teams.message_all_members
 
+    client.tournaments.edit_swiss
     client.tournaments.get
     client.tournaments.get_tournament
+    client.tournaments.get_swiss
     client.tournaments.create_arena
     client.tournaments.create_swiss
     client.tournaments.export_arena_games
     client.tournaments.export_swiss_games
     client.tournaments.arena_by_team
     client.tournaments.swiss_by_team
+    client.tournaments.join_swiss
+    client.tournaments.terminate_swiss
     client.tournaments.tournaments_by_user
     client.tournaments.stream_results
+    client.tournaments.stream_swiss_results
     client.tournaments.stream_by_creator
+    client.tournaments.withdraw_swiss
+    client.tournaments.schedule_swiss_next_round
 
     client.tv.get_current_games
     client.tv.stream_current_game

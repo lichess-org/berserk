@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-from typing import Iterator, Any, Dict
+from typing import Iterator, Any, Dict, cast
 
 from .. import models
 from ..formats import NDJSON
 from .base import BaseClient
+from ..types import PuzzleRace
 
 
 class Puzzles(BaseClient):
@@ -59,7 +60,7 @@ class Puzzles(BaseClient):
 
     def get_storm_dashboard(self, username: str, days: int = 30) -> Dict[str, Any]:
         """Get storm dashboard of a player. Set days to 0 if you're only interested in
-        the highscore.
+        the high score.
 
         :param username: the username of the player to download the dashboard for
         :param days: how many days of history to return
@@ -68,3 +69,12 @@ class Puzzles(BaseClient):
         path = f"/api/storm/dashboard/{username}"
         params = {"days": days}
         return self._r.get(path, params=params)
+
+    def create_race(self) -> PuzzleRace:
+        """Create a new private puzzle race. The Lichess user who creates the race must join the race page,
+        and manually start the race when enough players have joined.
+
+        :return: puzzle race ID and URL
+        """
+        path = "/api/racer"
+        return cast(PuzzleRace, self._r.post(path))

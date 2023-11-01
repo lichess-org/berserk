@@ -5,24 +5,25 @@ from typing import Iterator, Any, Dict, List, cast
 from .. import models
 from ..formats import NDJSON, NDJSON_LIST, PGN
 from .base import FmtClient
+from ..types import ArenaResult, CurrentTournaments, SwissInfo, SwissResult
 
 
 class Tournaments(FmtClient):
     """Client for tournament-related endpoints."""
 
-    def get(self) -> models.CurrentTournaments:
-        """Get recently finished, ongoing, and upcoming tournaments.
+    def get(self) -> CurrentTournaments:
+        """Get recently finished, ongoing, and upcoming arenas.
 
-        :return: current tournaments
+        :return: current arenas
         """
         path = "/api/tournament"
         return cast(
-            models.CurrentTournaments,
+            CurrentTournaments,
             self._r.get(path, converter=models.Tournament.convert_values),
         )
 
-    def get_tournament(self, tournament_id: str, page: int = 1):
-        """Get information about a tournament.
+    def get_tournament(self, tournament_id: str, page: int = 1) -> Dict[str, Any]:
+        """Get information about an arena.
 
         :param tournament_id
         :return: tournament information
@@ -82,7 +83,7 @@ class Tournaments(FmtClient):
         :param minRating: Minimum rating to join
         :param maxRating: Maximum rating to join
         :param nbRatedGame: Min number of rated games required
-        :return: created tournament info
+        :return: created arena info
         """
         path = "/api/tournament"
         payload = {
@@ -121,7 +122,7 @@ class Tournaments(FmtClient):
         description: str | None = None,
         rated: bool | None = None,
         chatFor: int | None = None,
-    ) -> Dict[str, Any]:
+    ) -> Dict[str, Any]:  # Probably SwissInfo
         """Create a new swiss tournament.
 
         .. note::
@@ -144,7 +145,7 @@ class Tournaments(FmtClient):
         :param description: tournament description
         :param rated: whether the game affects player ratings
         :param chatFor: who can read and write in the chat
-        :return: created tournament info
+        :return: created swiss info
         """
         path = f"/api/swiss/new/{teamId}"
 
@@ -249,11 +250,11 @@ class Tournaments(FmtClient):
     def tournaments_by_user(
         self, username: str, nb: int | None = None
     ) -> List[Dict[str, Any]]:
-        """Get tournaments created by a user.
+        """Get arena tournaments created by a user.
 
         :param username: username
         :param nb: max number of tournaments to fetch
-        :return: tournaments
+        :return: arena tournaments info
         """
 
         path = f"/api/user/{username}/tournament/created"
@@ -271,7 +272,7 @@ class Tournaments(FmtClient):
 
         :param teamId: Id of the team
         :param maxT: how many tournaments to download
-        :return: tournaments
+        :return: arena tournaments
         """
         path = f"/api/team/{teamId}/arena"
         params = {
@@ -288,7 +289,7 @@ class Tournaments(FmtClient):
 
         :param teamId: Id of the team
         :param maxT: how many tournaments to download
-        :return: tournaments
+        :return: swiss tournaments
         """
         path = f"/api/team/{teamId}/swiss"
         params = {
@@ -300,7 +301,7 @@ class Tournaments(FmtClient):
 
     def stream_results(
         self, id: str, limit: int | None = None
-    ) -> Iterator[Dict[str, Any]]:
+    ) -> Iterator[Dict[str, ArenaResult]]:
         """Stream the results of a tournament.
 
         Results are the players of a tournament with their scores and performance in
@@ -323,3 +324,129 @@ class Tournaments(FmtClient):
         """
         path = f"/api/user/{username}/tournament/created"
         yield from self._r.get(path, stream=True)
+
+    def get_swiss(self, tournament_id: str) -> SwissInfo:
+        """Get detailed info about a Swiss tournament.
+
+        :param tournament_id: the Swiss tournament ID.
+        :return: detailed info about a Swiss tournament
+        """
+        path = f"/api/swiss/{tournament_id}"
+        return cast(SwissInfo, self._r.get(path))
+
+    def stream_swiss_results(
+        self, tournament_id: str, limit: int | None = None
+    ) -> Iterator[Dict[str, SwissResult]]:
+        """Results are the players of a swiss tournament with their scores and performance in
+        rank order. Note that results for ongoing tournaments can be inconsistent due to
+        ranking changes.
+
+        :param tournament_id: the Swiss tournament ID.
+        :param limit: Max number of players to fetch
+
+        :return: iterator of the SwissResult or an empty iterator if no result
+        """
+        path = f"/api/swiss/{tournament_id}/results"
+        params = {"nb": limit}
+        yield from self._r.get(path, params=params, stream=True)
+
+    def edit_swiss(
+        self,
+        tournamentId: str,
+        clockLimit: int,
+        clockIncrement: int,
+        nbRounds: int,
+        startsAt: int | None = None,
+        roundInterval: int | None = None,
+        variant: str | None = None,
+        description: str | None = None,
+        name: str | None = None,
+        rated: bool | None = True,
+        password: str | None = None,
+        forbiddenPairings: str | None = None,
+        manualPairings: str | None = None,
+        chatFor: int | None = 20,
+        minRating: int | None = None,
+        maxRating: int | None = None,
+        nbRatedGame: int | None = None,
+        allowList: str | None = None,
+    ) -> Dict[str, SwissInfo]:
+        """Updata a swiss tournament.
+
+        :param tournamentId : The unique identifier of the tournament to be updated.
+        :param clockLimit : The time limit for each player's clock.
+        :param clockIncrement : The time increment added to a player's clock after each move.
+        :param nbRounds : The number of rounds in the tournament.
+        :param startsAt : The start time of the tournament in Unix timestamp format.
+        :param roundInterval :The time interval between rounds in minutes.
+        :param variant :The chess variant of the tournament.
+        :param description : A description of the tournament.
+        :param name : The name of the tournament.
+        :param rated : Whether the tournament is rated.
+        :param password : A password to access the tournament.
+        :param forbiddenPairings : Specify forbidden pairings in the tournament.
+        :param manualPairings : Specify manual pairings for the tournament.
+        :param chatFor :The duration for which the chat is available in minutes.
+        :param minRating : The minimum rating required to participate in the tournament.
+        :param maxRating : The maximum rating allowed to participate in the tournament.
+        :param nbRatedGame : The number of rated games required for participation.
+        :param allowList : Specify an allow list for the tournament.
+        :return A dictionary containing information about the updated Swiss tournament.
+        """
+        path = f"/api/swiss/{tournamentId}/edit/"
+
+        payload = {
+            "name": name,
+            "clock.limit": clockLimit,
+            "clock.increment": clockIncrement,
+            "nbRounds": nbRounds,
+            "startsAt": startsAt,
+            "roundInterval": roundInterval,
+            "variant": variant,
+            "description": description,
+            "rated": rated,
+            "password": password,
+            "forbiddenPairings": forbiddenPairings,
+            "manualPairings": manualPairings,
+            "conditions.minRating.rating": minRating,
+            "conditions.maxRating.rating": maxRating,
+            "conditions.nbRatedGame.nb": nbRatedGame,
+            "conditions.allowList": allowList,
+            "chatFor": chatFor,
+        }
+        return self._r.post(path, json=payload)
+
+    def join_swiss(self, tournament_id: str, password: str | None = None) -> None:
+        """Join a Swiss tournament, possibly with a password.
+
+        :param tournament_id: the Swiss tournament ID.
+        """
+        path = f"/api/swiss/{tournament_id}/join"
+        payload = {"password": password}
+        self._r.post(path, json=payload)
+
+    def terminate_swiss(self, tournament_id: str) -> None:
+        """Terminate a Swiss tournament.
+
+        :param tournament_id: the Swiss tournament ID.
+        """
+        path = f"/api/swiss/{tournament_id}/terminate"
+        self._r.post(path)
+
+    def withdraw_swiss(self, tournament_id: str) -> None:
+        """Withdraw a Swiss tournament.
+
+        :param tournament_id: the Swiss tournament ID.
+        """
+        path = f"/api/swiss/{tournament_id}/withdraw"
+        self._r.post(path)
+
+    def schedule_swiss_next_round(self, tournament_id: str, schedule_time: int) -> None:
+        """Manually schedule the next round date and time of a Swiss tournament.
+
+        :param tournament_id: the Swiss tournament ID.
+        :schedule_time: Timestamp in milliseconds to start the next round at a given date and time.
+        """
+        path = f"/api/swiss/{tournament_id}/schedule-next-round"
+        payload = {"date": schedule_time}
+        self._r.post(path, json=payload)

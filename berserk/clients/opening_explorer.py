@@ -11,6 +11,7 @@ from ..types import (
     Speed,
     OpeningExplorerRating,
 )
+from ..formats import PGN
 from ..types.common import Color
 
 logger = logging.getLogger("berserk.client.opening_explorer")
@@ -196,3 +197,12 @@ class OpeningExplorer(BaseClient):
 
         for response in self._r.get(path, params=params, stream=True):
             yield cast(OpeningStatistic, response)
+
+    def get_otb_master_game(self, game_id: str) -> str:
+        """Get PGN representation of an over-the-board master game.
+
+        :param game_id: game ID
+        :return: PGN of the game
+        """
+        path = f"/master/pgn/{game_id}"
+        return self._r.get(path, fmt=PGN)

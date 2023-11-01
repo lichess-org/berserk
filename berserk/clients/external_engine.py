@@ -1,0 +1,114 @@
+from __future__ import annotations
+
+from typing import List, cast
+
+from .base import BaseClient
+
+
+class ExternalEngine(BaseClient):
+    """Client for external engine related endpoints."""
+
+    def get(self) -> List[ExternalEngine]:
+        """Lists all external engines that have been registered for the user, and the credentials required to use them.
+
+        Requires OAuth2 authorization.
+
+        :return: info about the external engines
+        """
+        path = "/api/external-engine"
+        return cast(List[ExternalEngine], self._r.get(path))
+
+    def get_by_id(self, engine_id: str) -> ExternalEngine:
+        """Get properties and credentials of an external engine.
+
+        Requires OAuth2 authorization.
+
+        :param engine_id: external engine ID
+        :return: info about the external engine
+        """
+        path = f"/api/external-engine/{engine_id}"
+        return cast(ExternalEngine, self._r.get(path))
+
+    def create(
+        self,
+        name: str,
+        max_threads: int,
+        max_hash_table_size: int,
+        default_depth: int,
+        provider_secret: str,
+        variants: List[str] | None = None,
+        provider_data: str | None = None,
+    ) -> ExternalEngine:
+        """Registers a new external engine for the user.
+
+        Requires OAuth2 authorization.
+
+        :param name: engine display name
+        :param max_threads: maximum number of available threads
+        :param max_hash_table_size: maximum available hash table size, in MiB
+        :param default_depth: estimated depth of normal search
+        :param provider_secret: random token that used to wait for analysis requests and provide analysis
+        :param variants: list of supported chess variants
+        :param provider_data: arbitrary data that engine provider can use for identification or bookkeeping
+        :return: info about the external engine
+        """
+        path = "/api/external-engine"
+        payload = {
+            "name": name,
+            "maxThreads": max_threads,
+            "maxHash": max_hash_table_size,
+            "defaultDepth": default_depth,
+            "variants": variants,
+            "providerSecret": provider_secret,
+            "providerData": provider_data,
+        }
+        return cast(ExternalEngine, self._r.post(path=path, payload=payload))
+
+    def update(
+        self,
+        engine_id: str,
+        name: str,
+        max_threads: int,
+        max_hash_table_size: int,
+        default_depth: int,
+        provider_secret: str,
+        variants: List[str] | None = None,
+        provider_data: str | None = None,
+    ) -> ExternalEngine:
+        """Updates the properties of an external engine.
+
+        Requires OAuth2 authorization.
+
+        :param engine_id: engine ID
+        :param name: engine display name
+        :param max_threads: maximum number of available threads
+        :param max_hash_table_size: maximum available hash table size, in MiB
+        :param default_depth: estimated depth of normal search
+        :param provider_secret: random token that used to wait for analysis requests and provide analysis
+        :param variants: list of supported chess variants
+        :param provider_data: arbitrary data that engine provider can use for identification or bookkeeping
+        :return: info about the external engine
+        """
+        path = f"/api/external-engine/{engine_id}"
+        payload = {
+            "name": name,
+            "maxThreads": max_threads,
+            "maxHash": max_hash_table_size,
+            "defaultDepth": default_depth,
+            "variants": variants,
+            "providerSecret": provider_secret,
+            "providerData": provider_data,
+        }
+        return cast(
+            ExternalEngine, self._r.request(method="PUT", path=path, payload=payload)
+        )
+
+    def delete(self, engine_id: str) -> None:
+        """Unregisters an external engine.
+
+        Requires OAuth2 authorization.
+
+        :param engine_id: engine ID
+        """
+        path = f"/api/external-engine/{engine_id}"
+        self._r.request("DELETE", path)
