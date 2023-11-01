@@ -66,7 +66,10 @@ class Tournaments(FmtClient):
         :return: information about teams in the team battle tournament
         """
         path = f"/api/tournament/{tournament_id}/teams"
-        return self._r.get(path)
+        return cast(
+            TeamBattleResult,
+            self._r.get(path, converter=models.Tournament.convert_values),
+        )
 
     def update_team_battle(
         self,
