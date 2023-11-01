@@ -173,7 +173,9 @@ class Challenges(BaseClient):
         path = f"/api/challenge/{challenge_id}/accept"
         self._r.post(path)
 
-    def decline(self, challenge_id: str, reason: ChallengeDeclineReason = "generic") -> None:
+    def decline(
+        self, challenge_id: str, reason: ChallengeDeclineReason = "generic"
+    ) -> None:
         """Decline an incoming challenge.
 
         :param challenge_id: ID of a challenge
