@@ -1,8 +1,15 @@
 from __future__ import annotations
 
 from typing_extensions import TypedDict, NotRequired
-from common import ChallengeStatus, Color, Title, Variant, ChallengeDirection
-from opening_explorer import Speed
+
+from berserk.types.common import (
+    Title,
+    ChallengeStatus,
+    Variant,
+    Color,
+    ChallengeDirection,
+)
+from berserk.types.opening_explorer import Speed
 
 
 class User(TypedDict):

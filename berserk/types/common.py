@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Union
 
 from typing_extensions import Literal, TypedDict, TypeAlias, NotRequired
 
@@ -93,7 +93,11 @@ ChallengeDeclineReason: TypeAlias = Literal[
 ]
 
 ChallengeStatus: TypeAlias = Literal[
-    "created", "offline", "canceled", "declined", "accepted",
+    "created",
+    "offline",
+    "canceled",
+    "declined",
+    "accepted",
 ]
 
 ChallengeDirection: TypeAlias = Literal["in", "out"]
