@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Union, Literal
+from typing import Union
 
 from typing_extensions import Literal, TypedDict, TypeAlias, NotRequired
 
@@ -47,6 +47,11 @@ GameType: TypeAlias = Literal[
     "fromPosition",
 ]
 
+Speed = Literal[
+    "ultraBullet", "bullet", "blitz", "rapid", "classical", "correspondence"
+]
+
+
 Title = Literal[
     "GM", "WGM", "IM", "WIM", "FM", "WFM", "NM", "CM", "WCM", "WNM", "LM", "BOT"
 ]
@@ -76,18 +81,4 @@ PerfType: TypeAlias = Union[
 
 GameRule: TypeAlias = Literal[
     "noAbort", "noRematch", "noGiveTime", "noClaimWin", "noEarlyDraw"
-]
-
-ChallengeDeclineReason: TypeAlias = Literal[
-    "generic",
-    "later",
-    "tooFast",
-    "tooSlow",
-    "timeControl",
-    "rated",
-    "casual",
-    "standard",
-    "variant",
-    "noBot",
-    "onlyBot",
 ]

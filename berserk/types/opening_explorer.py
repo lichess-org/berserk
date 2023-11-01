@@ -2,23 +2,7 @@ from __future__ import annotations
 
 from typing import Literal, List
 from typing_extensions import TypedDict
-
-OpeningExplorerVariant = Literal[
-    "standard",
-    "chess960",
-    "crazyhouse",
-    "antichess",
-    "atomic",
-    "horde",
-    "kingOfTheHill",
-    "racingKings",
-    "threeCheck",
-    "fromPosition",
-]
-
-Speed = Literal[
-    "ultraBullet", "bullet", "blitz", "rapid", "classical", "correspondence"
-]
+from .common import Speed
 
 OpeningExplorerRating = Literal[
     "0", "1000", "1200", "1400", "1600", "1800", "2000", "2200", "2500"

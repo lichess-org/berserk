@@ -1,13 +1,24 @@
 from __future__ import annotations
 
-from typing import Any, Dict
+from typing import Any, Dict, List
 from deprecated import deprecated
 
-from ..types.common import ChallengeDeclineReason, Color, Variant
+from ..types.challenges import Challenge, ChallengeDeclineReason
+from ..types.common import Color, Variant
 from .base import BaseClient
 
 
 class Challenges(BaseClient):
+    def get_mine(self) -> Dict[str, List[Challenge]]:
+        """Get all outgoing challenges (created by me) and incoming challenges (targeted at me).
+
+        Requires OAuth2 authorization with challenge:read scope.
+
+        :return: all my outgoing and incoming challenges
+        """
+        path = "/api/challenge"
+        return self._r.get(path)
+
     def create(
         self,
         username: str,
@@ -173,3 +184,61 @@ class Challenges(BaseClient):
         path = f"/api/challenge/{challenge_id}/decline"
         payload = {"reason": reason}
         self._r.post(path, json=payload)
+
+    def cancel(self, challenge_id: str, opponent_token: str | None = None) -> None:
+        """Cancel an outgoing challenge, or abort the game if challenge was accepted but the game was not yet played.
+
+        Requires OAuth2 authorization with challenge:write, bot:play and board:play scopes.
+
+        :param challenge_id: ID of a challenge
+        :param opponent_token: if set to the challenge:write token of the opponent, allows game to be cancelled
+            even if both players have moved
+        """
+        path = f"/api/challenge/{challenge_id}/cancel"
+        params = {"opponentToken": opponent_token}
+        self._r.post(path=path, params=params)
+
+    def start_clocks(
+        self, game_id: str, token_player_1: str, token_player_2: str
+    ) -> None:
+        """Starts the clocks of a game immediately, even if a player has not yet made a move.
+
+        Requires the OAuth tokens of both players with challenge:write scope. The tokens can be in any order.
+
+        If the clocks have already started, the call will have no effect.
+
+        :param game_id: game ID
+        :param token_player_1: OAuth token of player 1 with challenge:write scope
+        :param token_player_2: OAuth token of player 2 with challenge:write scope
+        """
+        path = f"/api/challenge/{game_id}/start-clocks"
+        params = {"token1": token_player_1, "token2": token_player_2}
+        self._r.post(path=path, params=params)
+
+    def add_time_to_opponent_clock(self, game_id: str, seconds: int) -> None:
+        """Add seconds to the opponent's clock. Can be used to create games with time odds.
+
+        Requires OAuth2 authorization with challenge:write scope.
+
+        :param game_id: game ID
+        :param seconds: number of seconds to add to opponent's clock
+        """
+        path = f"/api/round/{game_id}/add-time/{seconds}"
+        self._r.post(path)
+
+    def create_tokens_for_multiple_users(
+        self, usernames: List[str], description: str
+    ) -> Dict[str, str]:
+        """This endpoint can only be used by Lichess admins.
+
+        Create and obtain challenge:write tokens for multiple users.
+
+        If a similar token already exists for a user, it is reused. This endpoint is idempotent.
+
+        :param usernames: List of usernames
+        :param description: user-visible token description
+        :return: challenge:write tokens of each user
+        """
+        path = "/api/token/admin-challenge"
+        payload = {"users": ",".join(usernames), "description": description}
+        return self._r.post(path=path, payload=payload)

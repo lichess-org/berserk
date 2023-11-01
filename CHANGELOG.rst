@@ -4,6 +4,14 @@ Changelog
 To be released
 --------------
 
+* Add::
+
+    client.challenges.get_mine
+    client.challenges.cancel
+    client.challenges.start_clocks
+    client.challenges.add_time_to_opponent_clock
+    client.challenges.create_tokens_for_multiple_users
+
 * Add ``client.explorer.get_otb_master_game``
 * Add::
 
