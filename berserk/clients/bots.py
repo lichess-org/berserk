@@ -4,8 +4,8 @@ from typing import Iterator, Any, Dict
 
 from .. import models
 from ..formats import NDJSON
-from ..types.challenges import DeclineReason
 from .base import BaseClient
+from ..types.common import ChallengeDeclineReason
 
 
 class Bots(BaseClient):
@@ -86,7 +86,7 @@ class Bots(BaseClient):
         self._r.post(path)
 
     def decline_challenge(
-        self, challenge_id: str, reason: DeclineReason = "generic"
+        self, challenge_id: str, reason: ChallengeDeclineReason = "generic"
     ) -> None:
         """Decline an incoming challenge.
 

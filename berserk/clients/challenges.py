@@ -3,8 +3,8 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from deprecated import deprecated
 
-from ..types.challenges import Challenge, DeclineReason
-from ..types.common import Color, Variant
+from ..types.challenges import Challenge
+from ..types.common import Color, Variant, ChallengeDeclineReason
 from .base import BaseClient
 
 
@@ -173,7 +173,7 @@ class Challenges(BaseClient):
         path = f"/api/challenge/{challenge_id}/accept"
         self._r.post(path)
 
-    def decline(self, challenge_id: str, reason: DeclineReason = "generic") -> None:
+    def decline(self, challenge_id: str, reason: ChallengeDeclineReason = "generic") -> None:
         """Decline an incoming challenge.
 
         :param challenge_id: ID of a challenge

@@ -1,36 +1,8 @@
 from __future__ import annotations
 
-from typing_extensions import TypedDict, NotRequired, TypeAlias, Literal
-from common import Color, Title, Variant
+from typing_extensions import TypedDict, NotRequired
+from common import ChallengeStatus, Color, Title, Variant, ChallengeDirection
 from opening_explorer import Speed
-
-Status: TypeAlias = Literal[
-    "created",
-    "offline",
-    "canceled",
-    "declined",
-    "accepted",
-]
-
-Direction: TypeAlias = Literal[
-    "in",
-    "out",
-]
-
-
-DeclineReason: TypeAlias = Literal[
-    "generic",
-    "later",
-    "tooFast",
-    "tooSlow",
-    "timeControl",
-    "rated",
-    "casual",
-    "standard",
-    "variant",
-    "noBot",
-    "onlyBot",
-]
 
 
 class User(TypedDict):
@@ -50,7 +22,7 @@ class Challenge(TypedDict):
 
     id: str
     url: str
-    status: Status
+    status: ChallengeStatus
     challenger: User
     destUser: User | None
     variant: Variant
@@ -59,7 +31,7 @@ class Challenge(TypedDict):
     timeControl: object
     color: Color
     perf: str
-    direction: NotRequired[Direction]
+    direction: NotRequired[ChallengeDirection]
     initialFen: NotRequired[str]
     declineReason: str
     declineReasonKey: str
