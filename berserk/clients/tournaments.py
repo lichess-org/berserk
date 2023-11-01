@@ -6,6 +6,7 @@ from .. import models
 from ..formats import NDJSON, NDJSON_LIST, PGN
 from .base import FmtClient
 from ..types import ArenaResult, CurrentTournaments, SwissInfo, SwissResult
+from ..types.tournaments import TeamBattleResult
 
 
 class Tournaments(FmtClient):
@@ -58,7 +59,7 @@ class Tournaments(FmtClient):
         }
         self._r.post(path=path, params=params, converter=models.Tournament.convert)
 
-    def get_team_standings(self, tournament_id: str) -> Dict[str, Any]:
+    def get_team_standings(self, tournament_id: str) -> TeamBattleResult:
         """Get team standing of a team battle tournament, with their respective top players.
 
         :param tournament_id: tournament ID
@@ -424,7 +425,7 @@ class Tournaments(FmtClient):
         nbRatedGame: int | None = None,
         allowList: str | None = None,
     ) -> Dict[str, SwissInfo]:
-        """Updata a swiss tournament.
+        """Update a swiss tournament.
 
         :param tournamentId : The unique identifier of the tournament to be updated.
         :param clockLimit : The time limit for each player's clock.
@@ -473,10 +474,19 @@ class Tournaments(FmtClient):
         """Join a Swiss tournament, possibly with a password.
 
         :param tournament_id: the Swiss tournament ID.
+        :param password: the Swiss tournament password, if one is required.
         """
         path = f"/api/swiss/{tournament_id}/join"
         payload = {"password": password}
         self._r.post(path, json=payload)
+
+    def terminate_arena(self, tournament_id: str) -> None:
+        """Terminate an Arena tournament.
+
+        :param tournament_id: tournament ID
+        """
+        path = f"/api/tournament/{tournament_id}/terminate"
+        self._r.post(path)
 
     def terminate_swiss(self, tournament_id: str) -> None:
         """Terminate a Swiss tournament.
@@ -484,6 +494,14 @@ class Tournaments(FmtClient):
         :param tournament_id: the Swiss tournament ID.
         """
         path = f"/api/swiss/{tournament_id}/terminate"
+        self._r.post(path)
+
+    def withdraw_arena(self, tournament_id: str) -> None:
+        """Leave an upcoming Arena tournament, or take a break on an ongoing Arena tournament.
+
+        :param tournament_id: tournament ID
+        """
+        path = f"/api/tournament/{tournament_id}/withdraw"
         self._r.post(path)
 
     def withdraw_swiss(self, tournament_id: str) -> None:
@@ -498,24 +516,8 @@ class Tournaments(FmtClient):
         """Manually schedule the next round date and time of a Swiss tournament.
 
         :param tournament_id: the Swiss tournament ID.
-        :schedule_time: Timestamp in milliseconds to start the next round at a given date and time.
+        :param schedule_time: Timestamp in milliseconds to start the next round at a given date and time.
         """
         path = f"/api/swiss/{tournament_id}/schedule-next-round"
         payload = {"date": schedule_time}
         self._r.post(path, json=payload)
-
-    def terminate_arena(self, tournament_id: str) -> None:
-        """Terminate an Arena tournament.
-
-        :param tournament_id: tournament ID
-        """
-        path = f"/api/tournament/{tournament_id}/terminate"
-        self._r.post(path)
-
-    def withdraw_arena(self, tournament_id: str) -> None:
-        """Leave an upcoming Arena tournament, or take a break on an ongoing Arena tournament.
-
-        :param tournament_id: tournament ID
-        """
-        path = f"/api/tournament/{tournament_id}/withdraw"
-        self._r.post(path)

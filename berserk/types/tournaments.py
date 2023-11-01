@@ -57,3 +57,25 @@ class ArenaResult(TournamentResult):
 class SwissResult(TournamentResult):
     points: float  # can be .5 in case of draw
     tieBreak: float
+
+
+class PlayerInfo(TypedDict):
+    name: str
+    id: str
+
+
+class PlayerResult(TypedDict):
+    user: PlayerInfo
+    score: int
+
+
+class TeamResult(TypedDict):
+    rank: int
+    id: str
+    score: int
+    players: List[PlayerResult]
+
+
+class TeamBattleResult(TypedDict):
+    id: str
+    teams: List[TeamResult]
