@@ -11,6 +11,7 @@ from ..types import (
     Speed,
     OpeningExplorerRating,
 )
+from ..formats import PGN
 from ..types.common import Color
 
 logger = logging.getLogger("berserk.client.opening_explorer")
@@ -204,4 +205,4 @@ class OpeningExplorer(BaseClient):
         :return: PGN of the game
         """
         path = f"/master/pgn/{game_id}"
-        return str(self._r.get(path))
+        return self._r.get(path, fmt=PGN)
