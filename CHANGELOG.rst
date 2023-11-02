@@ -1,19 +1,10 @@
 Changelog
 =========
 
-To be released
---------------
+v0.13.1 (2023-11-02)
+------------------
 
-* Add::
-
-    client.tournaments.get_team_standings 
-    client.tournaments.update_team_battle
-    client.tournaments.join_arena
-    client.tournaments.terminate_arena
-    client.tournaments.withdraw_arena
-
-
-* Add::
+* Added::
 
     client.challenges.get_mine
     client.challenges.cancel
@@ -21,8 +12,7 @@ To be released
     client.challenges.add_time_to_opponent_clock
     client.challenges.create_tokens_for_multiple_users
 
-* Add ``client.explorer.get_otb_master_game``
-* Add::
+    client.explorer.get_otb_master_game
 
     client.external_engine.get
     client.external_engine.get_by_id
@@ -30,18 +20,22 @@ To be released
     client.external_engine.update
     client.external_engine.delete
 
-* Add::
+    client.puzzles.create_race
 
     client.tournaments.edit_swiss
     client.tournaments.get_swiss
+    client.tournaments.get_team_standings 
+    client.tournaments.join_arena
     client.tournaments.join_swiss
-    client.tournaments.stream_swiss_results
     client.tournaments.schedule_swiss_next_round
+    client.tournaments.stream_swiss_results
+    client.tournaments.terminate_arena
     client.tournaments.terminate_swiss
+    client.tournaments.update_team_battle
+    client.tournaments.withdraw_arena
     client.tournaments.withdraw_swiss
 
-* Add ``client.puzzles.create_race``
-* Add ``client.users.get_by_autocomplete``
+    client.users.get_by_autocomplete
 
 Thanks to @handsamtw and @Anupya for their contributions to this release.
 
