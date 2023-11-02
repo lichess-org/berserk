@@ -23,5 +23,5 @@ class TestLichessGames:
     @skip_if_older_3_dot_10
     @pytest.mark.vcr
     def test_team_standings(self):
-        res = list(Client().tournaments.get_team_standings("fake"))
+        res = Client().tournaments.get_team_standings("Qv0dRqml")
         validate(TeamBattleResult, res)

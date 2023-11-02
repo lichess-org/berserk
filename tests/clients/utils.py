@@ -1,4 +1,5 @@
 import pytest
+import pprint
 import sys
 
 from pydantic import TypeAdapter, ConfigDict, PydanticUserError
@@ -17,7 +18,8 @@ def validate(t: type, value: any):
     class TWithConfig(t):
         __pydantic_config__ = config
 
-    print("value", value)
+    print("value")
+    pprint.PrettyPrinter(indent=2).pprint(value)
     try:
         # In case `t` is a `TypedDict`
         return TypeAdapter(TWithConfig).validate_python(value)
