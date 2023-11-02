@@ -6,6 +6,15 @@ To be released
 
 * Add::
 
+    client.tournaments.get_team_standings 
+    client.tournaments.update_team_battle
+    client.tournaments.join_arena
+    client.tournaments.terminate_arena
+    client.tournaments.withdraw_arena
+
+
+* Add::
+
     client.challenges.get_mine
     client.challenges.cancel
     client.challenges.start_clocks
