@@ -6,6 +6,15 @@ To be released
 
 * Add::
 
+    client.tournaments.get_team_standings 
+    client.tournaments.update_team_battle
+    client.tournaments.join_arena
+    client.tournaments.terminate_arena
+    client.tournaments.withdraw_arena
+
+
+* Add::
+
     client.challenges.get_mine
     client.challenges.cancel
     client.challenges.start_clocks
@@ -30,7 +39,7 @@ To be released
     client.tournaments.schedule_swiss_next_round
     client.tournaments.terminate_swiss
     client.tournaments.withdraw_swiss
-    
+
 * Add ``client.puzzles.create_race``
 * Add ``client.users.get_by_autocomplete``
 
@@ -39,7 +48,7 @@ Thanks to @handsamtw and @Anupya for their contributions to this release.
 v0.13 (2023-09-29)
 --------------------
 
-* Corretly forward that the library is typed (now following PEP-0561)
+* Correctly forward that the library is typed (now following PEP-0561)
 * Added `broadcast.stream_round` endpoint
 * Improve type safety, remove `enum.py` and use typed dicts instead, this is a breaking change if you relied on these enums
 

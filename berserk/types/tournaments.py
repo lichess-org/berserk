@@ -1,6 +1,6 @@
 from typing import Any, List, Dict, Optional
 
-from .common import Title
+from .common import Title, LightUser
 from typing_extensions import TypedDict, NotRequired
 
 
@@ -57,3 +57,20 @@ class ArenaResult(TournamentResult):
 class SwissResult(TournamentResult):
     points: float  # can be .5 in case of draw
     tieBreak: float
+
+
+class PlayerTeamResult(TypedDict):
+    user: LightUser
+    score: int
+
+
+class TeamResult(TypedDict):
+    rank: int
+    id: str
+    score: int
+    players: List[PlayerTeamResult]
+
+
+class TeamBattleResult(TypedDict):
+    id: str
+    teams: List[TeamResult]

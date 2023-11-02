@@ -6,6 +6,7 @@ from .. import models
 from ..formats import NDJSON, NDJSON_LIST, PGN
 from .base import FmtClient
 from ..types import ArenaResult, CurrentTournaments, SwissInfo, SwissResult
+from ..types.tournaments import TeamBattleResult
 
 
 class Tournaments(FmtClient):
@@ -25,11 +26,64 @@ class Tournaments(FmtClient):
     def get_tournament(self, tournament_id: str, page: int = 1) -> Dict[str, Any]:
         """Get information about an arena.
 
-        :param tournament_id
+        :param tournament_id: tournament ID
+        :param page: the page number of the player standings to view
         :return: tournament information
         """
         path = f"/api/tournament/{tournament_id}?page={page}"
         return self._r.get(path, converter=models.Tournament.convert)
+
+    def join_arena(
+        self,
+        tournament_id: str,
+        password: str | None = None,
+        team: str | None = None,
+        should_pair_immediately: bool = False,
+    ) -> None:
+        """Join an Arena tournament. Also, unpauses if you had previously paused the tournament.
+
+        Requires OAuth2 authorization with tournament:write scope.
+
+        :param tournament_id: tournament ID
+        :param password: tournament password or user-specific entry code generated and shared by the organizer
+        :param team: team with which to join the team battle Arena tournament
+        :param should_pair_immediately: if the tournament is started, attempt to pair the user, even if they are not
+            connected to the tournament page. This expires after one minute, to avoid pairing a user who is long gone.
+            You may call "join" again to extend the waiting.
+        """
+        path = f"/api/tournament/{tournament_id}/join"
+        params = {
+            "password": password,
+            "team": team,
+            "pairMeAsap": should_pair_immediately,
+        }
+        self._r.post(path=path, params=params, converter=models.Tournament.convert)
+
+    def get_team_standings(self, tournament_id: str) -> TeamBattleResult:
+        """Get team standing of a team battle tournament, with their respective top players.
+
+        :param tournament_id: tournament ID
+        :return: information about teams in the team battle tournament
+        """
+        path = f"/api/tournament/{tournament_id}/teams"
+        return cast(TeamBattleResult, self._r.get(path))
+
+    def update_team_battle(
+        self,
+        tournament_id: str,
+        team_ids: str | None = None,
+        team_leader_count_per_team: int | None = None,
+    ) -> Dict[str, Any]:
+        """Set the teams and number of leaders of a team battle tournament.
+
+        :param tournament_id: tournament ID
+        :param team_ids: all team IDs of the team battle, separated by commas
+        :param team_leader_count_per_team: number of team leaders per team
+        :return: updated team battle information
+        """
+        path = f"/api/tournament/team-battle/{tournament_id}"
+        params = {"teams": team_ids, "nbLeaders": team_leader_count_per_team}
+        return self._r.post(path=path, params=params)
 
     def create_arena(
         self,
@@ -78,7 +132,7 @@ class Tournaments(FmtClient):
         :param hasChat: whether players can discuss in a chat
         :param description: anything you want to tell players about the tournament
         :param password: password
-        :param teamBattleByTeam: Id of a team you lead to create a team battle
+        :param teamBattleByTeam: ID of a team you lead to create a team battle
         :param teamId: Restrict entry to members of team
         :param minRating: Minimum rating to join
         :param maxRating: Maximum rating to join
@@ -134,7 +188,7 @@ class Tournaments(FmtClient):
             If ``startsAt`` is left blank then the tournament begins 10 minutes after
             creation
 
-        :param teamId: team Id, required for swiss tournaments
+        :param teamId: team ID, required for swiss tournaments
         :param clockLimit: initial clock time in seconds
         :param clockIncrement: clock increment in seconds
         :param nbRounds: maximum number of rounds to play
@@ -173,14 +227,14 @@ class Tournaments(FmtClient):
         evals: bool = True,
         opening: bool = False,
     ) -> Iterator[str] | Iterator[Dict[str, Any]]:
-        """Export games from a arena tournament.
+        """Export games from an arena tournament.
 
         :param id: tournament ID
         :param as_pgn: whether to return PGN instead of JSON
         :param moves: include moves
         :param tags: include tags
         :param clocks: include clock comments in the PGN moves, when available
-        :param evals: include analysis evalulation comments in the PGN moves, when
+        :param evals: include analysis evaluation comments in the PGN moves, when
             available
         :param opening: include the opening name
         :return: iterator over the exported games, as JSON or PGN
@@ -270,7 +324,7 @@ class Tournaments(FmtClient):
     ) -> List[Dict[str, Any]]:
         """Get arenas created for a team.
 
-        :param teamId: Id of the team
+        :param teamId: team ID
         :param maxT: how many tournaments to download
         :return: arena tournaments
         """
@@ -287,7 +341,7 @@ class Tournaments(FmtClient):
     ) -> List[Dict[str, Any]]:
         """Get swiss tournaments created for a team.
 
-        :param teamId: Id of the team
+        :param teamId: team ID
         :param maxT: how many tournaments to download
         :return: swiss tournaments
         """
@@ -371,7 +425,7 @@ class Tournaments(FmtClient):
         nbRatedGame: int | None = None,
         allowList: str | None = None,
     ) -> Dict[str, SwissInfo]:
-        """Updata a swiss tournament.
+        """Update a swiss tournament.
 
         :param tournamentId : The unique identifier of the tournament to be updated.
         :param clockLimit : The time limit for each player's clock.
@@ -420,10 +474,19 @@ class Tournaments(FmtClient):
         """Join a Swiss tournament, possibly with a password.
 
         :param tournament_id: the Swiss tournament ID.
+        :param password: the Swiss tournament password, if one is required.
         """
         path = f"/api/swiss/{tournament_id}/join"
         payload = {"password": password}
         self._r.post(path, json=payload)
+
+    def terminate_arena(self, tournament_id: str) -> None:
+        """Terminate an Arena tournament.
+
+        :param tournament_id: tournament ID
+        """
+        path = f"/api/tournament/{tournament_id}/terminate"
+        self._r.post(path)
 
     def terminate_swiss(self, tournament_id: str) -> None:
         """Terminate a Swiss tournament.
@@ -431,6 +494,14 @@ class Tournaments(FmtClient):
         :param tournament_id: the Swiss tournament ID.
         """
         path = f"/api/swiss/{tournament_id}/terminate"
+        self._r.post(path)
+
+    def withdraw_arena(self, tournament_id: str) -> None:
+        """Leave an upcoming Arena tournament, or take a break on an ongoing Arena tournament.
+
+        :param tournament_id: tournament ID
+        """
+        path = f"/api/tournament/{tournament_id}/withdraw"
         self._r.post(path)
 
     def withdraw_swiss(self, tournament_id: str) -> None:
@@ -445,7 +516,7 @@ class Tournaments(FmtClient):
         """Manually schedule the next round date and time of a Swiss tournament.
 
         :param tournament_id: the Swiss tournament ID.
-        :schedule_time: Timestamp in milliseconds to start the next round at a given date and time.
+        :param schedule_time: Timestamp in milliseconds to start the next round at a given date and time.
         """
         path = f"/api/swiss/{tournament_id}/schedule-next-round"
         payload = {"date": schedule_time}

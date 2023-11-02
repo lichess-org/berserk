@@ -1,0 +1,48 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://lichess.org/api/tournament/Qv0dRqml/teams
+  response:
+    body:
+      string: '{"id":"Qv0dRqml","teams":[{"rank":1,"id":"EAtFBeZ8","score":230,"players":[{"user":{"name":"vladtok","id":"vladtok"},"score":38},{"user":{"name":"DVlad","id":"dvlad"},"score":31},{"user":{"name":"DmitryK1","title":"FM","id":"dmitryk1"},"score":30},{"user":{"name":"Jhonsmit","id":"jhonsmit"},"score":27},{"user":{"name":"Yacek1111","id":"yacek1111"},"score":21},{"user":{"name":"Hard_Utilizator","title":"FM","id":"hard_utilizator"},"score":19},{"user":{"name":"Andrey-1-razryd","id":"andrey-1-razryd"},"score":18},{"user":{"name":"GuruDomino","id":"gurudomino"},"score":17},{"user":{"name":"D_L88","id":"d_l88"},"score":17},{"user":{"name":"kvmikhed","id":"kvmikhed"},"score":12}]},{"rank":2,"id":"guillon-chess","score":210,"players":[{"user":{"name":"Alexr58","title":"IM","id":"alexr58"},"score":33},{"user":{"name":"BaleevK","id":"baleevk"},"score":26},{"user":{"name":"offspring1476","id":"offspring1476"},"score":25},{"user":{"name":"denis-rucoba-tuanama","id":"denis-rucoba-tuanama"},"score":23},{"user":{"name":"jmcapoi","id":"jmcapoi"},"score":21},{"user":{"name":"borisv007","id":"borisv007"},"score":21},{"user":{"name":"Eribertoperez","id":"eribertoperez"},"score":17},{"user":{"name":"Robbertus","id":"robbertus"},"score":15},{"user":{"name":"FX-DANGER","id":"fx-danger"},"score":15},{"user":{"name":"mjuanchini","id":"mjuanchini"},"score":14}]},{"rank":3,"id":"bZ9dPpbL","score":201,"players":[{"user":{"name":"Wollukav","id":"wollukav"},"score":42},{"user":{"name":"Konek_Gorbunok","title":"FM","id":"konek_gorbunok"},"score":34},{"user":{"name":"RichardRapportGOAT","id":"richardrapportgoat"},"score":29},{"user":{"name":"zadvinski","id":"zadvinski"},"score":24},{"user":{"name":"stasOR","title":"FM","id":"stasor"},"score":22},{"user":{"name":"Tatschess","id":"tatschess"},"score":15},{"user":{"name":"IZhuk","id":"izhuk"},"score":12},{"user":{"name":"cot3","id":"cot3"},"score":10},{"user":{"name":"Rassvet","id":"rassvet"},"score":7},{"user":{"name":"Denisik_Sergei","id":"denisik_sergei"},"score":6}]},{"rank":4,"id":"kingkondor--friends","score":195,"players":[{"user":{"name":"Lozhnonozhka","id":"lozhnonozhka"},"score":38},{"user":{"name":"Igrok_V_Proshlom","title":"FM","id":"igrok_v_proshlom"},"score":35},{"user":{"name":"CblBOPOTKA","id":"cblbopotka"},"score":21},{"user":{"name":"Advokat343","id":"advokat343"},"score":20},{"user":{"name":"Chelcity","id":"chelcity"},"score":19},{"user":{"name":"KingKondor","id":"kingkondor"},"score":16},{"user":{"name":"Rapid2021","id":"rapid2021"},"score":15},{"user":{"name":"RomanIlyin","id":"romanilyin"},"score":14},{"user":{"name":"Andrew_Cc","id":"andrew_cc"},"score":11},{"user":{"name":"Devastator999","id":"devastator999"},"score":6}]},{"rank":5,"id":"fm-andro-team","score":192,"players":[{"user":{"name":"VLAJKO18","id":"vlajko18"},"score":27},{"user":{"name":"Mesatr","id":"mesatr"},"score":27},{"user":{"name":"MK_Juic_R","id":"mk_juic_r"},"score":26},{"user":{"name":"Divos","id":"divos"},"score":24},{"user":{"name":"BlixLT","id":"blixlt"},"score":24},{"user":{"name":"Crni_Konj","id":"crni_konj"},"score":16},{"user":{"name":"Nezh2","id":"nezh2"},"score":16},{"user":{"name":"bujka","id":"bujka"},"score":12},{"user":{"name":"erroras","id":"erroras"},"score":12},{"user":{"name":"Merzo19","id":"merzo19"},"score":8}]},{"rank":6,"id":"rochade-europa-schachzeitung","score":187,"players":[{"user":{"name":"Karlo0300","id":"karlo0300"},"score":28},{"user":{"name":"RapidHector","id":"rapidhector"},"score":28},{"user":{"name":"jeffforever","title":"FM","patron":true,"id":"jeffforever"},"score":24},{"user":{"name":"Apo-Wuff","id":"apo-wuff"},"score":20},{"user":{"name":"GORA-70","id":"gora-70"},"score":19},{"user":{"name":"Coolplay","id":"coolplay"},"score":17},{"user":{"name":"Birsch","id":"birsch"},"score":16},{"user":{"name":"Springteufel","id":"springteufel"},"score":13},{"user":{"name":"a4crest","id":"a4crest"},"score":11},{"user":{"name":"A-HF","id":"a-hf"},"score":11}]},{"rank":7,"id":"ulugbek-company","score":179,"players":[{"user":{"name":"Shihaliev_O","id":"shihaliev_o"},"score":29},{"user":{"name":"turkmenchess2023","id":"turkmenchess2023"},"score":28},{"user":{"name":"umatyakubow1977","id":"umatyakubow1977"},"score":19},{"user":{"name":"Bayramogly1975","id":"bayramogly1975"},"score":18},{"user":{"name":"HG811137AH","id":"hg811137ah"},"score":17},{"user":{"name":"Aymakowa-Mahri","id":"aymakowa-mahri"},"score":16},{"user":{"name":"BayramowBayram","id":"bayramowbayram"},"score":16},{"user":{"name":"chesslbpgm","id":"chesslbpgm"},"score":15},{"user":{"name":"suleymantmdz","id":"suleymantmdz"},"score":11},{"user":{"name":"Ezizovjumamuhammet","id":"ezizovjumamuhammet"},"score":10}]},{"rank":8,"id":"euskal-herria-combinado-vasco-navarro-on-line","score":143,"players":[{"user":{"name":"Edusanzna","id":"edusanzna"},"score":21},{"user":{"name":"ZB_G","id":"zb_g"},"score":19},{"user":{"name":"mikelbenaito","id":"mikelbenaito"},"score":18},{"user":{"name":"GrosXakeTaldea","id":"grosxaketaldea"},"score":16},{"user":{"name":"Kepaketon","id":"kepaketon"},"score":16},{"user":{"name":"DiablucoChess","patron":true,"id":"diablucochess"},"score":14},{"user":{"name":"Athletic_club","id":"athletic_club"},"score":14},{"user":{"name":"Serantes","id":"serantes"},"score":10},{"user":{"name":"ZB_IC","id":"zb_ic"},"score":9},{"user":{"name":"glchakal","id":"glchakal"},"score":6}]},{"rank":9,"id":"schach-club-kreuzberg-e-v","score":119,"players":[{"user":{"name":"bert6209","id":"bert6209"},"score":35},{"user":{"name":"Drunkenstyle36","id":"drunkenstyle36"},"score":23},{"user":{"name":"zonk123","id":"zonk123"},"score":16},{"user":{"name":"Minfrad","id":"minfrad"},"score":15},{"user":{"name":"libby1","id":"libby1"},"score":8},{"user":{"name":"schoasch","patron":true,"id":"schoasch"},"score":8},{"user":{"name":"hopfrog64","id":"hopfrog64"},"score":8},{"user":{"name":"DavidMerck","id":"davidmerck"},"score":2},{"user":{"name":"LTH1","id":"lth1"},"score":2},{"user":{"name":"hiroki6","id":"hiroki6"},"score":2}]},{"rank":10,"id":"moscow-karpov-school","score":102,"players":[{"user":{"name":"SuperLoop","id":"superloop"},"score":30},{"user":{"name":"Fotty_1338","id":"fotty_1338"},"score":27},{"user":{"name":"Pes_V_Sapogah","id":"pes_v_sapogah"},"score":19},{"user":{"name":"clash-of-clans-01","id":"clash-of-clans-01"},"score":13},{"user":{"name":"Timon89","id":"timon89"},"score":13},{"user":{"name":"Grizzly51","id":"grizzly51"},"score":0}]}]}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 02 Nov 2023 21:25:59 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      X-Frame-Options:
+      - DENY
+      content-length:
+      - '6450'
+    status:
+      code: 200
+      message: OK
+version: 1
