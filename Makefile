@@ -49,7 +49,7 @@ publish: ## publish to pypi
 	@echo
 	@echo "Release checklist:"
 	@echo " - Did you update the documentation? (including adding new endpoints to the README?)"
-	@echo " - Did you update the changelog? (remember to thank contributors)"
+	@echo " - Did you update the changelog? (remember to thanks contributors)"
 	@echo " - Did you check that tests, docs, and type checking pass?"
 	@echo " - Did you bump the version?"
 	@echo " - Did you tag the commit? (can also be done afterwards)"
