@@ -66,6 +66,8 @@ Most of the API is available:
     client.account.set_kid_mode
     client.account.upgrade_to_bot
 
+    client.analysis.get_cloud_evaluation
+
     client.board.stream_incoming_events
     client.board.seek
     client.board.stream_game_state
