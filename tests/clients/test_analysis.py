@@ -1,10 +1,8 @@
 import pytest
 
-from berserk import ArenaResult, Client, SwissResult
-from typing import List
+from berserk import Client
 
 from berserk.types.analysis import PositionEvaluation
-from berserk.types.tournaments import TeamBattleResult
 from utils import validate, skip_if_older_3_dot_10
 
 
