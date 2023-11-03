@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import Iterator, Any, Dict, List, cast
 
 from .. import models
-from ..formats import NDJSON, NDJSON_LIST, PGN
+from ..formats import NDJSON, NDJSON_LIST, PGN, TEXT
 from .base import FmtClient
 from ..types import ArenaResult, CurrentTournaments, SwissInfo, SwissResult
 from ..types.tournaments import TeamBattleResult
@@ -300,6 +300,15 @@ class Tournaments(FmtClient):
                 stream=True,
                 converter=models.Game.convert,
             )
+
+    def export_swiss_trf(self, tournament_id: str) -> str:
+        """Download a tournament in the Tournament Report File format, the FIDE standard.
+
+        :param tournament_id: tournament ID
+        :return: tournament information in the TRF format
+        """
+        path = f"/swiss/{tournament_id}.trf"
+        return self._r.get(path=path, fmt=TEXT)
 
     def tournaments_by_user(
         self, username: str, nb: int | None = None
