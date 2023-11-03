@@ -2,7 +2,7 @@ Changelog
 =========
 
 v0.13.1 (2023-11-02)
-------------------
+--------------------
 
 * Added::
 
@@ -24,7 +24,7 @@ v0.13.1 (2023-11-02)
 
     client.tournaments.edit_swiss
     client.tournaments.get_swiss
-    client.tournaments.get_team_standings 
+    client.tournaments.get_team_standings
     client.tournaments.join_arena
     client.tournaments.join_swiss
     client.tournaments.schedule_swiss_next_round
