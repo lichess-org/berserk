@@ -5,6 +5,7 @@ import requests
 from .analysis import Analysis
 from .base import BaseClient
 from .account import Account
+from .external_engine_analysis import ExternalEngineAnalysis
 from .users import Users
 from .relations import Relations
 from .teams import Teams
@@ -35,6 +36,7 @@ __all__ = [
     "Challenges",
     "Client",
     "ExternalEngine",
+    "ExternalEngineAnalysis",
     "Games",
     "Messaging",
     "OAuth",
@@ -73,6 +75,7 @@ class Client(BaseClient):
     - :class:`tablebase <berserk.clients.Tablebase>` - lookup endgame tablebase
     - :class:`bulk_pairings <berserk.clients.BulkPairing>` - manage bulk pairings
     - :class: `external_engine <berserk.clients.ExternalEngine>` - manage external engines
+    - :class: `external_engine_analysis <berserk.clients.ExternalEngineAnalysis>` - manage external engine analysis
 
     :param session: request session, authenticated as needed
     :param base_url: base API URL to use (if other than the default)
@@ -90,6 +93,7 @@ class Client(BaseClient):
         *,
         tablebase_url: str | None = None,
         explorer_url: str | None = None,
+        engine_url: str | None = None,
     ):
         session = session or requests.Session()
         super().__init__(session, base_url)
@@ -114,3 +118,4 @@ class Client(BaseClient):
         self.opening_explorer = OpeningExplorer(session, explorer_url)
         self.bulk_pairings = BulkPairings(session, base_url)
         self.external_engine = ExternalEngine(session, base_url)
+        self.external_engine_analysis = ExternalEngineAnalysis(session, engine_url)
