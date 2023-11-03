@@ -2,9 +2,8 @@ from typing import List, Iterator, cast
 
 import requests
 
-from berserk import NDJSON
-from berserk.clients import BaseClient
-from berserk.formats import TEXT
+from .base import BaseClient
+from berserk.formats import NDJSON, TEXT
 from berserk.types import EngineAnalysisOutput
 from berserk.types.external_engine import ExternalEngineRequest
 
