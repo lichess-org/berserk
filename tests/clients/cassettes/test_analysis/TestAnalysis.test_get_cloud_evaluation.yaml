@@ -14,7 +14,7 @@ interactions:
     uri: https://lichess.org/api/cloud-eval?fen=rnbqkbnr%2Fppp1pppp%2F8%2F3pP3%2F8%2F8%2FPPPP1PPP%2FRNBQKBNR+b+KQkq+-+0+2&multiPv=1&variant=standard
   response:
     body:
-      string: '{"fen": "rnbqkbnr/ppp1pppp/8/3pP3/8/8/PPPP1PPP/RNBQKBNR b KQkq - 0 2","knodes":13683,q"depth":22,"pvs":[{"moves":"c8f5 d2d4 e7e6 g1f3 g8e7 c1e3 c7c5 d4c5 e7c6 b1c3","cp":-13}]}'
+      string: '{"fen": "rnbqkbnr/ppp1pppp/8/3pP3/8/8/PPPP1PPP/RNBQKBNR b KQkq - 0 2","knodes":13683,"depth":22,"pvs":[{"moves":"c8f5 d2d4 e7e6 g1f3 g8e7 c1e3 c7c5 d4c5 e7c6 b1c3","cp":-13}]}'
     headers:
       Access-Control-Allow-Headers:
       - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
