@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import requests
 
+from .analysis import Analysis
 from .base import BaseClient
 from .account import Account
 from .users import Users
@@ -26,6 +27,7 @@ from .external_engine import ExternalEngine
 
 __all__ = [
     "Account",
+    "Analysis",
     "Board",
     "Bots",
     "Broadcasts",
@@ -54,6 +56,7 @@ class Client(BaseClient):
     All endpoints are namespaced into the clients below:
 
     - :class:`account <berserk.clients.Account>` - managing account information
+    - :class:`account <berserk.clients.Analysis>` - getting information about position analysis
     - :class:`bots <berserk.clients.Bots>` - performing bot operations
     - :class:`broadcasts <berserk.clients.Broadcasts>` - getting and creating broadcasts
     - :class:`challenges <berserk.clients.Challenges>` - using challenges
@@ -91,6 +94,7 @@ class Client(BaseClient):
         session = session or requests.Session()
         super().__init__(session, base_url)
         self.account = Account(session, base_url)
+        self.analysis = Analysis(session, base_url)
         self.users = Users(session, base_url)
         self.relations = Relations(session, base_url)
         self.teams = Teams(session, base_url)
