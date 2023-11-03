@@ -199,6 +199,7 @@ Most of the API is available:
     client.tournaments.create_swiss
     client.tournaments.export_arena_games
     client.tournaments.export_swiss_games
+    client.tournaments.export_swiss_trf
     client.tournaments.arena_by_team
     client.tournaments.swiss_by_team
     client.tournaments.join_arena

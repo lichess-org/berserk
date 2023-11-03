@@ -301,6 +301,15 @@ class Tournaments(FmtClient):
                 converter=models.Game.convert,
             )
 
+    def export_swiss_trf(self, tournament_id: str) -> str:
+        """Download a tournament in the Tournament Report File format, the FIDE standard.
+
+        :param tournament_id: tournament ID
+        :return: tournament information in the TRF format
+        """
+        path = f"/swiss/{tournament_id}.trf"
+        return self._r.get(path)
+
     def tournaments_by_user(
         self, username: str, nb: int | None = None
     ) -> List[Dict[str, Any]]:
