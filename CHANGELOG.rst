@@ -8,6 +8,8 @@ To be released
 
     client.analysis.get_cloud_evaluation
 
+    client.tournaments.export_swiss_trf
+
 Thanks to @Anupya for their contributions to this release.
 
 v0.13.1 (2023-11-02)
