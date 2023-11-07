@@ -1,4 +1,4 @@
-from typing import List, Iterator, cast
+from typing import List, Iterator, cast, Optional
 
 import requests
 
@@ -12,7 +12,7 @@ ENGINE_URL = "https://engine.lichess.ovh"
 class ExternalEngineAnalysis(BaseClient):
     """Client for external engine analysis related endpoints."""
 
-    def __init__(self, session: requests.Session, engine_url: str | None = None):
+    def __init__(self, session: requests.Session, engine_url: Optional[str] = None):
         super().__init__(session, engine_url or ENGINE_URL)
 
     def analyse(
