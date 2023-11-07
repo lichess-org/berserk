@@ -59,7 +59,10 @@ class ExternalEngineAnalysis(BaseClient):
                 "moves": moves,
             },
         }
-        yield from self._r.post(path=path, payload=payload, stream=True, fmt=NDJSON)
+        for response in self._r.post(
+            path=path, payload=payload, stream=True, fmt=NDJSON
+        ):
+            yield cast(EngineAnalysisOutput, response)
 
     def acquire_request(self, provider_secret: str) -> ExternalEngineRequest:
         """Wait for an analysis request to any of the external engines that have been registered with the given secret.
