@@ -83,6 +83,8 @@ class Client(BaseClient):
         when possible. This defaults to ``False`` and is used as a fallback when
         ``as_pgn`` is left as ``None`` for methods that support it.
     :param tablebase_url: URL for tablebase lookups
+    :param explorer_url: URL for opening explorer
+    :param engine_url: URL for external engine analysis
     """
 
     def __init__(

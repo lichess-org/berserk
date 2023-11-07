@@ -3,9 +3,8 @@ from typing import List, Iterator, cast
 import requests
 
 from .base import BaseClient
-from berserk.formats import NDJSON, TEXT
-from berserk.types import EngineAnalysisOutput
-from berserk.types.external_engine import ExternalEngineRequest
+from ..formats import NDJSON, TEXT
+from ..types.external_engine import ExternalEngineRequest, EngineAnalysisOutput
 
 ENGINE_URL = "https://engine.lichess.ovh"
 
