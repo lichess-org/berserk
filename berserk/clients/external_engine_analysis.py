@@ -26,7 +26,7 @@ class ExternalEngineAnalysis(BaseClient):
         variant: str,
         initial_fen: str,
         moves: List[str],
-        infinite: bool | None = None,
+        infinite: Optional[bool] = None,
     ) -> Iterator[EngineAnalysisOutput]:
         """Request analysis from an external engine.
 
