@@ -25,23 +25,32 @@ class Broadcasts(BaseClient):
         self,
         name: str,
         description: str,
+        auto_leaderboard: bool,
         markdown: str | None = None,
-        official: bool = False,
+        tier: int | None = None,
+        players: Any | None = None,
     ) -> Dict[str, Any]:
         """Create a new broadcast.
 
         :param name: name of the broadcast
         :param description: short description
+        :param auto_leaderboard: simple leaderboard based on game results
         :param markdown: long description
-        :param official: can only be used by Lichess staff accounts
+        :param tier: can only be used by Lichess staff accounts:
+            3 for normal, 4 for high, 5 for best
+        :param players: replace player names, ratings and titles.
+            One line per player, formatted as such:
+            Original name; Replacement name; Optional rating; Optional title
         :return: created tournament info
         """
         path = "/broadcast/new"
         payload = {
             "name": name,
             "description": description,
+            "autoLeaderboard": auto_leaderboard,
             "markdown": markdown,
-            "official": official,
+            "tier": tier,
+            "players": players,
         }
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
@@ -60,9 +69,10 @@ class Broadcasts(BaseClient):
         broadcast_id: str,
         name: str,
         description: str,
+        auto_leaderboard: bool,
         markdown: str | None = None,
-        official: bool = False,
-        slug: str = "-",
+        tier: int | None = None,
+        players: Any | None = None,
     ) -> Dict[str, Any]:
         """Update an existing broadcast by ID.
 
@@ -73,17 +83,23 @@ class Broadcasts(BaseClient):
         :param broadcast_id: ID of a broadcast
         :param name: name of the broadcast
         :param description: short description
+        :param auto_leaderboard: simple leaderboard based on game results
         :param markdown: long description
-        :param official: can only be used by Lichess staff accounts
-        :param slug: slug for SEO
+        :param tier: can only be used by Lichess staff accounts:
+            3 for normal, 4 for high, 5 for best
+        :param players: replace player names, ratings and titles.
+            One line per player, formatted as such:
+            Original name; Replacement name; Optional rating; Optional title
         :return: updated broadcast information
         """
-        path = f"/broadcast/{slug}/{broadcast_id}"
+        path = f"/broadcast/{broadcast_id}/edit"
         payload = {
             "name": name,
             "description": description,
+            "autoLeaderboard": auto_leaderboard,
             "markdown": markdown,
-            "official": official,
+            "tier": tier,
+            "players": players,
         }
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
