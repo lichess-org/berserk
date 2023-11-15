@@ -4,6 +4,7 @@ import dateutil.parser
 
 from datetime import datetime, timezone
 from typing import Any, Callable, Dict, List, NamedTuple, Tuple, TypeVar, Union, cast
+from .types.broadcast import BroadcastPlayer
 
 T = TypeVar("T")
 U = TypeVar("U")
@@ -144,3 +145,13 @@ def build_adapter(mapper: Dict[str, str], sep: str = "."):
         return result
 
     return adapter
+
+
+def to_str(players: List[BroadcastPlayer] | None) -> str:
+    if players is None:
+        return ""
+
+    def individual_str(p: BroadcastPlayer) -> str:
+        return ";".join([str(v) for v in p.values()])
+
+    return "\n".join([individual_str(p) for p in players])

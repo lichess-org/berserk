@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from .account import AccountInformation, Perf, Preferences, Profile, StreamerInfo
+from .broadcast import BroadcastPlayer
 from .bulk_pairings import BulkPairing, BulkPairingGame
 from .challenges import Challenge
 from .common import ClockConfig, ExternalEngine, LightUser, OnlineLightUser, Variant
@@ -16,6 +17,7 @@ from .tournaments import ArenaResult, CurrentTournaments, SwissResult, SwissInfo
 __all__ = [
     "AccountInformation",
     "ArenaResult",
+    "BroadcastPlayer",
     "BulkPairing",
     "BulkPairingGame",
     "Challenge",
