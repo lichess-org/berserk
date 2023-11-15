@@ -13,6 +13,7 @@ __version__ = berserk_metadata["Version"]
 from .clients import Client
 from .types import (
     ArenaResult,
+    BroadcastPlayer,
     Team,
     LightUser,
     OnlineLightUser,
@@ -33,6 +34,7 @@ from .formats import PGN
 
 __all__ = [
     "ArenaResult",
+    "BroadcastPlayer",
     "Client",
     "JSON",
     "JSON_LIST",

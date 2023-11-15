@@ -6,6 +6,9 @@ from .. import models
 from ..formats import PGN
 from .base import BaseClient
 
+from ..types.broadcast import BroadcastPlayer
+from ..utils import to_str
+
 
 class Broadcasts(BaseClient):
     """Broadcast of one or more games."""
@@ -28,7 +31,7 @@ class Broadcasts(BaseClient):
         auto_leaderboard: bool,
         markdown: str | None = None,
         tier: int | None = None,
-        players: Any | None = None,
+        players: List[BroadcastPlayer] | None = None,
     ) -> Dict[str, Any]:
         """Create a new broadcast.
 
@@ -50,7 +53,7 @@ class Broadcasts(BaseClient):
             "autoLeaderboard": auto_leaderboard,
             "markdown": markdown,
             "tier": tier,
-            "players": players,
+            "players": to_str(players),
         }
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
@@ -72,7 +75,7 @@ class Broadcasts(BaseClient):
         auto_leaderboard: bool,
         markdown: str | None = None,
         tier: int | None = None,
-        players: Any | None = None,
+        players: List[BroadcastPlayer] | None = None,
     ) -> Dict[str, Any]:
         """Update an existing broadcast by ID.
 
@@ -99,7 +102,7 @@ class Broadcasts(BaseClient):
             "autoLeaderboard": auto_leaderboard,
             "markdown": markdown,
             "tier": tier,
-            "players": players,
+            "players": to_str(players),
         }
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 

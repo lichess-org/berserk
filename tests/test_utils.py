@@ -2,7 +2,7 @@ import datetime
 import collections
 import pytest
 
-from berserk import utils
+from berserk import utils, BroadcastPlayer
 
 Case = collections.namedtuple("Case", "dt seconds millis text")
 
@@ -44,6 +44,27 @@ def test_inner():
 
 def test_noop():
     assert "foo" == utils.noop("foo")
+
+
+def test_broadcast_to_str():
+    mc: BroadcastPlayer = {
+        "source_name": "DrNykterstein",
+        "display_name": "Magnus Carlsen",
+        "rating": 2863,
+    }
+    giri: BroadcastPlayer = {
+        "source_name": "AnishGiri",
+        "display_name": "Anish Giri",
+        "rating": 2764,
+        "title": "GM",
+    }
+
+    assert utils.to_str([mc]) == "DrNykterstein;Magnus Carlsen;2863"
+    assert utils.to_str([giri]) == "AnishGiri;Anish Giri;2764;GM"
+    assert (
+        utils.to_str([mc, giri])
+        == "DrNykterstein;Magnus Carlsen;2863\nAnishGiri;Anish Giri;2764;GM"
+    )
 
 
 @pytest.fixture
