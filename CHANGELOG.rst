@@ -4,13 +4,20 @@ Changelog
 To be released
 --------------
 
+* Updated::
+  
+    client.broadcasts.create
+    client.broadcasts.update
+
+To use the new endpoints
+
 * Added::
 
     client.analysis.get_cloud_evaluation
 
     client.tournaments.export_swiss_trf
 
-Thanks to @Anupya for their contributions to this release.
+Thanks to @Anupya, @AAArmstark for their contributions to this release.
 
 v0.13.1 (2023-11-02)
 --------------------
