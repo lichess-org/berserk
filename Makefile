@@ -36,7 +36,7 @@ typecheck: ## run type checking with pyright
 	poetry run pyright berserk
 
 format: ## format python files with black and docformatter
-	poetry run black berserk tests
+	poetry run black berserk tests check-endpoints.py
 	poetry run docformatter --in-place --black berserk/*.py
 
 docs: ## generate Sphinx HTML documentation, including API docs
