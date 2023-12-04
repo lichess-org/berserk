@@ -1,23 +1,18 @@
 Changelog
 =========
 
-To be released
---------------
+v0.13.2 (2023-12-04)
+--------------------
 
-* Updated::
-  
-    client.broadcasts.create
-    client.broadcasts.update
+* Added ``client.analysis.get_cloud_evaluation`` to get cloud evaluations
+* Added ``client.tournaments.export_swiss_trf`` to export swiss results as TRF
 
-To use the new endpoints
+* Updated ``client.broadcasts.create`` and ``client.broadcasts.update`` to reflect changes in the Lichess API
+  * Removed ``official`` parameter (could only be used by Lichess staff anyways)
+  * Added ``tier`` parameter (can only be used by Lichess staff)
+  * Added ``auto_leaderboard`` parameter to control whether an automatically calculated leaderboard should be displayed
 
-* Added::
-
-    client.analysis.get_cloud_evaluation
-
-    client.tournaments.export_swiss_trf
-
-Thanks to @Anupya, @AAArmstark for their contributions to this release.
+Thanks to @Anupya and @AAArmstark for their contributions to this release.
 
 v0.13.1 (2023-11-02)
 --------------------
@@ -64,7 +59,7 @@ v0.13 (2023-09-29)
 * Added `broadcast.stream_round` endpoint
 * Improve type safety, remove `enum.py` and use typed dicts instead, this is a breaking change if you relied on these enums
 
-Thanks to @devjiwonchoi, @Virinas-code, @icp1994 and @rpesche for their contributions to this release.
+Thanks to @devjiwonchoi, @Virinas-code, @icp1994, and @rpesche for their contributions to this release.
 
 v0.12.10 (2023-09-2)
 --------------------
