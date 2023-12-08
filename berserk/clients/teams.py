@@ -51,7 +51,7 @@ class Teams(BaseClient):
         :param team_id: ID of the team to kick from
         :param user_id: ID of the user to kick from the team
         """
-        path = f"/team/{team_id}/kick/{user_id}"
+        path = f"/api/team/{team_id}/kick/{user_id}"
         self._r.post(path)
 
     def get_join_requests(
