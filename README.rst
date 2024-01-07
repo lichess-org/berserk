@@ -170,6 +170,7 @@ Most of the API is available:
     client.studies.export_chapter
     client.studies.export
     client.studies.export_by_username
+    client.studies.import_pgn
 
     client.tablebase.look_up
     client.tablebase.standard
