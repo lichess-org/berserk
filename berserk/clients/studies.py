@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Iterator
+from typing import cast, Iterator
 
 from ..formats import PGN
 from ..types.common import Color, Variant
@@ -53,7 +53,7 @@ class Studies(BaseClient):
 
         Note that a study can contain at most 64 chapters.
 
-        return: Iterator over the chapter {id, name}"""
+        return: List of the chapters {id, name}"""
         # https://lichess.org/api/study/{studyId}/import-pgn
         path = f"/api/study/{study_id}/import-pgn"
         payload = {
@@ -63,4 +63,6 @@ class Studies(BaseClient):
             "variant": variant,
         }
         # The return is of the form:
-        return self._r.post(path, data=payload).get("chapters", [])
+        return cast(
+            list[ChapterIdName], self._r.post(path, data=payload).get("chapters", [])
+        )
