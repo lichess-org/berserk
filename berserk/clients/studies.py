@@ -37,8 +37,12 @@ class Studies(BaseClient):
         yield from self._r.get(path, fmt=PGN, stream=True)
 
     def import_pgn(
-        self, study_id: str, chapter_name: str, pgn: str,
-        orientation: str = "white", variant: str = "standard"
+        self,
+        study_id: str,
+        chapter_name: str,
+        pgn: str,
+        orientation: str = "white",
+        variant: str = "standard",
     ) -> Iterator[Dict[str, str]]:
         """Imports arbitrary PGN into an existing study.
         Creates a new chapter in the study.
@@ -54,6 +58,4 @@ class Studies(BaseClient):
         }
         # The return is of the form:
         # {chapters:[{id: "chapterId", name: "chapterName"}]}
-        yield from (
-            c for c in self._r.post(path, data=payload).get("chapters", [])
-        )
+        yield from (c for c in self._r.post(path, data=payload).get("chapters", []))
