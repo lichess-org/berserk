@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import cast, Iterator
+from typing import cast, List, Iterator
 
 from ..formats import PGN
 from ..types.common import Color, Variant
@@ -45,7 +45,7 @@ class Studies(BaseClient):
         pgn: str,
         orientation: Color = "white",
         variant: Variant = "standard",
-    ) -> list[ChapterIdName]:
+    ) -> List[ChapterIdName]:
         """Imports arbitrary PGN into an existing study.
         Creates a new chapter in the study.
 
@@ -64,5 +64,5 @@ class Studies(BaseClient):
         }
         # The return is of the form:
         return cast(
-            list[ChapterIdName], self._r.post(path, data=payload).get("chapters", [])
+            List[ChapterIdName], self._r.post(path, data=payload).get("chapters", [])
         )
