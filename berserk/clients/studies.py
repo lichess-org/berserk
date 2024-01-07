@@ -1,8 +1,10 @@
 from __future__ import annotations
 
-from typing import Dict, Iterator
+from typing import Iterator
 
 from ..formats import PGN
+from ..types.common import Color, Variant
+from ..types import ChapterIdName
 from .base import BaseClient
 
 
@@ -41,11 +43,15 @@ class Studies(BaseClient):
         study_id: str,
         chapter_name: str,
         pgn: str,
-        orientation: str = "white",
-        variant: str = "standard",
-    ) -> Iterator[Dict[str, str]]:
+        orientation: Color = "white",
+        variant: Variant = "standard",
+    ) -> list[ChapterIdName]:
         """Imports arbitrary PGN into an existing study.
         Creates a new chapter in the study.
+
+        If the PGN contains multiple games (separated by 2 or more newlines) then multiple chapters will be created within the study.
+
+        Note that a study can contain at most 64 chapters.
 
         return: Iterator over the chapter {id, name}"""
         # https://lichess.org/api/study/{studyId}/import-pgn
@@ -57,5 +63,4 @@ class Studies(BaseClient):
             "variant": variant,
         }
         # The return is of the form:
-        # {chapters:[{id: "chapterId", name: "chapterName"}]}
-        yield from (c for c in self._r.post(path, data=payload).get("chapters", []))
+        return self._r.post(path, data=payload).get("chapters", [])

@@ -16,6 +16,7 @@ from .types import (
     BroadcastPlayer,
     Team,
     LightUser,
+    ChapterIdName,
     OnlineLightUser,
     OpeningStatistic,
     PaginatedTeams,
@@ -35,6 +36,7 @@ from .formats import PGN
 __all__ = [
     "ArenaResult",
     "BroadcastPlayer",
+    "ChapterIdName",
     "Client",
     "JSON",
     "JSON_LIST",

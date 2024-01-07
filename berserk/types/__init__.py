@@ -11,6 +11,7 @@ from .opening_explorer import (
     OpeningStatistic,
     Speed,
 )
+from .studies import ChapterIdName
 from .team import PaginatedTeams, Team
 from .tournaments import ArenaResult, CurrentTournaments, SwissResult, SwissInfo
 
@@ -21,6 +22,7 @@ __all__ = [
     "BulkPairing",
     "BulkPairingGame",
     "Challenge",
+    "ChapterIdName",
     "ClockConfig",
     "CurrentTournaments",
     "ExternalEngine",
