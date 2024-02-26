@@ -57,14 +57,14 @@ class Broadcasts(BaseClient):
         }
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
-    def get(self, broadcast_id: str, slug: str = "-") -> Dict[str, Any]:
+    def get(self, broadcast_id: str) -> Dict[str, Any]:
         """Get a broadcast by ID.
 
         :param broadcast_id: ID of a broadcast
         :param slug: slug for SEO
         :return: broadcast information
         """
-        path = f"/broadcast/{slug}/{broadcast_id}"
+        path = f"api/broadcast/{broadcast_id}"
         return self._r.get(path, converter=models.Broadcast.convert)
 
     def update(
