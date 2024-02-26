@@ -13,15 +13,18 @@ from ..utils import to_str
 class Broadcasts(BaseClient):
     """Broadcast of one or more games."""
 
-    def get_official(self, nb: int | None = None) -> Iterator[Dict[str, Any]]:
+    def get_official(
+        self, nb: int | None = None, leaderboard: bool | None = None
+    ) -> Iterator[Dict[str, Any]]:
         """Get the list of incoming, ongoing, and finished official broadcasts. Sorted
         by start date, most recent first.
 
         :param nb: maximum number of broadcasts to fetch, default is 20
+        :param leaderboard: include the leaderboards, if available
         :return: iterator over broadcast objects
         """
         path = "/api/broadcast"
-        params = {"nb": nb}
+        params = {"nb": nb, "leaderboard": leaderboard}
         yield from self._r.get(path, params=params, stream=True)
 
     def create(
@@ -121,24 +124,40 @@ class Broadcasts(BaseClient):
         broadcast_id: str,
         name: str,
         syncUrl: str | None = None,
+        syncUrlRound: str | None = None,
         startsAt: int | None = None,
+        delay: int | None = None,
+        period: int | None = None,
+        finished: bool | None = None,
     ) -> Dict[str, Any]:
         """Create a new broadcast round to relay external games.
 
         :param broadcast_id: broadcast tournament ID
         :param name: Name of the broadcast round
-        :param syncUrl: URL that Lichess will poll to get updates about the games.
+        :param syncUrl: URL that Lichess will poll to get updates about the games
+        :param syncUrlRound: required if syncUrl contains a LiveChessCloud link
         :param startsAt: Timestamp in milliseconds of broadcast round start
+        :param delay: how long to delay moves coming from the source in seconds
+        :param period: how long to wait between source requests in seconds
+        :param finished: set whether the round is completed
         :return: broadcast round info
         """
         path = f"/broadcast/{broadcast_id}/new"
-        payload = {"name": name, "syncUrl": syncUrl, "startsAt": startsAt}
+        payload = {
+            "name": name,
+            "syncUrl": syncUrl,
+            "syncUrlRound": syncUrlRound,
+            "startsAt": startsAt,
+            "delay": delay,
+            "period": period,
+            "finished": finished,
+        }
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
     def get_round(self, broadcast_id: str) -> Dict[str, Any]:
         """Get information about a broadcast round.
 
-        :param broadcast_id: broadcast round id (8 characters)
+        :param broadcast_id: broadcast round ID (8 characters)
         :return: broadcast round info
         """
         path = f"/broadcast/-/-/{broadcast_id}"
@@ -149,22 +168,38 @@ class Broadcasts(BaseClient):
         broadcast_id: str,
         name: str,
         syncUrl: str | None = None,
+        syncUrlRound: str | None = None,
         startsAt: int | None = None,
+        delay: int | None = None,
+        period: int | None = None,
+        finished: bool | None = None,
     ) -> Dict[str, Any]:
         """Update information about a broadcast round that you created.
 
-        :param broadcast_id: broadcast round id
+        :param broadcast_id: broadcast round ID
         :param name: Name of the broadcast round
         :param syncUrl: URL that Lichess will poll to get updates about the games
-        :param startsAt: Timestamp in milliseconds of broadcast start
+        :param syncUrlRound: required if syncUrl contains a LiveChessCloud link
+        :param startsAt: Timestamp in milliseconds of broadcast round start
+        :param delay: how long to delay moves coming from the source in seconds
+        :param period: how long to wait between source requests in seconds
+        :param finished: set whether the round is completed
         :return: updated broadcast information
         """
         path = f"/broadcast/round/{broadcast_id}/edit"
-        payload = {"name": name, "syncUrl": syncUrl, "startsAt": startsAt}
+        payload = {
+            "name": name,
+            "syncUrl": syncUrl,
+            "syncUrlRound": syncUrlRound,
+            "startsAt": startsAt,
+            "delay": delay,
+            "period": period,
+            "finished": finished,
+        }
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
     def get_round_pgns(self, broadcast_round_id: str) -> Iterator[str]:
-        """Get all games of a single round of a broadcast in pgn format.
+        """Get all games of a single round of a broadcast in PGN format.
 
         :param broadcast_round_id: broadcast round ID
         :return: iterator over all games of the broadcast round in PGN format
@@ -195,3 +230,17 @@ class Broadcasts(BaseClient):
         """
         path = f"/api/stream/broadcast/round/{broadcast_round_id}.pgn"
         yield from self._r.get(path, fmt=PGN, stream=True)
+
+    def stream_my_rounds(self, nb: int | None = None) -> Iterator[Dict[str, Any]]:
+        """Stream all broadcast rounds you are a member of.
+
+        Also includes broadcasts rounds where you're a non-writing member. See the writeable flag in the response.
+
+        Rounds are ordered by rank, which is roughly chronological, most recent first, slightly pondered with popularity.
+
+        :param nb: how many rounds to get
+        :return: iterator over broadcast objects with rounds you're a member of and a study.writeable flag
+        """
+        path = "/api/broadcast/my-rounds"
+        params = {"nb": nb}
+        yield from self._r.get(path, params=params, stream=True)
