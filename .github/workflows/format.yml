@@ -18,4 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: psf/black@stable
+      - name: Set up latest python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+      - name: Set up poetry
+        uses: abatilo/actions-poetry@v2
+      - name: Install dependencies
+        run: poetry install --with dev
+      - name: Check formatting
+        run: poetry run black berserk tests check-endpoints.py --check
