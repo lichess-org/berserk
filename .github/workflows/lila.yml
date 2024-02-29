@@ -1,4 +1,4 @@
-name: lila integration test
+name: Lila integration test
 
 on:
   - push
@@ -15,8 +15,6 @@ jobs:
       lila:
         image: ghcr.io/lichess-org/lila-docker:ci
         options: --restart=always
-        ports:
-          - 9663:9663
         env:
           MONGO_URL: mongodb://mongodb?appName=lila
           REDIS_URL: redis://redis
