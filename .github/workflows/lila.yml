@@ -1,0 +1,60 @@
+name: lila integration test
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  lila:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+    container: ubuntu:22.04
+    services:
+      lila:
+        image: ghcr.io/lichess-org/lila-docker:ci
+        options: --restart=always
+        ports:
+          - 9663:9663
+        env:
+          MONGO_URL: mongodb://mongodb?appName=lila
+          REDIS_URL: redis://redis
+      mongodb:
+        image: mongo:5.0-focal
+      redis:
+        image: redis:7-alpine
+    steps:
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pymongo requests
+      - name: Checkout lila-db-seed
+        uses: actions/checkout@v4
+        with:
+          repository: lichess-org/lila-db-seed
+      - name: Seed database
+        run: |
+          ./spamdb/spamdb.py \
+              --uri=mongodb://mongodb/lichess \
+              --drop-db \
+              --password=password \
+              --su-password=password \
+              --streamers \
+              --coaches \
+              --tokens
+      - name: Checkout berserk
+        uses: actions/checkout@v4
+      - name: Install berserk
+        run: python -m pip install -e .
+      - name: Run tests
+        run: |
+          python integration/sample.py
