@@ -1,0 +1,22 @@
+#!/bin/bash -e
+
+IMAGE=ghcr.io/lichess-org/lila-docker:ci2
+
+cleanup_containers() {
+    docker rm --force lila > /dev/null 2>&1 || true
+    docker rm --force app > /dev/null 2>&1 || true
+    docker network rm lila-network > /dev/null 2>&1 || true
+}
+
+echo "Running integration tests"
+
+cleanup_containers
+docker network create lila-network || true
+docker run -d --name lila --network lila-network $IMAGE
+
+docker run --name app --network lila-network -v $(pwd):/app -w /app $IMAGE sh -c "./integration/run.sh"
+
+echo "✅ Integration tests passed"
+
+cleanup_containers
+echo "✅ Done"
