@@ -14,9 +14,7 @@ cleanup_containers
 docker network create lila-network || true
 docker run -d --name lila --network lila-network $IMAGE
 
-docker run --name app --network lila-network -v $(pwd):/app -w /app $IMAGE sh -c "./integration/run.sh"
-
-echo "✅ Integration tests passed"
+docker run --name app --network lila-network -v $(pwd):/app -w /app $IMAGE sh -c "./integration/run-tests.sh"
 
 cleanup_containers
 echo "✅ Done"
