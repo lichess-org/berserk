@@ -30,4 +30,4 @@ jobs:
         uses: actions/checkout@v4
       - name: Run tests
         run: |
-          ./integration/run.sh
+          ./integration/run-tests.sh
