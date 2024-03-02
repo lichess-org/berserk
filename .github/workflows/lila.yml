@@ -13,7 +13,7 @@ jobs:
     container: ubuntu:22.04
     services:
       lila:
-        image: ghcr.io/lichess-org/lila-docker:ci2
+        image: ghcr.io/lichess-org/lila-docker:ci
         options: --restart=always
     steps:
       - name: Setup Python ${{ matrix.python-version }}

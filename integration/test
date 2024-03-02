@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-IMAGE=ghcr.io/lichess-org/lila-docker:ci2
+IMAGE=ghcr.io/lichess-org/lila-docker:ci
 
 cleanup_containers() {
     docker rm --force lila > /dev/null 2>&1 || true
