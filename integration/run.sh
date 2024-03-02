@@ -12,4 +12,4 @@ while [ $attempts -lt 30 ]; do
     attempts=$((attempts + 1))
 done
 
-python3 integration/sample.py
+pytest integration
