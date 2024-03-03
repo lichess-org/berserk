@@ -9,12 +9,11 @@ cleanup_containers() {
 }
 
 echo "Running integration tests"
-
 cleanup_containers
-docker network create lila-network || true
-docker run -d --name lila --network lila-network $IMAGE
 
-docker run --name app --network lila-network -v $(pwd):/app -w /app $IMAGE sh -c "./integration/run-tests.sh"
+docker network create lila-network
+docker run --name lila --network lila-network -d $IMAGE
+docker run --name app --network lila-network -v $(pwd):/app -w /app $IMAGE ./integration/run-tests.sh
 
 cleanup_containers
 echo "✅ Done"
