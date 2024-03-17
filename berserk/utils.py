@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import dateutil.parser
 
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import Any, Callable, Dict, List, NamedTuple, Tuple, TypeVar, Union, cast
 from .types.broadcast import BroadcastPlayer
 
@@ -15,6 +15,11 @@ def to_millis(dt: datetime) -> int:
     return int(dt.timestamp() * 1000)
 
 
+def timedelta_from_millis(millis: float) -> timedelta:
+    """Return a timedelta (A duration expressing the difference between two datetime or date instances to microsecond resolution.)
+    for a given milliseconds.
+    """
+    return timedelta(milliseconds=millis)
 def datetime_from_seconds(ts: float) -> datetime:
     """Return the datetime for the given seconds since the epoch.
 
