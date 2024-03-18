@@ -68,11 +68,10 @@ class Game(Model):
 
 class GameState(Model):
     createdAt = utils.datetime_from_millis
-    wtime = utils.timedelta_from_milis
-    btime = utils.timedelta_from_milis
-    winc = utils.datetime_from_millis
-    binc = utils.datetime_from_millis
-
+    wtime = utils.timedelta_from_millis
+    btime = utils.timedelta_from_millis
+    winc = utils.timedelta_from_millis
+    binc = utils.timedelta_from_millis
 
 class Tournament(Model):
     startsAt = utils.datetime_from_str_or_millis

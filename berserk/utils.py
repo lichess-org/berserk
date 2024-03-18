@@ -20,6 +20,7 @@ def timedelta_from_millis(millis: float) -> timedelta:
     for a given milliseconds.
     """
     return timedelta(milliseconds=millis)
+
 def datetime_from_seconds(ts: float) -> datetime:
     """Return the datetime for the given seconds since the epoch.
 
