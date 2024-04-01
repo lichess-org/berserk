@@ -7,6 +7,8 @@ import re
 import sys
 import pathlib
 
+# tablebase endpoints, defined dynamically with "/{variant}" in the code
+FALSE_POSITIVES = ["/standard", "/atomic", "/antichess"]
 
 if len(sys.argv) != 2 or not pathlib.Path(sys.argv[1]).is_file():
     path = "../api/doc/specs/lichess-api.yaml"
@@ -51,6 +53,7 @@ for endpoint, data in spec["paths"].items():
 if missing_endpoints:
     print("\nMissing endpoints:\n")
     for endp in sorted(missing_endpoints):
-        print(endp)
+        if endp not in FALSE_POSITIVES:
+            print(endp)
 else:
     print("No missing endpoints")
