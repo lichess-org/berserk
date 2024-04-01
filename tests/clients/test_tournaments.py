@@ -22,6 +22,12 @@ class TestLichessGames:
 
     @skip_if_older_3_dot_10
     @pytest.mark.vcr
+    def test_arenas_result_with_sheet(self):
+        res = list(Client().tournaments.stream_results("hallow23", sheet=True, limit=3))
+        validate(List[ArenaResult], res)
+
+    @skip_if_older_3_dot_10
+    @pytest.mark.vcr
     def test_team_standings(self):
         res = Client().tournaments.get_team_standings("Qv0dRqml")
         validate(TeamBattleResult, res)

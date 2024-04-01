@@ -4,6 +4,7 @@ Changelog
 To be released
 --------------
 
+* Added ``sheet`` optional parameter to ``Tournaments.stream_results``, and fix returned typed dict.
 * Added ``studies.import_pgn`` to import PGN to study
 
 v0.13.2 (2023-12-04)

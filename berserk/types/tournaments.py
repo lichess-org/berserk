@@ -46,12 +46,19 @@ class TournamentResult(TypedDict):
     rank: int
     rating: int
     username: str
-    title: NotRequired[Title]
     performance: int
+    title: NotRequired[Title]
+    flair: NotRequired[str]
+
+
+class ArenaSheet(TypedDict):
+    scores: str
 
 
 class ArenaResult(TournamentResult):
     score: int
+    # only when requested, expensive and slowing down the stream
+    sheet: NotRequired[ArenaSheet]
 
 
 class SwissResult(TournamentResult):

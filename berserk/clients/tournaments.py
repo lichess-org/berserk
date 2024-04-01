@@ -363,7 +363,7 @@ class Tournaments(FmtClient):
         )
 
     def stream_results(
-        self, id: str, limit: int | None = None
+        self, id: str, limit: int | None = None, sheet: bool = False
     ) -> Iterator[Dict[str, ArenaResult]]:
         """Stream the results of a tournament.
 
@@ -373,10 +373,11 @@ class Tournaments(FmtClient):
 
         :param id: tournament ID
         :param limit: maximum number of results to stream
+        :param sheet: add a `sheet` field to player containing their concatenated results.  Expensive server computation that slows the stream.
         :return: iterator over the results
         """
         path = f"/api/tournament/{id}/results"
-        params = {"nb": limit}
+        params = {"nb": limit, "sheet": sheet}
         yield from self._r.get(path, params=params, stream=True)
 
     def stream_by_creator(self, username: str) -> Iterator[Dict[str, Any]]:
