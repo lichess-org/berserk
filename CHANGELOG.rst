@@ -4,8 +4,12 @@ Changelog
 To be released
 --------------
 
+* Fixed ``wbtime`` and ``btime`` for all endpoints returning a ``GameState``.
 * Added ``sheet`` optional parameter to ``Tournaments.stream_results``, and fix returned typed dict.
 * Added ``studies.import_pgn`` to import PGN to study
+
+
+Thanks to @nicvagn, @tors42 and @fitztrev for their contributions to this release.
 
 v0.13.2 (2023-12-04)
 --------------------

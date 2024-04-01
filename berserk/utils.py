@@ -16,9 +16,8 @@ def to_millis(dt: datetime) -> int:
 
 
 def timedelta_from_millis(millis: float) -> timedelta:
-    """Return a timedelta (A duration expressing the difference between two datetime or date instances to microsecond resolution.)
-    for a given milliseconds.
-    """
+    """Return a timedelta (A duration expressing the difference between two datetime or
+    date instances to microsecond resolution.) for a given milliseconds."""
     return timedelta(milliseconds=millis)
 
 

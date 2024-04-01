@@ -73,6 +73,7 @@ class GameState(Model):
     winc = utils.timedelta_from_millis
     binc = utils.timedelta_from_millis
 
+
 class Tournament(Model):
     startsAt = utils.datetime_from_str_or_millis
 
