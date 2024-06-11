@@ -23,6 +23,7 @@ from .types import (
     PuzzleRace,
     SwissInfo,
     SwissResult,
+    TVFeed,
 )
 from .session import TokenSession
 from .session import Requestor
@@ -54,4 +55,5 @@ __all__ = [
     "SwissResult",
     "Team",
     "TokenSession",
+    "TVFeed",
 ]

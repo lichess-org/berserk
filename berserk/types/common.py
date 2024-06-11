@@ -64,6 +64,8 @@ class LightUser(TypedDict):
     name: str
     # The title of the user
     title: NotRequired[Title]
+    # The flair of the user
+    flair: NotRequired[str]
     # The patron of the user
     patron: NotRequired[bool]
 

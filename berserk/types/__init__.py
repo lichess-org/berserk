@@ -14,6 +14,7 @@ from .opening_explorer import (
 from .studies import ChapterIdName
 from .team import PaginatedTeams, Team
 from .tournaments import ArenaResult, CurrentTournaments, SwissResult, SwissInfo
+from .tv import TVFeed
 
 __all__ = [
     "AccountInformation",
@@ -41,4 +42,5 @@ __all__ = [
     "SwissResult",
     "Team",
     "Variant",
+    "TVFeed",
 ]

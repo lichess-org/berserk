@@ -7,9 +7,9 @@ To be released
 * Fixed ``wbtime`` and ``btime`` for all endpoints returning a ``GameState``.
 * Added ``sheet`` optional parameter to ``Tournaments.stream_results``, and fix returned typed dict.
 * Added ``studies.import_pgn`` to import PGN to study
+* Added ``tv.stream_current_game_of_channel`` to stream the current TV game of a channel
 
-
-Thanks to @nicvagn, @tors42 and @fitztrev for their contributions to this release.
+Thanks to @nicvagn, @tors42, @fitztrev and @trevorbayless for their contributions to this release.
 
 v0.13.2 (2023-12-04)
 --------------------

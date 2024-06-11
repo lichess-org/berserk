@@ -1,9 +1,10 @@
 from __future__ import annotations
 
-from typing import Any, Iterator, Dict, List
+from typing import Any, Iterator, Dict, List, cast
 
 from .. import models
 from ..formats import NDJSON_LIST, PGN
+from ..types import TVFeed
 from .base import FmtClient
 
 
@@ -18,22 +19,24 @@ class TV(FmtClient):
         path = "/api/tv/channels"
         return self._r.get(path)
 
-    def stream_current_game(self) -> Iterator[Dict[str, Any]]:
+    def stream_current_game(self) -> Iterator[TVFeed]:
         """Streams the current TV game.
 
         :return: positions and moves of the current TV game
         """
         path = "/api/tv/feed"
-        yield from self._r.get(path, stream=True)
+        for response in self._r.get(path, stream=True):
+            yield cast(TVFeed, response)
 
-    def stream_current_game_of_channel(self, channel: str) -> Iterator[Dict[str, Any]]:
+    def stream_current_game_of_channel(self, channel: str) -> Iterator[TVFeed]:
         """Streams the current TV game of a channel.
 
         :param channel: the TV channel to stream.
         :return: positions and moves of the channels current TV game
         """
         path = f"/api/tv/{channel}/feed"
-        yield from self._r.get(path, stream=True)
+        for response in self._r.get(path, stream=True):
+            yield cast(TVFeed, response)
 
     def get_best_ongoing(
         self,
