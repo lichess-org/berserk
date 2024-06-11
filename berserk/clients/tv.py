@@ -26,6 +26,15 @@ class TV(FmtClient):
         path = "/api/tv/feed"
         yield from self._r.get(path, stream=True)
 
+    def stream_current_game_of_channel(self, channel: str) -> Iterator[Dict[str, Any]]:
+        """Streams the current TV game of a channel.
+
+        :param channel: the TV channel to stream.
+        :return: positions and moves of the channels current TV game
+        """
+        path = f"/api/tv/{channel}/feed"
+        yield from self._r.get(path, stream=True)
+
     def get_best_ongoing(
         self,
         channel: str,

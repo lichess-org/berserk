@@ -217,6 +217,7 @@ Most of the API is available:
 
     client.tv.get_current_games
     client.tv.stream_current_game
+    client.tv.stream_current_game_of_channel
     client.tv.get_best_ongoing
 
     client.users.get_realtime_statuses
