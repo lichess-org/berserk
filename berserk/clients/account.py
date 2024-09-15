@@ -65,6 +65,8 @@ class Account(BaseClient):
     def get_timeline(self, since: int = 1356998400070, nb: int = 15) -> TimelineEvents:
         """Get your timeline events.
 
+        Requires OAuth2 authorization.
+
         :param int since: timestamp to show events since, default 1356998400070
         :param int nb: max number of events to fetch, default 15
         :return: timeline events of the authenticated user
