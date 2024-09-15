@@ -1,11 +1,10 @@
 from __future__ import annotations
 
-from typing import Any, cast, Dict
+from typing import cast
 
 from .. import models
-from ..types.account import AccountInformation, Preferences
+from ..types.account import AccountInformation, Preferences, TimelineEvents
 from .base import BaseClient
-from ..formats import LIJSON
 from ..session import Params
 
 
@@ -63,7 +62,7 @@ class Account(BaseClient):
         path = "/api/bot/account/upgrade"
         self._r.post(path)
 
-    def get_timeline(self, since: int = 1356998400070, nb: int = 15) -> Dict[str, Any]:
+    def get_timeline(self, since: int = 1356998400070, nb: int = 15) -> TimelineEvents:
         """Get your timeline events.
 
         :param int since: timestamp to show events since, default 1356998400070
@@ -73,4 +72,4 @@ class Account(BaseClient):
         path = "/api/timeline"
         params: Params = {"since": since, "nb": nb}
 
-        return self._r.get(path, fmt=LIJSON, params=params)
+        return cast(TimelineEvents, self._r.get(path, params=params))
