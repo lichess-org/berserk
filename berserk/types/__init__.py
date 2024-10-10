@@ -4,7 +4,8 @@ from .account import AccountInformation, Perf, Preferences, Profile, StreamerInf
 from .broadcast import BroadcastPlayer
 from .bulk_pairings import BulkPairing, BulkPairingGame
 from .challenges import Challenge
-from .common import ClockConfig, ExternalEngine, LightUser, OnlineLightUser, Variant
+from .common import ClockConfig, LightUser, OnlineLightUser, Variant
+from .external_engine import ExternalEngine
 from .puzzles import PuzzleRace
 from .opening_explorer import (
     OpeningExplorerRating,
