@@ -137,6 +137,9 @@ Most of the API is available:
     client.external_engine.create
     client.external_engine.update
     client.external_engine.delete
+    client.external_engine.analyse
+    client.external_engine.acquire_request
+    client.external_engine.answer_request
 
     client.games.export
     client.games.export_ongoing_by_player
