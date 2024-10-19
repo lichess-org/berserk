@@ -56,6 +56,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: FormatHandler[Any] | None = None,
         converter: Converter[Any] = utils.noop,
+        custom_base_url: str | None = None,
         **kwargs: Any,
     ) -> Any | Iterator[Any]:
         """Make a request for a resource in a paticular format.
@@ -68,11 +69,17 @@ class Requestor(Generic[T]):
         :param json: request body json
         :param fmt: the format handler
         :param converter: function to handle field conversions
+        :param custom_base_url: change the base url
         :return: response
         :raises berserk.exceptions.ResponseError: if the status is >=400
         """
         fmt = fmt or self.default_fmt
-        url = urljoin(self.base_url, path)
+
+        if custom_base_url:
+            base_url = custom_base_url
+        else:
+            base_url = self.base_url
+        url = urljoin(base_url, path)
 
         LOG.debug(
             "%s %s %s params=%s data=%s json=%s",
@@ -197,6 +204,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: FormatHandler[U],
         converter: Converter[U] = utils.noop,
+        custom_base_url: str | None = None,
         **kwargs: Any,
     ) -> U:
         ...
@@ -212,6 +220,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: FormatHandler[U],
         converter: Converter[U] = utils.noop,
+        custom_base_url: str | None = None,
         **kwargs: Any,
     ) -> Iterator[U]:
         ...
@@ -227,6 +236,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: None = None,
         converter: Converter[T] = utils.noop,
+        custom_base_url: str | None = None,
         **kwargs: Any,
     ) -> T:
         ...
@@ -242,6 +252,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: None = None,
         converter: Converter[T] = utils.noop,
+        custom_base_url: str | None = None,
         **kwargs: Any,
     ) -> Iterator[T]:
         ...
@@ -256,6 +267,7 @@ class Requestor(Generic[T]):
         json: Dict[str, Any] | None = None,
         fmt: FormatHandler[Any] | None = None,
         converter: Any = utils.noop,
+        custom_base_url: str | None = None,
         **kwargs: Any,
     ) -> Any | Iterator[Any]:
         """Convenience method to make a POST request."""
@@ -268,6 +280,7 @@ class Requestor(Generic[T]):
             converter=converter,
             data=data,
             json=json,
+            custom_base_url=custom_base_url,
             **kwargs,
         )
 
