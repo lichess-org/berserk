@@ -27,7 +27,7 @@ setup: ## setup poetry env and install dependencies
 	poetry install --with dev
 
 test: ## run tests with pytest
-	poetry run pytest
+	poetry run pytest tests
 
 test_record: ## run tests with pytest and record http requests
 	poetry run pytest --record-mode=once

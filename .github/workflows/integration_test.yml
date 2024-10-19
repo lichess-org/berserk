@@ -12,7 +12,7 @@ jobs:
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
     container: ubuntu:22.04
     services:
-      lila:
+      bdit_lila:
         image: ghcr.io/lichess-org/lila-docker:main
         options: --restart=always
     steps:
