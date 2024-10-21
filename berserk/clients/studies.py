@@ -7,27 +7,40 @@ from ..types.common import Color, Variant
 from ..types import ChapterIdName
 from .base import BaseClient
 
+def append_query_params(url: str, clocks: bool, comments: bool, variations: bool,
+                        source: bool, orientation: bool) -> str:
+    pairs = {'clocks': clocks, 'comments': comments, 'variations': variations,
+             'source': source, 'orientation': orientation}
+    return f'{url}?' + '&'.join(f'{k}={str(pairs[k]).lower()}' for k in pairs)
 
 class Studies(BaseClient):
     """Study chess the Lichess way."""
 
-    def export_chapter(self, study_id: str, chapter_id: str) -> str:
+    def export_chapter(self, study_id: str, chapter_id: str, clocks: bool = True,
+                       comments: bool = True, variations: bool = True, source: bool = False,
+                       orientation: bool = False) -> str:
         """Export one chapter of a study.
 
         :return: chapter PGN
         """
-        path = f"/api/study/{study_id}/{chapter_id}.pgn"
+        path = append_query_params(f"/api/study/{study_id}/{chapter_id}.pgn",
+                                   clocks, comments, variations, source, orientation)
         return self._r.get(path, fmt=PGN)
 
-    def export(self, study_id: str) -> Iterator[str]:
+    def export(self, study_id: str, clocks: bool = True, comments: bool = True,
+               variations: bool = True, source: bool = False,
+               orientation: bool = False) -> Iterator[str]:
         """Export all chapters of a study.
 
         :return: iterator over all chapters as PGN
         """
-        path = f"/api/study/{study_id}.pgn"
+        path = append_query_params(f"/api/study/{study_id}.pgn",
+                                   clocks, comments, variations, source, orientation)
         yield from self._r.get(path, fmt=PGN, stream=True)
 
-    def export_by_username(self, username: str) -> Iterator[str]:
+    def export_by_username(self, username: str, clocks: bool = True, comments: bool = True,
+                           variations: bool = True, source: bool = False,
+                           orientation: bool = False) -> Iterator[str]:
         """Export all chapters of all studies of a user in PGN format.
 
         If authenticated, then all public, unlisted, and private studies are included.
@@ -35,7 +48,8 @@ class Studies(BaseClient):
         If not, only public (non-unlisted) studies are included.
 
         return:iterator over all chapters as PGN"""
-        path = f"/study/by/{username}/export.pgn"
+        path = append_query_params(f"/study/by/{username}/export.pgn",
+                                   clocks, comments, variations, source, orientation)
         yield from self._r.get(path, fmt=PGN, stream=True)
 
     def import_pgn(
