@@ -8,24 +8,6 @@ from ..types import ChapterIdName
 from .base import BaseClient
 
 
-def append_query_params(
-    url: str,
-    clocks: bool,
-    comments: bool,
-    variations: bool,
-    source: bool,
-    orientation: bool,
-) -> str:
-    pairs = {
-        "clocks": clocks,
-        "comments": comments,
-        "variations": variations,
-        "source": source,
-        "orientation": orientation,
-    }
-    return f"{url}?" + "&".join(f"{k}={str(pairs[k]).lower()}" for k in pairs)
-
-
 class Studies(BaseClient):
     """Study chess the Lichess way."""
 
@@ -43,15 +25,15 @@ class Studies(BaseClient):
 
         :return: chapter PGN
         """
-        path = append_query_params(
-            f"/api/study/{study_id}/{chapter_id}.pgn",
-            clocks,
-            comments,
-            variations,
-            source,
-            orientation,
-        )
-        return self._r.get(path, fmt=PGN)
+        path = f"/api/study/{study_id}/{chapter_id}.pgn"
+        params = {
+            "clocks": clocks,
+            "comments": comments,
+            "variations": variations,
+            "source": source,
+            "orientation": orientation,
+        }
+        return self._r.get(path, fmt=PGN, params=params)
 
     def export(
         self,
@@ -66,15 +48,15 @@ class Studies(BaseClient):
 
         :return: iterator over all chapters as PGN
         """
-        path = append_query_params(
-            f"/api/study/{study_id}.pgn",
-            clocks,
-            comments,
-            variations,
-            source,
-            orientation,
-        )
-        yield from self._r.get(path, fmt=PGN, stream=True)
+        path = f"/api/study/{study_id}.pgn"
+        params = {
+            "clocks": clocks,
+            "comments": comments,
+            "variations": variations,
+            "source": source,
+            "orientation": orientation,
+        }
+        yield from self._r.get(path, fmt=PGN, stream=True, params=params)
 
     def export_by_username(
         self,
@@ -92,15 +74,15 @@ class Studies(BaseClient):
         If not, only public (non-unlisted) studies are included.
 
         return:iterator over all chapters as PGN"""
-        path = append_query_params(
-            f"/study/by/{username}/export.pgn",
-            clocks,
-            comments,
-            variations,
-            source,
-            orientation,
-        )
-        yield from self._r.get(path, fmt=PGN, stream=True)
+        path = f"/study/by/{username}/export.pgn"
+        params = {
+            "clocks": clocks,
+            "comments": comments,
+            "variations": variations,
+            "source": source,
+            "orientation": orientation,
+        }
+        yield from self._r.get(path, fmt=PGN, stream=True, params=params)
 
     def import_pgn(
         self,
