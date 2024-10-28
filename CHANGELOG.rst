@@ -8,8 +8,9 @@ To be released
 * Added ``sheet`` optional parameter to ``Tournaments.stream_results``, and fix returned typed dict.
 * Added ``studies.import_pgn`` to import PGN to study
 * Added ``tv.stream_current_game_of_channel`` to stream the current TV game of a channel
+* Added ``client.external_engine.analyse``, ``client.external_engine.acquire_request``, ``client.external_engine.answer_request`` to handle analysis with an external engine
 
-Thanks to @nicvagn, @tors42, @fitztrev and @trevorbayless for their contributions to this release.
+Thanks to @nicvagn, @tors42, @fitztrev, @friedrichtenhagen and @trevorbayless for their contributions to this release.
 
 v0.13.2 (2023-12-04)
 --------------------
