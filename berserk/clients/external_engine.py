@@ -3,13 +3,20 @@ from __future__ import annotations
 from typing import List, cast, Literal, Iterator
 
 from .base import BaseClient
-
+import requests
 from ..formats import NDJSON, TEXT
 from ..types.external_engine import ExternalEngineRequest, EngineAnalysisOutput
+
+EXTERNAL_ENGINE_URL = "https://engine.lichess.ovh"
 
 
 class ExternalEngine(BaseClient):
     """Client for external engine related endpoints."""
+
+    def __init__(self, session: requests.Session, base_url: str | None = None):
+        """Create a subclient for the endpoints that use a different base url."""
+        super().__init__(session, base_url)
+        self._external_client = BaseClient(session, EXTERNAL_ENGINE_URL)
 
     def get(self) -> List[ExternalEngine]:
         """Lists all external engines that have been registered for the user, and the credentials required to use them.
@@ -161,7 +168,6 @@ class ExternalEngine(BaseClient):
         :param nodes: Number of nodes to analyse in the position
         """
         path = f"/api/external-engine/{engine_id}/analyse"
-        custom_base_url = "https://engine.lichess.ovh"
         payload = {
             "clientSecret": client_secret,
             "work": {
@@ -178,12 +184,11 @@ class ExternalEngine(BaseClient):
             },
         }
 
-        for response in self._r.post(
+        for response in self._external_client._r.post(
             path=path,
             payload=payload,
             stream=True,
             fmt=NDJSON,
-            custom_base_url=custom_base_url,
         ):
             yield cast(EngineAnalysisOutput, response)
 
@@ -193,11 +198,10 @@ class ExternalEngine(BaseClient):
         :return: the requested analysis
         """
         path = "/api/external-engine/work"
-        custom_base_url = "https://engine.lichess.ovh"
         payload = {"providerSecret": provider_secret}
         return cast(
             ExternalEngineRequest,
-            self._r.post(path=path, payload=payload, custom_base_url=custom_base_url),
+            self._external_client._r.post(path=path, payload=payload),
         )
 
     def answer_request(self, engine_id: str) -> str:
@@ -208,5 +212,4 @@ class ExternalEngine(BaseClient):
         :return: the requested analysis
         """
         path = f"/api/external-engine/work/{engine_id}"
-        custom_base_url = "https://engine.lichess.ovh"
-        return self._r.post(path=path, fmt=TEXT, custom_base_url=custom_base_url)
+        return self._external_client._r.post(path=path, fmt=TEXT)
