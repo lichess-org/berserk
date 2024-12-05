@@ -79,7 +79,7 @@ class Puzzles(BaseClient):
         path = "/api/racer"
         return cast(PuzzleRace, self._r.post(path))
 
-    def next(self, angle: str, difficulty: Any):
+    def next(self, angle: str = "mix", difficulty: Any = "normal"):
         """Get a random Lichess puzzle in JSON format. If authenticated,
         only returns puzzles that the user has never seen before.
 
@@ -213,29 +213,35 @@ class Puzzles(BaseClient):
             "mixDescription",
             "playerGames",
             "playerGamesDescription",
-            "puzzleDownloadInformation"
+            "puzzleDownloadInformation",
         ]
 
-        allowed_levels = {1: "easiest",
-                          2: "easy",
-                          3: "normal",
-                          4: "harder",
-                          5: "hardest"}
+        allowed_levels = {
+            1: "easiest",
+            2: "easy",
+            3: "normal",
+            4: "harder",
+            5: "hardest",
+        }
 
         if angle not in allowed_themes:
             raise KeyError("Entered theme not supported")
 
         if isinstance(difficulty, str):
             difficulty = difficulty.lower()
-            if difficulty not in allowed_levels.keys():
-                raise KeyError("Please enter a difficulty which is one of " +
-                               "easiest, easier, normal, harder, hardest" +
-                               " or corresponding numbers 1, 2, 3, 4, 5")
+            if difficulty not in allowed_levels.values():
+                raise KeyError(
+                    "Please enter a difficulty which is one of "
+                    "easiest, easier, normal, harder, hardest"
+                    " or corresponding numbers 1, 2, 3, 4, 5"
+                )
         elif isinstance(difficulty, int):
             if difficulty < 1 or difficulty > 5:
-                raise KeyError("Please enter a difficulty which is one of " +
-                               "easiest, easier, normal, harder, hardest" +
-                               " or corresponding numbers 1, 2, 3, 4, 5")
+                raise KeyError(
+                    "Please enter a difficulty which is one of "
+                    "easiest, easier, normal, harder, hardest"
+                    " or corresponding numbers 1, 2, 3, 4, 5"
+                )
             difficulty = allowed_levels[difficulty]
 
         params = {"angle": angle, "difficulty": difficulty}
