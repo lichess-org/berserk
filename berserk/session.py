@@ -58,12 +58,12 @@ class Requestor(Generic[T]):
         converter: Converter[Any] = utils.noop,
         **kwargs: Any,
     ) -> Any | Iterator[Any]:
-        """Make a request for a resource in a paticular format.
+        """Make a request for a resource in a particular format.
 
         :param method: HTTP verb
         :param path: the URL suffix
         :param stream: whether to stream the response
-        :param params: request query parametrs
+        :param params: request query parameters
         :param data: request body data (url-encoded)
         :param json: request body json
         :param fmt: the format handler
