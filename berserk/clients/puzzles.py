@@ -79,11 +79,13 @@ class Puzzles(BaseClient):
         path = "/api/racer"
         return cast(PuzzleRace, self._r.post(path))
 
-    def next(self, angle: str = "mix", difficulty: Any = "normal"):
+    def get_next(
+        self, theme: str = "mix", difficulty: str = "normal"
+    ) -> Dict[str, Any]:
         """Get a random Lichess puzzle in JSON format. If authenticated,
         only returns puzzles that the user has never seen before.
 
-         :param angle: The theme or opening to filter puzzles with.
+         :param theme: The theme or opening to filter puzzles with.
          :param difficulty: Enum:"easiest" "easier" "normal" "harder" "hardest"
 
          :return: the next puzzle"""
@@ -216,33 +218,17 @@ class Puzzles(BaseClient):
             "puzzleDownloadInformation",
         ]
 
-        allowed_levels = {
-            1: "easiest",
-            2: "easy",
-            3: "normal",
-            4: "harder",
-            5: "hardest",
-        }
+        allowed_levels = ["easiest", "easy", "normal", "harder", "hardest"]
 
-        if angle not in allowed_themes:
+        if theme not in allowed_themes:
             raise KeyError("Entered theme not supported")
 
-        if isinstance(difficulty, str):
-            difficulty = difficulty.lower()
-            if difficulty not in allowed_levels.values():
-                raise KeyError(
-                    "Please enter a difficulty which is one of "
-                    "easiest, easier, normal, harder, hardest"
-                    " or corresponding numbers 1, 2, 3, 4, 5"
-                )
-        elif isinstance(difficulty, int):
-            if difficulty < 1 or difficulty > 5:
-                raise KeyError(
-                    "Please enter a difficulty which is one of "
-                    "easiest, easier, normal, harder, hardest"
-                    " or corresponding numbers 1, 2, 3, 4, 5"
-                )
-            difficulty = allowed_levels[difficulty]
+        difficulty = difficulty.lower()
+        if difficulty not in allowed_levels:
+            raise KeyError(
+                "Please enter a difficulty which is one of "
+                "easiest, easier, normal, harder, hardest"
+            )
 
-        params = {"angle": angle, "difficulty": difficulty}
+        params = {"angle": theme, "difficulty": difficulty}
         return self._r.get(path, params=params)

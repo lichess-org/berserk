@@ -3,7 +3,7 @@ interactions:
     body: null
     headers:
       Accept:
-      - application/vnd.lichess.v3+json
+      - application/json
       Accept-Encoding:
       - gzip, deflate
       Connection:
@@ -11,10 +11,10 @@ interactions:
       User-Agent:
       - python-requests/2.31.0
     method: GET
-    uri: https://lichess.org/api/player/autocomplete?term=username_not_found__&object=True&friend=False
+    uri: https://lichess.org/api/storm/dashboard/Chess700800?days=0
   response:
     body:
-      string: '{"result":[]}'
+      string: '{"high":{"day":0,"week":0,"month":0,"allTime":23},"days":[]}'
     headers:
       Access-Control-Allow-Headers:
       - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
@@ -24,22 +24,24 @@ interactions:
       - '*'
       Connection:
       - keep-alive
-      Content-Length:
-      - '13'
       Content-Type:
       - application/json
       Date:
-      - Fri, 06 Dec 2024 16:28:16 GMT
+      - Fri, 06 Dec 2024 16:27:51 GMT
       Permissions-Policy:
       - interest-cohort=()
       Server:
       - nginx
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
       Vary:
       - Origin
       X-Frame-Options:
       - DENY
+      content-length:
+      - '60'
     status:
       code: 200
       message: OK

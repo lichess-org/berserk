@@ -13,7 +13,7 @@ def skip_if_older_3_dot_10(fn):
 
 
 def validate(t: type, value: any):
-    config = ConfigDict(strict=True, extra="forbid")
+    config = ConfigDict(strict=True, extra="forbid", arbitrary_types_allowed=True)
 
     class TWithConfig(t):
         __pydantic_config__ = config

@@ -11,16 +11,13 @@ interactions:
       User-Agent:
       - python-requests/2.31.0
     method: GET
-    uri: https://lichess.org/api/tournament/hallow23/results?nb=3&sheet=False
+    uri: https://lichess.org/api/puzzle/next?angle=mix&difficulty=normal
   response:
     body:
-      string: '{"rank":1,"score":149,"rating":2394,"username":"GGbers","flair":"activity.lichess-berserk","performance":2449}
-
-        {"rank":2,"score":124,"rating":2346,"username":"Kondor75","title":"IM","performance":2447}
-
-        {"rank":3,"score":123,"rating":2241,"username":"sadisticTushi","flair":"food-drink.french-fries","performance":2314}
-
-        '
+      string: '{"game":{"id":"VfTa03Ya","perf":{"key":"rapid","name":"Rapid"},"rated":true,"players":[{"name":"Blizzard3388","id":"blizzard3388","color":"white","rating":2183},{"name":"chessblack99","id":"chessblack99","color":"black","rating":2255}],"pgn":"Nf3
+        d5 d3 Nc6 Nbd2 e5 g3 Nf6 e4 Bc5 Bg2 dxe4 dxe4 O-O O-O Bg4 c3 Qd7 Qc2 Bh3 b4
+        Bd6 Nc4 Bxg2 Kxg2 b5 Nxd6 cxd6 Rd1 Rac8 Qd3 Rfd8 Bg5 a6 Bxf6 gxf6 Nh4 Ne7
+        a4 Qg4 axb5 axb5 h3 Qd7 g4 Ng6 Nxg6 hxg6 Ra6 Qb7 Rda1 d5 Ra7 dxe4","clock":"10+0"},"puzzle":{"id":"vF0rN","rating":1292,"plays":16607,"solution":["d3d8","c8d8","a7b7"],"themes":["endgame","short","crushing"],"initialPly":53}}'
     headers:
       Access-Control-Allow-Headers:
       - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
@@ -30,12 +27,10 @@ interactions:
       - '*'
       Connection:
       - keep-alive
-      Content-Disposition:
-      - attachment; filename=lichess_tournament_2023.10.31_hallow23_halloween-arena-2023.ndjson
       Content-Type:
-      - application/x-ndjson
+      - application/json
       Date:
-      - Fri, 06 Dec 2024 16:28:07 GMT
+      - Fri, 06 Dec 2024 16:27:50 GMT
       Permissions-Policy:
       - interest-cohort=()
       Server:
@@ -48,6 +43,8 @@ interactions:
       - Origin
       X-Frame-Options:
       - DENY
+      content-length:
+      - '622'
     status:
       code: 200
       message: OK

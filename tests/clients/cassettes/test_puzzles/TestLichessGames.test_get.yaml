@@ -3,7 +3,7 @@ interactions:
     body: null
     headers:
       Accept:
-      - application/vnd.lichess.v3+json
+      - application/json
       Accept-Encoding:
       - gzip, deflate
       Connection:
@@ -11,10 +11,13 @@ interactions:
       User-Agent:
       - python-requests/2.31.0
     method: GET
-    uri: https://lichess.org/api/player/autocomplete?term=username_not_found__&object=True&friend=False
+    uri: https://lichess.org/api/puzzle/BG3VT
   response:
     body:
-      string: '{"result":[]}'
+      string: '{"game":{"id":"XvZYZAjH","perf":{"key":"classical","name":"Classical"},"rated":true,"players":[{"name":"Rint2","id":"rint2","color":"white","rating":2020},{"name":"YX-__-XY","id":"yx-__-xy","color":"black","rating":2155}],"pgn":"d4
+        Nf6 c4 e6 Nf3 d5 Nc3 Be7 Bg5 O-O e3 Nbd7 Bd3 c6 cxd5 exd5 O-O Re8 Rc1 Ne4
+        Bxe7 Qxe7 h3 f5 Nd2 Ndf6 Ndxe4 Nxe4 Nxe4 fxe4 Bb1 Qg5 Kh1 Rf8 f4 exf3 Rxf3
+        Bd7 Qd3 g6 Rcf1 Rxf3 Rxf3 Bf5 Qf1 Bxb1 Qxb1 Re8 Qf1 Rxe3","clock":"15+15"},"puzzle":{"id":"BG3VT","rating":1587,"plays":10931,"solution":["f3f8","g8g7","f1f7","g7h6","f8h8","e3h3","g2h3"],"themes":["endgame","veryLong","advantage"],"initialPly":49}}'
     headers:
       Access-Control-Allow-Headers:
       - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
@@ -24,22 +27,24 @@ interactions:
       - '*'
       Connection:
       - keep-alive
-      Content-Length:
-      - '13'
       Content-Type:
       - application/json
       Date:
-      - Fri, 06 Dec 2024 16:28:16 GMT
+      - Fri, 06 Dec 2024 16:27:53 GMT
       Permissions-Policy:
       - interest-cohort=()
       Server:
       - nginx
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
       Vary:
       - Origin
       X-Frame-Options:
       - DENY
+      content-length:
+      - '630'
     status:
       code: 200
       message: OK

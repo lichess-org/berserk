@@ -1,0 +1,100 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/x-chess-pgn
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://lichess.org/api/study/Vl9LYHvz/SruboJ1x.pgn
+  response:
+    body:
+      string: '[Event "Rated Blitz game"]
+
+        [Site "https://lichess.org/W5hted8V"]
+
+        [Date "2022.08.05"]
+
+        [White "Micbigboi"]
+
+        [Black "Chess700800"]
+
+        [Result "1-0"]
+
+        [WhiteElo "1109"]
+
+        [BlackElo "1205"]
+
+        [TimeControl "180+0"]
+
+        [Termination "Normal"]
+
+        [Variant "Standard"]
+
+        [ECO "D10"]
+
+        [Opening "Slav Defense"]
+
+        [Annotator "https://lichess.org/@/Chess700800"]
+
+        [StudyName "Chess700800''s Study"]
+
+        [ChapterName "Micbigboi (1109) - Chess700800 (1205)"]
+
+
+        1. d4 { [%clk 0:03:00] } 1... d5 { [%clk 0:03:00] } 2. c4 { [%clk 0:02:59]
+        } 2... c6 { [%clk 0:02:58] } 3. Nc3 { [%clk 0:02:57] } 3... Nf6 { [%clk 0:02:56]
+        } 4. h3 { [%clk 0:02:53] } 4... e6 { [%clk 0:02:55] } 5. a3 { [%clk 0:02:50]
+        } 5... h6 { [%clk 0:02:54] } 6. Nf3 { [%clk 0:02:43] } 6... Be7 { [%clk 0:02:53]
+        } 7. Bf4 { [%clk 0:02:38] } 7... Bd6 { [%clk 0:02:52] } 8. Bd2 { [%clk 0:02:33]
+        } 8... O-O { [%clk 0:02:51] } 9. Qc1 { [%clk 0:02:31] } 9... Bc7 { [%clk 0:02:47]
+        } 10. g4 { [%clk 0:02:15] } 10... Re8 { [%clk 0:02:32] } 11. g5 { [%clk 0:02:11]
+        } 11... Nfd7 { [%clk 0:02:23] } 12. gxh6 { [%clk 0:02:09] } 12... g6 { [%clk
+        0:02:22] } 13. h4 { [%clk 0:01:53] } 13... Qf6 { [%clk 0:02:21] } 14. Bg5
+        { [%clk 0:01:42] } 14... Qh8 { [%clk 0:02:14] } 15. e4 { [%clk 0:01:27] }
+        15... dxe4 { [%clk 0:02:09] } 16. Nxe4 { [%clk 0:01:25] } 16... Bd8 { [%clk
+        0:02:03] } 17. Qf4 { [%clk 0:01:09] } 17... b5 { [%clk 0:01:55] } 18. Bxd8
+        { [%clk 0:01:00] } 18... Rxd8 { [%clk 0:01:54] } 19. Neg5 { [%clk 0:00:53]
+        } 19... Rf8 { [%clk 0:01:51] } 20. h7+ { [%clk 0:00:48] } 20... Kg7 { [%clk
+        0:01:49] } 21. h5 { [%clk 0:00:40] } 21... bxc4 { [%clk 0:01:42] } 22. h6#
+        { 1-0 White wins by checkmate. } { [%clk 0:00:36] } 1-0
+
+
+
+        '
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Disposition:
+      - attachment; filename=lichess_study_chess700800s-study_micbigboi-1109-chess700800-1205_by_Chess700800_2022.08.05.pgn
+      Content-Length:
+      - '1635'
+      Content-Type:
+      - application/x-chess-pgn
+      Date:
+      - Fri, 06 Dec 2024 16:27:56 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Vary:
+      - Origin
+      X-Frame-Options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+version: 1

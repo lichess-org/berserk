@@ -14,11 +14,11 @@ interactions:
     uri: https://lichess.org/api/swiss/ADAHHiMX/results?nb=3
   response:
     body:
-      string: '{"rank":1,"points":6,"tieBreak":20.5,"rating":2150,"username":"MorphyTal2018","performance":2390}
+      string: '{"rank":1,"points":6,"tieBreak":20.5,"rating":2150,"username":"MorphyTal2018","performance":2392}
 
-        {"rank":2,"points":6,"tieBreak":19.75,"rating":2286,"username":"I_Eat_Chess","performance":2459}
+        {"rank":2,"points":6,"tieBreak":19.75,"rating":2296,"username":"I_Eat_Chess","performance":2460}
 
-        {"rank":3,"points":5.5,"tieBreak":16.5,"rating":2309,"username":"Prajurit_CSI","performance":2352}
+        {"rank":3,"points":5.5,"tieBreak":16.5,"rating":2309,"username":"Prajurit_CSI","performance":2353}
 
         '
     headers:
@@ -35,7 +35,7 @@ interactions:
       Content-Type:
       - application/x-ndjson
       Date:
-      - Tue, 31 Oct 2023 22:09:05 GMT
+      - Fri, 06 Dec 2024 16:28:06 GMT
       Permissions-Policy:
       - interest-cohort=()
       Server:

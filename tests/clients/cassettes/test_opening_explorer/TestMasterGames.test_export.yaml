@@ -3,7 +3,7 @@ interactions:
     body: null
     headers:
       Accept:
-      - application/json
+      - application/x-chess-pgn
       Accept-Encoding:
       - gzip, deflate
       Connection:
@@ -60,9 +60,9 @@ interactions:
       Content-Type:
       - application/x-chess-pgn
       Date:
-      - Wed, 01 Nov 2023 07:49:11 GMT
+      - Fri, 06 Dec 2024 16:19:23 GMT
       Expires:
-      - Wed, 01 Nov 2023 10:49:11 GMT
+      - Fri, 06 Dec 2024 19:19:23 GMT
       Server:
       - nginx
     status:
