@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Iterator, Any, Dict, cast
+from typing import Iterator, Any, Dict, cast, List
 
 from .. import models
 from ..formats import NDJSON
@@ -91,7 +91,7 @@ class Puzzles(BaseClient):
          :return: the next puzzle"""
         path = "/api/puzzle/next"
 
-        allowed_themes = [
+        allowed_themes: List[str] = [
             "advancedPawn",
             "advancedPawnDescription",
             "advantage",
