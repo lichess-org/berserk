@@ -8,8 +8,10 @@ To be released
 * Added ``sheet`` optional parameter to ``Tournaments.stream_results``, and fix returned typed dict.
 * Added ``studies.import_pgn`` to import PGN to study
 * Added ``tv.stream_current_game_of_channel`` to stream the current TV game of a channel
+* Added endpoint ``client.puzzles.next`` to get next puzzle with given theme and difficulty
+* Added endpoint ``client.studies.get_from_user`` to get all studies from a given user
 
-Thanks to @nicvagn, @tors42, @fitztrev and @trevorbayless for their contributions to this release.
+Thanks to @nicvagn, @tors42, @fitztrev, @ShuvraneelMitra and @trevorbayless for their contributions to this release.
 
 v0.13.2 (2023-12-04)
 --------------------

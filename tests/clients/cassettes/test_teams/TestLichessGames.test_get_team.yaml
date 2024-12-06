@@ -15,7 +15,7 @@ interactions:
   response:
     body:
       string: '{"id":"lichess-swiss","name":"Lichess Swiss","description":"The official
-        Lichess Swiss team. We organize regular swiss tournaments for all to join.","open":true,"leader":{"name":"Lichess","patron":true,"id":"lichess"},"leaders":[{"name":"NoJoke","patron":true,"id":"nojoke"},{"name":"thibault","patron":true,"id":"thibault"}],"nbMembers":376628,"joined":false,"requested":false}'
+        Lichess Swiss team. We organize regular swiss tournaments for all to join.","open":true,"leader":{"name":"Lichess","flair":"activity.lichess","patron":true,"id":"lichess"},"nbMembers":535010,"flair":"food-drink.cheese-wedge","leaders":[{"name":"Lichess","flair":"activity.lichess","patron":true,"id":"lichess"},{"name":"thibault","flair":"symbols.rainbow-flag","patron":true,"id":"thibault"},{"name":"NoJoke","flair":"food-drink.watermelon","patron":true,"id":"nojoke"}],"joined":false,"requested":false}'
     headers:
       Access-Control-Allow-Headers:
       - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
@@ -28,7 +28,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 04 Aug 2023 18:31:57 GMT
+      - Fri, 06 Dec 2024 16:27:59 GMT
       Permissions-Policy:
       - interest-cohort=()
       Server:
@@ -42,7 +42,7 @@ interactions:
       X-Frame-Options:
       - DENY
       content-length:
-      - '378'
+      - '577'
     status:
       code: 200
       message: OK

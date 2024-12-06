@@ -14,7 +14,7 @@ interactions:
     uri: https://lichess.org/api/tournament/hallow23/results?nb=3&sheet=True
   response:
     body:
-      string: '{"rank":1,"score":149,"rating":2394,"username":"GGbers","flair":"activity.lichess-variant-king-of-the-hill","performance":2449,"sheet":{"scores":"55330000533054533003305555555445555555330330330"}}
+      string: '{"rank":1,"score":149,"rating":2394,"username":"GGbers","flair":"activity.lichess-berserk","performance":2449,"sheet":{"scores":"55330000533054533003305555555445555555330330330"}}
 
         {"rank":2,"score":124,"rating":2346,"username":"Kondor75","title":"IM","performance":2447,"sheet":{"scores":"44332544522100445230554555445555330202"}}
 
@@ -35,7 +35,7 @@ interactions:
       Content-Type:
       - application/x-ndjson
       Date:
-      - Mon, 01 Apr 2024 12:30:31 GMT
+      - Fri, 06 Dec 2024 16:28:09 GMT
       Permissions-Policy:
       - interest-cohort=()
       Server:

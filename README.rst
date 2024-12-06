@@ -160,6 +160,7 @@ Most of the API is available:
     client.puzzles.get_puzzle_dashboard
     client.puzzles.get_storm_dashboard
     client.puzzles.create_race
+    client.puzzles.get_next
 
     client.relations.get_users_followed
     client.relations.follow
@@ -171,6 +172,7 @@ Most of the API is available:
     client.studies.export
     client.studies.export_by_username
     client.studies.import_pgn
+    client.studies.get_metadata_by_username
 
     client.tablebase.look_up
     client.tablebase.standard

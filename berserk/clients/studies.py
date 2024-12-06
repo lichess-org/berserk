@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from typing import cast, List, Iterator
+from typing import cast, List, Iterator, Dict, Any
 
-from ..formats import PGN
+from ..formats import PGN, NDJSON_LIST
 from ..types.common import Color, Variant
 from ..types import ChapterIdName
 from .base import BaseClient
@@ -49,7 +49,8 @@ class Studies(BaseClient):
         """Imports arbitrary PGN into an existing study.
         Creates a new chapter in the study.
 
-        If the PGN contains multiple games (separated by 2 or more newlines) then multiple chapters will be created within the study.
+        If the PGN contains multiple games (separated by 2 or more newlines) then
+        multiple chapters will be created within the study.
 
         Note that a study can contain at most 64 chapters.
 
@@ -66,3 +67,17 @@ class Studies(BaseClient):
         return cast(
             List[ChapterIdName], self._r.post(path, data=payload).get("chapters", [])
         )
+
+    def get_metadata_by_username(self, username: str) -> List[Dict[str, Any]]:
+        """
+        Get metadata (name and dates) of all studies of a user.
+        If authenticated, public, unlisted, and private studies are included.
+        If not, only public (non-unlisted) studies are included.
+
+        :param username: Username whose studies you want
+
+        :return: A List of study metadata in NDJSON form
+        """
+        path = f"/api/study/by/{username}"
+
+        return self._r.get(path, fmt=NDJSON_LIST)

@@ -3,7 +3,7 @@ interactions:
     body: null
     headers:
       Accept:
-      - application/vnd.lichess.v3+json
+      - application/x-ndjson
       Accept-Encoding:
       - gzip, deflate
       Connection:
@@ -11,10 +11,12 @@ interactions:
       User-Agent:
       - python-requests/2.31.0
     method: GET
-    uri: https://lichess.org/api/player/autocomplete?term=username_not_found__&object=True&friend=False
+    uri: https://lichess.org/api/study/by/Chess700800
   response:
     body:
-      string: '{"result":[]}'
+      string: '{"id":"Vl9LYHvz","name":"Chess700800''s Study","createdAt":1656694796990,"updatedAt":1733497607181}
+
+        '
     headers:
       Access-Control-Allow-Headers:
       - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
@@ -24,18 +26,18 @@ interactions:
       - '*'
       Connection:
       - keep-alive
-      Content-Length:
-      - '13'
       Content-Type:
-      - application/json
+      - application/x-ndjson
       Date:
-      - Fri, 06 Dec 2024 16:28:16 GMT
+      - Fri, 06 Dec 2024 16:27:57 GMT
       Permissions-Policy:
       - interest-cohort=()
       Server:
       - nginx
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
       Vary:
       - Origin
       X-Frame-Options:

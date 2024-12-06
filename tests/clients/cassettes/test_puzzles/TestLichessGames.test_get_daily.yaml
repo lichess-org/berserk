@@ -11,16 +11,14 @@ interactions:
       User-Agent:
       - python-requests/2.31.0
     method: GET
-    uri: https://lichess.org/api/tournament/hallow23/results?nb=3&sheet=False
+    uri: https://lichess.org/api/puzzle/daily
   response:
     body:
-      string: '{"rank":1,"score":149,"rating":2394,"username":"GGbers","flair":"activity.lichess-berserk","performance":2449}
-
-        {"rank":2,"score":124,"rating":2346,"username":"Kondor75","title":"IM","performance":2447}
-
-        {"rank":3,"score":123,"rating":2241,"username":"sadisticTushi","flair":"food-drink.french-fries","performance":2314}
-
-        '
+      string: '{"game":{"id":"Zu1nw3Pq","perf":{"key":"rapid","name":"Rapid"},"rated":true,"players":[{"name":"JoanMateu","id":"joanmateu","color":"white","rating":1735},{"name":"Ragimov","id":"ragimov","color":"black","rating":1696}],"pgn":"d4
+        d5 c4 Nf6 Nc3 e6 e3 Bb4 Bd2 O-O Nf3 Bd7 Qc2 h6 a3 Be7 c5 Nc6 b4 a6 Bd3 b6
+        O-O bxc5 bxc5 Ne8 Rab1 Qc8 Rb2 Rb8 Rfb1 Rxb2 Rxb2 Qa8 Na2 Nf6 Nb4 Nxb4 axb4
+        Rb8 Ne5 Bb5 c6 Bxd3 Nxd3 Ne4 Ne5 Nxd2 Qxd2 a5 b5 Bb4 Qc2 Rd8 Qa4 Bc3 Rb1 Qa7
+        Nd7 Ra8 b6 cxb6 Rxb6 Bb4 Rb7 Qa6 g3 Rc8","clock":"5+10"},"puzzle":{"id":"4NPSe","rating":2030,"plays":37119,"solution":["b7b4","a6c6","a4c6"],"themes":["endgame","crushing","short"],"initialPly":67}}'
     headers:
       Access-Control-Allow-Headers:
       - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
@@ -30,12 +28,10 @@ interactions:
       - '*'
       Connection:
       - keep-alive
-      Content-Disposition:
-      - attachment; filename=lichess_tournament_2023.10.31_hallow23_halloween-arena-2023.ndjson
       Content-Type:
-      - application/x-ndjson
+      - application/json
       Date:
-      - Fri, 06 Dec 2024 16:28:07 GMT
+      - Fri, 06 Dec 2024 16:27:54 GMT
       Permissions-Policy:
       - interest-cohort=()
       Server:
@@ -48,6 +44,8 @@ interactions:
       - Origin
       X-Frame-Options:
       - DENY
+      content-length:
+      - '656'
     status:
       code: 200
       message: OK
