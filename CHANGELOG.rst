@@ -8,7 +8,7 @@ To be released
 * Added ``sheet`` optional parameter to ``Tournaments.stream_results``, and fix returned typed dict.
 * Added ``studies.import_pgn`` to import PGN to study
 * Added ``tv.stream_current_game_of_channel`` to stream the current TV game of a channel
-# Added ``bots.handle_draw_offer`` and ``bots.handle_takeback_offer`` to handle draw and takeback offers
+* Added ``bots.handle_draw_offer`` and ``bots.handle_takeback_offer`` to handle draw and takeback offers
 
 Thanks to @nicvagn, @tors42, @fitztrev, @trevorbayless, @friedrichtenhagen for their contributions to this release.
 
