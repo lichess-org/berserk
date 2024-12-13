@@ -16,6 +16,9 @@ class BroadcastPlayer(TypedDict):
     title: NotRequired[Title]
 
 
+# top broadcasts start here
+
+
 class PaginatedTopBroadcasts(TypedDict):
     # active broadcasts
     active: List[BroadcastWithLastRound]
@@ -25,24 +28,26 @@ class PaginatedTopBroadcasts(TypedDict):
     past: BroadcastPaginationMetadata
 
 
-class BroadcastWithLastRound(TypedDict):
+class BroadcastWithLastRound(TypedDict, total=False):
     # group of broadcast
     group: str
-    # broadcast tour
-    tour: BroadcastTour
     # broadcast round
     round: BroadcastRoundInfo
+    # broadcast tour
+    tour: BroadcastTour
+    # not listed in docs currently
+    roundToLink: Dict[str, Any]
 
 
-class BroadcastPaginationMetadata(TypedDict):
+class BroadcastPaginationMetadata(TypedDict, total=False):
     currentPage: int
     maxPerPage: int
-    currentPageResults: Dict[str, Any]
-    previousPage: int
-    nextPage: int
+    currentPageResults: List[Dict[str, Any]]
+    previousPage: Optional[int]
+    nextPage: Optional[int]
 
 
-class BroadcastTour(TypedDict):
+class BroadcastTour(TypedDict, total=False):
     id: str
     name: str
     slug: str
@@ -50,7 +55,7 @@ class BroadcastTour(TypedDict):
     # Start and end dates of the tournament, as Unix timestamps in milliseconds
     dates: Optional[List[int]]
     # Additional display information about the tournament
-    info: Optional[Dict[str, Any]]
+    info: BroadcastTourInfo
     # Used to designate featured tournaments on Lichess
     tier: Optional[int]
     image: Optional[str]
@@ -61,7 +66,26 @@ class BroadcastTour(TypedDict):
     url: str
 
 
-class BroadcastRoundInfo(TypedDict):
+class BroadcastTourInfo(TypedDict, total=False):
+    # Official website. External website URL
+    website: str
+    # Featured players
+    players: str
+    # Tournament location
+    location: str
+    # Time control
+    tc: str
+    # FIDE rating category
+    fideTc: str
+    # Timezone of the tournament. Example: America/New_York.
+    timeZone: str
+    # Official standings website. External website URL
+    standings: str
+    # Tournament format
+    format: str
+
+
+class BroadcastRoundInfo(TypedDict, total=False):
     id: str
     name: str
     slug: str
