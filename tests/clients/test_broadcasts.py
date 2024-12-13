@@ -11,6 +11,7 @@ from berserk.types.broadcast import BroadcastWithLastRound, BroadcastPaginationM
 
 class TestTopBroadcasts:
     # test complete response
+    @skip_if_older_3_dot_10
     def test_response_type_total(self):
         """Verify that the response matches the total model"""
         res = Client().broadcasts.get_top(html=True, page=1)
@@ -20,18 +21,21 @@ class TestTopBroadcasts:
     # This makes it easier to locate errors.
 
     # test response['active']
+    @skip_if_older_3_dot_10
     def test_response_type_active_model(self):
         """Verify that the response matches the typed-dict"""
         res = Client().broadcasts.get_top(html=True, page=1)
         validate(List[BroadcastWithLastRound], res.get("active", []))
 
     # test response['past']
+    @skip_if_older_3_dot_10
     def test_response_type_past_model(self):
         """Verify that the response matches the typed-dict"""
         res = Client().broadcasts.get_top(html=True, page=1)
         validate(BroadcastPaginationMetadata, res.get("past", []))
 
     # test response['upcoming']
+    @skip_if_older_3_dot_10
     def test_response_type_upcoming_model(self):
         """Verify that the response matches the typed-dict"""
         res = Client().broadcasts.get_top(html=True, page=1)
