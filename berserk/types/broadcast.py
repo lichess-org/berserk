@@ -97,3 +97,19 @@ class BroadcastRoundInfo(TypedDict, total=False):
     finishedAt: Optional[int]
     url: str
     delay: Optional[int]
+
+
+# broadcasts by user
+class BroadcastByUser(TypedDict, total=False):
+    currentPage: int
+    currentPageResults: List[BroadcastByUserCurrentPageResult]
+    maxPerPage: int
+    nbPages: int
+    nbResults: int
+    nextPage: Optional[int]
+    previousPage: Optional[int]
+
+
+class BroadcastByUserCurrentPageResult(TypedDict, total=False):
+    round: BroadcastRoundInfo
+    tour: BroadcastTourInfo

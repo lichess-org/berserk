@@ -6,7 +6,11 @@ from utils import validate, skip_if_older_3_dot_10
 
 import requests_mock
 from typing import List, Dict
-from berserk.types.broadcast import BroadcastWithLastRound, BroadcastPaginationMetadata
+from berserk.types.broadcast import (
+    BroadcastWithLastRound,
+    BroadcastPaginationMetadata,
+    BroadcastByUser,
+)
 
 
 class TestTopBroadcasts:
@@ -52,3 +56,22 @@ class TestResetBroadcastRound:
                 json={"ok": True},
             )
             res = Client().broadcasts.reset_round(broadcast_round_id=broadcast_round_id)
+
+
+class TestBroadcastByUsername:
+    # test complete response
+    @skip_if_older_3_dot_10
+    def test_response_type_total(self):
+        """Verify that the response matches the total model"""
+        res = Client().broadcasts.get_by_user(username="STL_Carlsen", html=True, page=1)
+        validate(BroadcastByUser, res)
+
+    def test_broadcast_round_id_param(self):
+        """The test verifies that the username parameter is passed correctly in the query params."""
+        with requests_mock.Mocker() as m:
+            username = "STL_Carlsen"
+            m.get(
+                f"https://lichess.org/api/broadcast/by/{username}",
+                json={"ok": True},
+            )
+            res = Client().broadcasts.get_by_user(username=username, html=False, page=1)

@@ -6,7 +6,7 @@ from .. import models
 from ..formats import PGN
 from .base import BaseClient
 
-from ..types.broadcast import BroadcastPlayer, PaginatedTopBroadcasts
+from ..types.broadcast import BroadcastPlayer, PaginatedTopBroadcasts, BroadcastByUser
 from ..utils import to_str
 
 
@@ -45,8 +45,17 @@ class Broadcasts(BaseClient):
         params = {"html": html, "page": page}
         return cast(PaginatedTopBroadcasts, self._r.get(path, params=params))
 
-    # def get_by_user():
-    #     pass
+    def get_by_user(self, username: str, html: bool, page: int = 1) -> BroadcastByUser:
+        """Get all incoming, ongoing, and finished official broadcasts.
+            The broadcasts are sorted by created date, most recent first.
+
+        :param username: username
+        :param page: page number. Defaults to 1
+        :param html: Convert the "description" field from markdown to HTML
+        """
+        path = f"https://lichess.org/api/broadcast/by/{username}"
+        params = {"html": html, "page": page}
+        return cast(BroadcastByUser, self._r.get(path, params=params))
 
     def create(
         self,
