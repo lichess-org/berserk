@@ -98,6 +98,8 @@ Most of the API is available:
     client.bots.decline_challenge
 
     client.broadcasts.get_official
+    client.broadcasts.get_top
+    client.broadcasts.get_by_user
     client.broadcasts.create
     client.broadcasts.get
     client.broadcasts.update
@@ -105,6 +107,7 @@ Most of the API is available:
     client.broadcasts.create_round
     client.broadcasts.get_round
     client.broadcasts.update_round
+    client.broadcasts.reset_round
     client.broadcasts.get_round_pgns
     client.broadcasts.get_pgns
     client.broadcasts.stream_round
