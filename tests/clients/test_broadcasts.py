@@ -4,7 +4,7 @@ import requests_mock
 from berserk import Client, PaginatedTopBroadcasts
 from utils import validate, skip_if_older_3_dot_10
 
-
+import requests_mock
 from typing import List, Dict
 from berserk.types.broadcast import BroadcastWithLastRound, BroadcastPaginationMetadata
 
@@ -40,3 +40,15 @@ class TestTopBroadcasts:
         """Verify that the response matches the typed-dict"""
         res = Client().broadcasts.get_top(html=True, page=1)
         validate(List[BroadcastWithLastRound], res.get("upcoming", []))
+
+
+class TestResetBroadcastRound:
+    def test_broadcast_round_id_param(self):
+        """The test verifies that the broadcast round id parameter is passed correctly in the query params."""
+        with requests_mock.Mocker() as m:
+            broadcast_round_id = "12345678"
+            m.post(
+                f"https://lichess.org/api/broadcast/round/{broadcast_round_id}/reset",
+                json={"ok": True},
+            )
+            res = Client().broadcasts.reset_round(broadcast_round_id=broadcast_round_id)
