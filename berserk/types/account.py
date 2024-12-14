@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from datetime import datetime
+from typing import Any
 
 from typing_extensions import TypedDict
 
@@ -94,3 +95,8 @@ class Preferences(TypedDict, total=False):
     zen: int
     moveEvent: int
     rookCastle: int
+
+
+class TimelineEvents(TypedDict):
+    entries: list[dict[str, Any]]
+    users: dict[str, Any]
