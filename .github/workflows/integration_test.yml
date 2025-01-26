@@ -6,11 +6,11 @@ on:
 
 jobs:
   lila:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
-    container: ubuntu:22.04
+    container: ubuntu:latest
     services:
       bdit_lila:
         image: ghcr.io/lichess-org/lila-docker:main
