@@ -115,7 +115,7 @@ class Broadcasts(BaseClient):
         :param broadcast_round_id: ID of a broadcast round
         :param pgn_games: one or more games in PGN format
         """
-        path = f"/broadcast/round/{broadcast_round_id}/push"
+        path = f"/api/broadcast/round/{broadcast_round_id}/push"
         games = "\n\n".join(g.strip() for g in pgn_games)
         self._r.post(path, data=games)
 
