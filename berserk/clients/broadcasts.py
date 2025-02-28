@@ -115,7 +115,7 @@ class Broadcasts(BaseClient):
         :param broadcast_round_id: ID of a broadcast round
         :param pgn_games: one or more games in PGN format
         """
-        path = f"/broadcast/round/{broadcast_round_id}/push"
+        path = f"/api/broadcast/round/{broadcast_round_id}/push"
         games = "\n\n".join(g.strip() for g in pgn_games)
         self._r.post(path, data=games)
 
@@ -171,8 +171,8 @@ class Broadcasts(BaseClient):
         syncUrlRound: str | None = None,
         startsAt: int | None = None,
         delay: int | None = None,
+        status: str | None = None,
         period: int | None = None,
-        finished: bool | None = None,
     ) -> Dict[str, Any]:
         """Update information about a broadcast round that you created.
 
@@ -182,8 +182,8 @@ class Broadcasts(BaseClient):
         :param syncUrlRound: required if syncUrl contains a LiveChessCloud link
         :param startsAt: Timestamp in milliseconds of broadcast round start
         :param delay: how long to delay moves coming from the source in seconds
+        :param status: manual broadcast round status "new", "started" or "finished"
         :param period: how long to wait between source requests in seconds
-        :param finished: set whether the round is completed
         :return: updated broadcast information
         """
         path = f"/broadcast/round/{broadcast_id}/edit"
@@ -193,8 +193,8 @@ class Broadcasts(BaseClient):
             "syncUrlRound": syncUrlRound,
             "startsAt": startsAt,
             "delay": delay,
+            "status": status,
             "period": period,
-            "finished": finished,
         }
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
