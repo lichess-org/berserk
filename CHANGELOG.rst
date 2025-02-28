@@ -8,8 +8,9 @@ To be released
 * Added ``sheet`` optional parameter to ``Tournaments.stream_results``, and fix returned typed dict.
 * Added ``studies.import_pgn`` to import PGN to study
 * Added ``tv.stream_current_game_of_channel`` to stream the current TV game of a channel
+* Added ``client.account.get_timeline`` to get user timeline
 
-Thanks to @nicvagn, @tors42, @fitztrev and @trevorbayless for their contributions to this release.
+Thanks to @nicvagn, @tors42, @fitztrev, @trevorbayless, and @srachmiletter for their contributions to this release.
 
 v0.13.2 (2023-12-04)
 --------------------
