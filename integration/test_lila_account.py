@@ -1,7 +1,7 @@
 import berserk
 import pytest
 
-BASE_URL = "http://bdit_lila:9663"
+BASE_URL = "http://bdit_lila:8080"
 
 @pytest.fixture(scope="module")
 def client():
