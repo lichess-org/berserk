@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- name: The Lichess Organisation
+title: "Python client for the Lichess API."
+version: 0.13.2
+date-released: 2023-12-03
+license: GPL-3.0
+url: "https://github.com/lichess-org/berserk"
