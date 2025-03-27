@@ -3,8 +3,9 @@ from __future__ import annotations
 from typing import cast
 
 from .. import models
-from ..types.account import AccountInformation, Preferences
+from ..types.account import AccountInformation, Preferences, TimelineEvents
 from .base import BaseClient
+from ..session import Params
 
 
 class Account(BaseClient):
@@ -60,3 +61,17 @@ class Account(BaseClient):
         """
         path = "/api/bot/account/upgrade"
         self._r.post(path)
+
+    def get_timeline(self, since: int = 1356998400070, nb: int = 15) -> TimelineEvents:
+        """Get your timeline events.
+
+        Requires OAuth2 authorization.
+
+        :param int since: timestamp to show events since, default 1356998400070
+        :param int nb: max number of events to fetch, default 15
+        :return: timeline events of the authenticated user
+        """
+        path = "/api/timeline"
+        params: Params = {"since": since, "nb": nb}
+
+        return cast(TimelineEvents, self._r.get(path, params=params))
