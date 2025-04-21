@@ -5,7 +5,7 @@ from .broadcast import BroadcastPlayer
 from .bulk_pairings import BulkPairing, BulkPairingGame
 from .challenges import Challenge
 from .common import ClockConfig, ExternalEngine, LightUser, OnlineLightUser, Variant
-from .puzzles import PuzzleRace
+from .puzzles import PuzzleRace, NextPuzzle
 from .opening_explorer import (
     OpeningExplorerRating,
     OpeningStatistic,
@@ -36,6 +36,7 @@ __all__ = [
     "Preferences",
     "Profile",
     "PuzzleRace",
+    "NextPuzzle",
     "Speed",
     "StreamerInfo",
     "SwissInfo",
