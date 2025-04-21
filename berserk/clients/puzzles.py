@@ -5,7 +5,7 @@ from typing import Iterator, Any, Dict, cast
 from .. import models
 from ..formats import NDJSON
 from .base import BaseClient
-from ..types import PuzzleRace
+from ..types import PuzzleRace, NextPuzzle
 
 
 class Puzzles(BaseClient):
@@ -78,3 +78,25 @@ class Puzzles(BaseClient):
         """
         path = "/api/racer"
         return cast(PuzzleRace, self._r.post(path))
+
+    def get_next_puzzle(self, rating: int | None = None) -> NextPuzzle:
+        """Get the next puzzle for the authenticated user.
+
+        The user's puzzle rating and history influence the puzzle choice.
+        Optionally, a puzzle rating can be specified, overriding the user's rating.
+
+        Requires authentication (OAuth scope: `puzzle:read`).
+
+        https://lichess.org/api#tag/Puzzles/operation/apiPuzzleNext
+
+        :param rating: Optional puzzle rating to target. If omitted, the user's
+                       current puzzle rating is used.
+        :return: A dictionary containing the puzzle details and the source game.
+        """
+        path = "/api/puzzle/next"
+        params = {"rating": rating} if rating is not None else {}
+        # Note: Authentication is handled by the underlying session/requester
+        # when the berserk.Client is initialized with a token.
+        # The Lichess API uses POST for this endpoint.
+        response = self._r.post(path, params=params)
+        return cast(NextPuzzle, response)
