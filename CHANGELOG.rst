@@ -8,8 +8,10 @@ To be released
 * Added ``sheet`` optional parameter to ``Tournaments.stream_results``, and fix returned typed dict.
 * Added ``studies.import_pgn`` to import PGN to study
 * Added ``tv.stream_current_game_of_channel`` to stream the current TV game of a channel
+* Added ``client.fide.get`` to retrieve detailed data about a FIDE player by ID
+* Added ``client.fide.search`` to search for FIDE players by name
 
-Thanks to @nicvagn, @tors42, @fitztrev and @trevorbayless for their contributions to this release.
+Thanks to @nicvagn, @tors42, @fitztrev, @trevorbayless and @stafot for their contributions to this release.
 
 v0.13.2 (2023-12-04)
 --------------------

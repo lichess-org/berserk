@@ -138,6 +138,9 @@ Most of the API is available:
     client.external_engine.update
     client.external_engine.delete
 
+    client.fide.get_player
+    client.fide.search_players
+
     client.games.export
     client.games.export_ongoing_by_player
     client.games.export_by_player

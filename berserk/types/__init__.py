@@ -3,8 +3,9 @@ from __future__ import annotations
 from .account import AccountInformation, Perf, Preferences, Profile, StreamerInfo
 from .broadcast import BroadcastPlayer
 from .bulk_pairings import BulkPairing, BulkPairingGame
-from .challenges import ChallengeJson
-from .common import ClockConfig, ExternalEngine, LightUser, OnlineLightUser, VariantKey
+from .challenges import Challenge
+from .common import ClockConfig, ExternalEngine, LightUser, OnlineLightUser, Variant
+from .fide import FidePlayer
 from .puzzles import PuzzleRace
 from .opening_explorer import (
     OpeningExplorerRating,
@@ -27,6 +28,7 @@ __all__ = [
     "ClockConfig",
     "CurrentTournaments",
     "ExternalEngine",
+    "FidePlayer",
     "LightUser",
     "OnlineLightUser",
     "OpeningExplorerRating",
