@@ -5,7 +5,6 @@ from berserk.types.fide import FidePlayer
 from utils import validate, skip_if_older_3_dot_10
 
 
-
 class TestFide:
     @skip_if_older_3_dot_10
     @pytest.mark.vcr
