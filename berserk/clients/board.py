@@ -4,7 +4,7 @@ from time import time as now
 from typing import Iterator, Any, Dict, Tuple, List, Literal
 
 from .. import models
-from ..types.common import Color, Variant
+from ..types.common import Color, VariantKey
 from ..formats import TEXT, JSON_LIST
 from .base import BaseClient
 from ..session import Data
@@ -26,7 +26,7 @@ class Board(BaseClient):
         time: int,
         increment: int,
         rated: bool = False,
-        variant: Variant = "standard",
+        variant: VariantKey = "standard",
         color: Color | Literal["random"] = "random",
         rating_range: str | Tuple[int, int] | List[int] | None = None,
     ) -> float:

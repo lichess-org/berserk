@@ -6,12 +6,13 @@ from .. import models
 from ..formats import NDJSON
 from .base import BaseClient
 from ..types.challenges import ChallengeDeclineReason
+from ..types.bots import IncomingEvent
 
 
 class Bots(BaseClient):
     """Client for bot-related endpoints."""
 
-    def stream_incoming_events(self) -> Iterator[Dict[str, Any]]:
+    def stream_incoming_events(self) -> Iterator[IncomingEvent]:
         """Get your realtime stream of incoming events.
 
         :return: stream of incoming events

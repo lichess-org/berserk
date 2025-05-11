@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from typing_extensions import TypeAlias, TypedDict, NotRequired, Literal
+from typing import Union
+from typing_extensions import TypeAlias, TypedDict, Required, NotRequired, Literal
 
-from .common import Variant, Color, OnlineLightUser
-from .opening_explorer import Speed
+from .common import VariantKey, Color, OnlineLightUser, Speed
 
 ChallengeStatus: TypeAlias = Literal[
     "created",
@@ -27,7 +27,17 @@ ChallengeDeclineReason: TypeAlias = Literal[
     "onlyBot",
 ]
 
+ColorOrRandom: TypeAlias = Union[
+    Color, Literal["random"]
+]
+
 ChallengeDirection: TypeAlias = Literal["in", "out"]
+
+
+class Variant(TypedDict):
+    key: VariantKey
+    name: str
+    short: str
 
 
 class User(OnlineLightUser):
@@ -37,20 +47,26 @@ class User(OnlineLightUser):
     provisional: NotRequired[bool]
 
 
-class Challenge(TypedDict):
+class Perf(TypedDict):
+    icon: str
+    name: str
+
+
+class ChallengeJson(TypedDict):
     """Information about a challenge."""
 
-    id: str
-    url: str
-    status: ChallengeStatus
-    challenger: User
-    destUser: User | None
-    variant: Variant
-    rated: bool
-    speed: Speed
+    id: Required[str]
+    url: Required[str]
+    status: Required[ChallengeStatus]
+    challenger: Required[User]
+    destUser: Required[User | None]
+    variant: Required[Variant]
+    rated: Required[bool]
+    speed: Required[Speed]
     timeControl: object
-    color: Color
-    perf: str
+    color: Required[ColorOrRandom]
+    finalColor: Color
+    perf: Required[Perf]
     direction: NotRequired[ChallengeDirection]
     initialFen: NotRequired[str]
     declineReason: str

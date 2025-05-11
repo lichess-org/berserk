@@ -7,7 +7,7 @@ import logging
 from .base import BaseClient
 from ..types import (
     OpeningStatistic,
-    Variant,
+    VariantKey,
     Speed,
     OpeningExplorerRating,
 )
@@ -27,7 +27,7 @@ class OpeningExplorer(BaseClient):
 
     def get_lichess_games(
         self,
-        variant: Variant = "standard",
+        variant: VariantKey = "standard",
         position: str | None = None,
         play: list[str] | None = None,
         speeds: list[Speed] | None = None,
@@ -97,7 +97,7 @@ class OpeningExplorer(BaseClient):
         self,
         player: str,
         color: Color,
-        variant: Variant | None = None,
+        variant: VariantKey | None = None,
         position: str | None = None,
         play: list[str] | None = None,
         speeds: list[Speed] | None = None,
@@ -145,7 +145,7 @@ class OpeningExplorer(BaseClient):
         self,
         player: str,
         color: Color,
-        variant: Variant | None = None,
+        variant: VariantKey | None = None,
         position: str | None = None,
         play: list[str] | None = None,
         speeds: list[Speed] | None = None,

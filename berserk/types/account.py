@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, TypeAlias, Literal
 
 
 class Perf(TypedDict):
@@ -16,15 +16,22 @@ class Perf(TypedDict):
 class Profile(TypedDict):
     """Public profile of an account."""
 
-    country: str
+    flag: str
     location: str
     bio: str
-    firstName: str
-    lastName: str
+    realName: str
     fideRating: int
     uscfRating: int
     ecfRating: int
+    cfcRating: int
+    rcfRating: int
+    dsbRating: int
     links: str
+
+
+class PlayTime(TypedDict):
+    total: int
+    tv: int
 
 
 class StreamerInfo(TypedDict):
@@ -39,6 +46,7 @@ class AccountInformation(TypedDict):
     id: str
     username: str
     perfs: dict[str, Perf]
+    flair: str
     createdAt: datetime
     disabled: bool
     tosViolation: bool
@@ -46,6 +54,7 @@ class AccountInformation(TypedDict):
     seenAt: datetime
     patron: bool
     verified: bool
+    playTime: PlayTime
     title: str
     url: str
     playing: str
@@ -55,10 +64,21 @@ class AccountInformation(TypedDict):
     followable: bool
     following: bool
     blocking: bool
-    followsYou: bool
 
 
-class Preferences(TypedDict, total=False):
+SoundSet: TypeAlias = Literal[
+    "silent",
+    "standard",
+    "piano",
+    "nes",
+    "sfx",
+    "futuristic",
+    "robot",
+    "music",
+    "speech"
+]
+
+class UserPreferences(TypedDict, total=False):
     dark: bool
     transp: bool
     bgImg: str
@@ -67,7 +87,7 @@ class Preferences(TypedDict, total=False):
     pieceSet: str
     theme3d: str
     pieceSet3d: str
-    soundSet: str
+    soundSet: SoundSet
     blindfold: int
     autoQueen: int
     autoThreefold: int
@@ -94,3 +114,8 @@ class Preferences(TypedDict, total=False):
     zen: int
     moveEvent: int
     rookCastle: int
+
+
+class Preferences(TypedDict):
+    prefs: UserPreferences
+    language: str
