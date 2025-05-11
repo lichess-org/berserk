@@ -20,7 +20,7 @@ GameSource: TypeAlias = Literal[
     "simul",
     "relay",
     "pool",
-    "swiss"
+    "swiss",
 ]
 
 
@@ -54,6 +54,7 @@ class GameStartEvent(TypedDict):
     type: Literal["gameStart"]
     game: GameEventInfo
 
+
 class GameFinishEvent(TypedDict):
     type: Literal["gameFinish"]
     game: GameEventInfo
@@ -63,9 +64,11 @@ class ChallengeEvent(TypedDict):
     type: Literal["challenge"]
     challenge: ChallengeJson
 
+
 class ChallengeCancelledEvent(TypedDict):
     type: Literal["challengeCancelled"]
     challenge: ChallengeJson
+
 
 class ChallengeDeclinedEvent(TypedDict):
     type: Literal["challengeDeclined"]
@@ -77,5 +80,5 @@ IncomingEvent: TypeAlias = Union[
     GameFinishEvent,
     ChallengeEvent,
     ChallengeCancelledEvent,
-    ChallengeDeclinedEvent
+    ChallengeDeclinedEvent,
 ]

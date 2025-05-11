@@ -75,10 +75,7 @@ class OnlineLightUser(LightUser):
     online: NotRequired[bool]
 
 
-VariantKey: TypeAlias = Union[
-    GameType,
-    Literal["standard"]
-]
+VariantKey: TypeAlias = Union[GameType, Literal["standard"]]
 
 PerfType: TypeAlias = Union[
     GameType, Literal["bullet", "blitz", "rapid", "classical", "ultraBullet"]

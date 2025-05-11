@@ -27,9 +27,7 @@ ChallengeDeclineReason: TypeAlias = Literal[
     "onlyBot",
 ]
 
-ColorOrRandom: TypeAlias = Union[
-    Color, Literal["random"]
-]
+ColorOrRandom: TypeAlias = Union[Color, Literal["random"]]
 
 ChallengeDirection: TypeAlias = Literal["in", "out"]
 

@@ -75,8 +75,9 @@ SoundSet: TypeAlias = Literal[
     "futuristic",
     "robot",
     "music",
-    "speech"
+    "speech",
 ]
+
 
 class UserPreferences(TypedDict, total=False):
     dark: bool
