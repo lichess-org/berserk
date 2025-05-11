@@ -18,7 +18,7 @@ class Bots(BaseClient):
         :return: stream of incoming events
         """
         path = "/api/stream/event"
-        yield from cast(IncomingEvent, self._r.get(path, stream=True))
+        yield from cast("Iterator[IncomingEvent]", self._r.get(path, stream=True))
 
     def stream_game_state(self, game_id: str) -> Iterator[Dict[str, Any]]:
         """Get the stream of events for a bot game.
