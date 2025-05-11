@@ -16,13 +16,15 @@ class model(type):
 class Model(metaclass=model):
     @overload
     @classmethod
-    def convert(cls, data: Dict[str, T]) -> Dict[str, T]: ...
+    def convert(cls, data: Dict[str, T]) -> Dict[str, T]:
+        ...
 
     @overload
     @classmethod
     def convert(
         cls, data: List[Dict[str, T]] | Tuple[Dict[str, T], ...]
-    ) -> List[Dict[str, T]]: ...
+    ) -> List[Dict[str, T]]:
+        ...
 
     @classmethod
     def convert(
