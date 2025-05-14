@@ -24,7 +24,7 @@ Look through the GitHub issues for bugs.
 Implement Missing Endpoints
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can run the ``check-endpoints.py`` script (requites yaml to be installed, ``pip3 install pyyaml``) in the root of the project to get a list of endpoints that are still missing.
+You can run the ``check-endpoints.py`` script (requires yaml to be installed, ``pip3 install pyyaml``) in the root of the project to get a list of endpoints that are still missing.
 
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
@@ -126,7 +126,7 @@ Note that this will not overwrite existing captures, so you need to delete them 
 
 When running tests regularly (e.g. with ``make test``), the recorded requests will be replayed instead of making real http requests.
 
-⚠️ Do not record sensitive information (tokens). See the `Filtering information documentation <https://vcrpy.readthedocs.io/en/latest/advanced.html#filter-sensitive-data-from-the-request). And manually check the commited data before pushing it to remote! For more control, [see custom filtering](https://vcrpy.readthedocs.io/en/latest/advanced.html#custom-response-filtering>`_.
+⚠️ Do not record sensitive information (tokens). See the `Filtering information documentation <https://vcrpy.readthedocs.io/en/latest/advanced.html#filter-sensitive-data-from-the-request). And manually check the committed data before pushing it to remote! For more control, [see custom filtering](https://vcrpy.readthedocs.io/en/latest/advanced.html#custom-response-filtering>`_.
 
 .. code-block:: python
 
