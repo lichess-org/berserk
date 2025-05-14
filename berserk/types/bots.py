@@ -65,8 +65,8 @@ class ChallengeEvent(TypedDict):
     challenge: ChallengeJson
 
 
-class ChallengeCancelledEvent(TypedDict):
-    type: Literal["challengeCancelled"]
+class ChallengeCanceledEvent(TypedDict):
+    type: Literal["challengeCanceled"]
     challenge: ChallengeJson
 
 
@@ -79,6 +79,6 @@ IncomingEvent: TypeAlias = Union[
     GameStartEvent,
     GameFinishEvent,
     ChallengeEvent,
-    ChallengeCancelledEvent,
+    ChallengeCanceledEvent,
     ChallengeDeclinedEvent,
 ]

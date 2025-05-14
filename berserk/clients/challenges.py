@@ -191,7 +191,7 @@ class Challenges(BaseClient):
         Requires OAuth2 authorization with challenge:write, bot:play and board:play scopes.
 
         :param challenge_id: ID of a challenge
-        :param opponent_token: if set to the challenge:write token of the opponent, allows game to be cancelled
+        :param opponent_token: if set to the challenge:write token of the opponent, allows game to be canceled
             even if both players have moved
         """
         path = f"/api/challenge/{challenge_id}/cancel"
