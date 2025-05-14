@@ -97,3 +97,7 @@ class OAuth(Model):
 class TV(Model):
     createdAt = utils.datetime_from_millis
     lastMoveAt = utils.datetime_from_millis
+
+
+class FidePlayer(Model):
+    pass

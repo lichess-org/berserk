@@ -24,6 +24,7 @@ from .tablebase import Tablebase
 from .opening_explorer import OpeningExplorer
 from .bulk_pairings import BulkPairings
 from .external_engine import ExternalEngine
+from .fide import Fide
 
 __all__ = [
     "Account",
@@ -35,6 +36,7 @@ __all__ = [
     "Challenges",
     "Client",
     "ExternalEngine",
+    "Fide",
     "Games",
     "Messaging",
     "OAuth",
@@ -114,3 +116,4 @@ class Client(BaseClient):
         self.opening_explorer = OpeningExplorer(session, explorer_url)
         self.bulk_pairings = BulkPairings(session, base_url)
         self.external_engine = ExternalEngine(session, base_url)
+        self.fide = Fide(session)

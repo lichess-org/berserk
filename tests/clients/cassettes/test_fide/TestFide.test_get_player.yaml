@@ -1,0 +1,19 @@
+interactions:
+- request:
+    method: GET
+    uri: https://lichess.org/api/fide/player/35009192
+    headers:
+      Accept:
+      - application/json
+    body: null
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+    body:
+      string: '{"id": 35009192, "name": "Erigaisi Arjun", "federation": "IND", "year": 2003, "title": "GM", "standard": 2782, "rapid": 2708, "blitz": 2738}'
+version: 1
+
