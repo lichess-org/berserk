@@ -1,23 +1,24 @@
 from __future__ import annotations
 
-from typing import Iterator, Any, Dict
+from typing import Iterator, Any, Dict, cast
 
 from .. import models
 from ..formats import NDJSON
 from .base import BaseClient
 from ..types.challenges import ChallengeDeclineReason
+from ..types.bots import IncomingEvent
 
 
 class Bots(BaseClient):
     """Client for bot-related endpoints."""
 
-    def stream_incoming_events(self) -> Iterator[Dict[str, Any]]:
+    def stream_incoming_events(self) -> Iterator[IncomingEvent]:
         """Get your realtime stream of incoming events.
 
         :return: stream of incoming events
         """
         path = "/api/stream/event"
-        yield from self._r.get(path, stream=True)
+        yield from cast("Iterator[IncomingEvent]", self._r.get(path, stream=True))
 
     def stream_game_state(self, game_id: str) -> Iterator[Dict[str, Any]]:
         """Get the stream of events for a bot game.

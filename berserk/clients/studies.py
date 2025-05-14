@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import cast, List, Iterator
 
 from ..formats import PGN
-from ..types.common import Color, Variant
+from ..types.common import Color, VariantKey
 from ..types import ChapterIdName
 from .base import BaseClient
 
@@ -44,7 +44,7 @@ class Studies(BaseClient):
         chapter_name: str,
         pgn: str,
         orientation: Color = "white",
-        variant: Variant = "standard",
+        variant: VariantKey = "standard",
     ) -> List[ChapterIdName]:
         """Imports arbitrary PGN into an existing study.
         Creates a new chapter in the study.

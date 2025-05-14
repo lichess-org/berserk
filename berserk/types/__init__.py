@@ -3,8 +3,8 @@ from __future__ import annotations
 from .account import AccountInformation, Perf, Preferences, Profile, StreamerInfo
 from .broadcast import BroadcastPlayer
 from .bulk_pairings import BulkPairing, BulkPairingGame
-from .challenges import Challenge
-from .common import ClockConfig, ExternalEngine, LightUser, OnlineLightUser, Variant
+from .challenges import ChallengeJson
+from .common import ClockConfig, ExternalEngine, LightUser, OnlineLightUser, VariantKey
 from .puzzles import PuzzleRace
 from .opening_explorer import (
     OpeningExplorerRating,
@@ -22,7 +22,7 @@ __all__ = [
     "BroadcastPlayer",
     "BulkPairing",
     "BulkPairingGame",
-    "Challenge",
+    "ChallengeJson",
     "ChapterIdName",
     "ClockConfig",
     "CurrentTournaments",
@@ -41,6 +41,6 @@ __all__ = [
     "SwissInfo",
     "SwissResult",
     "Team",
-    "Variant",
+    "VariantKey",
     "TVFeed",
 ]
