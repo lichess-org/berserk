@@ -10,8 +10,10 @@ To be released
 * Added ``tv.stream_current_game_of_channel`` to stream the current TV game of a channel
 * Added ``client.fide.get`` to retrieve detailed data about a FIDE player by ID
 * Added ``client.fide.search`` to search for FIDE players by name
+* Fixed ``client.broadcasts.push_pgn_update`` endpoint URL.
+* Updated ``finished`` patameter to ``status`` in ``client.broadcasts.update_round``.
 
-Thanks to @nicvagn, @tors42, @fitztrev, @trevorbayless and @stafot for their contributions to this release.
+Thanks to @nicvagn, @tors42, @fitztrev, @trevorbayless, @Looki2000 and @stafot for their contributions to this release
 
 v0.13.2 (2023-12-04)
 --------------------
