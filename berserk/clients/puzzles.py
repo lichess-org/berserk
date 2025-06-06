@@ -28,7 +28,7 @@ class Puzzles(BaseClient):
         path = f"/api/puzzle/{id}"
         return cast(PuzzleData, self._r.get(path))
 
-    def get_puzzle_next(
+    def get_next(
         self, angle: str | None = None, difficulty: DifficultyLevel | None = None
     ) -> PuzzleData:
         """Get a new puzzle.
