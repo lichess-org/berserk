@@ -9,7 +9,5 @@ class TestLichessGames:
     @pytest.mark.vcr
     def test_get_puzzle_next(self):
         """Validate that the response matches the typed-dict"""
-        res = Client().puzzles.get_puzzle_next(
-            angle="anastasiaMate", difficulty="hardest"
-        )
+        res = Client().puzzles.get_next(angle="anastasiaMate", difficulty="hardest")
         validate(PuzzleData, res)
