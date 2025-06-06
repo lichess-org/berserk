@@ -5,28 +5,45 @@ from typing import Iterator, Any, Dict, cast
 from .. import models
 from ..formats import NDJSON
 from .base import BaseClient
-from ..types import PuzzleRace
+from ..types.puzzles import DifficultyLevel, PuzzleData, PuzzleRace
 
 
 class Puzzles(BaseClient):
     """Client for puzzle-related endpoints."""
 
-    def get_daily(self) -> Dict[str, Any]:
+    def get_daily(self) -> PuzzleData:
         """Get the current daily Lichess puzzle.
 
         :return: current daily puzzle
         """
         path = "/api/puzzle/daily"
-        return self._r.get(path)
+        return cast(PuzzleData, self._r.get(path))
 
-    def get(self, id: str) -> Dict[str, Any]:
+    def get(self, id: str) -> PuzzleData:
         """Get a puzzle by its id.
 
         :param id: the id of the puzzle to retrieve
         :return: the puzzle
         """
         path = f"/api/puzzle/{id}"
-        return self._r.get(path)
+        return cast(PuzzleData, self._r.get(path))
+
+    def get_puzzle_next(
+        self, angle: str | None = None, difficulty: DifficultyLevel | None = None
+    ) -> PuzzleData:
+        """Get a new puzzle.
+
+        If authenticated, only returns puzzles that the user has never seen before.
+
+        DO NOT use this endpoint to enumerate puzzles for mass download. Instead, download the full public puzzle database.
+
+        :param angle: the theme or opening to filter puzzles with. available themes are listed in the lichess source code.
+        :param difficulty: the desired puzzle difficulty, relative to the authenticated user puzzle rating, or 1500 if anonymous
+        :return: the puzzle
+        """
+        path = "/api/puzzle/next"
+        params = {"angle": angle, "difficulty": difficulty}
+        return cast(PuzzleData, self._r.get(path, params=params))
 
     def get_puzzle_activity(
         self, max: int | None = None, before: int | None = None
