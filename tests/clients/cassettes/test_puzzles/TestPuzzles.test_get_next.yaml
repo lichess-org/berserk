@@ -1,0 +1,18 @@
+interactions:
+- request:
+    method: GET
+    uri: https://lichess.org/api/puzzle/next?angle=anastasiaMate&difficulty=hardest
+    headers:
+      Accept:
+      - application/json
+    body: null
+  response:
+    status:
+      code: 200
+      message: OK
+    body:
+      string: '{"game": {"id": "KUQu6AVh", "perf": {"key": "rapid", "name": "Rapid"}, "rated": true, "players": [{"name": "apwoeijfoe", "id": "apwoeijfoe", "color": "white", "rating": 2164}, {"name": "drunkchess69420", "id": "drunkchess69420", "color": "black", "rating": 2166}], "pgn": "e4 e5 Nf3 Nc6 Bc4 Nf6 d4 exd4 e5 d5 Bb5 Ne4 Nxd4 Bd7 Bxc6 bxc6 O-O Bc5 f3 Ng5 f4 Ne4 Be3 Rb8 f5 Rxb2 e6 Bc8 Qg4 O-O Kh1 fxe6 Nxc6 Qd6 Nd4 exf5 Qh5 f4 Bg1 c6 c4 Ba6 Nf5 Qf6 Bxc5 Nxc5 Rxf4 Bxc4 Nc3 Rbb8 Rc1 Nd3 Rcf1 Nxf4 Rxf4 Qxc3 Ne7+ Kh8 Ng6+ Kg8", "clock": "10+0"}, "puzzle": {"id": "vQL9J", "rating": 1807, "plays": 4523, "solution": ["g6e7", "g8h8", "h5h7", "h8h7", "f4h4"], "themes": ["middlegame", "attraction", "long", "mateIn3", "sacrifice", "anastasiaMate"], "initialPly": 59}}'
+    headers:
+      Content-Type:
+      - application/json
+version: 1
