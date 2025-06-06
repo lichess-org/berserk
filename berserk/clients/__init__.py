@@ -71,6 +71,7 @@ class Client(BaseClient):
     - :class:`users <berserk.clients.Users>` - getting information about users
     - :class:`board <berserk.clients.Board>` - play games using a normal account
     - :class:`messaging <berserk.clients.Messaging>` - private message other players
+    - :class:`puzzles <berserk.clients.Puzzles>` - access puzzle history and dashboard
     - :class:`tv <berserk.clients.TV>` - get information on tv channels and games
     - :class:`tablebase <berserk.clients.Tablebase>` - lookup endgame tablebase
     - :class:`bulk_pairings <berserk.clients.BulkPairing>` - manage bulk pairings
