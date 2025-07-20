@@ -34,7 +34,6 @@ ndjson = "^0.3.1"
 python-dateutil = "^2.8.2"
 deprecated = "^1.2.14"
 typing-extensions = "^4.7.1"
-pydantic = "^2.7.2"
 
 [tool.poetry.group.dev]
 optional = true
@@ -49,7 +48,7 @@ pyright = "^1"
 requests-mock = "^1.11.0"
 pytest-recording = "^0.12.2"
 vcrpy = "^4.4.0"
-pydantic = "^2.1.1"
+pydantic = "^2.7.2"
 
 
 [tool.pyright]
