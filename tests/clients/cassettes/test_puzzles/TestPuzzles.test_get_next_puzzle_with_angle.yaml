@@ -1,0 +1,53 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://lichess.org/api/puzzle/next?angle=endgame
+  response:
+    body:
+      string: '{"game":{"id":"OP0hctW0","perf":{"key":"rapid","name":"Rapid"},"rated":true,"players":[{"name":"nikolay020385","id":"nikolay020385","color":"white","rating":1993},{"name":"ahmaddd1","id":"ahmaddd1","color":"black","rating":2001}],"pgn":"c4
+        c5 d3 Nc6 Nf3 Nf6 g3 a6 Bg2 b6 O-O Bb7 a3 e6 Nc3 Be7 Bd2 O-O Ne5 Qc7 Bf4 d6
+        Nxc6 Bxc6 Bxc6 Qxc6 b4 h6 b5 axb5 Nxb5 e5 Bd2 Ne8 a4 Nc7 Qb3 Nxb5 axb5 Qb7
+        Ra2 Rxa2 Qxa2 Ra8 Qb2 Qa7 Bc3 Qa2 Ra1 Qxa1+ Qxa1 Rxa1+ Bxa1 f5 Kg2 g5 h3 Kf7
+        f3 Kg6 Bc3 h5 g4 hxg4 fxg4 Bf6 Kg3 fxg4 hxg4 Kf7 e3 Ke6 d4 exd4 exd4 Bxd4
+        Bd2 Be5+ Kf3 Bf6 Ke4 Be7 Bc3 Bd8 Bg7 Be7 Bh6 Kf6","clock":"10+0"},"puzzle":{"id":"wRjyp","rating":1409,"plays":1296,"solution":["e4d5","f6f7","d5c6"],"themes":["endgame","short","zugzwang","advantage","bishopEndgame"],"initialPly":87}}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 05 Aug 2025 23:04:16 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      X-Frame-Options:
+      - DENY
+      content-length:
+      - '777'
+    status:
+      code: 200
+      message: OK
+version: 1

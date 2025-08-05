@@ -14,6 +14,7 @@ from .clients import Client
 from .types import (
     ArenaResult,
     BroadcastPlayer,
+    Difficulty,
     Team,
     LightUser,
     ChapterIdName,
@@ -39,6 +40,7 @@ __all__ = [
     "BroadcastPlayer",
     "ChapterIdName",
     "Client",
+    "Difficulty",
     "JSON",
     "JSON_LIST",
     "LightUser",

@@ -1,0 +1,54 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://lichess.org/api/puzzle/next?difficulty=normal
+  response:
+    body:
+      string: '{"game":{"id":"b0iLCWOR","perf":{"key":"rapid","name":"Rapid"},"rated":true,"players":[{"name":"Hatako","id":"hatako","color":"white","rating":1722},{"name":"CharanaPramod","id":"charanapramod","color":"black","rating":1750}],"pgn":"d4
+        Nf6 c4 d5 cxd5 Qxd5 Nc3 Qd8 g3 e5 dxe5 Qxd1+ Nxd1 Ng4 f4 Bc5 Nh3 Bd7 Ndf2
+        Bc6 Rg1 Nxh2 Bg2 Ng4 Bxc6+ Nxc6 Nxg4 Bxg1 Nxg1 Nd4 Kf2 O-O-O Be3 Nc2 Rc1 Nxe3
+        Nxe3 h5 Nf3 g6 Ng5 Rd7 Rh1 Rf8 g4 Rd2 Rb1 h4 Nf3 Rdd8 Nxh4 Rh8 Kg3 Rd2 Nc4
+        Rxe2 Rh1 Rc2 b3 Rxa2 Re1 Rc2 f5 Rc3+ Nf3 gxf5 gxf5 Rxb3 e6 Rg8+ Kf4 fxe6 fxe6
+        Rf8+ Kg4 Rbxf3 e7 R8f4+ Kg5 Rf5+ Kg4 R5f4+ Kg5 Rf5+ Kg6 Rf6+ Kg7 Rf7+ Kg8
+        Rxe7 Rxe7 b5 Ne5 Kd8 Rd7+ Kc8 Re7 Rg3+ Kf7 Rh3 Ke6 Re3 Kd5 Rc3 Nc6 a6","clock":"15+10"},"puzzle":{"id":"fj6jq","rating":1569,"plays":10972,"solution":["e7e8","c8b7","e8b8"],"themes":["short","endgame","mateIn2"],"initialPly":105}}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 05 Aug 2025 22:41:24 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      X-Frame-Options:
+      - DENY
+      content-length:
+      - '845'
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -5,7 +5,7 @@ from typing import Iterator, Any, Dict, cast
 from .. import models
 from ..formats import NDJSON
 from .base import BaseClient
-from ..types import PuzzleRace
+from ..types import Difficulty, PuzzleRace
 
 
 class Puzzles(BaseClient):
@@ -78,3 +78,22 @@ class Puzzles(BaseClient):
         """
         path = "/api/racer"
         return cast(PuzzleRace, self._r.post(path))
+
+    def get_next(
+        self, angle: str | None = None, difficulty: Difficulty | None = None
+    ) -> Dict[str, Any]:
+        """Get a random Lichess puzzle (optionally filtered by theme or difficulty).
+
+        If authenticated, will only return puzzles the user hasn't seen before.
+
+        :param angle: theme or opening to filter puzzles
+        :param difficulty: PuzzleDifficulty enum
+        :return: a new puzzle
+        """
+        path = "/api/puzzle/next"
+        params: dict[str, str] = {}
+        if angle:
+            params["angle"] = angle
+        if difficulty:
+            params["difficulty"] = difficulty.value
+        return self._r.get(path, params=params)

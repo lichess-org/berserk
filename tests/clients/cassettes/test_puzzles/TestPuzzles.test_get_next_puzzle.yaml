@@ -1,0 +1,50 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://lichess.org/api/puzzle/next?difficulty=normal
+  response:
+    body:
+      string: '{"game":{"id":"hX0Pwwrj","perf":{"key":"blitz","name":"Blitz"},"rated":true,"players":[{"name":"mjt348","id":"mjt348","color":"white","rating":2000},{"name":"Tiriaomata","flair":"objects.crossed-swords","id":"tiriaomata","color":"black","rating":1854}],"pgn":"e4
+        e5 Nf3 Nc6 Bb5 d6 d4 exd4 Bxc6+ bxc6 Nxd4 Bb7 Nc3 Nf6 O-O Be7 Re1 O-O Bg5
+        c5 Nf5 g6 Nxe7+ Qxe7 Qf3 Kg7 Qh3 Qe5 Qh6+ Kg8 f4","clock":"3+0"},"puzzle":{"id":"HsZsS","rating":1598,"plays":2484,"solution":["e5d4","g1h1","f6g4","h6h4","g4f2"],"themes":["middlegame","advantage","long","kingsideAttack"],"initialPly":30}}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 05 Aug 2025 23:04:16 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      X-Frame-Options:
+      - DENY
+      content-length:
+      - '577'
+    status:
+      code: 200
+      message: OK
+version: 1

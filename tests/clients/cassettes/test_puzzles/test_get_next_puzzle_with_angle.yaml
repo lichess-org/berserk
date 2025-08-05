@@ -1,0 +1,52 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.31.0
+    method: GET
+    uri: https://lichess.org/api/puzzle/next?angle=endgame
+  response:
+    body:
+      string: '{"game":{"id":"c7xnGIdC","perf":{"key":"rapid","name":"Rapid"},"rated":true,"players":[{"name":"fausthitman","id":"fausthitman","color":"white","rating":1787},{"name":"Dantacan","id":"dantacan","color":"black","rating":1730}],"pgn":"e4
+        e5 Nf3 Nc6 Bc4 Bc5 O-O Nf6 d3 O-O Bg5 h6 Bh4 d6 h3 Na5 Bb3 Nxb3 axb3 g5 Bg3
+        Nh5 Bh2 f5 Nc3 f4 Nd5 Be6 Nc3 g4 Nxe5 dxe5 hxg4 Nf6 Na4 Bd6 f3 a6 Nc3 b5 Qe1
+        Bc5+ Kh1 Nh7 Ne2 Ng5 Qh4 Kg7 c4 bxc4 dxc4 Qd2 Qe1 Qxb2 Qa5 Qxe2 Qxc5 Rac8
+        Qxe5+ Kh7 Bxf4 Rg8 Bxg5 Rxg5 Qxe6 Rcg8 Rfe1 Qf2 Rf1","clock":"10+0"},"puzzle":{"id":"JSQog","rating":1568,"plays":19490,"solution":["g5h5","g4h5","f2g2"],"themes":["short","sacrifice","endgame","mateIn2"],"initialPly":68}}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 05 Aug 2025 22:50:10 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      X-Frame-Options:
+      - DENY
+      content-length:
+      - '685'
+    status:
+      code: 200
+      message: OK
+version: 1
