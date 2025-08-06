@@ -4,6 +4,7 @@ Changelog
 To be released
 --------------
 
+* Added `client.puzzles.get_next()` to fetch puzzles with optional filters (`angle`, `difficulty`).
 * Fixed ``wbtime`` and ``btime`` for all endpoints returning a ``GameState``.
 * Added ``sheet`` optional parameter to ``Tournaments.stream_results``, and fix returned typed dict.
 * Added ``studies.import_pgn`` to import PGN to study
@@ -13,7 +14,7 @@ To be released
 * Fixed ``client.broadcasts.push_pgn_update`` endpoint URL.
 * Updated ``finished`` patameter to ``status`` in ``client.broadcasts.update_round``.
 
-Thanks to @nicvagn, @tors42, @fitztrev, @trevorbayless, @Looki2000 and @stafot for their contributions to this release
+Thanks to @nicvagn, @tors42, @fitztrev, @trevorbayless, @Looki2000 @stafot and @Python-David for their contributions to this release
 
 v0.13.2 (2023-12-04)
 --------------------

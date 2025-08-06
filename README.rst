@@ -163,6 +163,7 @@ Most of the API is available:
     client.puzzles.get_puzzle_dashboard
     client.puzzles.get_storm_dashboard
     client.puzzles.create_race
+    client.puzzles.get_next
 
     client.relations.get_users_followed
     client.relations.follow
