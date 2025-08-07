@@ -33,6 +33,11 @@ Requires Python 3.9+. Download and install the latest release:
 
 If you have `berserk-downstream` installed, make sure to uninstall it first!
 
+If you like living on the edge, or you want access to the latest features, you can install directly from the repository:
+::
+
+    pip install git+https://github.com/lichess/berserk.git
+
 Features
 --------
 
