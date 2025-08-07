@@ -36,9 +36,9 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install dependencies
-        run: uv sync --all-extras
+        run: make setup
       - name: Build doc
-        run: uv run sphinx-build -b html docs _build -EW --keep-going
+        run: make docs
       - name: Upload artifact
         if: github.ref == 'refs/heads/master'
         uses: actions/upload-pages-artifact@v3

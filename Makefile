@@ -1,4 +1,4 @@
-.PHONY: help clean clean-docs clean-test setup test format docs servedocs publish
+.PHONY: help clean clean-docs clean-test setup test format format-check docs servedocs publish
 .DEFAULT_GOAL := help
 
 define PRINT_HELP_PYSCRIPT
@@ -38,6 +38,9 @@ typecheck: ## run type checking with pyright
 format: ## format python files with black and docformatter
 	uv run black berserk tests check-endpoints.py
 	uv run docformatter --in-place --black berserk/*.py
+
+format-check: ## check formatting with black (for CI)
+	uv run black berserk tests check-endpoints.py --check
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	uv run sphinx-build -b html docs _build -EW --keep-going

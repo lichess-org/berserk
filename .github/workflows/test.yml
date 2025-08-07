@@ -30,6 +30,6 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
-        run: uv sync --all-extras
+        run: make setup
       - name: Test
-        run: uv run pytest tests
+        run: make test
