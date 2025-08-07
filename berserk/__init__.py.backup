@@ -2,16 +2,11 @@
 
 from importlib import metadata
 
-try:
-    berserk_metadata = metadata.metadata(__package__)  # type: ignore
-    __author__ = "Lichess"  # FIXME how to retrieve it from berserk_metadata?
-    __email__ = berserk_metadata["Author-email"]
-    __version__ = berserk_metadata["Version"]
-except Exception:
-    # Fallback for development environment
-    __author__ = "Lichess"
-    __email__ = "contact@lichess.org"
-    __version__ = "0.0.0dev"
+berserk_metadata = metadata.metadata(__package__)  # type: ignore
+
+__author__ = "Lichess"  # FIXME how to retrieve it from berserk_metadata?
+__email__ = berserk_metadata["Author-email"]
+__version__ = berserk_metadata["Version"]
 
 
 from .clients import Client
@@ -24,7 +19,6 @@ from .types import (
     OnlineLightUser,
     OpeningStatistic,
     PaginatedTeams,
-    Puzzle,
     PuzzleRace,
     SwissInfo,
     SwissResult,
@@ -54,7 +48,6 @@ __all__ = [
     "OpeningStatistic",
     "PaginatedTeams",
     "PGN",
-    "Puzzle",
     "PuzzleRace",
     "Requestor",
     "SwissInfo",

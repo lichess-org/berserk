@@ -5,36 +5,36 @@ from typing import Iterator, Any, Dict, cast
 from .. import models
 from ..formats import NDJSON
 from .base import BaseClient
-from ..types import PuzzleRace
+from ..types import Puzzle, PuzzleRace
 
 
 class Puzzles(BaseClient):
     """Client for puzzle-related endpoints."""
 
-    def get_daily(self) -> Dict[str, Any]:
+    def get_daily(self) -> Puzzle:
         """Get the current daily Lichess puzzle.
 
         :return: current daily puzzle
         """
         path = "/api/puzzle/daily"
-        return self._r.get(path)
+        return cast(Puzzle, self._r.get(path))
 
-    def get_next(self) -> Dict[str, Any]:
+    def get_next(self) -> Puzzle:
         """Get the next puzzle for the authenticated user.
 
         :return: next puzzle
         """
         path = "/api/puzzle/next"
-        return self._r.get(path)
+        return cast(Puzzle, self._r.get(path))
 
-    def get(self, id: str) -> Dict[str, Any]:
+    def get(self, id: str) -> Puzzle:
         """Get a puzzle by its id.
 
         :param id: the id of the puzzle to retrieve
         :return: the puzzle
         """
         path = f"/api/puzzle/{id}"
-        return self._r.get(path)
+        return cast(Puzzle, self._r.get(path))
 
     def get_puzzle_activity(
         self, max: int | None = None, before: int | None = None
