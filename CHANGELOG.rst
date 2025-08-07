@@ -4,6 +4,8 @@ Changelog
 To be released
 --------------
 
+* Deprecate Python 3.8 support - minimum required version is now Python 3.9+. This does not mean the library will not work with Python 3.8, but it will not be tested against it anymore.
+
 * Fixed ``wbtime`` and ``btime`` for all endpoints returning a ``GameState``.
 * Added ``sheet`` optional parameter to ``Tournaments.stream_results``, and fix returned typed dict.
 * Added ``studies.import_pgn`` to import PGN to study
@@ -12,7 +14,6 @@ To be released
 * Added ``client.fide.search`` to search for FIDE players by name
 * Fixed ``client.broadcasts.push_pgn_update`` endpoint URL.
 * Updated ``finished`` patameter to ``status`` in ``client.broadcasts.update_round``.
-* Deprecate Python 3.8 support - minimum required version is now Python 3.9+
 
 Thanks to @nicvagn, @tors42, @fitztrev, @trevorbayless, @Looki2000 and @stafot for their contributions to this release
 
