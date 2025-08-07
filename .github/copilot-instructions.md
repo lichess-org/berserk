@@ -4,35 +4,15 @@ Berserk is a Python client library for the Lichess chess API. It handles JSON/PG
 
 Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
 
-## Working Effectively
+## Development Setup & Workflow
 
-**Bootstrap and setup the development environment:**
-- Install Poetry: `pip3 install poetry`
-- Install all dependencies: `poetry install --with dev` OR `make setup`  
-  - Takes 2-3 minutes initially but subsequent operations are very fast
-- Verify installation: `poetry run python3 -c "import berserk; print('✓ Berserk installed:', berserk.__version__)"`
+**For complete development setup and contribution guidelines, see [CONTRIBUTING.rst](../CONTRIBUTING.rst).**
 
-**Testing the library (ALWAYS run after making changes):**
-- Run test suite: `poetry run pytest tests` OR `make test`
-  - Takes ~0.4 seconds (47 tests), ~2 seconds total with overhead
-- Run type checking: `poetry run pyright berserk` OR `make typecheck`
-  - Takes ~5 seconds (includes npm install for pyright)  
-- Check code formatting: `poetry run black berserk tests check-endpoints.py --check` OR `make format --check`
-  - Takes ~1 second
-
-**Code quality and formatting:**
-- Format code: `poetry run black berserk tests check-endpoints.py` OR `make format`
-  - Takes ~1 second
-- Also format docstrings: `poetry run docformatter --in-place --black berserk/*.py`
-
-**Documentation:**
-- Build documentation: `poetry run sphinx-build -b html docs _build -EW --keep-going` OR `make docs`
-  - Takes ~5 seconds
-- Serve docs locally: `make servedocs` (serves on http://localhost:8000)
-
-**Optional setup:**
-- Install pre-commit hook: `cp hooks/pre-commit .git/hooks/pre-commit`
-- Check missing API endpoints: `python3 check-endpoints.py /path/to/lichess-api.yaml` (requires `pip3 install pyyaml`)
+Key points for Copilot agents:
+- This is a **library**, not an application - there's no server to run or UI to interact with
+- Setup takes 2-3 minutes initially but subsequent operations are very fast
+- All development commands are very fast (under 6 seconds each after initial setup)
+- No build step required - it's pure Python
 
 ## Validation Scenarios
 
@@ -60,12 +40,12 @@ print("✓ Available formats:", [attr for attr in dir(formats) if attr.isupper()
 ```
 
 4. **Complete Validation Sequence:**
-- `make test` - All tests must pass
-- `make typecheck` - Type checking must pass with 0 errors
-- `make format --check` - Code must be properly formatted
+- `make test` - All tests must pass (~0.4s for 47 tests)
+- `make typecheck` - Type checking must pass with 0 errors (~5s)
+- `make format --check` - Code must be properly formatted (~1s)
 - Run the basic import tests above manually
 
-## Common Tasks
+## Repository Overview
 
 **Repository structure:**
 ```
@@ -88,13 +68,13 @@ print("✓ Available formats:", [attr for attr in dir(formats) if attr.isupper()
 **Key files:**
 - `pyproject.toml` - Poetry project configuration, dependencies, Python 3.8+ requirement
 - `Makefile` - Convenient commands for all development tasks
-- `CONTRIBUTING.rst` - Detailed contribution guidelines with test writing examples
+- `CONTRIBUTING.rst` - **Complete contribution guidelines and setup instructions**
 - `check-endpoints.py` - Script to compare implemented vs. available API endpoints
 
-**Python compatibility:**
+**Technical Details:**
 - Requires Python 3.8+
-- Tested on Python 3.8, 3.9, 3.10, 3.11, 3.12
 - Uses Poetry for dependency management (NOT pip directly)
+- Tested on Python 3.8, 3.9, 3.10, 3.11, 3.12
 
 **API Client Modules:**
 The client provides these main modules:
@@ -110,14 +90,14 @@ The client provides these main modules:
 
 ## Integration Testing
 
-**Docker-based integration tests:**
+**For complete integration testing setup, see [CONTRIBUTING.rst](../CONTRIBUTING.rst).**
+
+Docker-based integration tests:
 - Requires Docker and `ghcr.io/lichess-org/lila-docker:main` image
 - Use test tokens: `lip_bobby`, `lip_zerogames` 
-- Run with: `./integration/local.sh` or manually:
-  - `docker run --name bdit_lila --network bdit_network -d ghcr.io/lichess-org/lila-docker:main`
-  - `./integration/run-tests.sh`
+- Run with: `./integration/local.sh`
 
-**Integration tests verify:**
+Integration tests verify:
 - Account operations (get, email, preferences, kid mode, bot upgrade)
 - Real API interactions against local Lichess instance
 - Authentication token handling
@@ -132,18 +112,17 @@ The client provides these main modules:
 - `integration_test.yml` - Docker-based integration tests
 - `codeql.yml` - Security analysis
 
-**Pre-release checklist (for maintainers):**
+**Pre-release checklist (for maintainers - see [CONTRIBUTING.rst](../CONTRIBUTING.rst) for details):**
 - Update `CHANGELOG.rst`
 - Bump version in `pyproject.toml`
 - Run `make publish` (requires PyPI credentials)
 - Tag release: `git tag v1.2.3 && git push --tags`
 
-## Notes
+## Summary
 
 - This is a **library**, not an application - there's no server to run or UI to interact with
 - All development commands are very fast (under 6 seconds each after initial setup)
-- No build step required - it's pure Python
 - Focus validation on import patterns and API client functionality
 - The library works with or without authentication (some endpoints are public)
 - Network access is required for real API calls during manual testing
-- Integration tests provide the most comprehensive validation but require Docker setup
+- **See [CONTRIBUTING.rst](../CONTRIBUTING.rst) for complete setup, testing, and contribution guidelines**
