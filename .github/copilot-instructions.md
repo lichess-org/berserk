@@ -17,6 +17,8 @@ Always reference these instructions first and fallback to search or bash command
 
 **For complete testing guidelines, see [CONTRIBUTING.rst](../CONTRIBUTING.rst) and [pull_request_template.md](pull_request_template.md)**
 
+You can test the lichess API at: https://lichess.org/api
+
 ## Repository Overview
 
 **Repository structure:**
