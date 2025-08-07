@@ -4,8 +4,7 @@ from importlib import metadata
 
 berserk_metadata = metadata.metadata(__package__)  # type: ignore
 
-
-__author__ = berserk_metadata["Author"]
+__author__ = "Lichess"  # FIXME how to retrieve it from berserk_metadata?
 __email__ = berserk_metadata["Author-email"]
 __version__ = berserk_metadata["Version"]
 
