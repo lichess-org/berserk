@@ -48,11 +48,11 @@ If you are proposing a feature:
 Get Started!
 ------------
 
-- Install ``poetry`` (``pip3 install poetry``)
-- Setup dependencies by running ``poetry install --with dev`` or ``make setup``
+- Install ``uv`` (``pip3 install uv``)
+- Setup dependencies by running ``uv sync --all-extras`` or ``make setup``
 - Optional: Add pre-commit hook to test and format your change before commiting: ``cp hooks/pre-commit .git/hooks/pre-commit``
 - Start editing the code
-- To test your changes, run ``poetry shell`` to activate the poetry environment, open a python interpreter (``python3``), and import the library to test your changes::
+- To test your changes, run ``uv run python`` to access the uv environment, open a python interpreter, and import the library to test your changes::
 
     >>> import berserk
     >>> client = berserk.Client()
@@ -60,10 +60,10 @@ Get Started!
 
 For a PR to be merged, it needs to pass the CI, you can reproduce most of them locally (commands assume being in the root directory of this repo):
 
-- To run tests, use ``poetry run pytest`` or ``make test``
-- To run type checking, use ``poetry run pyright berserk`` or ``make typecheck``
-- To format the code, use ``poetry run black berserk tests`` or ``make format``
-- To check doc generation use ``poetry run sphinx-build -b html docs _build -EW`` or ``make docs``
+- To run tests, use ``uv run pytest`` or ``make test``
+- To run type checking, use ``uv run pyright berserk`` or ``make typecheck``
+- To format the code, use ``uv run black berserk tests`` or ``make format``
+- To check doc generation use ``uv run sphinx-build -b html docs _build -EW`` or ``make docs``
 
   - You can then open ``_build/index.html`` in your browser or use ``python3 -m http.server --directory _build`` to serve it locally
   - Alternatively, run ``make servedocs`` to automatically build and serve them on http://localhost:8000
@@ -135,10 +135,10 @@ Deploying
 
 A reminder for the maintainers on how to deploy.
 
-You need a PyPI account with access to the ``berserk`` package and have an API token with the corresponding access configured for poetry (see https://python-poetry.org/docs/repositories/#configuring-credentials):
+You need a PyPI account with access to the ``berserk`` package and have an API token with the corresponding access configured for uv:
 
 - Create a token: https://pypi.org/manage/account/token/ (you can see your existing tokens at https://pypi.org/manage/account/)
-- Configure poetry: ``poetry config pypi-token.pypi <your-token>``. Add a space before the command to avoid it being saved in your shell history.
+- You can configure uv to use the token by setting the ``UV_PUBLISH_TOKEN`` environment variable or by passing it directly to the publish command.
 
 Make sure all your changes are committed (including an entry in CHANGELOG.rst) and you set the version in ``pyproject.toml`` correctly.
 
