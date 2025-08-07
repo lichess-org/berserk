@@ -38,8 +38,8 @@ Changelog = "https://lichess-org.github.io/berserk/changelog.html"
 "Issue Tracker" = "https://github.com/lichess-org/berserk/issues"
 "Discord Server" = "https://discord.gg/lichess"
 
-[project.optional-dependencies]
-dev = [
+[tool.uv]
+dev-dependencies = [
     "pytest>=7",
     "black>=23",
     "sphinx>=6.1.3",

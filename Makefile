@@ -24,7 +24,7 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 
 setup: ## setup uv env and install dependencies
-	uv sync --all-extras
+	uv sync
 
 test: ## run tests with pytest
 	uv run pytest tests
