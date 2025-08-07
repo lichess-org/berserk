@@ -4,46 +4,18 @@ Berserk is a Python client library for the Lichess chess API. It handles JSON/PG
 
 Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.
 
+## Code Standards
+
+### Required Before Each Commit
+- Run `make format` before committing any changes to ensure proper code formatting
+
 ## Development Setup & Workflow
 
 **For complete development setup and contribution guidelines, see [CONTRIBUTING.rst](../CONTRIBUTING.rst).**
 
-Key points for Copilot agents:
-- This is a **library**, not an application - there's no server to run or UI to interact with
-- Setup takes 2-3 minutes initially but subsequent operations are very fast
-- All development commands are very fast (under 6 seconds each after initial setup)
-- No build step required - it's pure Python
+### Validation Scenarios
 
-## Validation Scenarios
-
-**ALWAYS validate your changes by running these scenarios after making any code modifications:**
-
-1. **Basic Library Import Test:**
-```python
-import berserk
-client = berserk.Client()
-print("✓ Client created:", [attr for attr in dir(client) if not attr.startswith('_')][:5])
-```
-
-2. **Authentication Test:**
-```python
-import berserk
-session = berserk.TokenSession('test_token')
-client = berserk.Client(session=session)
-print("✓ Authenticated client created")
-```
-
-3. **Format Handler Test:**
-```python
-import berserk.formats as formats
-print("✓ Available formats:", [attr for attr in dir(formats) if attr.isupper()])
-```
-
-4. **Complete Validation Sequence:**
-- `make test` - All tests must pass (~0.4s for 47 tests)
-- `make typecheck` - Type checking must pass with 0 errors (~5s)
-- `make format --check` - Code must be properly formatted (~1s)
-- Run the basic import tests above manually
+**For complete testing guidelines, see [CONTRIBUTING.rst](../CONTRIBUTING.rst) and [pull_request_template.md](pull_request_template.md)**
 
 ## Repository Overview
 
@@ -56,7 +28,7 @@ print("✓ Available formats:", [attr for attr in dir(formats) if attr.isupper()
 ├── formats.py      # JSON/PGN format handlers
 └── utils.py        # Utility functions
 
-/tests/             # Unit tests (47 tests, very fast)
+/tests/             # Unit tests (very fast)
 ├── clients/        # Client-specific tests
 └── test_*.py       # Core functionality tests
 
@@ -66,15 +38,10 @@ print("✓ Available formats:", [attr for attr in dir(formats) if attr.isupper()
 ```
 
 **Key files:**
-- `pyproject.toml` - Poetry project configuration, dependencies, Python 3.8+ requirement
+- `pyproject.toml` - project configuration, dependencies
 - `Makefile` - Convenient commands for all development tasks
 - `CONTRIBUTING.rst` - **Complete contribution guidelines and setup instructions**
 - `check-endpoints.py` - Script to compare implemented vs. available API endpoints
-
-**Technical Details:**
-- Requires Python 3.8+
-- Uses Poetry for dependency management (NOT pip directly)
-- Tested on Python 3.8, 3.9, 3.10, 3.11, 3.12
 
 **API Client Modules:**
 The client provides these main modules:
@@ -87,42 +54,3 @@ The client provides these main modules:
 - `client.challenges` - Challenge management
 - `client.studies` - Study operations
 - And many more (see README.rst for complete list)
-
-## Integration Testing
-
-**For complete integration testing setup, see [CONTRIBUTING.rst](../CONTRIBUTING.rst).**
-
-Docker-based integration tests:
-- Requires Docker and `ghcr.io/lichess-org/lila-docker:main` image
-- Use test tokens: `lip_bobby`, `lip_zerogames` 
-- Run with: `./integration/local.sh`
-
-Integration tests verify:
-- Account operations (get, email, preferences, kid mode, bot upgrade)
-- Real API interactions against local Lichess instance
-- Authentication token handling
-
-## CI/CD Pipeline
-
-**GitHub Actions workflows:**
-- `test.yml` - Runs tests on Python 3.8-3.12 across Ubuntu/macOS/Windows
-- `typing.yml` - Type checking with pyright on all Python versions  
-- `format.yml` - Code formatting verification with black
-- `docs.yml` - Documentation building and deployment
-- `integration_test.yml` - Docker-based integration tests
-- `codeql.yml` - Security analysis
-
-**Pre-release checklist (for maintainers - see [CONTRIBUTING.rst](../CONTRIBUTING.rst) for details):**
-- Update `CHANGELOG.rst`
-- Bump version in `pyproject.toml`
-- Run `make publish` (requires PyPI credentials)
-- Tag release: `git tag v1.2.3 && git push --tags`
-
-## Summary
-
-- This is a **library**, not an application - there's no server to run or UI to interact with
-- All development commands are very fast (under 6 seconds each after initial setup)
-- Focus validation on import patterns and API client functionality
-- The library works with or without authentication (some endpoints are public)
-- Network access is required for real API calls during manual testing
-- **See [CONTRIBUTING.rst](../CONTRIBUTING.rst) for complete setup, testing, and contribution guidelines**
