@@ -50,35 +50,17 @@ class GameEventInfo(TypedDict):
     id: str
 
 
-class GameStartEvent(TypedDict):
-    type: Literal["gameStart"]
-    game: GameEventInfo
-
-
-class GameFinishEvent(TypedDict):
-    type: Literal["gameFinish"]
+class GameEvent(TypedDict):
+    type: Literal["gameStart", "gameFinish"]
     game: GameEventInfo
 
 
 class ChallengeEvent(TypedDict):
-    type: Literal["challenge"]
-    challenge: ChallengeJson
-
-
-class ChallengeCanceledEvent(TypedDict):
-    type: Literal["challengeCanceled"]
-    challenge: ChallengeJson
-
-
-class ChallengeDeclinedEvent(TypedDict):
-    type: Literal["challengeDeclined"]
+    type: Literal["challenge", "challengeCanceled", "challengeDeclined"]
     challenge: ChallengeJson
 
 
 IncomingEvent: TypeAlias = Union[
-    GameStartEvent,
-    GameFinishEvent,
+    GameEvent,
     ChallengeEvent,
-    ChallengeCanceledEvent,
-    ChallengeDeclinedEvent,
 ]
