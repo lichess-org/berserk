@@ -20,6 +20,8 @@ classifiers = [
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
 ]
+# by default files declared in .gitignore are excluded
+include = ["CHANGELOG.rst", "LICENSE", "docs", "berserk/py.typed"]
 dependencies = [
     "requests>=2.28.2",
     "ndjson>=0.3.1",
