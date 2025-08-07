@@ -23,24 +23,24 @@ clean-docs: ## remove build artifacts
 clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 
-setup: ## setup poetry env and install dependencies
-	poetry install --with dev
+setup: ## setup uv env and install dependencies
+	uv sync --all-extras
 
 test: ## run tests with pytest
-	poetry run pytest tests
+	uv run pytest tests
 
 test_record: ## run tests with pytest and record http requests
-	poetry run pytest --record-mode=once
+	uv run pytest --record-mode=once
 
 typecheck: ## run type checking with pyright
-	poetry run pyright berserk
+	uv run pyright berserk
 
 format: ## format python files with black and docformatter
-	poetry run black berserk tests check-endpoints.py
-	poetry run docformatter --in-place --black berserk/*.py
+	uv run black berserk tests check-endpoints.py
+	uv run docformatter --in-place --black berserk/*.py
 
 docs: ## generate Sphinx HTML documentation, including API docs
-	poetry run sphinx-build -b html docs _build -EW --keep-going
+	uv run sphinx-build -b html docs _build -EW --keep-going
 
 servedocs: docs ## compile the docs and serve them locally
 	python3 -m http.server --directory _build --bind 127.0.0.1
@@ -56,4 +56,5 @@ publish: ## publish to pypi
 	@echo
 	@read -p "Are you sure you want to create a release? [y/N] " ans && [ $${ans:-N} = y ]
 	sleep 5
-	poetry publish --build
+	uv build
+	uv publish

@@ -7,14 +7,14 @@ on:
       - ".github/workflows/deploy-docs.yml"
       - "**.py"
       - "**.rst"
-      - "poetry.lock"
+      - "uv.lock"
       - "pyproject.toml"
   pull_request:
     paths:
       - ".github/workflows/check-docs.yml"
       - "**.py"
       - "**.rst"
-      - "poetry.lock"
+      - "uv.lock"
       - "pyproject.toml"
 
   # Allows running this workflow manually from the Actions tab
@@ -31,16 +31,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Set up latest python
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
         with:
           python-version: "3.12"
-      - name: Set up poetry
-        uses: abatilo/actions-poetry@v4
       - name: Install dependencies
-        run: poetry install --with dev
+        run: uv sync --all-extras
       - name: Build doc
-        run: poetry run sphinx-build -b html docs _build -EW --keep-going
+        run: uv run sphinx-build -b html docs _build -EW --keep-going
       - name: Upload artifact
         if: github.ref == 'refs/heads/master'
         uses: actions/upload-pages-artifact@v3
