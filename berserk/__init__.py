@@ -2,7 +2,7 @@
 
 from importlib import metadata
 
-berserk_metadata = metadata.metadata(__package__)
+berserk_metadata = metadata.metadata(__package__)  # type: ignore
 
 
 __author__ = berserk_metadata["Author"]

@@ -113,8 +113,7 @@ class Requestor(Generic[T]):
         fmt: FormatHandler[U],
         converter: Converter[U] = utils.noop,
         **kwargs: Any,
-    ) -> U:
-        ...
+    ) -> U: ...
 
     @overload
     def get(
@@ -128,8 +127,7 @@ class Requestor(Generic[T]):
         fmt: FormatHandler[U],
         converter: Converter[U] = utils.noop,
         **kwargs: Any,
-    ) -> Iterator[U]:
-        ...
+    ) -> Iterator[U]: ...
 
     @overload
     def get(
@@ -143,8 +141,7 @@ class Requestor(Generic[T]):
         fmt: None = None,
         converter: Converter[T] = utils.noop,
         **kwargs: Any,
-    ) -> T:
-        ...
+    ) -> T: ...
 
     @overload
     def get(
@@ -158,8 +155,7 @@ class Requestor(Generic[T]):
         fmt: None = None,
         converter: Converter[T] = utils.noop,
         **kwargs: Any,
-    ) -> Iterator[T]:
-        ...
+    ) -> Iterator[T]: ...
 
     def get(
         self,
@@ -198,8 +194,7 @@ class Requestor(Generic[T]):
         fmt: FormatHandler[U],
         converter: Converter[U] = utils.noop,
         **kwargs: Any,
-    ) -> U:
-        ...
+    ) -> U: ...
 
     @overload
     def post(
@@ -213,8 +208,7 @@ class Requestor(Generic[T]):
         fmt: FormatHandler[U],
         converter: Converter[U] = utils.noop,
         **kwargs: Any,
-    ) -> Iterator[U]:
-        ...
+    ) -> Iterator[U]: ...
 
     @overload
     def post(
@@ -228,8 +222,7 @@ class Requestor(Generic[T]):
         fmt: None = None,
         converter: Converter[T] = utils.noop,
         **kwargs: Any,
-    ) -> T:
-        ...
+    ) -> T: ...
 
     @overload
     def post(
@@ -243,8 +236,7 @@ class Requestor(Generic[T]):
         fmt: None = None,
         converter: Converter[T] = utils.noop,
         **kwargs: Any,
-    ) -> Iterator[T]:
-        ...
+    ) -> Iterator[T]: ...
 
     def post(
         self,

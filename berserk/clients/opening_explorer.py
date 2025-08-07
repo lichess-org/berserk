@@ -44,13 +44,13 @@ class OpeningExplorer(BaseClient):
         path = "/lichess"
 
         if top_games and top_games >= 4:
-            logger.warn(
+            logger.warning(
                 "The Lichess API caps the top games parameter to 4 (you requested %d)",
                 top_games,
             )
 
         if recent_games and recent_games >= 4:
-            logger.warn(
+            logger.warning(
                 "The Lichess API caps the recent games parameter to 4 (you requested %d)",
                 recent_games,
             )
@@ -168,13 +168,13 @@ class OpeningExplorer(BaseClient):
         path = "/player"
 
         if top_games and top_games >= 4:
-            logger.warn(
+            logger.warning(
                 "The Lichess API caps the top games parameter to 4 (you requested %d)",
                 top_games,
             )
 
         if recent_games and recent_games >= 4:
-            logger.warn(
+            logger.warning(
                 "The Lichess API caps the recent games parameter to 4 (you requested %d)",
                 recent_games,
             )

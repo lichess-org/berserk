@@ -6,13 +6,13 @@ on:
     paths:
       - ".github/workflows/codeql.yml"
       - "**.py"
-      - "poetry.lock"
+      - "uv.lock"
       - "pyproject.toml"
   pull_request:
     paths:
       - ".github/workflows/codeql.yml"
       - "**.py"
-      - "poetry.lock"
+      - "uv.lock"
       - "pyproject.toml"
 
 jobs:
