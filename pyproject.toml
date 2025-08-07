@@ -15,10 +15,11 @@ classifiers = [
     'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
     'Natural Language :: English',
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.8',
     'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: 3.13',
 ]
 # by default files declared in .gitignore are excluded
 include = ["CHANGELOG.rst", "LICENSE", "docs", "berserk/py.typed"]

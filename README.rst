@@ -26,12 +26,17 @@ This is based on the `original berserk version created by rhgrant10 <https://git
 Installation
 ------------
 
-Requires Python 3.8+. Download and install the latest release:
+Requires Python 3.9+. Download and install the latest release:
 ::
 
     pip3 install berserk
 
 If you have `berserk-downstream` installed, make sure to uninstall it first!
+
+If you like living on the edge, or you want access to the latest features, you can install directly from the repository:
+::
+
+    pip install git+https://github.com/lichess/berserk.git
 
 Features
 --------
