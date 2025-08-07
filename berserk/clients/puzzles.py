@@ -19,6 +19,14 @@ class Puzzles(BaseClient):
         path = "/api/puzzle/daily"
         return self._r.get(path)
 
+    def get_next(self) -> Dict[str, Any]:
+        """Get the next puzzle for the authenticated user.
+
+        :return: next puzzle
+        """
+        path = "/api/puzzle/next"
+        return self._r.get(path)
+
     def get(self, id: str) -> Dict[str, Any]:
         """Get a puzzle by its id.
 

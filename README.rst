@@ -163,6 +163,7 @@ Most of the API is available:
     client.oauth.test_tokens
 
     client.puzzles.get_daily
+    client.puzzles.get_next
     client.puzzles.get
     client.puzzles.get_puzzle_activity
     client.puzzles.get_puzzle_dashboard
