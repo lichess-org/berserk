@@ -12,6 +12,7 @@ To be released
 * Added ``client.fide.search`` to search for FIDE players by name
 * Fixed ``client.broadcasts.push_pgn_update`` endpoint URL.
 * Updated ``finished`` patameter to ``status`` in ``client.broadcasts.update_round``.
+* Deprecate Python 3.8 support - minimum required version is now Python 3.9+
 
 Thanks to @nicvagn, @tors42, @fitztrev, @trevorbayless, @Looki2000 and @stafot for their contributions to this release
 
