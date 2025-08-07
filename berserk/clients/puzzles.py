@@ -6,6 +6,7 @@ from .. import models
 from ..formats import NDJSON
 from .base import BaseClient
 from ..types import Difficulty, PuzzleRace
+from ..types.puzzles import PuzzleResponse
 
 
 class Puzzles(BaseClient):
@@ -81,7 +82,7 @@ class Puzzles(BaseClient):
 
     def get_next(
         self, angle: str | None = None, difficulty: Difficulty | None = None
-    ) -> Dict[str, Any]:
+    ) -> PuzzleResponse:
         """Get a random Lichess puzzle (optionally filtered by theme or difficulty).
 
         If authenticated, will only return puzzles the user hasn't seen before.
@@ -96,4 +97,4 @@ class Puzzles(BaseClient):
             params["angle"] = angle
         if difficulty:
             params["difficulty"] = difficulty.value
-        return self._r.get(path, params=params)
+        return cast(PuzzleResponse, self._r.get(path, params=params))
