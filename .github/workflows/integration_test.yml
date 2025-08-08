@@ -34,7 +34,7 @@ jobs:
         uses: astral-sh/setup-uv@v6
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install make
+      - name: Install make and curl
         run: apt update && apt install -y make curl
       - name: Install dependencies
         run: make setup
