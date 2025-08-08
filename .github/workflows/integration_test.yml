@@ -7,12 +7,14 @@ on:
       - ".github/workflows/integration_test.yml"
       - "integration/**"
       - "berserk/**"
+      - "uv.lock"
       - "pyproject.toml"
   pull_request:
     paths:
       - ".github/workflows/integration_test.yml"
       - "integration/**"
       - "berserk/**"
+      - "uv.lock"
       - "pyproject.toml"
 
 jobs:
