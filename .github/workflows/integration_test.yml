@@ -6,14 +6,14 @@ on:
     paths:
       - ".github/workflows/integration_test.yml"
       - "integration/**"
-      - "berserk/**"
+      - "**.py"
       - "uv.lock"
       - "pyproject.toml"
   pull_request:
     paths:
       - ".github/workflows/integration_test.yml"
       - "integration/**"
-      - "berserk/**"
+      - "**.py"
       - "uv.lock"
       - "pyproject.toml"
 
@@ -23,40 +23,19 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+    container: ubuntu:latest
     services:
       bdit_lila:
         image: ghcr.io/lichess-org/lila-docker:main
         options: --restart=always
     steps:
-      - name: Checkout berserk
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - name: Install uv
         uses: astral-sh/setup-uv@v6
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
-        run: |
-          uv sync
-          uv run python -m pip install pytest
-      - name: Install berserk in development mode
-        run: uv run python -m pip install -e . --no-cache-dir
-      - name: Wait for lila to be ready
-        run: |
-          attempts=0
-          echo "🔍 Checking if lila is ready..."
-          while [ $attempts -lt 30 ]; do
-            if [ "$(curl -s -o /dev/null -w '%{http_code}' http://bdit_lila:8080)" -eq 200 ]; then
-              echo "✅ Lila is ready!"
-              break
-            fi
-            echo "⌛ Waiting for lila to start... (attempt $((attempts + 1)))"
-            sleep 1
-            attempts=$((attempts + 1))
-          done
-          if [ $attempts -eq 30 ]; then
-            echo "❌ Lila failed to start after 30 attempts"
-            exit 1
-          fi
+        run: make setup
       - name: Run integration tests
         run: |
-          uv run pytest integration
+          ./integration/run-tests.sh
