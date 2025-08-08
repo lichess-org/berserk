@@ -23,6 +23,7 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.9", "3.10", "3.11", "3.12", "3.13"]
+    container: ubuntu:latest
     services:
       bdit_lila:
         image: ghcr.io/lichess-org/lila-docker:main
@@ -33,6 +34,8 @@ jobs:
         uses: astral-sh/setup-uv@v6
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Install make
+        run: apt update && apt install -y make curl
       - name: Install dependencies
         run: make setup
       - name: Run integration tests
