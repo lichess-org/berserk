@@ -5,6 +5,7 @@ integration_test() {
     local BDIT_IMAGE=ghcr.io/lichess-org/lila-docker:main
     local BDIT_LILA=bdit_lila
     local BDIT_NETWORK=bdit_lila-network
+    local BDIT_APP_IMAGE=ghcr.io/astral-sh/uv:debian
     local BDIT_APP=bdit_app
 
     cleanup_containers() {
@@ -18,7 +19,7 @@ integration_test() {
 
     docker network create $BDIT_NETWORK
     docker run --name $BDIT_LILA --network $BDIT_NETWORK -d $BDIT_IMAGE
-    docker run --name $BDIT_APP --network $BDIT_NETWORK -v "$(pwd)":/app -w /app $BDIT_IMAGE ./integration/run-tests.sh
+    docker run --name $BDIT_APP --network $BDIT_NETWORK -v "$(pwd)":/app -w /app $BDIT_APP_IMAGE "./integration/run-tests.sh"
 
     cleanup_containers
     echo "✅ Done"
