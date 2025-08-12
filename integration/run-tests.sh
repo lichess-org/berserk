@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-python3 -m pip install -e . --no-cache-dir
+make setup # should this be moved outside of the file?
 
 attempts=0
 echo "🔍 Checking if lila is ready..."
@@ -13,4 +13,4 @@ while [ $attempts -lt 30 ]; do
     attempts=$((attempts + 1))
 done
 
-pytest integration
+uv run pytest integration
