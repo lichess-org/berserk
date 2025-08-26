@@ -11,6 +11,9 @@ from typing import Literal
 from datetime import datetime
 
 
+UNREALSED = "To be released\n--------------"
+
+
 def system(command):
     print(command)
     exit_code = os.system(command)
@@ -37,17 +40,25 @@ def test():
     system("make test")
 
 
+def _update_changelog(modifier_callback: str):
+    line = f"{tagname} ({datetime.now().strftime('%Y-%m-%d')})"
+    with open("CHANGELOG.rst", "r") as changelog_file:
+        changelog = changelog_file.read()
+    changelog = modifier_callback(changelog)
+    with open("CHANGELOG.rst", "w") as changelog_file:
+        changelog_file.write(changelog)
+
+
 def update_changelog(tagname: str):
     print("--- UPDATING CHANGELOG ----------------------------------------------")
     # include today's date in format yyyy-mm-dd
     # to match format v0.13.2 (2023-12-04)
     line = f"{tagname} ({datetime.now().strftime('%Y-%m-%d')})"
-    unreleased = "To be released\n--------------"
-    with open("CHANGELOG.rst", "r") as changelog_file:
-        changelog = changelog_file.read()
-    changelog = changelog.replace(unreleased, line + "\n" + "-" * len(line))
-    with open("CHANGELOG.rst", "w") as changelog_file:
-        changelog_file.write(changelog)
+
+    def modifier(changelog: str) -> str:
+        return changelog.replace(UNREALSED, line + "\n" + UNREALSED)
+
+    _update_changelog(modifier)
 
 
 def check_docs():
@@ -146,7 +157,13 @@ def go_to_dev():
     print("--- GO TO DEV ----------------------------------------------------")
     system("uv version --bump patch")
     version = _get_current_version(must_be_dev=False)
-    system(f"uv version {version}dev")
+    system(f"uv version {version}.dev0")
+
+    def modifier(changelog: str) -> str:
+        title = "======="
+        return changelog.replace(title, f"{title}\n\n{UNREALSED}\n\n")
+
+    _update_changelog(modifier)
     system("git add -u")
     system('git commit -m "Bump to next development version"')
     system("git push origin master")
