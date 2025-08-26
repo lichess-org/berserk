@@ -56,7 +56,7 @@ def update_changelog(tagname: str):
     line = f"{tagname} ({datetime.now().strftime('%Y-%m-%d')})"
 
     def modifier(changelog: str) -> str:
-        return changelog.replace(UNREALSED, line + "\n" + UNREALSED)
+        return changelog.replace(UNREALSED, line + "\n" + "-" * len(line))
 
     _update_changelog(modifier)
 
