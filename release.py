@@ -148,9 +148,10 @@ def tag_and_push(tagname: str):
         print(f"Actual tagname is: {tagname}")
         sys.exit(1)
 
+    system("git add -u")
+    system(f'git commit -m "releasing {tagname}"')
     system(f"git tag {tagname} -s -F {release_filename}")
     system(f"git push --atomic origin master {tagname}")
-    return tagname
 
 
 def go_to_dev():
