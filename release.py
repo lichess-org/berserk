@@ -150,7 +150,8 @@ def tag_and_push(tagname: str):
 
     system("git add -u")
     system(f'git commit -m "releasing {tagname}"')
-    system(f"git tag {tagname} -s -F {release_filename}")
+    # TODO signed commit
+    system(f"git tag {tagname} -F {release_filename}")
     system(f"git push --atomic origin master {tagname}")
 
 
