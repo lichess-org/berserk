@@ -64,10 +64,11 @@ def _get_current_version(must_be_dev=True) -> str:
     assert "berserk" in version
     if must_be_dev:
         assert "dev" in version
-    return version.split()[1].partition("dev")[0]
+    return version.split()[1].partition(".dev")[0]
 
 
 def _decrement_patch(version: str) -> str:
+    print(f"Decrementing patch version of {version}")
     major, minor, patch = [int(x) for x in version.split(".")]
     assert patch > 0
     return f"{major}.{minor}.{patch - 1}"
