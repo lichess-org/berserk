@@ -79,7 +79,7 @@ wheels = [
 
 [[package]]
 name = "berserk"
-version = "0.13.2"
+version = "0.13.3.dev0"
 source = { editable = "." }
 dependencies = [
     { name = "deprecated" },

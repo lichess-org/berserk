@@ -1,4 +1,4 @@
-.PHONY: help clean clean-docs clean-test setup test format format-check docs servedocs publish
+.PHONY: help clean clean-docs clean-test setup test format format-check docs servedocs build publish
 .DEFAULT_GOAL := help
 
 define PRINT_HELP_PYSCRIPT
@@ -36,11 +36,11 @@ typecheck: ## run type checking with pyright
 	uv run pyright berserk
 
 format: ## format python files with black and docformatter
-	uv run black berserk tests check-endpoints.py
+	uv run black berserk tests check-endpoints.py release.py
 	uv run docformatter --in-place --black berserk/*.py
 
 format-check: ## check formatting with black (for CI)
-	uv run black berserk tests check-endpoints.py --check
+	uv run black berserk tests check-endpoints.py release.py --check
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	uv run sphinx-build -b html docs _build -EW --keep-going
@@ -48,7 +48,10 @@ docs: ## generate Sphinx HTML documentation, including API docs
 servedocs: docs ## compile the docs and serve them locally
 	python3 -m http.server --directory _build --bind 127.0.0.1
 
-publish: ## publish to pypi
+build: ## build the package
+	uv build
+
+publish: build ## publish to pypi
 	@echo
 	@echo "Release checklist:"
 	@echo " - Did you update the documentation? (including adding new endpoints to the README?)"
@@ -59,5 +62,4 @@ publish: ## publish to pypi
 	@echo
 	@read -p "Are you sure you want to create a release? [y/N] " ans && [ $${ans:-N} = y ]
 	sleep 5
-	uv build
 	uv publish
