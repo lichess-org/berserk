@@ -1,8 +1,8 @@
 Changelog
 =========
 
-To be released
---------------
+v0.14.0 (2025-08-26)
+--------------------
 
 * Deprecate Python 3.8 support - minimum required version is now Python 3.9+. This does not mean the library will not work with Python 3.8, but it will not be tested against it anymore.
 
