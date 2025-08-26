@@ -2,6 +2,7 @@
 # Helper script to create and publish a new `berserk` release.
 # Based on `release.py` from `python-chess`.
 
+import argparse
 import os
 import sys
 import subprocess
@@ -156,10 +157,17 @@ def build():
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "bump",
+        choices=["major", "minor", "patch"],
+        help="type of version bump",
+    )
+    args = parser.parse_args()
     check_docs()
     test()
     check_git()
-    tagname = bump_version()
+    tagname = bump_version(args.bump)
     update_changelog(tagname)
     tag_and_push(tagname)
     is_done = input("now release to pypi with: make publish, done when done")
