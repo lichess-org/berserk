@@ -159,15 +159,16 @@ def go_to_dev():
     print("--- GO TO DEV ----------------------------------------------------")
     system("uv version --bump patch")
     version = _get_current_version(must_be_dev=False)
-    system(f"uv version {version}.dev0")
+    dev_version = f"{version}.dev0"
+    system(f"uv version {dev_version}")
 
     def modifier(changelog: str) -> str:
-        title = "======="
+        title = "========="
         return changelog.replace(title, f"{title}\n\n{UNREALSED}\n\n")
 
     _update_changelog(modifier)
     system("git add -u")
-    system('git commit -m "Bump to next development version"')
+    system(f'git commit -m "Bump to dev version: {dev_version}"')
     system("git push origin master")
 
 
