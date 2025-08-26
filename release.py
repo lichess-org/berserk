@@ -3,10 +3,10 @@
 # Based on `release.py` from `python-chess`.
 
 import os
-import chess
 import sys
 import subprocess
 
+from typing import Literal
 from datetime import datetime
 
 
@@ -81,7 +81,7 @@ def _decrement_patch(version: str) -> str:
 # rc: Increase the rc version (e.g., 1.2.3rc4 => 1.2.3rc5)
 # post: Increase the post version (e.g., 1.2.3.post5 => 1.2.3.post6)
 # dev: Increase the dev version (e.g., 1.2.3a4.dev6 => 1.2.3.dev7)
-def bump_version(bump: "major" | "minor" | "patch") -> str:
+def bump_version(bump: Literal["major", "minor", "patch"]) -> str:
     last_published_version = _decrement_patch(_get_current_version())
     system(f"uv version {last_published_version}")
     system(f"uv version --bump {bump}")
@@ -146,7 +146,7 @@ def go_to_dev():
 
 
 def build():
-    print("--- build,  ---------------------------------------------------------")
+    print("--- build ---------------------------------------------------------")
     system("make build")
 
 
