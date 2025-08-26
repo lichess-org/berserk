@@ -59,7 +59,7 @@ def _get_current_version(must_be_dev=True) -> str:
     """the dev version is always latest version + patch + dev
     eg: last published version 0.13.2 so dev is 0.13.3.dev0
     """
-    version = subprocess.check_output(["uv", "version"])
+    version = str(subprocess.check_output(["uv", "version"]))
     # berserk 0.13.3.dev0
     assert "berserk" in version
     if must_be_dev:
