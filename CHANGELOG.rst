@@ -4,7 +4,7 @@ Changelog
 To be released
 --------------
 
-* Added ``pgn_in_json`` parameter to ``client.games.export`.
+* Added ``pgn_in_json`` parameter to ``client.games.export``.
 
 Thanks to @hsheth2 for their contributions to this release.
 
