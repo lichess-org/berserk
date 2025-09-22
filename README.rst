@@ -131,11 +131,11 @@ Most of the API is available:
     client.challenges.add_time_to_opponent_clock
     client.challenges.create_tokens_for_multiple_users
 
-    client.explorer.get_lichess_games
-    client.explorer.get_masters_games
-    client.explorer.get_player_games
-    client.explorer.stream_player_games
-    client.explorer.get_otb_master_game
+    client.opening_explorer.get_lichess_games
+    client.opening_explorer.get_masters_games
+    client.opening_explorer.get_player_games
+    client.opening_explorer.stream_player_games
+    client.opening_explorer.get_otb_master_game
 
     client.external_engine.get
     client.external_engine.get_by_id
