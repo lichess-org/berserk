@@ -2,9 +2,10 @@ import pytest
 
 from berserk import Client
 from berserk.types.broadcast import BroadcastTopResponse
-from utils import validate
+from utils import skip_if_older_3_dot_10, validate
 
 
+@skip_if_older_3_dot_10
 def test_get_top_valid(requests_mock):
     client = Client()
 
