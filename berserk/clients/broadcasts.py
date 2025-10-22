@@ -256,11 +256,6 @@ class Broadcasts(BaseClient):
         :param html: if True, convert the `description` field from markdown to HTML.
         :return: parsed JSON response with keys `active`, `upcoming`, and `past`.
         """
-        # runtime guard: raise ValueError for non-int pages (pyright warns unnecessary isinstance)
-        if not isinstance(page, int):  # type: ignore[reportUnnecessaryIsInstance]
-            raise ValueError("page must be an int")
-        if page < 1:
-            raise ValueError("page must be >= 1")
         path = "/api/broadcast/top"
         params = {"page": page, "html": html}
         return cast(BroadcastTopResponse, self._r.get(path, params=params))
