@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import Any, Dict, List
+
 from typing_extensions import NotRequired, TypedDict
 
 from .common import Title
@@ -14,3 +16,14 @@ class BroadcastPlayer(TypedDict):
     rating: NotRequired[int]
     # Title, optional
     title: NotRequired[Title]
+
+
+class BroadcastTopResponse(TypedDict):
+    """Minimal TypedDict for /api/broadcast/top response."""
+
+    # List of active broadcasts
+    active: List[Dict[str, Any]]
+    # List of upcoming broadcasts
+    upcoming: List[Dict[str, Any]]
+    # List of past broadcasts
+    past: Dict[str, Any]

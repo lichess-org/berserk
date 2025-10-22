@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-from typing import Iterator, Any, Dict, List
+from typing import Iterator, Any, Dict, List, cast
 
 from .. import models
 from ..formats import PGN
 from .base import BaseClient
 
-from ..types.broadcast import BroadcastPlayer
+from ..types.broadcast import BroadcastPlayer, BroadcastTopResponse
 from ..utils import to_str
 
 
@@ -244,3 +244,23 @@ class Broadcasts(BaseClient):
         path = "/api/broadcast/my-rounds"
         params = {"nb": nb}
         yield from self._r.get(path, params=params, stream=True)
+
+    def get_top(
+        self,
+        page: int = 1,
+        html: bool = False,
+    ) -> BroadcastTopResponse:
+        """Return the paginated top broadcasts structure for `page`.
+
+        :param page: which page to fetch (1..20). Only page 1 has `active` broadcasts.
+        :param html: if True, convert the `description` field from markdown to HTML.
+        :return: parsed JSON response with keys `active`, `upcoming`, and `past`.
+        """
+        # runtime guard: raise ValueError for non-int pages (pyright warns unnecessary isinstance)
+        if not isinstance(page, int):  # type: ignore[reportUnnecessaryIsInstance]
+            raise ValueError("page must be an int")
+        if page < 1:
+            raise ValueError("page must be >= 1")
+        path = "/api/broadcast/top"
+        params = {"page": page, "html": html}
+        return cast(BroadcastTopResponse, self._r.get(path, params=params))
