@@ -86,7 +86,7 @@ class BroadcastPastPage(TypedDict):
     nextPage: NotRequired[int | None]
 
 
-class BroadcastTopResponse(TypedDict):
+class BroadcastTop(TypedDict):
     active: List[BroadcastWithLastRound]
     upcoming: List[BroadcastWithLastRound]
     past: BroadcastPastPage

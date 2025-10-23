@@ -6,7 +6,7 @@ from .. import models
 from ..formats import PGN
 from .base import BaseClient
 
-from ..types.broadcast import BroadcastPlayer, BroadcastTopResponse
+from ..types.broadcast import BroadcastPlayer, BroadcastTop
 from ..utils import to_str
 
 
@@ -249,7 +249,7 @@ class Broadcasts(BaseClient):
         self,
         page: int = 1,
         html: bool = False,
-    ) -> BroadcastTopResponse:
+    ) -> BroadcastTop:
         """Return the paginated top broadcasts structure for `page`.
 
         :param page: which page to fetch (1..20). Only page 1 has `active` broadcasts.
@@ -258,4 +258,4 @@ class Broadcasts(BaseClient):
         """
         path = "/api/broadcast/top"
         params = {"page": page, "html": html}
-        return cast(BroadcastTopResponse, self._r.get(path, params=params))
+        return cast(BroadcastTop, self._r.get(path, params=params))
