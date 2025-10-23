@@ -4,7 +4,7 @@ from typing import Any, Dict, List
 
 from typing_extensions import NotRequired, TypedDict
 
-from .common import Title
+from .common import LightUser, Title
 
 
 class BroadcastPlayer(TypedDict):
@@ -18,12 +18,65 @@ class BroadcastPlayer(TypedDict):
     title: NotRequired[Title]
 
 
-class BroadcastTopResponse(TypedDict):
-    """Minimal TypedDict for /api/broadcast/top response."""
+class BroadcastTourInfoInfo(TypedDict, total=False):
+    website: NotRequired[str]
+    players: NotRequired[str]
+    location: NotRequired[str]
+    tc: NotRequired[str]
+    fideTc: NotRequired[str]
+    timeZone: NotRequired[str]
+    standings: NotRequired[str]
+    format: NotRequired[str]
 
-    # List of active broadcasts
-    active: List[Dict[str, Any]]
-    # List of upcoming broadcasts
-    upcoming: List[Dict[str, Any]]
-    # List of past broadcasts
-    past: Dict[str, Any]
+
+class BroadcastTourInfo(TypedDict, total=False):
+    id: str
+    name: str
+    slug: str
+    createdAt: int
+    dates: NotRequired[List[int]]
+    info: NotRequired[BroadcastTourInfoInfo]
+    tier: NotRequired[int]
+    image: NotRequired[str]
+    description: NotRequired[str]
+    leaderboard: NotRequired[bool]
+    teamTable: NotRequired[bool]
+    url: str
+    communityOwner: NotRequired[LightUser]
+
+
+class BroadcastRoundInfo(TypedDict, total=False):
+    id: str
+    name: str
+    slug: str
+    createdAt: int
+    rated: bool
+    ongoing: NotRequired[bool]
+    startsAt: NotRequired[int]
+    startsAfterPrevious: NotRequired[bool]
+    finishedAt: NotRequired[int]
+    finished: NotRequired[bool]
+    url: str
+    delay: NotRequired[int]
+    customScoring: NotRequired[Dict[str, Any]]
+
+
+class BroadcastWithLastRound(TypedDict, total=False):
+    group: NotRequired[str]
+    tour: BroadcastTourInfo
+    round: BroadcastRoundInfo
+    roundToLink: NotRequired[BroadcastRoundInfo]
+
+
+class BroadcastPastPage(TypedDict, total=False):
+    currentPage: int
+    maxPerPage: int
+    currentPageResults: List[BroadcastWithLastRound]
+    previousPage: NotRequired[int | None]
+    nextPage: NotRequired[int | None]
+
+
+class BroadcastTopResponse(TypedDict):
+    active: List[BroadcastWithLastRound]
+    upcoming: List[BroadcastWithLastRound]
+    past: BroadcastPastPage
