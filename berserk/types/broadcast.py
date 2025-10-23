@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import List
 
 from typing_extensions import NotRequired, TypedDict
 
@@ -18,7 +18,7 @@ class BroadcastPlayer(TypedDict):
     title: NotRequired[Title]
 
 
-class BroadcastTourInfoInfo(TypedDict, total=False):
+class BroadcastTourInfo(TypedDict):
     website: NotRequired[str]
     players: NotRequired[str]
     location: NotRequired[str]
@@ -29,13 +29,13 @@ class BroadcastTourInfoInfo(TypedDict, total=False):
     format: NotRequired[str]
 
 
-class BroadcastTourInfo(TypedDict, total=False):
+class BroadcastTour(TypedDict):
     id: str
     name: str
     slug: str
     createdAt: int
     dates: NotRequired[List[int]]
-    info: NotRequired[BroadcastTourInfoInfo]
+    info: NotRequired[BroadcastTourInfo]
     tier: NotRequired[int]
     image: NotRequired[str]
     description: NotRequired[str]
@@ -45,7 +45,17 @@ class BroadcastTourInfo(TypedDict, total=False):
     communityOwner: NotRequired[LightUser]
 
 
-class BroadcastRoundInfo(TypedDict, total=False):
+class BroadcastCustomPointsPerColor(TypedDict):
+    win: float
+    draw: float
+
+
+class BroadcastCustomScoring(TypedDict):
+    white: BroadcastCustomPointsPerColor
+    black: BroadcastCustomPointsPerColor
+
+
+class BroadcastRoundInfo(TypedDict):
     id: str
     name: str
     slug: str
@@ -56,19 +66,19 @@ class BroadcastRoundInfo(TypedDict, total=False):
     startsAfterPrevious: NotRequired[bool]
     finishedAt: NotRequired[int]
     finished: NotRequired[bool]
-    url: str
+    url: NotRequired[str]
     delay: NotRequired[int]
-    customScoring: NotRequired[Dict[str, Any]]
+    customScoring: NotRequired[BroadcastCustomScoring]
 
 
-class BroadcastWithLastRound(TypedDict, total=False):
+class BroadcastWithLastRound(TypedDict):
     group: NotRequired[str]
-    tour: BroadcastTourInfo
+    tour: BroadcastTour
     round: BroadcastRoundInfo
     roundToLink: NotRequired[BroadcastRoundInfo]
 
 
-class BroadcastPastPage(TypedDict, total=False):
+class BroadcastPastPage(TypedDict):
     currentPage: int
     maxPerPage: int
     currentPageResults: List[BroadcastWithLastRound]
