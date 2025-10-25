@@ -4,6 +4,7 @@ Changelog
 To be released
 --------------
 
+<<<<<<< HEAD
 
 * Deprecate Python 3.9 support - minimum required version is now Python 3.10+. This does not mean the library will not work with Python 3.9, but it will not be tested against it anymore.
 
