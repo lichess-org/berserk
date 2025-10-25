@@ -67,7 +67,7 @@ class Account(BaseClient):
         Requires OAuth2 authorization.
 
         :param since: shows events since the provided timestamp, default
-        1356998400070 (the earliest allowed by Lichess
+            1356998400070 (the earliest allowed by Lichess
         :param nb: Max number of events to fetch, default 15.
         """
         path = "/api/timeline"
