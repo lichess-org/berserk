@@ -38,3 +38,9 @@ def test_account_upgrade_to_bot():
     assert "title" not in client.account.get()
     client.account.upgrade_to_bot()
     assert client.account.get()["title"] == "BOT"
+
+
+def test_account_get_timeline(client):
+    timeline = client.account.get_timeline()
+    assert 'entries' in timeline
+    assert 'users' in timeline
