@@ -120,3 +120,23 @@ class UserPreferences(TypedDict, total=False):
 class Preferences(TypedDict):
     prefs: UserPreferences
     language: str
+
+
+class TimelineEntry(TypedDict, total=False):
+    type: str
+    data: dict[str, str] | None
+    date: int
+
+
+class TimelineUser(TypedDict, total=False):
+    name: str
+    title: str
+    flair: str
+    patron: bool
+    patronColor: int
+    id: str
+
+
+class Timeline(TypedDict):
+    entries: list[TimelineEntry]
+    users: dict[str, TimelineUser]
