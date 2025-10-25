@@ -40,6 +40,7 @@ def test_account_upgrade_to_bot():
     assert client.account.get()["title"] == "BOT"
 
 
+<<<<<<< HEAD:integration/tests/test_lila_account.py
 def test_account_follow(client):
     """Test following a user."""
     client.relations.follow("lichess")
@@ -69,3 +70,9 @@ def test_account_get_users_followed(client):
     if first_user:
         assert "id" in first_user
         assert "username" in first_user
+=======
+def test_account_get_timeline(client):
+    timeline = client.account.get_timeline()
+    assert 'entries' in timeline
+    assert 'users' in timeline
+>>>>>>> ffdd040 (Added  test for integration testing with Docker image):integration/test_lila_account.py
