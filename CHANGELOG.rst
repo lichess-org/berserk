@@ -5,8 +5,9 @@ To be released
 --------------
 
 * Added ``pgn_in_json`` parameter to ``client.games.export``.
+* Added ``client.account.get_timeline`` to get current logged user timeline.
 
-Thanks to @hsheth2 for their contributions to this release.
+Thanks to @hsheth2, and @JAMoreno-Larios for their contributions to this release.
 
 v0.14.0 (2025-08-26)
 --------------------
