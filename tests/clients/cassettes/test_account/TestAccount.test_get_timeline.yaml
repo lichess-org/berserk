@@ -1,0 +1,34 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+    method: GET
+    uri: http://localhost:9663/api/timeline
+  response:
+    body:
+      string: '{"entries":[{"type":"follow","data":{"u1":"ivan","u2":"yevgeny"},"date":1761144614387},{"type":"follow","data":{"u1":"ivan","u2":"abdul"},"date":1761144096053},{"type":"follow","data":{"u1":"ivan","u2":"margarita"},"date":1761140195354},{"type":"follow","data":{"u1":"ivan","u2":"elena"},"date":1761139277470},{"type":"team-join","data":{"userId":"qing","teamId":"chesster-speaks-for-itself"},"date":1761131507550},{"type":"team-join","data":{"userId":"mohammed","teamId":"two-bishops-two-steeds-two-wellhidden-beads"},"date":1761131181378},{"type":"follow","data":{"u1":"ivan","u2":"yaroslava"},"date":1761129663992},{"type":"follow","data":{"u1":"ivan","u2":"jiang"},"date":1761129534104},{"type":"follow","data":{"u1":"ivan","u2":"patricia"},"date":1761127411063},{"type":"game-end","data":null,"date":1761119014003},{"type":"follow","data":{"u1":"ivan","u2":"mei"},"date":1761117513246},{"type":"follow","data":{"u1":"ivan","u2":"lola"},"date":1761115113184},{"type":"team-join","data":{"userId":"hui","teamId":"sacsacoops"},"date":1761083600196},{"type":"game-end","data":null,"date":1761071951662},{"type":"follow","data":{"u1":"patron60","u2":"hans"},"date":1761068990231}],"users":{"jiang":{"name":"Jiang","flair":"people.couple-with-heart-woman-man-dark-skin-tone","id":"jiang"},"margarita":{"name":"Margarita","title":"CM","flair":"objects.studio-microphone","id":"margarita"},"mohammed":{"name":"Mohammed","flair":"people.woman-bowing-medium-light-skin-tone","id":"mohammed"},"qing":{"name":"Qing","patron":true,"patronColor":1,"id":"qing"},"elena":{"name":"Elena","title":"CM","flair":"people.woman-office-worker-medium-dark-skin-tone","patron":true,"patronColor":1,"id":"elena"},"yevgeny":{"name":"Yevgeny","flair":"symbols.play-or-pause-button","id":"yevgeny"},"ivan":{"name":"Ivan","title":"WCM","id":"ivan"},"abdul":{"name":"Abdul","flair":"people.man-cook","patron":true,"patronColor":1,"id":"abdul"},"yaroslava":{"name":"Yaroslava","title":"IM","flair":"people.man-mountain-biking-medium-light-skin-tone","id":"yaroslava"},"patricia":{"name":"Patricia","flair":"people.man-medium-skin-tone-curly-hair","patron":true,"patronColor":1,"id":"patricia"},"hans":{"name":"Hans","flair":"people.woman-and-man-holding-hands-medium-skin-tone-dark-skin-tone","id":"hans"},"mei":{"name":"Mei","title":"WFM","flair":"people.fairy-medium-light-skin-tone","id":"mei"},"patron60":{"name":"Patron60","patron":true,"patronColor":10,"id":"patron60"},"lola":{"name":"Lola","title":"CM","patron":true,"patronColor":1,"id":"lola"},"hui":{"name":"Hui","id":"hui"}}}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 25 Oct 2025 22:08:15 GMT
+      Vary:
+      - Origin
+      X-Accepted-OAuth-Scopes:
+      - ''
+      X-OAuth-Scopes:
+      - email:read,preference:read,preference:write,follow:read,follow:write,msg:write,challenge:read,challenge:write,challenge:bulk,tournament:write,team:read,team:write,team:lead,puzzle:read,puzzle:write,racer:write,study:read,study:write,board:play,engine:read,engine:write
+      content-length:
+      - '2560'
+    status:
+      code: 200
+      message: OK
+version: 1
