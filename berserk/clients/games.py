@@ -317,3 +317,14 @@ class Games(FmtClient):
             "pgn": pgn,
         }
         return self._r.post(path, data=payload)
+
+    def export_imported_games(self) -> str:
+        """
+        Export all the imported games by the currently logged in user
+        as a PGN.
+        Requires OAuth2 authorization.
+
+        :return: the exported games in a single string
+        """
+        path = "/api/games/export/imports"
+        return self._r.get(path, fmt=PGN, stream=False)
