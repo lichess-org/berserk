@@ -12,5 +12,5 @@ class TestGames:
     def test_export_imported_games(self):
         session = berserk.TokenSession(API_TOKEN)  # Add your own
         client = berserk.Client(session, base_url=BASE_URL)
-        res = client.games.export_imported_games()
+        res = client.games.export_imported()
         validate(str, res)

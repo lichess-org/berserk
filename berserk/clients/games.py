@@ -318,7 +318,7 @@ class Games(FmtClient):
         }
         return self._r.post(path, data=payload)
 
-    def export_imported_games(self) -> str:
+    def export_imported(self) -> str:
         """
         Export all the imported games by the currently logged in user
         as a PGN.
