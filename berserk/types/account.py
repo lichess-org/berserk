@@ -3,6 +3,7 @@ from __future__ import annotations
 from datetime import datetime
 
 from typing_extensions import TypedDict, TypeAlias, Literal
+from .common import LightUser
 
 
 class Perf(TypedDict):
@@ -128,15 +129,6 @@ class TimelineEntry(TypedDict, total=False):
     date: int
 
 
-class TimelineUser(TypedDict, total=False):
-    name: str
-    title: str
-    flair: str
-    patron: bool
-    patronColor: int
-    id: str
-
-
 class Timeline(TypedDict):
     entries: list[TimelineEntry]
-    users: dict[str, TimelineUser]
+    users: dict[str, LightUser]
