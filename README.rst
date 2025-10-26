@@ -151,6 +151,7 @@ Most of the API is available:
     client.games.export_ongoing_by_player
     client.games.export_by_player
     client.games.export_multi
+    client.games.export_imported_games
     client.games.get_among_players
     client.games.stream_games_by_ids
     client.games.add_game_ids_to_stream
