@@ -12,7 +12,7 @@ class TestAccount:
     @skip_if_older_3_dot_10
     @pytest.mark.vcr
     def test_get_timeline(self):
-        session = berserk.TokenSession("API_KEY")  # Add your own
+        session = berserk.TokenSession("API_TOKEN")  # Add your own
         client = berserk.Client(session, base_url=BASE_URL)
         since = datetime.now(timezone.utc) - timedelta(days=14)
         nb = 15
