@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from typing_extensions import TypedDict, TypeAlias, Literal
+from typing_extensions import TypedDict, TypeAlias, Literal, NotRequired
 from .common import LightUser
 
 
@@ -123,9 +123,9 @@ class Preferences(TypedDict):
     language: str
 
 
-class TimelineEntry(TypedDict, total=False):
-    type: str
-    data: dict[str, str] | None
+class TimelineEntry(TypedDict):
+    type: NotRequired[str]
+    data: NotRequired[dict[str, str] | None]
     date: int
 
 

@@ -69,7 +69,7 @@ class LightUser(TypedDict):
     # The patron of the user
     patron: NotRequired[bool]
     # The patron color of the user
-    patronColor = NotRequired[int]
+    patronColor: NotRequired[int]
 
 
 class OnlineLightUser(LightUser):
