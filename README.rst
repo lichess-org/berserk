@@ -174,6 +174,8 @@ Most of the API is available:
     client.relations.get_users_followed
     client.relations.follow
     client.relations.unfollow
+    client.relations.block
+    client.relations.unblock
 
     client.simuls.get
 

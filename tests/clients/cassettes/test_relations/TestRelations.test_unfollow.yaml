@@ -1,0 +1,46 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Content-Length:
+      - '0'
+    method: POST
+    uri: https://lichess.org/api/rel/unfollow/lichess
+  response:
+    body:
+      string: '{"ok":true}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '11'
+      Content-Type:
+      - application/json
+      Date:
+      - Sun, 09 Nov 2025 06:18:16 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Vary:
+      - Origin
+      X-Accepted-OAuth-Scopes:
+      - follow:write,web:mobile
+      X-Frame-Options:
+      - DENY
+      X-OAuth-Scopes:
+      - email:read,preference:read,preference:write,follow:read,follow:write,msg:write
+    status:
+      code: 200
+      message: OK
+version: 1
