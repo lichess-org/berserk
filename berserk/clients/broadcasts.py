@@ -254,7 +254,7 @@ class Broadcasts(BaseClient):
 
         :param page: which page to fetch (1..20). Only page 1 has `active` broadcasts.
         :param html: if True, convert the `description` field from markdown to HTML.
-        :return: parsed JSON response with keys `active`, `upcoming`, and `past`.
+        :return: parsed JSON response with keys `active` and `past`.
         """
         path = "/api/broadcast/top"
         params = {"page": page, "html": html}
