@@ -1,12 +1,12 @@
 from __future__ import annotations
 
-from typing import Iterator, Any, Dict, List
+from typing import Iterator, Any, Dict, List, cast
 
 from .. import models
 from ..formats import PGN
 from .base import BaseClient
 
-from ..types.broadcast import BroadcastPlayer
+from ..types.broadcast import BroadcastPlayer, BroadcastTop
 from ..utils import to_str
 
 
@@ -244,3 +244,18 @@ class Broadcasts(BaseClient):
         path = "/api/broadcast/my-rounds"
         params = {"nb": nb}
         yield from self._r.get(path, params=params, stream=True)
+
+    def get_top(
+        self,
+        page: int = 1,
+        html: bool = False,
+    ) -> BroadcastTop:
+        """Return the paginated top broadcasts structure for `page`.
+
+        :param page: which page to fetch (1..20). Only page 1 has `active` broadcasts.
+        :param html: if True, convert the `description` field from markdown to HTML.
+        :return: parsed JSON response with keys `active` and `past`.
+        """
+        path = "/api/broadcast/top"
+        params = {"page": page, "html": html}
+        return cast(BroadcastTop, self._r.get(path, params=params))
