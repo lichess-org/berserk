@@ -38,3 +38,29 @@ def test_account_upgrade_to_bot():
     assert "title" not in client.account.get()
     client.account.upgrade_to_bot()
     assert client.account.get()["title"] == "BOT"
+
+def test_account_follow(client):
+    """Test following a user."""
+    client.relations.follow("lichess")
+
+def test_account_unfollow(client):
+    """Test unfollowing a user."""
+    client.relations.unfollow("lichess")
+
+def test_account_block(client):
+    """Test blocking a user."""
+    client.relations.block("lichess")
+
+def test_account_unblock(client):
+    """Test unblocking a user."""
+    client.relations.unblock("lichess")
+
+def test_account_get_users_followed(client):
+    """Test streaming users followed."""
+    users_gen = client.relations.get_users_followed()
+
+    first_user = next(users_gen, None)
+
+    if first_user:
+        assert "id" in first_user
+        assert "username" in first_user
