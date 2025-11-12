@@ -6,10 +6,12 @@ To be released
 
 * Added ``pgn_in_json`` parameter to ``client.games.export``.
 * Implement `broadcasts.get_top()` endpoint; typing fixes and validation.
+* Added ``client.relations.block`` and ``client.relations.unblock`` for blocking/unblocking users.
 
 Thanks to all the contributors who helped to this release:
 - @hsheth2
 - @DoraFgr
+- @MrElyazid
 
 v0.14.0 (2025-08-26)
 --------------------
