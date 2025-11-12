@@ -88,5 +88,5 @@ class BroadcastPastPage(TypedDict):
 
 class BroadcastTop(TypedDict):
     active: List[BroadcastWithLastRound]
-    upcoming: List[BroadcastWithLastRound]
+    upcoming: List[None]  # deprecated
     past: BroadcastPastPage
