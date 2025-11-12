@@ -33,3 +33,19 @@ class Relations(BaseClient):
         """
         path = f"/api/rel/unfollow/{username}"
         self._r.post(path)
+
+    def block(self, username: str):
+        """Block a player.
+
+        :param username: user to block
+        """
+        path = f"/api/rel/block/{username}"
+        self._r.post(path)
+
+    def unblock(self, username: str):
+        """Unblock a player.
+
+        :param username: user to unblock
+        """
+        path = f"/api/rel/unblock/{username}"
+        self._r.post(path)
