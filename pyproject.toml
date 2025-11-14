@@ -7,7 +7,7 @@ authors = [
 ]
 license = {text = "GPL-3.0-or-later"}
 readme = "README.rst"
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 keywords = ["lichess", "chess", "api", "client"]
 classifiers = [
     'Development Status :: 4 - Beta',
