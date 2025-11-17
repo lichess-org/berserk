@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-# make setup # should this be moved outside of the file?
-
 attempts=0
 echo "🔍 Checking if lila is ready..."
 while [ $attempts -lt 30 ]; do
