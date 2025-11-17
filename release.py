@@ -41,7 +41,7 @@ def test():
 
 
 def _update_changelog(modifier_callback: str):
-    line = f"{tagname} ({datetime.now().strftime('%Y-%m-%d')})"
+    # line = f"{tagname} ({datetime.now().strftime('%Y-%m-%d')})"
     with open("CHANGELOG.rst", "r") as changelog_file:
         changelog = changelog_file.read()
     changelog = modifier_callback(changelog)
@@ -117,9 +117,10 @@ def tag_and_push(tagname: str):
         print(f">>> Creating {release_filename} ...")
         first_section = False
         prev_line = None
-        with open(release_filename, "w") as release_txt, open(
-            "CHANGELOG.rst", "r"
-        ) as changelog_file:
+        with (
+            open(release_filename, "w") as release_txt,
+            open("CHANGELOG.rst", "r") as changelog_file,
+        ):
             headline = f"berserk {tagname}"
             release_txt.write(headline + os.linesep)
 

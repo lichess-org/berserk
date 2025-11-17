@@ -1,3 +1,4 @@
+# ruff: noqa: E402
 """Top-level package for berserk."""
 
 from importlib import metadata

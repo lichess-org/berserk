@@ -1,6 +1,6 @@
 import pytest
 
-from berserk import Client, PuzzleData, PuzzleRace
+from berserk import Client, PuzzleData
 from utils import validate, skip_if_older_3_dot_10
 
 

@@ -26,7 +26,7 @@ This is based on the `original berserk version created by rhgrant10 <https://git
 Installation
 ------------
 
-Requires Python 3.9+. Download and install the latest release:
+Requires Python 3.10+. Download and install the latest release:
 ::
 
     pip3 install berserk
