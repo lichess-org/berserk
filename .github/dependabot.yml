@@ -21,15 +21,3 @@ updates:
       dependencies:
         patterns:
           - "*"
-    ignore:
-      # Explicitly ignore dev dependencies
-      - dependency-name: "pytest"
-      - dependency-name: "black"
-      - dependency-name: "sphinx"
-      - dependency-name: "sphinx-rtd-theme"
-      - dependency-name: "docformatter"
-      - dependency-name: "pyright"
-      - dependency-name: "requests-mock"
-      - dependency-name: "pytest-recording"
-      - dependency-name: "vcrpy"
-      - dependency-name: "pydantic"
