@@ -2,6 +2,7 @@
 
 integration_test() {
     # BDIT = Berserk Docker Image Test, trying to reduce collision
+    local BDIT_SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
     local BDIT_IMAGE=ghcr.io/lichess-org/lila-docker:main
     local BDIT_LILA=bdit_lila
     local BDIT_NETWORK=bdit_lila-network
@@ -18,8 +19,9 @@ integration_test() {
     cleanup_containers
 
     docker network create $BDIT_NETWORK
+    docker build -f "$BDIT_SCRIPT_DIR/Dockerfile" "$BDIT_SCRIPT_DIR/.." --build-arg UV_CACHE_DIR="$HOME/.cache/uv" -t bzrk
     docker run --name $BDIT_LILA --network $BDIT_NETWORK -d $BDIT_IMAGE
-    docker run --name $BDIT_APP --network $BDIT_NETWORK -v "$(pwd)":/app -w /app $BDIT_APP_IMAGE "./integration/run-tests.sh"
+    docker run --name $BDIT_APP --network $BDIT_NETWORK bzrk
 
     cleanup_containers
     echo "✅ Done"
