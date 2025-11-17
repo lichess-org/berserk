@@ -1,7 +1,7 @@
 import pytest
 
 from berserk import Client, OnlineLightUser
-from typing import List, Dict
+from typing import List
 from utils import validate, skip_if_older_3_dot_10
 
 

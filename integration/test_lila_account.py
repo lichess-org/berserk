@@ -27,9 +27,9 @@ def test_account_get_preferences(client):
 
 
 def test_account_kid_mode(client):
-    assert client.account.get_kid_mode() == False
+    assert not client.account.get_kid_mode()
     client.account.set_kid_mode(True)
-    assert client.account.get_kid_mode() == True
+    assert client.account.get_kid_mode()
 
 
 def test_account_upgrade_to_bot():
@@ -39,21 +39,26 @@ def test_account_upgrade_to_bot():
     client.account.upgrade_to_bot()
     assert client.account.get()["title"] == "BOT"
 
+
 def test_account_follow(client):
     """Test following a user."""
     client.relations.follow("lichess")
+
 
 def test_account_unfollow(client):
     """Test unfollowing a user."""
     client.relations.unfollow("lichess")
 
+
 def test_account_block(client):
     """Test blocking a user."""
     client.relations.block("lichess")
 
+
 def test_account_unblock(client):
     """Test unblocking a user."""
     client.relations.unblock("lichess")
+
 
 def test_account_get_users_followed(client):
     """Test streaming users followed."""

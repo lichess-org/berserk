@@ -35,12 +35,11 @@ test_record: ## run tests with pytest and record http requests
 typecheck: ## run type checking with pyright
 	uv run pyright berserk
 
-format: ## format python files with black and docformatter
-	uv run black berserk tests check-endpoints.py release.py
-	uv run docformatter --in-place --black berserk/*.py
+format: ## format python files with ruff
+	uv run ruff format
 
-format-check: ## check formatting with black (for CI)
-	uv run black berserk tests check-endpoints.py release.py --check
+format-check: ## check formatting with ruff (for CI)
+	uv run ruff format . --diff
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	uv run sphinx-build -b html docs _build -EW --keep-going
