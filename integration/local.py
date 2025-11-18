@@ -38,7 +38,7 @@ RETRY_STRAT = Retry(
     total=5,
     backoff_factor=1,
     status_forcelist=[429, 500, 502, 503, 504],
-    allowed_methods=["GET"]
+    allowed_methods=["GET"],
 )
 ADAPTER = HTTPAdapter(max_retries=RETRY_STRAT)
 
@@ -51,7 +51,9 @@ log.setLevel(logging.DEBUG)
 format_string = "%(asctime)s | %(levelname)-8s | %(message)s"
 
 # 125000000 bytes = 12.5Mb
-handler = logging.handlers.RotatingFileHandler(LOG_PATH, maxBytes=12500000, backupCount=3, encoding="utf8")
+handler = logging.handlers.RotatingFileHandler(
+    LOG_PATH, maxBytes=12500000, backupCount=3, encoding="utf8"
+)
 handler.setFormatter(logging.Formatter(format_string))
 handler.setLevel(logging.DEBUG)
 log.addHandler(handler)
@@ -67,12 +69,14 @@ log.addHandler(handler_2)
 # Classes #
 ###########
 
+
 def doc(dic: Dict[str, Callable[..., Any]]) -> str:
     """Produce documentation for every command based on doc of each function"""
     doc_string = ""
     for name_cmd, func in dic.items():
         doc_string += f"{name_cmd}: {func.__doc__}\n\n"
     return doc_string
+
 
 def main() -> None:
     parser = argparse.ArgumentParser(formatter_class=RawTextHelpFormatter)
@@ -83,10 +87,11 @@ def main() -> None:
     # args = parser.parse_args()
     # commands[args.command]()
 
+
 ########
 # Main #
 ########
 
 if __name__ == "__main__":
-    print('#'*80)
+    print("#" * 80)
     main()
