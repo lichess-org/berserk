@@ -1,0 +1,57 @@
+name: Publish to Pypi (and testPypi)
+
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        description: 'bump version: major, minor, patch, or none to build current dev'
+        required: true
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+          - none
+
+jobs:
+  build:
+    name: Build package
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        persist-credentials: false
+    - name: Install uv
+      uses: astral-sh/setup-uv@v7
+    - name: Build berserk package
+      run: uv run release.py --bump ${{ github.event.inputs.bump }}
+    - name: Store the distribution packages
+      uses: actions/upload-artifact@v4
+      with:
+        name: python-package-distributions
+        path: dist/
+
+  publish-to-testpypi:
+    name: Publish to TestPyPI
+    needs:
+    - build
+    runs-on: ubuntu-latest
+
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/berserk
+
+    permissions:
+      id-token: write  # IMPORTANT: mandatory for trusted publishing
+
+    steps:
+    - name: Download all the dists
+      uses: actions/download-artifact@v4
+      with:
+        name: python-package-distributions
+        path: dist/
+    - name: Publish distribution 📦 to TestPyPI
+      uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        repository-url: https://test.pypi.org/legacy/
