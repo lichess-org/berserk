@@ -126,9 +126,12 @@ def run_lila():
     )
 
 
-def get_project_python_version() -> str:
-    with open(SCRIPT_DIR.parent / ".python-version", "r") as f:
-        return f.read().strip()
+def get_project_python_version() -> str | None:
+    try:
+        with open(SCRIPT_DIR.parent / ".python-version", "r") as f:
+            return f.read().strip()
+    except:
+        return None
 
 
 class ChangeHandler(PatternMatchingEventHandler):
