@@ -126,6 +126,11 @@ def run_lila():
     )
 
 
+def get_project_python_version() -> str:
+    with open(SCRIPT_DIR.parent / ".python-version", "r") as f:
+        return f.read().strip()
+
+
 class ChangeHandler(PatternMatchingEventHandler):
     def __init__(self, on_change_callback: Callable[[], None]) -> None:
         super().__init__(
@@ -145,7 +150,7 @@ class ChangeHandler(PatternMatchingEventHandler):
             self._already_running = False
 
 
-def integration_test(watch: bool) -> None:
+def integration_test(python_version: str, watch: bool) -> None:
     """Run the Berserk Docker Image Test (BDIT)."""
     log.info("Running integration tests")
 
@@ -160,7 +165,6 @@ def integration_test(watch: bool) -> None:
 
     # Build the application image (always rebuild to ensure latest changes)
     dockerfile_path = SCRIPT_DIR / "Dockerfile"
-    uv_cache_dir: str = run(["uv", "cache", "dir"], capture_output=True).stdout.strip()
     log.info(
         f"Building Docker image: {BDIT_APP_IMAGE} from {project_root} using {dockerfile_path}"
     )
@@ -174,7 +178,7 @@ def integration_test(watch: bool) -> None:
                 str(dockerfile_path),
                 str(project_root),
                 "--build-arg",
-                f"UV_CACHE_DIR={uv_cache_dir}",
+                f"MY_UV_PYTHON_VERSION={python_version}",
                 "-t",
                 BDIT_APP_IMAGE,
             ]
@@ -241,8 +245,15 @@ def main() -> None:
         action="store_true",
         help="Keep BDIT_LILA container around, and run BDIT_APP when files change in berserk or integration/tests",
     )
+    parser.add_argument(
+        "--python",
+        "-py",
+        type=str,
+        default=get_project_python_version(),
+        help="Python version to use in the Docker image",
+    )
     args = parser.parse_args()
-    integration_test(args.watch)
+    integration_test(args.python, args.watch)
 
 
 ########
