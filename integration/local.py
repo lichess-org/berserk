@@ -13,20 +13,16 @@
 from __future__ import annotations
 
 import argparse
-import json
 import logging
 import logging.handlers
-import os
-import sys
 import subprocess
-from subprocess import CalledProcessError
+import sys
 
 from argparse import RawTextHelpFormatter
-from collections import deque
-from dataclasses import dataclass
-from datetime import datetime
+# from dataclasses import dataclass
+# from datetime import datetime
 from pathlib import Path
-from typing import Any, Callable, Dict, Optional, List, Union, Tuple
+from typing import Any, Callable, Dict, List
 
 #############
 # Constants #
@@ -84,9 +80,7 @@ def run(args: List[str]) -> str:
         subprocess.CalledProcessError: If the command returns a non-zero exit code.
     """
     log.debug(f"Running command: {' '.join(args)}")
-    result = subprocess.run(args, check=True, capture_output=True, text=True)
-    if result.stderr:
-        log.warning(f"Command stderr: {result.stderr.strip()}")
+    result = subprocess.run(args, check=True, text=True)
     return result.stdout.strip()
 
 
@@ -101,20 +95,13 @@ def doc(dic: Dict[str, Callable[..., Any]]) -> str:
 def cleanup_containers() -> None:
     """Force remove existing Docker containers and network."""
     log.info("Cleaning up containers...")
-    commands_to_try = [
-        ["docker", "rm", "--force", BDIT_LILA],
-        ["docker", "rm", "--force", BDIT_APP],
-        ["docker", "network", "rm", BDIT_NETWORK],
-    ]
-    for cmd in commands_to_try:
-        try:
-            run(cmd)
-        except CalledProcessError as e:
-            log.debug(f"Cleanup command failed (expected if not present): {' '.join(e.cmd)}. Error: {e.stderr.strip()}")
+    run(["docker", "rm", "--force", BDIT_LILA])
+    run(["docker", "rm", "--force", BDIT_APP])
+    run(["docker", "network", "rm", BDIT_NETWORK])
     log.info("Containers cleaned up.")
 
 
-def integration_test() -> None:
+def integration_test(_watch: bool) -> None:
     """Run the Berserk Docker Image Test (BDIT)."""
     log.info("Running integration tests")
     cleanup_containers()
@@ -124,26 +111,50 @@ def integration_test() -> None:
 
     dockerfile_path = SCRIPT_DIR / "Dockerfile"
     project_root = SCRIPT_DIR.parent
-    uv_cache_dir = os.path.join(os.environ.get("HOME", "/tmp"), ".cache", "uv")
-    log.info(f"Building Docker image: {BDIT_APP_IMAGE} from {project_root} using {dockerfile_path}")
+    uv_cache_dir = run(["uv", "cache", "dir"])
+    log.info(
+        f"Building Docker image: {BDIT_APP_IMAGE} from {project_root} using {dockerfile_path}"
+    )
     run(
         [
-            "docker", "build",
-            "-f", str(dockerfile_path),
+            "docker",
+            "build",
+            "-f",
+            str(dockerfile_path),
             str(project_root),
-            "--build-arg", f"UV_CACHE_DIR={uv_cache_dir}",
-            "-t", BDIT_APP_IMAGE
+            "--build-arg",
+            f"UV_CACHE_DIR={uv_cache_dir}",
+            "-t",
+            BDIT_APP_IMAGE,
         ]
     )
 
     log.info(f"Starting Lila container: {BDIT_LILA} with image {BDIT_IMAGE}")
     run(
-        ["docker", "run", "--name", BDIT_LILA, "--network", BDIT_NETWORK, "-d", BDIT_IMAGE]
+        [
+            "docker",
+            "run",
+            "--name",
+            BDIT_LILA,
+            "--network",
+            BDIT_NETWORK,
+            "-d",
+            BDIT_IMAGE,
+        ]
     )
 
     log.info(f"Running app container: {BDIT_APP} with image {BDIT_APP_IMAGE}")
     run(
-        ["docker", "run", "--rm", "--name", BDIT_APP, "--network", BDIT_NETWORK, BDIT_APP_IMAGE]
+        [
+            "docker",
+            "run",
+            "--rm",
+            "--name",
+            BDIT_APP,
+            "--network",
+            BDIT_NETWORK,
+            BDIT_APP_IMAGE,
+        ]
     )
 
     cleanup_containers()
@@ -152,12 +163,12 @@ def integration_test() -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(formatter_class=RawTextHelpFormatter)
-    commands = {
-        "integration_test": integration_test,
-    }
-    parser.add_argument("command", choices=commands.keys(), help=doc(commands))
+    # commands = {
+    #     "integration_test": integration_test,
+    # }
+    parser.add_argument("--watch", "-w", action="store_true", help="Watch mode")
     args = parser.parse_args()
-    commands[args.command]()
+    integration_test(args.watch)
 
 
 ########

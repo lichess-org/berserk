@@ -36,7 +36,7 @@ test_record: ## run tests with pytest and record http requests
 	uv run pytest --record-mode=once
 
 typecheck: ## run type checking with pyright
-	uv run pyright berserk
+	uv run pyright berserk integration/local.py
 
 format: ## format python files with ruff
 	uv run ruff format
