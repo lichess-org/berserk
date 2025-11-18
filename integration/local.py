@@ -21,7 +21,7 @@ import subprocess
 import sys
 import time
 
-from watchdog.events import PatternMatchingEventHandler
+from watchdog.events import PatternMatchingEventHandler, FileSystemEvent
 from watchdog.observers import Observer
 
 from argparse import RawTextHelpFormatter
@@ -72,8 +72,8 @@ log.addHandler(handler_2)
 
 
 def run(
-    cmd: List[str], check: bool = True, *args, **kwargs
-) -> subprocess.CompletedProcess:
+    cmd: List[str], check: bool = True, *args: Any, **kwargs: Any
+) -> subprocess.CompletedProcess[Any]:
     """
     Executes a shell command, checks for success, and returns its stdout.
 
@@ -137,7 +137,7 @@ class ChangeHandler(PatternMatchingEventHandler):
         self._already_running = False
         self._on_change_callback = on_change_callback
 
-    def on_any_event(self, event):
+    def on_any_event(self, event: FileSystemEvent):
         # feels like race-conditions are waiting to happen here...
         if not self._already_running:
             self._already_running = True
@@ -160,7 +160,7 @@ def integration_test(watch: bool) -> None:
 
     # Build the application image (always rebuild to ensure latest changes)
     dockerfile_path = SCRIPT_DIR / "Dockerfile"
-    uv_cache_dir = run(["uv", "cache", "dir"], capture_output=True).stdout.strip()
+    uv_cache_dir: str = run(["uv", "cache", "dir"], capture_output=True).stdout.strip()
     log.info(
         f"Building Docker image: {BDIT_APP_IMAGE} from {project_root} using {dockerfile_path}"
     )
@@ -216,9 +216,9 @@ def integration_test(watch: bool) -> None:
 
         event_handler = ChangeHandler(safe_build_and_run_test_image)
         observer = Observer()
-        observer.schedule(event_handler, project_root / "berserk", recursive=True)
+        observer.schedule(event_handler, str(project_root / "berserk"), recursive=True)
         observer.schedule(
-            event_handler, project_root / "integration" / "tests", recursive=True
+            event_handler, str(project_root / "integration" / "tests"), recursive=True
         )
         observer.start()
 
