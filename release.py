@@ -11,7 +11,7 @@ from typing import Literal
 from datetime import datetime
 
 
-UNREALSED = "To be released\n--------------"
+UN_RELEASED = "To be released\n--------------"
 
 
 def system(command):
@@ -56,7 +56,7 @@ def update_changelog(tagname: str):
     line = f"{tagname} ({datetime.now().strftime('%Y-%m-%d')})"
 
     def modifier(changelog: str) -> str:
-        return changelog.replace(UNREALSED, line + "\n" + "-" * len(line))
+        return changelog.replace(UN_RELEASED, line + "\n" + "-" * len(line))
 
     _update_changelog(modifier)
 
@@ -165,7 +165,7 @@ def go_to_dev():
 
     def modifier(changelog: str) -> str:
         title = "========="
-        return changelog.replace(title, f"{title}\n\n{UNREALSED}\n\n")
+        return changelog.replace(title, f"{title}\n\n{UN_RELEASED}\n\n")
 
     _update_changelog(modifier)
     system("git add -u")
