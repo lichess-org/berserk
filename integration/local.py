@@ -19,6 +19,7 @@ import subprocess
 import sys
 
 from argparse import RawTextHelpFormatter
+
 # from dataclasses import dataclass
 # from datetime import datetime
 from pathlib import Path
@@ -66,7 +67,7 @@ log.addHandler(handler_2)
 ###########
 
 
-def run(args: List[str]) -> str:
+def run(args: List[str]) -> None:
     """
     Executes a shell command, checks for success, and returns its stdout.
 
@@ -81,7 +82,7 @@ def run(args: List[str]) -> str:
     """
     log.debug(f"Running command: {' '.join(args)}")
     result = subprocess.run(args, check=True, text=True)
-    return result.stdout.strip()
+    return
 
 
 def doc(dic: Dict[str, Callable[..., Any]]) -> str:

@@ -39,6 +39,7 @@ RUN --mount=type=cache,target=$UV_CACHE_DIR \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     make setup
 
-COPY integration ./integration
+COPY integration/run-tests.sh ./integration/run-tests.sh
+COPY integration/tests ./integration/tests
 
 CMD ["./integration/run-tests.sh"]
