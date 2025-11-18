@@ -24,7 +24,10 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 
 setup: ## setup uv env and install dependencies
-	uv sync
+	uv sync --locked
+
+setup-ci: ## for Docker, install the deps only. need to run `setup` after
+	uv sync --locked --no-install-project
 
 test: ## run tests with pytest
 	uv run pytest tests
@@ -33,7 +36,7 @@ test_record: ## run tests with pytest and record http requests
 	uv run pytest --record-mode=once
 
 typecheck: ## run type checking with pyright
-	uv run pyright berserk
+	uv run pyright berserk integration/local.py
 
 format: ## format python files with ruff
 	uv run ruff format
