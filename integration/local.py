@@ -2,7 +2,11 @@
 #
 # /// script
 # requires-python = ">=3.8"
-# dependencies = []
+# dependencies = [
+#     "requests",
+#     "urllib3",
+#     "watchdog",
+# ]
 # ///
 #
 # coding: utf-8
