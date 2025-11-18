@@ -27,10 +27,6 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Callable, Dict, Optional, List, Union, Tuple
 
-from urllib3.util.retry import Retry
-from requests.adapters import HTTPAdapter
-
-
 #############
 # Constants #
 #############
@@ -44,14 +40,6 @@ BDIT_LILA = "bdit_lila"
 BDIT_NETWORK = "bdit_lila-network"
 BDIT_APP_IMAGE = "bzrk"
 BDIT_APP = "bdit_app"
-
-RETRY_STRAT = Retry(
-    total=5,
-    backoff_factor=1,
-    status_forcelist=[429, 500, 502, 503, 504],
-    allowed_methods=["GET"],
-)
-ADAPTER = HTTPAdapter(max_retries=RETRY_STRAT)
 
 ########
 # Logs #
