@@ -19,6 +19,7 @@ import logging.handlers
 import os
 import sys
 import subprocess
+from subprocess import CalledProcessError
 
 from argparse import RawTextHelpFormatter
 from collections import deque
@@ -69,6 +70,26 @@ log.addHandler(handler_2)
 ###########
 
 
+def run(args: List[str]) -> str:
+    """
+    Executes a shell command, checks for success, and returns its stdout.
+
+    Args:
+        args: A list of strings representing the command and its arguments.
+
+    Returns:
+        The standard output of the command as a string.
+
+    Raises:
+        subprocess.CalledProcessError: If the command returns a non-zero exit code.
+    """
+    log.debug(f"Running command: {' '.join(args)}")
+    result = subprocess.run(args, check=True, capture_output=True, text=True)
+    if result.stderr:
+        log.warning(f"Command stderr: {result.stderr.strip()}")
+    return result.stdout.strip()
+
+
 def doc(dic: Dict[str, Callable[..., Any]]) -> str:
     """Produce documentation for every command based on doc of each function"""
     doc_string = ""
@@ -80,9 +101,16 @@ def doc(dic: Dict[str, Callable[..., Any]]) -> str:
 def cleanup_containers() -> None:
     """Force remove existing Docker containers and network."""
     log.info("Cleaning up containers...")
-    subprocess.run(["docker", "rm", "--force", BDIT_LILA], check=False, capture_output=True)
-    subprocess.run(["docker", "rm", "--force", BDIT_APP], check=False, capture_output=True)
-    subprocess.run(["docker", "network", "rm", BDIT_NETWORK], check=False, capture_output=True)
+    commands_to_try = [
+        ["docker", "rm", "--force", BDIT_LILA],
+        ["docker", "rm", "--force", BDIT_APP],
+        ["docker", "network", "rm", BDIT_NETWORK],
+    ]
+    for cmd in commands_to_try:
+        try:
+            run(cmd)
+        except CalledProcessError as e:
+            log.debug(f"Cleanup command failed (expected if not present): {' '.join(e.cmd)}. Error: {e.stderr.strip()}")
     log.info("Containers cleaned up.")
 
 
@@ -92,33 +120,30 @@ def integration_test() -> None:
     cleanup_containers()
 
     log.info(f"Creating network: {BDIT_NETWORK}")
-    subprocess.run(["docker", "network", "create", BDIT_NETWORK], check=True)
+    run(["docker", "network", "create", BDIT_NETWORK])
 
     dockerfile_path = SCRIPT_DIR / "Dockerfile"
     project_root = SCRIPT_DIR.parent
     uv_cache_dir = os.path.join(os.environ.get("HOME", "/tmp"), ".cache", "uv")
     log.info(f"Building Docker image: {BDIT_APP_IMAGE} from {project_root} using {dockerfile_path}")
-    subprocess.run(
+    run(
         [
             "docker", "build",
             "-f", str(dockerfile_path),
             str(project_root),
             "--build-arg", f"UV_CACHE_DIR={uv_cache_dir}",
             "-t", BDIT_APP_IMAGE
-        ],
-        check=True
+        ]
     )
 
     log.info(f"Starting Lila container: {BDIT_LILA} with image {BDIT_IMAGE}")
-    subprocess.run(
-        ["docker", "run", "--name", BDIT_LILA, "--network", BDIT_NETWORK, "-d", BDIT_IMAGE],
-        check=True
+    run(
+        ["docker", "run", "--name", BDIT_LILA, "--network", BDIT_NETWORK, "-d", BDIT_IMAGE]
     )
 
     log.info(f"Running app container: {BDIT_APP} with image {BDIT_APP_IMAGE}")
-    subprocess.run(
-        ["docker", "run", "--rm", "--name", BDIT_APP, "--network", BDIT_NETWORK, BDIT_APP_IMAGE],
-        check=True
+    run(
+        ["docker", "run", "--rm", "--name", BDIT_APP, "--network", BDIT_NETWORK, BDIT_APP_IMAGE]
     )
 
     cleanup_containers()
