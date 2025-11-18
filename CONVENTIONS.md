@@ -1,0 +1,3 @@
+- use types everywhere
+- NEVER use `try` and `except` blocks
+- use as few logging as possible
