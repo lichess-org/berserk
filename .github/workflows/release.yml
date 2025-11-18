@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       bump:
-        description: 'bump version: major, minor, pach, or none to build current dev'
+        description: 'bump version: major, minor, patch, or none to build current dev'
         required: true
         type: choice
         options:
