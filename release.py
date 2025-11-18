@@ -189,7 +189,7 @@ if __name__ == "__main__":
         "--bump",
         choices=["major", "minor", "patch", "none"],
         required=True,
-        help="type of version bump",
+        help="type of version bump; use 'none' to build current version without bumping or releasing",
     )
     args = parser.parse_args()
     check_docs()
