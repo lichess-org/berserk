@@ -1,6 +1,5 @@
 import berserk
 import pytest
-from tests.clients.utils import validate
 
 BASE_URL = "http://bdit_lila:8080"
 
@@ -12,7 +11,6 @@ def client():
     yield client
 
 
-class TestGames:
-    def test_export_imported_games(self, client):
-        res = client.games.export_imported()
-        validate(str, res)
+def test_export_imported_games(client):
+    res = client.games.export_imported()
+    assert isinstance(res, str)
