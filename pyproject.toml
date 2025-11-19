@@ -1,6 +1,6 @@
 [project]
 name = "berserk"
-version = "0.14.1"
+version = "0.14.2.dev0"
 description = "Python client for the lichess API"
 authors = [
     {name = "Lichess", email = "contact@lichess.org"}
