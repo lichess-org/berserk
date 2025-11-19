@@ -23,17 +23,19 @@ def system(command):
         sys.exit(exit_code)
 
 
-def check_git():
+def check_git(branch: str):
     print("--- CHECK GIT ----------------------------------------------------")
     system("git diff --exit-code")
     system("git diff --cached --exit-code")
 
     system("git fetch origin")
     behind = int(
-        subprocess.check_output(["git", "rev-list", "--count", "master..origin/master"])
+        subprocess.check_output(
+            ["git", "rev-list", "--count", f"{branch}..origin/{branch}"]
+        )
     )
     if behind > 0:
-        print(f"master is {behind} commit(s) behind origin/master")
+        print(f"{branch} is {behind} commit(s) behind origin/{branch}")
         sys.exit(1)
 
 
@@ -135,10 +137,10 @@ def tag_and_push(tagname: str, branch: str, changelog_section: str):
     system(f'git commit -m "releasing {tagname}\n\n{changelog_section}"')
     # TODO signed commit
     system(f"git tag {tagname} -F {release_filename}")
-    system(f"git push --atomic origin master {tagname}")
+    system(f"git push --atomic origin {branch} {tagname}")
 
 
-def go_to_dev():
+def go_to_dev(branch: str):
     print("--- GO TO DEV ----------------------------------------------------")
     system("uv version --bump patch")
     version = _get_current_version(must_be_dev=False)
@@ -152,7 +154,7 @@ def go_to_dev():
     _update_changelog(modifier)
     system("git add -u")
     system(f'git commit -m "Bump to dev version: {dev_version}"')
-    system("git push origin master")
+    system(f"git push origin {branch}")
 
 
 def build():
@@ -191,4 +193,4 @@ if __name__ == "__main__":
             tag_and_push(tagname, args.branch, changelog_section)
     build()
     if args.bump != "none":
-        go_to_dev()
+        go_to_dev(args.branch)
