@@ -29,6 +29,9 @@ jobs:
     permissions:
       contents: write
 
+    env:
+      BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
     steps:
     - uses: actions/checkout@v5
       with:
@@ -40,7 +43,7 @@ jobs:
     - name: Install uv
       uses: astral-sh/setup-uv@v7
     - name: Build berserk package
-      run: uv run release.py --bump ${{ github.event.inputs.bump }}
+      run: uv run release.py --bump ${{ github.event.inputs.bump }} --branch ${{ env.BRANCH_NAME }}
     - name: Store the distribution packages
       uses: actions/upload-artifact@v4
       with:
