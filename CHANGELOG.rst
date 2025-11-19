@@ -4,17 +4,21 @@ Changelog
 To be released
 --------------
 
+
 * Deprecate Python 3.9 support - minimum required version is now Python 3.10+. This does not mean the library will not work with Python 3.9, but it will not be tested against it anymore.
 
 * Added ``pgn_in_json`` parameter to ``client.games.export``.
 * Implement `broadcasts.get_top()` endpoint; typing fixes and validation.
 * Added ``client.relations.block`` and ``client.relations.unblock`` for blocking/unblocking users.
+* Implemented ``/api/games/export/imports`` under
+  ``client.games.export_imported``.
 
 Thanks to all the contributors who helped to this release:
 - @hsheth2
 - @DoraFgr
 - @MrElyazid
 - @gameroman
+- @JAMoreno-Larios
 
 v0.14.0 (2025-08-26)
 --------------------
