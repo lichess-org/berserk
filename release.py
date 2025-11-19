@@ -119,7 +119,7 @@ def get_changelog_section() -> str:
 
     with open("CHANGELOG.rst", "r") as changelog_file:
         content = changelog_file.read()
-    return re.search(changelog_regex, content).group(1)
+    return re.search(changelog_regex, content).group(0)
 
 
 def tag_and_push(tagname: str, branch: str, changelog_section: str):
