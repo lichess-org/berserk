@@ -20,6 +20,7 @@ def system(command):
     print(command)
     exit_code = os.system(command)
     if exit_code != 0:
+        print(f"Command failed with exit code {exit_code}: {command}")
         sys.exit(exit_code)
 
 
