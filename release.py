@@ -6,6 +6,8 @@ import argparse
 import os
 import sys
 import subprocess
+import time
+import re
 
 from typing import Literal
 from datetime import datetime
@@ -109,40 +111,20 @@ def bump_version(bump: Literal["major", "minor", "patch"]) -> str:
     return tagname
 
 
-def tag_and_push(tagname: str):
+def get_changelog_section() -> str:
+    version_regex = r"v\d+\.\d+\."
+    changelog_regex = f"({version_regex}" + r"[\s\S]*?)" + version_regex
+
+    with open("CHANGELOG.rst", "r") as changelog_file:
+        content = changelog_file.read()
+    return re.search(changelog_regex, content).group(1)
+
+
+def tag_and_push(tagname: str, branch: str, changelog_section: str):
     print("--- TAG AND PUSH -------------------------------------------------")
     release_filename = f"release-{tagname}.txt"
-
-    if not os.path.exists(release_filename):
-        print(f">>> Creating {release_filename} ...")
-        first_section = False
-        prev_line = None
-        with (
-            open(release_filename, "w") as release_txt,
-            open("CHANGELOG.rst", "r") as changelog_file,
-        ):
-            headline = f"berserk {tagname}"
-            release_txt.write(headline + os.linesep)
-
-            for line in changelog_file:
-                if not first_section:
-                    if line.startswith("-------"):
-                        first_section = True
-                else:
-                    if line.startswith("-------"):
-                        break
-                    else:
-                        if not prev_line.startswith("------"):
-                            release_txt.write(prev_line)
-
-                prev_line = line
-
-    with open(release_filename, "r") as release_txt:
-        release = release_txt.read().strip() + os.linesep
-        print(release)
-
     with open(release_filename, "w") as release_txt:
-        release_txt.write(release)
+        release_txt.write(changelog_section)
 
     guessed_tagname = input(">>> Sure? Confirm tagname: ")
     if guessed_tagname != tagname:
@@ -150,7 +132,7 @@ def tag_and_push(tagname: str):
         sys.exit(1)
 
     system("git add -u")
-    system(f'git commit -m "releasing {tagname}"')
+    system(f'git commit -m "releasing {tagname}\n\n{changelog_section}"')
     # TODO signed commit
     system(f"git tag {tagname} -F {release_filename}")
     system(f"git push --atomic origin master {tagname}")
@@ -191,14 +173,22 @@ if __name__ == "__main__":
         required=True,
         help="type of version bump; use 'none' to build current version without bumping or releasing",
     )
+    parser.add_argument(
+        "--branch",
+        choices=["testpypi", "master"],
+        required=True,
+        help="which branch to push to",
+    )
     args = parser.parse_args()
     check_docs()
     test()
-    check_git()
+    check_git(args.branch)
     if args.bump != "none":
         tagname = bump_version(args.bump)
+        changelog_section = get_changelog_section()
         update_changelog(tagname)
-        tag_and_push(tagname)
+        if args.branch == "master":
+            tag_and_push(tagname, args.branch, changelog_section)
     build()
     if args.bump != "none":
         go_to_dev()
