@@ -34,8 +34,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v5
-      with:
-        persist-credentials: false
     - name: Configure Git
       run: |
         git config user.name github-actions
