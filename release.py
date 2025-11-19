@@ -136,8 +136,9 @@ def tag_and_push(tagname: str, branch: str, changelog_section: str):
     system("git add -u")
     system(f'git commit -m "releasing {tagname}\n\n{changelog_section}"')
     # TODO signed commit
-    system(f"git tag {tagname} -F {release_filename}")
-    system(f"git push --atomic origin {branch} {tagname}")
+    if branch == "master":
+        system(f"git tag {tagname} -F {release_filename}")
+        system(f"git push --atomic origin {branch} {tagname}")
 
 
 def go_to_dev(branch: str):
@@ -189,8 +190,7 @@ if __name__ == "__main__":
         tagname = bump_version(args.bump)
         changelog_section = get_changelog_section()
         update_changelog(tagname)
-        if args.branch == "master":
-            tag_and_push(tagname, args.branch, changelog_section)
+        tag_and_push(tagname, args.branch, changelog_section)
     build()
     if args.bump != "none":
         go_to_dev(args.branch)
