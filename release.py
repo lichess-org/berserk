@@ -16,9 +16,12 @@ from datetime import datetime
 UN_RELEASED = "To be released\n--------------"
 
 
-def system(command):
+def system(command: str | list[str]):
     print(command)
-    exit_code = os.system(command)
+    if isinstance(command, str):
+        exit_code = subprocess.run(command, shell=True, check=True).returncode
+    else:
+        exit_code = subprocess.run(command, check=True).returncode
     if exit_code != 0:
         print(f"Command failed with exit code {exit_code}: {command}")
         sys.exit(exit_code)
@@ -133,7 +136,7 @@ def tag_and_push(tagname: str, branch: str, changelog_section: str):
     time.sleep(5)
 
     system("git add -u")
-    system(f'git commit -m "releasing {tagname}\n\n{changelog_section}"')
+    system(["git", "commit", "-m", f"releasing {tagname}\n\n{changelog_section}"])
     # TODO signed commit
     if branch == "master":
         system(f"git tag {tagname} -F {release_filename}")
