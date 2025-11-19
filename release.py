@@ -128,10 +128,8 @@ def tag_and_push(tagname: str, branch: str, changelog_section: str):
     with open(release_filename, "w") as release_txt:
         release_txt.write(changelog_section)
 
-    guessed_tagname = input(">>> Sure? Confirm tagname: ")
-    if guessed_tagname != tagname:
-        print(f"Actual tagname is: {tagname}")
-        sys.exit(1)
+    print(f"tagname = {tagname}, ctrl+C to abort, sleeping 5 seconds...")
+    time.sleep(5)
 
     system("git add -u")
     system(f'git commit -m "releasing {tagname}\n\n{changelog_section}"')
