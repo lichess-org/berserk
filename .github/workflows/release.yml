@@ -12,35 +12,54 @@ on:
           - major
           - minor
           - patch
+      environment:
+        description: 'Target environment: testpypi or pypi'
+        required: true
+        type: choice
+        options:
+          - testpypi
+          - pypi
+        default: 'testpypi'
 
 jobs:
   build:
     name: Build package
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
+    env:
+      BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
+
     steps:
     - uses: actions/checkout@v5
       with:
         persist-credentials: false
+    - name: Configure Git
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
     - name: Install uv
       uses: astral-sh/setup-uv@v7
     - name: Build berserk package
-      run: uv run release.py --bump ${{ github.event.inputs.bump }}
+      run: uv run release.py --bump ${{ github.event.inputs.bump }} --branch ${{ env.BRANCH_NAME }}
     - name: Store the distribution packages
       uses: actions/upload-artifact@v4
       with:
         name: python-package-distributions
         path: dist/
 
-  publish-to-testpypi:
-    name: Publish to TestPyPI
+  publish:
+    name: Publish to ${{ github.event.inputs.environment }}
     needs:
     - build
     runs-on: ubuntu-latest
+    if: github.event.inputs.environment == 'testpypi' || github.event.inputs.environment == 'pypi'
 
     environment:
-      name: testpypi
-      url: https://test.pypi.org/p/berserk
+      name: ${{ github.event.inputs.environment }}
+      url: ${{ github.event.inputs.environment == 'testpypi' && 'https://test.pypi.org/p/berserk' || 'https://pypi.org/p/berserk' }}
 
     permissions:
       id-token: write  # IMPORTANT: mandatory for trusted publishing
@@ -51,7 +70,7 @@ jobs:
       with:
         name: python-package-distributions
         path: dist/
-    - name: Publish to TestPyPI
+    - name: Publish to ${{ github.event.inputs.environment }}
       uses: pypa/gh-action-pypi-publish@release/v1
       with:
-        repository-url: https://test.pypi.org/legacy/
+        repository-url: ${{ github.event.inputs.environment == 'testpypi' && 'https://test.pypi.org/legacy/' || 'https://upload.pypi.org/legacy/' }}
