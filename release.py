@@ -119,7 +119,7 @@ def get_changelog_section() -> str:
 
     with open("CHANGELOG.rst", "r") as changelog_file:
         content = changelog_file.read()
-    return re.search(changelog_regex, content).group(0)
+    return re.search(changelog_regex, content).group(1)
 
 
 def tag_and_push(tagname: str, branch: str, changelog_section: str):
@@ -186,8 +186,9 @@ if __name__ == "__main__":
     check_git(args.branch)
     if args.bump != "none":
         tagname = bump_version(args.bump)
-        changelog_section = get_changelog_section()
         update_changelog(tagname)
+        # RUN AFTER UPDATING CHANGELOG
+        changelog_section = get_changelog_section()
         tag_and_push(tagname, args.branch, changelog_section)
     build()
     if args.bump != "none":
