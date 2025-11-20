@@ -4,7 +4,6 @@ Changelog
 To be released
 --------------
 
-<<<<<<< HEAD
 
 * Deprecate Python 3.9 support - minimum required version is now Python 3.10+. This does not mean the library will not work with Python 3.9, but it will not be tested against it anymore.
 
@@ -13,6 +12,7 @@ To be released
 * Added ``client.relations.block`` and ``client.relations.unblock`` for blocking/unblocking users.
 * Implemented ``/api/games/export/imports`` under
   ``client.games.export_imported``.
+* Added ``client.account.get_timeline`` to get current logged user timeline.
 
 Thanks to all the contributors who helped to this release:
 - @hsheth2
@@ -20,6 +20,7 @@ Thanks to all the contributors who helped to this release:
 - @MrElyazid
 - @gameroman
 - @JAMoreno-Larios
+
 
 v0.14.0 (2025-08-26)
 --------------------
