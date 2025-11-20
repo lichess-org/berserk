@@ -70,6 +70,7 @@ Most of the API is available:
     client.account.get_kid_mode
     client.account.set_kid_mode
     client.account.upgrade_to_bot
+    client.account.get_timeline
 
     client.analysis.get_cloud_evaluation
 

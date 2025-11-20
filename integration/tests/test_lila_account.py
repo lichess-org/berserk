@@ -69,3 +69,9 @@ def test_account_get_users_followed(client):
     if first_user:
         assert "id" in first_user
         assert "username" in first_user
+
+
+def test_account_get_timeline(client):
+    timeline = client.account.get_timeline()
+    assert "entries" in timeline
+    assert "users" in timeline

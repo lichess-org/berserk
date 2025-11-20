@@ -68,6 +68,8 @@ class LightUser(TypedDict):
     flair: NotRequired[str]
     # The patron of the user
     patron: NotRequired[bool]
+    # The patron color of the user
+    patronColor: NotRequired[int]
 
 
 class OnlineLightUser(LightUser):
