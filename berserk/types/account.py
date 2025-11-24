@@ -2,7 +2,8 @@ from __future__ import annotations
 
 from datetime import datetime
 
-from typing_extensions import TypedDict, TypeAlias, Literal
+from typing_extensions import TypedDict, TypeAlias, Literal, NotRequired
+from .common import LightUser
 
 
 class Perf(TypedDict):
@@ -120,3 +121,14 @@ class UserPreferences(TypedDict, total=False):
 class Preferences(TypedDict):
     prefs: UserPreferences
     language: str
+
+
+class TimelineEntry(TypedDict):
+    type: NotRequired[str]
+    data: NotRequired[dict[str, str] | None]
+    date: int
+
+
+class Timeline(TypedDict):
+    entries: list[TimelineEntry]
+    users: dict[str, LightUser]
