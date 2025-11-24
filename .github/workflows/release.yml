@@ -33,7 +33,7 @@ jobs:
       BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - name: Configure Git
       run: |
         git config user.name github-actions
