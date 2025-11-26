@@ -1,0 +1,148 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.5
+    method: GET
+    uri: https://lichess.org/api/broadcast/search?q=chess&page=1
+  response:
+    body:
+      string: "{\"currentPage\":1,\"maxPerPage\":24,\"currentPageResults\":[{\"tour\":{\"id\":\"VGXtuWXw\",\"name\":\"2025
+        London Chess Classic | Elite\",\"slug\":\"2025-london-chess-classic--elite\",\"info\":{\"format\":\"10-player
+        round-robin\",\"tc\":\"90 minutes / 40 moves + 30 min + 30 sec / move\",\"fideTc\":\"standard\",\"location\":\"The
+        Emirates Stadium, London, England\",\"timeZone\":\"Europe/London\",\"players\":\"Firouzja,
+        Abdusattorov, Eljanov, Shankland\",\"website\":\"https://www.londonchessclassic.com/\",\"standings\":\"https://s3.chess-results.com/tnr1302060.aspx?lan=1\"},\"createdAt\":1764015676908,\"url\":\"https://lichess.org/broadcast/2025-london-chess-classic--elite/VGXtuWXw\",\"tier\":5,\"dates\":[1764172800000,1764950400000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=23RO6VZt0bRd.webp&w=800&sig=9b170715f0bf7c6bf6e6afe687b2b11b5e65e323\"},\"round\":{\"id\":\"84wUGxVs\",\"name\":\"Round
+        9\",\"slug\":\"round-9\",\"createdAt\":1764015756939,\"rated\":true,\"startsAt\":1764950400000,\"url\":\"https://lichess.org/broadcast/2025-london-chess-classic--elite/round-9/84wUGxVs\"}},{\"tour\":{\"id\":\"G9eyUqdy\",\"name\":\"FIDE
+        World Corporate Chess Championship 2025 | Knockout Stage\",\"slug\":\"fide-world-corporate-chess-championship-2025--knockout-stage\",\"info\":{\"fideTc\":\"rapid\",\"location\":\"Goa,
+        India\",\"timeZone\":\"Asia/Colombo\",\"website\":\"https://worldcorporate.fide.com/\"},\"createdAt\":1763195555850,\"url\":\"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--knockout-stage/G9eyUqdy\",\"tier\":5,\"dates\":[1763266920000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:G9eyUqdy:PPUSqBee.webp&w=800&sig=7e0481cbf9e5a3f592533aae15f3e0c603a444be\",\"teamTable\":true},\"round\":{\"id\":\"CHXvGTlK\",\"name\":\"Finals
+        Game 2\",\"slug\":\"finals-game-2\",\"createdAt\":1763195708804,\"rated\":true,\"finishedAt\":1763275775133,\"finished\":true,\"startsAt\":1763273820000,\"url\":\"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--knockout-stage/finals-game-2/CHXvGTlK\"}},{\"tour\":{\"id\":\"5qiZZOtP\",\"name\":\"FIDE
+        World Corporate Chess Championship 2025 | Qualifying Pool A\",\"slug\":\"fide-world-corporate-chess-championship-2025--qualifying-pool-a\",\"info\":{\"format\":\"6-team
+        double round-robin\",\"tc\":\"10 min + 3 sec / move\",\"fideTc\":\"rapid\",\"location\":\"Goa,
+        India\",\"timeZone\":\"Asia/Calcutta\",\"website\":\"https://worldcorporate.fide.com/\",\"standings\":\"https://s3.chess-results.com/tnr1293862.aspx\"},\"createdAt\":1763037969185,\"url\":\"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--qualifying-pool-a/5qiZZOtP\",\"tier\":5,\"dates\":[1763094120000,1763190120000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:5qiZZOtP:LPWhQyvG.webp&w=800&sig=6eef5327786faf909233e4dadd669e92311cc2d3\",\"teamTable\":true},\"round\":{\"id\":\"WXvsru5t\",\"name\":\"Round
+        10\",\"slug\":\"round-10\",\"createdAt\":1763051075271,\"rated\":true,\"finishedAt\":1763192277097,\"finished\":true,\"startsAt\":1763190120000,\"url\":\"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--qualifying-pool-a/round-10/WXvsru5t\"}},{\"tour\":{\"id\":\"AUYBo7Tn\",\"name\":\"FIDE
+        World Corporate Chess Championship 2025 | Qualifying Pool B\",\"slug\":\"fide-world-corporate-chess-championship-2025--qualifying-pool-b\",\"info\":{\"format\":\"5-team
+        double round-robin\",\"tc\":\"10 min + 3 sec / move\",\"fideTc\":\"rapid\",\"location\":\"Goa,
+        India\",\"timeZone\":\"Asia/Calcutta\",\"website\":\"https://worldcorporate.fide.com/\",\"standings\":\"https://s3.chess-results.com/tnr1293863.aspx\"},\"createdAt\":1763051184603,\"url\":\"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--qualifying-pool-b/AUYBo7Tn\",\"tier\":5,\"dates\":[1763094120000,1763190120000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:AUYBo7Tn:VBbAAksv.webp&w=800&sig=5eb71ac7cbdf4e413a98fa195be9026cb463bc76\",\"teamTable\":true},\"round\":{\"id\":\"WiwxRm4j\",\"name\":\"Round
+        10\",\"slug\":\"round-10\",\"createdAt\":1763051075271,\"rated\":true,\"finishedAt\":1763191541210,\"finished\":true,\"startsAt\":1763190120000,\"url\":\"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--qualifying-pool-b/round-10/WiwxRm4j\"}},{\"tour\":{\"id\":\"q193HT0B\",\"name\":\"2025
+        Clutch Chess: Champions Showdown\",\"slug\":\"2025-clutch-chess-champions-showdown\",\"info\":{\"format\":\"4-player
+        3x double round-robin\",\"tc\":\"10 min + 5 sec / move\",\"fideTc\":\"rapid\",\"location\":\"St.
+        Louis, Missouri, United States\",\"timeZone\":\"America/Chicago\",\"players\":\"Magnus
+        Carlsen, Hikaru Nakamura, Fabiano Caruana, Gukesh Dommaraju\",\"website\":\"https://saintlouischessclub.org/event/2025-clutch-chess-champions-showdown/\"},\"createdAt\":1761517519575,\"url\":\"https://lichess.org/broadcast/2025-clutch-chess-champions-showdown/q193HT0B\",\"tier\":5,\"dates\":[1761584580000,1761757380000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:q193HT0B:y8YlZaAm.webp&w=800&sig=6fb4969c62799e857af4ac4892aac57bcc570078\"},\"round\":{\"id\":\"KHSLhy0z\",\"name\":\"Round
+        9 | Game 2\",\"slug\":\"round-9--game-2\",\"createdAt\":1761518622043,\"rated\":true,\"finishedAt\":1761770643264,\"finished\":true,\"startsAt\":1761768701247,\"startsAfterPrevious\":true,\"customScoring\":{\"white\":{\"win\":3,\"draw\":1},\"black\":{\"win\":3,\"draw\":1}},\"url\":\"https://lichess.org/broadcast/2025-clutch-chess-champions-showdown/round-9--game-2/KHSLhy0z\"}},{\"tour\":{\"id\":\"Vyt9TSER\",\"name\":\"European
+        Chess Club Cup 2025 | Women\",\"slug\":\"european-chess-club-cup-2025--women\",\"info\":{\"format\":\"7-round
+        Swiss for teams\",\"tc\":\"90 min / 40 moves + 30 min + 30 sec / move\",\"fideTc\":\"standard\",\"location\":\"Rhodes,
+        Greece\",\"timeZone\":\"Europe/Athens\",\"players\":\"Zhu, Goryachkina, Muzychuk,
+        Divya\",\"website\":\"https://eccc2025.com/\",\"standings\":\"https://s1.chess-results.com/tnr1250660.aspx\"},\"createdAt\":1760830944096,\"url\":\"https://lichess.org/broadcast/european-chess-club-cup-2025--women/Vyt9TSER\",\"tier\":5,\"dates\":[1760876100000,1761390900000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:8jXzp45R:zUiAvxTX.webp&w=800&sig=35bb2da8fc27df18506e520e4acdf73c990c5aa8\",\"teamTable\":true},\"round\":{\"id\":\"FbPAeWmd\",\"name\":\"Round
+        7\",\"slug\":\"round-7\",\"createdAt\":1760830925832,\"rated\":true,\"finishedAt\":1761414126759,\"finished\":true,\"startsAt\":1761390900000,\"url\":\"https://lichess.org/broadcast/european-chess-club-cup-2025--women/round-7/FbPAeWmd\"}},{\"tour\":{\"id\":\"rBgKyEh5\",\"name\":\"European
+        Chess Club Cup 2025 | Open Matches 17+\",\"slug\":\"european-chess-club-cup-2025--open-matches-17\",\"info\":{\"format\":\"7-round
+        Swiss for teams\",\"tc\":\"90 min / 40 moves + 30 min + 30 sec / move\",\"fideTc\":\"standard\",\"location\":\"Rhodes,
+        Greece\",\"timeZone\":\"Europe/Athens\",\"players\":\"Erigaisi, Giri, Keymer,
+        Wei, Gukesh\",\"website\":\"https://eccc2025.com/\",\"standings\":\"https://s1.chess-results.com/tnr1250658.aspx\"},\"createdAt\":1760872618115,\"url\":\"https://lichess.org/broadcast/european-chess-club-cup-2025--open-matches-17/rBgKyEh5\",\"tier\":5,\"dates\":[1760876100000,1761390900000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:8jXzp45R:zUiAvxTX.webp&w=800&sig=35bb2da8fc27df18506e520e4acdf73c990c5aa8\",\"teamTable\":true},\"round\":{\"id\":\"A1z1TVI4\",\"name\":\"Round
+        7\",\"slug\":\"round-7\",\"createdAt\":1760830925832,\"rated\":true,\"finishedAt\":1761410275133,\"finished\":true,\"startsAt\":1761390900000,\"url\":\"https://lichess.org/broadcast/european-chess-club-cup-2025--open-matches-17/round-7/A1z1TVI4\"}},{\"tour\":{\"id\":\"8jXzp45R\",\"name\":\"European
+        Chess Club Cup 2025 | Open Matches 1-16\",\"slug\":\"european-chess-club-cup-2025--open-matches-1-16\",\"info\":{\"format\":\"7-round
+        Swiss for teams\",\"tc\":\"90 min / 40 moves + 30 min + 30 sec / move\",\"fideTc\":\"standard\",\"location\":\"Rhodes,
+        Greece\",\"timeZone\":\"Europe/Athens\",\"players\":\"Erigaisi, Giri, Keymer,
+        Wei, Gukesh\",\"website\":\"https://eccc2025.com/\",\"standings\":\"https://s1.chess-results.com/tnr1250658.aspx\"},\"createdAt\":1760830355138,\"url\":\"https://lichess.org/broadcast/european-chess-club-cup-2025--open-matches-1-16/8jXzp45R\",\"tier\":5,\"dates\":[1760876100000,1761390900000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:8jXzp45R:zUiAvxTX.webp&w=800&sig=35bb2da8fc27df18506e520e4acdf73c990c5aa8\",\"teamTable\":true},\"round\":{\"id\":\"4KlYyGdK\",\"name\":\"Round
+        7\",\"slug\":\"round-7\",\"createdAt\":1760830925832,\"rated\":true,\"finishedAt\":1761411819500,\"finished\":true,\"startsAt\":1761390900000,\"url\":\"https://lichess.org/broadcast/european-chess-club-cup-2025--open-matches-1-16/round-7/4KlYyGdK\"}},{\"tour\":{\"id\":\"utgIPHpi\",\"name\":\"Clutch
+        Chess: The Legends\",\"slug\":\"clutch-chess-the-legends\",\"info\":{\"format\":\"12-game
+        Chess960 Match\",\"tc\":\"Rapid: 25 min + 10 sec / move | Blitz: 5 min + 3
+        sec / move\",\"fideTc\":\"standard\",\"location\":\"St. Louis, Missouri, USA\",\"timeZone\":\"America/Porto_Acre\",\"players\":\"Garry
+        Kasparov, Viswanathan Anand\",\"website\":\"https://saintlouischessclub.org/event/2025-clutch-chess-the-legends/\"},\"createdAt\":1759805534566,\"url\":\"https://lichess.org/broadcast/clutch-chess-the-legends/utgIPHpi\",\"tier\":5,\"dates\":[1759953600000,1760115600000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:utgIPHpi:DpoBtvxh.webp&w=800&sig=33956425d2692cba3ad23ec9ff07224dfc6f3d56\"},\"round\":{\"id\":\"EXAwpG0c\",\"name\":\"Round
+        12 (Blitz)\",\"slug\":\"round-12-blitz\",\"createdAt\":1759806339650,\"rated\":false,\"finishedAt\":1760127498392,\"finished\":true,\"startsAt\":1760126712327,\"startsAfterPrevious\":true,\"customScoring\":{\"white\":{\"win\":3,\"draw\":1.5},\"black\":{\"win\":3,\"draw\":1.5}},\"url\":\"https://lichess.org/broadcast/clutch-chess-the-legends/round-12-blitz/EXAwpG0c\"}},{\"tour\":{\"id\":\"xec93ZPP\",\"name\":\"FIDE
+        World Corporate Chess Championship 2025 | Online Knockouts\",\"slug\":\"fide-world-corporate-chess-championship-2025--online-knockouts\",\"info\":{\"format\":\"Knockout\",\"tc\":\"10+3\",\"fideTc\":\"standard\",\"timeZone\":\"Europe/Athens\",\"standings\":\"https://fwccc.lichess.ca/fwccc-ko/season/KO_2025/bracket/\"},\"createdAt\":1760727478498,\"url\":\"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--online-knockouts/xec93ZPP\",\"tier\":5,\"dates\":[1760796000000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:xec93ZPP:TH14WhGG.webp&w=800&sig=966aba4f92ec62d11604a6b89fb071133932974b\",\"teamTable\":true},\"round\":{\"id\":\"Qs1lQrcJ\",\"name\":\"Round
+        2 - Armageddon\",\"slug\":\"round-2-armageddon\",\"createdAt\":1760727638619,\"rated\":false,\"finishedAt\":1760807109487,\"finished\":true,\"startsAt\":1760804100000,\"url\":\"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--online-knockouts/round-2-armageddon/Qs1lQrcJ\"}},{\"tour\":{\"id\":\"qG1Psy8y\",\"name\":\"European
+        Team Chess Championship 2025 | Open\",\"slug\":\"european-team-chess-championship-2025--open\",\"info\":{\"format\":\"9-round
+        Swiss for teams\",\"tc\":\"90 min / 40 moves + 30 min + 30 sec / move\",\"fideTc\":\"standard\",\"location\":\"Batumi,
+        Georgia\",\"timeZone\":\"Asia/Tbilisi\",\"players\":\"Keymer, Giri, Mamedyarov,
+        Fedoseev, Rapport\",\"website\":\"https://etcc2025.com/\",\"standings\":\"https://chess-results.com/tnr1263013.aspx\"},\"createdAt\":1758965020107,\"url\":\"https://lichess.org/broadcast/european-team-chess-championship-2025--open/qG1Psy8y\",\"tier\":5,\"dates\":[1759662900000,1760429700000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:qG1Psy8y:SznSRHKt.webp&w=800&sig=b6c17695027d42453d180b5389a8d8a82525f944\",\"teamTable\":true},\"round\":{\"id\":\"gdlWcMHi\",\"name\":\"Round
+        9\",\"slug\":\"round-9\",\"createdAt\":1758965215507,\"rated\":true,\"finishedAt\":1760450207042,\"finished\":true,\"startsAt\":1760429700000,\"url\":\"https://lichess.org/broadcast/european-team-chess-championship-2025--open/round-9/gdlWcMHi\"}},{\"tour\":{\"id\":\"xDIlkiVh\",\"name\":\"European
+        Team Chess Championship 2025 | Women\",\"slug\":\"european-team-chess-championship-2025--women\",\"info\":{\"format\":\"9-round
+        Swiss for teams\",\"tc\":\"90 min / 40 moves + 30 min + 30 sec / move\",\"fideTc\":\"standard\",\"location\":\"Batumi,
+        Georgia\",\"timeZone\":\"Asia/Tbilisi\",\"players\":\"Dzagnidze, Osmak, Kosteniuk,
+        Batsiashvili, Injac\",\"website\":\"https://etcc2025.com/\",\"standings\":\"https://chess-results.com/tnr1263014.aspx\"},\"createdAt\":1758965570606,\"url\":\"https://lichess.org/broadcast/european-team-chess-championship-2025--women/xDIlkiVh\",\"tier\":5,\"dates\":[1759662900000,1760429700000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:qG1Psy8y:SznSRHKt.webp&w=800&sig=b6c17695027d42453d180b5389a8d8a82525f944\",\"teamTable\":true},\"round\":{\"id\":\"BkryleNv\",\"name\":\"Round
+        9\",\"slug\":\"round-9\",\"createdAt\":1758965215507,\"rated\":true,\"finishedAt\":1760448655704,\"finished\":true,\"startsAt\":1760429700000,\"url\":\"https://lichess.org/broadcast/european-team-chess-championship-2025--women/round-9/BkryleNv\"}},{\"tour\":{\"id\":\"L5nxb7Dw\",\"name\":\"FIDE
+        World Youth Chess Championships 2025 | Open U16\",\"slug\":\"fide-world-youth-chess-championships-2025--open-u16\",\"info\":{\"format\":\"11-round
+        Swiss\",\"tc\":\"90min / 40 moves + 30 min + 30 sec / move\",\"fideTc\":\"standard\",\"location\":\"Durres,
+        Albania\",\"timeZone\":\"Europe/Vienna\",\"standings\":\"https://chess-results.com/tnr1265989.aspx\"},\"createdAt\":1759485121770,\"url\":\"https://lichess.org/broadcast/fide-world-youth-chess-championships-2025--open-u16/L5nxb7Dw\",\"tier\":5,\"dates\":[1759583700000,1760528700000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:SJzkolru:TPkXXZkn.webp&w=800&sig=9c3bf994ef6b468dfcde920be53095514b69fbe5\"},\"round\":{\"id\":\"hXxPWtUK\",\"name\":\"Round
+        11\",\"slug\":\"round-11\",\"createdAt\":1759484795851,\"rated\":true,\"finishedAt\":1760551317237,\"finished\":true,\"startsAt\":1760528700000,\"url\":\"https://lichess.org/broadcast/fide-world-youth-chess-championships-2025--open-u16/round-11/hXxPWtUK\"}},{\"tour\":{\"id\":\"GPJnreN1\",\"name\":\"FIDE
+        World Youth Chess Championships 2025 | Girls U18\",\"slug\":\"fide-world-youth-chess-championships-2025--girls-u18\",\"info\":{\"format\":\"11-round
+        Swiss\",\"tc\":\"90min / 40 moves + 30 min + 30 sec / move\",\"fideTc\":\"standard\",\"location\":\"Durres,
+        Albania\",\"timeZone\":\"Europe/Vienna\",\"standings\":\"https://chess-results.com/tnr1265988.aspx\"},\"createdAt\":1759484874570,\"url\":\"https://lichess.org/broadcast/fide-world-youth-chess-championships-2025--girls-u18/GPJnreN1\",\"tier\":5,\"dates\":[1759583700000,1760528700000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:SJzkolru:TPkXXZkn.webp&w=800&sig=9c3bf994ef6b468dfcde920be53095514b69fbe5\"},\"round\":{\"id\":\"oQK8CBz1\",\"name\":\"Round
+        11\",\"slug\":\"round-11\",\"createdAt\":1759484795851,\"rated\":true,\"finishedAt\":1760548301202,\"finished\":true,\"startsAt\":1760528700000,\"url\":\"https://lichess.org/broadcast/fide-world-youth-chess-championships-2025--girls-u18/round-11/oQK8CBz1\"}},{\"tour\":{\"id\":\"SJzkolru\",\"name\":\"FIDE
+        World Youth Chess Championships 2025 | Open U18\",\"slug\":\"fide-world-youth-chess-championships-2025--open-u18\",\"info\":{\"format\":\"11-round
+        Swiss\",\"tc\":\"90min / 40 moves + 30 min + 30 sec / move\",\"fideTc\":\"standard\",\"location\":\"Durres,
+        Albania\",\"timeZone\":\"Europe/Vienna\",\"website\":\"https://fideworldyouth.achf.org.al/\",\"standings\":\"https://chess-results.com/tnr1265987.aspx\"},\"createdAt\":1759484470700,\"url\":\"https://lichess.org/broadcast/fide-world-youth-chess-championships-2025--open-u18/SJzkolru\",\"tier\":5,\"dates\":[1759583700000,1760528700000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:SJzkolru:TPkXXZkn.webp&w=800&sig=9c3bf994ef6b468dfcde920be53095514b69fbe5\"},\"round\":{\"id\":\"tFR8fRFP\",\"name\":\"Round
+        11\",\"slug\":\"round-11\",\"createdAt\":1759484795851,\"rated\":true,\"finishedAt\":1760547721075,\"finished\":true,\"startsAt\":1760528700000,\"url\":\"https://lichess.org/broadcast/fide-world-youth-chess-championships-2025--open-u18/round-11/tFR8fRFP\"}},{\"tour\":{\"id\":\"R1WQWNSM\",\"name\":\"FIDE
+        World Youth Chess Championships 2025 | Girls U16\",\"slug\":\"fide-world-youth-chess-championships-2025--girls-u16\",\"info\":{\"format\":\"11-round
+        Swiss\",\"tc\":\"90min / 40 moves + 30 min + 30 sec / move\",\"fideTc\":\"standard\",\"location\":\"Durres,
+        Albania\",\"timeZone\":\"Europe/Vienna\",\"standings\":\"https://chess-results.com/tnr1265990.aspx?lan=1\"},\"createdAt\":1759485388739,\"url\":\"https://lichess.org/broadcast/fide-world-youth-chess-championships-2025--girls-u16/R1WQWNSM\",\"tier\":5,\"dates\":[1759583700000,1760528700000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:SJzkolru:TPkXXZkn.webp&w=800&sig=9c3bf994ef6b468dfcde920be53095514b69fbe5\"},\"round\":{\"id\":\"VGBiil3j\",\"name\":\"Round
+        11\",\"slug\":\"round-11\",\"createdAt\":1759484795851,\"rated\":true,\"finishedAt\":1760546892501,\"finished\":true,\"startsAt\":1760528700000,\"url\":\"https://lichess.org/broadcast/fide-world-youth-chess-championships-2025--girls-u16/round-11/VGBiil3j\"}},{\"tour\":{\"id\":\"hRRItcgc\",\"name\":\"FIDE
+        World Youth Chess Championships 2025 | Open U14\",\"slug\":\"fide-world-youth-chess-championships-2025--open-u14\",\"info\":{\"format\":\"11-round
+        Swiss\",\"tc\":\"90min / 40 moves + 30 min + 30 sec / move\",\"fideTc\":\"standard\",\"location\":\"Durres,
+        Albania\",\"timeZone\":\"Europe/Vienna\",\"standings\":\"https://chess-results.com/tnr1265991.aspx\"},\"createdAt\":1759485635663,\"url\":\"https://lichess.org/broadcast/fide-world-youth-chess-championships-2025--open-u14/hRRItcgc\",\"tier\":5,\"dates\":[1759583700000,1760528700000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:SJzkolru:TPkXXZkn.webp&w=800&sig=9c3bf994ef6b468dfcde920be53095514b69fbe5\"},\"round\":{\"id\":\"xIFWeMFx\",\"name\":\"Round
+        11\",\"slug\":\"round-11\",\"createdAt\":1759484795851,\"rated\":true,\"finishedAt\":1760546537537,\"finished\":true,\"startsAt\":1760528700000,\"url\":\"https://lichess.org/broadcast/fide-world-youth-chess-championships-2025--open-u14/round-11/xIFWeMFx\"}},{\"tour\":{\"id\":\"V7Cnz3eR\",\"name\":\"FIDE
+        World Youth Chess Championships 2025 | Girls U14\",\"slug\":\"fide-world-youth-chess-championships-2025--girls-u14\",\"info\":{\"format\":\"11-round
+        Swiss\",\"tc\":\"90min / 40 moves + 30 min + 30 sec / move\",\"fideTc\":\"standard\",\"location\":\"Durres,
+        Albania\",\"timeZone\":\"Europe/Vienna\",\"standings\":\"https://chess-results.com/tnr1265992.aspx\"},\"createdAt\":1759485833999,\"url\":\"https://lichess.org/broadcast/fide-world-youth-chess-championships-2025--girls-u14/V7Cnz3eR\",\"tier\":5,\"dates\":[1759583700000,1760528700000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:SJzkolru:TPkXXZkn.webp&w=800&sig=9c3bf994ef6b468dfcde920be53095514b69fbe5\"},\"round\":{\"id\":\"w7RbMkHc\",\"name\":\"Round
+        11\",\"slug\":\"round-11\",\"createdAt\":1759484795851,\"rated\":true,\"finishedAt\":1760546438290,\"finished\":true,\"startsAt\":1760528700000,\"url\":\"https://lichess.org/broadcast/fide-world-youth-chess-championships-2025--girls-u14/round-11/w7RbMkHc\"}},{\"tour\":{\"id\":\"k4TVpyO7\",\"name\":\"FIDE
+        World Corporate Chess Championship 2025 | Online Qualifier 4\",\"slug\":\"fide-world-corporate-chess-championship-2025--online-qualifier-4\",\"info\":{\"format\":\"7-round
+        Team Swiss\",\"tc\":\"10+3\",\"fideTc\":\"standard\",\"location\":\"lichess.org\",\"timeZone\":\"Etc/UTC\",\"standings\":\"https://fwccc.lichess.ca/fwccc-qualifier4/season/2025/standings/\"},\"createdAt\":1760282145291,\"url\":\"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--online-qualifier-4/k4TVpyO7\",\"tier\":5,\"dates\":[1760291984000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:k4TVpyO7:8YEFzYA4.webp&w=800&sig=1c57f41fca334b724c2a9c6906be795ec7ff93da\",\"teamTable\":true},\"round\":{\"id\":\"fXUTEvol\",\"name\":\"Round
+        7\",\"slug\":\"round-7\",\"createdAt\":1760282237510,\"rated\":false,\"finishedAt\":1760305234435,\"finished\":true,\"startsAt\":1760303571000,\"url\":\"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--online-qualifier-4/round-7/fXUTEvol\"}},{\"tour\":{\"id\":\"8ksEjJjX\",\"name\":\"FIDE
+        World Corporate Chess Championship 2025 | Online Qualifier 2\",\"slug\":\"fide-world-corporate-chess-championship-2025--online-qualifier-2\",\"info\":{\"format\":\"7-round
+        Team Swiss\",\"tc\":\"10+3\",\"fideTc\":\"standard\",\"location\":\"lichess.org\",\"timeZone\":\"Etc/UTC\",\"players\":\"RaviKhanna08
+        Metsfan2000 claudioa shivamsingh1607\",\"standings\":\"https://fwccc.lichess.ca/fwccc-qualifier2/season/2025/standings/\"},\"createdAt\":1760196441335,\"url\":\"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--online-qualifier-2/8ksEjJjX\",\"tier\":5,\"dates\":[1760198358000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:8ksEjJjX:MDRZRJNC.webp&w=800&sig=4d7f2c91bb32faca4c7a3d3fa3eb6dcb6711cfae\",\"teamTable\":true},\"round\":{\"id\":\"uvJTjfi6\",\"name\":\"Round
+        7\",\"slug\":\"round-7\",\"createdAt\":1760196859374,\"rated\":false,\"finishedAt\":1760211209243,\"finished\":true,\"startsAt\":1760209562000,\"url\":\"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--online-qualifier-2/round-7/uvJTjfi6\"}},{\"tour\":{\"id\":\"oNCIoKlO\",\"name\":\"FIDE
+        World Corporate Chess Championship 2025 | Online Qualifier 1\",\"slug\":\"fide-world-corporate-chess-championship-2025--online-qualifier-1\",\"info\":{\"format\":\"7-round
+        Team Swiss\",\"tc\":\"10+3\",\"fideTc\":\"standard\",\"location\":\"lichess.org\",\"timeZone\":\"Etc/UTC\",\"players\":\"ItRelates,
+        malyy, rightitsrafa, watchmecheck\"},\"createdAt\":1760130207621,\"url\":\"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--online-qualifier-1/oNCIoKlO\",\"tier\":5,\"dates\":[1760173842000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:oNCIoKlO:XrEncJ7k.webp&w=800&sig=6939c7b73ad032332c970723eff5dde1e01eec5c\",\"teamTable\":true},\"round\":{\"id\":\"QLUxlqXC\",\"name\":\"Round
+        7\",\"slug\":\"round-7\",\"createdAt\":1760170576427,\"rated\":false,\"finishedAt\":1760188619687,\"finished\":true,\"startsAt\":1760186928000,\"url\":\"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--online-qualifier-1/round-7/QLUxlqXC\"}},{\"tour\":{\"id\":\"krAgvocd\",\"name\":\"2025
+        Grand Chess Tour Finals | Finals\",\"slug\":\"2025-grand-chess-tour-finals--finals\",\"info\":{\"format\":\"4-player
+        Knockout\",\"fideTc\":\"standard\",\"location\":\"S\xE3o Paulo, Brazil\",\"timeZone\":\"America/Sao_Paulo\",\"players\":\"Caruana,
+        Praggnanandhaa, Aronian, Vachier-Lagrave\",\"website\":\"https://grandchesstour.org/tours/2025/tournaments/2025-gct-finals/\",\"standings\":\"https://grandchesstour.org/tours/2025/tournaments/2025-gct-finals/results/\"},\"createdAt\":1758881455442,\"url\":\"https://lichess.org/broadcast/2025-grand-chess-tour-finals--finals/krAgvocd\",\"tier\":5,\"dates\":[1759343400000,1759523700000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:krAgvocd:5aDD864c.webp&w=800&sig=94210cc7e96a8145ca4689d73ff4d6a7e001d5cc\"},\"round\":{\"id\":\"gqF6mbbG\",\"name\":\"Blitz
+        Game 4\",\"slug\":\"blitz-game-4\",\"createdAt\":1758881116102,\"rated\":false,\"finishedAt\":1759524506182,\"finished\":true,\"startsAt\":1759523700000,\"customScoring\":{\"white\":{\"win\":2,\"draw\":1},\"black\":{\"win\":2,\"draw\":1}},\"url\":\"https://lichess.org/broadcast/2025-grand-chess-tour-finals--finals/blitz-game-4/gqF6mbbG\"}},{\"tour\":{\"id\":\"oH3sJwLV\",\"name\":\"2025
+        Grand Chess Tour Finals | Semifinals\",\"slug\":\"2025-grand-chess-tour-finals--semifinals\",\"info\":{\"format\":\"4-player
+        Knockout\",\"fideTc\":\"standard\",\"location\":\"S\xE3o Paulo, Brazil\",\"timeZone\":\"America/Sao_Paulo\",\"players\":\"Caruana,
+        Praggnanandhaa, Aronian, Vachier-Lagrave\",\"website\":\"https://grandchesstour.org/tours/2025/tournaments/2025-gct-finals/\",\"standings\":\"https://grandchesstour.org/tours/2025/tournaments/2025-gct-finals/results/\"},\"createdAt\":1758880435747,\"url\":\"https://lichess.org/broadcast/2025-grand-chess-tour-finals--semifinals/oH3sJwLV\",\"tier\":5,\"dates\":[1759084200000,1759271700000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:oH3sJwLV:vtL2IW4N.webp&w=800&sig=fc674102414ebc40e387f40fff67e5efd42b28fb\"},\"round\":{\"id\":\"vju9Yk6R\",\"name\":\"Blitz
+        Game 4\",\"slug\":\"blitz-game-4\",\"createdAt\":1758881116102,\"rated\":false,\"finishedAt\":1759272396012,\"finished\":true,\"startsAt\":1759271700000,\"customScoring\":{\"white\":{\"win\":2,\"draw\":1},\"black\":{\"win\":2,\"draw\":1}},\"url\":\"https://lichess.org/broadcast/2025-grand-chess-tour-finals--semifinals/blitz-game-4/vju9Yk6R\"}},{\"tour\":{\"id\":\"64QGuY64\",\"name\":\"FIDE
+        World Cadet Chess Championships 2025 | Girls U12\",\"slug\":\"fide-world-cadet-chess-championships-2025--girls-u12\",\"info\":{\"format\":\"11-round
+        Swiss\",\"tc\":\"90 min + 30 sec / move\",\"fideTc\":\"standard\",\"location\":\"Almaty,
+        Kazakhstan\",\"timeZone\":\"Asia/Almaty\",\"website\":\"https://worldcadets2025.fide.com/\",\"standings\":\"https://s3.chess-results.com/tnr1234782.aspx?lan=1&art=1&flag=30&SNode=S0\"},\"createdAt\":1757957480919,\"url\":\"https://lichess.org/broadcast/fide-world-cadet-chess-championships-2025--girls-u12/64QGuY64\",\"tier\":5,\"dates\":[1758276900000,1759212900000],\"image\":\"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:64QGuY64:k5xxNtKp.webp&w=800&sig=fe8f2c11ffe827389780d7821c9ca066bfcd601a\"},\"round\":{\"id\":\"EToNDQv4\",\"name\":\"Round
+        11\",\"slug\":\"round-11\",\"createdAt\":1757957299829,\"rated\":false,\"finishedAt\":1759230501150,\"finished\":true,\"startsAt\":1759212900000,\"url\":\"https://lichess.org/broadcast/fide-world-cadet-chess-championships-2025--girls-u12/round-11/EToNDQv4\"}}],\"previousPage\":null,\"nextPage\":2}"
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 26 Nov 2025 00:51:13 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      X-Frame-Options:
+      - DENY
+      content-length:
+      - '24938'
+    status:
+      code: 200
+      message: OK
+version: 1

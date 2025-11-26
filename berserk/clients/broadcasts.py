@@ -6,7 +6,7 @@ from .. import models
 from ..formats import PGN
 from .base import BaseClient
 
-from ..types.broadcast import BroadcastPlayer, BroadcastTop
+from ..types.broadcast import BroadcastPlayer, BroadcastTop, PaginatedBroadcasts
 from ..utils import to_str
 
 
@@ -259,3 +259,18 @@ class Broadcasts(BaseClient):
         path = "/api/broadcast/top"
         params = {"page": page, "html": html}
         return cast(BroadcastTop, self._r.get(path, params=params))
+
+    def search(
+        self,
+        query: str,
+        page: int = 1,
+    ) -> PaginatedBroadcasts:
+        """Search for broadcasts.
+
+        :param query: search query text
+        :param page: the page number to fetch (default: 1)
+        :return: paginated list of broadcasts matching the search query
+        """
+        path = "/api/broadcast/search"
+        params = {"q": query, "page": page}
+        return cast(PaginatedBroadcasts, self._r.get(path, params=params))
