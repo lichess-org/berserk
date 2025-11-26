@@ -1,7 +1,7 @@
 import pytest
 
 from berserk import Client
-from berserk.types.broadcast import BroadcastTop, PaginatedBroadcasts
+from berserk.types import BroadcastTop, PaginatedBroadcasts
 from utils import skip_if_older_3_dot_10, validate
 
 
