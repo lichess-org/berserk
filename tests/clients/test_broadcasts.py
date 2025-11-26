@@ -1,7 +1,7 @@
 import pytest
 
 from berserk import Client
-from berserk.types.broadcast import BroadcastTop, PaginatedBroadcasts
+from berserk.types.broadcast import BroadcastTop, BroadcastPastPage
 from utils import skip_if_older_3_dot_10, validate
 
 
@@ -16,4 +16,4 @@ class TestBroadcasts:
     @pytest.mark.vcr
     def test_search(self):
         res = Client().broadcasts.search(query="chess", page=1)
-        validate(PaginatedBroadcasts, res)
+        validate(BroadcastPastPage, res)
