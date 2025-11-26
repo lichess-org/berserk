@@ -90,3 +90,16 @@ class BroadcastTop(TypedDict):
     active: List[BroadcastWithLastRound]
     upcoming: List[None]  # deprecated
     past: BroadcastPastPage
+
+
+class PaginatedBroadcasts(TypedDict):
+    # The current page
+    currentPage: int
+    # The maximum number of broadcasts per page
+    maxPerPage: int
+    # The broadcasts on the current page
+    currentPageResults: List[BroadcastWithLastRound]
+    # The previous page (null if on first page)
+    previousPage: int | None
+    # The next page (null if on last page)
+    nextPage: int | None
