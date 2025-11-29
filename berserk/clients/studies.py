@@ -1,8 +1,8 @@
 from __future__ import annotations
 
-from typing import cast, List, Iterator
+from typing import cast, List, Iterator, Dict, Any
 
-from ..formats import PGN
+from ..formats import PGN, NDJSON
 from ..types.common import Color, VariantKey
 from ..types import ChapterIdName
 from .base import BaseClient
@@ -66,3 +66,17 @@ class Studies(BaseClient):
         return cast(
             List[ChapterIdName], self._r.post(path, data=payload).get("chapters", [])
         )
+
+    def list_user_studies(self, username: str) -> Iterator[Dict[str, Any]]:
+        """
+        Get metadata (name and dates) of all studies of a user.
+
+        If authenticated, then all public, unlisted, and private studies are
+        included. If not, only public (non-unlisted) studies are included.
+        Studies are streamed as ndjson.
+
+        return:iterator over all studies as ndjson
+        """
+
+        path = f"/api/study/by/{username}"
+        yield from self._r.get(path, fmt=NDJSON, stream=True)
