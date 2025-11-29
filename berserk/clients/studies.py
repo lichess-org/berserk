@@ -67,7 +67,7 @@ class Studies(BaseClient):
             List[ChapterIdName], self._r.post(path, data=payload).get("chapters", [])
         )
 
-    def list_user_studies(self, username: str) -> Iterator[Dict[str, Any]]:
+    def list_by_username(self, username: str) -> Iterator[Dict[str, Any]]:
         """
         Get metadata (name and dates) of all studies of a user.
 
