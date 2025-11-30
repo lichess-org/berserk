@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # Helper script to create and publish a new `berserk` release.
 # Based on `release.py` from `python-chess`.
+# THIS IS A COMMENT USED TO FORCE A PR FOR TESTING PURPOSES
 
 import argparse
 import os
