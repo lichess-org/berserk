@@ -9,6 +9,7 @@ To be released
 
 * Added ``pgn_in_json`` parameter to ``client.games.export``.
 * Implement `broadcasts.get_top()` endpoint; typing fixes and validation.
+* Added ``client.broadcasts.search`` to search for broadcasts.
 * Added ``client.relations.block`` and ``client.relations.unblock`` for blocking/unblocking users.
 * Implemented ``/api/games/export/imports`` under
   ``client.games.export_imported``.
