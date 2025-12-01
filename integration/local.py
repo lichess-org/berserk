@@ -116,6 +116,8 @@ def run_lila():
         [
             "docker",
             "run",
+            "--pull",
+            "always",
             "--name",
             BDIT_LILA,
             "--network",
