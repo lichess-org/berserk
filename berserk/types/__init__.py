@@ -1,7 +1,12 @@
 from __future__ import annotations
 
 from .account import AccountInformation, Perf, Preferences, Profile, StreamerInfo
-from .broadcast import BroadcastPlayer, BroadcastTop, PaginatedBroadcasts
+from .broadcast import (
+    BroadcastPlayer,
+    BroadcastTop,
+    PaginatedBroadcasts,
+    BroadcastsByUser,
+)
 from .bulk_pairings import BulkPairing, BulkPairingGame
 from .challenges import ChallengeJson
 from .common import ClockConfig, ExternalEngine, LightUser, OnlineLightUser, VariantKey
@@ -21,6 +26,7 @@ __all__ = [
     "AccountInformation",
     "ArenaResult",
     "BroadcastPlayer",
+    "BroadcastsByUser",
     "BroadcastTop",
     "BulkPairing",
     "BulkPairingGame",
