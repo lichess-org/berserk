@@ -14,7 +14,7 @@ To be released
 * Implemented ``/api/games/export/imports`` under
   ``client.games.export_imported``.
 * Implemented ``/api/study/by/{username}`` under
-  ``client.studies.list_by_username`` to get the metadata of all studies
+  ``client.studies.get_by_user`` to get the metadata of all studies
   of a given user.
 
 Thanks to all the contributors who helped to this release:

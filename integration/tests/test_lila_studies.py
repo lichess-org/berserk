@@ -12,7 +12,7 @@ def client():
 
 
 def test_list_studies_of_a_user(client):
-    res = client.studies.list_by_username("tonyro")
+    res = client.studies.get_by_user("tonyro")
     first_study = next(res)
     assert "id" in first_study
     assert "name" in first_study
