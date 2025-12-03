@@ -17,8 +17,9 @@ from .broadcast import (
 )
 
 from .bulk_pairings import BulkPairing, BulkPairingGame
+from .external_engine import ExternalEngine
 from .challenges import ChallengeJson
-from .common import ClockConfig, ExternalEngine, LightUser, OnlineLightUser, VariantKey
+from .common import ClockConfig, LightUser, OnlineLightUser, VariantKey
 from .fide import FidePlayer
 from .puzzles import PuzzleData, PuzzleRace
 from .opening_explorer import (

@@ -12,27 +12,6 @@ class ClockConfig(TypedDict):
     increment: int
 
 
-class ExternalEngine(TypedDict):
-    # Engine ID
-    id: str
-    # Engine display name
-    name: str
-    # Secret token that can be used to request analysis
-    clientSecret: str
-    # User this engine has been registered for
-    userId: str
-    # Max number of available threads
-    maxThreads: int
-    # Max available hash table size, in MiB
-    maxHash: int
-    # Estimated depth of normal search
-    defaultDepth: int
-    # List of supported chess variants
-    variants: str
-    # Arbitrary data that engine provider can use for identification or bookkeeping
-    providerData: NotRequired[str]
-
-
 Color: TypeAlias = Literal["white", "black"]
 
 GameType: TypeAlias = Literal[
@@ -45,6 +24,17 @@ GameType: TypeAlias = Literal[
     "racingKings",
     "crazyhouse",
     "fromPosition",
+]
+
+UciVariant = Literal[
+    "chess",
+    "crazyhouse",
+    "antichess",
+    "atomic",
+    "horde",
+    "kingofthehill",
+    "racingkings",
+    "3check",
 ]
 
 Speed = Literal[

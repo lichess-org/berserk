@@ -19,6 +19,8 @@ To be released
   ``client.studies.get_by_user`` to get the metadata of all studies
   of a given user.
 * Added ``bots.handle_draw_offer`` and ``bots.handle_takeback_offer`` to handle draw and takeback offers
+* Added ``client.external_engine.analyse``, ``client.external_engine.acquire_request``, ``client.external_engine.answer_request`` to handle analysis with an external engine
+
 
 Thanks to all the contributors who helped to this release:
 - @hsheth2

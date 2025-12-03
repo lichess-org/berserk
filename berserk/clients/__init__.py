@@ -93,6 +93,7 @@ class Client(BaseClient):
         *,
         tablebase_url: str | None = None,
         explorer_url: str | None = None,
+        external_engine_url: str | None = None,
     ):
         session = session or requests.Session()
         super().__init__(session, base_url)
@@ -116,5 +117,7 @@ class Client(BaseClient):
         self.tablebase = Tablebase(session, tablebase_url)
         self.opening_explorer = OpeningExplorer(session, explorer_url)
         self.bulk_pairings = BulkPairings(session, base_url)
-        self.external_engine = ExternalEngine(session, base_url)
+        self.external_engine = ExternalEngine(
+            session, base_url=base_url, external_engine_url=external_engine_url
+        )
         self.fide = Fide(session)
