@@ -78,6 +78,26 @@ class Bots(BaseClient):
         path = f"/api/bot/game/{game_id}/resign"
         self._r.post(path)
 
+    def handle_draw_offer(self, game_id: str, accept: bool) -> None:
+        """Create/accept/decline draw offers
+
+        :param game_id: ID of a game
+        :param accept: whether to accept the draw offer
+        """
+
+        path = f"/api/bot/game/{game_id}/draw/{int(accept)}"
+        self._r.post(path)
+
+    def handle_takeback_offer(self, game_id: str, accept: bool) -> None:
+        """Create/accept/decline takeback offers
+
+        :param game_id: ID of a game
+        :param accept: whether to accept the takeback
+        """
+
+        path = f"/api/bot/game/{game_id}/takeback/{int(accept)}"
+        self._r.post(path)
+
     def accept_challenge(self, challenge_id: str) -> None:
         """Accept an incoming challenge.
 
