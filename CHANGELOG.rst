@@ -14,6 +14,7 @@ To be released
 * Added ``client.relations.block`` and ``client.relations.unblock`` for blocking/unblocking users.
 * Implemented ``/api/games/export/imports`` under
   ``client.games.export_imported``.
+* Added ``client.account.get_timeline`` to get current logged user timeline.
 * Implemented ``/api/study/by/{username}`` under
   ``client.studies.get_by_user`` to get the metadata of all studies
   of a given user.
@@ -24,6 +25,7 @@ Thanks to all the contributors who helped to this release:
 - @MrElyazid
 - @gameroman
 - @JAMoreno-Larios
+
 
 v0.14.0 (2025-08-26)
 --------------------

@@ -1,6 +1,8 @@
 import berserk
 import pytest
 
+from utils import validate
+
 BASE_URL = "http://bdit_lila:8080"
 
 
@@ -14,6 +16,7 @@ def client():
 def test_account_get(client):
     me = client.account.get()
     assert me["id"] == "bobby"
+    validate(berserk.types.account.AccountInformation, me)
 
 
 def test_account_get_email(client):
@@ -69,3 +72,8 @@ def test_account_get_users_followed(client):
     if first_user:
         assert "id" in first_user
         assert "username" in first_user
+
+
+def test_account_get_timeline(client):
+    timeline = client.account.get_timeline()
+    validate(berserk.types.account.Timeline, timeline)
