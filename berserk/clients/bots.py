@@ -78,6 +78,50 @@ class Bots(BaseClient):
         path = f"/api/bot/game/{game_id}/resign"
         self._r.post(path)
 
+    def handle_draw_offer(
+        self, game_id: str, accept: Union[bool, Literal["yes", "no"]]
+    ) -> None:
+        """Create/accept/decline draw offers
+
+        :param game_id: ID of a game
+        :param accept: boolean or "yes"/"no"
+        """
+        if isinstance(accept, bool):
+            accept_str = "true" if accept else "false"
+        elif accept == "yes":
+            accept_str = "yes"
+        elif accept == "no":
+            accept_str = "no"
+        else:
+            raise ValueError(
+                f"Invalid value for 'accept': {accept!r}. Must be True, False, 'no' or 'yes'."
+            )
+
+        path = f"/api/bot/game/{game_id}/draw/{accept_str}"
+        self._r.post(path)
+
+    def handle_takeback_offer(
+        self, game_id: str, accept: Union[bool, Literal["yes", "no"]]
+    ) -> None:
+        """Create/accept/decline takeback offers
+
+        :param game_id: ID of a game
+        :param accept: boolean or "yes"/"no"
+        """
+        if isinstance(accept, bool):
+            accept_str = "true" if accept else "false"
+        elif accept == "yes":
+            accept_str = "yes"
+        elif accept == "no":
+            accept_str = "no"
+        else:
+            raise ValueError(
+                f"Invalid value for 'accept': {accept!r}. Must be True, False, 'no' or 'yes'."
+            )
+
+        path = f"/api/bot/game/{game_id}/takeback/{accept_str}"
+        self._r.post(path)
+
     def accept_challenge(self, challenge_id: str) -> None:
         """Accept an incoming challenge.
 
