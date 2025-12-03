@@ -1,0 +1,23 @@
+# Set update schedule for GitHub Actions and Python dependencies
+
+version: 2
+updates:
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      # Check for updates to GitHub Actions every week
+      interval: "weekly"
+
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule:
+      # Check for updates to Python dependencies every week
+      interval: "weekly"
+    # Only check runtime dependencies, not dev dependencies
+    # Dependabot only checks the main dependencies array in pyproject.toml
+    # and ignores dependency-groups by default
+    groups:
+      dependencies:
+        patterns:
+          - "*"

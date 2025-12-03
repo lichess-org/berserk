@@ -1,11 +1,11 @@
+# ruff: noqa: E402
 """Top-level package for berserk."""
 
 from importlib import metadata
 
-berserk_metadata = metadata.metadata(__package__)
+berserk_metadata = metadata.metadata(__package__)  # type: ignore
 
-
-__author__ = berserk_metadata["Author"]
+__author__ = "Lichess"  # FIXME how to retrieve it from berserk_metadata?
 __email__ = berserk_metadata["Author-email"]
 __version__ = berserk_metadata["Version"]
 
@@ -20,6 +20,7 @@ from .types import (
     OnlineLightUser,
     OpeningStatistic,
     PaginatedTeams,
+    PuzzleData,
     PuzzleRace,
     SwissInfo,
     SwissResult,
@@ -49,6 +50,7 @@ __all__ = [
     "OpeningStatistic",
     "PaginatedTeams",
     "PGN",
+    "PuzzleData",
     "PuzzleRace",
     "Requestor",
     "SwissInfo",

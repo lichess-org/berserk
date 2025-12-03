@@ -24,6 +24,7 @@ from .tablebase import Tablebase
 from .opening_explorer import OpeningExplorer
 from .bulk_pairings import BulkPairings
 from .external_engine import ExternalEngine
+from .fide import Fide
 
 __all__ = [
     "Account",
@@ -35,6 +36,7 @@ __all__ = [
     "Challenges",
     "Client",
     "ExternalEngine",
+    "Fide",
     "Games",
     "Messaging",
     "OAuth",
@@ -69,6 +71,7 @@ class Client(BaseClient):
     - :class:`users <berserk.clients.Users>` - getting information about users
     - :class:`board <berserk.clients.Board>` - play games using a normal account
     - :class:`messaging <berserk.clients.Messaging>` - private message other players
+    - :class:`puzzles <berserk.clients.Puzzles>` - access puzzle history and dashboard
     - :class:`tv <berserk.clients.TV>` - get information on tv channels and games
     - :class:`tablebase <berserk.clients.Tablebase>` - lookup endgame tablebase
     - :class:`bulk_pairings <berserk.clients.BulkPairing>` - manage bulk pairings
@@ -114,3 +117,4 @@ class Client(BaseClient):
         self.opening_explorer = OpeningExplorer(session, explorer_url)
         self.bulk_pairings = BulkPairings(session, base_url)
         self.external_engine = ExternalEngine(session, base_url)
+        self.fide = Fide(session)

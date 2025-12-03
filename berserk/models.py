@@ -16,15 +16,13 @@ class model(type):
 class Model(metaclass=model):
     @overload
     @classmethod
-    def convert(cls, data: Dict[str, T]) -> Dict[str, T]:
-        ...
+    def convert(cls, data: Dict[str, T]) -> Dict[str, T]: ...
 
     @overload
     @classmethod
     def convert(
         cls, data: List[Dict[str, T]] | Tuple[Dict[str, T], ...]
-    ) -> List[Dict[str, T]]:
-        ...
+    ) -> List[Dict[str, T]]: ...
 
     @classmethod
     def convert(
@@ -50,6 +48,10 @@ class Model(metaclass=model):
 class Account(Model):
     createdAt = utils.datetime_from_millis
     seenAt = utils.datetime_from_millis
+
+
+class Timeline(Model):
+    date = utils.datetime_from_millis
 
 
 class User(Model):
@@ -97,3 +99,7 @@ class OAuth(Model):
 class TV(Model):
     createdAt = utils.datetime_from_millis
     lastMoveAt = utils.datetime_from_millis
+
+
+class FidePlayer(Model):
+    pass

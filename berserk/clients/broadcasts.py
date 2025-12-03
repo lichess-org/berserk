@@ -1,12 +1,17 @@
 from __future__ import annotations
 
-from typing import Iterator, Any, Dict, List
+from typing import Iterator, Any, Dict, List, cast
 
 from .. import models
 from ..formats import PGN
 from .base import BaseClient
 
-from ..types.broadcast import BroadcastPlayer
+from ..types.broadcast import (
+    BroadcastPlayer,
+    BroadcastTop,
+    PaginatedBroadcasts,
+    BroadcastsByUser,
+)
 from ..utils import to_str
 
 
@@ -115,7 +120,7 @@ class Broadcasts(BaseClient):
         :param broadcast_round_id: ID of a broadcast round
         :param pgn_games: one or more games in PGN format
         """
-        path = f"/broadcast/round/{broadcast_round_id}/push"
+        path = f"/api/broadcast/round/{broadcast_round_id}/push"
         games = "\n\n".join(g.strip() for g in pgn_games)
         self._r.post(path, data=games)
 
@@ -171,8 +176,8 @@ class Broadcasts(BaseClient):
         syncUrlRound: str | None = None,
         startsAt: int | None = None,
         delay: int | None = None,
+        status: str | None = None,
         period: int | None = None,
-        finished: bool | None = None,
     ) -> Dict[str, Any]:
         """Update information about a broadcast round that you created.
 
@@ -182,8 +187,8 @@ class Broadcasts(BaseClient):
         :param syncUrlRound: required if syncUrl contains a LiveChessCloud link
         :param startsAt: Timestamp in milliseconds of broadcast round start
         :param delay: how long to delay moves coming from the source in seconds
+        :param status: manual broadcast round status "new", "started" or "finished"
         :param period: how long to wait between source requests in seconds
-        :param finished: set whether the round is completed
         :return: updated broadcast information
         """
         path = f"/broadcast/round/{broadcast_id}/edit"
@@ -193,8 +198,8 @@ class Broadcasts(BaseClient):
             "syncUrlRound": syncUrlRound,
             "startsAt": startsAt,
             "delay": delay,
+            "status": status,
             "period": period,
-            "finished": finished,
         }
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
@@ -244,3 +249,50 @@ class Broadcasts(BaseClient):
         path = "/api/broadcast/my-rounds"
         params = {"nb": nb}
         yield from self._r.get(path, params=params, stream=True)
+
+    def get_top(
+        self,
+        page: int = 1,
+        html: bool = False,
+    ) -> BroadcastTop:
+        """Return the paginated top broadcasts structure for `page`.
+
+        :param page: which page to fetch (1..20). Only page 1 has `active` broadcasts.
+        :param html: if True, convert the `description` field from markdown to HTML.
+        :return: parsed JSON response with keys `active` and `past`.
+        """
+        path = "/api/broadcast/top"
+        params = {"page": page, "html": html}
+        return cast(BroadcastTop, self._r.get(path, params=params))
+
+    def search(
+        self,
+        query: str,
+        page: int = 1,
+    ) -> PaginatedBroadcasts:
+        """Search for broadcasts.
+
+        :param query: search query text
+        :param page: the page number to fetch (default: 1)
+        :return: paginated list of broadcasts matching the search query
+        """
+        path = "/api/broadcast/search"
+        params = {"q": query, "page": page}
+        return cast(PaginatedBroadcasts, self._r.get(path, params=params))
+
+    def get_by_user(
+        self,
+        username: str,
+        page: int = 1,
+        html: bool = False,
+    ) -> BroadcastsByUser:
+        """Get broadcasts created by a user.
+
+        :param username: the username
+        :param page: the page number to fetch (default: 1)
+        :param html: convert description from markdown to HTML (default: False)
+        :return: paginated list of broadcasts created by the user
+        """
+        path = f"/api/broadcast/by/{username}"
+        params = {"page": page, "html": html}
+        return cast(BroadcastsByUser, self._r.get(path, params=params))

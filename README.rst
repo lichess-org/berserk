@@ -26,12 +26,17 @@ This is based on the `original berserk version created by rhgrant10 <https://git
 Installation
 ------------
 
-Requires Python 3.8+. Download and install the latest release:
+Requires Python 3.10+. Download and install the latest release:
 ::
 
     pip3 install berserk
 
 If you have `berserk-downstream` installed, make sure to uninstall it first!
+
+If you like living on the edge, or you want access to the latest features, you can install directly from the repository:
+::
+
+    pip install git+https://github.com/lichess-org/berserk.git
 
 Features
 --------
@@ -65,6 +70,7 @@ Most of the API is available:
     client.account.get_kid_mode
     client.account.set_kid_mode
     client.account.upgrade_to_bot
+    client.account.get_timeline
 
     client.analysis.get_cloud_evaluation
 
@@ -94,6 +100,8 @@ Most of the API is available:
     client.bots.post_message
     client.bots.abort_game
     client.bots.resign_game
+    client.bots.handle_draw_offer
+    client.bots.handle_takeback_offer
     client.bots.accept_challenge
     client.bots.decline_challenge
 
@@ -108,6 +116,9 @@ Most of the API is available:
     client.broadcasts.get_round_pgns
     client.broadcasts.get_pgns
     client.broadcasts.stream_round
+    client.broadcasts.get_top
+    client.broadcasts.search
+    client.broadcasts.get_by_user
 
     client.bulk_pairings.get_upcoming
     client.bulk_pairings.create
@@ -126,11 +137,11 @@ Most of the API is available:
     client.challenges.add_time_to_opponent_clock
     client.challenges.create_tokens_for_multiple_users
 
-    client.explorer.get_lichess_games
-    client.explorer.get_masters_games
-    client.explorer.get_player_games
-    client.explorer.stream_player_games
-    client.explorer.get_otb_master_game
+    client.opening_explorer.get_lichess_games
+    client.opening_explorer.get_masters_games
+    client.opening_explorer.get_player_games
+    client.opening_explorer.stream_player_games
+    client.opening_explorer.get_otb_master_game
 
     client.external_engine.get
     client.external_engine.get_by_id
@@ -141,10 +152,14 @@ Most of the API is available:
     client.external_engine.acquire_request
     client.external_engine.answer_request
 
+    client.fide.get_player
+    client.fide.search_players
+
     client.games.export
     client.games.export_ongoing_by_player
     client.games.export_by_player
     client.games.export_multi
+    client.games.export_imported
     client.games.get_among_players
     client.games.stream_games_by_ids
     client.games.add_game_ids_to_stream
@@ -159,6 +174,7 @@ Most of the API is available:
 
     client.puzzles.get_daily
     client.puzzles.get
+    client.puzzles.get_next
     client.puzzles.get_puzzle_activity
     client.puzzles.get_puzzle_dashboard
     client.puzzles.get_storm_dashboard
@@ -167,6 +183,8 @@ Most of the API is available:
     client.relations.get_users_followed
     client.relations.follow
     client.relations.unfollow
+    client.relations.block
+    client.relations.unblock
 
     client.simuls.get
 

@@ -38,7 +38,7 @@ for endpoint, data in spec["paths"].items():
     # Replace parameter placeholders with regular expression
     # Encode/decode methods allow to treat it as raw string: https://stackoverflow.com/questions/2428117/casting-raw-strings-python/2428132#2428132
     endpoint_regex = (
-        f'/{re.sub(r"{[^/]+?}", r"[^/]+?", endpoint_without_slash)}'.encode(
+        f"/{re.sub(r'{[^/]+?}', r'[^/]+?', endpoint_without_slash)}".encode(
             "unicode_escape"
         ).decode()
     )

@@ -16,6 +16,7 @@ class Games(FmtClient):
         game_id: str,
         as_pgn: bool | None = None,
         moves: bool | None = None,
+        pgn_in_json: bool | None = None,
         tags: bool | None = None,
         clocks: bool | None = None,
         evals: bool | None = None,
@@ -27,6 +28,7 @@ class Games(FmtClient):
         :param game_id: the ID of the game to export
         :param as_pgn: whether to return the game in PGN format
         :param moves: whether to include the PGN moves
+        :param pgn_in_json: include the full PGN within JSON response
         :param tags: whether to include the PGN tags
         :param clocks: whether to include clock comments in the PGN moves
         :param evals: whether to include analysis evaluation comments in the PGN moves
@@ -38,6 +40,7 @@ class Games(FmtClient):
         path = f"/game/export/{game_id}"
         params = {
             "moves": moves,
+            "pgnInJson": pgn_in_json,
             "tags": tags,
             "clocks": clocks,
             "evals": evals,
@@ -314,3 +317,14 @@ class Games(FmtClient):
             "pgn": pgn,
         }
         return self._r.post(path, data=payload)
+
+    def export_imported(self) -> str:
+        """
+        Export all the imported games by the currently logged in user
+        as a PGN.
+        Requires OAuth2 authorization.
+
+        :return: the exported games in a single string
+        """
+        path = "/api/games/export/imports"
+        return self._r.get(path, fmt=PGN, stream=False)

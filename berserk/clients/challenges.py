@@ -3,13 +3,13 @@ from __future__ import annotations
 from typing import Any, Dict, List
 from deprecated import deprecated
 
-from ..types.challenges import Challenge, ChallengeDeclineReason
-from ..types.common import Color, Variant
+from ..types.challenges import ChallengeJson, ChallengeDeclineReason
+from ..types.common import Color, VariantKey
 from .base import BaseClient
 
 
 class Challenges(BaseClient):
-    def get_mine(self) -> Dict[str, List[Challenge]]:
+    def get_mine(self) -> Dict[str, List[ChallengeJson]]:
         """Get all outgoing challenges (created by me) and incoming challenges (targeted at me).
 
         Requires OAuth2 authorization with challenge:read scope.
@@ -27,7 +27,7 @@ class Challenges(BaseClient):
         clock_increment: int | None = None,
         days: int | None = None,
         color: Color | None = None,
-        variant: Variant | None = None,
+        variant: VariantKey | None = None,
         position: str | None = None,
     ) -> Dict[str, Any]:
         """Challenge another player to a game.
@@ -65,7 +65,7 @@ class Challenges(BaseClient):
         clock_increment: int | None = None,
         days: int | None = None,
         color: Color | None = None,
-        variant: Variant | None = None,
+        variant: VariantKey | None = None,
         position: str | None = None,
     ) -> Dict[str, Any]:
         """Start a game with another player.
@@ -106,7 +106,7 @@ class Challenges(BaseClient):
         clock_increment: int | None = None,
         days: int | None = None,
         color: Color | None = None,
-        variant: Variant | None = None,
+        variant: VariantKey | None = None,
         position: str | None = None,
     ) -> Dict[str, Any]:
         """Challenge AI to a game.
@@ -137,7 +137,7 @@ class Challenges(BaseClient):
         self,
         clock_limit: int | None = None,
         clock_increment: int | None = None,
-        variant: Variant | None = None,
+        variant: VariantKey | None = None,
         position: str | None = None,
         rated: bool | None = None,
         name: str | None = None,
@@ -191,7 +191,7 @@ class Challenges(BaseClient):
         Requires OAuth2 authorization with challenge:write, bot:play and board:play scopes.
 
         :param challenge_id: ID of a challenge
-        :param opponent_token: if set to the challenge:write token of the opponent, allows game to be cancelled
+        :param opponent_token: if set to the challenge:write token of the opponent, allows game to be canceled
             even if both players have moved
         """
         path = f"/api/challenge/{challenge_id}/cancel"

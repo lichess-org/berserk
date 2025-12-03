@@ -4,7 +4,7 @@ from typing import cast
 
 from ..formats import JSON, JSON_LIST
 from ..types.bulk_pairings import BulkPairing
-from ..types.common import Variant
+from ..types.common import VariantKey
 from .base import BaseClient
 
 
@@ -32,7 +32,7 @@ class BulkPairings(BaseClient):
         pair_at: int | None = None,
         start_clocks_at: int | None = None,
         rated: bool = False,
-        variant: Variant | None = None,
+        variant: VariantKey | None = None,
         fen: str | None = None,
         message: str | None = None,
         rules: list[str] | None = None,

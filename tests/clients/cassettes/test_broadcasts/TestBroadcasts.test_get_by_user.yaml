@@ -1,0 +1,58 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.5
+    method: GET
+    uri: https://lichess.org/api/broadcast/by/lichess?page=1&html=False
+  response:
+    body:
+      string: '{"currentPage":1,"maxPerPage":24,"currentPageResults":[{"tour":{"id":"k4TVpyO7","name":"FIDE
+        World Corporate Chess Championship 2025 | Online Qualifier 4","slug":"fide-world-corporate-chess-championship-2025--online-qualifier-4","info":{"format":"7-round
+        Team Swiss","tc":"10+3","fideTc":"standard","location":"lichess.org","timeZone":"Etc/UTC","standings":"https://fwccc.lichess.ca/fwccc-qualifier4/season/2025/standings/"},"createdAt":1760282145291,"url":"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--online-qualifier-4/k4TVpyO7","tier":5,"dates":[1760291984000],"image":"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:k4TVpyO7:8YEFzYA4.webp&w=800&sig=1c57f41fca334b724c2a9c6906be795ec7ff93da","teamTable":true}},{"tour":{"id":"8ksEjJjX","name":"FIDE
+        World Corporate Chess Championship 2025 | Online Qualifier 2","slug":"fide-world-corporate-chess-championship-2025--online-qualifier-2","info":{"format":"7-round
+        Team Swiss","tc":"10+3","fideTc":"standard","location":"lichess.org","timeZone":"Etc/UTC","players":"RaviKhanna08
+        Metsfan2000 claudioa shivamsingh1607","standings":"https://fwccc.lichess.ca/fwccc-qualifier2/season/2025/standings/"},"createdAt":1760196441335,"url":"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--online-qualifier-2/8ksEjJjX","tier":5,"dates":[1760198358000],"image":"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:8ksEjJjX:MDRZRJNC.webp&w=800&sig=4d7f2c91bb32faca4c7a3d3fa3eb6dcb6711cfae","teamTable":true}},{"tour":{"id":"oNCIoKlO","name":"FIDE
+        World Corporate Chess Championship 2025 | Online Qualifier 1","slug":"fide-world-corporate-chess-championship-2025--online-qualifier-1","info":{"format":"7-round
+        Team Swiss","tc":"10+3","fideTc":"standard","location":"lichess.org","timeZone":"Etc/UTC","players":"ItRelates,
+        malyy, rightitsrafa, watchmecheck"},"createdAt":1760130207621,"url":"https://lichess.org/broadcast/fide-world-corporate-chess-championship-2025--online-qualifier-1/oNCIoKlO","tier":5,"dates":[1760173842000],"image":"https://image.lichess1.org/display?fmt=webp&h=400&op=thumbnail&path=relay:oNCIoKlO:XrEncJ7k.webp&w=800&sig=6939c7b73ad032332c970723eff5dde1e01eec5c","teamTable":true}},{"tour":{"id":"jACOzu7b","name":"Solidarity
+        Friendly Match Sweden-Ukraine","slug":"solidarity-friendly-match-sweden-ukraine","info":{"format":"Team
+        Match","tc":"Rapid"},"createdAt":1648051116225,"url":"https://lichess.org/broadcast/solidarity-friendly-match-sweden-ukraine/jACOzu7b","tier":3,"dates":[1648054800000,1648058400000]}}],"previousPage":null,"nextPage":null,"nbResults":4,"nbPages":1}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 26 Nov 2025 03:09:06 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      X-Frame-Options:
+      - DENY
+      content-length:
+      - '2644'
+    status:
+      code: 200
+      message: OK
+version: 1

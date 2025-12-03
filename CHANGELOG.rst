@@ -4,13 +4,49 @@ Changelog
 To be released
 --------------
 
+
+* Deprecate Python 3.9 support - minimum required version is now Python 3.10+. This does not mean the library will not work with Python 3.9, but it will not be tested against it anymore.
+
+* Added ``pgn_in_json`` parameter to ``client.games.export``.
+* Implement `broadcasts.get_top()` endpoint; typing fixes and validation.
+* Added ``client.broadcasts.search`` to search for broadcasts.
+* Added ``client.broadcasts.get_by_user`` to get broadcasts created by a user.
+* Added ``client.relations.block`` and ``client.relations.unblock`` for blocking/unblocking users.
+* Implemented ``/api/games/export/imports`` under
+  ``client.games.export_imported``.
+* Added ``client.account.get_timeline`` to get current logged user timeline.
+* Implemented ``/api/study/by/{username}`` under
+  ``client.studies.get_by_user`` to get the metadata of all studies
+  of a given user.
+* Added ``bots.handle_draw_offer`` and ``bots.handle_takeback_offer`` to handle draw and takeback offers
+* Added ``client.external_engine.analyse``, ``client.external_engine.acquire_request``, ``client.external_engine.answer_request`` to handle analysis with an external engine
+
+
+Thanks to all the contributors who helped to this release:
+- @hsheth2
+- @DoraFgr
+- @MrElyazid
+- @gameroman
+- @JAMoreno-Larios
+- @friedrichtenhagen
+
+
+v0.14.0 (2025-08-26)
+--------------------
+
+* Deprecate Python 3.8 support - minimum required version is now Python 3.9+. This does not mean the library will not work with Python 3.8, but it will not be tested against it anymore.
+
 * Fixed ``wbtime`` and ``btime`` for all endpoints returning a ``GameState``.
 * Added ``sheet`` optional parameter to ``Tournaments.stream_results``, and fix returned typed dict.
 * Added ``studies.import_pgn`` to import PGN to study
 * Added ``tv.stream_current_game_of_channel`` to stream the current TV game of a channel
-* Added ``client.external_engine.analyse``, ``client.external_engine.acquire_request``, ``client.external_engine.answer_request`` to handle analysis with an external engine
+* Added ``client.fide.get`` to retrieve detailed data about a FIDE player by ID
+* Added ``client.fide.search`` to search for FIDE players by name
+* Added ``client.puzzles.get_next`` to get a new puzzle
+* Fixed ``client.broadcasts.push_pgn_update`` endpoint URL
+* Updated ``finished`` patameter to ``status`` in ``client.broadcasts.update_round``
 
-Thanks to @nicvagn, @tors42, @fitztrev, @friedrichtenhagen and @trevorbayless for their contributions to this release.
+Thanks to @nicvagn, @tors42, @fitztrev, @trevorbayless, @Looki2000 and @stafot for their contributions to this release
 
 v0.13.2 (2023-12-04)
 --------------------

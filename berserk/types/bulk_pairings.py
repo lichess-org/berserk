@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing_extensions import TypedDict
 
-from .common import ClockConfig, Variant
+from .common import ClockConfig, VariantKey
 
 
 class BulkPairingGame(TypedDict):
@@ -14,7 +14,7 @@ class BulkPairingGame(TypedDict):
 class BulkPairing(TypedDict):
     id: str
     games: list[BulkPairingGame]
-    variant: Variant
+    variant: VariantKey
     clock: ClockConfig
     pairAt: int
     pairedAt: int | None

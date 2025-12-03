@@ -17,9 +17,7 @@ class Tablebase(BaseClient):
     def look_up(
         self,
         position: str,
-        variant: Literal["standard"]
-        | Literal["atomic"]
-        | Literal["antichess"] = "standard",
+        variant: Literal["standard", "atomic", "antichess"] = "standard",
     ) -> Dict[str, Any]:
         """Look up the tablebase result for a position.
 

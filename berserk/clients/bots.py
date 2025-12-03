@@ -1,23 +1,24 @@
 from __future__ import annotations
 
-from typing import Iterator, Any, Dict
+from typing import Iterator, Any, Dict, cast
 
 from .. import models
 from ..formats import NDJSON
 from .base import BaseClient
 from ..types.challenges import ChallengeDeclineReason
+from ..types.bots import IncomingEvent
 
 
 class Bots(BaseClient):
     """Client for bot-related endpoints."""
 
-    def stream_incoming_events(self) -> Iterator[Dict[str, Any]]:
+    def stream_incoming_events(self) -> Iterator[IncomingEvent]:
         """Get your realtime stream of incoming events.
 
         :return: stream of incoming events
         """
         path = "/api/stream/event"
-        yield from self._r.get(path, stream=True)
+        yield from cast("Iterator[IncomingEvent]", self._r.get(path, stream=True))
 
     def stream_game_state(self, game_id: str) -> Iterator[Dict[str, Any]]:
         """Get the stream of events for a bot game.
@@ -75,6 +76,26 @@ class Bots(BaseClient):
         :param game_id: ID of a game
         """
         path = f"/api/bot/game/{game_id}/resign"
+        self._r.post(path)
+
+    def handle_draw_offer(self, game_id: str, accept: bool) -> None:
+        """Create/accept/decline draw offers
+
+        :param game_id: ID of a game
+        :param accept: whether to accept the draw offer
+        """
+
+        path = f"/api/bot/game/{game_id}/draw/{int(accept)}"
+        self._r.post(path)
+
+    def handle_takeback_offer(self, game_id: str, accept: bool) -> None:
+        """Create/accept/decline takeback offers
+
+        :param game_id: ID of a game
+        :param accept: whether to accept the takeback
+        """
+
+        path = f"/api/bot/game/{game_id}/takeback/{int(accept)}"
         self._r.post(path)
 
     def accept_challenge(self, challenge_id: str) -> None:

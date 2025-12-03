@@ -1,4 +1,4 @@
-.PHONY: help clean clean-docs clean-test setup test format docs servedocs publish
+.PHONY: help clean clean-docs clean-test setup test format format-check docs servedocs build publish
 .DEFAULT_GOAL := help
 
 define PRINT_HELP_PYSCRIPT
@@ -23,29 +23,37 @@ clean-docs: ## remove build artifacts
 clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 
-setup: ## setup poetry env and install dependencies
-	poetry install --with dev
+setup: ## setup uv env and install dependencies
+	uv sync --locked
+
+setup-ci: ## for Docker, install the deps only. need to run `setup` after
+	uv sync --locked --no-install-project
 
 test: ## run tests with pytest
-	poetry run pytest
+	uv run pytest tests
 
 test_record: ## run tests with pytest and record http requests
-	poetry run pytest --record-mode=once
+	uv run pytest --record-mode=once
 
 typecheck: ## run type checking with pyright
-	poetry run pyright berserk
+	uv run pyright berserk integration/local.py $(ARGS)
 
-format: ## format python files with black and docformatter
-	poetry run black berserk tests check-endpoints.py
-	poetry run docformatter --in-place --black berserk/*.py
+format: ## format python files with ruff
+	uv run ruff format $(ARGS)
+
+format-check: ## check formatting with ruff (for CI)
+	uv run ruff format . --diff
 
 docs: ## generate Sphinx HTML documentation, including API docs
-	poetry run sphinx-build -b html docs _build -EW --keep-going
+	uv run sphinx-build -b html docs _build -EW --keep-going
 
 servedocs: docs ## compile the docs and serve them locally
 	python3 -m http.server --directory _build --bind 127.0.0.1
 
-publish: ## publish to pypi
+build: ## build the package
+	uv build
+
+publish: build ## publish to pypi
 	@echo
 	@echo "Release checklist:"
 	@echo " - Did you update the documentation? (including adding new endpoints to the README?)"
@@ -56,4 +64,4 @@ publish: ## publish to pypi
 	@echo
 	@read -p "Are you sure you want to create a release? [y/N] " ans && [ $${ans:-N} = y ]
 	sleep 5
-	poetry publish --build
+	uv publish

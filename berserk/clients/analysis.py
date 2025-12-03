@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from ..types import Variant
+from ..types import VariantKey
 from .base import BaseClient
 from ..types.analysis import PositionEvaluation
 
@@ -14,7 +14,7 @@ class Analysis(BaseClient):
         self,
         fen: str,
         num_variations: int = 1,
-        variant: Variant = "standard",
+        variant: VariantKey = "standard",
     ) -> PositionEvaluation:
         """Get the cached evaluation of a position, if available.
 
