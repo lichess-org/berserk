@@ -3,7 +3,7 @@ from __future__ import annotations
 from typing import cast
 
 from .. import models
-from ..types.account import AccountInformation, Preferences
+from ..types.account import AccountInformation, Preferences, Timeline
 from .base import BaseClient
 
 
@@ -60,3 +60,21 @@ class Account(BaseClient):
         """
         path = "/api/bot/account/upgrade"
         self._r.post(path)
+
+    def get_timeline(
+        self, since: int = 1356998400070, nb: int | None = None
+    ) -> Timeline:
+        """
+        Get the timeline events of the logged in user.
+        Requires OAuth2 authorization.
+
+        :param since: shows events since the provided timestamp, default
+            1356998400070 (the earliest allowed by Lichess
+        :param nb: Max number of events to fetch
+        """
+        path = "/api/timeline"
+        params = {"since": since, "nb": nb}
+        return cast(
+            Timeline,
+            self._r.get(path, params=params, converter=models.Timeline.convert_values),
+        )

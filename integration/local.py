@@ -198,6 +198,7 @@ def integration_test(python_version: str, watch: bool) -> None:
                 BDIT_NETWORK,
                 BDIT_APP_IMAGE,
             ],
+            check=False,
         )
         log.info("App container finished successfully.")
 

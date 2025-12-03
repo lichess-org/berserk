@@ -50,6 +50,10 @@ class Account(Model):
     seenAt = utils.datetime_from_millis
 
 
+class Timeline(Model):
+    date = utils.datetime_from_millis
+
+
 class User(Model):
     createdAt = utils.datetime_from_millis
     seenAt = utils.datetime_from_millis

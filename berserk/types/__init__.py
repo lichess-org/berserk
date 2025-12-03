@@ -1,6 +1,13 @@
 from __future__ import annotations
 
-from .account import AccountInformation, Perf, Preferences, Profile, StreamerInfo
+from .account import (
+    AccountInformation,
+    Perf,
+    Preferences,
+    Profile,
+    StreamerInfo,
+    Timeline,
+)
 from .broadcast import BroadcastPlayer
 from .bulk_pairings import BulkPairing, BulkPairingGame
 from .challenges import ChallengeJson
@@ -44,6 +51,7 @@ __all__ = [
     "SwissInfo",
     "SwissResult",
     "Team",
-    "VariantKey",
+    "Timeline",
     "TVFeed",
+    "VariantKey",
 ]
