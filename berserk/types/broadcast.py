@@ -78,7 +78,7 @@ class BroadcastWithLastRound(TypedDict):
     roundToLink: NotRequired[BroadcastRoundInfo]
 
 
-class BroadcastPastPage(TypedDict):
+class PaginatedBroadcasts(TypedDict):
     currentPage: int
     maxPerPage: int
     currentPageResults: List[BroadcastWithLastRound]
@@ -89,4 +89,18 @@ class BroadcastPastPage(TypedDict):
 class BroadcastTop(TypedDict):
     active: List[BroadcastWithLastRound]
     upcoming: List[None]  # deprecated
-    past: BroadcastPastPage
+    past: PaginatedBroadcasts
+
+
+class BroadcastByUser(TypedDict):
+    tour: BroadcastTour
+
+
+class BroadcastsByUser(TypedDict):
+    currentPage: int
+    maxPerPage: int
+    currentPageResults: List[BroadcastByUser]
+    nbResults: int
+    previousPage: int | None
+    nextPage: int | None
+    nbPages: int

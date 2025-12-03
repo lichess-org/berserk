@@ -33,7 +33,7 @@ jobs:
       BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v6
     - name: Configure Git
       run: |
         git config user.name github-actions
@@ -43,7 +43,7 @@ jobs:
     - name: Build berserk package
       run: uv run release.py --bump ${{ github.event.inputs.bump }} --branch ${{ env.BRANCH_NAME }}
     - name: Store the distribution packages
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       with:
         name: python-package-distributions
         path: dist/
@@ -64,7 +64,7 @@ jobs:
 
     steps:
     - name: Download all the dists
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v6
       with:
         name: python-package-distributions
         path: dist/

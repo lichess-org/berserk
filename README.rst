@@ -115,6 +115,8 @@ Most of the API is available:
     client.broadcasts.get_pgns
     client.broadcasts.stream_round
     client.broadcasts.get_top
+    client.broadcasts.search
+    client.broadcasts.get_by_user
 
     client.bulk_pairings.get_upcoming
     client.bulk_pairings.create

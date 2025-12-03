@@ -20,6 +20,7 @@ import logging.handlers
 import subprocess
 import sys
 import time
+import platform
 
 from watchdog.events import PatternMatchingEventHandler, FileSystemEvent
 from watchdog.observers import Observer
@@ -116,6 +117,8 @@ def run_lila():
         [
             "docker",
             "run",
+            "--pull",
+            "always",
             "--name",
             BDIT_LILA,
             "--network",
@@ -130,8 +133,8 @@ def get_project_python_version() -> str | None:
     try:
         with open(SCRIPT_DIR.parent / ".python-version", "r") as f:
             return f.read().strip()
-    except:
-        return None
+    except FileNotFoundError:
+        return platform.python_version()
 
 
 class ChangeHandler(PatternMatchingEventHandler):

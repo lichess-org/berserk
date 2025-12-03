@@ -11,4 +11,4 @@ while [ $attempts -lt 30 ]; do
     attempts=$((attempts + 1))
 done
 
-uv run pytest integration
+uv run pytest -s integration
