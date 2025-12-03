@@ -41,9 +41,8 @@ v0.14.0 (2025-08-26)
 * Added ``client.fide.get`` to retrieve detailed data about a FIDE player by ID
 * Added ``client.fide.search`` to search for FIDE players by name
 * Added ``client.puzzles.get_next`` to get a new puzzle
-* Fixed ``client.broadcasts.push_pgn_update`` endpoint URL.
-* Updated ``finished`` patameter to ``status`` in ``client.broadcasts.update_round``.
-* Added ``bots.handle_draw_offer`` and ``bots.handle_takeback_offer`` to handle draw and takeback offers
+* Fixed ``client.broadcasts.push_pgn_update`` endpoint URL
+* Updated ``finished`` patameter to ``status`` in ``client.broadcasts.update_round``
 
 Thanks to @nicvagn, @tors42, @fitztrev, @trevorbayless, @Looki2000 and @stafot for their contributions to this release
 
