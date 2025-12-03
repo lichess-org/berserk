@@ -1,6 +1,7 @@
 from typing import List
 
 from typing_extensions import TypedDict, NotRequired
+from .common import UciVariant
 
 
 class ExternalEngine(TypedDict):
@@ -19,7 +20,7 @@ class ExternalEngine(TypedDict):
     # Estimated depth of normal search
     defaultDepth: int
     # List of supported chess variants
-    variants: str
+    variants: list[UciVariant]
     # Arbitrary data that engine provider can use for identification or bookkeeping
     providerData: NotRequired[str]
 

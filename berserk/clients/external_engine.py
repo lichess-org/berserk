@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-from typing import List, cast, Literal, Iterator
+from typing import List, cast, Iterator
 
 from .base import BaseClient
 import requests
 from ..formats import NDJSON, TEXT
+from ..types.common import UciVariant
 from ..types.external_engine import ExternalEngineRequest, EngineAnalysisOutput
 
 EXTERNAL_ENGINE_URL = "https://engine.lichess.ovh"
@@ -13,10 +14,18 @@ EXTERNAL_ENGINE_URL = "https://engine.lichess.ovh"
 class ExternalEngine(BaseClient):
     """Client for external engine related endpoints."""
 
-    def __init__(self, session: requests.Session, base_url: str | None = None):
+    def __init__(
+        self,
+        session: requests.Session,
+        *,
+        base_url: str | None = None,
+        external_engine_url: str | None = None,
+    ):
         """Create a subclient for the endpoints that use a different base url."""
         super().__init__(session, base_url)
-        self._external_client = BaseClient(session, EXTERNAL_ENGINE_URL)
+        self._external_client = BaseClient(
+            session, external_engine_url or EXTERNAL_ENGINE_URL
+        )
 
     def get(self) -> List[ExternalEngine]:
         """Lists all external engines that have been registered for the user, and the credentials required to use them.
@@ -131,16 +140,7 @@ class ExternalEngine(BaseClient):
         threads: int,
         hash_table_size: int,
         pri_num_variations: int,
-        variant: Literal[
-            "chess",
-            "crazyhouse",
-            "antichess",
-            "atomic",
-            "horde",
-            "kingofthehill",
-            "racingkings",
-            "3check",
-        ],
+        variant: UciVariant,
         initial_fen: str,
         moves: List[str],
         movetime: int | None = None,

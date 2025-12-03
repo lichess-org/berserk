@@ -26,6 +26,17 @@ GameType: TypeAlias = Literal[
     "fromPosition",
 ]
 
+UciVariant = Literal[
+    "chess",
+    "crazyhouse",
+    "antichess",
+    "atomic",
+    "horde",
+    "kingofthehill",
+    "racingkings",
+    "3check",
+]
+
 Speed = Literal[
     "ultraBullet", "bullet", "blitz", "rapid", "classical", "correspondence"
 ]
