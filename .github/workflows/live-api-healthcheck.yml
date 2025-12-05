@@ -1,0 +1,78 @@
+name: Live API healthcheck
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'  # Every Monday at 2 AM UTC
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  live-api-healthcheck:
+    # Workflow logic:
+    # 1. Run tests against the live API (skip pytest-recording / vcr behavior)
+    # 2. IF tests pass -> Do nothing
+    # 3. IF tests fail -> Create issue (if no open issue with same title exists)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: "3.13"
+          
+      - name: Install dependencies
+        run: make setup
+        
+      - name: Run tests against live API
+        run: make test_live_api
+        id: test
+        continue-on-error: true
+        
+      - name: Check for existing issue
+        if: steps.test.outcome != 'success'
+        id: existing_issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Search for open issues with the specific title to avoid duplicates
+          issues=$(gh issue list --search "in:title Live API healthcheck - Test failures detected" --state open --json number)
+          issue_count=$(echo "$issues" | jq 'length')
+          if [ "$issue_count" -gt 0 ]; then
+            issue_number=$(echo "$issues" | jq -r '.[0].number')
+            echo "exists=true" >> $GITHUB_OUTPUT
+            echo "Existing issue #${issue_number} found, skipping creation"
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+            echo "No existing issue found"
+          fi
+          
+      - name: Create issue (tests failed - needs review)
+        if: steps.test.outcome != 'success' && steps.existing_issue.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          run_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          
+          gh issue create \
+            --title "Live API healthcheck - Test failures detected" \
+            --body "## Summary
+          Test failures detected when running tests against the live API.
+          
+          ## Test Results
+          The live-run produced failing tests; the exact failure mode may vary (schema change, data mismatch, timeout, auth error, flaky test, etc.).
+          
+          ## Action Required
+          1. Review test failures in the [workflow run](${run_url})
+          2. Reproduce locally: \`make test_live_api\`
+          3. If API changes are confirmed, either:
+             - Update the code/tests to match the new API
+             - Re-record affected cassettes manually
+          4. To re-record cassettes, run locally: \`uv run pytest --record-mode=rewrite\`
+          5. Run \`make test\` to verify fixes against recorded cassettes before merging
+          
+          ---
+          
+          **Note**: This issue is automatically created when the live API healthcheck detects possible API changes. Close this issue once the problems are resolved."
