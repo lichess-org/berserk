@@ -6,6 +6,7 @@ To be released
 
 
 * Deprecate Python 3.9 support - minimum required version is now Python 3.10+. This does not mean the library will not work with Python 3.9, but it will not be tested against it anymore.
+* Added test_live_no_streaming Makefile target and updated live-api-healthcheck GitHub Actions workflow to use it.
 * Updated typing and client behavior for the ``opening_explorer``:
   - Added new typed dicts ``PlayerOpeningStatistic`` and ``MastersOpeningStatistic`` in ``berserk.types.opening_explorer``.
   - Updated ``client.opening_explorer`` method signatures to return the new types.
