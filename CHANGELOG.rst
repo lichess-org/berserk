@@ -6,7 +6,9 @@ To be released
 
 
 * Deprecate Python 3.9 support - minimum required version is now Python 3.10+. This does not mean the library will not work with Python 3.9, but it will not be tested against it anymore.
-
+* Updated typing and client behavior for the ``opening_explorer``:
+  - Added new typed dicts ``PlayerOpeningStatistic`` and ``MastersOpeningStatistic`` in ``berserk.types.opening_explorer``.
+  - Updated ``client.opening_explorer`` method signatures to return the new types.
 * Updated ``PuzzleUser`` type to include patron status, title, and flair information to match current Lichess API schema.
 * Updated ``Team`` type to include flair information to match current Lichess API schema.
 * Updated ``TournamentResult`` type to include patron color information to match current Lichess API schema.
