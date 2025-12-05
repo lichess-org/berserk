@@ -36,7 +36,10 @@ test_record: ## run tests with pytest and record http requests
 	uv run pytest --record-mode=once tests
 
 test_live_api: ## run tests with live API (no cassettes)
-	uv run pytest --disable-recording --throttle-time=1.0 tests
+	uv run pytest --disable-recording --throttle-time=5.0 tests
+
+test_live_no_streaming: ## run live tests but skip streaming-marked tests
+	uv run pytest --disable-recording --throttle-time=5.0 -m "not streaming" tests
 
 typecheck: ## run type checking with pyright
 	uv run pyright berserk integration/local.py $(ARGS)

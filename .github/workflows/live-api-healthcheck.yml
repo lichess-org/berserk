@@ -27,7 +27,11 @@ jobs:
         run: make setup
         
       - name: Run tests against live API
-        run: make test_live_api
+        # Streaming endpoints can intermittently hang or time out for many
+        # minutes. To keep the healthcheck fast and reliable we skip tests
+        # marked with the `streaming` marker in this workflow and run the
+        # non-streaming test target instead.
+        run: make test_live_no_streaming
         id: test
         continue-on-error: true
         

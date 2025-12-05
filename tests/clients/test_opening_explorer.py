@@ -76,6 +76,7 @@ class TestMasterGames:
 class TestPlayerGames:
     @pytest.mark.vcr
     @pytest.mark.default_cassette("TestPlayerGames.results.yaml")
+    @pytest.mark.streaming
     def test_wait_for_last_results(self):
         result = Client().opening_explorer.get_player_games(
             player="evachesss", color="white", wait_for_indexing=True
@@ -84,6 +85,7 @@ class TestPlayerGames:
 
     @pytest.mark.vcr
     @pytest.mark.default_cassette("TestPlayerGames.results.yaml")
+    @pytest.mark.streaming
     def test_get_first_result_available(self):
         result = Client().opening_explorer.get_player_games(
             player="evachesss",
@@ -94,6 +96,7 @@ class TestPlayerGames:
 
     @pytest.mark.vcr
     @pytest.mark.default_cassette("TestPlayerGames.results.yaml")
+    @pytest.mark.streaming
     def test_stream(self):
         iterator = Client().opening_explorer.stream_player_games(
             player="evachesss",
