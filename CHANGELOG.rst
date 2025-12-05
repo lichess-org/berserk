@@ -9,6 +9,7 @@ To be released
 
 * Updated ``PuzzleUser`` type to include patron status, title, and flair information to match current Lichess API schema.
 * Updated ``Team`` type to include flair information to match current Lichess API schema.
+* Updated ``TournamentResult`` type to include patron color information to match current Lichess API schema.
 * Added ``test_live_api`` target in Makefile to run tests against the live Lichess API and bypass VCR.py recordings.
 * Added GitHub Actions workflow ``live-api-healthcheck`` to validate changes against the API schema.
 * Added pytest ``--live-api-throttle`` argument to add throttling between live API tests.
