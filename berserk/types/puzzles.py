@@ -3,15 +3,13 @@ from __future__ import annotations
 from typing import Literal, List
 from typing_extensions import TypedDict
 
-from .common import Color
+from .common import Color, LightUser
 
 
 DifficultyLevel = Literal["easiest", "easier", "normal", "harder", "hardest"]
 
 
-class PuzzleUser(TypedDict):
-    id: str
-    name: str
+class PuzzleUser(LightUser):
     color: Color
     rating: int
 

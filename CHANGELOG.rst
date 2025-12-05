@@ -7,6 +7,7 @@ To be released
 
 * Deprecate Python 3.9 support - minimum required version is now Python 3.10+. This does not mean the library will not work with Python 3.9, but it will not be tested against it anymore.
 
+* Updated ``PuzzleUser`` type to include patron status, title, and flair information to match current Lichess API schema.
 * Added ``test_live_api`` target in Makefile to run tests against the live Lichess API and bypass VCR.py recordings.
 * Added GitHub Actions workflow ``live-api-healthcheck`` to validate changes against the API schema.
 * Added pytest ``--live-api-throttle`` argument to add throttling between live API tests.
