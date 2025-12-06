@@ -49,6 +49,7 @@ class TournamentResult(TypedDict):
     performance: int
     title: NotRequired[Title]
     flair: NotRequired[str]
+    patronColor: NotRequired[int]
 
 
 class ArenaSheet(TypedDict):

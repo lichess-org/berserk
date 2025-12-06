@@ -1,9 +1,9 @@
 from __future__ import annotations
 
 from typing import Literal, List
-from typing_extensions import TypedDict
+from typing_extensions import TypedDict, NotRequired
 
-from .common import Color
+from .common import Color, Title
 
 
 DifficultyLevel = Literal["easiest", "easier", "normal", "harder", "hardest"]
@@ -14,6 +14,10 @@ class PuzzleUser(TypedDict):
     name: str
     color: Color
     rating: int
+    flair: NotRequired[str]
+    patron: NotRequired[bool]
+    patronColor: NotRequired[int]
+    title: NotRequired[Title]
 
 
 class PuzzlePerf(TypedDict):

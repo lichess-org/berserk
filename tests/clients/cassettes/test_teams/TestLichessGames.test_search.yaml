@@ -9,40 +9,25 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.31.0
+      - python-requests/2.32.5
     method: GET
     uri: https://lichess.org/api/team/search?text=lichess&page=1
   response:
     body:
-      string: "{\"currentPage\":1,\"maxPerPage\":15,\"currentPageResults\":[{\"id\":\"pawn-stars-2\",\"name\":\"pawn
-        stars 2\",\"description\":\"![Pawnstars2logo](https://i.imgur.com/2EYYg6w.jpg)\\r\\n\\r\\nWelcome
-        to the Biggest Indian and the Top-5 Team of lichess! \\r\\nThis Club was formed
-        on 7th August 2020 and the main leader of this team is [Bhavisha0101](https://lichess.org/@/Bhavisha0101)
-        Contact him for any queries or suggestions regarding the team, we also accept
-        paid promotion and sponsorships for tournaments, contact him for the same.\\r\\n\\r\\nWe
-        Are #5 among all **[Lichess Teams](https://lichess.org/team/all)**\\r\\n\\r\\nThe
-        team has **150+ Titled members!**\\r\\n\\r\\n**Our Major Team battles/Chessathons**\\r\\n**[Jaysheel's
-        Birthday Swiss](https://lichess.org/swiss/ADKFm9Tw)**\\r\\n\\r\\n**Hall Of
-        Fame**\\r\\n[Best Swiss](https://lichess.org/swiss/OTe9lPik)\\r\\n[Best Arena](https://lichess.org/tournament/HBcZbxBO)\\r\\n[Best
-        Team Battle](https://lichess.org/tournament/RRkR5bZ2)\\r\\n\\r\\nDo join our
-        Elite Team (only 2100+ allowed)\\r\\n[https://lichess.org/team/pawn-stars-2-elites-2100](https://lichess.org/team/pawn-stars-2-elites-2100)\\r\\n\\r\\nDo
-        join our Friendly Club\\r\\n[https://lichess.org/team/pawns-hurricane-2](
-        https://lichess.org/team/pawns-hurricane-2 )\\r\\n\\r\\nDescription Maintained
-        by [Bhavisha0101](https://lichess.org/@/Bhavisha0101)\\r\\n\\r\\nTeam owners/leaders-\\r\\n\\r\\n[Bhavisha0101](https://lichess.org/@/Bhavisha0101)\\r\\n[Jaysheelchess2009](https://lichess.org/@/Jaysheelchess2009)\\r\\n\\r\\nLocation-
-        **India**, But all Nations are Welcome!\",\"open\":true,\"leader\":{\"name\":\"Unknown_Warrior11\",\"id\":\"unknown_warrior11\"},\"leaders\":[{\"name\":\"Bhavisha0101\",\"id\":\"bhavisha0101\"},{\"name\":\"Jaysheelchess2009\",\"id\":\"jaysheelchess2009\"}],\"nbMembers\":30759},{\"id\":\"zhigalko_sergei-fan-club\",\"name\":\"Zhigalko_Sergei
+      string: "{\"currentPage\":1,\"maxPerPage\":15,\"currentPageResults\":[{\"id\":\"zhigalko_sergei-fan-club\",\"name\":\"Zhigalko_Sergei
         & Friends\",\"description\":\"### \u0414\u043E\u0431\u0440\u043E \u043F\u043E\u0436\u0430\u043B\u043E\u0432\u0430\u0442\u044C!\\r\\n\\r\\nOfficial
-        Club of the Belarusian International Grandmaster\\r\\nZhigalko Sergei \uFE0F\uFE0F\\r\\n\\r\\n\u041E\u0444\u0438\u0446\u0438\u0430\u043B\u044C\u043D\u044B\u0439
+        Club of the Belarusian International Grandmaster\\r\\nZhigalko Sergei \\r\\n\\r\\n\u041E\u0444\u0438\u0446\u0438\u0430\u043B\u044C\u043D\u044B\u0439
         \u043A\u043B\u0443\u0431 \u0431\u0435\u043B\u043E\u0440\u0443\u0441\u0441\u043A\u043E\u0433\u043E
         \u043C\u0435\u0436\u0434\u0443\u043D\u0430\u0440\u043E\u0434\u043D\u043E\u0433\u043E
         \u0433\u0440\u043E\u0441\u0441\u043C\u0435\u0439\u0441\u0442\u0435\u0440\u0430
         \\r\\n\u0416\u0438\u0433\u0430\u043B\u043A\u043E \u0421\u0435\u0440\u0433\u0435\u044F
         \u0410\u043B\u0435\u043A\u0441\u0430\u043D\u0434\u0440\u043E\u0432\u0438\u0447\u0430
-        \uFE0F\\r\\n\\r\\n**YOUTUBE \u041A\u0410\u041D\u0410\u041B:**\\r\\nhttps://www.youtube.com/c/SergeiZhigalkoChess\\r\\n\\r\\n**\u041E\u0424\u0418\u0426\u0418\u0410\u041B\u042C\u041D\u042B\u0419
+        \\r\\n\\r\\n**YOUTUBE \u041A\u0410\u041D\u0410\u041B:**\\r\\nhttps://www.youtube.com/c/SergeiZhigalkoChess\\r\\n\\r\\n**\u041E\u0424\u0418\u0426\u0418\u0410\u041B\u042C\u041D\u042B\u0419
         \u0421\u0410\u0419\u0422:**\\r\\nhttps://zhigalko-sergei.com/\\r\\n\\r\\n**\u041F\u0440\u043E
-        \u043D\u0430\u0448 \u041A\u041B\u0423\u0411:**\\r\\n\uFE0F\u041E\u0434\u0438\u043D
+        \u043D\u0430\u0448 \u041A\u041B\u0423\u0411:**\\r\\n\u041E\u0434\u0438\u043D
         \u0438\u0437 \u0441\u0438\u043B\u044C\u043D\u0435\u0439\u0448\u0438\u0445
         \u043A\u043B\u0443\u0431\u043E\u0432 \u043D\u0430 Lichess!\\r\\n\u041C\u043D\u043E\u0433\u043E
-        \u0442\u0438\u0442\u0443\u043B\u044C\u043D\u044B\u0445 \u0448\u0430\u0445\u043C\u0430\u0442\u0438\u0441\u0442\u043E\u0432!\\r\\n\uFE0F\u041D\u0435\u0432\u0435\u0440\u043E\u044F\u0442\u043D\u043E
+        \u0442\u0438\u0442\u0443\u043B\u044C\u043D\u044B\u0445 \u0448\u0430\u0445\u043C\u0430\u0442\u0438\u0441\u0442\u043E\u0432!\\r\\n\u041D\u0435\u0432\u0435\u0440\u043E\u044F\u0442\u043D\u043E
         \u0434\u0440\u0443\u0436\u0435\u0441\u043A\u0430\u044F \u0430\u0442\u043C\u043E\u0441\u0444\u0435\u0440\u0430!\\r\\n\u0426\u0435\u043D\u0438\u043C
         \u0438 \u0443\u0432\u0430\u0436\u0430\u0435\u043C \u043A\u0430\u0436\u0434\u043E\u0433\u043E
         \u0447\u043B\u0435\u043D\u0430 \u043A\u043B\u0443\u0431\u0430!\\r\\n\\r\\n**WE
@@ -52,7 +37,8 @@ interactions:
         [5](https://lichess.org/tournament/aug22str), [6](https://lichess.org/tournament/sep22str),
         [7](https://lichess.org/tournament/nov22str), [8](https://lichess.org/tournament/feb23str),
         [9](https://lichess.org/tournament/apr23str), [10](https://lichess.org/tournament/may23str),
-        [11](https://lichess.org/tournament/jun23str), [12](https://lichess.org/tournament/jul23str))
+        [11](https://lichess.org/tournament/jun23str), [12](https://lichess.org/tournament/jul23str),
+        [13](https://lichess.org/tournament/sep23str), [14](https://lichess.org/tournament/oct23str))
         \\r\\nLichess Mega ([1](https://lichess.org/tournament/323recdF), [2](https://lichess.org/tournament/952cWgJU),
         [3](https://lichess.org/tournament/QH2iifj5), [4](https://lichess.org/tournament/KCe4znVp),
         [5](https://lichess.org/tournament/wS1QTjV9), [6](https://lichess.org/tournament/oJ5QU5Jn),
@@ -63,7 +49,10 @@ interactions:
         [15](https://lichess.org/tournament/qTT1ZCvr), [16](https://lichess.org/tournament/uz7rBb8W),
         [17](https://lichess.org/tournament/AhHStbDN), [18](https://lichess.org/tournament/0Wtg1HEM),
         [19](https://lichess.org/tournament/R9qCNO9y), [20](https://lichess.org/tournament/zajHUySm),
-        [21](https://lichess.org/tournament/3rIv4ZRF))\\r\\n\\r\\n**\u041F\u0440\u0435\u0438\u043C\u0443\u0449\u0435\u0441\u0442\u0432\u0430
+        [21](https://lichess.org/tournament/3rIv4ZRF), [22](https://lichess.org/tournament/Ajqo8PcO),
+        [23](https://lichess.org/tournament/LHCX7nK2), [24](https://lichess.org/tournament/orKmy9DG),
+        [25](https://lichess.org/tournament/bgEbXjXs), [26](https://lichess.org/tournament/WvLWf69r),
+        [27](https://lichess.org/tournament/BJ3w8DS2)\\r\\n\\r\\n**\u041F\u0440\u0435\u0438\u043C\u0443\u0449\u0435\u0441\u0442\u0432\u0430
         \u0434\u043B\u044F \u0447\u043B\u0435\u043D\u043E\u0432 \u043A\u043B\u0443\u0431\u0430
         \\\"Zhigalko_Sergei & Friends\\\":**\\r\\n\u0423\u0447\u0430\u0441\u0442\u0438\u0435
         \u0432 \u0422\u0423\u0420\u041D\u0418\u0420\u0410\u0425 \u043A\u043B\u0443\u0431\u0430.\\r\\n\u0423\u0447\u0430\u0441\u0442\u0438\u0435
@@ -78,7 +67,7 @@ interactions:
         \u0433\u0440\u043E\u0441\u0441\u043C\u0435\u0439\u0441\u0442\u0435\u0440\u0430
         \u0421\u0435\u0440\u0433\u0435\u044F \u0416\u0438\u0433\u0430\u043B\u043A\u043E.\\r\\n\u0418
         \u043C\u043D\u043E\u0433\u043E\u0435 \u0434\u0440\u0443\u0433\u043E\u0435!
-        \uFE0F\\r\\n\\r\\n#### \u0413\u0440\u043E\u0441\u0441\u043C\u0435\u0439\u0441\u0442\u0435\u0440
+        \\r\\n\\r\\n#### \u0413\u0440\u043E\u0441\u0441\u043C\u0435\u0439\u0441\u0442\u0435\u0440
         \u0421\u0435\u0440\u0433\u0435\u0439 \u0416\u0438\u0433\u0430\u043B\u043A\u043E
         - \u041A\u0442\u043E \u0422\u0430\u043A\u043E\u0439? :)\\r\\n\\r\\n**\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0435
         \u0440\u0435\u0439\u0442\u0438\u043D\u0433\u0438 FIDE \u0421\u0435\u0440\u0433\u0435\u044F
@@ -86,7 +75,7 @@ interactions:
         2696 - \u0432 \u043A\u043B\u0430\u0441\u0441\u0438\u043A\u0443\\r\\n 2701
         - \u0432 \u0431\u043B\u0438\u0446\\r\\n 2752 - \u0432 \u0440\u0430\u043F\u0438\u0434\\r\\n\\r\\n**\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0435
         \u0440\u0435\u0439\u0442\u0438\u043D\u0433\u0438 \u043D\u0430 Lichess:**\\r\\n3037
-        - \u0432 \u0440\u0430\u043F\u0438\u0434\\r\\n2919 - \u0432 \u0431\u043B\u0438\u0446\\r\\n3247
+        - \u0432 \u0440\u0430\u043F\u0438\u0434\\r\\n2919 - \u0432 \u0431\u043B\u0438\u0446\\r\\n3338
         - \u0432 \u043F\u0443\u043B\u044E\\r\\n\\r\\n**\u0414\u043E\u0441\u0442\u0438\u0436\u0435\u043D\u0438\u044F
         \u0421\u0435\u0440\u0433\u0435\u044F \u0416\u0438\u0433\u0430\u043B\u043A\u043E:**\\r\\n\u0427\u0435\u043C\u043F\u0438\u043E\u043D
         \u0415\u0432\u0440\u043E\u043F\u044B \u043F\u043E \u0431\u043B\u0438\u0446\u0443
@@ -99,7 +88,7 @@ interactions:
         \u0416\u0438\u0433\u0430\u043B\u043A\u043E \u0421\u0435\u0440\u0433\u0435\u0439:**\\r\\n\u041F\u0440\u043E\u0444\u0435\u0441\u0441\u0438\u043E\u043D\u0430\u043B\u044C\u043D\u044B\u0439
         \u0448\u0430\u0445\u043C\u0430\u0442\u043D\u044B\u0439 \u0442\u0440\u0435\u043D\u0435\u0440.\\r\\n\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0439
         \u0448\u0430\u0445\u043C\u0430\u0442\u043D\u044B\u0439 \u0441\u0442\u0440\u0438\u043C\u0435\u0440
-        \u043D\u0430 Youtube.\\r\\n\uFE0F\u041E\u0434\u0438\u043D \u0438\u0437 \u0441\u0438\u043B\u044C\u043D\u0435\u0439\u0448\u0438\u0445
+        \u043D\u0430 Youtube.\\r\\n\u041E\u0434\u0438\u043D \u0438\u0437 \u0441\u0438\u043B\u044C\u043D\u0435\u0439\u0448\u0438\u0445
         \u0438\u0433\u0440\u043E\u043A\u043E\u0432 \u043D\u0430 Lichess.\\r\\n\\r\\n**SITE:**
         https://zhigalko-sergei.com/\\r\\n**YOUTUBE:** https://www.youtube.com/c/SergeiZhigalkoChess\\r\\n**TWITCH:**
         https://www.twitch.tv/chess_zhigalko_sergei\\r\\n**INSTAGRAM:** https://www.instagram.com/zhigalko_sergei/\\r\\n**DONATION
@@ -109,8 +98,22 @@ interactions:
         \\r\\n\\r\\n**50K MEMBERS**\\r\\n17.01.2023\\r\\n\\r\\n**\u0414\u043E\u0440\u043E\u0433\u0438\u0435
         \u0414\u0440\u0443\u0437\u044C\u044F! \u0412\u0441\u0442\u0443\u043F\u0430\u0439\u0442\u0435
         \u0432 \u041D\u0430\u0448 \u041A\u043B\u0443\u0431! \u0412\u043C\u0435\u0441\u0442\u0435
-        - \u041C\u044B \u0431\u043E\u043B\u044C\u0448\u0430\u044F \u0421\u0418\u041B\u0410!!**\\r\\n\\r\\n!!NOW!!\\r\\nGM
-        Zhigalko Sergei Stream 1+0 Arena:\\r\\nhttps://lichess.org/tournament/6XqXUWGV\\r\\nWELCOME!!\\r\\nhttps://www.youtube.com/watch?v=cItPDGg3r58\",\"open\":true,\"leader\":{\"name\":\"Zhigalko_Sergei\",\"title\":\"GM\",\"patron\":true,\"id\":\"zhigalko_sergei\"},\"leaders\":[{\"name\":\"Chess_Blondinka\",\"title\":\"WFM\",\"patron\":true,\"id\":\"chess_blondinka\"},{\"name\":\"SergeyVoronChess\",\"id\":\"sergeyvoronchess\"},{\"name\":\"Zhigalko_Sergei\",\"title\":\"GM\",\"patron\":true,\"id\":\"zhigalko_sergei\"}],\"nbMembers\":57980},{\"id\":\"fide-checkmate-coronavirus\",\"name\":\"FIDE
+        - \u041C\u044B \u0431\u043E\u043B\u044C\u0448\u0430\u044F \u0421\u0418\u041B\u0410!!**\",\"open\":true,\"leader\":{\"name\":\"Zhigalko_Sergei\",\"title\":\"GM\",\"patron\":true,\"patronColor\":10,\"id\":\"zhigalko_sergei\"},\"nbMembers\":75370,\"leaders\":[{\"name\":\"Zhigalko_Sergei\",\"title\":\"GM\",\"patron\":true,\"patronColor\":10,\"id\":\"zhigalko_sergei\"},{\"name\":\"Chess_Blondinka\",\"title\":\"WFM\",\"patron\":true,\"patronColor\":10,\"id\":\"chess_blondinka\"},{\"name\":\"SergeyVoronChess\",\"flair\":\"nature.phoenix-bird\",\"id\":\"sergeyvoronchess\"}]},{\"id\":\"pawn-stars-2\",\"name\":\"pawn
+        stars 2\",\"description\":\"![Pawnstars2logo](https://i.imgur.com/2EYYg6w.jpg)\\r\\n\\r\\nWelcome
+        to the Biggest Indian and the Top-5 Team of lichess! \\r\\nThis Club was formed
+        on 7th August 2020 and the main leader of this team is [Bhavisha0101](https://lichess.org/@/Bhavisha0101)
+        Contact him for any queries or suggestions regarding the team, we also accept
+        paid promotion and sponsorships for tournaments, contact him for the same.\\r\\n\\r\\nWe
+        Are #5 among all **[Lichess Teams](https://lichess.org/team/all)**\\r\\n\\r\\nThe
+        team has **150+ Titled members!**\\r\\n\\r\\n**Our Major Team battles/Chessathons**\\r\\n**[Jaysheel's
+        Birthday Swiss](https://lichess.org/swiss/ADKFm9Tw)**\\r\\n\\r\\n**Hall Of
+        Fame**\\r\\n[Best Swiss](https://lichess.org/swiss/OTe9lPik)\\r\\n[Best Arena](https://lichess.org/tournament/HBcZbxBO)\\r\\n[Best
+        Team Battle](https://lichess.org/tournament/RRkR5bZ2)\\r\\n\\r\\nDo join our
+        Elite Team (only 2100+ allowed)\\r\\n[https://lichess.org/team/pawn-stars-2-elites-2100](https://lichess.org/team/pawn-stars-2-elites-2100)\\r\\n\\r\\nDo
+        join our Friendly Club\\r\\n[https://lichess.org/team/pawns-hurricane-2](
+        https://lichess.org/team/pawns-hurricane-2 )\\r\\n\\r\\nDescription Maintained
+        by [Bhavisha0101](https://lichess.org/@/Bhavisha0101)\\r\\n\\r\\nTeam owners/leaders-\\r\\n\\r\\n[Bhavisha0101](https://lichess.org/@/Bhavisha0101)\\r\\n[Jaysheelchess2009](https://lichess.org/@/Jaysheelchess2009)\\r\\n\\r\\nLocation-
+        **India**, But all Nations are Welcome!\",\"open\":true,\"leader\":{\"name\":\"Unknown_Warrior11\",\"id\":\"unknown_warrior11\"},\"nbMembers\":30133,\"leaders\":[{\"name\":\"Bhavisha0101\",\"id\":\"bhavisha0101\"},{\"name\":\"Jaysheelchess2009\",\"id\":\"jaysheelchess2009\"}]},{\"id\":\"fide-checkmate-coronavirus\",\"name\":\"FIDE
         Checkmate Coronavirus\",\"description\":\"FIDE Checkmate Coronavirus tournaments
         on Lichess ran non-stop for 30 days or 720 hours. \\r\\n\\r\\nTournaments
         were aimed at all chess players, regardless of age, country, or level of play.
@@ -118,293 +121,297 @@ interactions:
         Inspired by the Olympic Creed, we give a winning chance to everyone and reward
         involvement and participation. The major prize was 64 one-week invitations
         to the 2021 Chess Olympiad in Moscow!\\r\\n\\r\\n To check if you are on the
-        list of winners, have a look here: https://results.checkmatecoronavirus.com/tournaments/prizes\\r\\n\\uD83D\\uDCCD
+        list of winners, have a look here: https://results.checkmatecoronavirus.com/tournaments/prizes\\r\\n
         Saw your name among the winners? Don't forget to claim the prize! Please contact
         us before June 30th 2020 by sending an email to\\r\\nprizes@checkmatecoronavirus.com
         with the following data:\\r\\n\u2022 player\u2019s nickname\\r\\n\u2022 player\u2019s
         real name\\r\\n\u2022 player\u2019s email address\\r\\n\u2022 player\u2019s
         home address (only for players who won Checkmate Coronavirus Souvenirs)\\r\\n\\r\\nAll
-        the details - https://www.checkmatecoronavirus.com\",\"open\":true,\"leader\":{\"name\":\"FIDE\",\"id\":\"fide\"},\"leaders\":[{\"name\":\"leonid_elkin\",\"id\":\"leonid_elkin\"},{\"name\":\"AnastasisTzoumpas\",\"title\":\"FM\",\"id\":\"anastasistzoumpas\"},{\"name\":\"mprevenios\",\"id\":\"mprevenios\"},{\"name\":\"FIDE\",\"id\":\"fide\"},{\"name\":\"lexydim\",\"title\":\"WGM\",\"id\":\"lexydim\"},{\"name\":\"cinemakro\",\"id\":\"cinemakro\"},{\"name\":\"akispara\",\"id\":\"akispara\"}],\"nbMembers\":37059},{\"id\":\"the-house-discord-server\",\"name\":\"The
-        House Discord Server\",\"description\":\"![House logo](https://i.imgur.com/VIjeQFQ.png)\\r\\n\\r\\nLichess
-        team for all chess & variant players. Participating in Lichess Bundesliga
-        every Thursday and Sunday, other battles are always welcome - especially variant
-        ones!\\r\\n\\r\\n**72-time Bundesliga winner**\\r\\nThe House joined the Bundesliga
-        (\\\"BL\\\") on 2nd of April, 2020. We liked the competition and atmosphere,
-        playing online blitz chess regularly against strong players. At the end of
-        2022, we completed the hat-trick \u2013 winning three consecutive BL seasons.\\r\\n\\r\\nAll-time
-        score: https://rochadeeuropa.de/ewige-q-bundesliga-tabelle/\\r\\nCurrent season:
-        https://rochadeeuropa.de/lichess-2023/\\r\\nPrevious seasons: [2022](https://rochadeeuropa.de/lichess-2022/),
-        [2021](https://rochadeeuropa.de/lichess-2021/), [2020](https://rochadeeuropa.de/lichess-2020/)\\r\\n\\r\\n
-        Upcoming Battles: https://lichess.org/team/the-house-discord-server/tournaments\\r\\n\\r\\n---------------------------------------------------------------------------------------------------------------------------------\\r\\n\\r\\nThe
-        House Discord Server \u2013 a chat platform for chess and variants. A great
-        place to discuss chess, learn a new variant or deepen your knowledge on your
-        favourite variants! We're proud to have some of the best and most active variant
-        players of lichess in the server:\\r\\n\\r\\nCrazyhouse: [Jasugi99](https://lichess.org/@/jasugi99),
-        [opperwezen](https://lichess.org/@/opperwezen), [catask](https://lichess.org/@/catask),
-        [gsvc](https://lichess.org/@/gsvc), [TheFinnisher](https://lichess.org/@/TheFinnisher)\\r\\nAntichess:
-        [PepsiNGaming](https://lichess.org/@/PepsiNGaming), [arimakat](https://lichess.org/@/arimakat),
-        [ODMWND](https://lichess.org/@/ODMWND), [Kex09](https://lichess.org/@/Kex09)\\r\\nAtomic:
-        [tipau](https://lichess.org/@/tipau), [vlad_00](https://lichess.org/@/vlad_00),
-        [Wolfram_EP](https://lichess.org/@/Wolfram_EP), [Hysterix](https://lichess.org/@/Hysterix),
-        [Illion](https://lichess.org/@/Illion), [ijh](https://lichess.org/@/ijh),
-        [Opabinia](https://lichess.org/@/Opabinia)\\r\\nThree-Check: [VariantsOnly](https://lichess.org/@/VariantsOnly),
-        [two64brocc](https://lichess.org/@/two64brocc), [TCF_Namelecc](https://lichess.org/@/TCF_Namelecc),
-        [BughouseKnight](https://lichess.org/@/BughouseKnight)\\r\\nRacing Kings:
-        [RoyalManiac](https://lichess.org/@/RoyalManiac), [Holstentor](https://lichess.org/@/Holstentor),
-        [iblunderAlot124](https://lichess.org/@/iblunderAlot124), [sachmaty8](https://lichess.org/@/sachmaty8)\\r\\nHorde:
-        [Stubenfisch](https://lichess.org/@/Stubenfisch), [Sinamon73](https://lichess.org/@/Sinamon73),
-        [lecw](https://lichess.org/@/lecw), [wasilix](https://lichess.org/@/wasilix),
-        [PhilippeSaner](https://lichess.org/@/PhilippeSaner)\\r\\n\\r\\nJoin: https://discord.gg/RhWgzcC\",\"open\":true,\"leader\":{\"name\":\"TheHouseDiscord\",\"id\":\"thehousediscord\"},\"leaders\":[{\"name\":\"calcu_later\",\"title\":\"FM\",\"id\":\"calcu_later\"},{\"name\":\"gsvc\",\"title\":\"GM\",\"patron\":true,\"id\":\"gsvc\"},{\"name\":\"TheFinnisher\",\"patron\":true,\"id\":\"thefinnisher\"},{\"name\":\"TheHouseDiscord\",\"id\":\"thehousediscord\"}],\"nbMembers\":14777},{\"id\":\"brain-chess-checkmate\",\"name\":\"Brain
+        the details - https://www.checkmatecoronavirus.com\",\"open\":true,\"leader\":{\"name\":\"FIDE\",\"id\":\"fide\"},\"nbMembers\":38066,\"leaders\":[{\"name\":\"FIDE\",\"id\":\"fide\"},{\"name\":\"cinemakro\",\"flair\":\"objects.film-projector\",\"id\":\"cinemakro\"},{\"name\":\"akispara\",\"flair\":\"nature.hippopotamus\",\"id\":\"akispara\"},{\"name\":\"lexydim\",\"title\":\"WGM\",\"flair\":\"nature.blossom\",\"id\":\"lexydim\"},{\"name\":\"mprevenios\",\"id\":\"mprevenios\"},{\"name\":\"leonid_elkin\",\"id\":\"leonid_elkin\"},{\"name\":\"AnastasisTzoumpas\",\"title\":\"FM\",\"id\":\"anastasistzoumpas\"}]},{\"id\":\"satranc-dunyam-youtube\",\"name\":\"Satran\xE7
+        D\xFCnyam Youtube\",\"description\":\"**Lichess Tak\u0131mlarda D\xFCnya'n\u0131n
+        En B\xFCy\xFCk 8'inci \\r\\n& T\xFCrkiye'nin En B\xFCy\xFCk Satran\xE7 Ailesine
+        Ho\u015F Geldiniz!**\\r\\n\\r\\n[Satran\xE7 D\xFCnyam Youtube](https://www.youtube.com/c/satrancdunyam?sub_confirmation=1)\",\"open\":false,\"leader\":{\"name\":\"YasinEmrah\",\"title\":\"FM\",\"flair\":\"symbols.play-button\",\"patron\":true,\"patronColor\":8,\"id\":\"yasinemrah\"},\"nbMembers\":28785,\"flair\":\"symbols.play-button\",\"leaders\":[{\"name\":\"YasinEmrah\",\"title\":\"FM\",\"flair\":\"symbols.play-button\",\"patron\":true,\"patronColor\":8,\"id\":\"yasinemrah\"},{\"name\":\"CanliSatranc\",\"flair\":\"objects.nazar-amulet\",\"id\":\"canlisatranc\"}]},{\"id\":\"the-house-discord-server\",\"name\":\"The
+        House Discord Server\",\"description\":\"![House logo](https://i.postimg.cc/kGw4rNpb/22-House-Logox5-smaller.png)\\r\\n\\r\\n##\\r\\n\\r\\nWe
+        are the **House**, a Lichess team for chess and variant players. We\u2019ve
+        won 134 Bundesliga events and five straight season titles since 2020. With
+        20,000+ members from amateurs to GMs, we value fair play and sportsmanship.
+        Our tournament schedule consists of Bundesliga excitement complemented by
+        multiple variant team battles throughout the week.\\r\\n\\r\\nAre you seeking
+        a team that offers both competitive play and a welcoming environment? Look
+        no further than our community. We compete in Lichess Bundesliga tournaments
+        every Thursday and Sunday against top-tier opponents. But the excitement doesn't
+        stop there: our team also engages in variant team tournaments, offering a
+        variety of chess experiences to suit your preferences.\\r\\n\\r\\nExplore
+        our unique Puzzle Packs, a collection of puzzles selected from team's Bundesliga
+        games. The latest edition is waiting you [here](https://lichess.org/study/YSwTDVB6)
+        and our full archive is accessible [here](https://lichess.org/study/by/TheHouseDiscord/newest).\\r\\n\\r\\n***\\r\\n\\r\\n#
+        **Team News & Updates**\\r\\n- Jan 1: Happy New year! Read about our [journey
+        of 2024 in the forum](https://lichess.org/forum/team-the-house-discord-server/year-of-2024).\\r\\n\\r\\n-
+        Sep 22: Things are heating up in the **House Multi-Variant Championship 2025**.
+        Who\u2019s making the Final Four? Follow along on the [forum](https://lichess.org/forum/team-the-house-discord-server/hmvc-2025-pairings-and-results?page=1).\\r\\n\\r\\n-
+        Oct 12: Back-to-back **Bundesliga** victories! Props to @satunnainen, @caternion,
+        and @markamp for carrying the team [tonight](https://lichess.org/tournament/vIZ1HsYG).\\r\\n\\r\\nCheck
+        out our [upcoming team tournaments](https://lichess.org/team/the-house-discord-server/tournaments).\\r\\n\\r\\n***\\r\\n\\r\\n#
+        **Lichess Bundesliga**\\r\\n\\r\\nThe House joined the [Lichess Bundesliga](https://lichess.org/@/lichess/blog/announcing-the-lichess-bundesliga/X4da-RAA)
+        in [April 2020](https://lichess.org/tournament/oGeaCHx7). After winning the
+        inaugural season, we achieved three consecutive championships by 2022, claimed
+        our fourth title in 2023, and we triumped again in 2024. Five titles in a
+        row! Now we aim for a sixth. Whether you\u2019re a strong player or a newcomer
+        seeking a community with a legacy, The House awaits.\\r\\n\\r\\nBundesliga
+        tournaments occur twice weekly, on **Thursdays** and **Sundays**, starting
+        at 18:00 UTC. They offer a valuable opportunity to face formidable opponents
+        and stregthen our team spirit.\\r\\n\\r\\nCheck out the results: [all-time
+        scores](https://rochadeeuropa.de/ewige-q-bundesliga-tabelle/), current [season
+        2025](https://rochadeeuropa.de/lichess-2025/), and relive our victories in
+        [season 2024](https://rochadeeuropa.de/lichess-2024/), [season 2023](https://rochadeeuropa.de/lichess-2023),
+        [season 2022](https://rochadeeuropa.de/lichess-2022), [season 2021](https://rochadeeuropa.de/lichess-2021),
+        and [season 2020](https://rochadeeuropa.de/lichess-2020). The journey isn\u2019t
+        over \u2013 join us as we aim for even greater heights!\\r\\n\\r\\n***\\r\\n\\r\\n#
+        **Discord**\\r\\n\\r\\nWe have a Discord server \u2013 a chat platform for
+        chess and variants. It's a great place to discuss chess, learn a new variant
+        or deepen your knowledge on your favourite variants! We host group calls during
+        team tournaments, play bughouse on voice chat, explore other games, and more.\\r\\n\\r\\nJoin
+        us there! https://discord.gg/RhWgzcC\\r\\n\\r\\n***\\r\\n\\r\\n# **Contact**\\r\\n\\r\\nGot
+        a question? Want to learn more about The House? Reach out to @TheHouseDiscord.
+        Are you a team tournament organizer? While our chess schedule is packed with
+        Lichess Bundesliga commitments, please contact @TheFinnisher for joining your
+        variant team tournaments.\",\"open\":true,\"leader\":{\"name\":\"TheHouseDiscord\",\"id\":\"thehousediscord\"},\"nbMembers\":25819,\"leaders\":[{\"name\":\"TheHouseDiscord\",\"id\":\"thehousediscord\"},{\"name\":\"TheFinnisher\",\"patron\":true,\"patronColor\":10,\"id\":\"thefinnisher\"},{\"name\":\"gsvc\",\"title\":\"GM\",\"flair\":\"symbols.question-mark\",\"patron\":true,\"patronColor\":7,\"id\":\"gsvc\"},{\"name\":\"calcu_later\",\"title\":\"FM\",\"id\":\"calcu_later\"}]},{\"id\":\"lichess-chess960\",\"name\":\"Lichess
+        Chess960\",\"description\":\"![](https://i.imgur.com/BH4KzL2.gif)\\r\\n\\r\\n**Welcome
+        to the official Lichess Chess960 Team!**\\r\\n\\r\\nWe are the home of [Chess960](https://lichess.org/variant/chess960)
+        fans across Lichess. Join the team for tournaments and other community-driven
+        Chess960 events. Everyone is welcome to join!\\r\\n\\r\\n[VOTE here](https://forms.gle/iwdeyZwLTzkVar64A)
+        for the time control you would like to see more for Chess960 Tournaments\\r\\n\\r\\n####
+        Weekly Chess960 Team Battle every Saturday, 11:00 UTC\\r\\n\\r\\n***\\r\\n\\r\\n**Resources:**\\r\\n\\r\\n\u2022
+        [Detailed Guide to Chess960](https://lichess.org/@/visualdennis/blog/my-ultimate-guide-to-chess960/de25UOqM)
+        with history, strategy and opening tips as well as further resources. \\r\\n\\r\\n\u2022
+        [Table of all 960 starting positions](https://chess960.net/wp-content/uploads/2018/02/chess960-starting-positions.pdf)
+        (PDF)\\r\\n\\r\\n\u2022 [Chess960 Generator](https://farley-gpt.github.io/Chess960-Generator/)\\r\\n\\r\\n\u2022
+        [Castling Rules](https://lichess.org/study/7LaW0hAX)\\r\\n\\r\\n***\\r\\n\\r\\n**Tournaments
+        Schedule:**\\r\\n\\r\\n|**Time**|**Day**|**Event**|**Time Control**|\\r\\n|---|---|---|---|\\r\\n|Hourly|Every
+        day|Hourly Chess960|Various|\\r\\n|19:00 UTC|Tuesdays| Weekly Chess960 Rapid
+        Arena|10+2|\\r\\n|19:00 UTC|Wednesdays| Weekly Chess960 SuperBlitz Arena|3+0|\\r\\n|11:00
+        UTC|Saturdays| Weekly Chess960 SuperBlitz Team Battle|3+0|\\r\\n\\r\\n+ The
+        Lichess Chess960 Titled Arenas twice every 6 months. \\r\\n\\r\\n+ The Hourly
+        Tournaments\\r\\n\\r\\n![](https://i.imgur.com/Z4f5pZx.jpg)\\r\\n\\r\\nLinks
+        to these regular tournaments can be found [below](https://lichess.org/team/lichess-chess960/tournaments)
+        , if you scroll down a bit or [here](https://lichess.org/tournament).\\r\\n\\r\\nAdditionally,
+        if you are fan of team battles, you can find [Daily Chess960 Team Battles](https://lichess.org/team/fischer-random-chess-center/tournaments)
+        hosted by [Fischer Random Chess Center](https://lichess.org/team/fischer-random-chess-center)\\r\\n\\r\\nChess
+        960 league with 20+20: https://www.lichess4545.com/chess960/\\r\\n\\r\\n***\\r\\n\\r\\n**Community:**\\r\\n\\r\\n\u2022
+        [Share and discuss your games here](https://lichess.org/forum/team-lichess-chess960/share-your-cool-chess960-games-here-for-discussion-or-analysis)\\r\\n\\r\\n\u2022
+        [Feel free to create a topic in the forum](https://lichess.org/forum/team-lichess-chess960)
+        if you have questions, want to give feedback, or make suggestion for tournament
+        ideas, events, format or any kind of thing. \\r\\n\\r\\n\u2022 [Lichess Arena
+        Ranking](https://lichess.thijs.com/rankings/chess960/monthly/list_players_trophies.html)\\r\\n\\r\\n\u2022
+        Chess960 versions for other variants, such as Crazyhouse960 and Atomic960
+        can be played on [Pychess](https://www.pychess.org/tournament/J0JLXYFy). Every
+        2nd Monday of the month, Crazyhouse960 Shield takes place [here](https://www.pychess.org/tournament/J0JLXYFy)
+        \\r\\n\\r\\n***\\r\\n\\r\\n**Lichess official variant teams**\\r\\n\\r\\n[Lichess
+        Chess960](https://lichess.org/team/lichess-chess960) \u2022 [Lichess King
+        of the Hill](https://lichess.org/team/lichess-king-of-the-hill) \u2022 [Lichess
+        Three-check](https://lichess.org/team/lichess-three-check) \u2022 [Lichess
+        Antichess](https://lichess.org/team/lichess-antichess) \u2022 [Lichess Atomic](https://lichess.org/team/lichess-atomic)
+        \u2022 [Lichess Horde](https://lichess.org/team/lichess-horde) \u2022 [Lichess
+        Racing Kings](https://lichess.org/team/lichess-racing-kings) \u2022 [Lichess
+        Crazyhouse](https://lichess.org/team/lichess-crazyhouse)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"flair\":\"activity.lichess\",\"patron\":true,\"patronColor\":10,\"id\":\"lichess\"},\"nbMembers\":25285,\"flair\":\"activity.lichess-variant-960\",\"leaders\":[{\"name\":\"visualdennis\",\"title\":\"NM\",\"flair\":\"activity.lichess-blitz\",\"id\":\"visualdennis\"},{\"name\":\"TeamChess960\",\"id\":\"teamchess960\"},{\"name\":\"Lichess\",\"flair\":\"activity.lichess\",\"patron\":true,\"patronColor\":10,\"id\":\"lichess\"}]},{\"id\":\"csca-open-events\",\"name\":\"CSCA
+        Open Events\",\"description\":\"![](https://i.imgur.com/LssS5eK.png)\\r\\nThe
+        Connecticut State Chess Association is a 501(c)7 nonprofit organization, the
+        official U.S. Chess State Affiliate for the state of Connecticut, and a leader
+        in chess competitions, programs and activities for Connecticut and online
+        chess communities.  Visit us on the web at https://www.chessct.org or email
+        us at chess.CSCA@gmail.com. \\r\\n\\r\\nMembership in this team is OPEN to
+        all Lichess members, interested in competition play and activities, and regular
+        PRIZE tournaments. Account requirements will be imposed on an event-by-event
+        basis sufficient to accomplish Lichess Fair Play Review and discourage unethical
+        participation. \\r\\n\\r\\nDISQUALIFICATION AND EJECTION: The organizer, at
+        the organizer's sole discretion and with or without Lichess confirmation,
+        may disqualify, limit and/or remove any player from any event on suspicion
+        of cheating or other violation of organizer, event or Lichess rules. \\r\\n\\r\\nRATING
+        MANIPULATION: Players intentionally lowering their rating to enter a tournament
+        with a rating limit will NOT be eligible for prizes. Please note that such
+        rating manipulation, including playing under another's account or a new account,
+        is considered cheating. \\r\\n\\r\\nMEMBERSHIP & REGISTRATION: All players
+        participating in a CSCA tournament are considered \\\"event members\\\" of
+        the CSCA without registration. Unless required in the description of the tournament,
+        registration is optional. \\r\\n\\r\\nPRIZES: All players winning event prizes
+        will be contacted via Lichess message for their PayPal information. Players
+        winning in excess of $600 in a calendar year, must submit U.S. IRS form W-9
+        or international equivalent to the CSCA ahead of receiving payment of event
+        prizes. Prizes are paid at least seven (7) days after the conclusion of the
+        event (more if needed), to allow FairPlay Review and processing. Any imposed
+        fees or taxes may reduce the final amount of the received prize. Lichess accounts
+        that are not in good standing are prize ineligible. Prizes not claimed within
+        thirty (30) days after the event are deemed abandoned. \\r\\n\\r\\nThank you.\\r\\n\\r\\nCSCA
+        Admin\\r\\n\\r\\n==============================================================================\\r\\n\\r\\n**RESULTS**\\r\\n\\r\\nNext
+        results coming December 4. \\r\\n\\r\\nPast winners: https://www.chessct.org/csca/Uploads/Winners.pdf\\r\\nTOTAL
+        PRIZES AWARDED since Sept 2023: $12,000\",\"open\":true,\"leader\":{\"name\":\"AQL547\",\"id\":\"aql547\"},\"nbMembers\":20099,\"flair\":\"objects.money-bag\",\"leaders\":[{\"name\":\"AQL547\",\"id\":\"aql547\"},{\"name\":\"CSCA\",\"id\":\"csca\"}]},{\"id\":\"lichess-antichess\",\"name\":\"Lichess
+        Antichess\",\"description\":\"Join the team for regular tournaments and other
+        community-driven events. Everyone is welcome to join!\\r\\n\\r\\n## Upcoming
+        events\\nDay|Date|Time, [UTC](https://savvytime.com/converter/utc)|Event\\n---|---|---|---\\nFriday|Dec
+        5|19:00|[Weekly Arena](https://lichess.org/tournament/B2jYi1NH)\\nSaturday|Dec
+        6|16:00|[Team Battle](https://lichess.org/tournament/vIlfXRfc)\\nSunday|Dec
+        7|16:00|[Titled $$ Arena](https://lichess.org/tournament/zwfuYQC6)\\nSunday|Dec
+        7|16:00|[U2000 Arena](https://lichess.org/tournament/U29RvpPk)\\nThursday|Dec
+        25|16:00|[Shield Arena](https://lichess.org/tournament/RjLtUcRP)\\nSunday|Dec
+        28|16:00|[Holiday $$ Arena](https://lichess.org/tournament/DmbXi2rB)\\nSunday|Dec
+        28|17:30|[GM Holiday $$ Arena](https://lichess.org/tournament/MZUC9Ggc)\\nFriday|Jan
+        2|19:00|[Monthly Arena](https://lichess.org/tournament/Kl9N8gbR)\\nSunday|Jan
+        4|17:30|[New Year $$ Arena](https://lichess.org/tournament/IVLrJipK)\\nMonday|May
+        11|17:00|[Yearly Arena](https://lichess.org/tournament/hbxfljop)\\n\\nReigning
+        champs: @Pinni7 (ACWC), @Lmaoooooooooooooooo (Shield), [\u0424\u0435\u0434\u0435\u0440\u0430\u0446\u0438\u044F
+        \u0410\u043D\u0442\u0438\u0448\u0430\u0445\u043C\u0430\u0442 \u0420\u043E\u0441\u0441\u0438\u0438
+        Open](https://lichess.org/team/SKMom8QG) (Team Battle), @I_Grischunin1962
+        (U2000).\\n## Learning Material\\r\\n**Studies**: [Basics](/study/4XBZbCFY)
+        \u2022 [Tactics](/study/WLrT4U2E) \u2022 [Endgames](/study/VFsD8X5H) \u2022
+        [3v1 Endgames](/study/k5DATDVV) \u2022 [Openings](/study/vXxLrBTY)\\r\\n**Intro
+        videos**: [How to play antichess: Part 1](https://youtu.be/5KLVSxAfQ9M), [Part
+        2](https://youtu.be/n2Mw6E8WabQ) \u2022 [Rules & brief history](https://youtu.be/fm7FLblKFv0)\\r\\n**Book**:
+        [The Ultimate Guide to Antichess](http://perpetualcheck.com/antichess)\\r\\n**Puzzles**:
+        [Various](/study/5GrkXfA0) \u2022 [Themed](/study/lJfYzKtd) \u2022 [Endgame](/study/YuktqKg2)
+        \u2022 [Midgame](/study/jKyrZTxS) \u2022 [Chess Variants Training](https://chessvariants.training/Puzzle/Antichess)\\r\\n**Ranked
+        puzzles**: [1](/study/yqP1uKPO) \u2022 [2](/study/ZJJrwtTo) \u2022 [3](/study/yTnMHbGY)
+        \u2022 [4](/study/7LbMHGFk) \u2022 [5](/study/BV5fZcXK) \u2022 [6](/study/gdiGuDJs)\\r\\n\\r\\n---\\r\\n**Papers**
+        (PDF): [1.e3 wins for White](http://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/LCsolved.pdf)
+        \u2022 [3-man pawnless endings](http://www.jsbeasley.co.uk/vchess/losing3man.pdf)
+        \u2022 [Survey: Endgames ](http://www.jsbeasley.co.uk/vchess/losingendlit.pdf)\\r\\n**Openings
+        theory**: [Proof](https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS) \u2022
+        [Solutions](https://antichess.onrender.com/) \u2022 [Nilatac's opening book](https://catalin.francu.com/nilatac/book.php)\\r\\n**Video
+        content**: [Firebatprime](https://www.youtube.com/channel/UCVWt6kOPS_HvKkADhYs8L_g)
+        \u2022 [YourselfAntichess](https://www.youtube.com/channel/UCIfjM1orOwnkrQoYt1NVSCQ)
+        \u2022 [Antichess Lore](https://www.youtube.com/channel/UCwO6d9Rtzt3LweUVhGJHAuw)
+        \u2022 [TUGR](https://www.youtube.com/channel/UCdkPoOjHeiHyzX-KXhlZfUA) \u2022
+        [KidCh3ss](https://www.youtube.com/channel/UCeF5D5HDj5bKvfUzGZ1g9Hw)\\r\\n**Bots**:
+        @anti-bot \u2022 @VariantsBot\\r\\n**Other**: [Guide](/@/firebatprime/blog/-/L7OCljZF)
+        \u2022 [ACWC results](http://perpetualcheck.com/antichess/lichess.php) \u2022
+        [ACWC team](/team/antichess-wc) \u2022 [Academy](/team/antichess-academy)
+        \u2022 [Openings](http://perpetualcheck.com/antichess/openings.php) \u2022
+        [Chess variants](http://www.jsbeasley.co.uk/cvariants.htm)\\r\\n\\r\\n## Other
+        Lichess Variant Teams\\r\\n[Chess960](/team/lichess-chess960) \u2022 [King
+        of the Hill](/team/lichess-king-of-the-hill) \u2022 [Three-check](/team/lichess-three-check)
+        \u2022 [Atomic](/team/lichess-atomic) \u2022 [Horde](/team/lichess-horde)
+        \u2022 [Racing Kings](/team/lichess-racing-kings) \u2022 [Crazyhouse](/team/lichess-crazyhouse)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"flair\":\"activity.lichess\",\"patron\":true,\"patronColor\":10,\"id\":\"lichess\"},\"nbMembers\":18931,\"flair\":\"activity.lichess-variant-antichess\",\"leaders\":[{\"name\":\"tolius\",\"flair\":\"nature.frog\",\"patron\":true,\"patronColor\":10,\"id\":\"tolius\"},{\"name\":\"TheUnknownGuyReborn\",\"patron\":true,\"patronColor\":4,\"id\":\"theunknownguyreborn\"},{\"name\":\"Lichess\",\"flair\":\"activity.lichess\",\"patron\":true,\"patronColor\":10,\"id\":\"lichess\"}]},{\"id\":\"lichess-crazyhouse\",\"name\":\"Lichess
+        Crazyhouse\",\"description\":\"## **Welcome to the official Crazyhouse team!**\\r\\n\\r\\nWe
+        are the home of [Crazyhouse](/variant/crazyhouse) fans across Lichess. We're
+        excited to welcome you to the greatest chess variant supported on this site!\\r\\n\\r\\n---\\r\\n\\r\\n##
+        **Crazyhouse Arenas**\\r\\nThe famous **[Elite Crazyhouse Arenas](/forum/team-lichess-crazyhouse/elite-crazyhouse-arenas?page=2)**
+        created by @TheFinnisher (>= 1900 rating): \\r\\n\u2022 [Next Edition](/tournament/zqf2OfvB)\\r\\n\\r\\nThe
+        new **[Rising Stars Crazyhouse Arenas](/forum/team-lichess-crazyhouse/rising-stars-crazyhouse-arenas)**
+        (<= 2100 rating):\\r\\n\u2022 [Next Edition](/tournament/y5AHf8Es)\\r\\n\\r\\n**[Lichess
+        Crazyhouse Discord](https://discord.com/channels/280713822073913354/1365823468255318128)**\\r\\n\\r\\n---\\r\\n\\r\\n##
+        **Learning Materials**\\r\\n\\r\\n[Rules](/variant/crazyhouse) \u2022 [History
+        of Crazyhouse](https://crazymaharajah.dreamwidth.org/) \u2022 [Index of Studies
+        by okei](https://zhchess.blogspot.com/p/blog-page.html) \\r\\n\\r\\n**Puzzles:**
+        \u2022 [ZH101 by okei](https://lichess.org/study/tyRCr4oF) \u2022 [CWC Puzzles
+        by Kleerkast](/study/KRSHKkvT) \u2022 [TsumeHouse](/study/TYpjRGck ) \u2022
+        [CWC Puzzles](/study/KRSHKkvT) \u2022 [Puzzles by deepfloyd](/study/GM0MUtLc)
+        \ \u2022 [Complex Puzzles](/study/1IIwvM8v) \u2022 [Puzzles by sicariusnoctis](/study/Zwf8QusN)
+        \u2022 [Puzzle Site](https://chessvariants.training/Puzzle/Crazyhouse) \\r\\n\\r\\n**Guides:**
+        \u2022 [crosky's Guide](https://lichess.org/@/lichess/blog/crazyhouse-an-overview/VrQDNSoA)
+        \u2022 [okei's Guide 1](https://zhchess.blogspot.com/p/you-know-rules-of-crazyhouse-but-how-to.html)
+        \u2022 [Zaraza's Guide](/@/Zaraza/blog/how-to-improve-your-crazyhouse-game/D72gdEij)
+        \u2022\\r\\n\\r\\n**Studies & Openings:** [1.d4 intro guide](/study/EC2PkriX)
+        \ \u2022 [Basic Openings](/study/AvOt6iP2) \u2022 [Instructive zh positions](/study/OHSQPWgG)
+        \u2022 [Refuting e4 e5](/study/5P0aGcPZ)\\r\\n\u2022 [Always win with White](/study/z6ny7z1n)
+        \u2022 [Always win with Black](/study/nSh9hHpJ)\\r\\n\\r\\n---\\r\\n\\r\\n##
+        **Other Resources**\\r\\n\\r\\n**Live power ranking**: 1. @catask 2. The rest\\r\\n\\r\\n**Youtube**:
+        [JannLee](https://www.youtube.com/c/JannLeeCrazyhouseChannel) \u2022 [okei](https://www.youtube.com/c/okeizh)
+        \u2022 [Kleerkast](https://www.youtube.com/channel/UCIQLIbwJBeFQjSTZmRODmqg)
+        \u2022 [Mugwort](https://www.youtube.com/channel/UCNMhNQybeLGJHWJv5qT1liQ)
+        \u2022 [OldHas-Been](https://www.youtube.com/channel/UCX-63mLpseSISHqrDW74a_g)
+        \u2022 [Maple-Kev](https://www.youtube.com/channel/UC1zP-qlhgB3fbZiNBBHsGjQ)
+        \u2022 [crosky](https://www.youtube.com/channel/UCvowgcm56sLguWxYp8oqI1w/videos)
+        \u2022 [Zaraza](https://www.youtube.com/channel/UC9MQj5cmA8Pr05KitkSvJZw)
+        \u2022 [adet2510]\\r\\n\\r\\n**Twitch**: [JannLee](https://www.twitch.tv/jannleecrazyhouse)
+        \u2022 [okei](https://www.twitch.tv/okeizh)  \u2022 [calcu_later](https://www.twitch.tv/1800__strength)
+        \u2022 [Zaraza](https://www.twitch.tv/zarazaofthebrain) \u2022 [JoannaTries](https://www.twitch.tv/joannatries)
+        \ \u2022 [googa](https://www.twitch.tv/owstenatorr) \u2022 [talldove](https://www.twitch.tv/talldove)
+        \u2022 [GRXBullet](https://www.twitch.tv/chewythechewer/)\\r\\n\\r\\n**More
+        links**: [ZH960](https://www.pychess.org/) \u2022 [The House Discord](https://discord.gg/RhWgzcC)\\r\\n\\r\\n---\\r\\n![image](https://i.imgur.com/iZi2UJp.png)\\r\\n\\r\\n[Crazyhouse
+        World Championship 2025](https://lichess.org/@/visualdennis/blog/announcing-the-crazyhouse-world-championship-2025/CMcYy3sy)\\r\\n\\r\\n[Previous
+        CWC Editions](/team/crazyhouse-world-championship) \u2022 [Official Bracket](https://challonge.com/CWC2022)
+        \u2022 [Comprehensive Bracket](https://bit.ly/CrazyhouseWC2022) \u2022 [Calendar](https://teamup.com/ks3ozaeaopfk1v98bf)
+        \\r\\n\\r\\n**CWC Champions**: \\r\\n\u2022 @blitzbullet (2022) \\r\\n\u2022
+        @catask (2021) \\r\\n\u2022 @Jasugi99 (2020) \\r\\n\u2022 @opperwezen (2019
+        1+0 CWC) \\r\\n\u2022 @opperwezen (2018) \\r\\n\u2022 @JannLee (2017) \\r\\n\u2022
+        @chickencrossroad & @JannLee (2016)\\r\\n\\r\\n\\r\\n---\\r\\n\\r\\n**Other
+        Lichess official variant teams**\\r\\n\\r\\n[Chess960](/team/lichess-chess960)
+        \u2022 [King of the Hill](/team/lichess-king-of-the-hill) \u2022 [Three-Check](/team/lichess-three-check)
+        \u2022 [Antichess](/team/lichess-antichess) \u2022 [Atomic](/team/lichess-atomic)
+        \u2022 [Horde](/team/lichess-horde) \u2022 [Racing Kings](/team/lichess-racing-kings)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"flair\":\"activity.lichess\",\"patron\":true,\"patronColor\":10,\"id\":\"lichess\"},\"nbMembers\":16729,\"flair\":\"activity.lichess-variant-crazyhouse\",\"leaders\":[{\"name\":\"visualdennis\",\"title\":\"NM\",\"flair\":\"activity.lichess-blitz\",\"id\":\"visualdennis\"},{\"name\":\"Zaraza\",\"flair\":\"symbols.hundred-points\",\"id\":\"zaraza\"},{\"name\":\"FischyVishy\",\"flair\":\"people.genie\",\"patron\":true,\"patronColor\":10,\"id\":\"fischyvishy\"},{\"name\":\"QueenRosieMary\",\"flair\":\"food-drink.clinking-glasses\",\"patron\":true,\"patronColor\":4,\"id\":\"queenrosiemary\"},{\"name\":\"CWCOfficial\",\"flair\":\"activity.lichess-variant-crazyhouse\",\"patron\":true,\"patronColor\":9,\"id\":\"cwcofficial\"},{\"name\":\"TeamCrazyhouse\",\"flair\":\"activity.lichess-variant-crazyhouse\",\"patron\":true,\"patronColor\":10,\"id\":\"teamcrazyhouse\"},{\"name\":\"Lichess\",\"flair\":\"activity.lichess\",\"patron\":true,\"patronColor\":10,\"id\":\"lichess\"}]},{\"id\":\"--elite-chess-players-union--\",\"name\":\"Elite
+        Chess Players' Union\",\"description\":\"Welcome to one of the most active
+        teams on **Lichess**! You can add us in any team-battles, just drop [me](https://lichess.org/@/CyberShredder)
+        link and I'll join!\\r\\n![Team Logo](https://imgur.com/OAEWfXK.jpg)  Team
+        Logo made for us by the creativity of ![OmarDF](https://lichess.org/@/OmarDF)\\r\\n##
+        Community Links, Join!\\r\\n[Discord Server](https://discord.gg/GcNCerMv2x)\\r\\n[Telegram
+        Channel](https://t.me/EliteChessPlayers)\\r\\n[Revolt Server](https://rvlt.gg/V1fNVhBk)\\r\\n[Lidraughts
+        team](https://lidraughts.org/team/--elite-draughts-players-union--)\\r\\n[Lishogi
+        team](https://lishogi.org/team/--elite-shogi-players-union--)\\r\\n[PlayStrategy
+        team](https://playstrategy.org/team/--elite-strategy-players-union--)\\r\\n##
+        Learning materials\\r\\n[Comprehensive Lichess Studies List](https://lichess.org/@/CyberShredder/blog/cool-lichess-studies-list/UOPFWocV)\\r\\n[Open-Source
+        Chess Software List](https://lichess.org/@/CyberShredder/blog/open-source-chess-software-list/viWFcTCo)\",\"open\":true,\"leader\":{\"name\":\"AnIndianTal\",\"id\":\"anindiantal\"},\"nbMembers\":16448,\"flair\":\"symbols.linux-tux-penguin\",\"leaders\":[{\"name\":\"CyberShredder\",\"flair\":\"symbols.linux-tux-penguin\",\"id\":\"cybershredder\"},{\"name\":\"Galaxy_Master\",\"flair\":\"activity.chess-pawn\",\"id\":\"galaxy_master\"},{\"name\":\"radICEby\",\"flair\":\"symbols.heart-with-ribbon\",\"id\":\"radiceby\"},{\"name\":\"Aa-EnjangBKD\",\"id\":\"aa-enjangbkd\"}]},{\"id\":\"chess-blasters-2\",\"name\":\"Chess
+        blasters 2\",\"description\":\"## **Welcome to the official club of Chess
+        blasters 2!** \\r\\nYou can add us in any team battles, just drop a link to
+        [AaRaMk](https://lichess.org/inbox/aaramk)\\r\\n\\r\\n![Team Logo](https://i.imgur.com/9UsM3Ry.jpg)\\r\\n\\r\\n##
+        We are **#28** Among All Lichess teams!\\r\\n\\r\\n## This club was created
+        on  **5th June 2020** by **[AaRaMk](https://lichess.org/@/AaRaMk).** (Reach
+        him for any queries)\\r\\n\\r\\n**Here you will find:**\\r\\n\\r\\n**\u2022
+        Regular Prized Swisses**\\r\\n**\u2022 Weekly Simuls by Our professionals**\\r\\n**\u2022
+        Frequent free entry Cash Prized Tournaments**\\r\\n\\r\\nLocation: **International**\",\"open\":true,\"leader\":{\"name\":\"AaRaMk\",\"id\":\"aaramk\"},\"nbMembers\":15672,\"flair\":\"nature.fire\",\"leaders\":[{\"name\":\"AaRaMk\",\"id\":\"aaramk\"},{\"name\":\"MohammadAayanKhan\",\"id\":\"mohammadaayankhan\"},{\"name\":\"Syeda_Faiza\",\"flair\":\"activity.sparkles\",\"id\":\"syeda_faiza\"},{\"name\":\"leogla\",\"flair\":\"symbols.heavy-dollar-sign\",\"id\":\"leogla\"}]},{\"id\":\"lichess-atomic\",\"name\":\"Lichess
+        Atomic\",\"description\":\"## Upcoming events\\r\\n\\r\\n| Day       | Time
+        [(UTC)](https://time.is/UTC) | Tournament | Time control         |\\r\\n|-----------|-----------------------------------|------------|----------------------|\\r\\n|
+        Every day | 05:00 or 17:00                   | U2000      | 3+0                  |\\r\\n|
+        Saturday  | 17:00                             | Hyper      | 1/2+0                |\\r\\n|
+        Saturday  | 17:30                             | Ultra      | 1/4+0                |\\r\\n|
+        1. Friday |  19:00                    | Elite      | 3+0 |\\r\\n\\r\\nAlso
+        join the [Atomic WC team](https://lichess.org/team/atomic-wc)\\r\\n\\r\\n---\\r\\n##
+        Learning Materials\\r\\n\\r\\n**Rules**\\r\\n[Atomic Rules](https://lichess.org/study/uf9GpQyI)\\r\\n\\r\\n**Basic
+        Openings \u2013 these studies are aimed at beginners with no prior atomic
+        chess knowledge**\\r\\n[Opening Queen Tactics](https://lichess.org/study/sRM1FScZ)
+        \u2022 [Opening Knight Tactics](https://lichess.org/study/12TFMoys) \u2022
+        [Intro to 1.Nh3](https://lichess.org/study/Toy8tRrm) \u2022 [Intro to 1.Nf3
+        f6 2.Nd4](https://lichess.org/study/aavMpBJ1) \u2022 [Intro to 1.Nf3 f6 2.Nc3](https://lichess.org/study/HVXNmBDj)
+        \u2022 [Refuting 1.e4 e5??](https://lichess.org/study/utcWL9Tn)\\r\\n\\r\\n**Advanced
+        Openings \u2013 these studies require prior atomic chess knowledge**\\r\\n[1.Nh3
+        f6?](https://lichess.org/study/04cOAVpZ) \u2022 [Modern 1.Nh3 Theory](https://lichess.org/study/eURFVEDj)
+        \u2022 [1.Nf3 f6 2.e3 Megastudy](https://lichess.org/study/EIRATbRx) \u2022
+        [Detailed Analysis of 1.Nf3](https://lichess.org/study/nP8wnNGJ) \u2022 [1.Nf3
+        f6 2.Nd4 Nh6](https://lichess.org/study/0OLP5BTi) \u2022 [1.Nf3 f6 2.Nd4 Nh6
+        3.h3](https://lichess.org/study/XOXRURYz) \u2022 [Theory of 1.e3](https://lichess.org/study/BGpbEEGT)
+        \u2022 [1.e3 e6 2.Nf3](https://lichess.org/study/KIUjrYpv) \u2022 [1.Nc3](https://lichess.org/study/f36B2cAF)\\r\\n\\r\\n**Tactics**\\r\\n[Basic
+        Tactics Study](https://lichess.org/study/mxYOPgI3) \u2022 [Atomic Chess Puzzles](https://chessvariants.training/Puzzle/Atomic)
+        \u2022 [Atomic Chess Endgame Practice](https://lichess.org/study/wRLQk6Wq)\\r\\n\\r\\n**Endgames**\\r\\n[Basic
+        Endgames](https://lichess.org/study/JYSYPQrN) \u2022 [Atomic Endgames I](https://lichess.org/study/ikJM4K3L)
+        \u2022 [Atomic Endgames II](https://lichess.org/study/tCqrXrbG) \u2022 [Atomic
+        Endgames III](https://lichess.org/study/WOWizkm4) \u2022 [Pawnitisation](https://lichess.org/study/iS3Dp19A)
+        \u2022 [KR vs KP](https://lichess.org/study/MYV7n3Nf) \u2022 [KQP vs KP](https://lichess.org/study/2DRvcpIZ)
+        \u2022 [K + 2 Pieces vs KP](https://lichess.org/study/qpSW4QBS) \u2022 [KPP
+        vs KP](https://lichess.org/study/Iv9L9LTR) \u2022 [KRP vs KP](https://lichess.org/study/xvHuOCBq)
+        \u2022 [Rule of the Rectangle](https://lichess.org/study/7SpmVBSz)\\r\\n\\r\\n**Videos
+        on Atomic Chess**\\r\\n[Tipau\u2019s 1.Nh3 Series](https://www.youtube.com/watch?v=dllxuJNvMgA&list=PL5BF9A485527AFD1B)
+        \u2022 [Tipau\u2019s 1.Nf3 Series](https://www.youtube.com/watch?v=ThY9JYoWIx4&list=PLwqbStrXWJVDQ_6mrDP5W3updISPcsi36)
+        \u2022 [Tipau\u2019s Basic Atomic Endgames](https://www.youtube.com/watch?v=eM-jOHUXRqI&list=PLwqbStrXWJVCKUKTq2Vj3kF7yvOqYBQZU)
+        \u2022 [Tipau\u2019s Intermediate Atomic Endgames](https://www.youtube.com/watch?v=CLb9Z4aXE34&list=PLwqbStrXWJVCcdGIqgoConz5591ib-Gc1)
+        \u2022 [Tipau\u2019s Advanced Atomic Endgames](https://www.youtube.com/watch?v=fadbxCiqcbU&list=PLwqbStrXWJVAs1GMuv5t47wmOWbtLQeWf)\\r\\n\\r\\n**Atomic
+        Puzzles**\\r\\n[Chessvariants.training](https://chessvariants.training/Puzzle/Atomic)\\r\\n\\r\\n**Websites
+        on Atomic Chess \u2013  here you may find lore and additional materials**\\r\\n[Chronatog\u2019s
+        Chess Site](https://chronatog.com) \u2022 [Illion\u2019s Atomic](https://illion-atomic.netlify.com/)\\r\\n\\r\\n---\\r\\n\\r\\n**Other
+        Lichess Variant teams**\\r\\n\\r\\n[Chess960](https://lichess.org/team/lichess-chess960)
+        \u2022 [King of the Hill](https://lichess.org/team/lichess-king-of-the-hill)
+        \u2022 [Three-check](https://lichess.org/team/lichess-three-check) \u2022
+        [Antichess](https://lichess.org/team/lichess-antichess) \u2022 [Horde](https://lichess.org/team/lichess-horde)
+        \u2022 [Racing Kings](https://lichess.org/team/lichess-racing-kings) \u2022
+        [Crazyhouse](https://lichess.org/team/lichess-crazyhouse)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"flair\":\"activity.lichess\",\"patron\":true,\"patronColor\":10,\"id\":\"lichess\"},\"nbMembers\":15362,\"flair\":\"activity.lichess-variant-atomic\",\"leaders\":[{\"name\":\"Natso\",\"flair\":\"nature.cherry-blossom\",\"patron\":true,\"patronColor\":10,\"id\":\"natso\"},{\"name\":\"NeverOFzero\",\"flair\":\"food-drink.clinking-beer-mugs\",\"patron\":true,\"patronColor\":4,\"id\":\"neverofzero\"},{\"name\":\"TeamAtomic\",\"flair\":\"activity.lichess-variant-atomic\",\"id\":\"teamatomic\"},{\"name\":\"Lichess\",\"flair\":\"activity.lichess\",\"patron\":true,\"patronColor\":10,\"id\":\"lichess\"}]},{\"id\":\"sadistic-minions\",\"name\":\"Sadistic
+        Minions\",\"description\":\"Team of  https://lichess.org/@/sadisticTushi\\r\\n\\r\\nYoutube:
+        https://www.youtube.com/c/sadisticTushi\\r\\nDiscord: https://discord.gg/B7Z3AgQCTY\\r\\n\\r\\n-----\\r\\n\\r\\nThis
+        team will be used for :\\r\\n\\r\\n->  Viewer tournaments\\r\\n-> Lichess
+        Mega Team Battle\\r\\n-> Chess Giveaways\",\"open\":true,\"leader\":{\"name\":\"sadisticTushi\",\"flair\":\"food-drink.french-fries\",\"patron\":true,\"patronColor\":10,\"id\":\"sadistictushi\"},\"nbMembers\":15151,\"leaders\":[{\"name\":\"sadisticTushi\",\"flair\":\"food-drink.french-fries\",\"patron\":true,\"patronColor\":10,\"id\":\"sadistictushi\"}]},{\"id\":\"brain-chess-checkmate\",\"name\":\"Brain
         Chess Checkmate\",\"description\":\"Get Everyday Free Practice Chess Tournaments.
         Share the Team link with your Chess Friends...\\r\\n\\r\\nKindly follow me
         on all the Platforms:\\r\\n\\r\\nLichess: https://lichess.org/@/Checkmate-Chess\\r\\nInstagram:
         https://www.instagram.com/invites/contact/?i=qavd97f1s4s&utm_content=pqov2j\\r\\nYouTube:
         https://youtube.com/channel/UCfZFBX36vWVWpePLE-e0ncQ\\r\\nFacebook: https://www.facebook.com/profile.php?id=100035677262435\\r\\n\\r\\nMyself
         Certified Trainer and Arbiter From FIDE (World Chess Federation) . Titles
-        Achieved by me are National Instructor and FIDE Arbiter.\",\"open\":true,\"leader\":{\"name\":\"Checkmate-Chess\",\"id\":\"checkmate-chess\"},\"leaders\":[{\"name\":\"Checkmate-Chess\",\"id\":\"checkmate-chess\"}],\"nbMembers\":14477},{\"id\":\"--elite-chess-players-union--\",\"name\":\"Elite
-        Chess Players' Union\",\"description\":\"Welcome to one of the most active
-        teams on **Lichess**! You can add us in any team-battles, just drop [me](https://lichess.org/@/CyberShredder)
-        link and I'll join!\\r\\n![Team Logo](https://rimgo.nohost.network/s9waDBS.jpg)
-        \ Made for us by the creativity of [OmarDF](https://lichess.org/@/OmarDF)\\r\\n\\r\\nCommunity
-        Links\\r\\n[Telegram channel](https://t.me/EliteChessPlayers)\\r\\n[Lidraughts
-        team](https://lidraughts.org/team/--elite-draughts-players-union--)\\r\\n[Lishogi
-        team](https://lishogi.org/team/--elite-shogi-players-union--)\\r\\n[PlayStrategy
-        team](https://playstrategy.org/team/--elite-strategy-players-union--)\\r\\n\\r\\n
-        Our friendly teams!\\r\\n[BKD Indonesia](https://lichess.org/team/bkd-indonesia)\\r\\n[Future
-        GMs Chess Club](https://lichess.org/team/future-gms-chess-club)\\r\\n[Flaming
-        Phoenix](https://lichess.org/team/flaming-phoenix)\\r\\n[CyberSpace](https://lichess.org/team/cyberspace)
-        \\r\\n[\u041B\u044E\u0431\u0438\u0442\u0435\u043B\u0438 Nederlands](https://lichess.org/team/-nederlands)\",\"open\":true,\"leader\":{\"name\":\"AnIndianTal\",\"id\":\"anindiantal\"},\"leaders\":[{\"name\":\"Aa-EnjangBKD\",\"id\":\"aa-enjangbkd\"},{\"name\":\"RADIVSEGO\",\"id\":\"radivsego\"},{\"name\":\"CyberShredder\",\"id\":\"cybershredder\"},{\"name\":\"Galaxy_Master\",\"id\":\"galaxy_master\"},{\"name\":\"radICEby\",\"id\":\"radiceby\"},{\"name\":\"StreetPhantom\",\"id\":\"streetphantom\"}],\"nbMembers\":11926},{\"id\":\"levitov-chess\",\"name\":\"Levitov
-        Chess\",\"description\":\"![GitHub Logo](https://i.ibb.co/WB0L78f/League2.png)\\r\\n\\r\\nLEVITOV
-        CHESS LEAGUE 2021 \u2013 120 \u0442\u0443\u0440\u043D\u0438\u0440\u043E\u0432
-        \u0441 \u0438\u044E\u043B\u044F \u043F\u043E \u043D\u043E\u044F\u0431\u0440\u044C
-        \u0441 \u043F\u0440\u0438\u0437\u043E\u0432\u044B\u043C \u0444\u043E\u043D\u0434\u043E\u043C
-        $100,000\\r\\n\\r\\n\u0428\u0430\u0445\u043C\u0430\u0442\u043D\u044B\u0439
-        \u043A\u0430\u043D\u0430\u043B Levitov Chess \u043E\u0431\u044A\u044F\u0432\u043B\u044F\u0435\u0442
-        \u043E\u0431 **\u043E\u0442\u043A\u0440\u044B\u0442\u0438\u0438 \u0441\u043E\u0431\u0441\u0442\u0432\u0435\u043D\u043D\u043E\u0439
-        \u0448\u0430\u0445\u043C\u0430\u0442\u043D\u043E\u0439 \u043B\u0438\u0433\u0438
-        Levitov Chess League**! \u041D\u0430 \u043F\u0440\u043E\u0442\u044F\u0436\u0435\u043D\u0438\u0438
-        \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0438\u0445 \u043F\u044F\u0442\u0438
-        \u043C\u0435\u0441\u044F\u0446\u0435\u0432, \u0441 \u0438\u044E\u043B\u044F
-        \u043F\u043E \u043D\u043E\u044F\u0431\u0440\u044C, \u0432\u0430\u0441 \u0436\u0434\u0443\u0442
-        120 \u0442\u0443\u0440\u043D\u0438\u0440\u043E\u0432 \u0434\u043B\u044F \u0438\u0433\u0440\u043E\u043A\u043E\u0432
-        \u0432\u0441\u0435\u0445 \u0443\u0440\u043E\u0432\u043D\u0435\u0439: \u043E\u0442
-        \u0433\u0440\u043E\u0441\u0441\u043C\u0435\u0439\u0441\u0442\u0435\u0440\u043E\u0432
-        \u0434\u043E \u0442\u0435\u0445, \u043A\u0442\u043E \u0435\u0449\u0435 \u0432\u0447\u0435\u0440\u0430
-        \u043D\u0435 \u0437\u043D\u0430\u043B \u043A\u0430\u043A \u0445\u043E\u0434\u044F\u0442
-        \u0448\u0430\u0445\u043C\u0430\u0442\u043D\u044B\u0435 \u0444\u0438\u0433\u0443\u0440\u044B\u2026
-        \u041E\u0431\u0449\u0438\u0439 \u043F\u0440\u0438\u0437\u043E\u0432\u043E\u0439
-        \u0444\u043E\u043D\u0434 \u043B\u0438\u0433\u0438 \u2013 7 500 000 \u0440\u0443\u0431\u043B\u0435\u0439!\\r\\n\\r\\n\u041F\u043E\u043B\u043E\u0436\u0435\u043D\u0438\u0435
-        \u043E \u043B\u0438\u0433\u0435: https://lichess.org/forum/team-levitov-chess/levitov-chess-league-2021--2#1\\r\\nIn
-        English: https://lichess.org/forum/team-levitov-chess/levitov-chess-league-2021-regulations-2\\r\\n\\r\\n\u041B\u0438\u0433\u0430
-        \u0440\u0430\u0437\u0434\u0435\u043B\u0435\u043D\u0430 \u043D\u0430 **\u0442\u0440\u0438
-        \u0433\u0440\u0443\u043F\u043F\u044B \u0441\u043B\u043E\u0436\u043D\u043E\u0441\u0442\u0438**
-        \u2013 \u0447\u0442\u043E\u0431\u044B \u0432 \u043D\u0435\u0439 \u043A\u0430\u0436\u0434\u044B\u0439
-        \u043C\u043E\u0433 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u0441\u0432\u043E\u044E
-        \u0434\u043E\u043B\u044E \u0443\u0434\u043E\u0432\u043E\u043B\u044C\u0441\u0442\u0432\u0438\u044F,
-        \u0441\u0440\u0430\u0436\u0430\u0442\u044C\u0441\u044F \u0441 \u0440\u0430\u0432\u043D\u044B\u043C\u0438
-        \u0441\u043E\u043F\u0435\u0440\u043D\u0438\u043A\u0430\u043C\u0438, \u0438\u043C\u0435\u0442\u044C
-        \u0448\u0430\u043D\u0441\u044B \u043D\u0430 \u0443\u0441\u043F\u0435\u0445
-        \u0438 \u043D\u0430 \u043F\u0440\u0438\u0437\u044B.\\r\\n\\r\\n\u0421\u0438\u043B\u044C\u043D\u0435\u0439\u0448\u0438\u0435
-        \u2013 \u0433\u0440\u043E\u0441\u0441\u043C\u0435\u0439\u0441\u0442\u0435\u0440\u044B
-        \u0438 \u043C\u0435\u0436\u0434\u0443\u043D\u0430\u0440\u043E\u0434\u043D\u044B\u0435
-        \u043C\u0430\u0441\u0442\u0435\u0440\u0430 \u2013 \u0441\u0440\u0430\u0437\u044F\u0442\u0441\u044F
-        \u0432 **\u0441\u0443\u043F\u0435\u0440\u043B\u0438\u0433\u0435**. \u0418\u0433\u0440\u043E\u043A\u0438
-        \u0441 \u0440\u0435\u0439\u0442\u0438\u043D\u0433\u0430\u043C\u0438 LiChess
-        \u0432\u044B\u0448\u0435 2000 \u2013 \u0432 **\u0432\u044B\u0441\u0448\u0435\u0439
-        \u043B\u0438\u0433\u0435**. \u0422\u0435 \u0436\u0435 \u043A\u0442\u043E \u043F\u043E\u0441\u043B\u0430\u0431\u0435\u0435
-        \u0438 \u0435\u0449\u0435 \u043D\u0435 \u043F\u0435\u0440\u0435\u0448\u0430\u0433\u043D\u0443\u043B
-        \u044D\u0442\u0443 \u0433\u0440\u0430\u043D\u0438\u0446\u0443 \u2013 \u0432
-        **\u043B\u044E\u0431\u0438\u0442\u0435\u043B\u044C\u0441\u043A\u043E\u0439
-        \u043B\u0438\u0433\u0435**. \u0412\u0441\u0435 \u0442\u0443\u0440\u043D\u0438\u0440\u044B
-        \u0441\u0435\u0440\u0438\u0438 \u0431\u0443\u0434\u0443\u0442 \u043F\u0440\u043E\u0445\u043E\u0434\u0438\u0442\u044C
-        \u0434\u0432\u0430 \u0440\u0430\u0437\u0430 \u0432 \u043D\u0435\u0434\u0435\u043B\u044E
-        \u2013 \u043F\u043E \u043F\u043E\u043D\u0435\u0434\u0435\u043B\u044C\u043D\u0438\u043A\u0430\u043C
-        \u0438 \u0447\u0435\u0442\u0432\u0435\u0440\u0433\u0430\u043C \u0432 21:00
-        \u043F\u043E \u041C\u043E\u0441\u043A\u0432\u0435\u2026 \u041A\u0430\u0436\u0434\u043E\u0435
-        \u043F\u043E\u043F\u0430\u0434\u0430\u043D\u0438\u0435 \u0432 \u0442\u043E\u043F-20
-        \u043F\u0440\u0438\u043D\u0435\u0441\u0435\u0442 \u0437\u0430\u0447\u0435\u0442\u043D\u044B\u0435
-        \u0431\u0430\u043B\u043B\u044B, \u043A\u043E\u0442\u043E\u0440\u044B\u0435
-        \u043F\u043E \u0438\u0442\u043E\u0433\u0430\u043C \u043C\u0435\u0441\u044F\u0446\u0430
-        \u043E\u043F\u0440\u0435\u0434\u0435\u043B\u044F\u0442 \u0441\u0438\u043B\u044C\u043D\u0435\u0439\u0448\u0438\u0445
-        \u0438 \u043D\u0430\u0437\u043E\u0432\u0443\u0442 \u043E\u0431\u043B\u0430\u0434\u0430\u0442\u0435\u043B\u0435\u0439
-        \u043F\u0440\u0438\u0437\u043E\u0432. \u041D\u043E \u0435\u0441\u043B\u0438
-        \u0434\u043B\u044F \u0432\u044B\u0441\u0448\u0435\u0439 \u0438 \u043B\u044E\u0431\u0438\u0442\u0435\u043B\u044C\u0441\u043A\u043E\u0439
-        \u043B\u0438\u0433\u0438 \u0438\u0441\u0442\u043E\u0440\u0438\u044F \u043D\u0430
-        \u044D\u0442\u043E\u043C \u0438 \u0437\u0430\u043A\u0430\u043D\u0447\u0438\u0432\u0430\u0435\u0442\u0441\u044F,
-        \u0442\u043E \u0434\u043B\u044F \u043F\u043E\u0431\u0435\u0434\u0438\u0442\u0435\u043B\u0435\u0439
-        \u0441\u0443\u043F\u0435\u0440\u043B\u0438\u0433\u0438 \u043E\u043D\u0430
-        \u0442\u043E\u043B\u044C\u043A\u043E \u043D\u0430\u0447\u0438\u043D\u0430\u0435\u0442\u0441\u044F!
-        \u041F\u0435\u0440\u0432\u0430\u044F \u0432\u043E\u0441\u044C\u043C\u0435\u0440\u043A\u0430
-        \u043F\u043E\u043B\u0443\u0447\u0438\u0442 \u043F\u0440\u0430\u0432\u043E
-        \u0441\u044B\u0433\u0440\u0430\u0442\u044C \u0432 **\u0432\u044B\u0441\u0442\u0430\u0432\u043E\u0447\u043D\u044B\u0445
-        \u043C\u0430\u0442\u0447\u0430\u0445** \u2013 \u0432 \u0444\u043E\u0440\u043C\u0430\u0442\u0435
-        \xAB1+1\xBB, \u0432 \u043A\u043E\u0442\u043E\u0440\u044B\u0445 \u0431\u0443\u0434\u0443\u0442
-        \u0440\u0430\u0437\u044B\u0433\u0440\u0430\u043D\u044B \u0443\u0436\u0435
-        \u0441\u0443\u043F\u0435\u0440\u043F\u0440\u0438\u0437\u044B.\_\\r\\n\\r\\n**\u0414\u0432\u0430
-        \u043F\u043E\u0431\u0435\u0434\u0438\u0442\u0435\u043B\u044F** \u0438\u0437
-        \u043A\u0430\u0436\u0434\u043E\u0439 \u0433\u0440\u0443\u043F\u043F\u044B
-        \u043F\u043E \u0438\u0442\u043E\u0433\u0430\u043C \u043C\u0435\u0441\u044F\u0446\u0430
-        \u043F\u043E\u043B\u0443\u0447\u0430\u0442 \u043C\u0435\u0441\u0442\u0430
-        \u0432 **\u0413\u0440\u0430\u043D\u0434-\u0444\u0438\u043D\u0430\u043B\u0435**.
-        \u042D\u0442\u043E\u0442 \u0442\u0440\u0430\u0434\u0438\u0446\u0438\u043E\u043D\u043D\u044B\u0439
-        \u043D\u043E\u043A\u0430\u0443\u0442-\u0442\u0443\u0440\u043D\u0438\u0440
-        \u043D\u0430 32 \u0438\u0433\u0440\u043E\u043A\u0430 \u0441 \u0443\u0447\u0430\u0441\u0442\u0438\u0435\u043C
-        \u043F\u0440\u0438\u0433\u043B\u0430\u0448\u0435\u043D\u043D\u044B\u0445 \u0437\u0432\u0435\u0437\u0434,
-        \u0441\u043E\u0441\u0442\u043E\u0438\u0442\u0441\u044F \u0432 \u0434\u0435\u043A\u0430\u0431\u0440\u0435
-        2021 \u0433\u043E\u0434\u0430. \u0423 \u0413\u0440\u0430\u043D\u0434-\u0444\u0438\u043D\u0430\u043B\u0430
-        Levitov Chess \u0431\u0443\u0434\u0435\u0442 \u0441\u0432\u043E\u0439 \u043F\u0440\u0438\u0437\u043E\u0432\u043E\u0439
-        \u0444\u043E\u043D\u0434.\\r\\n\\r\\n\u0412\u0441\u0435 \u0442\u0443\u0440\u043D\u0438\u0440\u044B
-        \u043B\u0438\u0433\u0438 \u043F\u0440\u043E\u0439\u0434\u0443\u0442 \u0432
-        \u043A\u043B\u0443\u0431\u0435 Levitov Chess \u043D\u0430 LiChess \u2013 \u0442\u0430\u043C
-        \u0436\u0435, \u0433\u0434\u0435 \u043F\u0440\u043E\u0445\u043E\u0434\u0438\u043B
-        \u0438 \u043D\u0430\u0448 \u0433\u0440\u0430\u043D\u0434\u0438\u043E\u0437\u043D\u044B\u0439
-        Christmas Cup \u0432 \u0434\u0435\u043A\u0430\u0431\u0440\u0435 2020 \u0433\u043E\u0434\u0430.
-        \u0414\u043B\u044F \u0442\u043E\u0433\u043E, \u0447\u0442\u043E\u0431\u044B
-        \u043F\u0440\u0438\u043D\u044F\u0442\u044C \u0443\u0447\u0430\u0441\u0442\u0438\u0435
-        \u0432 Levitov Chess League, \u043A\u0430\u0436\u0434\u043E\u043C\u0443 \u0438\u0437
-        \u0432\u0430\u0441 \u043D\u0430\u0434\u043E \u043E\u0431\u044F\u0437\u0430\u0442\u0435\u043B\u044C\u043D\u043E
-        \u0441\u0442\u0430\u0442\u044C \u0435\u0433\u043E \u0447\u043B\u0435\u043D\u043E\u043C\u2026\\r\\n\\r\\n\u0418\u043D\u0444\u043E\u0440\u043C\u0430\u0446\u0438\u044F
-        \u043E \u0442\u043E\u043C, \u0447\u0442\u043E \u0441\u0435\u0439\u0447\u0430\u0441
-        \u043F\u0440\u043E\u0438\u0441\u0445\u043E\u0434\u0438\u0442 \u0432 \u043B\u0438\u0433\u0435:
-        \u043A\u0442\u043E \u043B\u0438\u0434\u0438\u0440\u0443\u0435\u0442, \u0430
-        \u043A\u043E\u043C\u0443 \u043D\u0430\u0434\u043E \u043F\u043E\u0434\u043D\u0430\u0436\u0430\u0442\u044C,
-        \u043F\u0430\u0440\u044B \u0438\u0433\u0440\u043E\u043A\u043E\u0432 \u0434\u043B\u044F
-        \xAB1+1\xBB \u0438 \u0441\u043E\u0441\u0442\u0430\u0432 \u0413\u0440\u0430\u043D\u0434-\u0444\u0438\u043D\u0430\u043B\u0430
-        \u2013 \u0442\u043E\u043B\u044C\u043A\u043E **\u0432 \u0441\u043E\u043E\u0431\u0449\u0435\u0441\u0442\u0432\u0435
-        Levitov Chess \u043D\u0430 YouTube**! \u0427\u0442\u043E\u0431\u044B \u0431\u044B\u0442\u044C
-        \u0432 \u043A\u0443\u0440\u0441\u0435, \u043F\u0440\u043E\u0441\u0442\u043E
-        \u043F\u043E\u0434\u043F\u0438\u0448\u0438\u0441\u044C \u043D\u0430 \u043A\u0430\u043D\u0430\u043B
-        Levitov Chess, \u2013 \u0438 \u0441\u043B\u0435\u0434\u0438\u0442\u0435 \u0437\u0430
-        \u043D\u043E\u0432\u043E\u0441\u0442\u044F\u043C\u0438 \u043B\u0438\u0433\u0438
-        \u0432 https://www.youtube.com/c/LevitovChess/community.\\r\\n\\r\\n![GitHub
-        Logo](https://i.ibb.co/JBkJTSv/League-Elite.png)\\r\\n\\r\\n**\u0412\u043D\u0438\u043C\u0430\u043D\u0438\u0435!**
-        \u0414\u043B\u044F \u0432\u0441\u0435\u0445 **\u0433\u0440\u043E\u0441\u0441\u043C\u0435\u0439\u0441\u0442\u0435\u0440\u043E\u0432**
-        \u0438 **\u043C\u0435\u0436\u0434\u0443\u043D\u0430\u0440\u043E\u0434\u043D\u044B\u0445
-        \u043C\u0430\u0441\u0442\u0435\u0440\u043E\u0432**, \u043A\u043E\u0442\u043E\u0440\u044B\u0435
-        \u0445\u043E\u0442\u044F\u0442 \u0438\u0433\u0440\u0430\u0442\u044C \u0432
-        \xAB\u044D\u043B\u0438\u0442\u043D\u043E\u0439\xBB \u0433\u0440\u0443\u043F\u043F\u0435
-        Levitov Chess League. \u041F\u043E\u0441\u043A\u043E\u043B\u044C\u043A\u0443
-        \u0432 LiChess \u043D\u0435\u0442 \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u0435\u0439
-        \u0444\u0438\u043B\u044C\u0442\u0440\u0430\u0446\u0438\u0438 \u043F\u043E
-        \u0437\u0432\u0430\u043D\u0438\u044F\u043C, \u0432\u0441\u0435 \u0442\u0443\u0440\u043D\u0438\u0440\u044B
-        **\u0433\u0440\u0443\u043F\u043F\u044B 1** \u0431\u0443\u0434\u0443\u0442
-        \u043F\u0440\u043E\u0432\u043E\u0434\u0438\u0442\u044C\u0441\u044F \u0432
-        \u043E\u0442\u0434\u0435\u043B\u044C\u043D\u043E\u043C \u043A\u043B\u0443\u0431\u0435!\\r\\n\\r\\n\u0412\u0430\u043C
-        \u043D\u0430\u0434\u043E \u043F\u043E\u0434\u0430\u0442\u044C \u0437\u0430\u044F\u0432\u043A\u0443
-        \u043D\u0430 \u043F\u0440\u0438\u0435\u043C \u0432 \u043A\u043B\u0443\u0431
-        **Levitov Chess Elite**, \u043F\u043E\u0441\u043B\u0435 \u0447\u0435\u0433\u043E
-        \u043F\u0440\u0438\u0441\u043E\u0435\u0434\u0438\u043D\u0438\u0442\u044C\u0441\u044F
-        \u043A \u0441\u043E\u0437\u0434\u0430\u043D\u043D\u044B\u043C \u0442\u0443\u0440\u043D\u0438\u0440\u0430\u043C
-        \u0441\u0435\u0440\u0438\u0438. \u0428\u0430\u0445\u043C\u0430\u0442\u0438\u0441\u0442\u044B
-        \u0438\u0437 \u0433\u0440\u0443\u043F\u043F\u044B 2, \u043A\u043E\u0442\u043E\u0440\u044B\u0435
-        \u043F\u043E \u0438\u0442\u043E\u0433\u0430\u043C \u043C\u0435\u0441\u044F\u0447\u043D\u043E\u0439
-        \u0441\u0435\u0440\u0438\u0438 \u0437\u0430\u0439\u043C\u0443\u0442 1-12-\u0435
-        \u043C\u0435\u0441\u0442\u0430, \u0442\u0430\u043A\u0436\u0435 \u043F\u043E\u043B\u0443\u0447\u0430\u0442
-        \u043F\u0440\u0438\u0433\u043B\u0430\u0448\u0435\u043D\u0438\u0435 \u0432
-        \u043A\u043B\u0443\u0431 Levitov Chess Elite.\\r\\n\\r\\n\u0415\u0441\u043B\u0438
-        \u0432\u044B \u0433\u0440\u043E\u0441\u0441\u043C\u0435\u0439\u0441\u0442\u0435\u0440
-        \u0438\u043B\u0438 \u043C\u0435\u0436\u0434\u0443\u043D\u0430\u0440\u043E\u0434\u043D\u044B\u0439
-        \u043C\u0430\u0441\u0442\u0435\u0440, \u043D\u043E \u0443 \u0432\u0430\u0441
-        \u0432 \u043D\u0438\u043A\u0435 \u0432 LiChess \u043D\u0435\u0442 \u0437\u043D\u0430\u0447\u043A\u0430
-        **GM** \u0438\u043B\u0438 **IM**, \u0442\u043E \u0432\u0430\u043C \u043D\u0430\u0434\u043E
-        \u043E\u0442\u043F\u0440\u0430\u0432\u0438\u0442\u044C \u043F\u043E\u0434\u0442\u0432\u0435\u0440\u0436\u0434\u0435\u043D\u0438\u0435
-        \u0441\u0432\u043E\u0435\u0433\u043E \u043F\u0440\u0430\u0432\u0430 \u0438\u0433\u0440\u0430\u0442\u044C
-        \u0432 \u044D\u043B\u0438\u0442\u043D\u043E\u043C \u0434\u0438\u0432\u0438\u0437\u0438\u043E\u043D\u0435
-        (\u0444\u043E\u0442\u043E \u0441 \u043F\u0430\u0441\u043F\u043E\u0440\u0442\u043E\u043C/\u043F\u0440\u0430\u0432\u0430\u043C\u0438
-        \u0438 \u0443\u043A\u0430\u0437\u0430\u043D\u0438\u0435\u043C FIDE ID) \u043D\u0430
-        \u0430\u0434\u0440\u0435\u0441 atarov@levitovchess.ru.\\r\\n\\r\\n\u041F\u043E\u0434\u043F\u0438\u0441\u044B\u0432\u0430\u0439\u0442\u0435\u0441\u044C
-        \u043D\u0430 \u044D\u043A\u0441\u043A\u043B\u044E\u0437\u0438\u0432\u043D\u044B\u0439
-        \u0448\u0430\u0445\u043C\u0430\u0442\u043D\u044B\u0439 \u043A\u0430\u043D\u0430\u043B
-        \u0432 YouTube \u2013 https://bit.ly/LevitovChess\\r\\n\u0427\u0438\u0442\u0430\u0439\u0442\u0435
-        \u0432 \u0432\u041A\u043E\u043D\u0442\u0430\u043A\u0442\u0435 \u2013 https://vk.cc/ayH4HW
-        \u0438 \u0432 \u0424\u0435\u0439\u0441\u0431\u0443\u043A\u0435 \u2013 https://facebook.com/levitovchess\\r\\n\u0421\u043F\u043E\u0440\u044C\u0442\u0435,
-        \u043E\u0431\u0441\u0443\u0436\u0434\u0430\u0439\u0442\u0435, \u0441\u043B\u0435\u0434\u0438\u0442\u0435
-        \u0437\u0430 \u0448\u0430\u0445\u043C\u0430\u0442\u043D\u043E\u0439 \u0436\u0438\u0437\u043D\u044C\u044E
-        \u0432 \u043D\u0430\u0448\u0435\u043C Telegram \u2013 https://t.me/chess\\r\\n\\r\\n\u0421\u043C\u043E\u0442\u0440\u0438\u0442\u0435.
-        \u0423\u0447\u0438\u0442\u0435\u0441\u044C. \u0418\u0433\u0440\u0430\u0439\u0442\u0435.
-        \u041F\u043E\u043B\u0443\u0447\u0430\u0439\u0442\u0435 \u0443\u0434\u043E\u0432\u043E\u043B\u044C\u0441\u0442\u0432\u0438\u0435
-        \u043E\u0442 \u0448\u0430\u0445\u043C\u0430\u0442 \u0432\u043C\u0435\u0441\u0442\u0435
-        \u0441 Levitov Chess!\",\"open\":true,\"leader\":{\"name\":\"LevitovChess\",\"id\":\"levitovchess\"},\"leaders\":[{\"name\":\"Evenger74\",\"id\":\"evenger74\"},{\"name\":\"LevitovChess\",\"id\":\"levitovchess\"}],\"nbMembers\":13002},{\"id\":\"classic-rar\",\"name\":\"Classic
-        RAR\",\"description\":\"Hi RAR! This is Classic RAR! Our goal is to take over
-        the world, so join to help us out! We have FREE tournaments with money prizes
-        (Dollars, Bitcoin, etc.) in order to help grow our ranks in our inevitable
-        rise to the top. We\u2019ve already paid out hundreds of dollars and will
-        do anything to reach our goal! \\r\\n\\r\\nA little bit about the RAR: It\u2019s
-        a utopia that only Joseph has seen, but we all know will take over soon. All
-        of the world\u2019s problems will be solved once Joseph is put in power, and
-        RAR is the key to living a successful and meaningful life. So join us as we
-        take over the Internet, it\u2019s only going to get bigger from here! RAR
-        is unstoppable! \\r\\n\\r\\nFor those wondering what RAR is, go here: https://lichess.org/forum/team-classic-rar/what-is-rar#1
-        \\r\\n\\r\\nClassic RAR came to lichess on April 9th, 2021, and we look forwards
-        to being here forever! Our USD Dollar prizes earnings currency and rewards
-        for the winners will keep all of you happy! \\r\\n\\r\\nIf you're a crypto
-        fan, then even better! RAR's Member Count will go up just like cryptos, to
-        the moon!\",\"open\":true,\"leader\":{\"name\":\"JosephTruelsonRAR\",\"title\":\"NM\",\"patron\":true,\"id\":\"josephtruelsonrar\"},\"leaders\":[{\"name\":\"Grayson0405\",\"id\":\"grayson0405\"},{\"name\":\"JosephTruelsonRAR\",\"title\":\"NM\",\"patron\":true,\"id\":\"josephtruelsonrar\"},{\"name\":\"RARisthebest\",\"id\":\"raristhebest\"},{\"name\":\"SuperHarsheel\",\"id\":\"superharsheel\"}],\"nbMembers\":10348},{\"id\":\"lichess-swiss\",\"name\":\"Lichess
-        Swiss\",\"description\":\"The official Lichess Swiss team. We organize regular
-        swiss tournaments for all to join.\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"NoJoke\",\"patron\":true,\"id\":\"nojoke\"},{\"name\":\"thibault\",\"patron\":true,\"id\":\"thibault\"}],\"nbMembers\":379966},{\"id\":\"millennium\",\"name\":\"MILLENNIUM\",\"description\":\"MILLENNIUM
-        is driven by the idea of significantly increasing the value and joy of playing
-        of chess. Our goal is to provide enthusiastic chess players with the world's
-        best board devices for playing chess online. This means enabling chess playing
-        on a real board at every time and more pleasant and authentic playing experience
-        compared to pure online chess. With our Lichess community we offer tournaments
-        and events, which are focused on online chess playing with e-boards.\\r\\n\\r\\nEnjoy
-        the \\\"REAL\\\" chess experience!\\r\\n\\r\\n[For more information please
-        visit our website](https://computerchess.com/)\\r\\n\\r\\nCheck out our limited
-        special offer and save 50\u20AC:\\r\\n![SupremeBanner](https://i.imgur.com/16iulni.jpg)\\r\\n[Online-Board
-        eONE](https://bit.ly/4379lu3)\\r\\n\\r\\nYou are more than welcome to play
-        this tournament with a Millennium e-board.\\r\\n\\r\\nPlease note: If you
-        want to participate in our tournament with an e-board, you need the Millennium
-        CHESSLINK APP in the version >=2.8.0.\\r\\nPlease install or update from Google
-        Playstore or Apple Store.\\r\\nTo join the arena with the ChessLink app, press
-        the button \\\"Join Arena\\\" or \\\"Join Swiss\\\" and enter the tournament
-        code once, which is same as URL of this tournament:\\r\\n\\r\\nInstructions
-        on how to join an Arena or Swiss tournament via the app can be found here:\\r\\nhttps://computerchess.com/en/ChessLink-app-manual/#arena-swiss\\r\\n\\r\\nGood
-        luck and have fun!\\r\\n\\r\\nYour Millennium team\",\"open\":true,\"leader\":{\"name\":\"Mackxs\",\"id\":\"mackxs\"},\"leaders\":[{\"name\":\"jeffforever\",\"title\":\"FM\",\"patron\":true,\"id\":\"jeffforever\"},{\"name\":\"LocutusOfPenguin\",\"id\":\"locutusofpenguin\"},{\"name\":\"Mackxs\",\"id\":\"mackxs\"},{\"name\":\"Mx2k\",\"id\":\"mx2k\"}],\"nbMembers\":11120},{\"id\":\"team-huschi\",\"name\":\"Team
-        Huschi\",\"description\":\"\uFE0F Das ist das offizielle Team von GM Huschenbeth!
-        \uFE0F\\r\\n\\r\\n\uFE0F Alle Abonnenten des YouTube-Kanals und Freunde sind
-        herzlich eingeladen. Ihr werdet sofort benachrichtigt, sobald GM Huschenbeth
-        (Accountname  @Niclas) online geht, ein Turnier ausrichtet oder ein Simultan
-        spielt. \\r\\n\\r\\nWir nehmen als Team in der Lichess-Liga teil. Jedes Teammitglied
-        kann an diesen Turnieren ohne Bedingung oder Verpflichtung mitspielen. Die
-        Wettk\xE4mpfe finden donnerstags und sonntags ab 20 Uhr statt!\\r\\n\\r\\nTritt
-        gerne auch unserer Community auf Discord bei um Dich mit gleichgesinnten Schachspielern
-        auszutauschen: https://discord.gg/k5nvUcy\\r\\n\\r\\nn\xE4chste Team Huschi
-        Arena\\r\\n\\r\\ntba\\r\\n\\r\\n\\r\\nLINKS \\r\\n\\r\\n\uFE0FYOUTUBE: https://www.youtube.com/user/nichus2012\\r\\nTWITCH:
-        http://www.twitch.tv/gm_huschenbeth\\r\\nDISCORD: https://discord.gg/k5nvUcy\\r\\nINSTAGRAM:
-        https://www.instagram.com/gm_huschenbeth\\r\\nFACEBOOK: http://on.fb.me/1M9PnQX\\r\\n\\r\\nKanal
-        unterst\xFCtzen:  https://www.paypal.me/NHuschenbeth\",\"open\":true,\"leader\":{\"name\":\"Niclas\",\"title\":\"GM\",\"patron\":true,\"id\":\"niclas\"},\"leaders\":[{\"name\":\"dehnoetz\",\"id\":\"dehnoetz\"},{\"name\":\"HurricaneH\",\"id\":\"hurricaneh\"},{\"name\":\"Niclas\",\"title\":\"GM\",\"patron\":true,\"id\":\"niclas\"},{\"name\":\"sp1nn\",\"id\":\"sp1nn\"},{\"name\":\"sheep1965\",\"patron\":true,\"id\":\"sheep1965\"}],\"nbMembers\":9249},{\"id\":\"lichess-horde\",\"name\":\"Lichess
-        Horde\",\"description\":\"**Welcome to the official Horde team!**\\r\\n\\r\\nThis
-        is the home of [Horde](https://lichess.org/variant/horde) fans across lichess
-        and the #1 place to play in regular horde arenas, marathons, and team battles
-        of all time controls.\\r\\n\\r\\nFor the World Championship and other bracket
-        tournaments join the [Horde WC Team](https://lichess.org/team/horde-world-championship).\\r\\n\\r\\nMessage
-        @ichinschlecht to **sponsor** the team.\\r\\n\\r\\n---\\r\\n**Tournaments
-        Schedule:**\\r\\n\\r\\n|**Time [(UTC)](https://time.is/UTC)**|**Day**|**Event**|**Time
-        Control**|\\r\\n|---|---|---|---|\\r\\n|16:30|Wednesday|Weekly Hyper Arena|0.5+0|\\r\\n|17:00|Wednesday|Weekly
-        Blitz Arena|3+2|\\r\\n|18:00|Wednesday|Weekly Bullet Arena|1+0|\\r\\n|14:00|Every
-        Day|Daily Hyper Arena|0.5+0|\\r\\n|14:30|Every Day|Daily Blitz Arena|3+2|\\r\\n|17:00|Every
-        Day|Daily Bullet Arena|1+0|\\r\\n\\r\\n---\\r\\n**Resources:**\\r\\n\\r\\nA
-        [guide](https://docs.google.com/document/d/1eJmegmmnCyBZ49Y7bZLmFKyhdF2T64WwogpTzaQVcis/edit?usp=sharing)
-        to Horde by [The House Discord](https://discord.gg/RhWgzcC).\\r\\nAnother
-        [guide](https://docs.google.com/document/d/136BCRPzm1QH_OBK3qjKwlmK3MIji7ZmLZPMYgDpmOCU/edit?usp=sharing)
-        by [PhilippeSaner](https://lichess.org/@/PhilippeSaner).\\r\\n\\r\\n[Introduction
-        to Horde Opening Theory](https://lichess.org/study/UUk0IJZg) - a study on
-        basic opening theory by [Sinamon73](https://lichess.org/@/Sinamon73).\\r\\n[Horde
-        Opening Stuff](https://lichess.org/study/i4n5teAx) - a study on 1. d5 and
-        1. e5 by [Stubenfisch](https://lichess.org/@/Stubenfisch).\\r\\n[The Laws
-        of Horde Chess](https://lichess.org/study/9ZkZKKun) - a compilation of instructive
-        games by [mindhunter0101](https://lichess.org/@/mindhunter0101).\\r\\n[Basic
-        Horde Shuffle ideas](https://lichess.org/study/TpbsuyQi) - a study on the
-        rook shuffle by [WhiteDancingRockstar](https://lichess.org/@/Whitedancingrockstar).\\r\\n[My
-        Horde repertoire](https://lichess.org/study/yXTpOSfM)  - a study by [svenos](https://lichess.org/@/svenos)
-        on his opening repertoire.\\r\\n[The Lore of the Horde Lord](https://lichess.org/study/Z64am8tJ)
-        - a study by [maretate](https://lichess.org/@/maretate) which goes deeper
-        into horde chess.\\r\\n\\r\\n---\\r\\n**Other Lichess variant teams**\\r\\n\\r\\n[Chess960](https://lichess.org/team/lichess-chess960)
-        \u2022 [King of the Hill](https://lichess.org/team/lichess-king-of-the-hill)
-        \u2022 [Three-check](https://lichess.org/team/lichess-three-check) \u2022
-        [Antichess](https://lichess.org/team/lichess-antichess) \u2022 [Atomic](https://lichess.org/team/lichess-atomic)
-        \u2022 [Racing Kings](https://lichess.org/team/lichess-racing-kings) \u2022
-        [Crazyhouse](https://lichess.org/team/lichess-crazyhouse)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"ichinschlecht\",\"id\":\"ichinschlecht\"},{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},{\"name\":\"Sinamon73\",\"patron\":true,\"id\":\"sinamon73\"}],\"nbMembers\":8614},{\"id\":\"--chessmaster\",\"name\":\"ChessMaster\",\"description\":\"\u041F\u0440\u0438\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044E
+        Achieved by me are National Instructor and FIDE Arbiter.\",\"open\":true,\"leader\":{\"name\":\"Checkmate-Chess\",\"id\":\"checkmate-chess\"},\"nbMembers\":14402,\"leaders\":[{\"name\":\"Checkmate-Chess\",\"id\":\"checkmate-chess\"}]},{\"id\":\"--chessmaster\",\"name\":\"ChessMaster\",\"description\":\"\u041F\u0440\u0438\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044E
         \u0432\u0430\u0441 \u0432 \u043A\u043B\u0443\u0431\u0435 \u0428\u043A\u043E\u043B\u044B
         \u0428\u0430\u0445\u043C\u0430\u0442 ChessMaster \u043D\u0430 lichess!\\r\\n\u041C\u044B
         \u043F\u043E\u0431\u0435\u0434\u0438\u0442\u0435\u043B\u0438 5th Lichess Mega
@@ -425,109 +432,7 @@ interactions:
         \u043A\u0430\u043D\u0430\u043B YouTube - https://www.youtube.com/user/ChessMasterClub\\r\\n\u0422\u0435\u043B\u0435\u0433\u0440\u0430\u043C\u043C
         \u043A\u0430\u043D\u0430\u043B https://t.me/ChessMaestro \\r\\n\u0413\u0440\u0443\u043F\u043F\u0430
         \ Vkontakte https://vk.com/chessmaestro\\r\\n\u0413\u0440\u0443\u043F\u043F\u0430
-        Facebook https://www.facebook.com/ChessMasterClub\\r\\nInstagram https://www.instagram.com/chessmaestro/\",\"open\":true,\"leader\":{\"name\":\"maxneo\",\"title\":\"FM\",\"id\":\"maxneo\"},\"leaders\":[{\"name\":\"Chak_not_Norris\",\"id\":\"chak_not_norris\"},{\"name\":\"Chess_Master_Club\",\"id\":\"chess_master_club\"},{\"name\":\"maxneo\",\"title\":\"FM\",\"id\":\"maxneo\"},{\"name\":\"School_ChessMaster\",\"id\":\"school_chessmaster\"}],\"nbMembers\":10854},{\"id\":\"lichess-antichess\",\"name\":\"Lichess
-        Antichess\",\"description\":\"Join the team for regular tournaments and other
-        community-driven events. Everyone is welcome to join!\\r\\n## Upcoming events\\r\\nDay|Date|Time,
-        [UTC](https://savvytime.com/converter/utc)|Event\\r\\n---|---|---|---\\r\\nSaturday|Aug
-        19|16:00|[Team Battle](https://lichess.org/tournament/yhGHW4uF)\\r\\nThursday|Aug
-        24|16:00|[Shield Arena](https://lichess.org/tournament/979Yem4v)\\r\\nFriday|Sep
-        1|19:00|[Monthly Arena](https://lichess.org/tournament/JenmHVrL)\\r\\n\\r\\nReigning
-        champs: @ChangeOpening (ACWC), @Somebody_4AM (Shield), [Anti-chess India](https://lichess.org/team/anti-chess-india)
-        (Team Battle)\\r\\n\\r\\nThe registrations for the Antichess World Cup 2023
-        open soon! Join [this team](https://lichess.org/team/antichess-wc) if you'd
-        like to participate and be notified when it starts.\\r\\n\\r\\n## Learning
-        Material\\r\\n**Studies**: [Basics](https://lichess.org/study/4XBZbCFY) \u2022
-        [Tactics](https://lichess.org/study/WLrT4U2E) \u2022 [Endgames](https://lichess.org/study/VFsD8X5H)
-        \u2022 [Openings](https://lichess.org/study/vXxLrBTY)\\r\\n**Intro videos**:
-        [How to play antichess: Part 1](https://youtu.be/5KLVSxAfQ9M), [Part 2](https://youtu.be/n2Mw6E8WabQ)
-        \u2022 [Rules & brief history](https://youtu.be/fm7FLblKFv0)\\r\\n**Book**:
-        [The Ultimate Guide to Antichess](http://perpetualcheck.com/antichess)\\r\\n**Puzzles**:
-        [Various](https://lichess.org/study/5GrkXfA0) \u2022 [Themed](https://lichess.org/study/lJfYzKtd)
-        \u2022 [Endgame](https://lichess.org/study/YuktqKg2) \u2022 [Midgame](https://lichess.org/study/jKyrZTxS)\\r\\n**Ranked
-        puzzles**: [P1](https://lichess.org/study/yqP1uKPO) \u2022 [P2](https://lichess.org/study/ZJJrwtTo)
-        \u2022 [P3](https://lichess.org/study/yTnMHbGY) \u2022 [P4](https://lichess.org/study/7LbMHGFk)
-        \u2022 [P5](https://lichess.org/study/BV5fZcXK) \u2022 [P6](https://lichess.org/study/gdiGuDJs)\\r\\n\\r\\n---\\r\\n**Papers**
-        (PDF): [1.e3 wins for White](http://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS/LCsolved.pdf)
-        \u2022 [3-man pawnless endings](http://www.jsbeasley.co.uk/vchess/losing3man.pdf)
-        \u2022 [Survey: Endgames ](http://www.jsbeasley.co.uk/vchess/losingendlit.pdf)\\r\\n**Interactive
-        puzzles**: [Chess Variants Training](https://chessvariants.training/Puzzle/Antichess)\\r\\n**Openings
-        theory**: [Solution/Proof](https://magma.maths.usyd.edu.au/~watkins/LOSING_CHESS)
-        \u2022 [Nilatac's opening book](https://catalin.francu.com/nilatac/book.php)
-        \u2022 [Solutions for some openings](https://antichess.herokuapp.com)\\r\\n**Video
-        content**: [Firebatprime](https://www.youtube.com/channel/UCVWt6kOPS_HvKkADhYs8L_g)
-        \u2022 [YourselfAntichess](https://www.youtube.com/channel/UCIfjM1orOwnkrQoYt1NVSCQ)
-        \u2022 [Antichess Lore](https://www.youtube.com/channel/UCwO6d9Rtzt3LweUVhGJHAuw)
-        \u2022 [TUGR](https://www.youtube.com/channel/UCdkPoOjHeiHyzX-KXhlZfUA)\\r\\n**Streamers**:
-        [TheUnknownGuyReborn](https://www.twitch.tv/theunknownguyreborn) \u2022 [Yourself101010](https://www.twitch.tv/yourself101010)
-        \u2022 [PoloAntichess](https://www.twitch.tv/poloantichess) \u2022 [cFlour](https://www.twitch.tv/cFlour)
-        \u2022 [IAF](https://www.twitch.tv/iafantichess)\\r\\n**Bots**: @anti-bot
-        \u2022 @CatNail \u2022 @NilatacBot \u2022 @VariantsBot \u2022 @anti-anti\\r\\n**Other**:
-        [Academy](https://lichess.org/team/antichess-academy) \u2022 [ACWC results](http://perpetualcheck.com/antichess/lichess.php)
-        \u2022 [ACWC team](https://lichess.org/team/antichess-wc) \u2022 [Openings:
-        status](http://perpetualcheck.com/antichess/openings.php) \u2022 [Chess variants](http://www.jsbeasley.co.uk/cvariants.htm)\\r\\n##
-        Other Lichess Variant Teams\\r\\n[Chess960](https://lichess.org/team/lichess-chess960)
-        \u2022 [King of the Hill](https://lichess.org/team/lichess-king-of-the-hill)
-        \u2022 [Three-check](https://lichess.org/team/lichess-three-check) \u2022
-        [Atomic](https://lichess.org/team/lichess-atomic) \u2022 [Horde](https://lichess.org/team/lichess-horde)
-        \u2022 [Racing Kings](https://lichess.org/team/lichess-racing-kings) \u2022
-        [Crazyhouse](https://lichess.org/team/lichess-crazyhouse)\",\"open\":true,\"leader\":{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},\"leaders\":[{\"name\":\"Lichess\",\"patron\":true,\"id\":\"lichess\"},{\"name\":\"TheUnknownGuyReborn\",\"patron\":true,\"id\":\"theunknownguyreborn\"},{\"name\":\"tolius\",\"patron\":true,\"id\":\"tolius\"}],\"nbMembers\":7906},{\"id\":\"veni-vidi-vici-gaming\",\"name\":\"Veni
-        Vidi Vici Gaming\",\"description\":\"![Image](https://i.ibb.co/ZfVSxXQ/Lichess-6.png)\\r\\n\\r\\n[EN]:\\r\\nHi
-        Friends! We have a series of tournaments going on with Freedoom Finance, each
-        tournament has a prize pool of 1500\u20AC and participation is free.\\r\\n\\r\\nDates:\\r\\n12.08
-        http://vvvgamers.com/lichess/tournaments/325216\\r\\nYou can register by clicking
-        on the links\\r\\n\\r\\n22.07 http://vvvgamers.com/lichess/tournaments/325213\\r\\n29.07
-        http://vvvgamers.com/lichess/tournaments/325214\\r\\n05.08 http://vvvgamers.com/lichess/tournaments/325215\\r\\nHere
-        you can see the results of the past stages of Freedoom Finance\\r\\n\\r\\n\\r\\n\\r\\nWe
-        have discovered a way for anyone to earn by playing chess. \\r\\n\\r\\nWelcome
-        to VVVgamers.com chess club, the ultimate place for tournaments with cash
-        buy-ins: \\r\\n\\r\\nhttps://vvvgamers.com \\r\\n\\r\\nNumerous free-rolls,
-        sponsored tournaments, free tournament coins, tournaments with opponents of
-        equal skill, tournaments with handicaps where you can compete against best
-        players of the planet - all of that is offered to provide you with the new
-        emotions and excitement of playing chess! \\r\\n\\r\\nUpon registration you
-        will get several thousand free coins to participate in freerolls. \\r\\n\\r\\nAttach
-        your Lichess account with the highest rating and play fair, we have numerous
-        anti-fraud detection systems and are quite strict, but fair. Do not artificially
-        lower your rating, our admins ban for that. And if you are banned on VVVgamers.com
-        - that is never a good thing, since we are a good place to earn on chess sustainably.
-        \\r\\n\\r\\nThe platform has distributed 20 million RUB after a year of holding
-        20 000 + chess tournaments with cash buy-ins! \\r\\n\\r\\nFreerolls from VVV!\\r\\n\\r\\nWe
-        invite you to take part in daily Lichess tournaments on VVVgamers.com \\r\\nEvery
-        week, 500+ USD is being distributed among freeroll tournament winners.\\r\\n\\r\\nCoins
-        are granted daily, for each new platform visit.   \\r\\n\\r\\nVVV advantages:
-        \\r\\n\\r\\n\u2013   Ranking allows you to play with participants equal to
-        your  strength   \\r\\n\u2013  Quick payouts\\r\\n\u2013  Wide variety of
-        tournaments and duels (more than 600 to choose from) \\r\\n\u2013  Various
-        time controls to suite any player\\r\\n\u2013  Bersekable\\r\\n\\r\\nLet\u2019s
-        earn some cash on your skill!\\r\\n\\r\\n community chat: https://t.me/vvv_lichess
-        \\r\\n Lichess club: https://lichess.org/team/veni-vidi-vici-gaming\\r\\n\\r\\n[RU]:\\r\\nVeni
-        Vidi Vici \u2014 \u0448\u0430\u0445\u043C\u0430\u0442\u043D\u044B\u0439 \u043A\u043B\u0443\u0431
-        \u043F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u044B VVVgamers.com, \u043A\u043E\u0442\u043E\u0440\u044B\u0439
-        \u0432\u0445\u043E\u0434\u0438\u0442 \u0432 \u0442\u043E\u043F-10 \u0448\u0430\u0445\u043C\u0430\u0442\u043D\u044B\u0445
-        \u043A\u043B\u0443\u0431\u043E\u0432 Lichess \u0432 \u0421\u041D\u0413. \u0423
-        \u043D\u0430\u0441 \u0432\u044B \u043D\u0430\u0439\u0434\u0435\u0442\u0435
-        \u043D\u0435 \u0442\u043E\u043B\u044C\u043A\u043E \u0438\u043D\u0442\u0435\u0440\u0435\u0441\u043D\u044B\u0445
-        \u0441\u043E\u043F\u0435\u0440\u043D\u0438\u043A\u043E\u0432, \u043D\u043E
-        \u0438 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u0435 \u0431\u0435\u0441\u0446\u0435\u043D\u043D\u044B\u0439
-        \u043E\u043F\u044B\u0442 \u043E\u0442 \u0442\u0438\u0442\u0443\u043B\u043E\u0432\u0430\u043D\u043D\u044B\u0445
-        \u0447\u043B\u0435\u043D\u043E\u0432 \u043F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u044B
-        VVV.\\r\\n\\r\\nVVVgamers.om \u2014 \u043E\u043D\u043B\u0430\u0439\u043D \u043F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430
-        \u0434\u043B\u044F \u0437\u0430\u0440\u0430\u0431\u043E\u0442\u043A\u0430
-        \u043D\u0430 \u043E\u043D\u043B\u0430\u0439\u043D \u0438\u0433\u0440\u0430\u0445
-        \u0438 \u0448\u0430\u0445\u043C\u0430\u0442\u0430\u0445, \u043F\u0440\u0438\u0441\u043E\u0435\u0434\u0438\u043D\u044F\u0439\u0442\u0435\u0441\u044C
-        \u043A \u043D\u0430\u043C, \u0443\u0447\u0430\u0441\u0442\u0432\u0443\u0439\u0442\u0435
-        \u0432 \u0442\u0443\u0440\u043D\u0438\u0440\u0430\u0445 \u0438 \u0432\u044B\u0438\u0433\u0440\u044B\u0432\u0430\u0439\u0442\u0435
-        \u0434\u0435\u043D\u0435\u0436\u043D\u044B\u0435 \u043F\u0440\u0438\u0437\u044B!
-        \\r\\n\u0422\u0443\u0440\u043D\u0438\u0440\u044B \u043F\u0440\u043E\u0445\u043E\u0434\u044F\u0442
-        \u043A\u0430\u0436\u0434\u044B\u0439 \u0447\u0430\u0441 \u0438 \u043F\u0440\u0435\u0434\u0443\u0441\u043C\u0430\u0442\u0440\u0438\u0432\u0430\u044E\u0442
-        \u0441\u043E\u0440\u0435\u0432\u043D\u043E\u0432\u0430\u043D\u0438\u044F \u043C\u0435\u0436\u0434\u0443
-        \u0440\u0430\u0437\u043D\u044B\u043C\u0438 \u0440\u0435\u0439\u0442\u0438\u043D\u0433\u043E\u0432\u044B\u043C\u0438
-        \u0433\u0440\u0443\u043F\u043F\u0430\u043C\u0438: https://vvvgamers.com/lichess/tournaments\\r\\n\\r\\n\u041F\u0440\u0438\u0441\u043E\u0435\u0434\u0438\u043D\u044F\u0439\u0442\u0435\u0441\u044C!
-        \u0412 \u043D\u0430\u0448\u0435\u043C \u043A\u043B\u0443\u0431\u0435 \u0443\u0436\u0435
-        \u0431\u043E\u043B\u0435\u0435 5000 \u0443\u0447\u0430\u0441\u0442\u043D\u0438\u043A\u043E\u0432\\r\\n\u041D\u0430\u0448
-        \u0447\u0430\u0442 \u0432 \u0442\u0435\u043B\u0435\u0433\u0440\u0430\u043C\u043C:
-        https://t.me/vvv_lichess \\r\\n\u041F\u043B\u0430\u0442\u0444\u043E\u0440\u043C\u0430
-        \u043A\u043B\u0443\u0431\u0430: https://vvvgamers.com\",\"open\":true,\"leader\":{\"name\":\"kirill_sil\",\"id\":\"kirill_sil\"},\"leaders\":[{\"name\":\"kirill_sil\",\"id\":\"kirill_sil\"},{\"name\":\"vvv_cash\",\"id\":\"vvv_cash\"},{\"name\":\"Wadzytir\",\"id\":\"wadzytir\"}],\"nbMembers\":7825}],\"nbResults\":10000,\"previousPage\":null,\"nextPage\":2,\"nbPages\":667}"
+        Facebook https://www.facebook.com/ChessMasterClub\\r\\nInstagram https://www.instagram.com/chessmaestro/\",\"open\":true,\"leader\":{\"name\":\"maxneo\",\"title\":\"FM\",\"id\":\"maxneo\"},\"nbMembers\":14007,\"leaders\":[{\"name\":\"maxneo\",\"title\":\"FM\",\"id\":\"maxneo\"},{\"name\":\"Chak_not_Norris\",\"flair\":\"nature.snowman\",\"id\":\"chak_not_norris\"},{\"name\":\"Chess_Master_Club\",\"id\":\"chess_master_club\"},{\"name\":\"School_ChessMaster\",\"id\":\"school_chessmaster\"}]}],\"previousPage\":null,\"nextPage\":2,\"nbResults\":15204,\"nbPages\":1014}"
     headers:
       Access-Control-Allow-Headers:
       - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
@@ -540,7 +445,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Mon, 14 Aug 2023 17:06:27 GMT
+      - Fri, 05 Dec 2025 16:53:45 GMT
       Permissions-Policy:
       - interest-cohort=()
       Server:
@@ -554,7 +459,7 @@ interactions:
       X-Frame-Options:
       - DENY
       content-length:
-      - '37185'
+      - '39662'
     status:
       code: 200
       message: OK
