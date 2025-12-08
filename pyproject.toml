@@ -67,3 +67,8 @@ build-backend = "uv_build"
 
 [tool.uv.build-backend]
 module-root = ""
+
+[tool.pytest.ini_options]
+markers = [
+    "streaming: test that use a streaming endpoint.",
+]

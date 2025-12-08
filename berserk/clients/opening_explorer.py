@@ -7,6 +7,8 @@ import logging
 from .base import BaseClient
 from ..types import (
     OpeningStatistic,
+    PlayerOpeningStatistic,
+    MastersOpeningStatistic,
     VariantKey,
     Speed,
     OpeningExplorerRating,
@@ -78,7 +80,7 @@ class OpeningExplorer(BaseClient):
         until: int | None = None,
         moves: int | None = None,
         top_games: int | None = None,
-    ) -> OpeningStatistic:
+    ) -> MastersOpeningStatistic:
         """Get most played move from a position based on masters games."""
 
         path = "/masters"
@@ -91,7 +93,7 @@ class OpeningExplorer(BaseClient):
             "moves": moves,
             "topGames": top_games,
         }
-        return cast(OpeningStatistic, self._r.get(path, params=params))
+        return cast(MastersOpeningStatistic, self._r.get(path, params=params))
 
     def get_player_games(
         self,
@@ -109,7 +111,7 @@ class OpeningExplorer(BaseClient):
         recent_games: int | None = None,
         history: bool | None = None,
         wait_for_indexing: bool = True,
-    ) -> OpeningStatistic:
+    ) -> PlayerOpeningStatistic:
         """Get most played move from a position based on player games.
 
         The complete statistics for a player may not immediately be available at the
@@ -156,7 +158,7 @@ class OpeningExplorer(BaseClient):
         top_games: int | None = None,
         recent_games: int | None = None,
         history: bool | None = None,
-    ) -> Iterator[OpeningStatistic]:
+    ) -> Iterator[PlayerOpeningStatistic]:
         """Get most played move from a position based on player games.
 
         The complete statistics for a player may not immediately be available at the
@@ -196,7 +198,7 @@ class OpeningExplorer(BaseClient):
         }
 
         for response in self._r.get(path, params=params, stream=True):
-            yield cast(OpeningStatistic, response)
+            yield cast(PlayerOpeningStatistic, response)
 
     def get_otb_master_game(self, game_id: str) -> str:
         """Get PGN representation of an over-the-board master game.

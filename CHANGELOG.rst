@@ -6,7 +6,16 @@ To be released
 
 
 * Deprecate Python 3.9 support - minimum required version is now Python 3.10+. This does not mean the library will not work with Python 3.9, but it will not be tested against it anymore.
-
+* Added test_live_no_streaming Makefile target and updated live-api-healthcheck GitHub Actions workflow to use it.
+* Updated typing and client behavior for the ``opening_explorer``:
+  - Added new typed dicts ``PlayerOpeningStatistic`` and ``MastersOpeningStatistic`` in ``berserk.types.opening_explorer``.
+  - Updated ``client.opening_explorer`` method signatures to return the new types.
+* Updated ``PuzzleUser`` type to include patron status, title, and flair information to match current Lichess API schema.
+* Updated ``Team`` type to include flair information to match current Lichess API schema.
+* Updated ``TournamentResult`` type to include patron color information to match current Lichess API schema.
+* Added ``test_live_api`` target in Makefile to run tests against the live Lichess API and bypass VCR.py recordings.
+* Added GitHub Actions workflow ``live-api-healthcheck`` to validate changes against the API schema.
+* Added pytest ``--live-api-throttle`` argument to add throttling between live API tests.
 * Added ``pgn_in_json`` parameter to ``client.games.export``.
 * Implement `broadcasts.get_top()` endpoint; typing fixes and validation.
 * Added ``client.broadcasts.search`` to search for broadcasts.

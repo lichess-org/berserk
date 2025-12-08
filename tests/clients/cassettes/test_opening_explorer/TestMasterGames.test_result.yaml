@@ -9,13 +9,14 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - python-requests/2.31.0
+      - python-requests/2.32.5
     method: GET
     uri: https://explorer.lichess.ovh/masters?play=d2d4%2Cd7d5%2Cc2c4%2Cc7c6%2Cc4d5
   response:
     body:
-      string: '{"white":1667,"draws":4428,"black":1300,"moves":[{"uci":"c6d5","san":"cxd5","averageRating":2417,"white":1667,"draws":4428,"black":1299,"game":null},{"uci":"g8f6","san":"Nf6","averageRating":2515,"white":0,"draws":0,"black":1,"game":{"id":"1EErB5jc","winner":"black","black":{"name":"Dobrov,
-        Vladimir","rating":2515},"white":{"name":"Drozdovskij, Yuri","rating":2509},"year":2006,"month":"2006-01"}}],"topGames":[{"uci":"c6d5","id":"kN6d9l2i","winner":"black","black":{"name":"Anand,
+      string: '{"white":1828,"draws":4904,"black":1403,"moves":[{"uci":"c6d5","san":"cxd5","averageRating":2414,"white":1828,"draws":4904,"black":1402,"game":null,"opening":null},{"uci":"g8f6","san":"Nf6","averageRating":2515,"white":0,"draws":0,"black":1,"game":{"id":"1EErB5jc","winner":"black","black":{"name":"Dobrov,
+        Vladimir","rating":2515},"white":{"name":"Drozdovskij, Yuri","rating":2509},"year":2006,"month":"2006-01"},"opening":{"eco":"D06","name":"Queen''s
+        Gambit Declined: Marshall Defense, Tan Gambit"}}],"topGames":[{"uci":"c6d5","id":"kN6d9l2i","winner":"black","black":{"name":"Anand,
         V.","rating":2785},"white":{"name":"Carlsen, M.","rating":2881},"year":2014,"month":"2014-06"},{"uci":"c6d5","id":"qeYPJL2y","winner":"white","black":{"name":"Carlsen,
         M.","rating":2843},"white":{"name":"So, W.","rating":2778},"year":2018,"month":"2018-06"},{"uci":"c6d5","id":"VpWYyv3g","winner":null,"black":{"name":"Carlsen,
         M..","rating":2847},"white":{"name":"So, W..","rating":2770},"year":2021,"month":"2021-03"},{"uci":"c6d5","id":"nlh6QPSg","winner":"white","black":{"name":"Vachier
@@ -47,15 +48,15 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 26 Jul 2023 11:27:22 GMT
+      - Thu, 04 Dec 2025 00:13:54 GMT
       Expires:
-      - Wed, 26 Jul 2023 14:27:22 GMT
+      - Thu, 04 Dec 2025 03:13:54 GMT
       Server:
       - nginx
       Transfer-Encoding:
       - chunked
       content-length:
-      - '3071'
+      - '3173'
     status:
       code: 200
       message: OK
