@@ -21,6 +21,8 @@ class Team(TypedDict):
     leaders: List[LightUser]
     # The number of members of the team
     nbMembers: int
+    # The flair of the team
+    flair: NotRequired[str]
     # Has the user asssociated with the token (if any) joined the team
     joined: NotRequired[bool]
     # Has the user asssociated with the token (if any) requested to join the team

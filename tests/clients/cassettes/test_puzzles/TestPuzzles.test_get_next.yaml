@@ -1,18 +1,51 @@
 interactions:
 - request:
-    method: GET
-    uri: https://lichess.org/api/puzzle/next?angle=anastasiaMate&difficulty=hardest
+    body: null
     headers:
       Accept:
       - application/json
-    body: null
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.5
+    method: GET
+    uri: https://lichess.org/api/puzzle/next?angle=anastasiaMate&difficulty=hardest
   response:
+    body:
+      string: '{"game":{"id":"aBrvm07l","perf":{"key":"blitz","name":"Blitz"},"rated":true,"players":[{"name":"Yan_Henrique","id":"yan_henrique","color":"white","rating":1728},{"name":"Rony-mar","id":"rony-mar","color":"black","rating":1692}],"pgn":"e4
+        e5 Nf3 d5 d3 dxe4 dxe4 Qxd1+ Kxd1 Nc6 h3 Nf6 Bg5 Nxe4 h4 Nxf2+ Ke2 Nxh1 Nc3
+        Ng3+ Ke3 Bb4 Nd5 Bd6 c4 O-O a3 h6 b4 hxg5 hxg5 Bg4 c5 Bxf3 gxf3 Nxf1+ Kf2
+        Be7 Rxf1 Rac8 f4 exf4 b5 Nd4","clock":"3+0"},"puzzle":{"id":"wv8ol","rating":1714,"plays":9171,"solution":["d5e7","g8h7","f1h1"],"themes":["short","fork","endgame","mateIn2","hangingPiece","anastasiaMate"],"initialPly":43}}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 04 Dec 2025 00:11:02 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      X-Frame-Options:
+      - DENY
+      content-length:
+      - '611'
     status:
       code: 200
       message: OK
-    body:
-      string: '{"game": {"id": "KUQu6AVh", "perf": {"key": "rapid", "name": "Rapid"}, "rated": true, "players": [{"name": "apwoeijfoe", "id": "apwoeijfoe", "color": "white", "rating": 2164}, {"name": "drunkchess69420", "id": "drunkchess69420", "color": "black", "rating": 2166}], "pgn": "e4 e5 Nf3 Nc6 Bc4 Nf6 d4 exd4 e5 d5 Bb5 Ne4 Nxd4 Bd7 Bxc6 bxc6 O-O Bc5 f3 Ng5 f4 Ne4 Be3 Rb8 f5 Rxb2 e6 Bc8 Qg4 O-O Kh1 fxe6 Nxc6 Qd6 Nd4 exf5 Qh5 f4 Bg1 c6 c4 Ba6 Nf5 Qf6 Bxc5 Nxc5 Rxf4 Bxc4 Nc3 Rbb8 Rc1 Nd3 Rcf1 Nxf4 Rxf4 Qxc3 Ne7+ Kh8 Ng6+ Kg8", "clock": "10+0"}, "puzzle": {"id": "vQL9J", "rating": 1807, "plays": 4523, "solution": ["g6e7", "g8h8", "h5h7", "h8h7", "f4h4"], "themes": ["middlegame", "attraction", "long", "mateIn3", "sacrifice", "anastasiaMate"], "initialPly": 59}}'
-    headers:
-      Content-Type:
-      - application/json
 version: 1
