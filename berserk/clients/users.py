@@ -154,3 +154,11 @@ class Users(BaseClient):
         """
         path = f"/api/user/{username}/perf/{perf}"
         return self._r.get(path, fmt=JSON_LIST, converter=models.User.convert)
+
+    def create_note(self, username: str) -> None:
+        """Add a private note available only to you about this account.
+
+        :param username: The username of the user to create a note for
+        """
+        path = f"/api/user/{username}/notification"
+        self._r.post(path)
