@@ -1,0 +1,18 @@
+interactions:
+- request:
+    method: GET
+    uri: https://lichess.org/api/puzzle/replay/30/mix
+    body: null
+    headers:
+      Accept:
+      - application/json
+  response:
+    headers:
+      Content-Type:
+      - application/json
+    body:
+      string: '{"replay":{"days":30,"theme":"mix","nb":7,"remaining":["iD6qN","iAXOH","95xAe","KbK7I","5zLim","jlyRt","JWYI8"]},"angle":{"key":"mix","name":"Puzzle Themes","desc":"A mix of everything. You don''t know what to expect, so you remain ready for anything! Just like in real games."}}'
+    status:
+      code: 200
+      message: OK
+version: 1

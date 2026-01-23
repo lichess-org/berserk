@@ -203,6 +203,14 @@ class Broadcasts(BaseClient):
         }
         return self._r.post(path, json=payload, converter=models.Broadcast.convert)
 
+    def reset_round(self, broadcast_round_id: str) -> None:
+        """Remove any games from the broadcast round and reset it to its initial state.
+
+        :param broadcast_round_id: broadcast round ID
+        """
+        path = f"/broadcast/round/{broadcast_round_id}/reset"
+        self._r.post(path)
+
     def get_round_pgns(self, broadcast_round_id: str) -> Iterator[str]:
         """Get all games of a single round of a broadcast in PGN format.
 

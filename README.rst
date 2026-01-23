@@ -113,6 +113,7 @@ Most of the API is available:
     client.broadcasts.create_round
     client.broadcasts.get_round
     client.broadcasts.update_round
+    client.broadcasts.reset_round
     client.broadcasts.get_round_pgns
     client.broadcasts.get_pgns
     client.broadcasts.stream_round
@@ -176,9 +177,11 @@ Most of the API is available:
     client.puzzles.get
     client.puzzles.get_next
     client.puzzles.get_puzzle_activity
+    client.puzzles.get_puzzles_to_replay
     client.puzzles.get_puzzle_dashboard
     client.puzzles.get_storm_dashboard
     client.puzzles.create_race
+    client.puzzles.get_race
 
     client.relations.get_users_followed
     client.relations.follow
@@ -253,5 +256,6 @@ Most of the API is available:
     client.users.get_crosstable
     client.users.get_user_performance
     client.users.get_by_autocomplete
+    client.users.create_note
 
 Details for each function can be found in the `documentation <https://lichess-org.github.io/berserk/>`_.

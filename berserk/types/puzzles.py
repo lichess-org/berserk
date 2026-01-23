@@ -49,3 +49,41 @@ class PuzzleRace(TypedDict):
     id: str
     # Puzzle race URL
     url: str
+
+
+class PuzzleRacePlayer(TypedDict):
+    id: str
+    name: str
+    score: int
+
+
+class PuzzleRacePuzzle(TypedDict):
+    id: str
+    fen: str
+    line: str
+    rating: int
+
+
+class PuzzleRaceData(TypedDict):
+    id: str
+    owner: str
+    players: List[PuzzleRacePlayer]
+    puzzles: List[PuzzleRacePuzzle]
+
+
+class PuzzleReplay(TypedDict):
+    days: int
+    theme: str
+    nb: int
+    remaining: List[str]
+
+
+class Angle(TypedDict):
+    key: str
+    name: str
+    desc: str
+
+
+class PuzzleReplayData(TypedDict):
+    replay: PuzzleReplay
+    angle: Angle
