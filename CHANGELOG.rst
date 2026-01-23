@@ -8,7 +8,7 @@ To be released
 * Deprecate Python 3.9 support - minimum required version is now Python 3.10+. This does not mean the library will not work with Python 3.9, but it will not be tested against it anymore.
 
 * Added ``pgn_in_json`` parameter to ``client.games.export``.
-* Implement `broadcasts.get_top()` endpoint; typing fixes and validation.
+* Implement ``broadcasts.get_top()`` endpoint; typing fixes and validation.
 * Added ``client.broadcasts.search`` to search for broadcasts.
 * Added ``client.broadcasts.get_by_user`` to get broadcasts created by a user.
 * Added ``client.relations.block`` and ``client.relations.unblock`` for blocking/unblocking users.
@@ -20,6 +20,9 @@ To be released
   of a given user.
 * Added ``bots.handle_draw_offer`` and ``bots.handle_takeback_offer`` to handle draw and takeback offers
 * Added ``client.external_engine.analyse``, ``client.external_engine.acquire_request``, ``client.external_engine.answer_request`` to handle analysis with an external engine
+* Added ``client.puzzles.get_puzzle_to_replay``, ``client.puzzles.get_puzzle_race`` to get puzzle replay and puzzle race data
+* Added ``client.broadcasts.reset_round`` to reset a broadcast round
+* Added ``client.users.create_note`` to create a note for a user
 
 
 Thanks to all the contributors who helped to this release:
@@ -29,6 +32,7 @@ Thanks to all the contributors who helped to this release:
 - @gameroman
 - @JAMoreno-Larios
 - @friedrichtenhagen
+- @nkc-137
 
 
 v0.14.0 (2025-08-26)
