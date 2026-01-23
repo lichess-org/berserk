@@ -5,7 +5,13 @@ from typing import Iterator, Any, Dict, cast
 from .. import models
 from ..formats import NDJSON
 from .base import BaseClient
-from ..types.puzzles import DifficultyLevel, PuzzleData, PuzzleRace
+from ..types.puzzles import (
+    DifficultyLevel,
+    PuzzleData,
+    PuzzleRace,
+    PuzzleRaceData,
+    PuzzleReplayData,
+)
 
 
 class Puzzles(BaseClient):
@@ -66,6 +72,16 @@ class Puzzles(BaseClient):
             converter=models.PuzzleActivity.convert,
         )
 
+    def get_puzzles_to_replay(self, days: int, theme: str) -> PuzzleReplayData:
+        """Get the puzzle IDs of remaining puzzles to re-attempt in JSON format.
+
+        :param days: number of days to look back
+        :param theme: the theme or opening to filter puzzles with
+        :return: a puzzle to replay
+        """
+        path = f"/api/puzzle/replay/{days}/{theme}"
+        return cast(PuzzleReplayData, self._r.get(path))
+
     def get_puzzle_dashboard(self, days: int = 30) -> Dict[str, Any]:
         """Get the puzzle dashboard of the authenticated user.
 
@@ -95,3 +111,13 @@ class Puzzles(BaseClient):
         """
         path = "/api/racer"
         return cast(PuzzleRace, self._r.post(path))
+
+    def get_race(self, race_id: str) -> PuzzleRaceData:
+        """Get the results of a puzzle race. Returns information about players, puzzles,
+        and the current status of the race.
+
+        :param race_id: The puzzle race ID
+        :return: the puzzle race
+        """
+        path = f"/api/racer/{race_id}"
+        return cast(PuzzleRaceData, self._r.get(path))
