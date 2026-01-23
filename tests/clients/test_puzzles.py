@@ -1,7 +1,7 @@
 import pytest
 
 from berserk import Client
-from berserk.types.puzzles import PuzzleData, PuzzleReplayData
+from berserk.types.puzzles import PuzzleData, PuzzleReplayData, PuzzleRaceData
 from utils import validate, skip_if_older_3_dot_10
 
 
@@ -18,3 +18,9 @@ class TestPuzzles:
     def test_get_puzzles_to_replay(self):
         res = Client().puzzles.get_puzzles_to_replay(30, "mix")
         validate(PuzzleReplayData, res)
+
+    @skip_if_older_3_dot_10
+    @pytest.mark.vcr
+    def test_get_race(self):
+        res = Client().puzzles.get_race("kDAIa")
+        validate(PuzzleRaceData, res)
