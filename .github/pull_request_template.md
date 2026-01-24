@@ -13,4 +13,5 @@ If any of these steps are not relevant or you have not completed, leave them unc
 - [ ] Typed the returned JSON using TypedDicts in `berserk/types/`, [example](https://github.com/lichess-org/berserk/blob/master/berserk/types/team.py#L32)
 - [ ] Written tests for GET endpoints not requiring authentification. [Documentation](https://github.com/lichess-org/berserk/blob/master/CONTRIBUTING.rst#using-pytest-recording--vcrpy), [example](https://github.com/lichess-org/berserk/blob/master/tests/clients/test_teams.py#L11)
 - [ ] Added the endpoint and your name to `CHANGELOG.md` in the `To be released` section (to be created if necessary)
+- [ ] For POST and/or authenticated endpoints: added/updated tests and verified they pass using the Docker CI workflow
 </details>
