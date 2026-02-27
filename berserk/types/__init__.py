@@ -14,6 +14,9 @@ from .broadcast import (
     BroadcastTop,
     PaginatedBroadcasts,
     BroadcastsByUser,
+    BroadcastPlayerEntry,
+    BroadcastPlayerEntryWithFideAndGames,
+    BroadcastTeamLeaderboardEntry,
 )
 
 from .bulk_pairings import BulkPairing, BulkPairingGame
@@ -36,7 +39,10 @@ __all__ = [
     "AccountInformation",
     "ArenaResult",
     "BroadcastPlayer",
+    "BroadcastPlayerEntry",
+    "BroadcastPlayerEntryWithFideAndGames",
     "BroadcastsByUser",
+    "BroadcastTeamLeaderboardEntry",
     "BroadcastTop",
     "BulkPairing",
     "BulkPairingGame",

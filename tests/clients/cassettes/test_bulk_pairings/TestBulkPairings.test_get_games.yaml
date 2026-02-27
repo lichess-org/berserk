@@ -1,0 +1,49 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/x-ndjson
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.4
+    method: GET
+    uri: https://lichess.org/api/bulk-pairing/testBulk1/games
+  response:
+    body:
+      string: "{\\\n\\\"id\\\":\\\"abcdef01\\\",\\\
+\\\"rated\\\":true,\\\
+\\\"variant\\\":{\\\"key\\\":\\\"standard\\\",\\\"name\\\":\\\"Standard\\\",\\\"short\\\":\\\"Std\\\"},\\\
+\\\"speed\\\":\\\"blitz\\\",\\\
+\\\"perf\\\":\\\"blitz\\\",\\\
+\\\"createdAt\\\":1677000000000,\\\
+\\\"lastMoveAt\\\":1677001000000,\\\
+\\\"status\\\":\\\"mate\\\",\\\
+\\\"players\\\":{\\\
+\\\"white\\\":{\\\"user\\\":{\\\"name\\\":\\\"PlayerOne\\\",\\\"id\\\":\\\"playerone\\\"},\\\"rating\\\":1500,\\\"ratingDiff\\\":10},\\\
+\\\"black\\\":{\\\"user\\\":{\\\"name\\\":\\\"PlayerTwo\\\",\\\"id\\\":\\\"playertwo\\\"},\\\"rating\\\":1450,\\\"ratingDiff\\\":-10}\\\
+},\\\
+\\\"winner\\\":\\\"white\\\",\\\
+\\\"moves\\\":\\\"e4 e5 Nf3 Nc6 Bb5\\\",\\\
+\\\"clock\\\":{\\\"initial\\\":300,\\\"increment\\\":0,\\\"totalTime\\\":300}\\\
+}\\n"
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/x-ndjson
+      Date:
+      - Fri, 27 Feb 2026 00:00:00 GMT
+    status:
+      code: 200
+      message: OK
+version: 1

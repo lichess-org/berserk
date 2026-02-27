@@ -11,6 +11,9 @@ from ..types.broadcast import (
     BroadcastTop,
     PaginatedBroadcasts,
     BroadcastsByUser,
+    BroadcastPlayerEntry,
+    BroadcastPlayerEntryWithFideAndGames,
+    BroadcastTeamLeaderboardEntry,
 )
 from ..utils import to_str
 
@@ -296,3 +299,56 @@ class Broadcasts(BaseClient):
         path = f"/api/broadcast/by/{username}"
         params = {"page": page, "html": html}
         return cast(BroadcastsByUser, self._r.get(path, params=params))
+
+    def reset_round(self, broadcast_round_id: str) -> None:
+        """Delete all games of the given broadcast round, and reset their sources.
+
+        Requires OAuth2 authorization with study:write scope.
+
+        :param broadcast_round_id: broadcast round ID
+        """
+        path = f"/api/broadcast/round/{broadcast_round_id}/reset"
+        self._r.post(path)
+
+    def get_players(
+        self, broadcast_tournament_id: str
+    ) -> List[BroadcastPlayerEntry]:
+        """Get the players of a broadcast tournament.
+
+        :param broadcast_tournament_id: broadcast tournament ID
+        :return: list of player entries in the broadcast leaderboard
+        """
+        path = f"/broadcast/{broadcast_tournament_id}/players"
+        return cast(
+            List[BroadcastPlayerEntry],
+            self._r.get(path),
+        )
+
+    def get_player(
+        self, broadcast_tournament_id: str, player_id: str
+    ) -> BroadcastPlayerEntryWithFideAndGames:
+        """Get one player of a broadcast tournament, with FIDE data and games.
+
+        :param broadcast_tournament_id: broadcast tournament ID
+        :param player_id: player ID (FIDE ID or a Lichess-generated ID)
+        :return: player entry with FIDE data and games
+        """
+        path = f"/broadcast/{broadcast_tournament_id}/players/{player_id}"
+        return cast(
+            BroadcastPlayerEntryWithFideAndGames,
+            self._r.get(path),
+        )
+
+    def get_team_standings(
+        self, broadcast_tournament_id: str
+    ) -> List[BroadcastTeamLeaderboardEntry]:
+        """Get the team leaderboard of a broadcast tournament.
+
+        :param broadcast_tournament_id: broadcast tournament ID
+        :return: list of team entries in the broadcast team leaderboard
+        """
+        path = f"/broadcast/{broadcast_tournament_id}/teams/standings"
+        return cast(
+            List[BroadcastTeamLeaderboardEntry],
+            self._r.get(path),
+        )

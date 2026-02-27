@@ -1,0 +1,36 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.4
+    method: GET
+    uri: https://lichess.org/broadcast/ZfhmG9VB/players/1503014
+  response:
+    body:
+      string: '{"name":"Magnus Carlsen","fideId":1503014,"fed":"NOR","title":"GM","rating":2830,"score":4.5,"played":7,"rank":1,"performances":{"standard":2850},"ratingsMap":{"standard":2830},"fide":{"year":1990,"ratings":{"standard":2830,"rapid":2800,"blitz":2780}},"games":[{"id":"abc12345","round":"Round
+        1","color":"white","result":"1-0","opponent":{"name":"Fabiano Caruana","fideId":2020009,"fed":"USA","title":"GM","rating":2805}},{"id":"def67890","round":"Round
+        2","color":"black","result":"1/2-1/2","opponent":{"name":"Hikaru Nakamura","fideId":2016192,"fed":"USA","title":"GM","rating":2780}}]}'
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 27 Feb 2026 00:00:00 GMT
+    status:
+      code: 200
+      message: OK
+version: 1

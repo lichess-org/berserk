@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any, Dict, List, cast
 from deprecated import deprecated
 
 from ..types.challenges import ChallengeJson, ChallengeDeclineReason
@@ -242,3 +242,14 @@ class Challenges(BaseClient):
         path = "/api/token/admin-challenge"
         payload = {"users": ",".join(usernames), "description": description}
         return self._r.post(path=path, payload=payload)
+
+    def show(self, challenge_id: str) -> ChallengeJson:
+        """Show a challenge, even if it was declined.
+
+        Requires OAuth2 authorization with challenge:read scope.
+
+        :param challenge_id: ID of the challenge
+        :return: challenge data
+        """
+        path = f"/api/challenge/{challenge_id}/show"
+        return cast(ChallengeJson, self._r.get(path))

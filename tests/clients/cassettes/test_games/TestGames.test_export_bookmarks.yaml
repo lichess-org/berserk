@@ -1,0 +1,49 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/x-ndjson
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.4
+    method: GET
+    uri: https://lichess.org/api/games/export/bookmarks
+  response:
+    body:
+      string: "{\\\n\\\"id\\\":\\\"bookgame1\\\",\\\
+\\\"rated\\\":true,\\\
+\\\"variant\\\":{\\\"key\\\":\\\"standard\\\",\\\"name\\\":\\\"Standard\\\",\\\"short\\\":\\\"Std\\\"},\\\
+\\\"speed\\\":\\\"rapid\\\",\\\
+\\\"perf\\\":\\\"rapid\\\",\\\
+\\\"createdAt\\\":1677000000000,\\\
+\\\"lastMoveAt\\\":1677001800000,\\\
+\\\"status\\\":\\\"resign\\\",\\\
+\\\"players\\\":{\\\
+\\\"white\\\":{\\\"user\\\":{\\\"name\\\":\\\"PlayerOne\\\",\\\"id\\\":\\\"playerone\\\"},\\\"rating\\\":1600,\\\"ratingDiff\\\":8},\\\
+\\\"black\\\":{\\\"user\\\":{\\\"name\\\":\\\"PlayerTwo\\\",\\\"id\\\":\\\"playertwo\\\"},\\\"rating\\\":1580,\\\"ratingDiff\\\":-8}\\\
+},\\\
+\\\"winner\\\":\\\"white\\\",\\\
+\\\"moves\\\":\\\"e4 c5 Nf3 d6 d4\\\",\\\
+\\\"clock\\\":{\\\"initial\\\":600,\\\"increment\\\":0,\\\"totalTime\\\":600}\\\
+}\\n"
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/x-ndjson
+      Date:
+      - Fri, 27 Feb 2026 00:00:00 GMT
+    status:
+      code: 200
+      message: OK
+version: 1

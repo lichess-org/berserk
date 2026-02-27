@@ -531,3 +531,23 @@ class Tournaments(FmtClient):
         path = f"/api/swiss/{tournament_id}/schedule-next-round"
         payload = {"date": schedule_time}
         self._r.post(path, json=payload)
+
+    def played_by_user(
+        self,
+        username: str,
+        nb: int | None = None,
+        performance: bool | None = None,
+    ) -> Iterator[Dict[str, Any]]:
+        """Get arena tournaments played by a user.
+
+        :param username: username of the player
+        :param nb: max number of tournaments to fetch
+        :param performance: whether to include performance rating for each tournament
+        :return: iterator over arena tournaments played by the user
+        """
+        path = f"/api/user/{username}/tournament/played"
+        params = {
+            "nb": nb,
+            "performance": performance,
+        }
+        yield from self._r.get(path, params=params, fmt=NDJSON, stream=True)

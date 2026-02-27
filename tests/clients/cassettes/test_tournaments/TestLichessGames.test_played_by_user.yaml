@@ -1,0 +1,44 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/x-ndjson
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.4
+    method: GET
+    uri: https://lichess.org/api/user/thibault/tournament/played
+  response:
+    body:
+      string: "{\\\"id\\\":\\\"hallow23\\\",\\\"createdBy\\\":\\\"lichess\\\",\\\"system\\\":\\\"arena\\\",\\\
+        \\\"minutes\\\":120,\\\"clock\\\":{\\\"limit\\\":180,\\\"increment\\\":0},\\\"rated\\\":true,\\\"\\\
+        fullName\\\":\\\"Halloween Arena\\\",\\\"nbPlayers\\\":512,\\\"variant\\\":{\\\"key\\\":\\\"standard\\\"\\\
+        ,\\\"name\\\":\\\"Standard\\\",\\\"short\\\":\\\"Std\\\"},\\\"startsAt\\\":\\\"2023-10-31T17:00:00.000Z\\\"\\\
+        ,\\\"finishesAt\\\":\\\"2023-10-31T19:00:00.000Z\\\",\\\"status\\\":\\\"finished\\\",\\\"perf\\\"\\\
+        :{\\\"icon\\\":\\\"\\\",\\\"name\\\":\\\"Blitz\\\"}}\\n{\\\"id\\\":\\\"advent23\\\",\\\"createdBy\\\"\\\
+        :\\\"lichess\\\",\\\"system\\\":\\\"arena\\\",\\\"minutes\\\":60,\\\"clock\\\":{\\\"limit\\\":60,\\\"\\\
+        increment\\\":0},\\\"rated\\\":true,\\\"fullName\\\":\\\"Advent Calendar\\\",\\\"nbPlayers\\\"\\\
+        :256,\\\"variant\\\":{\\\"key\\\":\\\"standard\\\",\\\"name\\\":\\\"Standard\\\",\\\"short\\\":\\\"\\\
+        Std\\\"},\\\"startsAt\\\":\\\"2023-12-01T18:00:00.000Z\\\",\\\"finishesAt\\\":\\\"2023-12-01T19:00:00.000Z\\\"\\\
+        ,\\\"status\\\":\\\"finished\\\",\\\"perf\\\":{\\\"icon\\\":\\\"\\\",\\\"name\\\":\\\"Bullet\\\"}}\\n"
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/x-ndjson
+      Date:
+      - Fri, 27 Feb 2026 00:00:00 GMT
+    status:
+      code: 200
+      message: OK
+version: 1

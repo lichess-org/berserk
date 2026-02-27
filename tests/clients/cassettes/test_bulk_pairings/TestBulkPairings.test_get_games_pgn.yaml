@@ -1,0 +1,38 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/x-chess-pgn
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.4
+    method: GET
+    uri: https://lichess.org/api/bulk-pairing/testBulk1/games
+  response:
+    body:
+      string: "[Event \"Bullet game\"]\n[Site \"https://lichess.org/abcdef01\"]\n[Date\
+        \ \"2023.02.21\"]\n[White \"PlayerOne\"]\n[Black \"PlayerTwo\"]\n[Result \"1-0\"\
+        ]\n[WhiteElo \"1500\"]\n[BlackElo \"1450\"]\n[TimeControl \"300+0\"]\n[UTCDate\
+        \ \"2023.02.21\"]\n[UTCTime \"12:00:00\"]\n[Termination \"Normal\"]\n\n1.\
+        \ e4 e5 2. Nf3 Nc6 3. Bb5 { Ruy Lopez } 1-0\n\n"
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/x-chess-pgn
+      Date:
+      - Fri, 27 Feb 2026 00:00:00 GMT
+    status:
+      code: 200
+      message: OK
+version: 1

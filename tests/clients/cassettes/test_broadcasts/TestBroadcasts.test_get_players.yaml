@@ -1,0 +1,35 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.4
+    method: GET
+    uri: https://lichess.org/broadcast/ZfhmG9VB/players
+  response:
+    body:
+      string: '[{"name":"Magnus Carlsen","fideId":1503014,"fed":"NOR","title":"GM","rating":2830,"score":4.5,"played":7,"rank":1,"performances":{"standard":2850},"ratingsMap":{"standard":2830}},{"name":"Fabiano
+        Caruana","fideId":2020009,"fed":"USA","title":"GM","rating":2805,"score":4.0,"played":7,"rank":2,"performances":{"standard":2810},"ratingsMap":{"standard":2805}}]'
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 27 Feb 2026 00:00:00 GMT
+    status:
+      code: 200
+      message: OK
+version: 1

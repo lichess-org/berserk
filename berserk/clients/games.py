@@ -328,3 +328,71 @@ class Games(FmtClient):
         """
         path = "/api/games/export/imports"
         return self._r.get(path, fmt=PGN, stream=False)
+
+    def export_bookmarks(
+        self,
+        as_pgn: bool | None = None,
+        since: int | None = None,
+        until: int | None = None,
+        max: int | None = None,
+        moves: bool | None = None,
+        pgn_in_json: bool | None = None,
+        tags: bool | None = None,
+        clocks: bool | None = None,
+        evals: bool | None = None,
+        accuracy: bool | None = None,
+        opening: bool | None = None,
+        division: bool | None = None,
+        literate: bool | None = None,
+        last_fen: bool | None = None,
+        sort: str | None = None,
+    ) -> Iterator[str] | Iterator[Dict[str, Any]]:
+        """Export games that you have bookmarked.
+
+        Requires OAuth2 authorization.
+
+        :param as_pgn: whether to return the game in PGN format
+        :param since: lower bound on the game timestamp
+        :param until: upper bound on the game timestamp
+        :param max: limit the number of games returned
+        :param moves: whether to include the PGN moves
+        :param pgn_in_json: include the full PGN within JSON response
+        :param tags: whether to include the PGN tags
+        :param clocks: whether to include clock comments in the PGN moves
+        :param evals: whether to include analysis evaluation comments in the PGN moves
+            when available
+        :param accuracy: whether to include accuracy percentages
+        :param opening: whether to include the opening name
+        :param division: whether to include the opening, middlegame and endgame division
+        :param literate: whether to include literate the PGN
+        :param last_fen: whether to include the last position FEN in the JSON
+        :param sort: sort order of the games
+        :return: iterator over the exported games, as JSON or PGN
+        """
+        path = "/api/games/export/bookmarks"
+        params = {
+            "since": since,
+            "until": until,
+            "max": max,
+            "moves": moves,
+            "pgnInJson": pgn_in_json,
+            "tags": tags,
+            "clocks": clocks,
+            "evals": evals,
+            "accuracy": accuracy,
+            "opening": opening,
+            "division": division,
+            "literate": literate,
+            "lastFen": last_fen,
+            "sort": sort,
+        }
+        if self._use_pgn(as_pgn):
+            yield from self._r.get(path, params=params, fmt=PGN, stream=True)
+        else:
+            yield from self._r.get(
+                path,
+                params=params,
+                fmt=NDJSON,
+                stream=True,
+                converter=models.Game.convert,
+            )

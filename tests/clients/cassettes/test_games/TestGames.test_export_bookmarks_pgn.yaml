@@ -1,0 +1,38 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/x-chess-pgn
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.4
+    method: GET
+    uri: https://lichess.org/api/games/export/bookmarks
+  response:
+    body:
+      string: "[Event \"Rapid game\"]\n[Site \"https://lichess.org/bookgame1\"]\n[Date\
+        \ \"2023.02.21\"]\n[White \"PlayerOne\"]\n[Black \"PlayerTwo\"]\n[Result \"1-0\"\
+        ]\n[WhiteElo \"1600\"]\n[BlackElo \"1580\"]\n[TimeControl \"600+0\"]\n[UTCDate\
+        \ \"2023.02.21\"]\n[UTCTime \"12:00:00\"]\n[Termination \"Normal\"]\n\n1.\
+        \ e4 c5 2. Nf3 d6 3. d4 { Sicilian Defense } 1-0\n\n"
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/x-chess-pgn
+      Date:
+      - Fri, 27 Feb 2026 00:00:00 GMT
+    status:
+      code: 200
+      message: OK
+version: 1

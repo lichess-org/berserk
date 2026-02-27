@@ -31,3 +31,9 @@ class TestLichessGames:
     def test_team_standings(self):
         res = Client().tournaments.get_team_standings("Qv0dRqml")
         validate(TeamBattleResult, res)
+
+    @pytest.mark.vcr
+    def test_played_by_user(self):
+        res = list(Client().tournaments.played_by_user("thibault"))
+        assert len(res) >= 1
+        assert "id" in res[0]
