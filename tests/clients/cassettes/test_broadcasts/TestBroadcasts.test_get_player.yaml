@@ -1,0 +1,154 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.4
+    method: GET
+    uri: https://lichess.org/broadcast/6UkdBX8x/players
+  response:
+    body:
+      string: '[{"name":"Caruana, Fabiano","title":"GM","rating":2795,"fideId":2020009,"fed":"USA","played":4,"score":3.5,"ratingDiff":3,"ratingsMap":{"standard":2795},"ratingDiffs":{"standard":3},"performance":2878,"performances":{"standard":2878}},{"name":"Celik,
+        Hasan Huseyin","title":"IM","rating":2495,"fideId":44506759,"fed":"TUR","played":5,"score":2.5,"ratingDiff":0,"ratingsMap":{"standard":2495},"ratingDiffs":{"standard":0},"performance":2492,"performances":{"standard":2492}},{"name":"Cordova,
+        Emilio","title":"GM","rating":2494,"fideId":3801497,"fed":"PER","played":5,"score":3,"ratingDiff":6,"ratingsMap":{"standard":2494},"ratingDiffs":{"standard":6},"performance":2589,"performances":{"standard":2589}},{"name":"Oparin,
+        Grigoriy","title":"GM","rating":2658,"fideId":24125890,"fed":"USA","played":5,"score":2.5,"ratingDiff":-12,"ratingsMap":{"standard":2658},"ratingDiffs":{"standard":-12},"performance":2475,"performances":{"standard":2475}},{"name":"Pranav,
+        V","title":"GM","rating":2641,"fideId":25060783,"fed":"IND","played":5,"score":3.5,"ratingDiff":-1,"ratingsMap":{"standard":2641},"ratingDiffs":{"standard":-1},"performance":2631,"performances":{"standard":2631}},{"name":"Mikaelyan,
+        Arman","title":"GM","rating":2494,"fideId":13304852,"fed":"ARM","played":5,"score":3,"ratingDiff":14,"ratingsMap":{"standard":2494},"ratingDiffs":{"standard":14},"performance":2692,"performances":{"standard":2692}},{"name":"Putnam,
+        Liam","title":"IM","rating":2485,"fideId":30938279,"fed":"USA","played":5,"score":2.5,"ratingDiff":5,"ratingsMap":{"standard":2485},"ratingDiffs":{"standard":5},"performance":2553,"performances":{"standard":2553}},{"name":"Aryan
+        Chopra","title":"GM","rating":2631,"fideId":5084423,"fed":"IND","played":4,"score":3,"ratingDiff":3,"ratingsMap":{"standard":2631},"ratingDiffs":{"standard":3},"performance":2701,"performances":{"standard":2701}},{"name":"Mishra,
+        Abhimanyu","title":"GM","rating":2629,"fideId":30920019,"fed":"USA","played":5,"score":2.5,"ratingDiff":-10,"ratingsMap":{"standard":2629},"ratingDiffs":{"standard":-10},"performance":2476,"performances":{"standard":2476}},{"name":"Raja
+        Harshit","title":"GM","rating":2472,"fideId":5089000,"fed":"IND","played":5,"score":3,"ratingDiff":12,"ratingsMap":{"standard":2472},"ratingDiffs":{"standard":12},"performance":2653,"performances":{"standard":2653}},{"name":"Yip,
+        Carissa","title":"IM","rating":2466,"fideId":2090732,"fed":"USA","played":4,"score":1,"ratingDiff":-14,"ratingsMap":{"standard":2466},"ratingDiffs":{"standard":-14},"performance":2196,"performances":{"standard":2196}},{"name":"Durarbayli,
+        Vasif","title":"GM","rating":2612,"fideId":13402935,"fed":"AZE","played":5,"score":3.5,"ratingDiff":5,"ratingsMap":{"standard":2612},"ratingDiffs":{"standard":5},"performance":2687,"performances":{"standard":2687}},{"name":"Woodward,
+        Andy","title":"GM","rating":2608,"fideId":30953499,"fed":"USA","played":5,"score":4,"ratingDiff":8,"ratingsMap":{"standard":2608},"ratingDiffs":{"standard":8},"performance":2745,"performances":{"standard":2745}},{"name":"Amilal
+        Munkhdalai","title":"IM","rating":2455,"fideId":4903250,"fed":"MGL","played":5,"score":2.5,"ratingDiff":5,"ratingsMap":{"standard":2455},"ratingDiffs":{"standard":5},"performance":2524,"performances":{"standard":2524}},{"name":"Shlyakhtenko,
+        Robert","title":"IM","rating":2453,"fideId":30936934,"fed":"USA","played":5,"score":3,"ratingDiff":8,"ratingsMap":{"standard":2453},"ratingDiffs":{"standard":8},"performance":2569,"performances":{"standard":2569}},{"name":"Dudin,
+        Gleb","title":"GM","rating":2596,"fideId":34184934,"fed":"HUN","played":5,"score":3,"ratingDiff":-5,"ratingsMap":{"standard":2596},"ratingDiffs":{"standard":-5},"performance":2489,"performances":{"standard":2489}},{"name":"Bharath
+        Subramaniyam H","title":"GM","rating":2595,"fideId":46634827,"fed":"IND","played":5,"score":3,"ratingDiff":-2,"ratingsMap":{"standard":2595},"ratingDiffs":{"standard":-2},"performance":2564,"performances":{"standard":2564}},{"name":"Bilych,
+        Oleksii","title":"IM","rating":2450,"fideId":14156504,"fed":"UKR","played":5,"score":2,"ratingDiff":-4,"ratingsMap":{"standard":2450},"ratingDiffs":{"standard":-4},"performance":2382,"performances":{"standard":2382}},{"name":"Kuru,
+        Atilla","title":"IM","rating":2450,"fideId":51607948,"fed":"TUR","played":5,"score":1.5,"ratingDiff":-6,"ratingsMap":{"standard":2450},"ratingDiffs":{"standard":-6},"performance":2359,"performances":{"standard":2359}},{"name":"Bok,
+        Benjamin","title":"GM","rating":2592,"fideId":1017063,"fed":"NED","played":5,"score":2,"ratingDiff":-15,"ratingsMap":{"standard":2592},"ratingDiffs":{"standard":-15},"performance":2374,"performances":{"standard":2374}},{"name":"Antipov,
+        Mikhail Al.","title":"GM","rating":2591,"fideId":4107012,"fed":"USA","played":5,"score":3.5,"ratingDiff":8,"ratingsMap":{"standard":2591},"ratingDiffs":{"standard":8},"performance":2710,"performances":{"standard":2710}},{"name":"Bilovil,
+        Bogdan","title":"IM","rating":2446,"fideId":14168766,"fed":"UKR","played":5,"score":2.5,"ratingDiff":4,"ratingsMap":{"standard":2446},"ratingDiffs":{"standard":4},"performance":2502,"performances":{"standard":2502}},{"name":"Atanasov,
+        Anthony","title":"IM","rating":2441,"fideId":2623897,"fed":"CAN","played":5,"score":3,"ratingDiff":13,"ratingsMap":{"standard":2441},"ratingDiffs":{"standard":13},"performance":2631,"performances":{"standard":2631}},{"name":"Lodici,
+        Lorenzo","title":"GM","rating":2590,"fideId":884189,"fed":"ITA","played":5,"score":4.5,"ratingDiff":12,"ratingsMap":{"standard":2590},"ratingDiffs":{"standard":12},"performance":2831,"performances":{"standard":2831}},{"name":"Hong,
+        Andrew","title":"GM","rating":2587,"fideId":2099438,"fed":"USA","played":5,"score":4,"ratingDiff":9,"ratingsMap":{"standard":2587},"ratingDiffs":{"standard":9},"performance":2745,"performances":{"standard":2745}},{"name":"Narayanan,
+        Samrug","title":"IM","rating":2438,"fideId":30914051,"fed":"USA","played":5,"score":2,"ratingDiff":-8,"ratingsMap":{"standard":2438},"ratingDiffs":{"standard":-8},"performance":2308,"performances":{"standard":2308}},{"name":"Adewumi,
+        Tanitoluwa","title":"IM","rating":2433,"fideId":30966396,"fed":"USA","played":5,"score":3,"ratingDiff":8,"ratingsMap":{"standard":2433},"ratingDiffs":{"standard":8},"performance":2542,"performances":{"standard":2542}},{"name":"Warmerdam,
+        Max","title":"GM","rating":2580,"fideId":1048104,"fed":"NED","played":5,"score":2,"ratingDiff":-14,"ratingsMap":{"standard":2580},"ratingDiffs":{"standard":-14},"performance":2364,"performances":{"standard":2364}},{"name":"Fier,
+        Alexandr","title":"GM","rating":2572,"fideId":2107139,"fed":"BRA","played":5,"score":2.5,"ratingDiff":-10,"ratingsMap":{"standard":2572},"ratingDiffs":{"standard":-10},"performance":2422,"performances":{"standard":2422}},{"name":"Lu,
+        Maximillian","title":"IM","rating":2424,"fideId":2096242,"fed":"USA","played":5,"score":2,"ratingDiff":-1,"ratingsMap":{"standard":2424},"ratingDiffs":{"standard":-1},"performance":2408,"performances":{"standard":2408}},{"name":"Park,
+        Evan","title":"IM","rating":2419,"fideId":30931142,"fed":"USA","played":5,"score":3.5,"ratingDiff":14,"ratingsMap":{"standard":2419},"ratingDiffs":{"standard":14},"performance":2618,"performances":{"standard":2618}},{"name":"Quesada
+        Perez, Yasser","title":"GM","rating":2562,"fideId":3509362,"fed":"CUB","played":4,"score":3,"ratingDiff":6,"ratingsMap":{"standard":2562},"ratingDiffs":{"standard":6},"performance":2679,"performances":{"standard":2679}},{"name":"Sonis,
+        Francesco","title":"GM","rating":2561,"fideId":895733,"fed":"ITA","played":5,"score":3.5,"ratingDiff":4,"ratingsMap":{"standard":2561},"ratingDiffs":{"standard":4},"performance":2619,"performances":{"standard":2619}},{"name":"Rorrer,
+        Grayson","title":"IM","rating":2415,"fideId":30944996,"fed":"USA","played":5,"score":2,"ratingDiff":-4,"ratingsMap":{"standard":2415},"ratingDiffs":{"standard":-4},"performance":2356,"performances":{"standard":2356}},{"name":"Pyrih,
+        Roman","title":"IM","rating":2403,"fideId":14179156,"fed":"UKR","played":5,"score":3,"ratingDiff":16,"ratingsMap":{"standard":2403},"ratingDiffs":{"standard":16},"performance":2637,"performances":{"standard":2637}},{"name":"Tiglon,
+        Bryce","title":"GM","rating":2550,"fideId":2087456,"fed":"USA","played":5,"score":2.5,"ratingDiff":-9,"ratingsMap":{"standard":2550},"ratingDiffs":{"standard":-9},"performance":2408,"performances":{"standard":2408}},{"name":"Akobian,
+        Varuzhan","title":"GM","rating":2549,"fideId":13300580,"fed":"USA","played":5,"score":3.5,"ratingDiff":4,"ratingsMap":{"standard":2549},"ratingDiffs":{"standard":4},"performance":2611,"performances":{"standard":2611}},{"name":"Kiolbasa,
+        Oliwia","title":"IM","rating":2397,"fideId":1154613,"fed":"POL","played":5,"score":2,"ratingDiff":-4,"ratingsMap":{"standard":2397},"ratingDiffs":{"standard":-4},"performance":2345,"performances":{"standard":2345}},{"name":"Abrahamyan,
+        Tatev","title":"IM","rating":2379,"fideId":13301918,"fed":"USA","played":5,"score":1.5,"ratingDiff":-8,"ratingsMap":{"standard":2379},"ratingDiffs":{"standard":-8},"performance":2255,"performances":{"standard":2255}},{"name":"Stremavicius,
+        Titas","title":"GM","rating":2547,"fideId":12804444,"fed":"LTU","played":5,"score":3,"ratingDiff":0,"ratingsMap":{"standard":2547},"ratingDiffs":{"standard":0},"performance":2546,"performances":{"standard":2546}},{"name":"Hardaway,
+        Brewington","title":"GM","rating":2544,"fideId":30941849,"fed":"USA","played":5,"score":3,"ratingDiff":4,"ratingsMap":{"standard":2544},"ratingDiffs":{"standard":4},"performance":2595,"performances":{"standard":2595}},{"name":"Rosen,
+        Eric","title":"IM","rating":2377,"fideId":2032562,"fed":"USA","played":5,"score":2,"ratingDiff":4,"ratingsMap":{"standard":2377},"ratingDiffs":{"standard":4},"performance":2444,"performances":{"standard":2444}},{"name":"Sargsyan,
+        Anna M.","title":"IM","rating":2372,"fideId":13308130,"fed":"USA","played":5,"score":1,"ratingDiff":-14,"ratingsMap":{"standard":2372},"ratingDiffs":{"standard":-14},"performance":2141,"performances":{"standard":2141}},{"name":"Kadric,
+        Denis","title":"GM","rating":2540,"fideId":14403803,"fed":"MNE","played":5,"score":2,"ratingDiff":-9,"ratingsMap":{"standard":2540},"ratingDiffs":{"standard":-9},"performance":2416,"performances":{"standard":2416}},{"name":"Alexakis,
+        Dimitris","title":"GM","rating":2538,"fideId":4277023,"fed":"GRE","played":5,"score":2.5,"ratingDiff":-2,"ratingsMap":{"standard":2538},"ratingDiffs":{"standard":-2},"performance":2507,"performances":{"standard":2507}},{"name":"Ostrovskiy,
+        Aleksandr","title":"IM","rating":2367,"fideId":2034239,"fed":"USA","played":5,"score":2,"ratingDiff":5,"ratingsMap":{"standard":2367},"ratingDiffs":{"standard":5},"performance":2451,"performances":{"standard":2451}},{"name":"Atwell,
+        Rose","title":"FM","rating":2337,"fideId":30951011,"fed":"USA","played":5,"score":2.5,"ratingDiff":26,"ratingsMap":{"standard":2337},"ratingDiffs":{"standard":26},"performance":2540,"performances":{"standard":2540}},{"name":"Harsha
+        Bharathakoti","title":"GM","rating":2538,"fideId":5078776,"fed":"IND","played":5,"score":2.5,"ratingDiff":-11,"ratingsMap":{"standard":2538},"ratingDiffs":{"standard":-11},"performance":2373,"performances":{"standard":2373}},{"name":"Gazik,
+        Viktor","title":"GM","rating":2537,"fideId":14928752,"fed":"SVK","played":5,"score":2,"ratingDiff":-9,"ratingsMap":{"standard":2537},"ratingDiffs":{"standard":-9},"performance":2395,"performances":{"standard":2395}},{"name":"Wang,
+        Tianqi","title":"IM","rating":2331,"fideId":2063824,"fed":"USA","played":5,"score":2.5,"ratingDiff":12,"ratingsMap":{"standard":2331},"ratingDiffs":{"standard":12},"performance":2508,"performances":{"standard":2508}},{"name":"Kavutskiy,
+        Kostya","title":"IM","rating":2330,"fideId":2026384,"fed":"USA","played":5,"score":0.5,"ratingDiff":-14,"ratingsMap":{"standard":2330},"ratingDiffs":{"standard":-14},"performance":2061,"performances":{"standard":2061}},{"name":"Matviishen,
+        Viktor","title":"GM","rating":2533,"fideId":14129850,"fed":"UKR","played":5,"score":3.5,"ratingDiff":1,"ratingsMap":{"standard":2533},"ratingDiffs":{"standard":1},"performance":2541,"performances":{"standard":2541}},{"name":"Kevlishvili,
+        Robby","title":"GM","rating":2527,"fideId":1040634,"fed":"NED","played":5,"score":2,"ratingDiff":-11,"ratingsMap":{"standard":2527},"ratingDiffs":{"standard":-11},"performance":2369,"performances":{"standard":2369}},{"name":"Paciorkowski,
+        Lev","rating":2315,"fideId":30904625,"fed":"USA","played":2,"score":1,"ratingDiff":12,"ratingsMap":{"standard":2315},"ratingDiffs":{"standard":12},"performance":2549,"performances":{"standard":2549}},{"name":"Yu,
+        Jennifer","title":"WGM","rating":2299,"fideId":2078341,"fed":"USA","played":5,"score":2.5,"ratingDiff":31,"ratingsMap":{"standard":2299},"ratingDiffs":{"standard":31},"performance":2554,"performances":{"standard":2554}},{"name":"Chasin,
+        Nico","title":"IM","rating":2523,"fideId":30908477,"fed":"USA","played":5,"score":1.5,"ratingDiff":-20,"ratingsMap":{"standard":2523},"ratingDiffs":{"standard":-20},"performance":2214,"performances":{"standard":2214}},{"name":"Kantor,
+        Gergely","title":"GM","rating":2515,"fideId":751499,"fed":"HUN","played":5,"score":3.5,"ratingDiff":11,"ratingsMap":{"standard":2515},"ratingDiffs":{"standard":11},"performance":2677,"performances":{"standard":2677}},{"name":"Chirilov,
+        James A","title":"FM","rating":2264,"fideId":30976677,"fed":"USA","played":5,"score":1,"ratingDiff":-10,"ratingsMap":{"standard":2264},"ratingDiffs":{"standard":-10},"performance":2177,"performances":{"standard":2177}},{"name":"Apaar
+        Saxena","title":"FM","rating":2263,"fideId":25937219,"fed":"IND","played":5,"score":1,"ratingDiff":-3,"ratingsMap":{"standard":2263},"ratingDiffs":{"standard":-3},"performance":2241,"performances":{"standard":2241}},{"name":"Heimann,
+        Mark","title":"GM","rating":2511,"fideId":2028441,"fed":"USA","played":5,"score":2,"ratingDiff":-20,"ratingsMap":{"standard":2511},"ratingDiffs":{"standard":-20},"performance":2192,"performances":{"standard":2192}},{"name":"Mardov,
+        Dimitar","title":"IM","rating":2504,"fideId":30919495,"fed":"USA","played":5,"score":3,"ratingDiff":-1,"ratingsMap":{"standard":2504},"ratingDiffs":{"standard":-1},"performance":2487,"performances":{"standard":2487}},{"name":"Cervantes
+        Landeiro, Thalia","title":"WGM","rating":2247,"fideId":3520498,"fed":"USA","played":5,"score":0.5,"ratingDiff":-13,"ratingsMap":{"standard":2247},"ratingDiffs":{"standard":-13},"performance":2089,"performances":{"standard":2089}},{"name":"Caglar,
+        Sila","title":"WIM","rating":2215,"fideId":6364063,"fed":"TUR","played":5,"score":1,"ratingDiff":0,"ratingsMap":{"standard":2215},"ratingDiffs":{"standard":0},"performance":2218,"performances":{"standard":2218}},{"name":"Budisavljevic,
+        Luka","title":"GM","rating":2501,"fideId":960047,"fed":"SRB","played":5,"score":2.5,"ratingDiff":0,"ratingsMap":{"standard":2501},"ratingDiffs":{"standard":0},"performance":2486,"performances":{"standard":2486}},{"name":"Kacharava,
+        Nikolozi","title":"GM","rating":2501,"fideId":13611860,"fed":"GEO","played":4,"score":2,"ratingDiff":0,"ratingsMap":{"standard":2501},"ratingDiffs":{"standard":0},"performance":2488,"performances":{"standard":2488}},{"name":"Antova,
+        Gabriela","title":"FM","rating":2168,"fideId":2915235,"fed":"BUL","played":5,"score":2,"ratingDiff":21,"ratingsMap":{"standard":2168},"ratingDiffs":{"standard":21},"performance":2352,"performances":{"standard":2352}},{"name":"Gueci,
+        Tea","title":"WIM","rating":2138,"fideId":872342,"fed":"ITA","played":5,"score":2,"ratingDiff":29,"ratingsMap":{"standard":2138},"ratingDiffs":{"standard":29},"performance":2435,"performances":{"standard":2435}},{"name":"Repka,
+        Christopher","title":"GM","rating":2495,"fideId":14918781,"fed":"SVK","played":5,"score":1.5,"ratingDiff":-12,"ratingsMap":{"standard":2495},"ratingDiffs":{"standard":-12},"performance":2302,"performances":{"standard":2302}},{"name":"Boyer,
+        Mahel","title":"GM","rating":2486,"fideId":45102422,"fed":"FRA","played":4,"score":1.5,"ratingDiff":0,"ratingsMap":{"standard":2486},"ratingDiffs":{"standard":0},"performance":2497,"performances":{"standard":2497}},{"name":"Can,
+        Isik","title":"GM","rating":2562,"fideId":6383742,"fed":"TUR","played":4,"score":2.5,"ratingDiff":-1,"ratingsMap":{"standard":2562},"ratingDiffs":{"standard":-1},"performance":2539,"performances":{"standard":2539}}]'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 27 Feb 2026 22:34:12 GMT
+      Permissions-Policy:
+      - screen-wake-lock=(self "https://lichess1.org"), microphone=(self), fullscreen=(self)
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      X-Frame-Options:
+      - DENY
+      content-length:
+      - '16402'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.4
+    method: GET
+    uri: https://lichess.org/broadcast/6UkdBX8x/players/2020009
+  response:
+    body:
+      string: '{"name":"Caruana, Fabiano","title":"GM","rating":2795,"fideId":2020009,"fed":"USA","played":4,"score":3.5,"ratingDiff":3,"ratingsMap":{"standard":2795},"ratingDiffs":{"standard":3},"performance":2878,"performances":{"standard":2878},"fide":{"year":1992,"ratings":{"standard":2795,"rapid":2727,"blitz":2769},"follow":false},"games":[{"round":"1GYWCFLh","id":"j6glAuiB","opponent":{"name":"Celik,
+        Hasan Huseyin","title":"IM","rating":2495,"fideId":44506759,"fed":"TUR"},"color":"white","fideTC":"standard","points":"1","ratingDiff":1},{"round":"hsApxc1b","id":"0qEy0stK","opponent":{"name":"Kadric,
+        Denis","title":"GM","rating":2540,"fideId":14403803,"fed":"MNE"},"color":"black","fideTC":"standard","points":"1","ratingDiff":2},{"round":"sUuuVbpG","id":"IhoQ1kJU","opponent":{"name":"Antipov,
+        Mikhail Al.","title":"GM","rating":2591,"fideId":4107012,"fed":"USA"},"color":"white","fideTC":"standard","points":"1/2","ratingDiff":-3},{"round":"pXZJcOjR","id":"BItWBiah","opponent":{"name":"Hardaway,
+        Brewington","title":"GM","rating":2544,"fideId":30941849,"fed":"USA"},"color":"black","fideTC":"standard","points":"1","ratingDiff":2},{"round":"6HXf8EcN","id":"XWpLj41d","opponent":{"name":"Hong,
+        Andrew","title":"GM","rating":2587,"fideId":2099438,"fed":"USA"},"color":"white","fideTC":"standard"}]}'
+    headers:
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 27 Feb 2026 22:34:12 GMT
+      Permissions-Policy:
+      - screen-wake-lock=(self "https://lichess1.org"), microphone=(self), fullscreen=(self)
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      X-Frame-Options:
+      - DENY
+      content-length:
+      - '1296'
+    status:
+      code: 200
+      message: OK
+version: 1

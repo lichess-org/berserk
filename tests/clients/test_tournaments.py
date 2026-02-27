@@ -28,6 +28,9 @@ class TestLichessGames:
 
     @skip_if_older_3_dot_10
     @pytest.mark.vcr
-    def test_team_standings(self):
-        res = Client().tournaments.get_team_standings("Qv0dRqml")
-        validate(TeamBattleResult, res)
+    def test_played_by_user(self):
+        res = list(
+            Client().tournaments.played_by_user(username="thibault", nb=3, performance=False)
+        )
+        assert len(res) <= 3
+        assert isinstance(res[0], dict)

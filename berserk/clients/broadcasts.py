@@ -11,6 +11,9 @@ from ..types.broadcast import (
     BroadcastTop,
     PaginatedBroadcasts,
     BroadcastsByUser,
+    BroadcastPlayerEntry,
+    BroadcastPlayerEntryWithFideAndGames,
+    BroadcastTeamLeaderboardEntry,
 )
 from ..utils import to_str
 
@@ -249,6 +252,48 @@ class Broadcasts(BaseClient):
         path = "/api/broadcast/my-rounds"
         params = {"nb": nb}
         yield from self._r.get(path, params=params, stream=True)
+
+    def reset_round(self, broadcast_round_id: str) -> None:
+        """Reset a broadcast round.
+
+        Requires OAuth2 authorization with study:write scope.
+
+        :param broadcast_round_id: ID of a broadcast round
+        """
+        path = f"/api/broadcast/round/{broadcast_round_id}/reset"
+        self._r.post(path)
+
+    def get_players(self, broadcast_tournament_id: str) -> List[BroadcastPlayerEntry]:
+        """Get broadcast players.
+
+        :param broadcast_tournament_id: broadcast tournament ID
+        :return: list of broadcast player leaderboard entries
+        """
+        path = f"/broadcast/{broadcast_tournament_id}/players"
+        return cast(List[BroadcastPlayerEntry], self._r.get(path.lstrip("/")))
+
+    def get_player(
+        self, broadcast_tournament_id: str, player_id: str
+    ) -> BroadcastPlayerEntryWithFideAndGames:
+        """Get a specific broadcast player.
+
+        :param broadcast_tournament_id: broadcast tournament ID
+        :param player_id: the player ID
+        :return: a broadcast player entry with optional fide info and games
+        """
+        path = f"/broadcast/{broadcast_tournament_id}/players/{player_id}"
+        return cast(BroadcastPlayerEntryWithFideAndGames, self._r.get(path.lstrip("/")))
+
+    def get_team_standings(
+        self, broadcast_tournament_id: str
+    ) -> List[BroadcastTeamLeaderboardEntry]:
+        """Get broadcast team leaderboard.
+
+        :param broadcast_tournament_id: broadcast tournament ID
+        :return: list of team leaderboard entries
+        """
+        path = f"/broadcast/{broadcast_tournament_id}/teams/standings"
+        return cast(List[BroadcastTeamLeaderboardEntry], self._r.get(path.lstrip("/")))
 
     def get_top(
         self,

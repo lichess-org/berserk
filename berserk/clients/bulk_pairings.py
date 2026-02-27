@@ -1,14 +1,14 @@
 from __future__ import annotations
 
-from typing import cast
+from typing import Iterator, cast
 
-from ..formats import JSON, JSON_LIST
+from ..formats import JSON, JSON_LIST, PGN, NDJSON
 from ..types.bulk_pairings import BulkPairing
 from ..types.common import VariantKey
-from .base import BaseClient
+from .base import FmtClient
 
 
-class BulkPairings(BaseClient):
+class BulkPairings(FmtClient):
     """Client for bulk pairing related endpoints."""
 
     def get_upcoming(self) -> list[BulkPairing]:
@@ -76,6 +76,56 @@ class BulkPairings(BaseClient):
                 fmt=JSON,
             ),
         )
+
+
+    def get_games(
+        self,
+        bulk_pairing_id: str,
+        as_pgn: bool | None = None,
+        moves: bool | None = None,
+        pgn_in_json: bool | None = None,
+        tags: bool | None = None,
+        clocks: bool | None = None,
+        evals: bool | None = None,
+        accuracy: bool | None = None,
+        opening: bool | None = None,
+        division: bool | None = None,
+        literate: bool | None = None,
+    ) -> "Iterator[str]" | "Iterator[dict]":
+        """Export games of a bulk pairing.
+
+        Requires OAuth2 authorization with challenge:bulk scope.
+
+        :param bulk_pairing_id: bulk pairing ID
+        :param as_pgn: whether to return games in PGN format
+        :param moves: whether to include the PGN moves
+        :param pgn_in_json: include the full PGN within JSON response
+        :param tags: whether to include the PGN tags
+        :param clocks: whether to include clock comments in the PGN moves
+        :param evals: whether to include analysis evaluation comments in the PGN moves
+            when available
+        :param accuracy: whether to include accuracy percent (in JSON and PGN comments)
+        :param opening: whether to include the opening name
+        :param division: whether to include division in JSON
+        :param literate: whether to include literate the PGN
+        :return: iterator over the exported games, as JSON or PGN
+        """
+        path = f"/api/bulk-pairing/{bulk_pairing_id}/games"
+        params = {
+            "moves": moves,
+            "pgnInJson": pgn_in_json,
+            "tags": tags,
+            "clocks": clocks,
+            "evals": evals,
+            "accuracy": accuracy,
+            "opening": opening,
+            "division": division,
+            "literate": literate,
+        }
+        if self._use_pgn(as_pgn):
+            yield from self._r.get(path, params=params, fmt=PGN, stream=True)
+        else:
+            yield from self._r.get(path, params=params, fmt=NDJSON, stream=True)
 
     def start_clocks(self, bulk_pairing_id: str) -> None:
         """Immediately start all clocks of the games of the given bulk pairing.

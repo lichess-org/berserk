@@ -14,6 +14,9 @@ from .broadcast import (
     BroadcastTop,
     PaginatedBroadcasts,
     BroadcastsByUser,
+    BroadcastPlayerEntry,
+    BroadcastPlayerEntryWithFideAndGames,
+    BroadcastTeamLeaderboardEntry,
 )
 
 from .bulk_pairings import BulkPairing, BulkPairingGame
@@ -37,11 +40,12 @@ __all__ = [
     "ArenaResult",
     "BroadcastPlayer",
     "BroadcastsByUser",
+    "BroadcastPlayerEntry",
+    "BroadcastPlayerEntryWithFideAndGames",
+    "BroadcastTeamLeaderboardEntry",
     "BroadcastTop",
-    "BulkPairing",
     "BulkPairingGame",
     "ChallengeJson",
-    "ChapterIdName",
     "ClockConfig",
     "CurrentTournaments",
     "ExternalEngine",

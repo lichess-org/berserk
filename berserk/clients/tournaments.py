@@ -310,6 +310,20 @@ class Tournaments(FmtClient):
         path = f"/swiss/{tournament_id}.trf"
         return self._r.get(path=path, fmt=TEXT)
 
+    def played_by_user(
+        self, username: str, nb: int | None = None, performance: bool | None = None
+    ) -> Iterator[Dict[str, Any]]:
+        """Get arena tournaments played by a user.
+        Sorted by reverse chronological order of start date.
+        :param username: the user whose played tournaments to fetch
+        :param nb: max number of tournaments to fetch
+        :param performance: include performance rating (costs server resources)
+        :return: iterator over arena tournaments played by the user
+        """
+        path = f"/api/user/{username}/tournament/played"
+        params = {"nb": nb, "performance": performance}
+        yield from self._r.get(path, params=params, fmt=NDJSON, stream=True)
+
     def tournaments_by_user(
         self, username: str, nb: int | None = None
     ) -> List[Dict[str, Any]]:

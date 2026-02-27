@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import List
 
-from typing_extensions import NotRequired, TypedDict
+from typing_extensions import NotRequired, TypedDict, Required
 
 from .common import LightUser, Title
 
@@ -104,3 +104,79 @@ class BroadcastsByUser(TypedDict):
     previousPage: int | None
     nextPage: int | None
     nbPages: int
+
+
+class StatByFideTC(TypedDict, total=False):
+    """Rating/performance stats by FIDE time control."""
+
+    standard: int
+    rapid: int
+    blitz: int
+
+
+class BroadcastPlayerTiebreak(TypedDict):
+    """A single tiebreak value."""
+
+    name: str
+    value: float
+
+
+class BroadcastPlayerWithFed(TypedDict):
+    """Base player info with federation."""
+
+    name: str
+    title: NotRequired[Title]
+    rating: NotRequired[int]
+    fideId: NotRequired[int]
+    fed: NotRequired[str]
+
+
+class BroadcastPlayerEntry(BroadcastPlayerWithFed):
+    """Player entry in a broadcast leaderboard."""
+
+    score: NotRequired[float]
+    played: NotRequired[int]
+    ratingDiff: NotRequired[int]  # deprecated
+    ratingDiffs: NotRequired[StatByFideTC]
+    ratingsMap: NotRequired[StatByFideTC]
+    performance: NotRequired[int]  # deprecated
+    performances: NotRequired[StatByFideTC]
+    tiebreaks: NotRequired[List[BroadcastPlayerTiebreak]]
+    rank: NotRequired[int]
+    team: NotRequired[str]
+
+
+class BroadcastGameEntry(TypedDict):
+    """A game played by a broadcast player."""
+
+    id: str
+    round: NotRequired[str]
+    opponent: NotRequired[BroadcastPlayerWithFed]
+    color: NotRequired[str]
+    result: NotRequired[str]
+    ratingDiff: NotRequired[int]
+
+
+class BroadcastPlayerFideInfo(TypedDict):
+    """FIDE info for a broadcast player."""
+
+    year: NotRequired[int]
+    ratings: NotRequired[StatByFideTC]
+
+
+class BroadcastPlayerEntryWithFideAndGames(BroadcastPlayerEntry):
+    """Player entry with FIDE data and games."""
+
+    fide: NotRequired[BroadcastPlayerFideInfo]
+    games: NotRequired[List[BroadcastGameEntry]]
+
+
+class BroadcastTeamLeaderboardEntry(TypedDict):
+    """Team entry in a broadcast team leaderboard."""
+
+    name: str
+    mp: float
+    gp: float
+    averageRating: NotRequired[int]
+    matches: Required[List[dict]]
+    players: Required[List[dict]]

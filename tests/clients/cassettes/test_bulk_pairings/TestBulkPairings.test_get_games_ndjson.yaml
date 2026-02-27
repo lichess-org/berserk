@@ -1,0 +1,27 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/x-ndjson
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - Bearer FAKE_TOKEN
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.5
+    method: GET
+    uri: https://lichess.org/api/bulk-pairing/FAKE_BULK/games
+  response:
+    body:
+      string: |
+        {"id":"aaaaaaaa","rated":false,"players":{"white":{"user":{"name":"alice"}},"black":{"user":{"name":"bob"}}}}
+    headers:
+      Content-Type:
+      - application/x-ndjson
+    status:
+      code: 200
+      message: OK
+version: 1

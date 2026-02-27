@@ -1,0 +1,26 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Authorization:
+      - Bearer FAKE_TOKEN
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.5
+    method: GET
+    uri: https://lichess.org/api/challenge/FAKE_CHALLENGE/show
+  response:
+    body:
+      string: '{"id":"FAKE_CHALLENGE","url":"https://lichess.org/FAKE_CHALLENGE","status":"created","challenger":{"id":"alice","name":"alice"},"destUser":{"id":"bob","name":"bob"},"variant":{"key":"standard","name":"Standard"},"rated":false,"timeControl":{"type":"clock","limit":300,"increment":0},"color":"random","speed":"blitz"}'
+    headers:
+      Content-Type:
+      - application/json
+    status:
+      code: 200
+      message: OK
+version: 1

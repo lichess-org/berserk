@@ -1,0 +1,55 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.4
+    method: GET
+    uri: https://lichess.org/api/user/thibault/tournament/played?nb=3&performance=False
+  response:
+    body:
+      string: '{"tournament":{"id":"TqYKG7b3","createdBy":"blakedoyle","system":"arena","minutes":720,"clock":{"limit":120,"increment":2},"rated":true,"fullName":"Antichess
+        lovers RANDOM Team Battle","nbPlayers":101,"variant":{"key":"antichess","short":"Anti","name":"Antichess"},"startsAt":1771937590606,"finishesAt":1771980790606,"status":30,"perf":{"key":"antichess","name":"Antichess","position":9},"teamBattle":{"teams":["lichess-racing-kings","darkonblitz-dob","bengal-tiger","lichess-chess960","gkr_gabriel--friends","dark-knights-chez-club","--elite-chess-players-union--","world-antichess-front","atomic-titans","world-chess-hunters","fide-checkmate-coronavirus","antichessmasters-ii","world-racing-kings-front","darkonbot","antichess-russia","darkonteams","100-zerk-rate","world-king-of-the-hill-front","lichess-king-of-the-hill","antichess-usa","atomic-addiction","lichess-antichess","lichess-en-espanol","kidch3ss-fan-club","atomic-chess-theoreticians","vegan-players","lichess-crazyhouse","world-chess-front-official","bharat-royals","antichess-960","darkknights-chess-academy-mumbai","crestbook-chess-club","antichess","antichess-titles","moon-club","world-atomic-front","aceidfs-fan-team","darkonswiss-dos","SKMom8QG","atomic960-tournament","anits-online-chess","atomic-for-fun","antichess-academy","darkonrapid","russian-chess-players","antichess-legends","dark-horse","lichess-horde","atomic-wc","antichess-league-team-battle","lichess-atomic","atomic-academy","world-chess-learner","atomic-dinosaurs","zhigalko_sergei-fan-club","ewie-fan-club","the-royal-empire","lichess-three-check","darkonclassical","the-house-discord-server","antichess-wc","antichessmasters","dark-pawn-go-for-win","wwwantichessorg"],"nbLeaders":7}},"player":{"games":1,"score":0,"rank":91}}
+
+        {"tournament":{"id":"YTlkQ9Ff","createdBy":"lichess","system":"arena","minutes":120,"clock":{"limit":300,"increment":0},"rated":true,"fullName":"Eastern
+        Blitz Arena","nbPlayers":1203,"variant":{"key":"standard","short":"Std","name":"Standard"},"startsAt":1771221600000,"finishesAt":1771228800000,"status":30,"perf":{"key":"blitz","name":"Blitz","position":1,"icon":")"},"minRatedGames":{"nb":15},"schedule":{"freq":"eastern","speed":"blitz"}},"player":{"games":1,"score":0,"rank":1130}}
+
+        {"tournament":{"id":"XGTv7hEK","createdBy":"thibault","system":"arena","minutes":480,"clock":{"limit":180,"increment":0},"rated":true,"fullName":"thibault
+        Arena","nbPlayers":2,"variant":{"key":"standard","short":"Std","name":"Standard"},"startsAt":1769677070691,"finishesAt":1769705870691,"status":30,"perf":{"key":"blitz","name":"Blitz","position":1,"icon":")"}},"player":{"games":1,"score":2,"rank":1}}
+
+        '
+    headers:
+      Access-Control-Allow-Headers:
+      - Origin, Authorization, If-Modified-Since, Cache-Control, Content-Type
+      Access-Control-Allow-Methods:
+      - OPTIONS, GET, POST, PUT, DELETE
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/x-ndjson
+      Date:
+      - Fri, 27 Feb 2026 22:34:46 GMT
+      Permissions-Policy:
+      - interest-cohort=()
+      Server:
+      - nginx
+      Strict-Transport-Security:
+      - max-age=63072000; includeSubDomains; preload
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      X-Frame-Options:
+      - DENY
+    status:
+      code: 200
+      message: OK
+version: 1
