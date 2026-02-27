@@ -1,0 +1,10 @@
+# Params from variable: fixture params_variable_client.py passes params=params with {"q": q}.
+# Spec adds "r" so script reports one missing param.
+paths:
+  /api/dev-tests/params-var:
+    get:
+      parameters:
+        - name: q
+          in: query
+        - name: r
+          in: query
