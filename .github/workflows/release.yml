@@ -43,7 +43,7 @@ jobs:
     - name: Build berserk package
       run: uv run release.py --bump ${{ github.event.inputs.bump }} --branch ${{ env.BRANCH_NAME }}
     - name: Store the distribution packages
-      uses: actions/upload-artifact@v6
+      uses: actions/upload-artifact@v7
       with:
         name: python-package-distributions
         path: dist/
