@@ -1,0 +1,4 @@
+# path= keyword: fixture path_keyword_client.py implements GET with path=path.
+paths:
+  /api/dev-tests/path-keyword:
+    get: {}

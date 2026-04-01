@@ -1,0 +1,4 @@
+# Spec with only a path in FALSE_POSITIVES (/oauth). Script should not report it as missing.
+paths:
+  /oauth:
+    get: {}
