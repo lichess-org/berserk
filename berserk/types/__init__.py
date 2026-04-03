@@ -25,6 +25,8 @@ from .puzzles import PuzzleData, PuzzleRace
 from .opening_explorer import (
     OpeningExplorerRating,
     OpeningStatistic,
+    PlayerOpeningStatistic,
+    MastersOpeningStatistic,
     Speed,
 )
 from .studies import ChapterIdName
@@ -47,9 +49,11 @@ __all__ = [
     "ExternalEngine",
     "FidePlayer",
     "LightUser",
+    "MastersOpeningStatistic",
     "OnlineLightUser",
     "OpeningExplorerRating",
     "OpeningStatistic",
+    "PlayerOpeningStatistic",
     "PaginatedBroadcasts",
     "PaginatedTeams",
     "Perf",
