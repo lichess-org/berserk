@@ -90,6 +90,7 @@ Most of the API is available:
     client.board.offer_takeback
     client.board.accept_takeback
     client.board.decline_takeback
+    client.board.claim_draw
     client.board.claim_victory
     client.board.go_berserk
 
@@ -100,6 +101,8 @@ Most of the API is available:
     client.bots.post_message
     client.bots.abort_game
     client.bots.resign_game
+    client.bots.claim_draw
+    client.bots.claim_victory
     client.bots.handle_draw_offer
     client.bots.handle_takeback_offer
     client.bots.accept_challenge
