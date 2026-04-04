@@ -126,6 +126,7 @@ Most of the API is available:
     client.bulk_pairings.cancel
 
     client.challenges.get_mine
+    client.challenges.show
     client.challenges.create
     client.challenges.create_ai
     client.challenges.create_open
