@@ -8,4 +8,7 @@ class ChapterIdName(TypedDict):
     id: str
     name: str
 
-StudyUserSelection: TypeAlias = Literal["nobody", "owner", "contributor", "member", "everyone"]
+
+StudyUserSelection: TypeAlias = Literal[
+    "nobody", "owner", "contributor", "member", "everyone"
+]
