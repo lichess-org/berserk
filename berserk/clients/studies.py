@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-from typing import cast, List, Iterator, Dict, Any
+from typing import cast, List, Iterator, Dict, Any, Literal
 
 from ..formats import PGN, NDJSON
 from ..types.common import Color, VariantKey
-from ..types import ChapterIdName
+from ..types import ChapterIdName, StudyUserSelection
 from .base import BaseClient
 
 
@@ -103,6 +103,42 @@ class Studies(BaseClient):
             "orientation": orientation,
         }
         yield from self._r.get(path, fmt=PGN, stream=True, params=params)
+
+    def create(
+        self,
+        name: str,
+        visibility: Literal["public", "private", "unlisted"],
+        computer: StudyUserSelection,
+        explorer: StudyUserSelection,
+        cloneable: StudyUserSelection,
+        shareable: StudyUserSelection,
+        chat: StudyUserSelection,
+        sticky: bool,
+    ) -> str:
+        """Create a study, and a new empty chapter within it. You can make up to 30 new studies per day.
+
+        :param name: the name of the study
+        :param visibility: whether the study is public, private, or unlisted
+        :param computer: which users can use computer analysis in the study
+        :param explorer: which users can use the opening explorer and tablebase in the study
+        :param cloneable: which users can clone the study
+        :param shareable: which users can share and export the study
+        :param chat: which users can chat in the study
+        :param sticky: whether the study keeps everyone on the same position or lets people browse freely
+        """
+
+        path = "/api/study"
+        params = {
+            "name": name,
+            "visibility": visibility,
+            "computer": computer,
+            "explorer": explorer,
+            "cloneable": cloneable,
+            "shareable": shareable,
+            "chat": chat,
+            "sticky": str(sticky).lower(),
+        }
+        return self._r.post(path, data=params).get("id", "")
 
     def import_pgn(
         self,

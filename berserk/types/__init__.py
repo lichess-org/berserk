@@ -27,7 +27,7 @@ from .opening_explorer import (
     OpeningStatistic,
     Speed,
 )
-from .studies import ChapterIdName
+from .studies import ChapterIdName, StudyUserSelection
 from .team import PaginatedTeams, Team
 from .tournaments import ArenaResult, CurrentTournaments, SwissResult, SwissInfo
 from .tv import TVFeed
@@ -59,6 +59,7 @@ __all__ = [
     "PuzzleRace",
     "Speed",
     "StreamerInfo",
+    "StudyUserSelection",
     "SwissInfo",
     "SwissResult",
     "Team",

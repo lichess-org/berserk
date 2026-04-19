@@ -20,6 +20,7 @@ To be released
   of a given user.
 * Added ``bots.handle_draw_offer`` and ``bots.handle_takeback_offer`` to handle draw and takeback offers
 * Added ``client.external_engine.analyse``, ``client.external_engine.acquire_request``, ``client.external_engine.answer_request`` to handle analysis with an external engine
+* Added ``client.studies.create`` to create new studies
 
 
 Thanks to all the contributors who helped to this release:
@@ -29,6 +30,7 @@ Thanks to all the contributors who helped to this release:
 - @gameroman
 - @JAMoreno-Larios
 - @friedrichtenhagen
+- @dankoo97
 
 
 v0.14.0 (2025-08-26)
