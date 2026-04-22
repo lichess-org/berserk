@@ -20,7 +20,8 @@ To be released
   of a given user.
 * Added ``bots.handle_draw_offer`` and ``bots.handle_takeback_offer`` to handle draw and takeback offers
 * Added ``client.external_engine.analyse``, ``client.external_engine.acquire_request``, ``client.external_engine.answer_request`` to handle analysis with an external engine
-
+* Added ``client.user.get_notes`` to get the notes you have on a user
+* Added ``client.user.add_note`` to set the notes you have on a user
 
 Thanks to all the contributors who helped to this release:
 - @hsheth2
@@ -29,6 +30,7 @@ Thanks to all the contributors who helped to this release:
 - @gameroman
 - @JAMoreno-Larios
 - @friedrichtenhagen
+- @Amb1tion
 
 
 v0.14.0 (2025-08-26)
