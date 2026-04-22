@@ -156,7 +156,7 @@ class Users(BaseClient):
         return self._r.get(path, fmt=JSON_LIST, converter=models.User.convert)
 
     def get_user_notes(self, username: str) -> List[Dict[str, Any]]:
-        """Get the list of private notes you have added for this user using your account, if any.
+        """Get the list of private notes you have added for a user using your account, if any.
 
         Mirrors the notes shown on the user's profile page on the website.
         """
@@ -164,7 +164,7 @@ class Users(BaseClient):
         return self._r.get(path, fmt=JSON_LIST, converter=models.User.convert)
 
     def add_user_note(self, username: str, note: str) -> None:
-        """Add a private note for this user using your account.
+        """Add a private note for a user using your account.
 
         :param note: the content of the note to add.
         """
