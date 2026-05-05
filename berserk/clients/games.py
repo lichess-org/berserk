@@ -22,6 +22,7 @@ class Games(FmtClient):
         evals: bool | None = None,
         opening: bool | None = None,
         literate: bool | None = None,
+        accuracy: bool | None = None,
     ) -> str | Dict[str, Any]:
         """Get one finished game as PGN or JSON.
 
@@ -35,6 +36,7 @@ class Games(FmtClient):
             when available
         :param opening: whether to include the opening name
         :param literate: whether to include literate the PGN
+        :param accuracy: whether to include accuracy percent of each player when available JSON only
         :return: exported game, as JSON or PGN
         """
         path = f"/game/export/{game_id}"
@@ -46,6 +48,7 @@ class Games(FmtClient):
             "evals": evals,
             "opening": opening,
             "literate": literate,
+            "accuracy": accuracy,
         }
         if self._use_pgn(as_pgn):
             return self._r.get(path, params=params, fmt=PGN)
@@ -63,6 +66,7 @@ class Games(FmtClient):
         evals: bool | None = None,
         opening: bool | None = None,
         literate: bool | None = None,
+        accuracy: bool | None = None,
         players: str | None = None,
     ) -> Iterator[str] | Iterator[Dict[str, Any]]:
         """Export the ongoing game, or the last game played, of a user.
@@ -77,6 +81,7 @@ class Games(FmtClient):
             when available
         :param opening: whether to include the opening name
         :param literate: whether to include literate the PGN
+        :param accuracy: whether to include accuracy percent of each player when available JSON only
         :param players: URL of text file containing real names and ratings for PGN
         :return: iterator over the exported games, as JSON or PGN
         """
@@ -90,6 +95,7 @@ class Games(FmtClient):
             "opening": opening,
             "literate": literate,
             "players": players,
+            "accuracy": accuracy,
         }
         if self._use_pgn(as_pgn):
             yield from self._r.get(path, params=params, stream=True, fmt=PGN)
@@ -124,6 +130,7 @@ class Games(FmtClient):
         players: str | None = None,
         sort: str | None = None,
         literate: bool | None = None,
+        accuracy: bool | None = None,
     ) -> Iterator[str] | Iterator[Dict[str, Any]]:
         """Get games by player.
 
@@ -149,6 +156,7 @@ class Games(FmtClient):
         :param players: URL of text file containing real names and ratings for PGN
         :param sort: Sort the order of games
         :param literate: whether to include literate the PGN
+        :param accuracy: whether to include accuracy percent of each player when available JSON only
         :return: iterator over the exported games, as JSON or PGN
         """
         path = f"/api/games/user/{username}"
@@ -172,6 +180,7 @@ class Games(FmtClient):
             "players": players,
             "sort": sort,
             "literate": literate,
+            "accuracy": accuracy,
         }
         if self._use_pgn(as_pgn):
             yield from self._r.get(path, params=params, fmt=PGN, stream=True)
@@ -193,6 +202,7 @@ class Games(FmtClient):
         clocks: bool | None = None,
         evals: bool | None = None,
         opening: bool | None = None,
+        accuracy: bool | None = None,
     ) -> Iterator[str] | Iterator[Dict[str, Any]]:
         """Get multiple games by ID.
 
@@ -204,6 +214,7 @@ class Games(FmtClient):
         :param evals: whether to include analysis evaluation comments in the PGN moves
             when available
         :param opening: whether to include the opening name
+        :param accuracy: whether to include accuracy percent of each player when available JSON only
         :return: iterator over the exported games, as JSON or PGN
         """
         path = "/api/games/export/_ids"
@@ -213,6 +224,7 @@ class Games(FmtClient):
             "clocks": clocks,
             "evals": evals,
             "opening": opening,
+            "accuracy": accuracy,
         }
         payload = ",".join(game_ids)
         if self._use_pgn(as_pgn):
