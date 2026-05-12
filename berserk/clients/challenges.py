@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Dict, List
+from typing import Any, Dict, List, cast
 from deprecated import deprecated
 
 from ..types.challenges import ChallengeJson, ChallengeDeclineReason
@@ -18,6 +18,17 @@ class Challenges(BaseClient):
         """
         path = "/api/challenge"
         return self._r.get(path)
+
+    def show(self, challenge_id: str) -> ChallengeJson:
+        """Get a single challenge by ID.
+
+        Requires OAuth2 authorization with challenge:read scope.
+
+        :param challenge_id: ID of the challenge
+        :return: challenge data
+        """
+        path = f"/api/challenge/{challenge_id}/show"
+        return cast(ChallengeJson, self._r.get(path))
 
     def create(
         self,
