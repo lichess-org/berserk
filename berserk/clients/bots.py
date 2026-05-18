@@ -78,6 +78,22 @@ class Bots(BaseClient):
         path = f"/api/bot/game/{game_id}/resign"
         self._r.post(path)
 
+    def claim_draw(self, game_id: str) -> None:
+        """Claim a draw in a bot game.
+
+        :param game_id: ID of a game
+        """
+        path = f"/api/bot/game/{game_id}/claim-draw"
+        self._r.post(path)
+
+    def claim_victory(self, game_id: str) -> None:
+        """Claim victory in a bot game.
+
+        :param game_id: ID of a game
+        """
+        path = f"/api/bot/game/{game_id}/claim-victory"
+        self._r.post(path)
+
     def handle_draw_offer(self, game_id: str, accept: bool) -> None:
         """Create/accept/decline draw offers
 
