@@ -1,0 +1,10 @@
+# Used with --clients-dir dev_tests/fixtures/fake_clients. Fixture implements
+# GET /api/dev-tests/fixture with param "a"; this spec adds "b" so missing_params has one entry.
+paths:
+  /api/dev-tests/fixture:
+    get:
+      parameters:
+        - name: a
+          in: query
+        - name: b
+          in: query

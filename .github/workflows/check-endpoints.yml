@@ -1,0 +1,118 @@
+# Spec vs implementation: run check-endpoints.py against the latest Lichess API spec,
+# and create or update a single issue with a list of missing endpoints/params.
+# See also: issue #6 (historical umbrella).
+
+# When enabling schedule: uncomment the schedule block below.
+# Duration: weekly. Cron "0 3 * * 1" = Monday 03:00 UTC (avoids overlap with 02:00 cassette refresh if present).
+# GitHub does not support variables in cron; change the cron string if you want a different interval (e.g. "0 3 * * 1" weekly, "0 3 1 * *" monthly).
+name: Check endpoints (spec vs implementation)
+
+on:
+  workflow_dispatch: {}
+  # Weekly (e.g. for production): "0 3 * * 1" = Monday 03:00 UTC
+  schedule:
+    - cron: "0 3 * * 1"
+
+jobs:
+  check-endpoints:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install PyYAML
+        run: pip install pyyaml
+
+      - name: Fetch API spec
+        run: |
+          mkdir -p spec
+          curl -fsSL -o spec/openapi.yaml "https://lichess.org/api/openapi.yaml"
+
+      - name: Run check-endpoints
+        run: |
+          python check-endpoints.py --json spec/openapi.yaml > output.json 2>stderr.txt || { cat stderr.txt; exit 1; }
+
+      - name: Update issue from check result
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          HAS_MISSING=$(python3 -c "
+          import json
+          with open('output.json') as f:
+              data = json.load(f)
+          me = data.get('missing_endpoints') or []
+          mp = data.get('missing_params') or []
+          print('true' if (me or mp) else 'false')
+          ")
+          if [ "$HAS_MISSING" = "true" ]; then
+            BODY=$(python3 - << 'PY'
+          import json
+          import sys
+          with open("output.json") as f:
+              data = json.load(f)
+          intro = """This issue is automatically updated by the [check-endpoints](.github/workflows/check-endpoints.yml) workflow. Manual edits to the list below will be overwritten. For historical context and implementation notes, see issue #6.
+
+          """
+          parts = [intro]
+          if data.get("missing_endpoints"):
+              parts.append("## Missing endpoints (path, operation)\n\n")
+              for e in data["missing_endpoints"]:
+                  path, op = e["path"], e["operation"]
+                  parts.append(f"- `{op}` `{path}`\n")
+              parts.append("\n")
+          if data.get("missing_params"):
+              parts.append("## Missing query params (implemented endpoints)\n\n")
+              for p in data["missing_params"]:
+                  path, op = p["path"], p["operation"]
+                  params = ", ".join(f"`{x}`" for x in p["params"])
+                  method = p.get("method", "")
+                  parts.append(f"- `{op}` `{path}` — missing: {params} — {method}\n")
+          sys.stdout.write("".join(parts))
+          PY
+          )
+            echo "----- check-endpoints issue body -----"
+            printf '%s\n' "$BODY"
+            echo "--------------------------------------"
+            echo "$BODY" > body.md
+            ISSUE_NUM=$(gh issue list --repo "${{ github.repository }}" --state open --limit 1 --json number --jq '.[0].number' --search 'in:title "Spec vs implementation: missing endpoints or params (auto-updated)"' 2>/dev/null || true)
+            if [ -n "$ISSUE_NUM" ]; then
+              gh issue edit "$ISSUE_NUM" --body-file body.md
+              echo "Updated issue #$ISSUE_NUM"
+            else
+              OLD_NUM=$(gh issue list --repo "${{ github.repository }}" --state all --limit 1 --json number --jq '.[0].number' --search 'in:title "Spec vs implementation: missing endpoints or params (auto-updated)"' 2>/dev/null || true)
+              if [ -n "$OLD_NUM" ]; then
+                gh issue reopen "$OLD_NUM"
+                gh issue edit "$OLD_NUM" --body-file body.md
+                echo "Reopened and updated issue #$OLD_NUM"
+              else
+                gh issue create --title "Spec vs implementation: missing endpoints or params (auto-updated)" --body-file body.md
+                echo "Created new issue"
+              fi
+            fi
+          else
+            python3 - << 'PY'
+          intro = """This issue is automatically updated by the [check-endpoints](.github/workflows/check-endpoints.yml) workflow. Manual edits to the list below will be overwritten. For historical context and implementation notes, see issue #6.
+
+          ---
+
+          No missing endpoints or params as of this run. This issue will be reopened when the spec gains new endpoints or params we don't implement.
+          """
+          with open("body.md", "w") as f:
+              f.write(intro)
+          PY
+            ISSUE_NUM=$(gh issue list --repo "${{ github.repository }}" --state open --limit 1 --json number --jq '.[0].number' --search 'in:title "Spec vs implementation: missing endpoints or params (auto-updated)"' 2>/dev/null || true)
+            if [ -n "$ISSUE_NUM" ]; then
+              gh issue edit "$ISSUE_NUM" --body-file body.md
+              gh issue close "$ISSUE_NUM" --comment "No missing endpoints or params as of this run. This issue will be reopened when the spec gains new endpoints or params we don't implement."
+              echo "Closed issue #$ISSUE_NUM"
+            fi
+          fi

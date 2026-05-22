@@ -1,0 +1,4 @@
+# Minimal OpenAPI-like spec for check-endpoints tests.
+paths:
+  /api/minimal-test:
+    get: {}

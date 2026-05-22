@@ -1,0 +1,4 @@
+# F-string path: fixture fstring_client.py implements GET /api/dev-tests/fstring/{} (normalized).
+paths:
+  /api/dev-tests/fstring/{}:
+    get: {}

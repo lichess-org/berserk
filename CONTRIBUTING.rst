@@ -24,7 +24,19 @@ Look through the GitHub issues for bugs.
 Implement Missing Endpoints
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can run the ``check-endpoints.py`` script (requires yaml to be installed, ``pip3 install pyyaml``) in the root of the project to get a list of endpoints that are still missing.
+The ``check-endpoints.py`` script (in the project root) compares the client code in ``berserk/clients/`` to the Lichess API spec and reports missing endpoints and missing query parameters. It requires PyYAML (``pip install pyyaml`` or use the project env via ``uv run``).
+
+Run from the repo root with a path to the spec (e.g. a local OpenAPI YAML or the deployed spec)::
+
+  uv run python check-endpoints.py path/to/openapi.yaml
+
+Use ``--json`` for machine-readable output (e.g. for CI). Use ``--clients-dir DIR`` to point at a different client tree (default is ``berserk/clients``). Exit 0 on success; non-zero on error (bad args, spec not found). When nothing is missing, both ``missing_endpoints`` and ``missing_params`` in the JSON are empty lists.
+
+**CI and auto-generated issue:** The workflow in ``.github/workflows/check-endpoints.yml`` runs on a schedule (and manually via workflow_dispatch). It fetches the latest spec from the Lichess API, runs the script, and creates or updates a single issue titled "Spec vs implementation: missing endpoints or params (auto-updated)" with the current list. When there are no missing items, it closes that issue (after updating its body). This issue is the live checklist; see the historical umbrella issue in the repo for context.
+
+**Tests for check-endpoints.py:** The script has its own tests in ``dev_tests/test_check_endpoints.py``. These are **not** run by ``make test`` (which only runs ``tests/``). To run them manually::
+
+  uv run pytest dev_tests/test_check_endpoints.py -v
 
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~

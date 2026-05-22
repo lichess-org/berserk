@@ -1,0 +1,4 @@
+# request(method=..., path=...): fixture request_method_client.py implements this path.
+paths:
+  /api/dev-tests/request-method:
+    get: {}
