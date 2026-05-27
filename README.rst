@@ -253,5 +253,7 @@ Most of the API is available:
     client.users.get_crosstable
     client.users.get_user_performance
     client.users.get_by_autocomplete
+    client.users.get_notes
+    client.users.add_note
 
 Details for each function can be found in the `documentation <https://lichess-org.github.io/berserk/>`_.
