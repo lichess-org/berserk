@@ -1,5 +1,5 @@
 from typing import List, cast
-from ..types.fide import FidePlayer
+from ..types.fide import FidePlayer, FidePlayerRatings
 from .base import BaseClient
 
 
@@ -24,3 +24,13 @@ class Fide(BaseClient):
         path = f"/api/fide/player/{player_id}"
         data = self._r.get(path)
         return cast(FidePlayer, data)
+
+    def get_player_ratings(self, player_id: int) -> FidePlayerRatings:
+        """Get the historical ratings of a FIDE player by ID.
+
+        :param player_id: FIDE player ID
+        :return: the player's standard, rapid and blitz rating histories
+        """
+        path = f"/api/fide/player/{player_id}/ratings"
+        data = self._r.get(path)
+        return cast(FidePlayerRatings, data)

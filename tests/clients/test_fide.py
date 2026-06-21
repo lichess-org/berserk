@@ -1,7 +1,7 @@
 import pytest
 from typing import List
 from berserk import Client
-from berserk.types.fide import FidePlayer
+from berserk.types.fide import FidePlayer, FidePlayerRatings
 from utils import validate, skip_if_older_3_dot_10
 
 
@@ -18,3 +18,9 @@ class TestFide:
         res = Client().fide.get_player(35009192)
         validate(FidePlayer, res)
         assert res["name"] == "Erigaisi Arjun"
+
+    @skip_if_older_3_dot_10
+    @pytest.mark.vcr
+    def test_get_player_ratings(self):
+        res = Client().fide.get_player_ratings(35009192)
+        validate(FidePlayerRatings, res)
