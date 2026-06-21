@@ -20,7 +20,7 @@ from .bulk_pairings import BulkPairing, BulkPairingGame
 from .external_engine import ExternalEngine
 from .challenges import ChallengeJson
 from .common import ClockConfig, LightUser, OnlineLightUser, VariantKey
-from .fide import FidePlayer
+from .fide import FidePlayer, FidePlayerRatings
 from .puzzles import PuzzleData, PuzzleRace
 from .opening_explorer import (
     OpeningExplorerRating,
@@ -46,6 +46,7 @@ __all__ = [
     "CurrentTournaments",
     "ExternalEngine",
     "FidePlayer",
+    "FidePlayerRatings",
     "LightUser",
     "OnlineLightUser",
     "OpeningExplorerRating",
