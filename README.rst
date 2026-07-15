@@ -91,6 +91,7 @@ Most of the API is available:
     client.board.accept_takeback
     client.board.decline_takeback
     client.board.claim_victory
+    client.board.claim_draw
     client.board.go_berserk
 
     client.bots.get_online_bots

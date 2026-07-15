@@ -22,6 +22,7 @@ To be released
   of a given user.
 * Added ``bots.handle_draw_offer`` and ``bots.handle_takeback_offer`` to handle draw and takeback offers
 * Added ``client.external_engine.analyse``, ``client.external_engine.acquire_request``, ``client.external_engine.answer_request`` to handle analysis with an external engine
+* Added ``client.board.claim_draw`` to claim draw after the opponent has left the game
 
 
 Thanks to all the contributors who helped to this release:
