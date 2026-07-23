@@ -104,6 +104,8 @@ Most of the API is available:
     client.bots.handle_takeback_offer
     client.bots.accept_challenge
     client.bots.decline_challenge
+    client.bots.claim_draw
+    client.bots.claim_victory
 
     client.broadcasts.get_official
     client.broadcasts.create
