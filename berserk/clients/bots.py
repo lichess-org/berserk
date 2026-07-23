@@ -98,7 +98,7 @@ class Bots(BaseClient):
 
     def claim_victory(self, game_id: str) -> None:
         """Claim victory in a bot game after the opponent left the game
-        
+
         :param game_id: ID of a game
         """
         path = f"/api/bot/game/{game_id}/claim-victory"
