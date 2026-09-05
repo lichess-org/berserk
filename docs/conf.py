@@ -39,14 +39,14 @@ extensions = [
 ]
 autodoc_typehints = "both"
 
-source_suffix = ".rst"
+source_suffix = {".rst": "restructuredtext"}
 
-# The master toctree document.
-master_doc = "index"
+# The root toctree document.
+root_doc = "index"
 
 # General information about the project.
 project = "berserk"
-copyright = "2018-2023, Lichess and contributors"
+copyright = "2018-2026, Lichess and contributors"
 author = "Lichess"
 
 # version
