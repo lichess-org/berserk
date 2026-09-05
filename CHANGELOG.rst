@@ -13,6 +13,7 @@ To be released
 * Implement `broadcasts.get_top()` endpoint; typing fixes and validation.
 * Added ``client.broadcasts.search`` to search for broadcasts.
 * Added ``client.broadcasts.get_by_user`` to get broadcasts created by a user.
+* Added ``client.broadcasts.reset_round`` to reset a broadcast round to its initial state.
 * Added ``client.relations.block`` and ``client.relations.unblock`` for blocking/unblocking users.
 * Implemented ``/api/games/export/imports`` under
   ``client.games.export_imported``.
@@ -31,6 +32,7 @@ Thanks to all the contributors who helped to this release:
 - @gameroman
 - @JAMoreno-Larios
 - @friedrichtenhagen
+- @philyawj
 
 
 v0.14.0 (2025-08-26)
