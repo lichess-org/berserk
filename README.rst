@@ -154,6 +154,7 @@ Most of the API is available:
 
     client.fide.get_player
     client.fide.search_players
+    client.fide.get_ratings
 
     client.games.export
     client.games.export_ongoing_by_player
