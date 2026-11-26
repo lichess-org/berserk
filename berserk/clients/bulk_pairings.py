@@ -62,7 +62,7 @@ class BulkPairings(BaseClient):
             "days": days,
             "pairAt": pair_at,
             "startClocksAt": start_clocks_at,
-            "rated": rated,
+            "rated": str(bool(rated)).lower(),
             "variant": variant,
             "fen": fen,
             "message": message,
@@ -72,7 +72,7 @@ class BulkPairings(BaseClient):
             BulkPairing,
             self._r.post(
                 path,
-                payload=payload,
+                data=payload,
                 fmt=JSON,
             ),
         )

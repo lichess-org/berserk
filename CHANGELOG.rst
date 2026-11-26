@@ -22,12 +22,16 @@ To be released
   of a given user.
 * Added ``bots.handle_draw_offer`` and ``bots.handle_takeback_offer`` to handle draw and takeback offers
 * Added ``client.external_engine.analyse``, ``client.external_engine.acquire_request``, ``client.external_engine.answer_request`` to handle analysis with an external engine
+* Fixed ``client.external_engine.create``, ``update``, ``analyse``, ``acquire_request``, ``client.teams.message_all_members``,
+  ``client.challenges.create_tokens_for_multiple_users`` and ``client.bulk_pairings.create``, which always raised
+  ``TypeError`` because the request body was passed as an unsupported ``payload`` argument.
 
 
 Thanks to all the contributors who helped to this release:
 - @hsheth2
 - @DoraFgr
 - @MrElyazid
+- @chrismarquezz
 - @gameroman
 - @JAMoreno-Larios
 - @friedrichtenhagen

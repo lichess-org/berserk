@@ -81,7 +81,7 @@ class ExternalEngine(BaseClient):
             "providerSecret": provider_secret,
             "providerData": provider_data,
         }
-        return cast(ExternalEngine, self._r.post(path=path, payload=payload))
+        return cast(ExternalEngine, self._r.post(path=path, json=payload))
 
     def update(
         self,
@@ -119,7 +119,7 @@ class ExternalEngine(BaseClient):
             "providerData": provider_data,
         }
         return cast(
-            ExternalEngine, self._r.request(method="PUT", path=path, payload=payload)
+            ExternalEngine, self._r.request(method="PUT", path=path, json=payload)
         )
 
     def delete(self, engine_id: str) -> None:
@@ -168,25 +168,27 @@ class ExternalEngine(BaseClient):
         :param nodes: Number of nodes to analyse in the position
         """
         path = f"/api/external-engine/{engine_id}/analyse"
+        work = {
+            "sessionId": session_id,
+            "threads": threads,
+            "hash": hash_table_size,
+            "multiPv": pri_num_variations,
+            "variant": variant,
+            "initialFen": initial_fen,
+            "moves": moves,
+            "movetime": movetime,
+            "depth": depth,
+            "nodes": nodes,
+        }
         payload = {
             "clientSecret": client_secret,
-            "work": {
-                "sessionId": session_id,
-                "threads": threads,
-                "hash": hash_table_size,
-                "multiPv": pri_num_variations,
-                "variant": variant,
-                "initialFen": initial_fen,
-                "moves": moves,
-                "movetime": movetime,
-                "depth": depth,
-                "nodes": nodes,
-            },
+            # omit unset limits: the server expects exactly one of movetime/depth/nodes
+            "work": {k: v for k, v in work.items() if v is not None},
         }
 
         for response in self._external_client._r.post(
             path=path,
-            payload=payload,
+            json=payload,
             stream=True,
             fmt=NDJSON,
         ):
@@ -201,7 +203,7 @@ class ExternalEngine(BaseClient):
         payload = {"providerSecret": provider_secret}
         return cast(
             ExternalEngineRequest,
-            self._external_client._r.post(path=path, payload=payload),
+            self._external_client._r.post(path=path, json=payload),
         )
 
     def answer_request(self, engine_id: str) -> str:
