@@ -241,4 +241,4 @@ class Challenges(BaseClient):
         """
         path = "/api/token/admin-challenge"
         payload = {"users": ",".join(usernames), "description": description}
-        return self._r.post(path=path, payload=payload)
+        return self._r.post(path=path, data=payload)

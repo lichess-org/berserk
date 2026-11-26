@@ -1,4 +1,7 @@
+from urllib.parse import parse_qs
+
 import pytest
+import requests_mock
 
 from berserk import Client, Team, PaginatedTeams
 from typing import List
@@ -29,3 +32,15 @@ class TestLichessGames:
     def test_search(self):
         res = Client().teams.search("lichess")
         validate(PaginatedTeams, res)
+
+
+class TestTeamMessaging:
+    def test_message_all_members_sends_form_body(self):
+        with requests_mock.Mocker() as m:
+            m.post("https://lichess.org/team/some-team/pm-all", json={"ok": True})
+            Client().teams.message_all_members("some-team", "hello team")
+            assert (
+                m.last_request.headers["Content-Type"]
+                == "application/x-www-form-urlencoded"
+            )
+            assert parse_qs(m.last_request.text) == {"message": ["hello team"]}

@@ -130,4 +130,4 @@ class Teams(BaseClient):
         """
         path = f"/team/{team_id}/pm-all"
         payload = {"message": message}
-        self._r.post(path=path, payload=payload)
+        self._r.post(path=path, data=payload)
